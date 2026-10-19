@@ -1,0 +1,24 @@
+# Datos (viven en Drive/Kaggle Datasets, no en git -- ver docs/artefactos_datos.md)
+*.pkl
+images_grayscale_classblind/
+images/
+*.pt
+*.pth
+nested_cv_results.json
+dev_idx.npy
+holdout_idx.npy
+cnn_test_preds.npy
+cnn_test_true.npy
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Notebooks: limpiar outputs antes de commitear si pesan mucho
+# (opcional: usar nbstripout para automatizar esto)
+
+# Sistema
+.DS_Store
+.ipynb_checkpoints/
