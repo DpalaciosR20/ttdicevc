@@ -68,12 +68,14 @@ ttdicevc/
 │   └── training/                      ← entrenamiento generalizado (3 arquitecturas)
 │       ├── build_model.py
 │       ├── data.py                    ← preprocesamiento/loaders compartidos (3ch, 224, ImageNet)
-│       └── train_model.py
+│       ├── train_model.py
+│       └── run_grid.py                ← grid 18 configs / multi-seed, reanudable (ver docs/correr_grid_kaggle.md)
 ├── tests/
 │   └── smoke_test_training.py         ← 3 arquitecturas × frozen/fine-tune, corre en CPU
 ├── notebooks/                         ← notebooks de Kaggle/Colab (limpiar outputs pesados antes de commitear)
 ├── docs/
 │   ├── artefactos_datos.md            ← dónde están los .pkl y los datasets de imágenes
+│   ├── correr_grid_kaggle.md          ← cómo correr run_grid.py en Kaggle
 │   ├── hallazgos_metodologicos.md     ← detalle completo de las 4 fugas y cómo se resolvieron
 │   └── resumen_modulo3_camera_ready.md
 └── plan/
