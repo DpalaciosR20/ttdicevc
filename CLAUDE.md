@@ -67,7 +67,10 @@ ttdicevc/
 │   │   └── lorenz_lib.py
 │   └── training/                      ← entrenamiento generalizado (3 arquitecturas)
 │       ├── build_model.py
+│       ├── data.py                    ← preprocesamiento/loaders compartidos (3ch, 224, ImageNet)
 │       └── train_model.py
+├── tests/
+│   └── smoke_test_training.py         ← 3 arquitecturas × frozen/fine-tune, corre en CPU
 ├── notebooks/                         ← notebooks de Kaggle/Colab (limpiar outputs pesados antes de commitear)
 ├── docs/
 │   ├── artefactos_datos.md            ← dónde están los .pkl y los datasets de imágenes

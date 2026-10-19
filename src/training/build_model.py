@@ -13,6 +13,13 @@ Atributos de capa final verificados por ejecucion real (no supuestos):
 Nota de tiempo: ViT-B-16 tiene ~85.8M parametros (7.7x ResNet-18, 21x
 EfficientNet-B0) -- considerablemente mas lento de entrenar, sobre todo en
 fine-tuning completo. Tenerlo en cuenta al planear el grid de experimentos.
+
+Entrada esperada: 3x224x224 normalizada con ImageNet (ver data.py). ViT-B-16
+no acepta otro tamano.
+
+Modo frozen: requires_grad=False NO basta -- en model.train() las capas
+BatchNorm siguen actualizando sus running stats. train_model.py se encarga
+de mantener el backbone en eval() durante el entrenamiento frozen.
 """
 
 import torch.nn as nn
@@ -51,6 +58,17 @@ def build_model(arch_name, freeze_backbone=False, num_classes=2):
         raise ValueError(f"Arquitectura desconocida: '{arch_name}'. Usa 'resnet18', 'efficientnet_b0' o 'vit_b_16'.")
 
     return model
+
+
+def get_head(model, arch_name):
+    """Devuelve la capa final (la unica entrenable en modo frozen)."""
+    if arch_name == 'resnet18':
+        return model.fc
+    if arch_name == 'efficientnet_b0':
+        return model.classifier[-1]
+    if arch_name == 'vit_b_16':
+        return model.heads.head
+    raise ValueError(f"Arquitectura desconocida: '{arch_name}'.")
 
 
 def get_trainable_params(model):

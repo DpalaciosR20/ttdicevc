@@ -62,6 +62,13 @@ Todas son PNG de 256×256, modo `'L'` (escala de grises real, 1 canal). El índi
 
 **Ubicación:** https://drive.google.com/drive/folders/1ELsTGeDASVe1URfg1HT81mqh9pLHmyih?usp=drive_link
 
+**En Kaggle** (Dataset `palaciosroblesdiego/data-files`, verificado con el smoke test de `tests/`):
+```
+/kaggle/input/datasets/palaciosroblesdiego/data-files/TT/images_grayscale_classblind/gray_scott
+```
+
+> ⚠️ **No usar `TT/images/`** del mismo Dataset (p. ej. `TT/images/gray_scott/train/no_depresivo/...`). Su estructura de subcarpetas por clase corresponde a las imágenes **originales coloreadas por clase** (fuga #1 de `docs/hallazgos_metodologicos.md`). Usar siempre `TT/images_grayscale_classblind/`.
+
 ## Nota sobre `/kaggle/input/` vs `/kaggle/working/`
 
-Si trabajan en Kaggle: `/kaggle/input/<nombre-dataset>/` es **solo lectura** (ahí se monta cualquier Dataset que suban). Todo lo que se genere en la sesión (nuevas imágenes, checkpoints de modelos, resultados) debe ir a `/kaggle/working/` — intentar escribir en `/kaggle/input/` da `OSError: Read-only file system`.
+Si trabajan en Kaggle: `/kaggle/input/` es **solo lectura** (ahí se monta cualquier Dataset que suban). Ojo: Kaggle ahora monta los datasets en `/kaggle/input/datasets/<usuario>/<dataset>/`, no en `/kaggle/input/<dataset>/` — si una ruta no existe, verificar con `!find /kaggle/input -name "rd_train_0000_*.png"`. Todo lo que se genere en la sesión (nuevas imágenes, checkpoints de modelos, resultados) debe ir a `/kaggle/working/` — intentar escribir en `/kaggle/input/` da `OSError: Read-only file system`.
