@@ -18,7 +18,7 @@ Estructura:
 ```
 Los 5 componentes ya están normalizados con MinMaxScaler (train cae exactamente en [0,1]; val/test se salen ligeramente, como corresponde a "fit solo en train, transform en val/test").
 
-**Ubicación:** https://drive.google.com/drive/folders/1c-3bLKJusFdLO7tCnzVMb9aAO_8qs6Q1?usp=sharing
+**Ubicación:** https://drive.google.com/file/d/16m-yVMYYpve7ZrewtEzADiyu4hytZ91A/view?usp=drive_link
 
 ## `Exp_4_1_BETO_HPO_embeddings.pkl`
 Cargar con `joblib.load`. Embeddings BETO de 768 dimensiones (vector [CLS] de la última capa oculta, modelo `BETO_HPO_finetuned`).
@@ -37,7 +37,7 @@ Las etiquetas coinciden en orden exacto con `umap_params.pkl` en los 3 splits �
 
 **Necesario solo si se va a reajustar UMAP** (p. ej. para un k-fold anidado correcto — ver `docs/hallazgos_metodologicos.md`, punto 3).
 
-**Ubicación:** _(agregar enlace de Drive/Kaggle Dataset)_
+**Ubicación:** https://drive.google.com/file/d/1nVethfLzeW7vZps71Aem0K27DSkoF38X/view?usp=drive_link
 
 ## Datasets de imágenes class-blind (3 técnicas, 1,136 imágenes c/u)
 
@@ -60,7 +60,7 @@ Todas son PNG de 256×256, modo `'L'` (escala de grises real, 1 canal). El índi
 
 **Generadas con:** `src/generation/gray_scott_lib.py`, `perlin_lib.py`, `lorenz_lib.py` (ver `docs/hallazgos_metodologicos.md` para el historial de por qué se regeneraron).
 
-**Ubicación:** _(agregar enlace de Drive/Kaggle Dataset)_
+**Ubicación:** https://drive.google.com/drive/folders/1ELsTGeDASVe1URfg1HT81mqh9pLHmyih?usp=drive_link
 
 ## Nota sobre `/kaggle/input/` vs `/kaggle/working/`
 
