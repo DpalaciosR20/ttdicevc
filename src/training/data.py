@@ -5,13 +5,18 @@ Preprocesamiento y carga compartidos por las 3 arquitecturas (ResNet-18,
 EfficientNet-B0, ViT-B-16), para que los 18 experimentos usen exactamente
 la misma entrada.
 
-Preprocesamiento (el mismo del camera-ready, ver
+Preprocesamiento por defecto (el mismo del camera-ready, ver
 docs/resumen_modulo3_camera_ready.md):
   - PNG 256x256 modo 'L' -> replicada a 3 canales (R=G=B, sin color nuevo)
   - Resize a 224x224 (ViT-B-16 de torchvision EXIGE 224; con 256 truena con
     "Wrong image height! Expected 224")
   - Normalizacion estandar de ImageNet
   - Solo en train: RandomHorizontalFlip
+
+Resolucion y volteo son configurables (img_size, hflip) porque el plan v2
+(F1.4) pide validar por tecnica que no destruyan informacion de u -- p. ej.
+el volteo en Lorenz o el resize 256->224 en los trazos finos de Perlin. La
+decision la toma SV; mientras tanto se usan los valores del camera-ready.
 
 Nombres de archivo: <prefijo>_<split>_<idx:04d>_label<0o1>.png (ver
 docs/artefactos_datos.md). El label se lee del nombre del archivo; si se
@@ -35,11 +40,13 @@ IMAGENET_STD = [0.229, 0.224, 0.225]
 PREFIXES = {'gray_scott': 'rd', 'perlin': 'perlin', 'lorenz': 'lorenz'}
 
 
-def get_transforms(train):
-    """Transformaciones compartidas. train=True agrega RandomHorizontalFlip."""
-    tfs = [transforms.Grayscale(num_output_channels=3),
-           transforms.Resize((IMG_SIZE, IMG_SIZE))]
-    if train:
+def get_transforms(train, img_size=IMG_SIZE, hflip=True):
+    """Transformaciones compartidas. train=True y hflip=True agregan
+    RandomHorizontalFlip. img_size=256 deja la imagen sin redimensionar."""
+    tfs = [transforms.Grayscale(num_output_channels=3)]
+    if img_size != 256:
+        tfs.append(transforms.Resize((img_size, img_size)))
+    if train and hflip:
         tfs.append(transforms.RandomHorizontalFlip())
     tfs += [transforms.ToTensor(), transforms.Normalize(IMAGENET_MEAN, IMAGENET_STD)]
     return transforms.Compose(tfs)
@@ -103,7 +110,14 @@ def _seed_worker(worker_id):
     random.seed(s)
 
 
-def make_loaders(image_dir, technique, seed, batch_size=32, num_workers=2, expected_labels=None):
+def permute_labels(labels, seed):
+    """Permutacion determinista de etiquetas (control de permutacion, plan v2
+    F3.6). Conserva el conteo por clase, asi que los class weights no cambian."""
+    return [int(l) for l in np.random.default_rng(seed).permutation(np.asarray(labels))]
+
+
+def make_loaders(image_dir, technique, seed, batch_size=32, num_workers=2, expected_labels=None,
+                 img_size=IMG_SIZE, hflip=True, permute_train_seed=None, with_test=True):
     """Crea train/val/test loaders + class_weights para una tecnica.
 
     technique: 'gray_scott' | 'perlin' | 'lorenz'
@@ -111,23 +125,31 @@ def make_loaders(image_dir, technique, seed, batch_size=32, num_workers=2, expec
     seed: fija el orden de barajado de train (via torch.Generator). train_model
     vuelve a sembrar este generador al inicio, asi que reusar los loaders entre
     semillas da el mismo orden que crearlos de nuevo.
+    permute_train_seed: si no es None, permuta SOLO las etiquetas de train
+    (val/test conservan las reales) -- control de permutacion.
+    with_test=False: no se construye el loader de test (test_loader=None), para
+    la primera pasada del plan v2, que solo infiere sobre validacion.
 
     Devuelve: train_loader, val_loader, test_loader, class_weights
     """
     prefix = PREFIXES[technique]
     expected_labels = expected_labels or {}
-    splits = {s: list_split_files(image_dir, prefix, s, expected_labels.get(s))
-              for s in ('train', 'val', 'test')}
+    split_names = ('train', 'val', 'test') if with_test else ('train', 'val')
+    splits = {s: list_split_files(image_dir, prefix, s, expected_labels.get(s)) for s in split_names}
 
     g = torch.Generator()
     g.manual_seed(seed)
     common = dict(batch_size=batch_size, num_workers=num_workers, worker_init_fn=_seed_worker)
 
     tr_p, tr_l = splits['train']
-    train_loader = DataLoader(ClassBlindImageDataset(tr_p, tr_l, get_transforms(True)),
+    if permute_train_seed is not None:
+        tr_l = permute_labels(tr_l, permute_train_seed)
+    train_loader = DataLoader(ClassBlindImageDataset(tr_p, tr_l, get_transforms(True, img_size, hflip)),
                               shuffle=True, generator=g, **common)
-    val_loader = DataLoader(ClassBlindImageDataset(*splits['val'], get_transforms(False)),
+    val_loader = DataLoader(ClassBlindImageDataset(*splits['val'], get_transforms(False, img_size)),
                             shuffle=False, **common)
-    test_loader = DataLoader(ClassBlindImageDataset(*splits['test'], get_transforms(False)),
-                             shuffle=False, **common)
+    test_loader = None
+    if with_test:
+        test_loader = DataLoader(ClassBlindImageDataset(*splits['test'], get_transforms(False, img_size)),
+                                 shuffle=False, **common)
     return train_loader, val_loader, test_loader, compute_class_weights(tr_l)

@@ -1,4 +1,6 @@
 # TT2 — Plan Detallado de Tareas (por semana y rol)
+
+> ⚠️ **Reemplazado por `plan/plan_tt2_v2.md` (19 oct 2026).** Este v1 se conserva como historial. Donde difieran, manda el v2: primera pasada con 3 semillas y solo validación, test bloqueado hasta congelar el protocolo, resultado de WITCOM como exploratorio.
 Diseñado para que cada integrante pueda trabajar de forma independiente, en su propia conversación con Claude, sin depender del historial de los demás.
 
 **Cómo usar este documento:** al iniciar una tarea nueva, copia el bloque de "Contexto General" (abajo) al inicio de tu conversación con Claude, y después pega la tarea específica de tu semana/rol. Eso le da a Claude suficiente información para ayudarte sin que tengas que re-explicar todo el proyecto.

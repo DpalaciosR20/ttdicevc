@@ -18,7 +18,7 @@ Se transforma texto (depresivo/no depresivo, corpus SPADE-BERT en español, 1,13
    - **Perlin Flow Fields** — `src/generation/perlin_lib.py`
    - **Atractor de Lorenz** — `src/generation/lorenz_lib.py`
    - **Reacción-Difusión Gray-Scott** — `src/generation/gray_scott_lib.py`
-3. **Módulo 3** (en desarrollo para TT2): clasificación visual de las imágenes generadas con CNNs (ResNet-18, EfficientNet-B0, ViT-B-16), comparando contra clasificar directamente los 5 valores UMAP y contra BETO.
+3. **Módulo 3** (en desarrollo para TT2): clasificación visual de las imágenes generadas (ResNet-18, EfficientNet-B0, ViT-B-16) para medir **cuánta información discriminativa se conserva** al pasar de texto a imagen, contrastando contra BETO (no inferioridad) y contra clasificar directamente los 5 valores UMAP (techo 5D).
 
 ## Artefactos de datos (no están en este repo — ver `docs/artefactos_datos.md`)
 
@@ -37,21 +37,27 @@ Ver `docs/hallazgos_metodologicos.md` para el detalle completo. Resumen:
 3. **Fuga de UMAP no reajustado en k-fold**: combinar train+val+test y re-particionar para k-fold infla los resultados porque UMAP ya vio esos puntos en su ajuste original. Se corrige reajustando UMAP por fold (k-fold anidado) — código de referencia en `docs/hallazgos_metodologicos.md`.
 4. **Fuga de fine-tuning de BETO**: incluso con UMAP reajustado por fold, los resultados de k-fold/holdout siguen inflados (~0.80-0.86) porque BETO fue fine-tuneado específicamente sobre las 908 muestras del split de train original, y cualquier re-partición que no respete esa frontera hereda esa ventaja. **No se puede arreglar del todo sin reentrenar BETO por fold (no viable en el tiempo disponible) — se documenta como limitación conocida, no se persigue.**
 5. **Conclusión operativa:** el split fijo 80/10/10 original es la referencia confiable para reportar resultados. Cualquier k-fold/holdout adicional se reporta como "estimado optimista" con esta limitación explicada.
+6. **Pendiente de medir (no resuelto):** val/test caen ligeramente fuera de [0,1] tras el MinMaxScaler y ningún generador recorta, así que algunas imágenes de val/test se generaron con parámetros extrapolados fuera del contrato (p. ej. Lorenz con 250 puntos en vez de ≥5,000). Ver `docs/hallazgos_metodologicos.md`, punto 7. No regenerar imágenes por esto sin acordarlo con SV.
 
-## Resultado ya validado (Gray-Scott + ResNet-18, referencia para comparar nuevas arquitecturas)
+## Plan vigente: `plan/plan_tt2_v2.md` (19 oct 2026)
 
-Config: `lr=3e-5`, Adam, `CrossEntropyLoss` con pesos de clase, batch=32, early stopping paciencia=4 sobre F1-val, fine-tuning completo.
+El v2 reencuadra TT2: la pregunta ya no es si la imagen *añade* poder discriminativo (eso lo acota la desigualdad de procesamiento de datos, `I(Y;X) ≤ I(Y;u)`), sino **cuánta información se conserva, dónde se pierde y por qué**. El Objetivo V se decide con una prueba de **no inferioridad pareada frente a BETO** (margen preregistrado δ, bootstrap pareado, Holm), con cuatro veredictos posibles (V1 conservación, V2 parcial, V3 no conservación, V4 no concluyente). McNemar pasa a ser complementario: su no significancia con n=114 no demuestra equivalencia.
 
-- **CNN Gray-Scott (media de 5 semillas: 42, 7, 123, 2024, 99): F1-Macro = 0.7142 ± 0.0095**
-- Clasificar directo los 5 valores UMAP: LogReg/SVM=0.7246, RF=0.7304, MLP=0.6933
-- BETO (texto): 0.7586
-- McNemar (CNN vs. LogReg-5D-UMAP): consistentemente no significativo (p=1.0)
+Reglas del v2 que afectan cualquier trabajo nuevo:
+- **El conjunto de prueba está bloqueado** hasta que `docs/protocolo_preregistrado.md` esté congelado (commit fechado, Fase 1). La primera pasada del grid (18 configs × 3 semillas: 42, 7, 123) es **solo validación**. `run_grid.py` hace cumplir esto: sin `--evaluate-test` no carga test, y con él se niega si el protocolo no está commiteado.
+- Selección de finalistas por **F1-val promedio entre semillas**; empate dentro de 1 std → el modelo con menos parámetros entrenables. Test se consulta una sola vez por finalista (5 semillas: 42, 7, 123, 2024, 99).
+- CE entrega a SV **predicciones por muestra** (`predictions.csv`: `sample_id, split, y_true, technique, arch, strategy, seed, p_dep`), no solo métricas.
+- Aumentos y resolución de entrada se validan por técnica (F1.4) antes de fijarlos; por ahora se usan los del camera-ready (224 px + flip horizontal).
 
-**Conclusión central del proyecto:** el CNN no supera de forma consistente ni significativa a clasificar directamente los 5 valores UMAP — no hay evidencia de que la transformación a imagen añada poder discriminativo sobre la proyección que la genera. Esta es una conclusión validada y estable; cualquier trabajo nuevo debe contrastarse contra ella, no asumir que "más arquitectura = debe ganar".
+## Resultado de WITCOM (exploratorio, no confirmatorio)
+
+Gray-Scott + ResNet-18 fine-tuning (`lr=3e-5`, Adam, CE con pesos de clase, batch=32, paciencia=4 sobre F1-val): **F1-Macro = 0.7142 ± 0.0095** (5 semillas). Referencias: 5D-UMAP LogReg/SVM=0.7246, RF=0.7304, MLP=0.6933; BETO=0.7586; McNemar CNN vs LogReg-5D no significativo.
+
+Su conjunto de prueba ya se consultó antes de fijar el protocolo del v2, así que **se reporta como evidencia exploratoria y no participa en la selección de finalistas**. Sirve como chequeo de cordura del pipeline (si ResNet-18 en Gray-Scott da algo muy distinto en validación, revisar antes de seguir), no como conclusión del proyecto.
 
 ## Alcance de TT2 (lo que falta)
 
-Clasificación visual con 3 arquitecturas (ResNet-18, EfficientNet-B0, ViT-B-16) × 2 estrategias (frozen, fine-tuning) × 3 técnicas generativas = 18 configuraciones, + Grad-CAM (interpretabilidad) + comparación estadística formal (McNemar, Holm) + análisis comparativo entre las 3 técnicas. Ver `plan/plan_tt2_por_semana.md` para el desglose semana a semana con tareas por rol.
+Ver `plan/plan_tt2_v2.md`: Fase 0 (reproducibilidad), Fase 1 (protocolo preregistrado), Fase 2 (techo 5D y pisos), Fase 3 (grid 18 configs × 3 semillas → finalistas → HPO → 5 semillas con test → control de permutación → Grad-CAM/attention rollout), Fase 4 (análisis de preservación, SV), Fase 5 (veredicto), Fases 6–8 (síntesis, documento, defensa). `plan/plan_tt2_por_semana.md` es el plan v1, conservado como historial.
 
 ## Estructura del repo
 
@@ -79,14 +85,15 @@ ttdicevc/
 │   ├── hallazgos_metodologicos.md     ← detalle completo de las 4 fugas y cómo se resolvieron
 │   └── resumen_modulo3_camera_ready.md
 └── plan/
-    └── plan_tt2_por_semana.md
+    ├── plan_tt2_v2.md                 ← plan vigente
+    └── plan_tt2_por_semana.md         ← plan v1 (historial)
 ```
 
 ## Roles del equipo (para tareas de TT2)
 
-- 🔵 **CE (Diego)** — código, experimentos, entrenamiento de modelos.
-- 🟢 **SV** — diseño estadístico, validación, Grad-CAM, corrección de métricas.
-- 🟠 **RP** — redacción del documento de TT2, formato de tesis, integración de resultados.
+- 🔵 **CE (Diego)** — consolidación del pipeline, entrenamiento de clasificadores visuales, HPO, controles que requieren reentrenamiento.
+- 🟢 **SV (Santiago)** — protocolo preregistrado, techo y pisos, análisis de preservación (Fase 4), contraste estadístico y veredicto.
+- 🟠 **RP (Marco)** — documento de TT2, corrección de capítulos heredados de TT1, coherencia de cifras, preparación de la defensa.
 
 ## Convenciones de código
 
@@ -94,6 +101,7 @@ ttdicevc/
 - Todo entrenamiento debe usar semilla fija (`torch.manual_seed` + `torch.cuda.manual_seed_all`) para reproducibilidad — ya se observó variación real de varios puntos porcentuales entre entornos sin esto.
 - Reportar F1-Macro (no accuracy) por el desbalance de clases (~61/39%).
 - Al seleccionar la mejor configuración entre varias, usar F1 de **validación**, nunca de test, para no contaminar la decisión.
+- No evaluar ni mirar test fuera de la tarea F3.5 del plan v2 (finalistas, protocolo congelado). Si alguien lo consulta antes, se declara como desviación del protocolo.
 - Cualquier resultado de un solo run debe tratarse con sospecha — preferir multi-seed (mínimo 5) antes de reportar un número como definitivo, dado que ya se observó variación de ~8pp entre semillas/entornos en corridas nominalmente idénticas.
 - Generación de imágenes: usar la versión GPU-batched (`generate_batch_gpu` en `gray_scott_lib.py`) cuando haya GPU disponible — es órdenes de magnitud más rápida que la versión CPU/numpy puro.
 - En Kaggle: `/kaggle/input/` es de solo lectura; todo lo que se genere debe ir a `/kaggle/working/`.

@@ -81,3 +81,21 @@ Esto requiere los embeddings BETO de 768D (`Exp_4_1_BETO_HPO_embeddings.pkl`), n
 - **Gray-Scott usa `n_iter` con tope de 7,000**, no 9,000 como decía el texto original — verificado en el código real.
 - **BETO no usó class weights** en su fine-tuning (CrossEntropyLoss estándar, sin ponderar) — a diferencia del clasificador clásico de referencia (Regresión Logística sobre TF-IDF/embeddings congelados), que sí usa `class_weight='balanced'`. Es una asimetría real entre módulos, documentada tal cual, sin inventar una justificación retroactiva que nadie recuerda.
 - **Variabilidad entre entornos de ejecución:** con semilla fija, entrenar el mismo modelo en distinto hardware (Colab, Kaggle, GPU local) da resultados distintos (~8 puntos porcentuales de F1 observados entre corridas nominalmente idénticas) — cuDNN no es determinista por defecto entre GPUs distintas. Por eso se reporta media±std de 5 semillas en vez de un solo run.
+
+---
+
+## 7. Parámetros extrapolados en val/test (pendiente de medir — no resuelto)
+
+**Observación (revisión de código, 19 oct 2026):** el `MinMaxScaler` se ajustó solo con train, así que los 5 componentes UMAP de val/test se salen ligeramente de [0,1] (ver `docs/artefactos_datos.md`). Ninguno de los 3 generadores recorta su entrada (`umap_to_rd_params`, `map_umap_to_perlin`, `map_umap_to_lorenz` hacen interpolación lineal sin `clip`), así que esas muestras se generan con parámetros **fuera del contrato técnico**. Ejemplo con u = −0.05 en los 5 componentes:
+
+| Técnica | Parámetro | Rango del contrato | Valor con u = −0.05 |
+| --- | --- | --- | --- |
+| Gray-Scott | `seed_radius` / `n_iter` | [3, 18] / [2000, 7000] | 2 / 1750 |
+| Lorenz | `n_puntos` / `rho` | [5,000, 100,000] / [24, 32] | **250** / 23.6 |
+| Perlin | `n_octaves` / `traj_length` | [1, 8] / [30, 200] | 0 / 21 |
+
+**Por qué importa:** algunas imágenes de val/test pueden venir de una región de parámetros que train nunca cubrió (p. ej. un atractor de Lorenz casi vacío). Es un cambio de distribución entre train y evaluación causado por el generador, no por el texto. Es una amenaza a la validez interna que no está en la tabla de la sección 5 del plan v2, y se relaciona con F4.2 (régimen dinámico).
+
+**Qué falta:** contar cuántas muestras de val/test tienen algún componente fuera de [0,1] y en cuánto, por técnica, y si su tasa de error es distinta. **No regenerar imágenes** (se invalidaría todo lo ya corrido) sin acordarlo con SV; si se decide recortar, debe aplicarse igual a las 3 técnicas y documentarse como cambio del Módulo 2.
+
+**Detalle menor relacionado:** por el `int()` (truncamiento), el extremo superior de los parámetros enteros solo se alcanza con u = 1.0 exacto: en train, `n_octaves` = 8 y `seed_radius` = 18 prácticamente nunca ocurren.
