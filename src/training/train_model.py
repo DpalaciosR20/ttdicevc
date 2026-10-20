@@ -83,12 +83,16 @@ def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loade
     de clase, early stopping por F1-val, batch ya definido en los loaders.
 
     La seleccion del mejor epoch usa SOLO F1-val; test se evalua una vez al final.
+    test_loader=None no toca test en absoluto (primera pasada del plan v2,
+    F3.2): f1_test y test_* quedan en None.
 
     Devuelve: (model con los mejores pesos, history, results)
       history = {'train_loss': [...], 'f1_val': [...]}
       results = {'arch', 'freeze_backbone', 'lr', 'seed', 'best_epoch' (1-based),
-                 'epochs_run', 'best_f1_val', 'f1_test',
-                 'val_preds', 'test_preds', 'test_probs', 'test_true'}
+                 'epochs_run', 'n_trainable_params', 'best_f1_val', 'f1_test',
+                 'val_preds', 'val_probs', 'val_true',
+                 'test_preds', 'test_probs', 'test_true'}
+      *_probs = P(clase 1 = depresivo), del mejor epoch.
     """
     if lr is None:
         lr = DEFAULT_LR[freeze_backbone]
@@ -106,7 +110,7 @@ def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loade
     criterion = nn.CrossEntropyLoss(weight=class_weights.to(device))
 
     history = {'train_loss': [], 'f1_val': []}
-    best_f1_val, best_epoch, best_state, best_val_preds, no_improve = -1.0, 0, None, None, 0
+    best_f1_val, best_epoch, best_state, best_val, no_improve = -1.0, 0, None, None, 0
     tag = f'[{arch_name}, freeze={freeze_backbone}, lr={lr:g}]'
 
     for epoch in range(n_epochs):
@@ -123,7 +127,7 @@ def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loade
             running_loss += loss.item() * imgs.size(0)
             n_samples += imgs.size(0)
 
-        val_preds, _, val_true = _predict(model, val_loader, device)
+        val_preds, val_probs, val_true = _predict(model, val_loader, device)
         f1_val = f1_score(val_true, val_preds, average='macro')
 
         history['train_loss'].append(running_loss / n_samples)
@@ -133,7 +137,7 @@ def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loade
               f'- loss={running_loss/n_samples:.4f} - F1-val={f1_val:.4f}')
 
         if f1_val > best_f1_val:
-            best_f1_val, best_epoch, best_val_preds = f1_val, epoch + 1, val_preds
+            best_f1_val, best_epoch, best_val = f1_val, epoch + 1, (val_preds, val_probs, val_true)
             best_state = copy.deepcopy(model.state_dict())
             no_improve = 0
         else:
@@ -144,16 +148,20 @@ def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loade
 
     model.load_state_dict(best_state)
 
-    test_preds, test_probs, test_true = _predict(model, test_loader, device)
-    f1_test = f1_score(test_true, test_preds, average='macro')
-
-    print(f'*** {tag} F1-val(best, epoch {best_epoch})={best_f1_val:.4f}  F1-test={f1_test:.4f} ***\n')
+    test_preds = test_probs = test_true = f1_test = None
+    if test_loader is not None:
+        test_preds, test_probs, test_true = _predict(model, test_loader, device)
+        f1_test = f1_score(test_true, test_preds, average='macro')
+        print(f'*** {tag} F1-val(best, epoch {best_epoch})={best_f1_val:.4f}  F1-test={f1_test:.4f} ***\n')
+    else:
+        print(f'*** {tag} F1-val(best, epoch {best_epoch})={best_f1_val:.4f}  (test no evaluado) ***\n')
 
     results = {
         'arch': arch_name, 'freeze_backbone': freeze_backbone, 'lr': lr, 'seed': seed,
         'best_epoch': best_epoch, 'epochs_run': len(history['f1_val']),
+        'n_trainable_params': sum(p.numel() for p in get_trainable_params(model)),
         'best_f1_val': best_f1_val, 'f1_test': f1_test,
-        'val_preds': best_val_preds, 'test_preds': test_preds,
-        'test_probs': test_probs, 'test_true': test_true,
+        'val_preds': best_val[0], 'val_probs': best_val[1], 'val_true': best_val[2],
+        'test_preds': test_preds, 'test_probs': test_probs, 'test_true': test_true,
     }
     return model, history, results
