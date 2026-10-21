@@ -99,3 +99,28 @@ Esto requiere los embeddings BETO de 768D (`Exp_4_1_BETO_HPO_embeddings.pkl`), n
 **Qué falta:** contar cuántas muestras de val/test tienen algún componente fuera de [0,1] y en cuánto, por técnica, y si su tasa de error es distinta. **No regenerar imágenes** (se invalidaría todo lo ya corrido) sin acordarlo con SV; si se decide recortar, debe aplicarse igual a las 3 técnicas y documentarse como cambio del Módulo 2.
 
 **Detalle menor relacionado:** por el `int()` (truncamiento), el extremo superior de los parámetros enteros solo se alcanza con u = 1.0 exacto: en train, `n_octaves` = 8 y `seed_radius` = 18 prácticamente nunca ocurren.
+
+---
+
+## 8. ViT-B/16 en fine-tuning no es reproducible con la misma semilla (observado, 21 oct 2026)
+
+**Observación:** la primera pasada de Gray-Scott (F3.2, 18 corridas, solo validación) se corrió dos veces en Kaggle con el mismo código, las mismas semillas y `set_seed` completo (incluido `cudnn.deterministic=True`). La segunda vez fue accidental, por un borrador desincronizado del notebook.
+
+| Configuración | ¿Mismo F1-val en ambas corridas? |
+| --- | --- |
+| ResNet-18 y EfficientNet-B0, frozen y fine-tuning (12 corridas) | Sí, idénticos al 4.º decimal |
+| ViT-B/16 frozen (3 corridas) | Sí |
+| ViT-B/16 fine-tuning, seed 123 (detenido en el epoch 2) | Sí (0.7121) |
+| ViT-B/16 fine-tuning, seed 7 | **No**: 0.7219 → 0.7137 |
+| ViT-B/16 fine-tuning, seed 42 | **No**: 0.7143 (best epoch 15) → 0.7165 (best epoch 8) |
+
+**Interpretación (probable, no verificada):** el backward de la atención de ViT usa kernels de GPU no deterministas (*scaled dot-product attention* eficiente/flash), que `cudnn.deterministic` no controla. Varias cosas encajan con esto:
+- en frozen, el gradiente no pasa por la atención y el resultado se repite;
+- las CNN no usan esos kernels;
+- la diferencia crece con la duración del entrenamiento.
+
+No se puede descartar del todo que la GPU asignada por Kaggle haya sido distinta entre corridas (queda registrada en `env.gpu` de cada JSON en `runs/`).
+
+**Impacto:** para la selección no cambia nada. El finalista sugerido de Gray-Scott fue el mismo en ambas corridas, y el promedio sobre semillas absorbe esta variación. Para el **paquete de reproducibilidad (F7.5)** hay que declararlo: los resultados de ViT fine-tuning se reproducen en distribución, no bit a bit.
+
+**Si se necesita reproducibilidad exacta para ViT** (decisión de SV): forzar el kernel matemático de atención con `torch.backends.cuda.enable_flash_sdp(False)` y `torch.backends.cuda.enable_mem_efficient_sdp(False)`, o activar `torch.use_deterministic_algorithms(True)`. Cuesta más tiempo por corrida y no se ha probado en este proyecto.
