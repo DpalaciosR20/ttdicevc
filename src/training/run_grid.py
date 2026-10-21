@@ -179,9 +179,17 @@ def degenerate_warning(f1_val, preds, split):
 
 
 def import_prev_results(prev_dirs, runs_dir):
+    """Una ruta mal escrita no debe importar 0 corridas en silencio y
+    re-entrenar todo: si no hay JSONs en <prev>/runs/, se aborta."""
     n = 0
     for prev in prev_dirs or []:
-        for src in glob.glob(os.path.join(prev, 'runs', '*.json')):
+        found = glob.glob(os.path.join(prev, 'runs', '*.json'))
+        if not found:
+            why = 'no existe' if not os.path.isdir(prev) else "no contiene runs/*.json"
+            raise SystemExit(f'--prev-results: {prev} {why}. Debe ser la carpeta de salida de una '
+                             f'corrida anterior (la que contiene summary.csv y runs/). Tip: '
+                             f'!find /kaggle/input -name summary_by_config.csv')
+        for src in found:
             dst = os.path.join(runs_dir, os.path.basename(src))
             if not os.path.exists(dst):
                 shutil.copy2(src, dst)
