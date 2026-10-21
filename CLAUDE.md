@@ -105,3 +105,13 @@ ttdicevc/
 - Cualquier resultado de un solo run debe tratarse con sospecha — preferir multi-seed (mínimo 5) antes de reportar un número como definitivo, dado que ya se observó variación de ~8pp entre semillas/entornos en corridas nominalmente idénticas.
 - Generación de imágenes: usar la versión GPU-batched (`generate_batch_gpu` en `gray_scott_lib.py`) cuando haya GPU disponible — es órdenes de magnitud más rápida que la versión CPU/numpy puro.
 - En Kaggle: `/kaggle/input/` es de solo lectura; todo lo que se genere debe ir a `/kaggle/working/`.
+
+## Convención de commits y PRs
+
+El asunto de cada commit y el título de cada PR empiezan con el ID de la tarea de `plan/plan_tt2_v2.md` que atienden, entre corchetes:
+
+- Una tarea: `[F3.2] Primera pasada del grid solo con validación`
+- Varias tareas: `[F1.5, F3.3] Predicciones por muestra y resumen por configuración`
+- Cambios que no corresponden a ninguna tarea del plan (mantenimiento, herramientas, convenciones): `[repo] ...`
+
+Las ramas pueden llevar el ID también (p. ej. `ce/f3.4-hpo`), pero no es obligatorio.
