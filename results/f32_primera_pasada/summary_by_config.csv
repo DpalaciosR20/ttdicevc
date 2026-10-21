@@ -1,0 +1,19 @@
+technique,arch,strategy,variant,n_seeds,seeds,n_trainable_params,f1_val_mean,f1_val_std,f1_test_mean,f1_test_std,seleccion
+gray_scott,resnet18,finetune,px224-flip,3,7 42 123,11177538,0.7278,0.0146,,,empate_1std
+gray_scott,efficientnet_b0,finetune,px224-flip,3,7 42 123,4010110,0.7176,0.0125,,,finalista_sugerido
+gray_scott,vit_b_16,finetune,px224-flip,3,7 42 123,85800194,0.7141,0.0022,,,empate_1std
+gray_scott,vit_b_16,frozen,px224-flip,3,7 42 123,1538,0.7031,0.0104,,,
+gray_scott,efficientnet_b0,frozen,px224-flip,3,7 42 123,2562,0.6965,0.0021,,,
+gray_scott,resnet18,frozen,px224-flip,3,7 42 123,1026,0.6955,0.0093,,,
+perlin,efficientnet_b0,finetune,px224-flip,3,7 42 123,4010110,0.6977,0.004,,,finalista_sugerido
+perlin,vit_b_16,finetune,px224-flip,3,7 42 123,85800194,0.6968,0.0216,,,empate_1std
+perlin,vit_b_16,frozen,px224-flip,3,7 42 123,1538,0.6931,0.0178,,,
+perlin,efficientnet_b0,frozen,px224-flip,3,7 42 123,2562,0.6863,0.0062,,,
+perlin,resnet18,finetune,px224-flip,3,7 42 123,11177538,0.6711,0.0147,,,
+perlin,resnet18,frozen,px224-flip,3,7 42 123,1026,0.671,0.0113,,,
+lorenz,efficientnet_b0,finetune,px224-flip,3,7 42 123,4010110,0.7096,0.0178,,,empate_1std
+lorenz,vit_b_16,frozen,px224-flip,3,7 42 123,1538,0.7068,0.0168,,,finalista_sugerido
+lorenz,efficientnet_b0,frozen,px224-flip,3,7 42 123,2562,0.6948,0.0155,,,empate_1std
+lorenz,resnet18,frozen,px224-flip,3,7 42 123,1026,0.6884,0.0127,,,
+lorenz,resnet18,finetune,px224-flip,3,7 42 123,11177538,0.6877,0.0225,,,
+lorenz,vit_b_16,finetune,px224-flip,3,7 42 123,85800194,0.6857,0.0254,,,
