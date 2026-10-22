@@ -84,21 +84,32 @@ Esto requiere los embeddings BETO de 768D (`Exp_4_1_BETO_HPO_embeddings.pkl`), n
 
 ---
 
-## 7. Parámetros extrapolados en val/test (pendiente de medir — no resuelto)
+## 7. Rango de u en val/test: recortados a [0,1], no extrapolados (verificado con el archivo real)
 
-**Observación (revisión de código, 19 oct 2026):** el `MinMaxScaler` se ajustó solo con train, así que los 5 componentes UMAP de val/test se salen ligeramente de [0,1] (ver `docs/artefactos_datos.md`). Ninguno de los 3 generadores recorta su entrada (`umap_to_rd_params`, `map_umap_to_perlin`, `map_umap_to_lorenz` hacen interpolación lineal sin `clip`), así que esas muestras se generan con parámetros **fuera del contrato técnico**. Ejemplo con u = −0.05 en los 5 componentes:
+**Historia:**
+- **Primera versión (19 oct 2026), INCORRECTA:** con base en `docs/artefactos_datos.md` ("val/test se salen ligeramente") y en que ningún generador recorta su entrada, se supuso que algunas imágenes de val/test se habían generado con parámetros fuera del contrato (p. ej. Lorenz con 250 puntos).
+- **Corrección (21 oct 2026, F0.2):** al leer el `umap_params.pkl` real (sha256 `081f5bab…f224`) con `src/training/umap_io.py`, resultó que val y test **están dentro de [0,1]**: mínimo 0 y máximo 1 en los tres splits, 0 muestras fuera de rango.
 
-| Técnica | Parámetro | Rango del contrato | Valor con u = −0.05 |
-| --- | --- | --- | --- |
-| Gray-Scott | `seed_radius` / `n_iter` | [3, 18] / [2000, 7000] | 2 / 1750 |
-| Lorenz | `n_puntos` / `rho` | [5,000, 100,000] / [24, 32] | **250** / 23.6 |
-| Perlin | `n_octaves` / `traj_length` | [1, 8] / [30, 200] | 0 / 21 |
+**Diagnóstico: los valores se recortaron (`clip`) al guardarlos, no se escalaron por split.**
+- En train hay exactamente un valor en 0 y uno en 1 por componente: son el mínimo y el máximo del ajuste del MinMaxScaler.
+- En val y test hay valores **apilados** en exactamente 0 o 1. Por ejemplo, en val hay 6 valores exactamente en 0 o 1 en el componente u2. Además, en algunos componentes el mínimo es mayor que 0 (val u0: 0.0243). Eso es lo que deja un `np.clip` después de `scaler.transform`. Un MinMax ajustado por split pondría siempre un único 0 y un único 1.
+- El scaler guardado tiene `clip=False`, así que el recorte se aplicó aparte, en el código que armó el pkl. Ese código no está en el repo.
 
-**Por qué importa:** algunas imágenes de val/test pueden venir de una región de parámetros que train nunca cubrió (p. ej. un atractor de Lorenz casi vacío). Es un cambio de distribución entre train y evaluación causado por el generador, no por el texto. Es una amenaza a la validez interna que no está en la tabla de la sección 5 del plan v2, y se relaciona con F4.2 (régimen dinámico).
+**Consecuencias:**
+- **No hay parámetros fuera del contrato:** los generadores recibieron `u ∈ [0,1]`. Se descarta la amenaza de imágenes extrapoladas.
+- **Efecto residual, saturación en el borde:** muestras con algún componente en exactamente 0 o 1. En train son los valores extremos propios del ajuste.
 
-**Qué falta:** contar cuántas muestras de val/test tienen algún componente fuera de [0,1] y en cuánto, por técnica, y si su tasa de error es distinta. **No regenerar imágenes** (se invalidaría todo lo ya corrido) sin acordarlo con SV; si se decide recortar, debe aplicarse igual a las 3 técnicas y documentarse como cambio del Módulo 2.
+| Split | Valores en 0 o 1 por componente (u0…u4) | Muestras con alguno | label 1 | label 0 |
+| --- | --- | --- | --- | --- |
+| train | 2, 2, 2, 2, 2 | 9/908 | 4/353 | 5/555 |
+| val | 2, 2, 6, 5, 6 | 20/114 | 5/44 | 15/70 |
+| test | 1, 1, 2, 3, 1 | 8/114 | 4/44 | 4/70 |
 
-**Detalle menor relacionado:** por el `int()` (truncamiento), el extremo superior de los parámetros enteros solo se alcanza con u = 1.0 exacto: en train, `n_octaves` = 8 y `seed_radius` = 18 prácticamente nunca ocurren.
+En val y test, las muestras saturadas pierden la información de cuánto se salían del rango de train. Son un poco más frecuentes en val que en test, y en val, más en label 0. Es una pérdida de información menor y documentable. **No requiere regenerar nada.** Si SV quiere usarla, entra en F4.2 (régimen) o en el análisis de errores (F4.6).
+
+**`docs/artefactos_datos.md` decía lo contrario** ("val/test se salen ligeramente"). Ya se corrigió.
+
+**Detalle menor que se mantiene:** por el `int()` (truncamiento), el extremo superior de los parámetros enteros solo se alcanza con u = 1.0 exacto. En train, `n_octaves` = 8 y `seed_radius` = 18 casi nunca ocurren.
 
 ---
 

@@ -3,7 +3,7 @@
 Estos archivos NO están en este repositorio (son binarios/pesados — ver `.gitignore`). Este documento dice qué existe, qué contiene, y dónde debería estar (actualiza las rutas/enlaces reales de Drive o Kaggle Datasets conforme los suban).
 
 ## `umap_params.pkl`
-Cargar con `joblib.load` (NO con `pickle.load` — el archivo usa el formato de arrays de joblib).
+Para leer `params` y `labels`, usar `load_umap_arrays()` de `src/training/umap_io.py`. No requiere umap-learn, numba ni sklearn, y evita el error de deserialización (ver `docs/entorno_reproducibilidad.md`). `joblib.load` directo solo funciona con versiones de umap-learn y numba compatibles con las que crearon el archivo. No usar `pickle.load`: el archivo usa el formato de arrays de joblib.
 
 Estructura:
 ```python
@@ -16,7 +16,7 @@ Estructura:
   'n_components': 5, 'metric': 'cosine', 'random_state': 42,
 }
 ```
-Los 5 componentes ya están normalizados con MinMaxScaler (train cae exactamente en [0,1]; val/test se salen ligeramente, como corresponde a "fit solo en train, transform en val/test").
+Los 5 componentes ya están normalizados con MinMaxScaler ajustado solo con train. Train cae exactamente en [0,1]; val y test se transformaron con ese scaler y luego **se recortaron (`clip`) a [0,1]**, así que algunos de sus valores quedan saturados en 0 o 1 (ver `docs/hallazgos_metodologicos.md`, hallazgo 7). sha256 del archivo de referencia: `081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224`.
 
 **Ubicación:** https://drive.google.com/file/d/16m-yVMYYpve7ZrewtEzADiyu4hytZ91A/view?usp=drive_link
 
