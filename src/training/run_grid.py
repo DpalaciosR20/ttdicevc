@@ -53,6 +53,7 @@ from sklearn.metrics import accuracy_score
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data import IMG_SIZE, PREFIXES, list_split_files, make_loaders  # noqa: E402
 from train_model import train_model  # noqa: E402
+from umap_io import load_umap_arrays, sha256  # noqa: E402
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 PROTOCOL_DEFAULT = os.path.join('docs', 'protocolo_preregistrado.md')
@@ -125,15 +126,11 @@ def check_protocol_frozen(protocol_rel):
 
 
 def load_expected_labels(umap_params_path):
-    """Labels de umap_params.pkl, para verificar que el idx de cada imagen
-    corresponde a la misma muestra (necesario para pruebas pareadas)."""
-    import joblib
-    try:
-        up = joblib.load(umap_params_path)
-    except ModuleNotFoundError as e:
-        raise SystemExit(f'No se pudo cargar {umap_params_path} ({e}). El reductor UMAP requiere '
-                         f'umap-learn: !pip install umap-learn  -- o correr sin --umap-params')
-    return {s: [int(l) for l in up[s]['labels']] for s in ('train', 'val', 'test')}
+    """Labels de umap_params.pkl (o del .npz exportado), para verificar que el
+    idx de cada imagen corresponde a la misma muestra (necesario para pruebas
+    pareadas). No requiere umap-learn ni numba (ver umap_io.py, F0.2)."""
+    arrays = load_umap_arrays(umap_params_path)
+    return {s: [int(l) for l in arrays[s]['labels']] for s in ('train', 'val', 'test')}
 
 
 def preflight(data_root, techniques, expected, archs, img_size):
@@ -354,6 +351,7 @@ def main():
     env = environment_info(device)
     print('Entorno:', env)
     expected = load_expected_labels(args.umap_params) if args.umap_params else None
+    umap_ref = {'path': args.umap_params, 'sha256': sha256(args.umap_params)} if args.umap_params else None
     if expected is None:
         print('AVISO: sin --umap-params no se verifica que el idx de cada imagen coincida con umap_params.pkl')
     preflight(args.data_root, sorted({c[0] for c in pending}, key=_tech_order), expected,
@@ -394,6 +392,7 @@ def main():
                 'n_trainable_params': res['n_trainable_params'],
                 'best_f1_val': float(res['best_f1_val']),
                 'evaluate_test': args.evaluate_test, 'protocol': protocol,
+                'labels_verified_against': umap_ref,
                 'f1_test': float(res['f1_test']) if has_test else None,
                 'acc_test': float(accuracy_score(res['test_true'], res['test_preds'])) if has_test else None,
                 'class_weights': class_weights.tolist(),
