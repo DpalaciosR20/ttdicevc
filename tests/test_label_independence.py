@@ -19,13 +19,20 @@ Capa C (artefactos) Los PNG almacenados están completos, cumplen el contrato
                     umap_params.pkl y con el PKL de Exp 4.1, y una muestra
                     estratificada se reproduce bit a bit desde u.
 
-Ejecución (Colab):
-    !pip install -q noise pytest
-    %cd /content/drive/MyDrive/Repo
-    !python -m pytest tests/test_label_independence.py -v -rs -s
+Ejecución (desde la raíz del repo; en Kaggle: !pip install -q noise==1.2.2):
+    F03_UMAP_PARAMS=<umap_params.pkl> F03_DATA_ROOT=<images_grayscale_classblind> \
+        python -m pytest tests/test_label_independence.py -v -rs -s
 
-Variables de entorno opcionales:
-    PROJECT_ROOT     raíz del repositorio (por omisión, el padre de tests/)
+Rutas (variables de entorno; equivalen a --umap-params y --data-root de
+src/training/run_grid.py). Sin definir → se omiten las pruebas que las usan;
+definidas pero inexistentes → fallan:
+    F03_UMAP_PARAMS  umap_params.pkl (se verifica su sha256 antes de cargarlo).
+                     Lo usan las capas B y C.
+    F03_DATA_ROOT    carpeta con gray_scott/, perlin/ y lorenz/ (planas, class-blind).
+                     Capa C.
+    F03_BETO_PKL     Exp_4_1_BETO_HPO_embeddings.pkl. Capa C (alineación de orden).
+
+Configuración opcional:
     F03_N_PER_CELL   muestras por celda split × clase (por omisión 1 → 6 por técnica)
     F03_SEED         semilla del muestreo estratificado (por omisión 2026)
     F03_GS_PATH      ruta de producción de Gray-Scott para la capa C: gpu | cpu
@@ -46,22 +53,22 @@ import numpy as np
 import pytest
 from PIL import Image
 
-# ── Rutas (relativas a PROJECT_ROOT) ──────────────────────────────────────
-PROJECT_ROOT = Path(os.environ.get("PROJECT_ROOT", Path(__file__).resolve().parents[1]))
-GEN_DIR = PROJECT_ROOT / "src" / "generators"
-UMAP_PKL = PROJECT_ROOT / "data" / "shared" / "umap_params.pkl"
-PKL_41 = PROJECT_ROOT / "models" / "best_model" / "Exp_4.1_BETO_HPO_embeddings.pkl"
-IMG_ROOT = PROJECT_ROOT / "data" / "images"
+# ── Rutas ─────────────────────────────────────────────────────────────────
+REPO = Path(__file__).resolve().parents[1]
+GEN_DIR = REPO / "src" / "generation"
 sys.path.insert(0, str(GEN_DIR))
+sys.path.insert(0, str(REPO / "src" / "training"))
+from umap_io import load_umap_arrays, sha256  # noqa: E402
+
+# sha256 del umap_params.pkl de referencia (docs/artefactos_datos.md)
+UMAP_SHA256 = "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
 
 # ── Configuración ─────────────────────────────────────────────────────────
 N_PER_CELL = int(os.environ.get("F03_N_PER_CELL", "1"))
 SAMPLE_SEED = int(os.environ.get("F03_SEED", "2026"))
 GS_PATH = os.environ.get("F03_GS_PATH", "gpu").lower()
 SPLITS = ("train", "val", "test")
-TAG_TO_SPLIT = {"train": "train", "val": "val", "validation": "val", "test": "test"}
 IMG_SIZE = 256
-N_TOTAL = 1136
 
 FORBIDDEN = {"label", "labels", "y_true", "target", "clase",
              "idx", "index", "split", "split_name", "tag"}
@@ -77,25 +84,37 @@ RENDERERS = {
                        "run_gray_scott_safe", "_fixed_noise", "_simulate_batch_gpu"],
 }
 
-# técnica almacenada → (subdirectorio, prefijo de archivo, motor de regeneración)
+# técnica almacenada → (subcarpeta de F03_DATA_ROOT, prefijo de archivo, módulo, motor)
 STORED = {
-    "perlin": ("perlin", "perlin", "perlin"),
-    "lorenz": ("attractor", "lorenz", "lorenz"),
-    "gray_scott": ("reaction_diffusion", "rd", f"gs_{GS_PATH}"),
+    "perlin": ("perlin", "perlin", "perlin_lib", "perlin"),
+    "lorenz": ("lorenz", "lorenz", "lorenz_lib", "lorenz"),
+    "gray_scott": ("gray_scott", "rd", "gray_scott_lib", f"gs_{GS_PATH}"),
 }
+# Mismo contrato que list_split_files en src/training/data.py
 FNAME_RE = re.compile(
-    r"^(?P<prefix>perlin|lorenz|rd)_(?P<tag>.+)_(?P<idx>\d{4})_label(?P<label>\d+)\.png$")
+    r"^(?P<prefix>perlin|lorenz|rd)_(?P<split>train|val|test)_(?P<idx>\d{4})_label(?P<label>[01])\.png$")
 
 FACTORS = ("label", "split", "route", "index")
 ENGINES = ("perlin", "lorenz", "gs_cpu", "gs_gpu")
 
 
 # ── Utilidades ────────────────────────────────────────────────────────────
+def _env_path(var):
+    """Ruta de la variable de entorno: sin definir → skip; inexistente → fail."""
+    value = os.environ.get(var)
+    if not value:
+        pytest.skip(f"Define {var} para correr esta prueba (ver docstring del módulo)")
+    path = Path(value)
+    if not path.exists():
+        pytest.fail(f"{var}={value} no existe")
+    return path
+
+
 def _import(modname):
     if modname == "perlin_lib":
         pytest.importorskip("noise", reason="perlin_lib requiere el paquete `noise`")
     if not (GEN_DIR / f"{modname}.py").exists():
-        pytest.fail(f"No existe {GEN_DIR / (modname + '.py')} (entregable de F0.1)")
+        pytest.fail(f"No existe {GEN_DIR / (modname + '.py')}")
     return importlib.import_module(modname)
 
 
@@ -131,23 +150,27 @@ def _engine(name):
     raise ValueError(name)
 
 
+def _tech_dir(tech):
+    root = _env_path("F03_DATA_ROOT") / STORED[tech][0]
+    if not root.is_dir():
+        pytest.fail(f"No existe {root}")
+    return root
+
+
 def _inventario(tech):
     """Indexa los PNG almacenados por (split, idx) a partir del nombre de archivo."""
-    subdir, prefix, _ = STORED[tech]
-    root = IMG_ROOT / subdir
-    if not root.exists():
-        pytest.fail(f"No existe {root}")
+    root = _tech_dir(tech)
+    prefix = STORED[tech][1]
     inv, problemas = {}, []
-    for p in sorted(root.rglob("*.png")):
+    for p in sorted(root.iterdir()):
+        if p.is_dir():
+            problemas.append(f"subcarpeta inesperada (la estructura es plana): {p.name}/")
+            continue
         m = FNAME_RE.match(p.name)
         if not m or m["prefix"] != prefix:
-            problemas.append(f"nombre no reconocido: {p.relative_to(PROJECT_ROOT)}")
+            problemas.append(f"nombre no reconocido: {p.name}")
             continue
-        split = TAG_TO_SPLIT.get(m["tag"])
-        if split is None:
-            problemas.append(f"tag desconocido «{m['tag']}»: {p.name}")
-            continue
-        key = (split, int(m["idx"]))
+        key = (m["split"], int(m["idx"]))
         if key in inv:
             problemas.append(f"duplicado {key}: {p.name}")
             continue
@@ -158,23 +181,18 @@ def _inventario(tech):
 # ── Fixtures ──────────────────────────────────────────────────────────────
 @pytest.fixture(scope="module")
 def umap_pkg():
-    if not UMAP_PKL.exists():
-        pytest.fail(f"No existe {UMAP_PKL}")
-    try:
-        pkg = joblib.load(UMAP_PKL)
-    except Exception as e:  # bug conocido de Numba al deserializar UMAP
-        pytest.fail(f"joblib.load(umap_params.pkl) falló ({type(e).__name__}: {e}). "
-                    "Depende de F0.2.")
+    path = _env_path("F03_UMAP_PARAMS")
+    # Antes de cargar: deserializar un pickle ejecuta código del archivo.
+    digest = sha256(path)
+    if digest != UMAP_SHA256:
+        pytest.fail(f"{path}: sha256 {digest} ≠ {UMAP_SHA256} (docs/artefactos_datos.md). "
+                    "No es el umap_params.pkl de referencia.")
+    # load_umap_arrays valida 908/114/114, 5 componentes y etiquetas binarias,
+    # sin umap-learn ni numba (F0.2), y conserva el dtype almacenado.
+    pkg = load_umap_arrays(path)
     for s in SPLITS:
-        assert s in pkg, f"Falta el split '{s}'; llaves: {list(pkg.keys())}"
-        assert {"params", "labels"} <= set(pkg[s].keys()), \
-            f"pkg['{s}'] sin 'params'/'labels': {list(pkg[s].keys())}"
-        P, y = np.asarray(pkg[s]["params"]), np.asarray(pkg[s]["labels"])
-        assert P.ndim == 2 and P.shape[1] == 5, f"{s}: params con forma {P.shape}"
-        assert len(P) == len(y), f"{s}: {len(P)} params vs {len(y)} etiquetas"
-        assert set(np.unique(y).tolist()) <= {0, 1}, f"{s}: etiquetas no binarias"
+        P = pkg[s]["params"]
         assert P.min() >= 0.0 and P.max() <= 1.0, f"{s}: u fuera de [0, 1]"
-    assert sum(len(pkg[s]["labels"]) for s in SPLITS) == N_TOTAL
     return pkg
 
 
@@ -333,30 +351,35 @@ def test_C_inventario_y_alineacion(tech, umap_pkg):
 
 
 @pytest.mark.parametrize("tech", list(STORED))
-def test_C_reproduccion_desde_u(tech, sample, renders):
-    inv, _ = _inventario(tech)
-    motor = STORED[tech][2]
+def test_C_reproduccion_desde_u(tech, sample, U_y, renders):
+    root = _tech_dir(tech)
+    _, _, modname, motor = STORED[tech]
     regen = renders(motor)["A"]
+    expected_path = _import(modname).expected_path
+    _, y = U_y
     fallas = []
-    for (s, i), a in zip(sample, regen):
-        if (s, i) not in inv:
-            fallas.append(f"{s}[{i}]: no hay archivo almacenado")
+    for (s, i), label, a in zip(sample, y, regen):
+        # Se localiza con expected_path, igual que al generar (hallazgo 5)
+        p = Path(expected_path(i, int(label), s, str(root)))
+        if not p.exists():
+            fallas.append(f"{s}[{i}]: no existe {p.name}")
             continue
-        b = np.array(Image.open(inv[(s, i)][0]))
+        b = np.array(Image.open(p))
         if not np.array_equal(a, b):
             fallas.append(f"{s}[{i}]: {_diff(a, b)}")
     assert not fallas, (
         f"{tech}: las imágenes almacenadas no se reproducen bit a bit desde u con "
-        f"src/generators/ (motor {motor}):\n" + "\n".join(fallas)
+        f"src/generation/ (motor {motor}):\n" + "\n".join(fallas)
         + "\nResolver con F0.1/F0.2 antes de calcular checksums.")
 
 
 def test_C_alineacion_con_pkl_41(umap_pkg):
     """El orden de filas de umap_params.pkl coincide con el del PKL de Exp 4.1."""
-    if not PKL_41.exists():
-        pytest.skip(f"No existe {PKL_41}")
-    pkg_41 = joblib.load(PKL_41)
-    assert "X_val" in pkg_41.keys()
+    pkg_41 = joblib.load(_env_path("F03_BETO_PKL"))
+    assert "X_val" in pkg_41.keys(), (
+        f"El PKL de embeddings no tiene X_val/y_val (llaves: {list(pkg_41.keys())}). "
+        "Hay una versión anterior con el mismo nombre que solo trae train/test; "
+        "usar la de docs/artefactos_datos.md.")
     for s, (xk, yk) in {"train": ("X_train", "y_train"),
                         "val": ("X_val", "y_val"),
                         "test": ("X_test", "y_test")}.items():
