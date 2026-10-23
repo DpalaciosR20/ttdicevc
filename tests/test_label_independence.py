@@ -36,6 +36,9 @@ Configuración opcional:
     F03_N_PER_CELL   muestras por celda split × clase (por omisión 1 → 6 por técnica)
     F03_SEED         semilla del muestreo estratificado (por omisión 2026)
     F03_GS_PATH      ruta de producción de Gray-Scott para la capa C: gpu | cpu
+    F03_STRICT       1 → una variable de ruta sin definir hace fallar la prueba en
+                     vez de omitirla (corrida completa de F0.3). Las omisiones por
+                     falta de GPU o del paquete `noise` no cambian.
 """
 from __future__ import annotations
 
@@ -67,6 +70,7 @@ UMAP_SHA256 = "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
 N_PER_CELL = int(os.environ.get("F03_N_PER_CELL", "1"))
 SAMPLE_SEED = int(os.environ.get("F03_SEED", "2026"))
 GS_PATH = os.environ.get("F03_GS_PATH", "gpu").lower()
+STRICT = os.environ.get("F03_STRICT", "0") == "1"
 SPLITS = ("train", "val", "test")
 IMG_SIZE = 256
 
@@ -100,10 +104,14 @@ ENGINES = ("perlin", "lorenz", "gs_cpu", "gs_gpu")
 
 # ── Utilidades ────────────────────────────────────────────────────────────
 def _env_path(var):
-    """Ruta de la variable de entorno: sin definir → skip; inexistente → fail."""
+    """Ruta de la variable de entorno: sin definir → skip (fail con F03_STRICT=1);
+    inexistente → fail."""
     value = os.environ.get(var)
     if not value:
-        pytest.skip(f"Define {var} para correr esta prueba (ver docstring del módulo)")
+        msg = f"Define {var} para correr esta prueba (ver docstring del módulo)"
+        if STRICT:
+            pytest.fail(f"F03_STRICT=1: {msg}")
+        pytest.skip(msg)
     path = Path(value)
     if not path.exists():
         pytest.fail(f"{var}={value} no existe")
