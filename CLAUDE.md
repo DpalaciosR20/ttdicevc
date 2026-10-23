@@ -37,7 +37,8 @@ Ver `docs/hallazgos_metodologicos.md` para el detalle completo. Resumen:
 3. **Fuga de UMAP no reajustado en k-fold**: combinar train+val+test y re-particionar para k-fold infla los resultados porque UMAP ya vio esos puntos en su ajuste original. Se corrige reajustando UMAP por fold (k-fold anidado) — código de referencia en `docs/hallazgos_metodologicos.md`.
 4. **Fuga de fine-tuning de BETO**: incluso con UMAP reajustado por fold, los resultados de k-fold/holdout siguen inflados (~0.80-0.86) porque BETO fue fine-tuneado específicamente sobre las 908 muestras del split de train original, y cualquier re-partición que no respete esa frontera hereda esa ventaja. **No se puede arreglar del todo sin reentrenar BETO por fold (no viable en el tiempo disponible) — se documenta como limitación conocida, no se persigue.**
 5. **Conclusión operativa:** el split fijo 80/10/10 original es la referencia confiable para reportar resultados. Cualquier k-fold/holdout adicional se reporta como "estimado optimista" con esta limitación explicada.
-6. **Pendiente de medir (no resuelto):** val/test caen ligeramente fuera de [0,1] tras el MinMaxScaler y ningún generador recorta, así que algunas imágenes de val/test se generaron con parámetros extrapolados fuera del contrato (p. ej. Lorenz con 250 puntos en vez de ≥5,000). Ver `docs/hallazgos_metodologicos.md`, punto 7. No regenerar imágenes por esto sin acordarlo con SV.
+6. **Rango de u en val/test (verificado con el archivo real):** val/test se guardaron **recortados a [0,1]**, así que no hay parámetros fuera del contrato. El efecto residual es saturación: 20/114 muestras de val y 8/114 de test tienen algún componente en exactamente 0 o 1. Ver `docs/hallazgos_metodologicos.md`, punto 7.
+7. **`umap_params.pkl` se lee con `src/training/umap_io.py`**, sin umap-learn, numba ni sklearn. `joblib.load` directo falla por versiones (ver `docs/entorno_reproducibilidad.md`). No re-ajustar UMAP: los `u` nuevos no corresponderían a las imágenes ya generadas.
 
 ## Plan vigente: `plan/plan_tt2_v2.md` (19 oct 2026)
 
@@ -66,6 +67,8 @@ ttdicevc/
 ├── CLAUDE.md                          ← este archivo
 ├── README.md
 ├── .gitignore
+├── requirements.txt                   ← versiones exactas del entorno de Kaggle (F0.2)
+├── results/                           ← resultados versionados (p. ej. f32_primera_pasada/)
 ├── src/
 │   ├── generation/                    ← generadores class-blind de las 3 técnicas
 │   │   ├── gray_scott_lib.py
@@ -75,13 +78,15 @@ ttdicevc/
 │       ├── build_model.py
 │       ├── data.py                    ← preprocesamiento/loaders compartidos (3ch, 224, ImageNet)
 │       ├── train_model.py
-│       └── run_grid.py                ← grid 18 configs / multi-seed, reanudable (ver docs/correr_grid_kaggle.md)
+│       ├── run_grid.py                ← grid 18 configs / multi-seed, reanudable (ver docs/correr_grid_kaggle.md)
+│       └── umap_io.py                 ← lee umap_params.pkl sin umap/numba (F0.2)
 ├── tests/
 │   └── smoke_test_training.py         ← 3 arquitecturas × frozen/fine-tune, corre en CPU
 ├── notebooks/                         ← notebooks de Kaggle/Colab (limpiar outputs pesados antes de commitear)
 ├── docs/
 │   ├── artefactos_datos.md            ← dónde están los .pkl y los datasets de imágenes
 │   ├── correr_grid_kaggle.md          ← cómo correr run_grid.py en Kaggle
+│   ├── entorno_reproducibilidad.md    ← entorno fijado y lectura de umap_params.pkl (F0.2)
 │   ├── hallazgos_metodologicos.md     ← detalle completo de las 4 fugas y cómo se resolvieron
 │   └── resumen_modulo3_camera_ready.md
 └── plan/
@@ -105,3 +110,13 @@ ttdicevc/
 - Cualquier resultado de un solo run debe tratarse con sospecha — preferir multi-seed (mínimo 5) antes de reportar un número como definitivo, dado que ya se observó variación de ~8pp entre semillas/entornos en corridas nominalmente idénticas.
 - Generación de imágenes: usar la versión GPU-batched (`generate_batch_gpu` en `gray_scott_lib.py`) cuando haya GPU disponible — es órdenes de magnitud más rápida que la versión CPU/numpy puro.
 - En Kaggle: `/kaggle/input/` es de solo lectura; todo lo que se genere debe ir a `/kaggle/working/`.
+
+## Convención de commits y PRs
+
+El asunto de cada commit y el título de cada PR empiezan con el ID de la tarea de `plan/plan_tt2_v2.md` que atienden, entre corchetes:
+
+- Una tarea: `[F3.2] Primera pasada del grid solo con validación`
+- Varias tareas: `[F1.5, F3.3] Predicciones por muestra y resumen por configuración`
+- Cambios que no corresponden a ninguna tarea del plan (mantenimiento, herramientas, convenciones): `[repo] ...`
+
+Las ramas pueden llevar el ID también (p. ej. `ce/f3.4-hpo`), pero no es obligatorio.

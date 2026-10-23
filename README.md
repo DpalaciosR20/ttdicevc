@@ -24,17 +24,10 @@ Los datasets (imágenes generadas, embeddings) NO están en este repo por tamañ
 
 ## Requisitos
 
+Versiones exactas del entorno de referencia (Kaggle, donde se producen los resultados) en `requirements.txt`. Detalle, instalación y lectura de `umap_params.pkl` en `docs/entorno_reproducibilidad.md`.
+
 ```
-torch
-torchvision
-numpy
-scipy
-scikit-learn
-scikit-image
-statsmodels
-umap-learn
-joblib
-Pillow
-matplotlib
-noise          # solo para generación de Perlin -- puede requerir Build Tools en Windows, usar Colab/Kaggle si falla
+pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128   # o .../whl/cpu
 ```
+
+`noise` (solo para generar Perlin) no viene en Kaggle y en Windows requiere Microsoft C++ Build Tools.
