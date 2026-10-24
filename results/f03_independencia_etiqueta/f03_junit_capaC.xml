@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="7" time="1035.717" timestamp="2026-10-23T04:19:18.891246+00:00" hostname="1a21faaa43ec"><testcase classname="tests.test_label_independence" name="test_C_inventario_y_alineacion[perlin]" time="72.111" /><testcase classname="tests.test_label_independence" name="test_C_inventario_y_alineacion[lorenz]" time="42.310" /><testcase classname="tests.test_label_independence" name="test_C_inventario_y_alineacion[gray_scott]" time="42.316" /><testcase classname="tests.test_label_independence" name="test_C_reproduccion_desde_u[perlin]" time="26.048" /><testcase classname="tests.test_label_independence" name="test_C_reproduccion_desde_u[lorenz]" time="789.439"><failure message="AssertionError: lorenz: las imágenes almacenadas no se reproducen bit a bit desde u con src/generation/ (motor lorenz):&#10;  train[764]: 10.5682% px distintos · max|Δ| = 190 · MAE = 3.7103&#10;  train[96]: 8.8364% px distintos · max|Δ| = 226 · MAE = 4.1108&#10;  train[345]: 5.4291% px distintos · max|Δ| = 236 · MAE = 2.1433&#10;  train[439]: 12.8815% px distintos · max|Δ| = 203 · MAE = 4.2580&#10;  val[25]: 4.8401% px distintos · max|Δ| = 151 · MAE = 0.9175&#10;  val[81]: 5.2856% px distintos · max|Δ| = 190 · MAE = 1.5802&#10;  val[100]: 8.3847% px distintos · max|Δ| = 213 · MAE = 2.7809&#10;  test[86]: 3.7506% px distintos · max|Δ| = 130 · MAE = 0.6863&#10;  test[109]: 10.2371% px distintos · max|Δ| = 218 · MAE = 4.0238&#10;  test[56]: 0.5814% px distintos · max|Δ| = 2 · MAE = 0.0060&#10;  test[78]: 4.9622% px distintos · max|Δ| = 241 · MAE = 3.8955&#10;  Resolver con F0.1/F0.2 antes de calcular checksums.&#10;assert not ['train[764]: 10.5682% px distintos · max|Δ| = 190 · MAE = 3.7103', 'train[96]: 8.8364% px distintos · max|Δ| = 226 · MAE = 4.1108', 'train[345]: 5.4291% px distintos · max|Δ| = 236 · MAE = 2.1433', 'train[439]: 12.8815% px distintos · max|Δ| = 203 · MAE = 4.2580', 'val[25]: 4.8401% px distintos · max|Δ| = 151 · MAE = 0.9175', 'val[81]: 5.2856% px distintos · max|Δ| = 190 · MAE = 1.5802', ...]">tech = 'lorenz'
+sample = [('train', 14), ('train', 158), ('train', 764), ('train', 96), ('train', 345), ('train', 439), ...]
+U_y = (array([[0.1547944 , 0.56714785, 0.77009004, 0.7408322 , 0.7379866 ],
+       [0.22034164, 0.643991  , 0.8935148 , 0.75...7887989, 0.18718576, 0.066256  ]],
+      dtype=float32), array([0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1]))
+renders = &lt;function renders.&lt;locals&gt;.get at 0x7912b7c0f060&gt;
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_reproduccion_desde_u(tech, sample, U_y, renders):
+        root = _tech_dir(tech)
+        _, _, modname, motor = STORED[tech]
+        regen = renders(motor)["A"]
+        expected_path = _import(modname).expected_path
+        _, y = U_y
+        fallas = []
+        for (s, i), label, a in zip(sample, y, regen):
+            # Se localiza con expected_path, igual que al generar (hallazgo 5)
+            p = Path(expected_path(i, int(label), s, str(root)))
+            if not p.exists():
+                fallas.append(f"{s}[{i}]: no existe {p.name}")
+                continue
+            b = np.array(Image.open(p))
+            if not np.array_equal(a, b):
+                fallas.append(f"{s}[{i}]: {_diff(a, b)}")
+&gt;       assert not fallas, (
+            f"{tech}: las imágenes almacenadas no se reproducen bit a bit desde u con "
+            f"src/generation/ (motor {motor}):\n" + "\n".join(fallas)
+            + "\nResolver con F0.1/F0.2 antes de calcular checksums.")
+E       AssertionError: lorenz: las imágenes almacenadas no se reproducen bit a bit desde u con src/generation/ (motor lorenz):
+E         train[764]: 10.5682% px distintos · max|Δ| = 190 · MAE = 3.7103
+E         train[96]: 8.8364% px distintos · max|Δ| = 226 · MAE = 4.1108
+E         train[345]: 5.4291% px distintos · max|Δ| = 236 · MAE = 2.1433
+E         train[439]: 12.8815% px distintos · max|Δ| = 203 · MAE = 4.2580
+E         val[25]: 4.8401% px distintos · max|Δ| = 151 · MAE = 0.9175
+E         val[81]: 5.2856% px distintos · max|Δ| = 190 · MAE = 1.5802
+E         val[100]: 8.3847% px distintos · max|Δ| = 213 · MAE = 2.7809
+E         test[86]: 3.7506% px distintos · max|Δ| = 130 · MAE = 0.6863
+E         test[109]: 10.2371% px distintos · max|Δ| = 218 · MAE = 4.0238
+E         test[56]: 0.5814% px distintos · max|Δ| = 2 · MAE = 0.0060
+E         test[78]: 4.9622% px distintos · max|Δ| = 241 · MAE = 3.8955
+E         Resolver con F0.1/F0.2 antes de calcular checksums.
+E       assert not ['train[764]: 10.5682% px distintos · max|Δ| = 190 · MAE = 3.7103', 'train[96]: 8.8364% px distintos · max|Δ| = 226 · MAE = 4.1108', 'train[345]: 5.4291% px distintos · max|Δ| = 236 · MAE = 2.1433', 'train[439]: 12.8815% px distintos · max|Δ| = 203 · MAE = 4.2580', 'val[25]: 4.8401% px distintos · max|Δ| = 151 · MAE = 0.9175', 'val[81]: 5.2856% px distintos · max|Δ| = 190 · MAE = 1.5802', ...]
+
+tests/test_label_independence.py:378: AssertionError</failure></testcase><testcase classname="tests.test_label_independence" name="test_C_reproduccion_desde_u[gray_scott]" time="63.212"><failure message="AssertionError: gray_scott: las imágenes almacenadas no se reproducen bit a bit desde u con src/generation/ (motor gs_gpu):&#10;  train[14]: 1.6403% px distintos · max|Δ| = 2 · MAE = 0.0167&#10;  train[158]: 0.1633% px distintos · max|Δ| = 1 · MAE = 0.0016&#10;  train[764]: 0.1236% px distintos · max|Δ| = 1 · MAE = 0.0012&#10;  train[96]: 15.7593% px distintos · max|Δ| = 46 · MAE = 0.2566&#10;  train[345]: 0.0183% px distintos · max|Δ| = 1 · MAE = 0.0002&#10;  train[439]: 0.8347% px distintos · max|Δ| = 1 · MAE = 0.0083&#10;  val[74]: 0.0778% px distintos · max|Δ| = 1 · MAE = 0.0008&#10;  val[85]: 0.7111% px distintos · max|Δ| = 1 · MAE = 0.0071&#10;  val[89]: 17.5217% px distintos · max|Δ| = 10 · MAE = 0.1919&#10;  val[25]: 0.0046% px distintos · max|Δ| = 1 · MAE = 0.0000&#10;  val[81]: 0.0580% px distintos · max|Δ| = 1 · MAE = 0.0006&#10;  val[100]: 0.0305% px distintos · max|Δ| = 1 · MAE = 0.0003&#10;  test[17]: 0.8133% px distintos · max|Δ| = 2 · MAE = 0.0081&#10;  test[86]: 35.2127% px distintos · max|Δ| = 33 · MAE = 0.4592&#10;  test[109]: 0.6317% px distintos · max|Δ| = 2 · MAE = 0.0064&#10;  test[56]: 0.0519% px distintos · max|Δ| = 1 · MAE = 0.0005&#10;  test[57]: 1.1230% px distintos · max|Δ| = 1 · MAE = 0.0112&#10;  test[78]: 0.0046% px distintos · max|Δ| = 1 · MAE = 0.0000&#10;  Resolver con F0.1/F0.2 antes de calcular checksums.&#10;assert not ['train[14]: 1.6403% px distintos · max|Δ| = 2 · MAE = 0.0167', 'train[158]: 0.1633% px distintos · max|Δ| = 1 · MAE = 0.0016', 'train[764]: 0.1236% px distintos · max|Δ| = 1 · MAE = 0.0012', 'train[96]: 15.7593% px distintos · max|Δ| = 46 · MAE = 0.2566', 'train[345]: 0.0183% px distintos · max|Δ| = 1 · MAE = 0.0002', 'train[439]: 0.8347% px distintos · max|Δ| = 1 · MAE = 0.0083', ...]">tech = 'gray_scott'
+sample = [('train', 14), ('train', 158), ('train', 764), ('train', 96), ('train', 345), ('train', 439), ...]
+U_y = (array([[0.1547944 , 0.56714785, 0.77009004, 0.7408322 , 0.7379866 ],
+       [0.22034164, 0.643991  , 0.8935148 , 0.75...7887989, 0.18718576, 0.066256  ]],
+      dtype=float32), array([0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1]))
+renders = &lt;function renders.&lt;locals&gt;.get at 0x7912b7c0f060&gt;
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_reproduccion_desde_u(tech, sample, U_y, renders):
+        root = _tech_dir(tech)
+        _, _, modname, motor = STORED[tech]
+        regen = renders(motor)["A"]
+        expected_path = _import(modname).expected_path
+        _, y = U_y
+        fallas = []
+        for (s, i), label, a in zip(sample, y, regen):
+            # Se localiza con expected_path, igual que al generar (hallazgo 5)
+            p = Path(expected_path(i, int(label), s, str(root)))
+            if not p.exists():
+                fallas.append(f"{s}[{i}]: no existe {p.name}")
+                continue
+            b = np.array(Image.open(p))
+            if not np.array_equal(a, b):
+                fallas.append(f"{s}[{i}]: {_diff(a, b)}")
+&gt;       assert not fallas, (
+            f"{tech}: las imágenes almacenadas no se reproducen bit a bit desde u con "
+            f"src/generation/ (motor {motor}):\n" + "\n".join(fallas)
+            + "\nResolver con F0.1/F0.2 antes de calcular checksums.")
+E       AssertionError: gray_scott: las imágenes almacenadas no se reproducen bit a bit desde u con src/generation/ (motor gs_gpu):
+E         train[14]: 1.6403% px distintos · max|Δ| = 2 · MAE = 0.0167
+E         train[158]: 0.1633% px distintos · max|Δ| = 1 · MAE = 0.0016
+E         train[764]: 0.1236% px distintos · max|Δ| = 1 · MAE = 0.0012
+E         train[96]: 15.7593% px distintos · max|Δ| = 46 · MAE = 0.2566
+E         train[345]: 0.0183% px distintos · max|Δ| = 1 · MAE = 0.0002
+E         train[439]: 0.8347% px distintos · max|Δ| = 1 · MAE = 0.0083
+E         val[74]: 0.0778% px distintos · max|Δ| = 1 · MAE = 0.0008
+E         val[85]: 0.7111% px distintos · max|Δ| = 1 · MAE = 0.0071
+E         val[89]: 17.5217% px distintos · max|Δ| = 10 · MAE = 0.1919
+E         val[25]: 0.0046% px distintos · max|Δ| = 1 · MAE = 0.0000
+E         val[81]: 0.0580% px distintos · max|Δ| = 1 · MAE = 0.0006
+E         val[100]: 0.0305% px distintos · max|Δ| = 1 · MAE = 0.0003
+E         test[17]: 0.8133% px distintos · max|Δ| = 2 · MAE = 0.0081
+E         test[86]: 35.2127% px distintos · max|Δ| = 33 · MAE = 0.4592
+E         test[109]: 0.6317% px distintos · max|Δ| = 2 · MAE = 0.0064
+E         test[56]: 0.0519% px distintos · max|Δ| = 1 · MAE = 0.0005
+E         test[57]: 1.1230% px distintos · max|Δ| = 1 · MAE = 0.0112
+E         test[78]: 0.0046% px distintos · max|Δ| = 1 · MAE = 0.0000
+E         Resolver con F0.1/F0.2 antes de calcular checksums.
+E       assert not ['train[14]: 1.6403% px distintos · max|Δ| = 2 · MAE = 0.0167', 'train[158]: 0.1633% px distintos · max|Δ| = 1 · MAE = 0.0016', 'train[764]: 0.1236% px distintos · max|Δ| = 1 · MAE = 0.0012', 'train[96]: 15.7593% px distintos · max|Δ| = 46 · MAE = 0.2566', 'train[345]: 0.0183% px distintos · max|Δ| = 1 · MAE = 0.0002', 'train[439]: 0.8347% px distintos · max|Δ| = 1 · MAE = 0.0083', ...]
+
+tests/test_label_independence.py:378: AssertionError</failure></testcase><testcase classname="tests.test_label_independence" name="test_C_alineacion_con_pkl_41" time="0.006" /></testsuite></testsuites>
