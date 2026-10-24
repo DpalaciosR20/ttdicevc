@@ -1,0 +1,3247 @@
+{
+ "inputs": {
+  "results/f04_cifras_canonicas/canonical_fragment.json": "6ce7c079b3a1e2d845fece8d6db097fe643b6d5afe1de8687ebf768e4066ae52",
+  "results/f32_primera_pasada/grid_meta.json": "903976351f665577ed020efcf1bd949ea5e11480b08557541dd08c44515f320e",
+  "results/f32_primera_pasada/predictions.csv": "46a9a4cba45681de266c4d9e9ce15c5d61aa57ca8164574959ce56b930c8c30e",
+  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.json": "56df853fe466f3b14890323d8c37e64a3caea601b567feeb95332021314cea77",
+  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.json": "e93e0ace3907469f7da429b065df171ff98c99d89fe48b6169b3be1b92a17d3a",
+  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.json": "d148b78263cc11539829dcad3aa311383e19391064178395b6d531c39b3275a4",
+  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed123.json": "0cf36d5ddad02708f5d1b924b3b4c968abb87a2a38c858f8e9ab0c79a1419d57",
+  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed42.json": "afb05fb0efcc24054a6e53789287ea4e8bf7bb5a02fc4e99e77196c4e246ae29",
+  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed7.json": "7ec4557ea753b5b4137784d108bb17d5d42263af21b6ca181288cce954aea4b6",
+  "results/f32_primera_pasada/runs/gray_scott__resnet18__finetune__px224-flip__seed123.json": "4a690d5bef2e0b374cccb0c4fff3814d3b775eb9f197b35947105bdc782a7a1e",
+  "results/f32_primera_pasada/runs/gray_scott__resnet18__finetune__px224-flip__seed42.json": "2ccfa8bb9ec725ade3821a9f90b6696cba034f162d7da7d126eaed3df4c358eb",
+  "results/f32_primera_pasada/runs/gray_scott__resnet18__finetune__px224-flip__seed7.json": "9cfc1bc783fd5fa01bc4fbfde59ac9cb25bdb3e8cb024b3e473e051aca4c526c",
+  "results/f32_primera_pasada/runs/gray_scott__resnet18__frozen__px224-flip__seed123.json": "2a1e554ff85780b0f5c60cbeaa864915bcb3fa9a3df232d7a0fa863bf25de251",
+  "results/f32_primera_pasada/runs/gray_scott__resnet18__frozen__px224-flip__seed42.json": "af628bf1f0d9fb67091cf20c770f739a9a9072c47990df5f4f29dcde82fa696c",
+  "results/f32_primera_pasada/runs/gray_scott__resnet18__frozen__px224-flip__seed7.json": "186385ce9de5b36e239d76443fc5e089905f4ee958c8d3da11e487a2b90a20ef",
+  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__finetune__px224-flip__seed123.json": "113fef8d80ce3424119e2a7fe69dfbf1e7c3a127b4059603c817cebc74a47718",
+  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__finetune__px224-flip__seed42.json": "b126c1a59b6539f4d2f7b2c7c2547354289283b0c83299f4cbfed940c79d0c56",
+  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__finetune__px224-flip__seed7.json": "b46bf3c6a43c2a7bae278ea5a6884e1037e338697a753cfd743f5cf0e907dd13",
+  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__frozen__px224-flip__seed123.json": "b5cb7d4aab2674f5ae21a392913782209e4cca585e17fae639f84cfc93729645",
+  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__frozen__px224-flip__seed42.json": "bddfc6f122800f0eb3e9b8cbee34cffc136b63b91541476f7d64d840344ffff1",
+  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__frozen__px224-flip__seed7.json": "9d34200452f0f2caf78555d4ee43640a768eb5b3ea04bbf5e3dc7667bcf31d8a",
+  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed123.json": "e4696930d7767443d1abc3a3fdb76827acf9e51b26c3e2c8f96107d52c15b2e9",
+  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed42.json": "489c8b45554d745d3e707ca8949c954a809a2ce2cb929b34153c90d1f84640b0",
+  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed7.json": "1fdbf8d7d6d63279a5b4aeb2a2caeb7b278ffcbe728b410a1baf406eadaec856",
+  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed123.json": "c87400449bbd494473acc8bea6bae3ab63219654603c97ffb60464b7d6e8af99",
+  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed42.json": "3db33b6caec1459a4b0bb2deeaff6d53e1b5ca7848f86bf98baf38529931bd3d",
+  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed7.json": "2c5fc672bc9273777a14ff702b4fb4baca7cf9fa83d82ce344087cb81134ece7",
+  "results/f32_primera_pasada/runs/lorenz__resnet18__finetune__px224-flip__seed123.json": "72170f2a58e31e2749e86a714e878b299c1d9ecb99cd46fbe4e984ccd721f1a2",
+  "results/f32_primera_pasada/runs/lorenz__resnet18__finetune__px224-flip__seed42.json": "35e870da9959225a6281a82ad810118e8959286068f3bed09c28438f67a2f465",
+  "results/f32_primera_pasada/runs/lorenz__resnet18__finetune__px224-flip__seed7.json": "292473e3a26133e91c3679987e6de38ab075fa8cb7c1a44a8a09dc691389bdea",
+  "results/f32_primera_pasada/runs/lorenz__resnet18__frozen__px224-flip__seed123.json": "7f0d3adde598c5778cfa42f799c65ea3093056bc7ef576380f8b40512556c1c8",
+  "results/f32_primera_pasada/runs/lorenz__resnet18__frozen__px224-flip__seed42.json": "c91fa996f4a96309684e7e4451df3f95f9f749cf7a4753b645ff2cfda81a9064",
+  "results/f32_primera_pasada/runs/lorenz__resnet18__frozen__px224-flip__seed7.json": "0502ce526b315afaecc7be1cbe1badbec5fa607765e66c25f123788c6900d79d",
+  "results/f32_primera_pasada/runs/lorenz__vit_b_16__finetune__px224-flip__seed123.json": "08e38dc1d56bd42676fe7cc3bbe7008b60eb2a02414071e4a20286f6ec631512",
+  "results/f32_primera_pasada/runs/lorenz__vit_b_16__finetune__px224-flip__seed42.json": "b98faddd7efcc448c97a411ae8c195c9322b1013096f6a22d2345b5d9f357a7c",
+  "results/f32_primera_pasada/runs/lorenz__vit_b_16__finetune__px224-flip__seed7.json": "4a3a513930ae0e807e004a1f843e31d986cb1c018d58ab3436dc65da4742122b",
+  "results/f32_primera_pasada/runs/lorenz__vit_b_16__frozen__px224-flip__seed123.json": "f3505a9d12dee242b21f1e2d5050009b98c0d552d7b607799bf922e3fd13beff",
+  "results/f32_primera_pasada/runs/lorenz__vit_b_16__frozen__px224-flip__seed42.json": "0ec43d5a081601f0a40b47e4e60bb8e94e8affeba63e14792338805dca47cbaa",
+  "results/f32_primera_pasada/runs/lorenz__vit_b_16__frozen__px224-flip__seed7.json": "59745567ed6c8d838ffd35a7f0a442fbf9876667d6dd22e343d9b8faab153e13",
+  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__finetune__px224-flip__seed123.json": "e779b4456ab7cc92982ca24872c4c1c111d9909b1c641c9d4f5291fd91122493",
+  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__finetune__px224-flip__seed42.json": "db455f587717ddcabaaf2615bd4c9fcdf3c6a02b93309f8d1f5d6089e8ce0d0e",
+  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__finetune__px224-flip__seed7.json": "8d966f7662fa1ba12b5b23445254dd83cc8346aa0bd92cc14e17f75a19a0672c",
+  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__frozen__px224-flip__seed123.json": "fd910c0b0b3510640808576bbe361ebc80f2b2065a57fd06ff0c516a8787cb00",
+  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__frozen__px224-flip__seed42.json": "e12b025138a707076cb2e0d6479e7bf928e885a8cbf4f99aad7dabe626ba5f57",
+  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__frozen__px224-flip__seed7.json": "669aaba3fab9ca98f60736498d05680340765644b572f925aef9528c4e15407e",
+  "results/f32_primera_pasada/runs/perlin__resnet18__finetune__px224-flip__seed123.json": "a0b2a28b54685f8f72d6919d4063d6e98ba17723982a195f55c2081da1f2037c",
+  "results/f32_primera_pasada/runs/perlin__resnet18__finetune__px224-flip__seed42.json": "157fce0caee324e7a598fb275aa851ea7a20cc500f967d0c59c83332b491f1e0",
+  "results/f32_primera_pasada/runs/perlin__resnet18__finetune__px224-flip__seed7.json": "dde5bd1211eaf049ce5bc74c1c08e7b2ae521465f539de75fa2057ee82092f1b",
+  "results/f32_primera_pasada/runs/perlin__resnet18__frozen__px224-flip__seed123.json": "ef41cc03e2e5d0d31cace7590d7a8c20f15bab831b74c09911319ce914041a88",
+  "results/f32_primera_pasada/runs/perlin__resnet18__frozen__px224-flip__seed42.json": "4d74f76cdfd5daeccfbfe8539853977ae87d16ba54d166d14d7c065a16165f1f",
+  "results/f32_primera_pasada/runs/perlin__resnet18__frozen__px224-flip__seed7.json": "c7655b3a604e13794a7fc10d3b09e7523bd62ef83a511df9f191efebdf61c062",
+  "results/f32_primera_pasada/runs/perlin__vit_b_16__finetune__px224-flip__seed123.json": "9fab186583597572fa03e2ece1e99bae5692faadf0612bd06dc0f77d2f276fcd",
+  "results/f32_primera_pasada/runs/perlin__vit_b_16__finetune__px224-flip__seed42.json": "499dbd13d7380fe1055603d529d357dc8d794609fbf983ef3f0057cce405459e",
+  "results/f32_primera_pasada/runs/perlin__vit_b_16__finetune__px224-flip__seed7.json": "90a5a234e8882fed829f193408b78d7271267f424f5850010a52a1c374c74611",
+  "results/f32_primera_pasada/runs/perlin__vit_b_16__frozen__px224-flip__seed123.json": "0bf525b85bee532c4bafbae6e7a0a807afe8aa0f646c3381ab5f572bb81c41ce",
+  "results/f32_primera_pasada/runs/perlin__vit_b_16__frozen__px224-flip__seed42.json": "ae1090f96d3e1ef23648ba53062e3d3fe06e1421de1233dc15462dc62ed567e5",
+  "results/f32_primera_pasada/runs/perlin__vit_b_16__frozen__px224-flip__seed7.json": "c5977566685e88ca9b20d1a4c7a46e405578ad479ced545740da74f6ba7aefdf",
+  "results/f32_primera_pasada/summary.csv": "5cf0524a60e5b983b7551e9ea85be5eb4523424e59676b238cc95efcb621e70b",
+  "results/f32_primera_pasada/summary_by_config.csv": "197529356fa2128e897e375a800c3162b6017fb3cbc2e5f18de3367b9056fdda",
+  "umap_params.pkl (externo)": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+ },
+ "numbers": {
+  "f32.gray_scott.efficientnet_b0.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / efficientnet_b0 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7175762313434474
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / efficientnet_b0 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.012496044907801315
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 18,
+     "tn": 52,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__efficientnet_b0__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.728485233407431
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__efficientnet_b0__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7203007518796992
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 21,
+     "tn": 49,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__efficientnet_b0__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7039427087432124
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / efficientnet_b0 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.696519883451909
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / efficientnet_b0 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.002136987347272235
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 21,
+     "tn": 49,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__efficientnet_b0__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6941287878787878
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 15,
+     "fp": 18,
+     "tn": 52,
+     "tp": 29
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__efficientnet_b0__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6982433624769391
+   }
+  },
+  "f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 11,
+     "fp": 23,
+     "tn": 47,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__efficientnet_b0__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6971875000000001
+   }
+  },
+  "f32.gray_scott.resnet18.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.gray_scott.resnet18.finetune.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.resnet18.finetune.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.resnet18.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / resnet18 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7278422523103375
+   }
+  },
+  "f32.gray_scott.resnet18.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.gray_scott.resnet18.finetune.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.resnet18.finetune.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.resnet18.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / resnet18 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.01457631918003135
+   }
+  },
+  "f32.gray_scott.resnet18.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 15,
+     "fp": 14,
+     "tn": 56,
+     "tp": 29
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__resnet18__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7304964539007093
+   }
+  },
+  "f32.gray_scott.resnet18.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__resnet18__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7121212121212122
+   }
+  },
+  "f32.gray_scott.resnet18.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 14,
+     "fp": 14,
+     "tn": 56,
+     "tp": 30
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__resnet18__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.740909090909091
+   }
+  },
+  "f32.gray_scott.resnet18.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.gray_scott.resnet18.frozen.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.resnet18.frozen.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.resnet18.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / resnet18 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6954914559979987
+   }
+  },
+  "f32.gray_scott.resnet18.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.gray_scott.resnet18.frozen.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.resnet18.frozen.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.resnet18.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / resnet18 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.00934332052348338
+   }
+  },
+  "f32.gray_scott.resnet18.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 10,
+     "fp": 25,
+     "tn": 45,
+     "tp": 34
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__resnet18__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6900970873786407
+   }
+  },
+  "f32.gray_scott.resnet18.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 15,
+     "fp": 17,
+     "tn": 53,
+     "tp": 29
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__resnet18__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.706280193236715
+   }
+  },
+  "f32.gray_scott.resnet18.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 10,
+     "fp": 25,
+     "tn": 45,
+     "tp": 34
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__resnet18__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6900970873786407
+   }
+  },
+  "f32.gray_scott.vit_b_16.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.gray_scott.vit_b_16.finetune.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.vit_b_16.finetune.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.vit_b_16.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / vit_b_16 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7141035421535943
+   }
+  },
+  "f32.gray_scott.vit_b_16.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.gray_scott.vit_b_16.finetune.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.vit_b_16.finetune.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.vit_b_16.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / vit_b_16 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.0022387519730802112
+   }
+  },
+  "f32.gray_scott.vit_b_16.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__vit_b_16__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7121212121212122
+   }
+  },
+  "f32.gray_scott.vit_b_16.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 14,
+     "fp": 17,
+     "tn": 53,
+     "tp": 30
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__vit_b_16__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7165316435389428
+   }
+  },
+  "f32.gray_scott.vit_b_16.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 11,
+     "fp": 21,
+     "tn": 49,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__vit_b_16__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.713657770800628
+   }
+  },
+  "f32.gray_scott.vit_b_16.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.gray_scott.vit_b_16.frozen.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.vit_b_16.frozen.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.vit_b_16.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / vit_b_16 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7030580266294552
+   }
+  },
+  "f32.gray_scott.vit_b_16.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.gray_scott.vit_b_16.frozen.px224_flip.seed123.f1_macro",
+    "f32.gray_scott.vit_b_16.frozen.px224_flip.seed42.f1_macro",
+    "f32.gray_scott.vit_b_16.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "gray_scott / vit_b_16 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.010426668516944881
+   }
+  },
+  "f32.gray_scott.vit_b_16.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 22,
+     "tn": 48,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__vit_b_16__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6957613814756671
+   }
+  },
+  "f32.gray_scott.vit_b_16.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 10,
+     "fp": 22,
+     "tn": 48,
+     "tp": 34
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__vit_b_16__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7150000000000001
+   }
+  },
+  "f32.gray_scott.vit_b_16.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 10,
+     "fp": 24,
+     "tn": 46,
+     "tp": 34
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=gray_scott__vit_b_16__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6984126984126984
+   }
+  },
+  "f32.lorenz.efficientnet_b0.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed123.f1_macro",
+    "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed42.f1_macro",
+    "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / efficientnet_b0 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7095718072598812
+   }
+  },
+  "f32.lorenz.efficientnet_b0.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed123.f1_macro",
+    "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed42.f1_macro",
+    "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / efficientnet_b0 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.017821151124030356
+   }
+  },
+  "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 11,
+     "fp": 19,
+     "tn": 51,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__efficientnet_b0__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7301136363636364
+   }
+  },
+  "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 15,
+     "fp": 18,
+     "tn": 52,
+     "tp": 29
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__efficientnet_b0__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6982433624769391
+   }
+  },
+  "f32.lorenz.efficientnet_b0.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 14,
+     "fp": 19,
+     "tn": 51,
+     "tp": 30
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__efficientnet_b0__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.700358422939068
+   }
+  },
+  "f32.lorenz.efficientnet_b0.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed123.f1_macro",
+    "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed42.f1_macro",
+    "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / efficientnet_b0 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6948055422864902
+   }
+  },
+  "f32.lorenz.efficientnet_b0.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed123.f1_macro",
+    "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed42.f1_macro",
+    "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / efficientnet_b0 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.015507157019529852
+   }
+  },
+  "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 15,
+     "fp": 20,
+     "tn": 50,
+     "tp": 29
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__efficientnet_b0__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6821983273596177
+   }
+  },
+  "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 10,
+     "fp": 25,
+     "tn": 45,
+     "tp": 34
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__efficientnet_b0__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6900970873786407
+   }
+  },
+  "f32.lorenz.efficientnet_b0.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__efficientnet_b0__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7121212121212122
+   }
+  },
+  "f32.lorenz.resnet18.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.lorenz.resnet18.finetune.px224_flip.seed123.f1_macro",
+    "f32.lorenz.resnet18.finetune.px224_flip.seed42.f1_macro",
+    "f32.lorenz.resnet18.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / resnet18 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6877106566237684
+   }
+  },
+  "f32.lorenz.resnet18.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.lorenz.resnet18.finetune.px224_flip.seed123.f1_macro",
+    "f32.lorenz.resnet18.finetune.px224_flip.seed42.f1_macro",
+    "f32.lorenz.resnet18.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / resnet18 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.022470860032055652
+   }
+  },
+  "f32.lorenz.resnet18.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 18,
+     "fp": 17,
+     "tn": 53,
+     "tp": 26
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__resnet18__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6747370995353388
+   }
+  },
+  "f32.lorenz.resnet18.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 11,
+     "fp": 21,
+     "tn": 49,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__resnet18__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.713657770800628
+   }
+  },
+  "f32.lorenz.resnet18.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 18,
+     "fp": 17,
+     "tn": 53,
+     "tp": 26
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__resnet18__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6747370995353388
+   }
+  },
+  "f32.lorenz.resnet18.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.lorenz.resnet18.frozen.px224_flip.seed123.f1_macro",
+    "f32.lorenz.resnet18.frozen.px224_flip.seed42.f1_macro",
+    "f32.lorenz.resnet18.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / resnet18 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6883722518095564
+   }
+  },
+  "f32.lorenz.resnet18.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.lorenz.resnet18.frozen.px224_flip.seed123.f1_macro",
+    "f32.lorenz.resnet18.frozen.px224_flip.seed42.f1_macro",
+    "f32.lorenz.resnet18.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / resnet18 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.012658413267819009
+   }
+  },
+  "f32.lorenz.resnet18.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 17,
+     "fp": 18,
+     "tn": 52,
+     "tp": 27
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__resnet18__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6774715059413143
+   }
+  },
+  "f32.lorenz.resnet18.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 17,
+     "fp": 17,
+     "tn": 53,
+     "tp": 27
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__resnet18__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6853896103896104
+   }
+  },
+  "f32.lorenz.resnet18.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 20,
+     "tn": 50,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__resnet18__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7022556390977444
+   }
+  },
+  "f32.lorenz.vit_b_16.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.lorenz.vit_b_16.finetune.px224_flip.seed123.f1_macro",
+    "f32.lorenz.vit_b_16.finetune.px224_flip.seed42.f1_macro",
+    "f32.lorenz.vit_b_16.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / vit_b_16 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6856566272796503
+   }
+  },
+  "f32.lorenz.vit_b_16.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.lorenz.vit_b_16.finetune.px224_flip.seed123.f1_macro",
+    "f32.lorenz.vit_b_16.finetune.px224_flip.seed42.f1_macro",
+    "f32.lorenz.vit_b_16.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / vit_b_16 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.02544857820704447
+   }
+  },
+  "f32.lorenz.vit_b_16.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 24,
+     "tn": 46,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__vit_b_16__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6793750000000001
+   }
+  },
+  "f32.lorenz.vit_b_16.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 19,
+     "fp": 17,
+     "tn": 53,
+     "tp": 25
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__vit_b_16__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.663937111038323
+   }
+  },
+  "f32.lorenz.vit_b_16.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 11,
+     "fp": 21,
+     "tn": 49,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__vit_b_16__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.713657770800628
+   }
+  },
+  "f32.lorenz.vit_b_16.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.lorenz.vit_b_16.frozen.px224_flip.seed123.f1_macro",
+    "f32.lorenz.vit_b_16.frozen.px224_flip.seed42.f1_macro",
+    "f32.lorenz.vit_b_16.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / vit_b_16 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.706781556438307
+   }
+  },
+  "f32.lorenz.vit_b_16.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.lorenz.vit_b_16.frozen.px224_flip.seed123.f1_macro",
+    "f32.lorenz.vit_b_16.frozen.px224_flip.seed42.f1_macro",
+    "f32.lorenz.vit_b_16.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "lorenz / vit_b_16 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.01683652033412712
+   }
+  },
+  "f32.lorenz.vit_b_16.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 16,
+     "fp": 18,
+     "tn": 52,
+     "tp": 28
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__vit_b_16__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6879227053140097
+   }
+  },
+  "f32.lorenz.vit_b_16.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__vit_b_16__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7121212121212122
+   }
+  },
+  "f32.lorenz.vit_b_16.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=lorenz__vit_b_16__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7203007518796992
+   }
+  },
+  "f32.perlin.efficientnet_b0.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.perlin.efficientnet_b0.finetune.px224_flip.seed123.f1_macro",
+    "f32.perlin.efficientnet_b0.finetune.px224_flip.seed42.f1_macro",
+    "f32.perlin.efficientnet_b0.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / efficientnet_b0 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6976712271457419
+   }
+  },
+  "f32.perlin.efficientnet_b0.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.perlin.efficientnet_b0.finetune.px224_flip.seed123.f1_macro",
+    "f32.perlin.efficientnet_b0.finetune.px224_flip.seed42.f1_macro",
+    "f32.perlin.efficientnet_b0.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / efficientnet_b0 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.0040284476717138635
+   }
+  },
+  "f32.perlin.efficientnet_b0.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 17,
+     "fp": 15,
+     "tn": 55,
+     "tp": 27
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__efficientnet_b0__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7012774320340649
+   }
+  },
+  "f32.perlin.efficientnet_b0.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 18,
+     "fp": 14,
+     "tn": 56,
+     "tp": 26
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__efficientnet_b0__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6984126984126984
+   }
+  },
+  "f32.perlin.efficientnet_b0.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 17,
+     "fp": 16,
+     "tn": 54,
+     "tp": 27
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__efficientnet_b0__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6933235509904623
+   }
+  },
+  "f32.perlin.efficientnet_b0.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.perlin.efficientnet_b0.frozen.px224_flip.seed123.f1_macro",
+    "f32.perlin.efficientnet_b0.frozen.px224_flip.seed42.f1_macro",
+    "f32.perlin.efficientnet_b0.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / efficientnet_b0 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6862890332614056
+   }
+  },
+  "f32.perlin.efficientnet_b0.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.perlin.efficientnet_b0.frozen.px224_flip.seed123.f1_macro",
+    "f32.perlin.efficientnet_b0.frozen.px224_flip.seed42.f1_macro",
+    "f32.perlin.efficientnet_b0.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / efficientnet_b0 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.006240406452517801
+   }
+  },
+  "f32.perlin.efficientnet_b0.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 20,
+     "fp": 12,
+     "tn": 58,
+     "tp": 24
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__efficientnet_b0__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6918918918918919
+   }
+  },
+  "f32.perlin.efficientnet_b0.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 19,
+     "fp": 14,
+     "tn": 56,
+     "tp": 25
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__efficientnet_b0__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6874117158288326
+   }
+  },
+  "f32.perlin.efficientnet_b0.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 19,
+     "fp": 15,
+     "tn": 55,
+     "tp": 25
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__efficientnet_b0__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6795634920634921
+   }
+  },
+  "f32.perlin.resnet18.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.perlin.resnet18.finetune.px224_flip.seed123.f1_macro",
+    "f32.perlin.resnet18.finetune.px224_flip.seed42.f1_macro",
+    "f32.perlin.resnet18.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / resnet18 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6711120463309225
+   }
+  },
+  "f32.perlin.resnet18.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.perlin.resnet18.finetune.px224_flip.seed123.f1_macro",
+    "f32.perlin.resnet18.finetune.px224_flip.seed42.f1_macro",
+    "f32.perlin.resnet18.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / resnet18 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.014650355548122652
+   }
+  },
+  "f32.perlin.resnet18.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 19,
+     "fp": 14,
+     "tn": 56,
+     "tp": 25
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__resnet18__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6874117158288326
+   }
+  },
+  "f32.perlin.resnet18.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 18,
+     "fp": 19,
+     "tn": 51,
+     "tp": 26
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__resnet18__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.659041306280818
+   }
+  },
+  "f32.perlin.resnet18.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 18,
+     "fp": 18,
+     "tn": 52,
+     "tp": 26
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__resnet18__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6668831168831169
+   }
+  },
+  "f32.perlin.resnet18.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.perlin.resnet18.frozen.px224_flip.seed123.f1_macro",
+    "f32.perlin.resnet18.frozen.px224_flip.seed42.f1_macro",
+    "f32.perlin.resnet18.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / resnet18 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.670963835870589
+   }
+  },
+  "f32.perlin.resnet18.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.perlin.resnet18.frozen.px224_flip.seed123.f1_macro",
+    "f32.perlin.resnet18.frozen.px224_flip.seed42.f1_macro",
+    "f32.perlin.resnet18.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / resnet18 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.011344445910056017
+   }
+  },
+  "f32.perlin.resnet18.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 21,
+     "fp": 14,
+     "tn": 56,
+     "tp": 23
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__resnet18__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6649029982363315
+   }
+  },
+  "f32.perlin.resnet18.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 19,
+     "fp": 17,
+     "tn": 53,
+     "tp": 25
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__resnet18__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.663937111038323
+   }
+  },
+  "f32.perlin.resnet18.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 20,
+     "fp": 13,
+     "tn": 57,
+     "tp": 24
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__resnet18__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6840513983371126
+   }
+  },
+  "f32.perlin.vit_b_16.finetune.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.perlin.vit_b_16.finetune.px224_flip.seed123.f1_macro",
+    "f32.perlin.vit_b_16.finetune.px224_flip.seed42.f1_macro",
+    "f32.perlin.vit_b_16.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / vit_b_16 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6968163361862758
+   }
+  },
+  "f32.perlin.vit_b_16.finetune.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.perlin.vit_b_16.finetune.px224_flip.seed123.f1_macro",
+    "f32.perlin.vit_b_16.finetune.px224_flip.seed42.f1_macro",
+    "f32.perlin.vit_b_16.finetune.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / vit_b_16 / finetune / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.021577997588646397
+   }
+  },
+  "f32.perlin.vit_b_16.finetune.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 14,
+     "fp": 20,
+     "tn": 50,
+     "tp": 30
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__vit_b_16__finetune__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6922832645284218
+   }
+  },
+  "f32.perlin.vit_b_16.finetune.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__vit_b_16__finetune__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7203007518796992
+   }
+  },
+  "f32.perlin.vit_b_16.finetune.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 23,
+     "tn": 47,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__vit_b_16__finetune__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6778649921507065
+   }
+  },
+  "f32.perlin.vit_b_16.frozen.px224_flip.f1_macro_mean": {
+   "depends_on": [
+    "f32.perlin.vit_b_16.frozen.px224_flip.seed123.f1_macro",
+    "f32.perlin.vit_b_16.frozen.px224_flip.seed42.f1_macro",
+    "f32.perlin.vit_b_16.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / vit_b_16 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6930833787940177
+   }
+  },
+  "f32.perlin.vit_b_16.frozen.px224_flip.f1_macro_std": {
+   "depends_on": [
+    "f32.perlin.vit_b_16.frozen.px224_flip.seed123.f1_macro",
+    "f32.perlin.vit_b_16.frozen.px224_flip.seed42.f1_macro",
+    "f32.perlin.vit_b_16.frozen.px224_flip.seed7.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "perlin / vit_b_16 / frozen / px224-flip",
+    "path": "results/f32_primera_pasada/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.017846553610801053
+   }
+  },
+  "f32.perlin.vit_b_16.frozen.px224_flip.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 18,
+     "fp": 17,
+     "tn": 53,
+     "tp": 26
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__vit_b_16__frozen__px224-flip__seed123",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6747370995353388
+   }
+  },
+  "f32.perlin.vit_b_16.frozen.px224_flip.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 19,
+     "tn": 51,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__vit_b_16__frozen__px224-flip__seed42",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7103842489679263
+   }
+  },
+  "f32.perlin.vit_b_16.frozen.px224_flip.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 21,
+     "tn": 49,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "bloqueado: F3.2 es solo validación (grid_meta.json evaluate_test=false); test se consulta una vez por finalista en F3.5"
+   },
+   "source": {
+    "locator": "run_id=perlin__vit_b_16__frozen__px224-flip__seed7",
+    "path": "results/f32_primera_pasada/predictions.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6941287878787878
+   }
+  },
+  "floor.brightness.gray_scott.f1_macro": {
+   "decimals": 3,
+   "evaluator": "no documentado en la fuente (clasificador sobre brillo promedio)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "La fuente también da F1-train; no se registra (las métricas van en par val/test).",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§3.1, fila gray_scott",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.529,
+    "val": null
+   }
+  },
+  "floor.brightness.lorenz.f1_macro": {
+   "decimals": 3,
+   "evaluator": "no documentado en la fuente (clasificador sobre brillo promedio)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "La fuente también da F1-train; no se registra (las métricas van en par val/test).",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§3.1, fila lorenz",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.474,
+    "val": null
+   }
+  },
+  "floor.brightness.perlin.f1_macro": {
+   "decimals": 3,
+   "evaluator": "no documentado en la fuente (clasificador sobre brillo promedio)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "La fuente también da F1-train; no se registra (las métricas van en par val/test).",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§3.1, fila perlin",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.453,
+    "val": null
+   }
+  },
+  "n.test": {
+   "evaluator": "len(labels) vía umap_io.load_umap_arrays",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['test']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 114
+  },
+  "n.total": {
+   "depends_on": [
+    "n.train",
+    "n.val",
+    "n.test"
+   ],
+   "derivation": "sum",
+   "evaluator": "suma de splits",
+   "kind": "count",
+   "source": {
+    "locator": "collect_structural",
+    "path": "src/canonical/build.py"
+   },
+   "status": "verificado",
+   "value": 1136
+  },
+  "n.train": {
+   "evaluator": "len(labels) vía umap_io.load_umap_arrays",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['train']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 908
+  },
+  "n.val": {
+   "evaluator": "len(labels) vía umap_io.load_umap_arrays",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['val']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 114
+  },
+  "ref.beto_exp41.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (Módulo 1, TT-I)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "BETO fine-tuneado con HPO (Exp 4.1), sin pesos de clase. Cifra a reconciliar con las predicciones de F2.2.",
+   "null_reason": {
+    "val": "no disponible en el repo (sin predicciones ni log de Exp 4.1)"
+   },
+   "source": {
+    "locator": "§5, Tabla comparativa final; §7",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "reportado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7586,
+    "val": null
+   },
+   "xfail": {
+    "reason": "F1-Macro 0.7586 no es alcanzable con los soportes de test 70/44: el valor alcanzable más cercano es 0.758985 (TP=36, TN=51), que redondea a 0.7590"
+   }
+  },
+  "ref.tfidf_lemma.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (línea base léxica de TT-I)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Mejor línea base léxica clásica: TF-IDF con lematización.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§3.2, Margen propuesto",
+    "path": "plan/plan_tt2_v2.md"
+   },
+   "status": "reportado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7004,
+    "val": null
+   }
+  },
+  "ref.umap5d.logreg_svm.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (camera-ready WITCOM)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Clasificador directo sobre los 5 componentes UMAP; test consultado antes del protocolo v2.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, Tabla comparativa final, fila LogReg / SVM (5D-UMAP directo)",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7246,
+    "val": null
+   }
+  },
+  "ref.umap5d.mlp.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (camera-ready WITCOM)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Clasificador directo sobre los 5 componentes UMAP; test consultado antes del protocolo v2.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, Tabla comparativa final, fila MLP (5D-UMAP directo)",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6933,
+    "val": null
+   }
+  },
+  "ref.umap5d.rf.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (camera-ready WITCOM)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Clasificador directo sobre los 5 componentes UMAP; test consultado antes del protocolo v2.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, Tabla comparativa final, fila RF (5D-UMAP directo)",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7304,
+    "val": null
+   }
+  },
+  "saturation.test.n_samples": {
+   "evaluator": "muestras con algún componente u exactamente en 0 o 1 (= umap_io.saturation_report)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['test']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 8
+  },
+  "saturation.train.n_samples": {
+   "evaluator": "muestras con algún componente u exactamente en 0 o 1 (= umap_io.saturation_report)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['train']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 9
+  },
+  "saturation.val.n_samples": {
+   "evaluator": "muestras con algún componente u exactamente en 0 o 1 (= umap_io.saturation_report)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['val']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 20
+  },
+  "support.test.label0": {
+   "evaluator": "sum(labels == 0)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['test']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 70
+  },
+  "support.test.label1": {
+   "evaluator": "sum(labels == 1)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['test']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 44
+  },
+  "support.total.label0": {
+   "depends_on": [
+    "support.train.label0",
+    "support.val.label0",
+    "support.test.label0"
+   ],
+   "derivation": "sum",
+   "evaluator": "suma de splits",
+   "kind": "count",
+   "source": {
+    "locator": "collect_structural",
+    "path": "src/canonical/build.py"
+   },
+   "status": "verificado",
+   "value": 695
+  },
+  "support.total.label1": {
+   "depends_on": [
+    "support.train.label1",
+    "support.val.label1",
+    "support.test.label1"
+   ],
+   "derivation": "sum",
+   "evaluator": "suma de splits",
+   "kind": "count",
+   "source": {
+    "locator": "collect_structural",
+    "path": "src/canonical/build.py"
+   },
+   "status": "verificado",
+   "value": 441
+  },
+  "support.train.label0": {
+   "evaluator": "sum(labels == 0)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['train']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 555
+  },
+  "support.train.label1": {
+   "evaluator": "sum(labels == 1)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['train']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 353
+  },
+  "support.val.label0": {
+   "evaluator": "sum(labels == 0)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['val']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 70
+  },
+  "support.val.label1": {
+   "evaluator": "sum(labels == 1)",
+   "kind": "count",
+   "source": {
+    "artifact": "umap_params.pkl",
+    "locator": "['val']",
+    "sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
+   },
+   "status": "verificado",
+   "value": 44
+  },
+  "witcom.gs_resnet18.f1_macro_mean": {
+   "decimals": 4,
+   "evaluator": "media de las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, «F1-Macro = 0.7142 ± 0.0095»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "reportado",
+   "summarizes": {
+    "of": [
+     "witcom.gs_resnet18.seed42.f1_macro",
+     "witcom.gs_resnet18.seed7.f1_macro",
+     "witcom.gs_resnet18.seed123.f1_macro",
+     "witcom.gs_resnet18.seed2024.f1_macro",
+     "witcom.gs_resnet18.seed99.f1_macro"
+    ],
+    "op": "mean"
+   },
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7142,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.f1_macro_std": {
+   "decimals": 4,
+   "evaluator": "desviación estándar de las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "0.0095 es la std poblacional (ddof=0). Con la convención de run_grid.py (ddof=1) sería 0.0107.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, «F1-Macro = 0.7142 ± 0.0095»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "reportado",
+   "summarizes": {
+    "of": [
+     "witcom.gs_resnet18.seed42.f1_macro",
+     "witcom.gs_resnet18.seed7.f1_macro",
+     "witcom.gs_resnet18.seed123.f1_macro",
+     "witcom.gs_resnet18.seed2024.f1_macro",
+     "witcom.gs_resnet18.seed99.f1_macro"
+    ],
+    "op": "std_ddof0"
+   },
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0095,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed123.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 123",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7246,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed2024.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 2024",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6984,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed42.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 42",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7093,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed7.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 7",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7224,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed99.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 99",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7165,
+    "val": null
+   }
+  },
+  "witcom.hpo.gs_resnet18.frozen_lr1e_3.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «Frozen (solo capa final), lr=1e-3»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7564,
+    "val": 0.7121
+   }
+  },
+  "witcom.hpo.gs_resnet18.lr1e_3_ft.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «lr=1e-3, fine-tuning completo»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7179,
+    "val": 0.7078
+   }
+  },
+  "witcom.hpo.gs_resnet18.lr1e_4_ft.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «lr=1e-4, fine-tuning completo»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7032,
+    "val": 0.7223
+   }
+  },
+  "witcom.hpo.gs_resnet18.lr1e_4_wd1e_4_ft.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «lr=1e-4 + weight_decay=1e-4»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7264,
+    "val": 0.7162
+   }
+  },
+  "witcom.hpo.gs_resnet18.lr3e_5_ft.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «lr=3e-5, fine-tuning completo»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7512,
+    "val": 0.7449
+   }
+  }
+ },
+ "schema_version": "1.0"
+}
