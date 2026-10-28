@@ -108,7 +108,7 @@ ttdicevc/
 - Al seleccionar la mejor configuración entre varias, usar F1 de **validación**, nunca de test, para no contaminar la decisión.
 - No evaluar ni mirar test fuera de la tarea F3.5 del plan v2 (finalistas, protocolo congelado). Si alguien lo consulta antes, se declara como desviación del protocolo.
 - Cualquier resultado de un solo run debe tratarse con sospecha — preferir multi-seed (mínimo 5) antes de reportar un número como definitivo, dado que ya se observó variación de ~8pp entre semillas/entornos en corridas nominalmente idénticas.
-- Generación de imágenes: usar la versión GPU-batched (`generate_batch_gpu` en `gray_scott_lib.py`) cuando haya GPU disponible — es órdenes de magnitud más rápida que la versión CPU/numpy puro.
+- Generación de imágenes: usar la ruta de CPU para `gray_scott_lib.py`.
 - En Kaggle: `/kaggle/input/` es de solo lectura; todo lo que se genere debe ir a `/kaggle/working/`.
 
 ## Convención de commits y PRs
