@@ -1,0 +1,12 @@
+TT_DATA_ROOT = G:\Mi unidad\tt2-insumos
+CSV[train]           processed/train.csv  4c677f404c19cf8c7d99a2fbc049d2655264c2f05787b3f448e2f8d2b6c9d37b
+CSV[val]             processed/validation.csv  d249b14b01149ec1e5cd933ae3349c470f71b8ba79d4745f534610d71c1d9f61
+CSV[test]            processed/test.csv  e251582ae76e419e344228c3bcd3d6c8f468b481968e3cb6f06f221f0c9f6b5b
+UMAP_PARAMS          umap_params.pkl  081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224
+EMB_41               exp_4_1_final/Exp_4.1_BETO_HPO_embeddings.pkl  64b7682e6d6517e0e643502a96cc80949bb5b35d2a4c04a4ba345243ad1b5d44
+CKPT_41              ignorados (archivos de sistema): desktop.ini
+CKPT_41              exp_4_1_final/checkpoint-342/  10 archivos  2969f6466ad469bb2fe21ac0d57d48614d053ac3188392cbb68695b8a5895ae5
+IMAGES[perlin]       images_grayscale_classblind/perlin/  1136 archivos  b8ce53c6fa339d3a4dcca2ba647c55aeaec79909f7137563efd8b5d04f7e3ccb
+IMAGES[gray_scott]   images_grayscale_classblind/gray_scott/  1136 archivos  c3593c9bd04b4abb45afe7958bded087b53b7812a7cb11e72bda8e382f2d31db
+IMAGES[lorenz]       images_grayscale_classblind/lorenz/  1136 archivos  6fc478a58477f5ba76d9105435be179c52539db2d67dbee3918a67dc5cfdde9b
+3427 filas -> meta\data_manifest.csv

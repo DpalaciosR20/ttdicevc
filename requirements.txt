@@ -33,5 +33,10 @@ numba==0.61.2
 llvmlite==0.44.0
 joblib==1.6.0
 
+# Tokenizador de BETO (F1.5: n_tokens_beto del indice maestro, src/build_sample_index.py)
+# Version instalada en el entorno local; [completar: verificar la version de Kaggle]
+transformers==5.21.0
+tokenizers==0.23.3
+
 # Pruebas
 pytest==8.4.2

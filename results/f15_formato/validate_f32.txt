@@ -1,0 +1,6 @@
+FALLA  results\f32_primera_pasada\predictions.csv
+         regla 1: columnas ['sample_id', 'split', 'y_true', 'technique', 'arch', 'strategy', 'seed', 'p_dep', 'run_id']; se esperan ['sample_id', 'split', 'y_true', 'technique', 'arch', 'strategy', 'seed', 'p_dep']
+         regla 5: el nombre 'predictions.csv' no sigue {technique}__{arch}__{strategy}__seed{seed}.csv
+         regla 6: falta el manifiesto predictions.manifest.json
+
+0/1 archivos válidos

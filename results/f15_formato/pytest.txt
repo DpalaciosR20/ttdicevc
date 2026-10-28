@@ -1,0 +1,36 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\DELL\Desktop\TT\TT2\ttdicevc
+plugins: anyio-4.15.1
+collecting ... collected 27 items
+
+tests/test_predictions_format.py::test_valid_file_passes PASSED          [  3%]
+tests/test_predictions_format.py::test_valid_baseline_vocab PASSED       [  7%]
+tests/test_predictions_format.py::test_rule1_extra_column PASSED         [ 11%]
+tests/test_predictions_format.py::test_rule1_column_order PASSED         [ 14%]
+tests/test_predictions_format.py::test_rule1_missing_value PASSED        [ 18%]
+tests/test_predictions_format.py::test_rule1_wrong_type PASSED           [ 22%]
+tests/test_predictions_format.py::test_rule1_row_order PASSED            [ 25%]
+tests/test_predictions_format.py::test_rule2_vocab PASSED                [ 29%]
+tests/test_predictions_format.py::test_rule2_p_dep_range PASSED          [ 33%]
+tests/test_predictions_format.py::test_rule3_missing_sample PASSED       [ 37%]
+tests/test_predictions_format.py::test_rule3_foreign_sample PASSED       [ 40%]
+tests/test_predictions_format.py::test_rule3_y_true_mismatch PASSED      [ 44%]
+tests/test_predictions_format.py::test_rule4_duplicate_key PASSED        [ 48%]
+tests/test_predictions_format.py::test_rule4_duplicate_across_files PASSED [ 51%]
+tests/test_predictions_format.py::test_rule5_seed_mismatch PASSED        [ 55%]
+tests/test_predictions_format.py::test_rule5_bad_name PASSED             [ 59%]
+tests/test_predictions_format.py::test_rule6_missing_manifest PASSED     [ 62%]
+tests/test_predictions_format.py::test_rule6_missing_field PASSED        [ 66%]
+tests/test_predictions_format.py::test_rule6_sha_mismatch PASSED         [ 70%]
+tests/test_predictions_format.py::test_rule6_phase_mismatch PASSED       [ 74%]
+tests/test_predictions_format.py::test_rule6_unknown_phase_folder PASSED [ 77%]
+tests/test_predictions_format.py::test_rule7_test_forbidden_in_first_pass PASSED [ 81%]
+tests/test_predictions_format.py::test_rule7_test_in_final_requires_tag PASSED [ 85%]
+tests/test_predictions_format.py::test_rule7_first_pass_val_only_passes PASSED [ 88%]
+tests/test_predictions_format.py::test_load_predictions_adds_fase_and_concats PASSED [ 92%]
+tests/test_predictions_format.py::test_load_predictions_rejects_invalid_file PASSED [ 96%]
+tests/test_predictions_format.py::test_real_index_structure PASSED       [100%]
+
+============================= 27 passed in 2.85s ==============================
