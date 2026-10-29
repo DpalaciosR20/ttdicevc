@@ -10,6 +10,7 @@
 # Modelos (Modulo 3)
 torch==2.11.0
 torchvision==0.26.0
+# Local (Windows, CPU; F1.4): torch 2.11.0+cpu y torchvision 0.26.0+cpu desde el indice cpu de arriba
 timm==1.0.29          # plan v2 lo menciona como alternativa para ViT; el codigo actual usa torchvision
 
 # Numerico / metricas / estadistica

@@ -1,0 +1,31 @@
+{
+  "_fuente": "docs/decisiones_preprocesamiento.md, seccion 7 (F1.4). No editar sin actualizar esa tabla: tests/test_preprocesamiento_config.py lo verifica.",
+  "_resultados": "results/f14_preprocesamiento/",
+  "perlin": {
+    "size": 224,
+    "resize_mode": "resize",
+    "interpolation": "bilinear",
+    "antialias": true,
+    "hflip": false,
+    "vit": "same",
+    "variant": "px224-noflip"
+  },
+  "gray_scott": {
+    "size": 224,
+    "resize_mode": "resize",
+    "interpolation": "bilinear",
+    "antialias": true,
+    "hflip": true,
+    "vit": "same",
+    "variant": "px224-flip"
+  },
+  "lorenz": {
+    "size": 224,
+    "resize_mode": "resize",
+    "interpolation": "bilinear",
+    "antialias": true,
+    "hflip": false,
+    "vit": "same",
+    "variant": "px224-noflip"
+  }
+}

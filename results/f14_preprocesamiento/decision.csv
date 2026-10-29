@@ -1,0 +1,4 @@
+technique,admitidas,tamano,volteo,vit,p4_significativo
+perlin,V1 V2 V0,V1,False,V1,True
+gray_scott,V1 V2 V0,V1,True,V1,False
+lorenz,V1 V2 V0,V1,False,V1,True
