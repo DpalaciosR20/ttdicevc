@@ -1,0 +1,21 @@
+TT_DATA_ROOT = G:\Mi unidad\tt2-insumos
+CSV[train]   sha256=4c677f404c19cf8c7d99a2fbc049d2655264c2f05787b3f448e2f8d2b6c9d37b
+CSV[val]     sha256=d249b14b01149ec1e5cd933ae3349c470f71b8ba79d4745f534610d71c1d9f61
+CSV[test]    sha256=e251582ae76e419e344228c3bcd3d6c8f468b481968e3cb6f06f221f0c9f6b5b
+UMAP_PARAMS  sha256=081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224
+EMB_41       sha256=64b7682e6d6517e0e643502a96cc80949bb5b35d2a4c04a4ba345243ad1b5d44
+EMB_41 model_name='BETO_HPO_finetuned' checkpoint='/content/proyecto-transformacion-texto-imagen/models/checkpoints/beto_hpo_final/checkpoint-342'
+tokenizador: BertTokenizer desde CKPT_41 (transformers 5.21.0), model_max_length=512
+
+[OK ] 1. Conteos y soportes
+        1136 filas; train=908 / val=114 / test=114; val 0/1 = 70/44; test 0/1 = 70/44
+[OK ] 2. Etiquetas coinciden en todas las fuentes
+        1136 filas × (CSV, EMB_41, UMAP_PARAMS, 3 sufijos label{y})
+[OK ] 3. Inventario de imágenes
+        perlin=1136, gray_scott=1136, lorenz=1136
+[OK ] 4. Participantes únicos y sin cruce entre splits
+        1136 claves únicas en 1136 filas; participantes en más de un split: 0
+[OK ] 5. Proporción de truncated_128
+        global 59.07 % (registrado 59.1 %); No Depresivo 62.59 % (registrado 62.6 %); Depresivo 53.51 % (registrado 53.5 %); n_tokens_beto mediana=192, máx=2209
+
+índice escrito: meta\sample_index.csv (1136 filas), sha256=d2f789bb2812e55bed0ddc71ed13695fe092859722e4826a324a8569f1bd040a

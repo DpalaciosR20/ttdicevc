@@ -1,5 +1,7 @@
 # Datos (viven en Drive/Kaggle Datasets, no en git -- ver docs/artefactos_datos.md)
 *.pkl
+data/
+models/
 images_grayscale_classblind/
 images/
 *.pt
@@ -22,3 +24,6 @@ venv/
 # Sistema
 .DS_Store
 .ipynb_checkpoints/
+
+# Claude Code (configuración local de cada integrante)
+.claude/settings.local.json
