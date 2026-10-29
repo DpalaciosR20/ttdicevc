@@ -1,0 +1,346 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-8.4.2, pluggy-1.6.0 -- /usr/bin/python3
+rootdir: /kaggle/working/ttdicevc
+plugins: typeguard-4.6.0, anyio-4.14.2, langsmith-0.12.1
+collecting ... collected 33 items
+
+tests/test_label_independence.py::test_A_estatica_renderers[perlin_lib] PASSED
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib] PASSED
+tests/test_label_independence.py::test_A_estatica_renderers[gray_scott_lib] PASSED
+tests/test_label_independence.py::test_B_invarianza[perlin-label] PASSED
+tests/test_label_independence.py::test_B_invarianza[perlin-split] PASSED
+tests/test_label_independence.py::test_B_invarianza[perlin-route] PASSED
+tests/test_label_independence.py::test_B_invarianza[perlin-index] PASSED
+tests/test_label_independence.py::test_B_invarianza[lorenz-label] PASSED
+tests/test_label_independence.py::test_B_invarianza[lorenz-split] PASSED
+tests/test_label_independence.py::test_B_invarianza[lorenz-route] PASSED
+tests/test_label_independence.py::test_B_invarianza[lorenz-index] PASSED
+tests/test_label_independence.py::test_B_invarianza[gs_cpu-label] PASSED
+tests/test_label_independence.py::test_B_invarianza[gs_cpu-split] PASSED
+tests/test_label_independence.py::test_B_invarianza[gs_cpu-route] PASSED
+tests/test_label_independence.py::test_B_invarianza[gs_cpu-index] PASSED
+tests/test_label_independence.py::test_B_invarianza[gs_gpu-label]   [train] 18/18 listas
+  [train] 18/18 listas
+  [zz_split] 18/18 listas
+  [train] 18/18 listas
+  [train] 18/18 listas
+PASSED
+tests/test_label_independence.py::test_B_invarianza[gs_gpu-split] PASSED
+tests/test_label_independence.py::test_B_invarianza[gs_gpu-route] PASSED
+tests/test_label_independence.py::test_B_invarianza[gs_gpu-index] PASSED
+tests/test_label_independence.py::test_B_contrato_salida[perlin] PASSED
+tests/test_label_independence.py::test_B_contrato_salida[lorenz] PASSED
+tests/test_label_independence.py::test_B_contrato_salida[gs_cpu] PASSED
+tests/test_label_independence.py::test_B_contrato_salida[gs_gpu] PASSED
+tests/test_label_independence.py::test_B_perlin_funcion_pura PASSED
+tests/test_label_independence.py::test_B_gray_scott_gpu_composicion_lote   [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+  [solo] 1/1 listas
+PASSED
+tests/test_label_independence.py::test_diagnostico_gray_scott_cpu_vs_gpu [GS CPU vs GPU] train[14]: 1.6403% px distintos · max|Δ| = 2 · MAE = 0.0167
+[GS CPU vs GPU] train[158]: 0.1633% px distintos · max|Δ| = 1 · MAE = 0.0016
+[GS CPU vs GPU] train[764]: 0.1236% px distintos · max|Δ| = 1 · MAE = 0.0012
+[GS CPU vs GPU] train[96]: 15.7593% px distintos · max|Δ| = 46 · MAE = 0.2566
+[GS CPU vs GPU] train[345]: 0.0183% px distintos · max|Δ| = 1 · MAE = 0.0002
+[GS CPU vs GPU] train[439]: 0.8347% px distintos · max|Δ| = 1 · MAE = 0.0083
+[GS CPU vs GPU] val[74]: 0.0778% px distintos · max|Δ| = 1 · MAE = 0.0008
+[GS CPU vs GPU] val[85]: 0.7111% px distintos · max|Δ| = 1 · MAE = 0.0071
+[GS CPU vs GPU] val[89]: 17.5217% px distintos · max|Δ| = 10 · MAE = 0.1919
+[GS CPU vs GPU] val[25]: 0.0046% px distintos · max|Δ| = 1 · MAE = 0.0000
+[GS CPU vs GPU] val[81]: 0.0580% px distintos · max|Δ| = 1 · MAE = 0.0006
+[GS CPU vs GPU] val[100]: 0.0305% px distintos · max|Δ| = 1 · MAE = 0.0003
+[GS CPU vs GPU] test[17]: 0.8133% px distintos · max|Δ| = 2 · MAE = 0.0081
+[GS CPU vs GPU] test[86]: 35.2127% px distintos · max|Δ| = 33 · MAE = 0.4592
+[GS CPU vs GPU] test[109]: 0.6317% px distintos · max|Δ| = 2 · MAE = 0.0064
+[GS CPU vs GPU] test[56]: 0.0519% px distintos · max|Δ| = 1 · MAE = 0.0005
+[GS CPU vs GPU] test[57]: 1.1230% px distintos · max|Δ| = 1 · MAE = 0.0112
+[GS CPU vs GPU] test[78]: 0.0046% px distintos · max|Δ| = 1 · MAE = 0.0000
+PASSED
+tests/test_label_independence.py::test_C_inventario_y_alineacion[perlin] FAILED
+tests/test_label_independence.py::test_C_inventario_y_alineacion[lorenz] FAILED
+tests/test_label_independence.py::test_C_inventario_y_alineacion[gray_scott] FAILED
+tests/test_label_independence.py::test_C_reproduccion_desde_u[perlin] FAILED
+tests/test_label_independence.py::test_C_reproduccion_desde_u[lorenz] FAILED
+tests/test_label_independence.py::test_C_reproduccion_desde_u[gray_scott] FAILED
+tests/test_label_independence.py::test_C_alineacion_con_pkl_41 PASSED
+
+=================================== FAILURES ===================================
+____________________ test_C_inventario_y_alineacion[perlin] ____________________
+
+tech = 'perlin'
+umap_pkg = {'test': {'labels': array([0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0,
+       0, 0, 0, 0, 1, 0, ..., 0.42872775, 0.14713447],
+       [0.9998491 , 0.3860473 , 0.12914085, 0.24107242, 0.        ]],
+      dtype=float32)}}
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_inventario_y_alineacion(tech, umap_pkg):
+>       inv, problemas = _inventario(tech)
+                         ^^^^^^^^^^^^^^^^^
+
+tests/test_label_independence.py:343: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_label_independence.py:170: in _inventario
+    root = _tech_dir(tech)
+           ^^^^^^^^^^^^^^^
+tests/test_label_independence.py:162: in _tech_dir
+    root = _env_path("F03_DATA_ROOT") / STORED[tech][0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+var = 'F03_DATA_ROOT'
+
+    def _env_path(var):
+        """Ruta de la variable de entorno: sin definir → skip (fail con F03_STRICT=1);
+        inexistente → fail."""
+        value = os.environ.get(var)
+        if not value:
+            msg = f"Define {var} para correr esta prueba (ver docstring del módulo)"
+            if STRICT:
+                pytest.fail(f"F03_STRICT=1: {msg}")
+            pytest.skip(msg)
+        path = Path(value)
+        if not path.exists():
+>           pytest.fail(f"{var}={value} no existe")
+E           Failed: F03_DATA_ROOT=/kaggle/input/datasets/santiagosoria26ss/tt2-insumos/TT/images_grayscale_classblind no existe
+
+tests/test_label_independence.py:117: Failed
+____________________ test_C_inventario_y_alineacion[lorenz] ____________________
+
+tech = 'lorenz'
+umap_pkg = {'test': {'labels': array([0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0,
+       0, 0, 0, 0, 1, 0, ..., 0.42872775, 0.14713447],
+       [0.9998491 , 0.3860473 , 0.12914085, 0.24107242, 0.        ]],
+      dtype=float32)}}
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_inventario_y_alineacion(tech, umap_pkg):
+>       inv, problemas = _inventario(tech)
+                         ^^^^^^^^^^^^^^^^^
+
+tests/test_label_independence.py:343: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_label_independence.py:170: in _inventario
+    root = _tech_dir(tech)
+           ^^^^^^^^^^^^^^^
+tests/test_label_independence.py:162: in _tech_dir
+    root = _env_path("F03_DATA_ROOT") / STORED[tech][0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+var = 'F03_DATA_ROOT'
+
+    def _env_path(var):
+        """Ruta de la variable de entorno: sin definir → skip (fail con F03_STRICT=1);
+        inexistente → fail."""
+        value = os.environ.get(var)
+        if not value:
+            msg = f"Define {var} para correr esta prueba (ver docstring del módulo)"
+            if STRICT:
+                pytest.fail(f"F03_STRICT=1: {msg}")
+            pytest.skip(msg)
+        path = Path(value)
+        if not path.exists():
+>           pytest.fail(f"{var}={value} no existe")
+E           Failed: F03_DATA_ROOT=/kaggle/input/datasets/santiagosoria26ss/tt2-insumos/TT/images_grayscale_classblind no existe
+
+tests/test_label_independence.py:117: Failed
+__________________ test_C_inventario_y_alineacion[gray_scott] __________________
+
+tech = 'gray_scott'
+umap_pkg = {'test': {'labels': array([0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0,
+       0, 0, 0, 0, 1, 0, ..., 0.42872775, 0.14713447],
+       [0.9998491 , 0.3860473 , 0.12914085, 0.24107242, 0.        ]],
+      dtype=float32)}}
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_inventario_y_alineacion(tech, umap_pkg):
+>       inv, problemas = _inventario(tech)
+                         ^^^^^^^^^^^^^^^^^
+
+tests/test_label_independence.py:343: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_label_independence.py:170: in _inventario
+    root = _tech_dir(tech)
+           ^^^^^^^^^^^^^^^
+tests/test_label_independence.py:162: in _tech_dir
+    root = _env_path("F03_DATA_ROOT") / STORED[tech][0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+var = 'F03_DATA_ROOT'
+
+    def _env_path(var):
+        """Ruta de la variable de entorno: sin definir → skip (fail con F03_STRICT=1);
+        inexistente → fail."""
+        value = os.environ.get(var)
+        if not value:
+            msg = f"Define {var} para correr esta prueba (ver docstring del módulo)"
+            if STRICT:
+                pytest.fail(f"F03_STRICT=1: {msg}")
+            pytest.skip(msg)
+        path = Path(value)
+        if not path.exists():
+>           pytest.fail(f"{var}={value} no existe")
+E           Failed: F03_DATA_ROOT=/kaggle/input/datasets/santiagosoria26ss/tt2-insumos/TT/images_grayscale_classblind no existe
+
+tests/test_label_independence.py:117: Failed
+_____________________ test_C_reproduccion_desde_u[perlin] ______________________
+
+tech = 'perlin'
+sample = [('train', 14), ('train', 158), ('train', 764), ('train', 96), ('train', 345), ('train', 439), ...]
+U_y = (array([[0.1547944 , 0.56714785, 0.77009004, 0.7408322 , 0.7379866 ],
+       [0.22034164, 0.643991  , 0.8935148 , 0.75...7887989, 0.18718576, 0.066256  ]],
+      dtype=float32), array([0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1]))
+renders = <function renders.<locals>.get at 0x7e60e6b547c0>
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_reproduccion_desde_u(tech, sample, U_y, renders):
+>       root = _tech_dir(tech)
+               ^^^^^^^^^^^^^^^
+
+tests/test_label_independence.py:363: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_label_independence.py:162: in _tech_dir
+    root = _env_path("F03_DATA_ROOT") / STORED[tech][0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+var = 'F03_DATA_ROOT'
+
+    def _env_path(var):
+        """Ruta de la variable de entorno: sin definir → skip (fail con F03_STRICT=1);
+        inexistente → fail."""
+        value = os.environ.get(var)
+        if not value:
+            msg = f"Define {var} para correr esta prueba (ver docstring del módulo)"
+            if STRICT:
+                pytest.fail(f"F03_STRICT=1: {msg}")
+            pytest.skip(msg)
+        path = Path(value)
+        if not path.exists():
+>           pytest.fail(f"{var}={value} no existe")
+E           Failed: F03_DATA_ROOT=/kaggle/input/datasets/santiagosoria26ss/tt2-insumos/TT/images_grayscale_classblind no existe
+
+tests/test_label_independence.py:117: Failed
+_____________________ test_C_reproduccion_desde_u[lorenz] ______________________
+
+tech = 'lorenz'
+sample = [('train', 14), ('train', 158), ('train', 764), ('train', 96), ('train', 345), ('train', 439), ...]
+U_y = (array([[0.1547944 , 0.56714785, 0.77009004, 0.7408322 , 0.7379866 ],
+       [0.22034164, 0.643991  , 0.8935148 , 0.75...7887989, 0.18718576, 0.066256  ]],
+      dtype=float32), array([0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1]))
+renders = <function renders.<locals>.get at 0x7e60e6b547c0>
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_reproduccion_desde_u(tech, sample, U_y, renders):
+>       root = _tech_dir(tech)
+               ^^^^^^^^^^^^^^^
+
+tests/test_label_independence.py:363: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_label_independence.py:162: in _tech_dir
+    root = _env_path("F03_DATA_ROOT") / STORED[tech][0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+var = 'F03_DATA_ROOT'
+
+    def _env_path(var):
+        """Ruta de la variable de entorno: sin definir → skip (fail con F03_STRICT=1);
+        inexistente → fail."""
+        value = os.environ.get(var)
+        if not value:
+            msg = f"Define {var} para correr esta prueba (ver docstring del módulo)"
+            if STRICT:
+                pytest.fail(f"F03_STRICT=1: {msg}")
+            pytest.skip(msg)
+        path = Path(value)
+        if not path.exists():
+>           pytest.fail(f"{var}={value} no existe")
+E           Failed: F03_DATA_ROOT=/kaggle/input/datasets/santiagosoria26ss/tt2-insumos/TT/images_grayscale_classblind no existe
+
+tests/test_label_independence.py:117: Failed
+___________________ test_C_reproduccion_desde_u[gray_scott] ____________________
+
+tech = 'gray_scott'
+sample = [('train', 14), ('train', 158), ('train', 764), ('train', 96), ('train', 345), ('train', 439), ...]
+U_y = (array([[0.1547944 , 0.56714785, 0.77009004, 0.7408322 , 0.7379866 ],
+       [0.22034164, 0.643991  , 0.8935148 , 0.75...7887989, 0.18718576, 0.066256  ]],
+      dtype=float32), array([0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1]))
+renders = <function renders.<locals>.get at 0x7e60e6b547c0>
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_reproduccion_desde_u(tech, sample, U_y, renders):
+>       root = _tech_dir(tech)
+               ^^^^^^^^^^^^^^^
+
+tests/test_label_independence.py:363: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_label_independence.py:162: in _tech_dir
+    root = _env_path("F03_DATA_ROOT") / STORED[tech][0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+var = 'F03_DATA_ROOT'
+
+    def _env_path(var):
+        """Ruta de la variable de entorno: sin definir → skip (fail con F03_STRICT=1);
+        inexistente → fail."""
+        value = os.environ.get(var)
+        if not value:
+            msg = f"Define {var} para correr esta prueba (ver docstring del módulo)"
+            if STRICT:
+                pytest.fail(f"F03_STRICT=1: {msg}")
+            pytest.skip(msg)
+        path = Path(value)
+        if not path.exists():
+>           pytest.fail(f"{var}={value} no existe")
+E           Failed: F03_DATA_ROOT=/kaggle/input/datasets/santiagosoria26ss/tt2-insumos/TT/images_grayscale_classblind no existe
+
+tests/test_label_independence.py:117: Failed
+=============================== warnings summary ===============================
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+  /usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+  /usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+  /usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+  /usr/local/lib/python3.13/dist-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+------------ generated xml file: /kaggle/working/f03/f03_junit.xml -------------
+============ 6 failed, 27 passed, 14 warnings in 1707.40s (0:28:27) ============

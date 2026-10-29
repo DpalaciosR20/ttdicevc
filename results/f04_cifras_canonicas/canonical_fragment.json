@@ -1,0 +1,467 @@
+{
+ "numbers": {
+  "floor.brightness.gray_scott.f1_macro": {
+   "decimals": 3,
+   "evaluator": "no documentado en la fuente (clasificador sobre brillo promedio)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "La fuente también da F1-train; no se registra (las métricas van en par val/test).",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§3.1, fila gray_scott",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.529,
+    "val": null
+   }
+  },
+  "floor.brightness.lorenz.f1_macro": {
+   "decimals": 3,
+   "evaluator": "no documentado en la fuente (clasificador sobre brillo promedio)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "La fuente también da F1-train; no se registra (las métricas van en par val/test).",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§3.1, fila lorenz",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.474,
+    "val": null
+   }
+  },
+  "floor.brightness.perlin.f1_macro": {
+   "decimals": 3,
+   "evaluator": "no documentado en la fuente (clasificador sobre brillo promedio)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "La fuente también da F1-train; no se registra (las métricas van en par val/test).",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§3.1, fila perlin",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.453,
+    "val": null
+   }
+  },
+  "ref.beto_exp41.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (Módulo 1, TT-I)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "BETO fine-tuneado con HPO (Exp 4.1), sin pesos de clase. Cifra a reconciliar con las predicciones de F2.2.",
+   "null_reason": {
+    "val": "no disponible en el repo (sin predicciones ni log de Exp 4.1)"
+   },
+   "source": {
+    "locator": "§5, Tabla comparativa final; §7",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "reportado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7586,
+    "val": null
+   },
+   "xfail": {
+    "reason": "F1-Macro 0.7586 no es alcanzable con los soportes de test 70/44: el valor alcanzable más cercano es 0.758985 (TP=36, TN=51), que redondea a 0.7590"
+   }
+  },
+  "ref.tfidf_lemma.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (línea base léxica de TT-I)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Mejor línea base léxica clásica: TF-IDF con lematización.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§3.2, Margen propuesto",
+    "path": "plan/plan_tt2_v2.md"
+   },
+   "status": "reportado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7004,
+    "val": null
+   }
+  },
+  "ref.umap5d.logreg_svm.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (camera-ready WITCOM)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Clasificador directo sobre los 5 componentes UMAP; test consultado antes del protocolo v2.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, Tabla comparativa final, fila LogReg / SVM (5D-UMAP directo)",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7246,
+    "val": null
+   }
+  },
+  "ref.umap5d.mlp.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (camera-ready WITCOM)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Clasificador directo sobre los 5 componentes UMAP; test consultado antes del protocolo v2.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, Tabla comparativa final, fila MLP (5D-UMAP directo)",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6933,
+    "val": null
+   }
+  },
+  "ref.umap5d.rf.f1_macro": {
+   "decimals": 4,
+   "evaluator": "no documentado en la fuente (camera-ready WITCOM)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Clasificador directo sobre los 5 componentes UMAP; test consultado antes del protocolo v2.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, Tabla comparativa final, fila RF (5D-UMAP directo)",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7304,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.f1_macro_mean": {
+   "decimals": 4,
+   "evaluator": "media de las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, «F1-Macro = 0.7142 ± 0.0095»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "reportado",
+   "summarizes": {
+    "of": [
+     "witcom.gs_resnet18.seed42.f1_macro",
+     "witcom.gs_resnet18.seed7.f1_macro",
+     "witcom.gs_resnet18.seed123.f1_macro",
+     "witcom.gs_resnet18.seed2024.f1_macro",
+     "witcom.gs_resnet18.seed99.f1_macro"
+    ],
+    "op": "mean"
+   },
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7142,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.f1_macro_std": {
+   "decimals": 4,
+   "evaluator": "desviación estándar de las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "0.0095 es la std poblacional (ddof=0). Con la convención de run_grid.py (ddof=1) sería 0.0107.",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, «F1-Macro = 0.7142 ± 0.0095»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "reportado",
+   "summarizes": {
+    "of": [
+     "witcom.gs_resnet18.seed42.f1_macro",
+     "witcom.gs_resnet18.seed7.f1_macro",
+     "witcom.gs_resnet18.seed123.f1_macro",
+     "witcom.gs_resnet18.seed2024.f1_macro",
+     "witcom.gs_resnet18.seed99.f1_macro"
+    ],
+    "op": "std_ddof0"
+   },
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0095,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed123.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 123",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7246,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed2024.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 2024",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6984,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed42.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 42",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7093,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed7.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 7",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7224,
+    "val": null
+   }
+  },
+  "witcom.gs_resnet18.seed99.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "no reportado en la fuente; no hay predicciones de val en el repo"
+   },
+   "source": {
+    "locator": "§5, tabla por semilla, seed 99",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7165,
+    "val": null
+   }
+  },
+  "witcom.hpo.gs_resnet18.frozen_lr1e_3.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «Frozen (solo capa final), lr=1e-3»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7564,
+    "val": 0.7121
+   }
+  },
+  "witcom.hpo.gs_resnet18.lr1e_3_ft.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «lr=1e-3, fine-tuning completo»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7179,
+    "val": 0.7078
+   }
+  },
+  "witcom.hpo.gs_resnet18.lr1e_4_ft.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «lr=1e-4, fine-tuning completo»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7032,
+    "val": 0.7223
+   }
+  },
+  "witcom.hpo.gs_resnet18.lr1e_4_wd1e_4_ft.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «lr=1e-4 + weight_decay=1e-4»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7264,
+    "val": 0.7162
+   }
+  },
+  "witcom.hpo.gs_resnet18.lr3e_5_ft.f1_macro": {
+   "decimals": 4,
+   "evaluator": "sklearn.metrics.f1_score(average='macro') (train_model.py del camera-ready, según §2.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Corrida individual de la comparación de hiperparámetros; no es la tabla de 5 semillas de §5.",
+   "source": {
+    "locator": "§4, fila «lr=3e-5, fine-tuning completo»",
+    "path": "docs/resumen_modulo3_camera_ready.md"
+   },
+   "status": "exploratorio",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7512,
+    "val": 0.7449
+   }
+  }
+ },
+ "schema_version": "1.0"
+}

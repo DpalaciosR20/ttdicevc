@@ -40,3 +40,4 @@ tokenizers==0.23.3
 
 # Pruebas
 pytest==8.4.2
+jsonschema==4.26.0    # valida results/canonical_numbers.json (F0.4); version local, no verificada en Kaggle
