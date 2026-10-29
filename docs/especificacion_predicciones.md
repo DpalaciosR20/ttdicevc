@@ -1,6 +1,6 @@
 # Especificación del formato de predicciones por muestra (F1.5)
 
-> Tarea F1.5 del plan v2 · Rol: SV · Estado: **borrador, pendiente de aprobación de CE**
+> Tarea F1.5 del plan v2 · Rol: SV · Estado: **aprobada por CE** ([completar: fecha de aprobación])
 > Desarrolla la regla 9 del proyecto. Insumos y rutas: `docs/datos.md`.
 
 ## 1. Propósito
