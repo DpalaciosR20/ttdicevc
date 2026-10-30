@@ -1,6 +1,6 @@
 # Referencias textuales: BETO (Exp 4.1) y clasificador sobre 768D (F2.2)
 
-> Tarea F2.2 del plan v2 · Rol: SV · Estado: **criterio fijado; resultados pendientes**
+> Tarea F2.2 del plan v2 · Rol: SV · Estado: **ejecutada** (29-oct-2026; preregistro `228ee85`)
 > Las secciones 1 a 5 se versionan con commit propio **antes** de ejecutar. Las secciones 6 y 7 se completan después.
 > Insumos y rutas: `docs/datos.md`. Formato de salida: `docs/especificacion_predicciones.md`.
 
@@ -50,8 +50,78 @@ La tarea resuelve además dos pendientes previos al congelamiento del protocolo 
 
 ## 6. Resultados
 
-[completar: V1–V4; selección de C; métricas de validación de ambos modelos; métricas de prueba de BETO frente a las reportadas]
+Ejecución en CPU (Windows 11, `.venv` local; versiones en `results/f22_referencias_textuales/README.md`). Salidas en `results/f22_referencias_textuales/` y `results/predictions/referencia/`.
+
+### 6.1 Desviaciones declaradas
+
+1. **Checkpoint de `CKPT_41`.** Con el `checkpoint-342` que había en `exp_4_1_final/` al preregistrar, V3 falló: coseno [CLS] medio de 0.67 y 0/1,136 filas ≥ 0.9999. Ninguna de 18 variantes de extracción (pooler, pooling medio, modo train, modelo base, padding) reprodujo `EMB_41` (`results/f22_referencias_textuales/diagnostico_v3/`). El historial del repositorio de TT-I muestra lo siguiente:
+   - el notebook 3 se reentrenó con el mismo código, los mismos hiperparámetros, la misma semilla y la misma ruta el 10 de marzo (commit `6265aae`, F1-Val 0.7328) y el 11 de marzo (commit `effff4a`, F1-Val 0.7199);
+   - el checkpoint de Drive era el del 10 de marzo;
+   - `EMB_41` (SHA-256 `64b7682e…`, commit `6cfc1ce`) es el del 11 de marzo.
+
+   Se localizó el checkpoint del 11 de marzo y se colocó en `exp_4_1_final/checkpoint-342` (`model.safetensors` `c4f35147…`). `meta/data_manifest.csv` se regeneró (commit `b14b4b9`) y solo cambian las filas de `CKPT_41`. Todo lo que sigue usa ese checkpoint. La regla de §2 no cambia, solo el artefacto que la cumple.
+2. **V3, empate entre textos idénticos.** `train_0532` y `train_0584` tienen el mismo texto (mismo `text_sha256`; `id` 1116 y 1050, ambos con etiqueta 1). Sus embeddings son idénticos, y `argmax` asigna a `train_0584` el vecino `train_0532`. Se registra como empate, no como fallo del criterio, que no se editó; `f22_beto.check_v3` lo reporta aparte (commit `1e67498`). La duplicación es un hallazgo del corpus: no cruza splits, así que no afecta los contrastes.
+3. **V2.** La referencia es el `eval_f1_macro` de la época 3 en `trainer_state.json`, como dice el criterio. Con el checkpoint correcto vale 0.7199, igual que la cifra entre paréntesis; con el checkpoint anterior valía 0.7328.
+4. **Lectura exacta de `p_dep`.** `pd.to_numeric` y el lector por defecto de `read_csv` se desvían 1 ulp en 117 de los 228 valores de BETO. `src/predictions/validate.py` ahora lee `p_dep` con `float()`, de ida y vuelta exacta (commit `fa50f96`, con prueba). No afecta la regla de decisión: el `p_dep` de BETO más cercano a 0.5 está a 0.0038.
+
+### 6.2 Verificaciones
+
+| # | Resultado | Detalle |
+|---|---|---|
+| V1 | **Se cumple** | `BertForSequenceClassification`, `id2label` = {0: `no_depresivo`, 1: `depresivo`}, `best_model_checkpoint` termina en `checkpoint-342`, `best_metric` = 0.7199476 |
+| V2 | **Se cumple** | F1-Val recalculado (CPU, fp32) = 0.7199476 = `eval_f1_macro` de la época 3 (fp16), sin diferencia en ningún decimal |
+| V3 | **Se cumple** (desviación 6.1.2) | Coseno mínimo 0.99999999999752 en las 1,136 filas (\|Δ\| máx 2.4 × 10⁻⁵). Vecino más cercano = propia fila en 1,135 filas, más el empate `train_0584` ↔ `train_0532` |
+| V4 | **Se cumple** | `python -m src.predictions.validate "results/predictions/referencia/*.csv"` → 2/2 archivos válidos |
+
+La alineación previa también se cumple: la fila *i* de cada CSV coincide con el índice maestro en `id`, `text_sha256` y `y_true`, y las etiquetas de `EMB_41` coinciden con el índice en los tres splits.
+
+### 6.3 Selección de C (LogReg sobre 768D)
+
+| log₁₀ C | −4 | **−3.5** | −3 | −2.5 | −2 | −1.5 | −1 | −0.5 | 0 | 0.5 | 1 | 1.5 | 2 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| F1-Val | 0.6874 | **0.7305** | 0.6854 | 0.6484 | 0.6669 | 0.6530 | 0.6453 | 0.6376 | 0.6484 | 0.6406 | 0.6299 | 0.6299 | 0.6222 |
+
+C = 10⁻³·⁵ ≈ 3.16 × 10⁻⁴, sin empate. La curva es irregular y el máximo es un punto aislado cerca del extremo regularizado de la rejilla, por lo que el F1-Val de este modelo es una cifra frágil con n = 114. Tabla completa en `results/f22_referencias_textuales/seleccion_C.csv`.
+
+### 6.4 Métricas de validación
+
+| Modelo | F1-Macro | Exactitud | [[TN, FP], [FN, TP]] | Tasa de FN |
+|---|---|---|---|---|
+| BETO (cabeza de clasificación, Exp 4.1) | 0.7199 | 0.7368 | [[56, 14], [16, 28]] | 0.364 |
+| LogReg sobre 768D (C ≈ 3.16 × 10⁻⁴) | 0.7305 | 0.7456 | [[56, 14], [15, 29]] | 0.341 |
+
+### 6.5 Métricas de prueba de BETO (excepción de §4)
+
+| | F1-Macro | Exactitud | [[TN, FP], [FN, TP]] | Tasa de FN |
+|---|---|---|---|---|
+| **Recalculado** (checkpoint del 11 de marzo) | **0.7039** | 0.7193 | [[54, 16], [16, 28]] | 0.364 |
+| Reportado en TT-I | 0.7586 | — | [[57, 13], [13, 31]] (implica 0.7594) | — |
+
+**No coincide: el F1-Test de BETO es 0.7039, 0.0547 por debajo de lo reportado.** La matriz reportada tampoco corresponde a este modelo. Rastreo de la cifra reportada en el repositorio de TT-I:
+- 0.7586 aparece escrito a mano en `5_reduccion_dimensionalidad.ipynb` (`f1_val_orig, f1_te_orig = 0.6886, 0.7586`), etiquetado como F1-Test de un LogReg proxy (`class_weight='balanced'`, `liblinear`) sobre los embeddings de 768D, no de la cabeza de BETO.
+- Ese proxy sobre `EMB_41` da un F1-Val de 0.6484, no 0.6886, así que tampoco proviene de `EMB_41` (solo se calculó el F1-Val del proxy). El PKL anterior (3 de marzo) no tiene `X_val`.
+- La matriz [[57, 13], [13, 31]] no aparece en el historial.
+
+La procedencia de ambas cifras queda **sin resolver**. Lo verificable es que el modelo que generó `EMB_41`, y por lo tanto `u` y las imágenes, tiene F1-Test 0.7039 con su cabeza de clasificación.
+
+Las predicciones de prueba del LogReg sobre 768D se archivaron sin calcular métricas (§4).
+
+### 6.6 Otros hallazgos
+
+- Al correr la batería completa en esta `.venv` de Windows, `test_C_reproduccion_desde_u[perlin]` y `[lorenz]` (capa C de F0.3) fallan: las imágenes almacenadas no se reproducen bit a bit en este entorno. En el entorno de referencia de F0.3 (Kaggle) sí se reprodujeron (`docs/bitacora/F0.3.md`). F2.2 no modifica `src/generation/` ni las imágenes, cuyos SHA-256 no cambiaron. Queda como pendiente de entorno, fuera del alcance de esta tarea.
 
 ## 7. Cifras canónicas actualizadas
 
-[completar: entradas sustituidas o añadidas, valor anterior y nuevo, y δ resultante]
+Fragmento `results/f22_referencias_textuales/canonical_fragment.json`, generado por `f22_fragment.py` desde los CSV de predicciones. `results/canonical_numbers.json` se reconstruyó con `CANON_STRICT=1`. Para la sustitución y las diferencias se añadieron a `src/canonical/build.py` el campo `supersedes` y la derivación `diff` (commit `c586a02`).
+
+| Id | Estado | Antes | Ahora |
+|---|---|---|---|
+| `ref.beto_exp41.f1_macro` | reportado → **verificado** (`trainer_head`); sustituye a la entrada de F0.4 | val —, test 0.7586 | val **0.7199**, test **0.7039**, con matrices de confusión |
+| `ref.emb768_logreg.f1_macro` | nueva, **verificado** (`logreg_on_embeddings`) | — | val **0.7305**; test bloqueado hasta la Fase 5 |
+| `ref.delta_ni.f1_macro` (δ) | nueva, derivada (`diff`), estado reportado | 0.058 (plan v2 §3.2) | test **0.0035** = 0.7039 − 0.7004 |
+| `witcom.delta_beto_gs_resnet18.f1_macro` | nueva, derivada (`diff`), estado reportado | 0.0444 (= 0.7586 − 0.7142) | test **−0.0103** = 0.7039 − 0.7142 |
+
+- **xfail.** La entrada reportada (0.7586, marcada xfail por ser inalcanzable con soportes 70/44) salió de `numbers` y se conserva intacta en `superseded`. Su caso xfail desaparece; no pasa a aprobarse. La entrada nueva no lleva marca. El fragmento de F0.4 no se editó.
+- **δ cambia de 0.058 a 0.0035.** Según §5.3, este valor queda registrado antes de F1.2 y el protocolo se redacta con él. Con un margen de 0.0035, la prueba de no inferioridad pierde la lectura del plan («el clasificador visual pierde menos de lo que separa a un Transformer de un modelo léxico»): BETO y TF-IDF lematizado quedan prácticamente empatados en prueba. Hay que tratarlo en F1.2 antes de congelar el protocolo.
+- **Δ exploratorio de WITCOM.** Pasa de 0.0444 a −0.0103: en prueba, Gray-Scott + ResNet-18 (0.7142, media de 5 semillas) queda por encima de la cabeza de BETO (0.7039, un solo modelo). Sigue siendo exploratorio, porque el test de WITCOM se consultó antes del protocolo.
+- **Comparación bajo el mismo evaluador.** En validación, el LogReg sobre 768D (0.7305) supera a la cabeza de BETO (0.7199); su F1-Test se calcula en la Fase 5.

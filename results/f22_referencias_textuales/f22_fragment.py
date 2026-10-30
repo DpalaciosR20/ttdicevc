@@ -22,12 +22,14 @@ import json
 import pandas as pd
 
 from common import OUT_DIR, paths
-from src.canonical.build import SCHEMA_VERSION, confusion_counts, f1_macro_from_confusion, validate
+from src.canonical.build import (SCHEMA_VERSION, confusion_counts, f1_macro_from_confusion,
+                                 resolve_derived, validate)
 from src.predictions.validate import validate_predictions
 
 PRED = 'results/predictions/referencia'
 BETO_CSV = f'{PRED}/text__beto__finetune__seed42.csv'
 LOGREG_CSV = f'{PRED}/emb768__logreg__none__seed42.csv'
+F04_FRAGMENT = 'results/f04_cifras_canonicas/canonical_fragment.json'
 SUPPORTS = {'val': 'support.val', 'test': 'support.test'}
 DECISION = 'y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average=\'macro\'))'
 
@@ -82,6 +84,17 @@ def main():
             'depends_on': ['ref.beto_exp41.f1_macro', 'witcom.gs_resnet18.f1_macro_mean'], 'derivation': 'diff',
         },
     }
+    # Las derivadas de un fragmento declaran value/status/null_reason; build.py verifica
+    # que coincidan con lo que calcula. Se calculan aquí con el mismo resolve_derived
+    deps = json.loads((paths.REPO / F04_FRAGMENT).read_text(encoding='utf-8'))['numbers']
+    pool = {k: json.loads(json.dumps(v)) for k, v in numbers.items()}
+    pool.update({k: json.loads(json.dumps(deps[k])) for k in ('ref.tfidf_lemma.f1_macro',
+                                                              'witcom.gs_resnet18.f1_macro_mean')})
+    resolve_derived(pool)
+    for k, e in numbers.items():
+        if 'depends_on' in e:
+            e.update({f: pool[k][f] for f in ('value', 'status', 'null_reason') if f in pool[k]})
+
     frag = {'schema_version': SCHEMA_VERSION, 'numbers': numbers}
     validate(frag, fragment=True)
     out = OUT_DIR / 'canonical_fragment.json'
@@ -89,6 +102,8 @@ def main():
                    encoding='utf-8', newline='\n')
     print(f'escrito {out.relative_to(paths.REPO).as_posix()}')
     print(f'  BETO F1 val {beto_v["val"]:.6f} test {beto_v["test"]:.6f}; LogReg-768D F1 val {lr_v["val"]:.6f}')
+    for k in ('ref.delta_ni.f1_macro', 'witcom.delta_beto_gs_resnet18.f1_macro'):
+        print(f'  {k}: {numbers[k]["value"]} ({numbers[k]["status"]})')
 
 
 if __name__ == '__main__':
