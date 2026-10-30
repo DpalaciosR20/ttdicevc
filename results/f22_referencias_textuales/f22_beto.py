@@ -111,19 +111,29 @@ def check_v3(ckpt, texts, emb, index, log):
         cos = np.diag(sim)
         nearest = sim.argmax(axis=1)
         rank = (sim > cos[:, None]).sum(axis=1)  # filas de EMB_41 más parecidas que la propia
+        is_self = nearest == np.arange(len(cos))
+        # Desviación declarada (§6): si el vecino es otra fila con el mismo texto (sha256),
+        # sus embeddings son idénticos y el empate de argmax no indica permutación
+        text_sha = index[s]['text_sha256'].values
+        dup_tie = ~is_self & (text_sha[nearest] == text_sha) & (rank == 0)
         n_cos = int((cos < V3_COS_MIN).sum())
-        n_nn = int((nearest != np.arange(len(cos))).sum())
+        n_nn = int((~is_self & ~dup_tie).sum())
         ok &= n_cos == 0 and n_nn == 0
         log(f'V3 {s}: {len(cos)} filas, coseno mín {cos.min():.8f}, filas con coseno < {V3_COS_MIN}: {n_cos}, '
-            f'vecino más cercano ≠ propia fila: {n_nn}  ({time.time() - t0:.0f} s)')
+            f'vecino más cercano ≠ propia fila: {n_nn} (+ {int(dup_tie.sum())} empates con un texto idéntico)  '
+            f'({time.time() - t0:.0f} s)')
+        for i in np.flatnonzero(dup_tie):
+            log(f'  empate declarado: {index[s]["sample_id"][i]} ↔ {index[s]["sample_id"][nearest[i]]} '
+                f'(mismo text_sha256)')
         rows.append(pd.DataFrame({'sample_id': index[s]['sample_id'], 'split': s, 'cosine': cos,
-                                  'nearest_is_self': nearest == np.arange(len(cos)),
+                                  'nearest_is_self': is_self, 'nearest_same_text': dup_tie,
                                   'rank_of_self': rank}))
     detail = pd.concat(rows, ignore_index=True)
     detail.to_csv(OUT_DIR / 'v3_embeddings.csv', index=False, lineterminator='\n')
     summary = {'ok': bool(ok), 'cos_min': float(detail['cosine'].min()),
                'n_cos_below': int((detail['cosine'] < V3_COS_MIN).sum()),
-               'n_nearest_not_self': int((~detail['nearest_is_self']).sum()), 'n_rows': len(detail)}
+               'n_nearest_not_self': int((~detail['nearest_is_self'] & ~detail['nearest_same_text']).sum()),
+               'n_ties_identical_text': int(detail['nearest_same_text'].sum()), 'n_rows': len(detail)}
     log(f'V3: {"OK" if ok else "FALLA"}  {summary}')
     if not ok:
         raise Stop('V3 no se cumple: la correspondencia corpus ↔ embeddings queda en duda')
