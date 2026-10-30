@@ -242,7 +242,7 @@ def main():
     pred_inputs = {k: v for k, v in inputs.items() if k != paths.REL['CSV']['train']}
     csv_path = write_predictions(df, fase=FASE, task_id=TASK_ID, config=config, inputs=pred_inputs,
                                  model_selection=selection)
-    back = pd.read_csv(csv_path)
+    back = pd.read_csv(csv_path, float_precision='round_trip')  # el lector por defecto se desvía 1 ulp
     if not np.array_equal(back['p_dep'].values, df['p_dep'].values):
         raise RuntimeError('p_dep no hace ida y vuelta exacta por el CSV')
     log(f'  escrito {csv_path.relative_to(paths.REPO).as_posix()} ({len(df)} filas)')

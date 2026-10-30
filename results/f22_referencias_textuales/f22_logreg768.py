@@ -104,7 +104,7 @@ def main():
                  'C': C_star, 'f1_val': best_f1, 'tabla': 'results/f22_referencias_textuales/seleccion_C.csv'}
     csv_path = write_predictions(df, fase=FASE, task_id=TASK_ID, config=config, inputs=inputs,
                                  model_selection=selection)
-    back = pd.read_csv(csv_path)
+    back = pd.read_csv(csv_path, float_precision='round_trip')  # el lector por defecto se desvía 1 ulp
     if not np.array_equal(back['p_dep'].values, df['p_dep'].values):
         raise RuntimeError('p_dep no hace ida y vuelta exacta por el CSV')
     log(f'\n  escrito {csv_path.relative_to(paths.REPO).as_posix()} ({len(df)} filas; test archivado, '

@@ -85,6 +85,16 @@ def test_valid_file_passes(tmp_path):
     assert df['p_dep'].iloc[0] == 0.123456789012345  # sin redondear
 
 
+def test_p_dep_ida_y_vuelta_exacta(tmp_path):
+    """p_dep se lee bit a bit como se escribió (pd.to_numeric se desvía 1 ulp en algunos valores)."""
+    df = make_rows(('val',))
+    p = pd.Series(range(len(df))).map(lambda i: [0.6986156702041626, 0.10000000000000002,
+                                                 0.30000000000000004, 0.7199475925319359][i % 4])
+    df['p_dep'] = p.astype('float64')
+    out = validate_predictions(write(tmp_path, df), index=INDEX, tag_exists=TAG_NO)
+    assert (out['p_dep'].values == df['p_dep'].values).all()
+
+
 def test_valid_baseline_vocab(tmp_path):
     df = make_rows(('val',), technique='umap5d', arch='svm_rbf', strategy='none', seed=0)
     validate_predictions(write(tmp_path, df), index=INDEX, tag_exists=TAG_NO)
