@@ -20,7 +20,10 @@ Toda cifra del documento de TT-II se toma de ese archivo. Cada entrada lleva:
 Orígenes de las entradas:
   1. Colectores en código (este archivo): conteos estructurales y F3.2.
   2. Fragmentos results/<tarea>/canonical_fragment.json, uno por tarea, con las
-     cifras transcritas. Una clave repetida entre orígenes es un error.
+     cifras transcritas. Una clave repetida entre orígenes es un error, salvo
+     sustitución explícita: la entrada que declara supersedes=<id> reemplaza a
+     la entrada <id> (con la misma clave o con otra); la sustituida se conserva
+     intacta en la sección superseded del archivo.
 
 Uso (desde la raíz del repo):
     CANON_UMAP_PARAMS=<umap_params.pkl> python -m src.canonical.build          # escribe
@@ -111,6 +114,10 @@ def derive(op, values):
         return float(np.mean(values))
     if op == 'std_ddof1':  # misma convención que run_grid.py (summary_by_config.csv)
         return float(np.std(values, ddof=1))
+    if op == 'diff':  # a − b, en el orden de depends_on
+        if len(values) != 2:
+            raise CanonicalError(f'diff exige exactamente dos dependencias (hay {len(values)})')
+        return values[0] - values[1]
     raise CanonicalError(f'derivación desconocida: {op}')
 
 
@@ -288,14 +295,55 @@ def load_fragments(paths, inputs):
 
 
 def merge(sources):
-    """sources: {origen: {id: entrada}} → {id: entrada}. Clave repetida → error."""
-    merged, origin = {}, {}
+    """sources: {origen: {id: entrada}} → (numbers, superseded).
+
+    Una clave repetida es un error, salvo que exactamente una de las dos
+    entradas declare supersedes con esa misma clave: esa gana, sin importar el
+    orden de los orígenes. Una entrada con supersedes=<otro id> retira esa otra
+    entrada. La sustituida va intacta a superseded[id] = {by, origin, entry}.
+    Error si el objetivo no existe o si dos entradas sustituyen al mismo id."""
+    by_id = defaultdict(list)
     for name, numbers in sources.items():
         for nid, entry in numbers.items():
-            if nid in merged:
-                raise CanonicalError(f'clave duplicada {nid!r}: aparece en {origin[nid]} y en {name}')
-            merged[nid], origin[nid] = entry, name
-    return merged
+            by_id[nid].append((name, entry))
+
+    merged, origin, superseded = {}, {}, {}
+    for nid, items in by_id.items():
+        if len(items) == 1:
+            origin[nid], merged[nid] = items[0]
+            continue
+        claim = [(n, e) for n, e in items if e.get('supersedes') == nid]
+        if len(items) != 2 or len(claim) != 1:
+            names = ' y en '.join(n for n, _ in items)
+            extra = '; más de una entrada la sustituye' if len(claim) > 1 else ''
+            raise CanonicalError(f'clave duplicada {nid!r}: aparece en {names}{extra}')
+        (win_name, win), = claim
+        (old_name, old), = [(n, e) for n, e in items if e is not win]
+        merged[nid], origin[nid] = win, win_name
+        superseded[nid] = {'by': f'{win_name}:{nid}', 'origin': old_name, 'entry': old}
+
+    targets = {}  # id sustituido → id que lo sustituye
+    for nid in sorted(merged):
+        target = merged[nid].get('supersedes')
+        if target is None:
+            continue
+        if target in targets:
+            raise CanonicalError(f'{target!r} sustituida dos veces: por {targets[target]!r} y por {nid!r}')
+        targets[target] = nid
+        if target == nid:
+            if nid not in superseded:
+                raise CanonicalError(f'{nid}: supersedes apunta a {target!r}, que no existe en otro origen')
+            continue
+        if target in superseded:
+            raise CanonicalError(f'{target!r} sustituida dos veces')
+        if target not in merged:
+            raise CanonicalError(f'{nid}: supersedes apunta a {target!r}, que no existe')
+        superseded[target] = {'by': f'{origin[nid]}:{nid}', 'origin': origin[target],
+                              'entry': merged[target]}
+    for target, nid in targets.items():
+        if target != nid:
+            del merged[target]
+    return merged, superseded
 
 
 def resolve_derived(numbers):
@@ -325,6 +373,8 @@ def resolve_derived(numbers):
 def _compute(nid, e, deps):
     if any(d['kind'] != e['kind'] for d in deps):
         raise CanonicalError(f'{nid}: mezcla de kinds en depends_on')
+    if e['derivation'] == 'diff' and len(deps) != 2:
+        raise CanonicalError(f'{nid}: diff exige exactamente dos dependencias (hay {len(deps)})')
     if e['kind'] == 'count':
         value = derive(e['derivation'], [d['value'] for d in deps])
         null_reason = None
@@ -332,7 +382,12 @@ def _compute(nid, e, deps):
         value, null_reason = {}, {}
         for s in METRIC_SPLITS:
             vals = [d['value'][s] for d in deps]
-            if all(v is None for v in vals):
+            if e['derivation'] == 'diff' and any(v is None for v in vals):
+                # Una diferencia con un término ausente no existe: el split queda nulo
+                value[s] = None
+                missing = [i for i, v in zip(e['depends_on'], vals) if v is None]
+                null_reason[s] = f'diferencia sin término en este split ({", ".join(missing)} es nulo)'
+            elif all(v is None for v in vals):
                 value[s] = None
                 reasons = {d['null_reason'][s] for d in deps}
                 null_reason[s] = reasons.pop() if len(reasons) == 1 else 'dependencias nulas en este split'
@@ -365,9 +420,11 @@ def build(umap_path=None, fragment_paths=None, strict=False):
     sources = {'build.py:collect_structural': collect_structural(umap_path, predictions, inputs),
                'build.py:collect_f32': collect_f32(predictions, inputs)}
     sources.update(load_fragments(fragment_paths, inputs))
-    numbers = merge(sources)
+    numbers, superseded = merge(sources)
     resolve_derived(numbers)
     doc = {'schema_version': SCHEMA_VERSION, 'inputs': inputs, 'numbers': numbers}
+    if superseded:
+        doc['superseded'] = superseded
     validate(doc)
     return doc
 
