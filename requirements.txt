@@ -10,6 +10,7 @@
 # Modelos (Modulo 3)
 torch==2.11.0
 torchvision==0.26.0
+# Local (Windows, CPU; F1.4): torch 2.11.0+cpu y torchvision 0.26.0+cpu desde el indice cpu de arriba
 timm==1.0.29          # plan v2 lo menciona como alternativa para ViT; el codigo actual usa torchvision
 
 # Numerico / metricas / estadistica
@@ -37,6 +38,12 @@ joblib==1.6.0
 # Version instalada en el entorno local; [completar: verificar la version de Kaggle]
 transformers==5.21.0
 tokenizers==0.23.3
+
+# Notebooks (F1.4: figuras, jupyter nbconvert --execute); versiones locales, no verificadas en Kaggle
+nbconvert==7.17.2
+nbclient==0.11.0
+nbformat==5.11.1
+ipykernel==7.4.0
 
 # Pruebas
 pytest==8.4.2
