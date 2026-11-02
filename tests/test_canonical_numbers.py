@@ -10,7 +10,9 @@ Determinismo     Dos builds seguidos dan los mismos bytes; con umap_params.pkl,
                  el build coincide con el archivo commiteado.
 Alcanzabilidad   Cada F1-Macro (no derivado) es alcanzable con una matriz de
                  confusión entera con los soportes reales del split; exacto si es
-                 verificado, al redondeo de sus decimales si es transcrito.
+                 verificado, al redondeo de sus decimales si es transcrito. Se
+                 eximen las cifras de diseño (DESIGN_PREFIXES: márgenes y F1
+                 mínimos detectables de F1.1), que no son F1 observados.
 Confusión        El F1 recalculado de cada matriz es el valor guardado y la matriz
                  suma los soportes del split.
 Estructura       908 + 114 + 114 = 1,136; soportes por clase coherentes; 54 corridas
@@ -71,6 +73,10 @@ def supports(entry, split):
     return NUMBERS[f'{prefix}.label1']['value'], NUMBERS[f'{prefix}.label0']['value']
 
 
+# Cifras de diseño en escala de F1 que no provienen de una matriz de confusión
+DESIGN_PREFIXES = ('f11.',)
+
+
 def is_leaf_metric(entry):
     return entry['kind'] == 'metric' and 'depends_on' not in entry and 'summarizes' not in entry
 
@@ -79,7 +85,7 @@ def leaf_cases():
     """(id, split) de cada F1 no derivado y no nulo; xfail si la entrada lo declara."""
     cases = []
     for nid, e in sorted(NUMBERS.items()):
-        if not is_leaf_metric(e):
+        if not is_leaf_metric(e) or nid.startswith(DESIGN_PREFIXES):
             continue
         for s in canon.METRIC_SPLITS:
             if e['value'][s] is None:
