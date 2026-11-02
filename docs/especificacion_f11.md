@@ -165,7 +165,7 @@ Estas cifras están en escala de F1 pero no provienen de una matriz de confusió
 ### 7.6 Limitaciones
 
 1. La discordancia y la DE se calibran con predicciones de validación de la primera pasada v0. Esas predicciones tienen 3 semillas (no 5), un preprocesamiento sustituido en Perlin y Lorenz y `p_dep` redondeado. Se suponen trasladables a prueba y a los finalistas.
-2. El generador supone que los errores visuales no compartidos con BETO son independientes entre muestras dentro de cada clase y que las tres técnicas son independientes entre sí condicionadas a BETO. Las técnicas reales comparten los mismos 5 valores UMAP, por lo que probablemente estén correlacionadas; eso afecta la potencia conjunta bajo Holm, no la marginal.
+2. El generador supone que los errores visuales no compartidos con BETO son independientes entre muestras dentro de cada clase y que las tres técnicas son independientes entre sí condicionadas a BETO. Las técnicas reales comparten los mismos 5 valores UMAP, por lo que probablemente estén correlacionadas. Esto afecta la **estimación de la potencia**, pero no la **validez** del contraste: Holm controla la tasa de error por familia ante cualquier dependencia entre técnicas.
 3. El F1 objetivo se fija sobre el valor esperado de una semilla. La retención realizada (media de 5 semillas) coincide con la objetivo con un error menor a 0.01 (`potencia.log`).
 4. El nulo desplazado del piso es una aproximación de corrimiento, porque el piso de 0.529 es una cifra exploratoria de WITCOM sin predicciones por muestra.
 
