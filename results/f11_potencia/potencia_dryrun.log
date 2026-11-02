@@ -1,0 +1,21 @@
+F1.1 — análisis de potencia (dry-run)
+Inicio: 2026-11-02 13:26:14 -0600; commit af6abc9f7c778622eddc6292db43bf71ea71aaf5
+Entorno: Python 3.13.2 · numpy 2.1.3 · scipy 1.16.3 · pandas 2.3.3 · scikit-learn 1.6.1 · Windows-11-10.0.26200-SP0 · Intel64 Family 6 Model 140 Stepping 1, GenuineIntel · 8 núcleos · CPU · jobs=1
+Parámetros: semilla maestra 2026; α = 0.05; r ∈ (0.5, 0.75, 0.8); ρ ∈ (0.25, 0.5, 0.75, 0.9, 1.0, 1.1); discordancia p(10, 50, 90); DE ∈ (0.005, 0.01, 0.015); B_E = 10000; B_S = 2000; sims = 1000; permutaciones = 10000
+canonical_numbers.json: F1_BETO test = 0.7038961038961039, val = 0.7199475925319359; piso = 0.529 (floor.brightness.gray_scott.f1_macro); Δ WITCOM = -0.010303896103896037
+Insumos: y_val [70, 44], y_test [70, 44] (0/1); 54 corridas de F3.2 (solo val)
+  sha256 meta/sample_index.csv  74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5
+  sha256 results/predictions/referencia/text__beto__finetune__seed42.csv  3d3587469545e592e39fa62d3b00b0acd52889bfe21dceb0a5c2816a28f7916e
+  sha256 results/predictions/referencia/emb768__logreg__none__seed42.csv  b8c3d471a860b943df962fa8e4652d2ff400e3fcbcf6b9af2e84871091cb778a
+  sha256 results/f32_primera_pasada/predictions.csv  448b457f37921ab5549218fb870de1642820305fce0df317ab5d212f2ba515ed
+  sha256 results/canonical_numbers.json  f94c37f677dc89f262fc366d75784d77b2a83c3e09d25552b1163e0b411bf660
+δ(r) = (1 − r)(F1_BETO − 0.5): r=0.50: 0.1019, r=0.75: 0.0510, r=0.80: 0.0408
+Verificación F1 vectorizado vs sklearn: 100 réplicas × 6 columnas, máx |dif| = 0.000e+00
+E: F1-val recalculado de las 54 corridas vs canonical_numbers.json, máx |dif| = 0.000e+00
+E: discordancia BETO–visual (54 corridas): p10 = 0.0877, p50 = 0.1140, p90 = 0.1404; LogReg-768D = 0.0088
+E: DE entre semillas (18 configs, ddof=1): min 0.0021, mediana 0.0136, max 0.0254
+E: ancho del IC de Δ (18 configs): α_h=0.0167: mediana 0.1294 [0.1111, 0.1464]; α_h=0.0250: mediana 0.1194 [0.1025, 0.1337]; α_h=0.0500: mediana 0.1000 [0.0866, 0.1121]
+E: 0.2 s (B = 10000)
+Dry-run: escenario ρ=1.00, p50, DE 0.010 → a = 0.7114, η = 0.0000, κ = 0.7851; calibración 1.2 s; 20 réplicas en 0.95 s (47.4 ms/réplica)
+Estimación: E 0 s + 54 escenarios × (1.2 s calibración + 1000 × 47.4 ms) = 43.7 min en 1 proceso (factor de extrapolación 50× en réplicas, 54× en escenarios)
+Duración del dry-run: 5.6 s
