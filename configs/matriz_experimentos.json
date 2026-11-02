@@ -1,0 +1,172 @@
+{
+  "_fuente": "docs/matriz_experimentos.md (F1.3). No editar sin actualizar ese documento: tests/test_matriz_experimentos.py verifica que coinciden.",
+  "_vocabulario": "Nombres de docs/especificacion_predicciones.md §3.2 (src/predictions/schema.py): vit_b16, no vit_b_16.",
+  "factores": {
+    "technique": ["perlin", "gray_scott", "lorenz"],
+    "arch": ["resnet18", "efficientnet_b0", "vit_b16"],
+    "strategy": ["frozen", "finetune"],
+    "preprocesamiento": {
+      "_fuente": "configs/preprocesamiento.json (F1.4)",
+      "perlin": "px224-noflip",
+      "gray_scott": "px224-flip",
+      "lorenz": "px224-noflip"
+    }
+  },
+  "parametros": {
+    "_fuente": "results/f13_matriz/reconocimiento_ce.md, bloque A (instanciados en CPU con weights=None)",
+    "resnet18": {
+      "frozen": {"trainable": 1026, "total": 11177538},
+      "finetune": {"trainable": 11177538, "total": 11177538}
+    },
+    "efficientnet_b0": {
+      "frozen": {"trainable": 2562, "total": 4010110},
+      "finetune": {"trainable": 4010110, "total": 4010110}
+    },
+    "vit_b16": {
+      "frozen": {"trainable": 1538, "total": 85800194},
+      "finetune": {"trainable": 85800194, "total": 85800194}
+    }
+  },
+  "configuracion_comun": {
+    "weights": {
+      "resnet18": "ResNet18_Weights.IMAGENET1K_V1",
+      "efficientnet_b0": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+      "vit_b16": "ViT_B_16_Weights.IMAGENET1K_V1"
+    },
+    "input": {
+      "channels": "grayscale_replicated_3",
+      "normalization": "imagenet",
+      "mean": [0.485, 0.456, 0.406],
+      "std": [0.229, 0.224, 0.225],
+      "size_and_flip": "configs/preprocesamiento.json"
+    },
+    "head": {
+      "type": "linear",
+      "out_features": 2,
+      "replaces": {"resnet18": "fc", "efficientnet_b0": "classifier[-1]", "vit_b16": "heads.head"},
+      "in_features": {"resnet18": 512, "efficientnet_b0": 1280, "vit_b16": 768}
+    },
+    "frozen_mode": "backbone_eval_head_train",
+    "optimizer": {"name": "AdamW", "betas": "default", "eps": "default", "scheduler": null},
+    "lr": {"finetune": 3e-05, "frozen": 0.001},
+    "weight_decay": 0.0,
+    "batch_size": 32,
+    "max_epochs": 15,
+    "early_stopping": {
+      "metric": "f1_macro",
+      "split": "val",
+      "prediction": "argmax_logits",
+      "improvement": "strict",
+      "patience": 4,
+      "restore_best": true
+    },
+    "loss": {"name": "CrossEntropyLoss", "class_weights": "n / (2 * n_c)", "class_weights_split": "train"},
+    "precision": "fp32",
+    "amp": false,
+    "num_workers": 2,
+    "determinism": {
+      "cudnn_deterministic": true,
+      "cudnn_benchmark": false,
+      "desde_repeticion_f32": {
+        "use_deterministic_algorithms": true,
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "flash_sdp": false,
+        "mem_efficient_sdp": false
+      }
+    }
+  },
+  "fases": {
+    "primera_pasada": {
+      "task": "F3.2",
+      "runs": "18 configuraciones",
+      "seeds": [42, 7, 123],
+      "prediction_splits": ["val"]
+    },
+    "seleccion": {"task": "F3.3"},
+    "hpo": {
+      "task": "F3.4",
+      "seeds": [42, 7, 123],
+      "prediction_splits": ["val"]
+    },
+    "final": {
+      "task": "F3.5",
+      "runs": "3 finalistas",
+      "seeds": [42, 7, 123, 2024, 99],
+      "prediction_splits": ["val", "test"],
+      "requires": {"protocol_file": "docs/protocolo_preregistrado.md", "git_tag": "protocolo-v1"}
+    },
+    "control_permutacion": {
+      "task": "F3.6",
+      "runs": "3 finalistas",
+      "seeds": [42, 7, 123, 2024, 99],
+      "prediction_splits": ["val", "test"],
+      "requires": {"protocol_file": "docs/protocolo_preregistrado.md", "git_tag": "protocolo-v1"},
+      "permutation": {"rng": "numpy.random.default_rng", "seed": 99, "permuted_split": "train", "save_indices": true}
+    },
+    "interpretabilidad": {"task": "F3.7", "seeds_from": "final"},
+    "total_entrenamientos": 192
+  },
+  "seleccion": {
+    "task": "F3.3",
+    "fase": "primera_pasada",
+    "split": "val",
+    "metric": "f1_macro",
+    "decision_threshold": 0.5,
+    "seeds": [42, 7, 123],
+    "aggregate": "mean",
+    "dispersion": {"name": "std", "ddof": 1},
+    "tie_tolerance": "leader_std",
+    "multiple_leaders_std": "max",
+    "complexity_order": ["trainable", "total"],
+    "residual_tiebreak": "max_mean",
+    "unresolved_tie": "error"
+  },
+  "hpo": {
+    "task": "F3.4",
+    "algorithm": "optuna_tpe",
+    "sampler_seed": 42,
+    "sampler_params": "default",
+    "pruner": null,
+    "n_trials": 12,
+    "objective": {"metric": "f1_macro", "split": "val", "aggregate": "mean", "seeds": [42, 7, 123]},
+    "trial_0": "configuracion_comun",
+    "space": {
+      "finetune": {
+        "lr": {"low": 5e-06, "high": 0.0003, "log": true},
+        "weight_decay": {"low": 0.0, "high": 0.1, "log": false},
+        "batch_size": [16, 32, 64],
+        "batch_size_override": {"vit_b16": [16, 32]}
+      },
+      "frozen": {
+        "lr": {"low": 0.0001, "high": 0.01, "log": true},
+        "weight_decay": {"low": 0.0, "high": 0.1, "log": false},
+        "batch_size": [16, 32, 64]
+      }
+    },
+    "fixed": ["arch", "strategy", "preprocesamiento", "optimizer", "max_epochs", "patience", "class_weights"],
+    "final_rule": "best_trial_unless_gain_le_trial0_std"
+  },
+  "interpretabilidad": {
+    "task": "F3.7",
+    "methods": {
+      "resnet18": {"method": "grad_cam", "layer": "layer4"},
+      "efficientnet_b0": {"method": "grad_cam", "layer": "features[-1]"},
+      "vit_b16": {
+        "method": "attention_rollout",
+        "head_fusion": "mean",
+        "add_identity": true,
+        "renormalize": true,
+        "discard_ratio": 0.0,
+        "exclude_cls_token": true
+      }
+    },
+    "target": {"logit_class": 1},
+    "splits": ["val", "test"],
+    "resolution": 224,
+    "normalization": "per_sample_minmax",
+    "save_unnormalized": true,
+    "dtype": "float16",
+    "format": "npz_compressed",
+    "index": "sample_id"
+  }
+}

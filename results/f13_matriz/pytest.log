@@ -1,0 +1,47 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\DELL\Desktop\TT\TT2\ttdicevc
+plugins: anyio-4.15.1, platformdirs-4.14.0
+collecting ... collected 37 items
+
+tests/test_matriz_experimentos.py::test_vocabulary_is_f15 PASSED         [  2%]
+tests/test_matriz_experimentos.py::test_fases_are_f15 PASSED             [  5%]
+tests/test_matriz_experimentos.py::test_factors_match_doc PASSED         [  8%]
+tests/test_matriz_experimentos.py::test_preprocessing_matches_f14 PASSED [ 10%]
+tests/test_matriz_experimentos.py::test_params_match_recon PASSED        [ 13%]
+tests/test_matriz_experimentos.py::test_params_internally_consistent PASSED [ 16%]
+tests/test_matriz_experimentos.py::test_complexity_order_in_doc PASSED   [ 18%]
+tests/test_matriz_experimentos.py::test_common_config_matches_doc PASSED [ 21%]
+tests/test_matriz_experimentos.py::test_input_normalization_matches_code PASSED [ 24%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[primera_pasada-primera_pasada] PASSED [ 27%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[hpo-F3.4] PASSED [ 29%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[final-final] PASSED [ 32%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[control_permutacion-control_permutacion] PASSED [ 35%]
+tests/test_matriz_experimentos.py::test_selection_and_attribution_rows PASSED [ 37%]
+tests/test_matriz_experimentos.py::test_total_trainings PASSED           [ 40%]
+tests/test_matriz_experimentos.py::test_selection_rule_matches_doc PASSED [ 43%]
+tests/test_matriz_experimentos.py::test_hpo_matches_doc PASSED           [ 45%]
+tests/test_matriz_experimentos.py::test_permutation_matches_doc PASSED   [ 48%]
+tests/test_matriz_experimentos.py::test_interpretability_matches_doc PASSED [ 51%]
+tests/test_matriz_experimentos.py::test_json_has_section10_blocks PASSED [ 54%]
+tests/test_select_finalist.py::test_single_leader PASSED                 [ 56%]
+tests/test_select_finalist.py::test_tie_resolved_by_trainable PASSED     [ 59%]
+tests/test_select_finalist.py::test_tie_resolved_by_total PASSED         [ 62%]
+tests/test_select_finalist.py::test_residual_tie_resolved_by_mean PASSED [ 64%]
+tests/test_select_finalist.py::test_multiple_leaders_use_max_std PASSED  [ 67%]
+tests/test_select_finalist.py::test_tolerance_boundary_is_inclusive PASSED [ 70%]
+tests/test_select_finalist.py::test_unresolved_tie_raises PASSED         [ 72%]
+tests/test_select_finalist.py::test_selection_is_per_technique PASSED    [ 75%]
+tests/test_select_finalist.py::test_real_parameter_counts_are_used PASSED [ 78%]
+tests/test_select_finalist.py::test_missing_seed_raises PASSED           [ 81%]
+tests/test_select_finalist.py::test_extra_seed_raises PASSED             [ 83%]
+tests/test_select_finalist.py::test_missing_configuration_raises PASSED  [ 86%]
+tests/test_select_finalist.py::test_technique_outside_matrix_raises PASSED [ 89%]
+tests/test_select_finalist.py::test_rule_mismatch_raises PASSED          [ 91%]
+tests/test_select_finalist.py::test_end_to_end_with_load_predictions PASSED [ 94%]
+tests/test_select_finalist.py::test_end_to_end_rejects_other_phase PASSED [ 97%]
+tests/test_select_finalist.py::test_default_pattern_is_primera_pasada PASSED [100%]
+
+- generated xml file: C:\Users\DELL\Desktop\TT\TT2\ttdicevc\results\f13_matriz\pytest.xml -
+============================= 37 passed in 3.09s ==============================

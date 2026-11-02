@@ -1,0 +1,9 @@
+torch 2.11.0+cpu, torchvision 0.26.0+cpu, python 3.13.2
+arch            strategy     trainable       total  MiB fp32  JSON
+resnet18        frozen            1026    11177538      42.6  OK
+resnet18        finetune      11177538    11177538      42.6  OK
+efficientnet_b0 frozen            2562     4010110      15.3  OK
+efficientnet_b0 finetune       4010110     4010110      15.3  OK
+vit_b16         frozen            1538    85800194     327.3  OK
+vit_b16         finetune      85800194    85800194     327.3  OK
+coinciden con configs/matriz_experimentos.json
