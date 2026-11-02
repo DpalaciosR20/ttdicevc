@@ -74,7 +74,7 @@ def supports(entry, split):
 
 
 # Cifras de diseño en escala de F1 que no provienen de una matriz de confusión
-DESIGN_PREFIXES = ('f11.',)
+DESIGN_PREFIXES = ('f11.', 'f12.')
 
 
 def is_leaf_metric(entry):

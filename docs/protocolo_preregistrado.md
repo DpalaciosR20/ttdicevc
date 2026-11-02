@@ -1,8 +1,11 @@
 # Protocolo preregistrado del Objetivo V
 
-> Tarea F1.2 del plan v2 · Rol: SV · Versión: **v1 (borrador para congelar)**
+> Tarea F1.2 del plan v2 · Rol: SV · Versión: **v1 (congelado)**
 > Congelamiento: commit `[completar]`, etiqueta anotada `protocolo-v1`, fecha `[completar]`.
-> Parámetros legibles por código: `configs/protocolo.json`. Toda cifra citada aquí proviene de `results/canonical_numbers.json`.
+> Parámetros legibles por código: `configs/protocolo.json` (SHA-256 `92ef8774f10f6c7ca04abd71a6a55be6ef29852b049932fb54dcecfe7ee00e5a`).
+> Matriz de experimentos: `configs/matriz_experimentos.json` (SHA-256 `ce0e0ed6602ba0f53441eb77dbd90c7704e6d7f2b877d6f0ea9c295c689a8f15`). Huellas calculadas con fines de línea LF; `tests/test_protocolo.py` las verifica.
+> Enmienda previa de la matriz: fase `sensibilidad` (F1.2).
+> Toda cifra citada aquí proviene de `results/canonical_numbers.json`.
 
 ## 1. Pregunta, hipótesis y alcance
 
@@ -107,7 +110,7 @@ Este contraste sustituye la prueba de permutación prevista en el plan (§3.3), 
 
 ### 5.4 Multiplicidad
 
-Dos familias de tres contrastes (una por técnica), cada una con Holm a α = 0.05 unilateral: superioridad sobre el piso (§5.3) y no inferioridad (§5.2). El intervalo de cada técnica se reporta como intervalo percentil bilateral al nivel 1 − 2α_h, donde α_h es el nivel de Holm que le corresponde por su rango en la familia.
+Dos familias de tres contrastes (una por técnica), cada una con Holm a α = 0.05 unilateral: superioridad sobre el piso (§5.3) y no inferioridad (§5.2). El intervalo de cada técnica se reporta como intervalo percentil bilateral al nivel 1 − 2α_h, donde α_h es el nivel de Holm que le corresponde por su rango en la familia. Si varias técnicas tienen el mismo valor p, todas reciben el menor α_h de los rangos que ocupan. El rechazo de Holm no se ve afectado; solo el nivel de los intervalos.
 
 ### 5.5 Veredictos
 

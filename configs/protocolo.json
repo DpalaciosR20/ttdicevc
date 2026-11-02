@@ -1,0 +1,187 @@
+{
+  "_fuente": "docs/protocolo_preregistrado.md (F1.2). No editar sin actualizar ese documento: tests/test_protocolo.py verifica que coinciden.",
+  "_version": "v1",
+  "_git_tag": "protocolo-v1",
+  "datos": {
+    "_seccion": "§2",
+    "canonical": {
+      "n": {"train": "n.train", "val": "n.val", "test": "n.test"},
+      "supports": {"train": "support.train", "val": "support.val", "test": "support.test"}
+    },
+    "sample_index": "meta/sample_index.csv",
+    "predictions_spec": "docs/especificacion_predicciones.md"
+  },
+  "modelos": {
+    "_seccion": "§4.1",
+    "fase": "final",
+    "seeds": [42, 7, 123, 2024, 99],
+    "aggregate": "mean",
+    "metric": "f1_macro",
+    "split": "test",
+    "decision_threshold": 0.5,
+    "decision_rule": "p_dep > threshold"
+  },
+  "referencias": {
+    "_seccion": "§4.2",
+    "beto": {"technique": "text", "arch": "beto", "strategy": "finetune", "seed": 42, "canonical": "ref.beto_exp41.f1_macro", "task": "F2.2"},
+    "emb768": {"technique": "emb768", "arch": "logreg", "strategy": "none", "log10_C": -3.5, "canonical": "ref.emb768_logreg.f1_macro", "task": "F2.2"},
+    "techo_5d": {"technique": "umap5d", "selection": "f1_val", "task": "F2.1"},
+    "descriptores": {"arch": "descriptors", "n_features": 4, "selection": "f1_val", "per_technique": true, "task": "F2.4"},
+    "longitud": {
+      "features": ["log(n_tokens_beto)", "truncated_128"],
+      "scaler": {"name": "StandardScaler", "fit_split": "train"},
+      "model": "logreg",
+      "C_grid": "techo_5d.familias.logreg.C",
+      "selection": "f1_val",
+      "task": "F4.5"
+    }
+  },
+  "techo_5d": {
+    "_seccion": "§4.3",
+    "input": "umap_params.pkl (5 componentes)",
+    "scaler": {"name": "StandardScaler", "fit_split": "train", "families": ["logreg", "svm_rbf", "mlp"]},
+    "random_state": 42,
+    "selection": {"metric": "f1_macro", "split": "val", "tie_tolerance": 1e-12, "tie_break": ["family_order", "grid_order"]},
+    "family_order": ["logreg", "svm_rbf", "rf", "gbm", "mlp"],
+    "familias": {
+      "logreg": {
+        "estimator": "LogisticRegression",
+        "penalty": "l2",
+        "solver": "lbfgs",
+        "C": {"log10_low": -4, "log10_high": 2, "n": 13},
+        "class_weight": [null, "balanced"]
+      },
+      "svm_rbf": {
+        "estimator": "SVC",
+        "kernel": "rbf",
+        "C": {"log10_low": -2, "log10_high": 3, "n": 6},
+        "gamma": {"named": ["scale"], "log10_low": -3, "log10_high": 1, "n": 5},
+        "class_weight": [null, "balanced"],
+        "probability": true
+      },
+      "rf": {
+        "estimator": "RandomForestClassifier",
+        "n_estimators": 500,
+        "max_depth": [null, 4, 8],
+        "min_samples_leaf": [1, 5],
+        "class_weight": [null, "balanced"]
+      },
+      "gbm": {
+        "estimator": "HistGradientBoostingClassifier",
+        "learning_rate": [0.03, 0.1],
+        "max_depth": [2, 3, null],
+        "max_iter": [100, 300]
+      },
+      "mlp": {
+        "estimator": "MLPClassifier",
+        "hidden_layer_sizes": [[16], [32], [32, 16]],
+        "alpha": [0.0001, 0.01],
+        "max_iter": 2000
+      }
+    }
+  },
+  "pisos": {
+    "_seccion": "§4.4",
+    "rule": "max_f1_test",
+    "order": ["majority", "stratified", "brightness", "visual_permutado"],
+    "majority": {"technique": "none", "arch": "majority", "predict": 0, "canonical": "f12.piso_mayoritaria.f1_macro"},
+    "stratified": {"technique": "none", "arch": "stratified", "proportion_split": "train", "expected_f1": 0.5},
+    "brightness": {"arch": "brightness", "feature": "mean_intensity", "model": "logreg", "C_grid": "techo_5d.familias.logreg.C", "selection": "f1_val", "per_technique": true, "task": "F2.3"},
+    "visual_permutado": {"fase": "control_permutacion", "aggregate": "mean", "seeds": [42, 7, 123, 2024, 99], "per_technique": true, "task": "F3.6"}
+  },
+  "contraste": {
+    "_seccion": "§5",
+    "formulacion": "B",
+    "r": 0.5,
+    "f1_azar": 0.5,
+    "statistic": "theta = (F1_img - f1_azar) - r * (F1_BETO - f1_azar)",
+    "h1": "theta > 0",
+    "bootstrap": {
+      "B": 10000,
+      "rng": "numpy.random.default_rng",
+      "seed": 2026,
+      "resample": "indices de test con reemplazo",
+      "n": "n.test",
+      "paired": true,
+      "recompute": ["beto", "finalistas (cada semilla)", "pisos", "referencias"]
+    },
+    "p_value": {"formula": "#{rep <= 0} / B", "if_zero": "p < 1/B"},
+    "superioridad_piso": {
+      "statistic": "D = F1_img - F1_piso",
+      "h1": "D > 0",
+      "stratified_as_constant": 0.5,
+      "visual_permutado": "mean_over_seeds_per_replicate"
+    },
+    "multiplicidad": {
+      "alpha": 0.05,
+      "sided": "one",
+      "method": "holm",
+      "families": ["superioridad_piso", "no_inferioridad"],
+      "family_size": 3,
+      "interval": {
+        "type": "percentile_two_sided",
+        "level": "1 - 2 * alpha_h",
+        "alpha_h_from": "no_inferioridad",
+        "quantile_method": "linear"
+      },
+      "ties": "min_alpha_h"
+    },
+    "veredictos": {
+      "order": ["V3", "V1", "V2", "V4"],
+      "V3": "no se rechaza H0 de superioridad sobre el piso (Holm)",
+      "V1": "supera el piso y se rechaza H0 de no inferioridad (Holm)",
+      "V2": "supera el piso y el límite superior del intervalo de theta es < 0",
+      "V4": "supera el piso y no se cumplen V1 ni V2"
+    },
+    "global": {
+      "order": ["G1", "G2", "G3", "G4"],
+      "G1": "al menos una técnica con V1",
+      "G2": "al menos una técnica con V2",
+      "G3": "las tres técnicas con V3",
+      "G4": "en otro caso"
+    },
+    "retencion": {"statistic": "rho = (F1_img - f1_azar) / (F1_BETO - f1_azar)", "interval_level": 0.95, "descriptive": true}
+  },
+  "longitud": {
+    "_seccion": "§6",
+    "task": "F4.5",
+    "applies_to": ["V1", "V2", "V4"],
+    "statistic": "L = F1_img - F1_longitud",
+    "h1": "L > 0",
+    "alpha": 0.05,
+    "multiplicidad": "holm sobre las técnicas evaluadas",
+    "qualification": "no distinguible de un clasificador de longitud",
+    "descriptivo": {"metric": "f1_macro", "by": "terciles de n_tokens_beto", "cuts_split": "train"}
+  },
+  "secundarios": {
+    "_seccion": "§7",
+    "modify_verdicts": false,
+    "descomposicion": {"stages": ["cabeza", "reduccion", "renderizado"], "interval_level": 0.95},
+    "entre_tecnicas": {"omnibus": "cochran_q", "alpha": 0.05, "post_hoc": "mcnemar_exact", "multiplicidad": "holm", "pairs": 3},
+    "frente_a_beto_y_techo": {"test": "mcnemar_exact", "multiplicidad": "holm", "family_size": 3},
+    "frente_a_descriptores": {"statistic": "F1_img - F1_descriptores", "interval_level": 0.95},
+    "concordancia": ["kappa_cohen", "interseccion_errores"],
+    "prediccion_por_muestra": {"aggregate": "mean_p_dep", "seeds": 5, "threshold": 0.5}
+  },
+  "sensibilidad": {
+    "_seccion": "§8",
+    "task": "F5.5",
+    "modify_main_verdict": false,
+    "retencion_exigida": {"r": [0.75, 0.8]},
+    "formulacion_A": {"delta": "(1 - r) * (F1_BETO - 0.5)", "statistic": "Delta = F1_BETO - F1_img", "canonical_delta": {"0.5": "f11.delta_margen.r0_50", "0.75": "f11.delta_margen.r0_75", "0.8": "f11.delta_margen.r0_80"}},
+    "por_semilla": {"report": "n_seeds_V1"},
+    "variabilidad_beto": {"shift": "+-", "canonical": "f12.variabilidad_beto"},
+    "segundo_mejor": {"selection": "select_second", "fase": "sensibilidad", "hyperparams": "primera_pasada", "seeds": [42, 7, 123, 2024, 99], "trainings": 15},
+    "piso_sin_permutado": ["majority", "stratified", "brightness"]
+  },
+  "cifras_diseno": {
+    "_seccion": "§13",
+    "r": 0.5,
+    "f1_azar": 0.5,
+    "alpha": 0.05,
+    "B": 10000,
+    "bootstrap_seed": 2026,
+    "umbral_f1_visual": "f12.umbral_f1_visual",
+    "delta_formulacion_A": {"0.5": "f11.delta_margen.r0_50", "0.75": "f11.delta_margen.r0_75", "0.8": "f11.delta_margen.r0_80"}
+  }
+}

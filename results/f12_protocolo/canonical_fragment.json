@@ -1,0 +1,79 @@
+{
+ "numbers": {
+  "f12.piso_mayoritaria.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 44,
+     "fp": 0,
+     "tn": 70,
+     "tp": 0
+    }
+   },
+   "evaluator": "f1_macro_from_confusion con ŷ = 0 para todas las muestras de test (clase mayoritaria), soportes de meta/sample_index.csv",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Piso determinista; no depende de ningún modelo.",
+   "null_reason": {
+    "val": "el protocolo (§4.4) solo fija el piso sobre prueba"
+   },
+   "source": {
+    "locator": "split == 'test', y_true",
+    "path": "meta/sample_index.csv"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.3804347826086957,
+    "val": null
+   }
+  },
+  "f12.umbral_f1_visual": {
+   "evaluator": "F1_azar + r (F1_BETO − F1_azar), con r = contraste.r (0.5) y F1_azar = contraste.f1_azar (0.5) de configs/protocolo.json y F1_BETO = ref.beto_exp41.f1_macro (test)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño: F1 visual medio para θ = 0 con F1_BETO observado; no es un F1 observado.",
+   "null_reason": {
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (protocolo §5.1); sin término en val"
+   },
+   "source": {
+    "locator": "contraste.r, contraste.f1_azar",
+    "path": "configs/protocolo.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.601948051948052,
+    "val": null
+   }
+  },
+  "f12.variabilidad_beto": {
+   "evaluator": "best_metric del checkpoint del 10 de marzo (results/f22_referencias_textuales/diagnostico_v3/f22_beto_ckpt_10marzo.log:27) − best_metric del checkpoint del 11 de marzo (results/f22_referencias_textuales/f22_beto.log:27)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Diferencia de F1-Val entre dos corridas nominalmente idénticas de Exp 4.1; desplazamiento ± de F1_BETO en el análisis de sensibilidad (protocolo §8).",
+   "null_reason": {
+    "test": "solo se conoce el F1-Val de la corrida del 10 de marzo (F2.2, H1)"
+   },
+   "source": {
+    "locator": "línea 27, best_metric",
+    "path": "results/f22_referencias_textuales/diagnostico_v3/f22_beto_ckpt_10marzo.log"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.012814512390867394
+   }
+  }
+ },
+ "schema_version": "1.0"
+}
