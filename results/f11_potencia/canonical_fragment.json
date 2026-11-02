@@ -1,0 +1,207 @@
+{
+ "numbers": {
+  "f11.delta_margen.r0_50": {
+   "evaluator": "δ = (1 − r)(F1_BETO − 0.5) con r = 0.50 y F1_BETO = ref.beto_exp41.f1_macro (test); margen de la formulación A (margen fijo)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (margen candidato para F1.2), no un F1 observado.",
+   "null_reason": {
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "§2",
+    "path": "docs/especificacion_f11.md"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.10194805194805195,
+    "val": null
+   }
+  },
+  "f11.delta_margen.r0_75": {
+   "evaluator": "δ = (1 − r)(F1_BETO − 0.5) con r = 0.75 y F1_BETO = ref.beto_exp41.f1_macro (test); margen de la formulación A (margen fijo)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (margen candidato para F1.2), no un F1 observado.",
+   "null_reason": {
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "§2",
+    "path": "docs/especificacion_f11.md"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.05097402597402598,
+    "val": null
+   }
+  },
+  "f11.delta_margen.r0_80": {
+   "evaluator": "δ = (1 − r)(F1_BETO − 0.5) con r = 0.80 y F1_BETO = ref.beto_exp41.f1_macro (test); margen de la formulación A (margen fijo)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (margen candidato para F1.2), no un F1 observado.",
+   "null_reason": {
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "§2",
+    "path": "docs/especificacion_f11.md"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.04077922077922077,
+    "val": null
+   }
+  },
+  "f11.f1_min_detectable.a.r0_50": {
+   "evaluator": "0.5 + ρ_min (F1_BETO − 0.5), ρ_min = menor retención con P(V1) ≥ 0.80 por interpolación lineal en la malla de S; formulación A, r = 0.50, escenario central (discordancia p50, DE 0.010); 1,000 simulaciones, B = 2,000, Holm sobre 3 técnicas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (estimación por simulación), no un F1 observado.",
+   "null_reason": {
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "formulacion=A, r=0.50, disc_etiqueta=p50, de_objetivo=0.010",
+    "path": "results/f11_potencia/retencion_minima.csv"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6872887879710907,
+    "val": null
+   }
+  },
+  "f11.f1_min_detectable.a.r0_75": {
+   "evaluator": "0.5 + ρ_min (F1_BETO − 0.5), ρ_min = menor retención con P(V1) ≥ 0.80 por interpolación lineal en la malla de S; formulación A, r = 0.75, escenario central (discordancia p50, DE 0.010); 1,000 simulaciones, B = 2,000, Holm sobre 3 técnicas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (estimación por simulación), no un F1 observado.",
+   "null_reason": {
+    "test": "P(V1) ≥ 0.80 no se alcanza en la malla (ρ ≤ 1.10)",
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "formulacion=A, r=0.75, disc_etiqueta=p50, de_objetivo=0.010",
+    "path": "results/f11_potencia/retencion_minima.csv"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": null
+   }
+  },
+  "f11.f1_min_detectable.a.r0_80": {
+   "evaluator": "0.5 + ρ_min (F1_BETO − 0.5), ρ_min = menor retención con P(V1) ≥ 0.80 por interpolación lineal en la malla de S; formulación A, r = 0.80, escenario central (discordancia p50, DE 0.010); 1,000 simulaciones, B = 2,000, Holm sobre 3 técnicas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (estimación por simulación), no un F1 observado.",
+   "null_reason": {
+    "test": "P(V1) ≥ 0.80 no se alcanza en la malla (ρ ≤ 1.10)",
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "formulacion=A, r=0.80, disc_etiqueta=p50, de_objetivo=0.010",
+    "path": "results/f11_potencia/retencion_minima.csv"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": null
+   }
+  },
+  "f11.f1_min_detectable.b.r0_50": {
+   "evaluator": "0.5 + ρ_min (F1_BETO − 0.5), ρ_min = menor retención con P(V1) ≥ 0.80 por interpolación lineal en la malla de S; formulación B, r = 0.50, escenario central (discordancia p50, DE 0.010); 1,000 simulaciones, B = 2,000, Holm sobre 3 técnicas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (estimación por simulación), no un F1 observado.",
+   "null_reason": {
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "formulacion=B, r=0.50, disc_etiqueta=p50, de_objetivo=0.010",
+    "path": "results/f11_potencia/retencion_minima.csv"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.68748495407032,
+    "val": null
+   }
+  },
+  "f11.f1_min_detectable.b.r0_75": {
+   "evaluator": "0.5 + ρ_min (F1_BETO − 0.5), ρ_min = menor retención con P(V1) ≥ 0.80 por interpolación lineal en la malla de S; formulación B, r = 0.75, escenario central (discordancia p50, DE 0.010); 1,000 simulaciones, B = 2,000, Holm sobre 3 técnicas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (estimación por simulación), no un F1 observado.",
+   "null_reason": {
+    "test": "P(V1) ≥ 0.80 no se alcanza en la malla (ρ ≤ 1.10)",
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "formulacion=B, r=0.75, disc_etiqueta=p50, de_objetivo=0.010",
+    "path": "results/f11_potencia/retencion_minima.csv"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": null
+   }
+  },
+  "f11.f1_min_detectable.b.r0_80": {
+   "evaluator": "0.5 + ρ_min (F1_BETO − 0.5), ρ_min = menor retención con P(V1) ≥ 0.80 por interpolación lineal en la malla de S; formulación B, r = 0.80, escenario central (discordancia p50, DE 0.010); 1,000 simulaciones, B = 2,000, Holm sobre 3 técnicas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Cifra de diseño (estimación por simulación), no un F1 observado.",
+   "null_reason": {
+    "test": "P(V1) ≥ 0.80 no se alcanza en la malla (ρ ≤ 1.10)",
+    "val": "cifra de diseño definida sobre F1_BETO de prueba (especificacion_f11 §2); sin término en val"
+   },
+   "source": {
+    "locator": "formulacion=B, r=0.80, disc_etiqueta=p50, de_objetivo=0.010",
+    "path": "results/f11_potencia/retencion_minima.csv"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": null
+   }
+  }
+ },
+ "schema_version": "1.0"
+}

@@ -610,12 +610,13 @@ def plot_curves(grid, out_dir):
         ax.grid(axis='y', color='#e5e4e0', lw=0.8)
         ax.spines[['top', 'right']].set_visible(False)
     axes[0].set_ylabel('P(V1): conservación declarada')
-    axes[1].legend(loc='upper left', frameon=False, fontsize=9)
+    axes[1].legend(loc='center left', bbox_to_anchor=(0.0, 0.5), frameon=False, fontsize=9)
     fig.suptitle('Potencia del contraste de no inferioridad frente a BETO (n = 114, 5 semillas, Holm sobre 3 técnicas)',
                  fontsize=11, x=0.01, ha='left')
     fig.text(0.01, 0.005, 'Línea: escenario central (discordancia p50, DE entre semillas 0.010). '
-             'Banda: mínimo y máximo sobre los 9 escenarios de discordancia y DE.', fontsize=8, color='#52514e')
-    fig.tight_layout(rect=(0, 0.04, 1, 0.95))
+             'Banda: mínimo y máximo sobre los escenarios factibles de discordancia y DE.\n'
+             'ρ = 0.25 no es factible con la discordancia BETO–visual observada en validación.', fontsize=8, color='#52514e')
+    fig.tight_layout(rect=(0, 0.07, 1, 0.95))
     for ext in ('png', 'pdf'):
         fig.savefig(out_dir / f'curva_potencia.{ext}', dpi=200, metadata={'CreationDate': None} if ext == 'pdf' else None)
     plt.close(fig)
@@ -633,9 +634,14 @@ def main():
     ap.add_argument('--n-sims', type=int, default=N_SIMS)
     ap.add_argument('--B', type=int, default=B_S)
     ap.add_argument('--jobs', type=int, default=1)
+    ap.add_argument('--solo-figura', action='store_true',
+                    help='regenera curva_potencia.png/.pdf desde malla_escenarios.csv, sin simular')
     args = ap.parse_args()
     if hasattr(sys.stdout, 'reconfigure'):
         sys.stdout.reconfigure(encoding='utf-8')
+    if args.solo_figura:
+        plot_curves(pd.read_csv(args.out / 'malla_escenarios.csv'), args.out)
+        return
 
     log = Log(args.out / ('potencia_dryrun.log' if args.dry_run else 'potencia.log'))
     t_start = time.perf_counter()
