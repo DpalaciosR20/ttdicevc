@@ -60,11 +60,11 @@ Total de entrenamientos: 54 (F3.2) + 3 × 12 × 3 = 108 (F3.4) + 15 (F3.5) + 15 
 
 1. Para cada configuración se calcula la media y la desviación estándar muestral (`ddof = 1`) del F1-Macro de validación sobre las semillas 42, 7 y 123, a partir de las predicciones de la fase `primera_pasada` cargadas con `load_predictions`.
 2. El **líder** de la técnica es la configuración con mayor media.
-3. Están **empatadas** con el líder las configuraciones cuya media es ≥ media del líder − DE del líder.
+3. Están **empatadas** con el líder las configuraciones cuya media es ≥ media del líder − DE del líder. Si varias configuraciones comparten la media máxima, se usa la mayor de sus DE.
 4. Entre las empatadas, el finalista es la de **menor complejidad**, con este orden lexicográfico:
    1. menor número de parámetros entrenables;
    2. menor número de parámetros totales.
-5. Si persiste el empate, la de mayor media.
+5. Si persiste el empate, la de mayor media. Si aún persiste, la selección se detiene con un error y la resuelve SV.
 
 Fundamento del criterio de complejidad: el riesgo de sobreajuste a 908 muestras de entrenamiento y a 114 de validación depende de los parámetros que se ajustan a los datos, no de los que se heredan fijos del preentrenamiento. En consecuencia, toda configuración `frozen` es más simple que cualquier `finetune`. Orden resultante: `resnet18 frozen` (1,026) < `vit_b16 frozen` (1,538) < `efficientnet_b0 frozen` (2,562) < `efficientnet_b0 finetune` (4.01 M) < `resnet18 finetune` (11.18 M) < `vit_b16 finetune` (85.80 M).
 
@@ -151,6 +151,7 @@ Tomadas en ausencia de CE el 2 de noviembre de 2026. CE las aprueba o propone al
 | Decisión | Sección |
 |---|---|
 | Criterio de complejidad por parámetros entrenables y, en segundo lugar, totales | §5 |
+| Varios líderes con la misma media: tolerancia con la mayor DE; empate residual: error | §5 |
 | AdamW con `weight_decay = 0` en la configuración común | §3 |
 | Espacios, presupuesto, *trial* 0 y regla final de la HPO | §6 |
 | Ajustes de determinismo desde la repetición de F3.2 | §3, §11.6 |
