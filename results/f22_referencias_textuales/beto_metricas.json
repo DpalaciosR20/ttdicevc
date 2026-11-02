@@ -1,0 +1,121 @@
+{
+ "v1": {
+  "architectures": [
+   "BertForSequenceClassification"
+  ],
+  "id2label": {
+   "0": "no_depresivo",
+   "1": "depresivo"
+  },
+  "n_labels": 2,
+  "best_model_checkpoint": "/content/proyecto-transformacion-texto-imagen/models/checkpoints/beto_hpo_final/checkpoint-342",
+  "best_metric": 0.7199475925319359
+ },
+ "v2": {
+  "ok": true,
+  "f1_val_recalculado": 0.7199475925319359,
+  "eval_f1_macro_epoca3": 0.7199475925319359
+ },
+ "v3": {
+  "ok": true,
+  "cos_min": 0.9999999999975173,
+  "n_cos_below": 0,
+  "n_nearest_not_self": 0,
+  "n_ties_identical_text": 1,
+  "n_rows": 1136
+ },
+ "historial_eval_f1_macro": [
+  {
+   "epoch": 1.0,
+   "eval_f1_macro": 0.6615625
+  },
+  {
+   "epoch": 2.0,
+   "eval_f1_macro": 0.6083182640144665
+  },
+  {
+   "epoch": 3.0,
+   "eval_f1_macro": 0.7199475925319359
+  }
+ ],
+ "metricas": {
+  "val": {
+   "f1_macro": 0.7199475925319359,
+   "accuracy": 0.7368421052631579,
+   "confusion": {
+    "tp": 28,
+    "fp": 14,
+    "fn": 16,
+    "tn": 56
+   },
+   "confusion_matrix_tn_fp_fn_tp": [
+    [
+     56,
+     14
+    ],
+    [
+     16,
+     28
+    ]
+   ],
+   "fn_rate": 0.36363636363636365
+  },
+  "test": {
+   "f1_macro": 0.7038961038961039,
+   "accuracy": 0.7192982456140351,
+   "confusion": {
+    "tp": 28,
+    "fp": 16,
+    "fn": 16,
+    "tn": 54
+   },
+   "confusion_matrix_tn_fp_fn_tp": [
+    [
+     54,
+     16
+    ],
+    [
+     16,
+     28
+    ]
+   ],
+   "fn_rate": 0.36363636363636365
+  }
+ },
+ "comparacion_reportado": {
+  "f1_test_reportado": 0.7586,
+  "confusion_test_reportada": [
+   [
+    57,
+    13
+   ],
+   [
+    13,
+    31
+   ]
+  ],
+  "f1_de_la_matriz_reportada": 0.7594155844155844,
+  "f1_test_recalculado": 0.7038961038961039,
+  "confusion_test_recalculada": [
+   [
+    54,
+    16
+   ],
+   [
+    16,
+    28
+   ]
+  ],
+  "matriz_coincide": false,
+  "diferencia_f1_vs_reportado": -0.054703896103896144
+ },
+ "inputs": {
+  "processed/train.csv": "4c677f404c19cf8c7d99a2fbc049d2655264c2f05787b3f448e2f8d2b6c9d37b",
+  "processed/validation.csv": "d249b14b01149ec1e5cd933ae3349c470f71b8ba79d4745f534610d71c1d9f61",
+  "processed/test.csv": "e251582ae76e419e344228c3bcd3d6c8f468b481968e3cb6f06f221f0c9f6b5b",
+  "exp_4_1_final/Exp_4.1_BETO_HPO_embeddings.pkl": "64b7682e6d6517e0e643502a96cc80949bb5b35d2a4c04a4ba345243ad1b5d44",
+  "exp_4_1_final/checkpoint-342": "9084df928a97e2fc5ab49fb7376bb1d565a646d0d5160bd096a2fc205972c074",
+  "meta/sample_index.csv (repo)": "74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5"
+ },
+ "duracion_s": 297.9
+}

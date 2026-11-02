@@ -72,6 +72,7 @@
 
 | Atributo | Valor | Fuente |
 |---|---|---|
+| Corrida | Reentrenamiento final del 11 de marzo de 2026 (notebook 3, commit `effff4a` del repositorio de TT-I); es la que generó `EMB_41` (commit `6cfc1ce`, mismo SHA-256) | Historial del repositorio de TT-I; F2.2, V3 |
 | Modelo base | `dccuchile/bert-base-spanish-wwm-cased` | `3_hyperparameter_tuning.ipynb` |
 | Tokenizador | Guardado en el checkpoint (`tokenizer.json`, `tokenizer_config.json`); `max_length = 128`, `padding = 'max_length'`, truncamiento activo | Ídem y contenido del checkpoint |
 | Semilla | 42 (`set_seed(42)` y `TrainingArguments(seed=42)`) | Ídem |
@@ -79,6 +80,8 @@
 | Precisión | `fp16 = True`: el reentrenamiento no es reproducible bit a bit; las predicciones se infieren del checkpoint, no se reentrena | Ídem |
 | Archivos presentes | `config.json`, `model.safetensors` (incluye la cabeza de clasificación), `tokenizer.json`, `tokenizer_config.json`, `trainer_state.json`, `training_args.bin`, `optimizer.pt`, `scheduler.pt`, `scaler.pt`, `rng_state.pth` | Drive |
 | Historial de entrenamiento | `trainer_state.json` registra `best_model_checkpoint` y el F1-Val por época: fuente *extraída* del F1-Val de Exp 4.1 (0.7199) | — |
+
+**Checkpoint descartado (29-oct-2026).** Hasta F2.2, `exp_4_1_final/checkpoint-342/` contenía la corrida del 10 de marzo (notebook 3, commit `6265aae`; F1-Val 0.7328). Esa corrida usó el mismo código, los mismos hiperparámetros, la misma semilla y la misma ruta de salida, pero con `fp16` sus pesos son distintos. No reproduce `EMB_41`: coseno [CLS] medio de 0.67 (F2.2, `results/f22_referencias_textuales/diagnostico_v3/`). Se retiró de `TT_DATA_ROOT` y no se usa. El checkpoint vigente es el de la corrida del 11 de marzo (`model.safetensors` con SHA-256 `c4f35147…`), que reproduce `EMB_41` con coseno 1.0000000 en las 1,136 filas.
 
 ## 7. Imágenes
 

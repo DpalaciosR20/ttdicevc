@@ -1,0 +1,35 @@
+F2.2 — BETO (Exp 4.1). torch 2.11.0+cpu, hilos 4, CPU
+
+— Integridad de insumos (meta/data_manifest.csv)
+  sha256 OK  processed/train.csv  4c677f404c19cf8c7d99a2fbc049d2655264c2f05787b3f448e2f8d2b6c9d37b
+  sha256 OK  processed/validation.csv  d249b14b01149ec1e5cd933ae3349c470f71b8ba79d4745f534610d71c1d9f61
+  sha256 OK  processed/test.csv  e251582ae76e419e344228c3bcd3d6c8f468b481968e3cb6f06f221f0c9f6b5b
+  sha256 OK  exp_4_1_final/Exp_4.1_BETO_HPO_embeddings.pkl  64b7682e6d6517e0e643502a96cc80949bb5b35d2a4c04a4ba345243ad1b5d44
+  sha256 OK  exp_4_1_final/checkpoint-342/config.json  86985e20b8eed8b3109da2db106b5f46983f0f65bd00483efd82e4abd012e3ff
+  sha256 OK  exp_4_1_final/checkpoint-342/model.safetensors  268a9e6a80d16ab2e813e92658c82c1b379c5999814546983b90661f5125316e
+  sha256 OK  exp_4_1_final/checkpoint-342/optimizer.pt  2885266c826abd64f99d6ea7529de01254bd58e04775a66c3d9ff8b5a5d5dff9
+  sha256 OK  exp_4_1_final/checkpoint-342/rng_state.pth  c0146f42a53c21d6433c6a11ec988bafa85f780940292a04dc97fc0a7a503a6d
+  sha256 OK  exp_4_1_final/checkpoint-342/scaler.pt  dcbe381cc6a660bd34055065fef3eb800be74beb65e18b3ae50b5864d90516fc
+  sha256 OK  exp_4_1_final/checkpoint-342/scheduler.pt  ef87c315d3ed887a76a485e8ee6eac973dcb3debbb4b4598038be67368f77b53
+  sha256 OK  exp_4_1_final/checkpoint-342/tokenizer.json  b8bbcf34543923c217e5e22ce6f54e2090424191142a9d469f53214a1b3ef3b8
+  sha256 OK  exp_4_1_final/checkpoint-342/tokenizer_config.json  60a5aa443734912456c9139bae8f2bb82a59328e3d540d90d6435b13575b9bd3
+  sha256 OK  exp_4_1_final/checkpoint-342/trainer_state.json  dd5b541102e0cf4c27ef53d842bcc88e1aa3fd73f520fd3a6317eb319f996cd1
+  sha256 OK  exp_4_1_final/checkpoint-342/training_args.bin  2cfe72e8318c0511350faaffa0908520ebba62951cf14b7791fe13ef09ac3be2
+  sha256 OK  exp_4_1_final/checkpoint-342/ (agregado)  2969f6466ad469bb2fe21ac0d57d48614d053ac3188392cbb68695b8a5895ae5
+
+— Alineación CSV ↔ índice maestro
+  train: 908 filas alineadas con el índice (id, sha256 del texto, y_true)
+  val: 114 filas alineadas con el índice (id, sha256 del texto, y_true)
+  test: 114 filas alineadas con el índice (id, sha256 del texto, y_true)
+  etiquetas de EMB_41 = índice en los tres splits
+
+— V1
+V1: OK  {'architectures': ['BertForSequenceClassification'], 'id2label': {'0': 'no_depresivo', '1': 'depresivo'}, 'n_labels': 2, 'best_model_checkpoint': '/content/proyecto-transformacion-texto-imagen/models/checkpoints/beto_hpo_final/checkpoint-342', 'best_metric': 0.7327621049228032}
+
+— V3
+V3 train: 908 filas, coseno mín 0.38778732, filas con coseno < 0.9999: 908, vecino más cercano ≠ propia fila: 146  (144 s)
+V3 val: 114 filas, coseno mín 0.49051421, filas con coseno < 0.9999: 114, vecino más cercano ≠ propia fila: 5  (19 s)
+V3 test: 114 filas, coseno mín 0.45417051, filas con coseno < 0.9999: 114, vecino más cercano ≠ propia fila: 3  (19 s)
+V3: FALLA  {'ok': False, 'cos_min': 0.38778731600448524, 'n_cos_below': 1136, 'n_nearest_not_self': 154, 'n_rows': 1136}
+
+DETENIDO: V3 no se cumple: la correspondencia corpus ↔ embeddings queda en duda

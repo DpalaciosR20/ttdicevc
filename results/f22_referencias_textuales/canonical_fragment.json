@@ -1,0 +1,121 @@
+{
+ "numbers": {
+  "ref.beto_exp41.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 16,
+     "fp": 16,
+     "tn": 54,
+     "tp": 28
+    },
+    "val": {
+     "fn": 16,
+     "fp": 14,
+     "tn": 56,
+     "tp": 28
+    }
+   },
+   "evaluator": "trainer_head: cabeza de clasificación de checkpoint-342 (BertForSequenceClassification), CPU fp32, max_length=128 con padding fijo, p_dep = softmax(logits)[:, 1]; y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Sustituye la cifra reportada de TT-I (0.7586, inalcanzable con soportes 70/44). Recalculada en F2.2 desde el checkpoint; ver docs/especificacion_f22.md §6-§7.",
+   "source": {
+    "locator": "split val y test",
+    "path": "results/predictions/referencia/text__beto__finetune__seed42.csv"
+   },
+   "status": "verificado",
+   "supersedes": "ref.beto_exp41.f1_macro",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7038961038961039,
+    "val": 0.7199475925319359
+   }
+  },
+  "ref.delta_ni.f1_macro": {
+   "depends_on": [
+    "ref.beto_exp41.f1_macro",
+    "ref.tfidf_lemma.f1_macro"
+   ],
+   "derivation": "diff",
+   "evaluator": "δ = F1_BETO − F1_Exp1.2 (TF-IDF lematizado), margen de no inferioridad (plan v2 §3.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "diferencia sin término en este split (ref.tfidf_lemma.f1_macro es nulo)"
+   },
+   "source": {
+    "locator": "§5.2",
+    "path": "docs/especificacion_f22.md"
+   },
+   "status": "reportado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.003496103896103886,
+    "val": null
+   }
+  },
+  "ref.emb768_logreg.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 15,
+     "fp": 14,
+     "tn": 56,
+     "tp": 29
+    }
+   },
+   "evaluator": "logreg_on_embeddings: StandardScaler (train) + LogisticRegression L2 lbfgs, sin pesos de clase, C = 0.000316228 elegido por F1-Val sobre EMB_41; y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Mismo tipo de evaluador que Exp 2.x y 3.x; separa la cabeza de BETO de la representación.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/especificacion_f22.md §4); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/emb768__logreg__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7304964539007093
+   }
+  },
+  "witcom.delta_beto_gs_resnet18.f1_macro": {
+   "depends_on": [
+    "ref.beto_exp41.f1_macro",
+    "witcom.gs_resnet18.f1_macro_mean"
+   ],
+   "derivation": "diff",
+   "evaluator": "Δ exploratorio de WITCOM = F1_BETO − media de Gray-Scott + ResNet-18 (5 semillas)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "diferencia sin término en este split (witcom.gs_resnet18.f1_macro_mean es nulo)"
+   },
+   "source": {
+    "locator": "§5.2",
+    "path": "docs/especificacion_f22.md"
+   },
+   "status": "reportado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.010303896103896037,
+    "val": null
+   }
+  }
+ },
+ "schema_version": "1.0"
+}

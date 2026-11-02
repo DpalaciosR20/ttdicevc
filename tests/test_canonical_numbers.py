@@ -17,7 +17,11 @@ Estructura       908 + 114 + 114 = 1,136; soportes por clase coherentes; 54 corr
                  de F3.2 con el mismo y_true de val.
 Derivadas        Cada derivada se recalcula desde depends_on; cada agregado
                  transcrito (summarizes) es compatible con sus cifras.
-Fusión           Una clave repetida entre fragmentos o colectores es un error.
+Fusión           Una clave repetida entre fragmentos o colectores es un error,
+                 salvo sustitución explícita (supersedes); la sustituida se
+                 conserva intacta en superseded.
+Predicciones     Cada F1 verificado cuya fuente es un archivo de
+                 results/predictions/ se recalcula desde ese archivo (F2.2).
 
 Ejecución (desde la raíz del repo):
     CANON_UMAP_PARAMS=<umap_params.pkl> CANON_STRICT=1 \
@@ -215,7 +219,8 @@ def test_derivadas(nid):
         return
     for s in canon.METRIC_SPLITS:
         vals = [d['value'][s] for d in deps]
-        expected = None if all(v is None for v in vals) else canon.derive(e['derivation'], vals)
+        absent = any if e['derivation'] == 'diff' else all
+        expected = None if absent(v is None for v in vals) else canon.derive(e['derivation'], vals)
         assert e['value'][s] == expected, f'{nid}[{s}]'
 
 
@@ -274,3 +279,97 @@ def test_derivada_declarada_debe_coincidir():
     bad = {**_entry(5), 'depends_on': ['l1', 'l2'], 'derivation': 'sum'}
     with pytest.raises(ValueError, match='declarado'):
         canon.resolve_derived({'l1': dict(leaf), 'l2': dict(leaf), 'd': bad})
+
+
+# ── Sustitución (supersedes) ──────────────────────────────────────────────
+def _metric(value_test, status='reportado', **extra):
+    e = {'kind': 'metric', 'metric': 'f1_macro', 'status': status, 'value': {'val': None, 'test': value_test},
+         'null_reason': {'val': 'prueba'}, 'evaluator': 'prueba', 'decimals': 4,
+         'supports_ref': {'val': 'support.val', 'test': 'support.test'},
+         'source': {'path': 'README.md', 'locator': 'prueba'}}
+    e.update(extra)
+    return e
+
+
+@pytest.mark.parametrize('order', ['vieja_primero', 'nueva_primero'])
+def test_supersedes_misma_clave(order):
+    old, new = _metric(0.7586), _metric(0.7590, supersedes='x.f1')
+    srcs = [('f_old', {'x.f1': old}), ('f_new', {'x.f1': new})]
+    numbers, superseded = canon.merge(dict(srcs if order == 'vieja_primero' else srcs[::-1]))
+    assert numbers['x.f1'] is new
+    assert superseded == {'x.f1': {'by': 'f_new:x.f1', 'origin': 'f_old', 'entry': old}}
+
+
+def test_supersedes_otra_clave():
+    old, new = _metric(0.7586), _metric(0.7590, supersedes='x.old')
+    numbers, superseded = canon.merge({'a': {'x.old': old}, 'b': {'x.new': new}})
+    assert set(numbers) == {'x.new'} and superseded['x.old']['entry'] is old
+
+
+def test_supersedes_objetivo_inexistente():
+    with pytest.raises(ValueError, match='no existe'):
+        canon.merge({'a': {'x.new': _metric(0.7, supersedes='x.zz')}})
+    with pytest.raises(ValueError, match='no existe'):
+        canon.merge({'a': {'x.f1': _metric(0.7, supersedes='x.f1')}})
+
+
+def test_supersedes_doble():
+    with pytest.raises(ValueError, match='clave duplicada'):
+        canon.merge({'a': {'x.f1': _metric(0.7)}, 'b': {'x.f1': _metric(0.71, supersedes='x.f1')},
+                     'c': {'x.f1': _metric(0.72, supersedes='x.f1')}})
+    with pytest.raises(ValueError, match='dos veces'):
+        canon.merge({'a': {'x.old': _metric(0.7)}, 'b': {'x.n1': _metric(0.71, supersedes='x.old'),
+                                                       'x.n2': _metric(0.72, supersedes='x.old')}})
+
+
+def test_superseded_se_conserva_intacta():
+    """Cada entrada sustituida del archivo es idéntica a la de su fragmento de origen."""
+    for nid, rec in DOC.get('superseded', {}).items():
+        frag = json.loads((REPO / rec['origin']).read_text(encoding='utf-8'))
+        assert frag['numbers'][nid] == rec['entry'], nid
+        assert NUMBERS[rec['by'].rsplit(':', 1)[1]]['supersedes'] == nid
+
+
+# ── Derivación diff ───────────────────────────────────────────────────────
+def test_diff_con_split_nulo():
+    a = _metric(0.76, status='verificado')
+    a['value']['val'] = 0.72
+    b = _metric(0.70)
+    d = {'kind': 'metric', 'metric': 'f1_macro', 'evaluator': 'prueba', 'derivation': 'diff',
+         'depends_on': ['a', 'b'], 'supports_ref': dict(a['supports_ref']),
+         'source': {'path': 'README.md', 'locator': 'prueba'}}
+    numbers = {'a': a, 'b': b, 'd': d}
+    canon.resolve_derived(numbers)
+    assert d['value']['test'] == pytest.approx(0.06) and d['value']['val'] is None
+    assert 'b' in d['null_reason']['val'] and d['status'] == 'reportado'
+
+
+def test_diff_exige_dos_dependencias():
+    base = {'kind': 'count', 'status': 'reportado', 'evaluator': 'prueba',
+            'source': {'path': 'README.md', 'locator': 'prueba'}}
+    numbers = {'a': {**base, 'value': 1}, 'b': {**base, 'value': 2}, 'c': {**base, 'value': 3},
+               'd': {k: v for k, v in base.items() if k != 'status'} | {'depends_on': ['a', 'b', 'c'],
+                                                                         'derivation': 'diff'}}
+    with pytest.raises(ValueError, match='dos dependencias'):
+        canon.resolve_derived(numbers)
+
+
+# ── Verificados desde archivos de predicciones (F2.2) ─────────────────────
+PRED_CASES = sorted(nid for nid, e in NUMBERS.items()
+                    if e['status'] == 'verificado' and is_leaf_metric(e)
+                    and e['source'].get('path', '').startswith('results/predictions/'))
+
+
+@pytest.mark.parametrize('nid', PRED_CASES)
+def test_verificado_desde_predicciones(nid):
+    e = NUMBERS[nid]
+    with open(REPO / e['source']['path'], newline='', encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+    for s in canon.METRIC_SPLITS:
+        if e['value'][s] is None:
+            continue
+        sel = [r for r in rows if r['split'] == s]
+        cm = canon.confusion_counts([int(r['y_true']) for r in sel],
+                                    [int(float(r['p_dep']) > 0.5) for r in sel])
+        assert cm == e['confusion'][s], f'{nid}[{s}]'
+        assert canon.f1_macro_from_confusion(cm) == e['value'][s], f'{nid}[{s}]'

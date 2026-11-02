@@ -1,0 +1,89 @@
+........................................................................ [ 26%]
+........................................................................ [ 52%]
+........................................................................ [ 79%]
+...ssss...s.ss...FF.....................................                 [100%]
+================================== FAILURES ===================================
+_____________________ test_C_reproduccion_desde_u[perlin] _____________________
+
+tech = 'perlin'
+sample = [('train', 765), ('train', 178), ('val', 1), ('val', 81), ('test', 40), ('test', 49)]
+U_y = (array([[0.32190028, 0.5964943 , 0.9583557 , 0.87289345, 0.844262  ],
+       [0.9285382 , 0.5033171 , 0.6285531 , 0.50...
+       [0.7933721 , 0.64813495, 0.3325147 , 0.56666434, 0.16575958]],
+      dtype=float32), array([0, 1, 0, 1, 0, 1]))
+renders = <function renders.<locals>.get at 0x00000208F19E1F80>
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_reproduccion_desde_u(tech, sample, U_y, renders):
+        root = _tech_dir(tech)
+        _, _, modname, motor = STORED[tech]
+        regen = renders(motor)["A"]
+        expected_path = _import(modname).expected_path
+        _, y = U_y
+        fallas = []
+        for (s, i), label, a in zip(sample, y, regen):
+            # Se localiza con expected_path, igual que al generar (hallazgo 5)
+            p = Path(expected_path(i, int(label), s, str(root)))
+            if not p.exists():
+                fallas.append(f"{s}[{i}]: no existe {p.name}")
+                continue
+            b = np.array(Image.open(p))
+            if not np.array_equal(a, b):
+                fallas.append(f"{s}[{i}]: {_diff(a, b)}")
+>       assert not fallas, (
+            f"{tech}: las imágenes almacenadas no se reproducen bit a bit desde u con "
+            f"src/generation/ (motor {motor}):\n" + "\n".join(fallas)
+            + "\nResolver con F0.1/F0.2 antes de calcular checksums.")
+E       AssertionError: perlin: las imágenes almacenadas no se reproducen bit a bit desde u con src/generation/ (motor perlin):
+E         train[765]: 46.6476% px distintos · max|Δ| = 247 · MAE = 54.9054
+E         train[178]: 58.4106% px distintos · max|Δ| = 254 · MAE = 71.3195
+E         val[1]: 2.8687% px distintos · max|Δ| = 239 · MAE = 1.8880
+E         val[81]: 55.9219% px distintos · max|Δ| = 254 · MAE = 59.0566
+E         test[40]: 46.3776% px distintos · max|Δ| = 249 · MAE = 51.9553
+E         Resolver con F0.1/F0.2 antes de calcular checksums.
+E       assert not ['train[765]: 46.6476% px distintos · max|Δ| = 247 · MAE = 54.9054', 'train[178]: 58.4106% px distintos · max|Δ| = 254...5.9219% px distintos · max|Δ| = 254 · MAE = 59.0566', 'test[40]: 46.3776% px distintos · max|Δ| = 249 · MAE = 51.9553']
+
+tests\test_label_independence.py:378: AssertionError
+_____________________ test_C_reproduccion_desde_u[lorenz] _____________________
+
+tech = 'lorenz'
+sample = [('train', 765), ('train', 178), ('val', 1), ('val', 81), ('test', 40), ('test', 49)]
+U_y = (array([[0.32190028, 0.5964943 , 0.9583557 , 0.87289345, 0.844262  ],
+       [0.9285382 , 0.5033171 , 0.6285531 , 0.50...
+       [0.7933721 , 0.64813495, 0.3325147 , 0.56666434, 0.16575958]],
+      dtype=float32), array([0, 1, 0, 1, 0, 1]))
+renders = <function renders.<locals>.get at 0x00000208F19E1F80>
+
+    @pytest.mark.parametrize("tech", list(STORED))
+    def test_C_reproduccion_desde_u(tech, sample, U_y, renders):
+        root = _tech_dir(tech)
+        _, _, modname, motor = STORED[tech]
+        regen = renders(motor)["A"]
+        expected_path = _import(modname).expected_path
+        _, y = U_y
+        fallas = []
+        for (s, i), label, a in zip(sample, y, regen):
+            # Se localiza con expected_path, igual que al generar (hallazgo 5)
+            p = Path(expected_path(i, int(label), s, str(root)))
+            if not p.exists():
+                fallas.append(f"{s}[{i}]: no existe {p.name}")
+                continue
+            b = np.array(Image.open(p))
+            if not np.array_equal(a, b):
+                fallas.append(f"{s}[{i}]: {_diff(a, b)}")
+>       assert not fallas, (
+            f"{tech}: las imágenes almacenadas no se reproducen bit a bit desde u con "
+            f"src/generation/ (motor {motor}):\n" + "\n".join(fallas)
+            + "\nResolver con F0.1/F0.2 antes de calcular checksums.")
+E       AssertionError: lorenz: las imágenes almacenadas no se reproducen bit a bit desde u con src/generation/ (motor lorenz):
+E         train[178]: 0.6485% px distintos · max|Δ| = 3 · MAE = 0.0067
+E         val[81]: 5.2856% px distintos · max|Δ| = 190 · MAE = 1.5802
+E         test[49]: 4.3640% px distintos · max|Δ| = 103 · MAE = 0.7230
+E         Resolver con F0.1/F0.2 antes de calcular checksums.
+E       assert not ['train[178]: 0.6485% px distintos · max|Δ| = 3 · MAE = 0.0067', 'val[81]: 5.2856% px distintos · max|Δ| = 190 · MAE = 1.5802', 'test[49]: 4.3640% px distintos · max|Δ| = 103 · MAE = 0.7230']
+
+tests\test_label_independence.py:378: AssertionError
+- generated xml file: C:\Users\DELL\Desktop\TT\TT2\ttdicevc\results\f22_referencias_textuales\pytest.xml -
+=========================== short test summary info ===========================
+SKIPPED [7] tests\test_label_independence.py:154: Sin GPU CUDA: se omite la ruta GPU de Gray-Scott
+2 failed, 263 passed, 7 skipped in 929.23s (0:15:29)

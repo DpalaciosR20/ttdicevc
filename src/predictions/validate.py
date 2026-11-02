@@ -97,7 +97,8 @@ def _parse(raw):
         if bad.any():
             v.append((1, f'{c}: valores no numéricos (p. ej. {raw.loc[bad, c].iloc[0]!r})'))
         else:
-            df[c] = vals.astype('float64')
+            # float() de Python es de ida y vuelta exacta; pd.to_numeric puede desviarse 1 ulp
+            df[c] = raw[c].map(float).astype('float64')
     if v:
         return None, v
     order = df['split'].map({s: i for i, s in enumerate(schema.SPLIT_ORDER)})

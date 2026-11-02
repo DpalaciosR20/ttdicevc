@@ -120,3 +120,9 @@ El asunto de cada commit y el título de cada PR empiezan con el ID de la tarea 
 - Cambios que no corresponden a ninguna tarea del plan (mantenimiento, herramientas, convenciones): `[repo] ...`
 
 Las ramas pueden llevar el ID también (p. ej. `ce/f3.4-hpo`), pero no es obligatorio.
+
+## Ejecución local o en Kaggle
+Antes de ejecutar una corrida, estima su duración con una prueba acotada. Si requiere GPU o se estima en más de
+20 minutos en el equipo local, no la ejecutes: sigue docs/ejecucion_kaggle.md, haz commit, pide que se haga push
+y entrega las celdas con acelerador, duración estimada, commit, contenido esperado del .zip y el comando local de
+verificación.

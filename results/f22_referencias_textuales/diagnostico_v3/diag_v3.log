@@ -1,0 +1,57 @@
+  sha256 OK  exp_4_1_final/Exp_4.1_BETO_HPO_embeddings.pkl  64b7682e6d6517e0e643502a96cc80949bb5b35d2a4c04a4ba345243ad1b5d44
+  sha256 OK  processed/train.csv  4c677f404c19cf8c7d99a2fbc049d2655264c2f05787b3f448e2f8d2b6c9d37b
+  sha256 OK  processed/validation.csv  d249b14b01149ec1e5cd933ae3349c470f71b8ba79d4745f534610d71c1d9f61
+  sha256 OK  processed/test.csv  e251582ae76e419e344228c3bcd3d6c8f468b481968e3cb6f06f221f0c9f6b5b
+  train: 908 filas alineadas con el índice (id, sha256 del texto, y_true)
+  val: 114 filas alineadas con el índice (id, sha256 del texto, y_true)
+  test: 114 filas alineadas con el índice (id, sha256 del texto, y_true)
+EMB_41: model_name='BETO_HPO_finetuned', checkpoint='/content/proyecto-transformacion-texto-imagen/models/checkpoints/beto_hpo_final/checkpoint-342'
+  norma de EMB_41[train]: media 22.273, mín 20.763, máx 22.919
+  norma de EMB_41[val]: media 22.339, mín 21.238, máx 22.798
+  norma de EMB_41[test]: media 22.243, mín 21.489, máx 22.806
+Tokenizador de checkpoint-342 = vocabulario de dccuchile/bert-base-spanish-wwm-cased
+ckpt342.bert  eval  dynamic    cls     coseno medio 0.665586 [0.3878, 0.8912]  ≥0.9999:    0/1136  vecino = propia:  982/1136
+ckpt342.bert  eval  dynamic    pooler  coseno medio -0.011466 [-0.0975, 0.0719]  ≥0.9999:    0/1136  vecino = propia:    1/1136
+ckpt342.bert  eval  dynamic    mean    coseno medio 0.357349 [0.1380, 0.6246]  ≥0.9999:    0/1136  vecino = propia:  250/1136
+  (178 s)
+ckpt342.bert  eval  max_length cls     coseno medio 0.665586 [0.3878, 0.8912]  ≥0.9999:    0/1136  vecino = propia:  982/1136
+ckpt342.bert  eval  max_length pooler  coseno medio -0.011466 [-0.0975, 0.0719]  ≥0.9999:    0/1136  vecino = propia:    1/1136
+ckpt342.bert  eval  max_length mean    coseno medio 0.357349 [0.1380, 0.6246]  ≥0.9999:    0/1136  vecino = propia:  250/1136
+  (183 s)
+ckpt342.bert  train dynamic    cls     coseno medio 0.621173 [0.3427, 0.8372]  ≥0.9999:    0/1136  vecino = propia:  936/1136
+ckpt342.bert  train dynamic    pooler  coseno medio -0.007992 [-0.1109, 0.0868]  ≥0.9999:    0/1136  vecino = propia:    2/1136
+ckpt342.bert  train dynamic    mean    coseno medio 0.342529 [0.1035, 0.6029]  ≥0.9999:    0/1136  vecino = propia:  164/1136
+  (335 s)
+ckpt342.bert  train max_length cls     coseno medio 0.621173 [0.3427, 0.8372]  ≥0.9999:    0/1136  vecino = propia:  936/1136
+ckpt342.bert  train max_length pooler  coseno medio -0.007992 [-0.1109, 0.0868]  ≥0.9999:    0/1136  vecino = propia:    2/1136
+ckpt342.bert  train max_length mean    coseno medio 0.342529 [0.1035, 0.6029]  ≥0.9999:    0/1136  vecino = propia:  164/1136
+  (384 s)
+base_cased    eval  dynamic    cls     coseno medio 0.509430 [0.2021, 0.8806]  ≥0.9999:    0/1136  vecino = propia:  150/1136
+base_cased    eval  dynamic    pooler  coseno medio 0.017905 [-0.0729, 0.1045]  ≥0.9999:    0/1136  vecino = propia:    1/1136
+base_cased    eval  dynamic    mean    coseno medio 0.200059 [-0.0529, 0.6054]  ≥0.9999:    0/1136  vecino = propia:   23/1136
+  (184 s)
+base_cased    eval  max_length cls     coseno medio 0.509430 [0.2021, 0.8806]  ≥0.9999:    0/1136  vecino = propia:  150/1136
+base_cased    eval  max_length pooler  coseno medio 0.017905 [-0.0729, 0.1045]  ≥0.9999:    0/1136  vecino = propia:    1/1136
+base_cased    eval  max_length mean    coseno medio 0.200059 [-0.0529, 0.6054]  ≥0.9999:    0/1136  vecino = propia:   23/1136
+  (179 s)
+
+Mejor variante: ckpt342.bert eval dynamic cls (coseno medio 0.665586)
+Conclusión: EMB_41 no es reproducible desde checkpoint-342
+
+LogReg sobre EMB_41 (protocolo §2), solo F1-Val:
+  C = 0.0001  F1-Val = 0.687412
+  C = 0.000316228  F1-Val = 0.730496
+  C = 0.001  F1-Val = 0.685390
+  C = 0.00316228  F1-Val = 0.648377
+  C = 0.01  F1-Val = 0.666883
+  C = 0.0316228  F1-Val = 0.652982
+  C = 0.1  F1-Val = 0.645267
+  C = 0.316228  F1-Val = 0.637564
+  C = 1  F1-Val = 0.648377
+  C = 3.16228  F1-Val = 0.640611
+  C = 10  F1-Val = 0.629870
+  C = 31.6228  F1-Val = 0.629870
+  C = 100  F1-Val = 0.622181
+  mejor: C = 0.000316228, F1-Val = 0.730496 (empate → menor C)
+
+Duración: 1600 s

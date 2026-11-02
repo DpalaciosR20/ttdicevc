@@ -1,6 +1,7 @@
 {
  "inputs": {
   "results/f04_cifras_canonicas/canonical_fragment.json": "6ce7c079b3a1e2d845fece8d6db097fe643b6d5afe1de8687ebf768e4066ae52",
+  "results/f22_referencias_textuales/canonical_fragment.json": "fa778353dbc9304f434ab401cb6b7b71974dd8b36b4c37fa4749d2216ffa5e04",
   "results/f32_primera_pasada/grid_meta.json": "903976351f665577ed020efcf1bd949ea5e11480b08557541dd08c44515f320e",
   "results/f32_primera_pasada/predictions.csv": "46a9a4cba45681de266c4d9e9ce15c5d61aa57ca8164574959ce56b930c8c30e",
   "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.json": "56df853fe466f3b14890323d8c37e64a3caea601b567feeb95332021314cea77",
@@ -2719,17 +2720,54 @@
    "value": 114
   },
   "ref.beto_exp41.f1_macro": {
-   "decimals": 4,
-   "evaluator": "no documentado en la fuente (Módulo 1, TT-I)",
+   "confusion": {
+    "test": {
+     "fn": 16,
+     "fp": 16,
+     "tn": 54,
+     "tp": 28
+    },
+    "val": {
+     "fn": 16,
+     "fp": 14,
+     "tn": 56,
+     "tp": 28
+    }
+   },
+   "evaluator": "trainer_head: cabeza de clasificación de checkpoint-342 (BertForSequenceClassification), CPU fp32, max_length=128 con padding fijo, p_dep = softmax(logits)[:, 1]; y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
    "kind": "metric",
    "metric": "f1_macro",
-   "note": "BETO fine-tuneado con HPO (Exp 4.1), sin pesos de clase. Cifra a reconciliar con las predicciones de F2.2.",
+   "note": "Sustituye la cifra reportada de TT-I (0.7586, inalcanzable con soportes 70/44). Recalculada en F2.2 desde el checkpoint; ver docs/especificacion_f22.md §6-§7.",
+   "source": {
+    "locator": "split val y test",
+    "path": "results/predictions/referencia/text__beto__finetune__seed42.csv"
+   },
+   "status": "verificado",
+   "supersedes": "ref.beto_exp41.f1_macro",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7038961038961039,
+    "val": 0.7199475925319359
+   }
+  },
+  "ref.delta_ni.f1_macro": {
+   "depends_on": [
+    "ref.beto_exp41.f1_macro",
+    "ref.tfidf_lemma.f1_macro"
+   ],
+   "derivation": "diff",
+   "evaluator": "δ = F1_BETO − F1_Exp1.2 (TF-IDF lematizado), margen de no inferioridad (plan v2 §3.2)",
+   "kind": "metric",
+   "metric": "f1_macro",
    "null_reason": {
-    "val": "no disponible en el repo (sin predicciones ni log de Exp 4.1)"
+    "val": "diferencia sin término en este split (ref.tfidf_lemma.f1_macro es nulo)"
    },
    "source": {
-    "locator": "§5, Tabla comparativa final; §7",
-    "path": "docs/resumen_modulo3_camera_ready.md"
+    "locator": "§5.2",
+    "path": "docs/especificacion_f22.md"
    },
    "status": "reportado",
    "supports_ref": {
@@ -2737,11 +2775,38 @@
     "val": "support.val"
    },
    "value": {
-    "test": 0.7586,
+    "test": 0.003496103896103886,
     "val": null
+   }
+  },
+  "ref.emb768_logreg.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 15,
+     "fp": 14,
+     "tn": 56,
+     "tp": 29
+    }
    },
-   "xfail": {
-    "reason": "F1-Macro 0.7586 no es alcanzable con los soportes de test 70/44: el valor alcanzable más cercano es 0.758985 (TP=36, TN=51), que redondea a 0.7590"
+   "evaluator": "logreg_on_embeddings: StandardScaler (train) + LogisticRegression L2 lbfgs, sin pesos de clase, C = 0.000316228 elegido por F1-Val sobre EMB_41; y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Mismo tipo de evaluador que Exp 2.x y 3.x; separa la cabeza de BETO de la representación.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/especificacion_f22.md §4); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/emb768__logreg__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7304964539007093
    }
   },
   "ref.tfidf_lemma.f1_macro": {
@@ -2966,6 +3031,32 @@
    },
    "status": "verificado",
    "value": 44
+  },
+  "witcom.delta_beto_gs_resnet18.f1_macro": {
+   "depends_on": [
+    "ref.beto_exp41.f1_macro",
+    "witcom.gs_resnet18.f1_macro_mean"
+   ],
+   "derivation": "diff",
+   "evaluator": "Δ exploratorio de WITCOM = F1_BETO − media de Gray-Scott + ResNet-18 (5 semillas)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "diferencia sin término en este split (witcom.gs_resnet18.f1_macro_mean es nulo)"
+   },
+   "source": {
+    "locator": "§5.2",
+    "path": "docs/especificacion_f22.md"
+   },
+   "status": "reportado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.010303896103896037,
+    "val": null
+   }
   },
   "witcom.gs_resnet18.f1_macro_mean": {
    "decimals": 4,
@@ -3243,5 +3334,37 @@
    }
   }
  },
- "schema_version": "1.0"
+ "schema_version": "1.0",
+ "superseded": {
+  "ref.beto_exp41.f1_macro": {
+   "by": "results/f22_referencias_textuales/canonical_fragment.json:ref.beto_exp41.f1_macro",
+   "entry": {
+    "decimals": 4,
+    "evaluator": "no documentado en la fuente (Módulo 1, TT-I)",
+    "kind": "metric",
+    "metric": "f1_macro",
+    "note": "BETO fine-tuneado con HPO (Exp 4.1), sin pesos de clase. Cifra a reconciliar con las predicciones de F2.2.",
+    "null_reason": {
+     "val": "no disponible en el repo (sin predicciones ni log de Exp 4.1)"
+    },
+    "source": {
+     "locator": "§5, Tabla comparativa final; §7",
+     "path": "docs/resumen_modulo3_camera_ready.md"
+    },
+    "status": "reportado",
+    "supports_ref": {
+     "test": "support.test",
+     "val": "support.val"
+    },
+    "value": {
+     "test": 0.7586,
+     "val": null
+    },
+    "xfail": {
+     "reason": "F1-Macro 0.7586 no es alcanzable con los soportes de test 70/44: el valor alcanzable más cercano es 0.758985 (TP=36, TN=51), que redondea a 0.7590"
+    }
+   },
+   "origin": "results/f04_cifras_canonicas/canonical_fragment.json"
+  }
+ }
 }

@@ -1,0 +1,3 @@
+# Los archivos de predicciones llevan su SHA-256 en el manifiesto (especificacion_predicciones §4):
+# se mantienen en LF en todas las plataformas para que csv_sha256 siga coincidiendo.
+results/predictions/** text eol=lf
