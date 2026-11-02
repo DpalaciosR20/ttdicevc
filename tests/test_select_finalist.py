@@ -166,6 +166,64 @@ def test_real_parameter_counts_are_used():
     assert (vit['trainable'], vit['total']) == (1538, 85800194)
 
 
+# ── Segundo mejor modelo (F1.2, fase sensibilidad) ───────────────────────────
+
+def second(table, technique='gray_scott'):
+    r = table[(table['technique'] == technique) & table['second']]
+    assert len(r) == 1
+    return r['arch'].iloc[0], r['strategy'].iloc[0]
+
+
+def test_second_normal_case():
+    """Líder único finalista: el segundo es el líder de las cinco restantes."""
+    t = sf.select_second_from_runs(runs({('resnet18', 'finetune'): (0.80, 0.01),
+                                         ('efficientnet_b0', 'finetune'): (0.70, 0.01)}), matrix())
+    assert finalist(t) == ('resnet18', 'finetune')
+    assert second(t) == ('efficientnet_b0', 'finetune')
+
+
+def test_second_when_finalist_is_not_leader():
+    """El finalista (EfficientNet frozen) gana por complejidad sin ser el líder;
+    al excluirlo, el líder (ViT finetune) queda solo dentro de su tolerancia y
+    es el segundo."""
+    t = sf.select_second_from_runs(runs({('vit_b16', 'finetune'): (0.75, 0.03),
+                                         ('efficientnet_b0', 'frozen'): (0.73, 0.01)}), matrix())
+    assert flags(t, 'leader') == {('vit_b16', 'finetune')}
+    assert finalist(t) == ('efficientnet_b0', 'frozen')
+    assert second(t) == ('vit_b16', 'finetune')
+
+
+def test_second_reapplies_complexity_rule():
+    """Al excluir al finalista se aplica la regla completa: entre el líder (ViT
+    finetune) y ResNet finetune, empatados, gana ResNet por menos entrenables,
+    aunque ResNet frozen tenga menos parámetros (queda fuera de la tolerancia)."""
+    t = sf.select_second_from_runs(runs({('vit_b16', 'finetune'): (0.75, 0.03),
+                                         ('efficientnet_b0', 'frozen'): (0.73, 0.01),
+                                         ('resnet18', 'finetune'): (0.74, 0.02),
+                                         ('resnet18', 'frozen'): (0.70, 0.01)}), matrix())
+    assert finalist(t) == ('efficientnet_b0', 'frozen')
+    assert second(t) == ('resnet18', 'finetune')
+
+
+def test_second_unresolved_tie_raises():
+    params = {('resnet18', 'frozen'): (1026, 4010110), ('efficientnet_b0', 'frozen'): (1026, 4010110)}
+    with pytest.raises(sf.UnresolvedTieError, match='lo decide SV'):
+        sf.select_second_from_runs(runs({('vit_b16', 'finetune'): (0.80, 0.01),
+                                         ('efficientnet_b0', 'frozen'): (0.74, 0.01),
+                                         ('resnet18', 'frozen'): (0.74, 0.01)}), matrix(params=params))
+
+
+def test_second_is_per_technique_and_distinct():
+    both = pd.concat([runs({('resnet18', 'finetune'): (0.80, 0.01), ('vit_b16', 'frozen'): (0.75, 0.01)},
+                           technique='perlin'),
+                      runs({('vit_b16', 'frozen'): (0.80, 0.01), ('resnet18', 'finetune'): (0.70, 0.01)},
+                           technique='lorenz')])
+    t = sf.select_second_from_runs(both, matrix(techniques=('perlin', 'lorenz')))
+    assert second(t, 'perlin') == ('vit_b16', 'frozen')
+    assert second(t, 'lorenz') == ('resnet18', 'finetune')
+    assert not (t['finalist'] & t['second']).any()
+
+
 # ── Entradas incompletas o incoherentes ──────────────────────────────────────
 
 def test_missing_seed_raises():

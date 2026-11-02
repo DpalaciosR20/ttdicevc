@@ -102,7 +102,7 @@ def test_vocabulary_is_f15(cfg):
 
 
 def test_fases_are_f15(cfg):
-    for fase in ('primera_pasada', 'final', 'control_permutacion'):
+    for fase in ('primera_pasada', 'final', 'control_permutacion', 'sensibilidad'):
         assert fase in schema.FASES
         assert set(cfg['fases'][fase]['prediction_splits']) <= schema.FASES[fase]
     for fase in schema.FASES_TEST_REQUIRES_TAG:
@@ -246,7 +246,8 @@ def _phase_rows(doc):
 
 
 @pytest.mark.parametrize('fase, key', [('primera_pasada', 'primera_pasada'), ('hpo', 'F3.4'),
-                                        ('final', 'final'), ('control_permutacion', 'control_permutacion')])
+                                        ('final', 'final'), ('control_permutacion', 'control_permutacion'),
+                                        ('sensibilidad', 'sensibilidad')])
 def test_phase_seeds_and_splits(doc, cfg, fase, key):
     rows = _phase_rows(doc)
     row = rows[key]
@@ -277,16 +278,26 @@ def test_total_trainings(doc, cfg):
     total = (n_cfg * len(ph['primera_pasada']['seeds'])
              + n_fin * cfg['hpo']['n_trials'] * len(ph['hpo']['seeds'])
              + n_fin * len(ph['final']['seeds'])
-             + n_fin * len(ph['control_permutacion']['seeds']))
+             + n_fin * len(ph['control_permutacion']['seeds'])
+             + n_fin * len(ph['sensibilidad']['seeds']))  # un segundo mejor por técnica
     assert total == ph['total_entrenamientos']
     m = re.search(r'Total de entrenamientos: (\d+) \(F3\.2\) \+ (\d+) × (\d+) × (\d+) = (\d+) \(F3\.4\) '
-                  r'\+ (\d+) \(F3\.5\) \+ (\d+) \(F3\.6\) = (\d+)', section(doc, 4))
+                  r'\+ (\d+) \(F3\.5\) \+ (\d+) \(F3\.6\) \+ (\d+) \(F5\.5\) = (\d+)', section(doc, 4))
     assert m, 'no se encontró la línea del total en §4'
     g = [int(x) for x in m.groups()]
     assert g[0] == n_cfg * len(ph['primera_pasada']['seeds'])
     assert g[1:4] == [n_fin, cfg['hpo']['n_trials'], len(ph['hpo']['seeds'])] and g[4] == g[1] * g[2] * g[3]
     assert g[5] == n_fin * len(ph['final']['seeds']) and g[6] == n_fin * len(ph['control_permutacion']['seeds'])
-    assert g[7] == total == sum(g[i] for i in (0, 4, 5, 6))
+    assert g[7] == n_fin * len(ph['sensibilidad']['seeds'])
+    assert g[8] == total == sum(g[i] for i in (0, 4, 5, 6, 7))
+
+
+def test_sensitivity_phase(cfg):
+    """Enmienda de F1.2: segundo mejor modelo, hiperparámetros de la primera pasada, semillas de final."""
+    s = cfg['fases']['sensibilidad']
+    assert s['seeds'] == cfg['fases']['final']['seeds']
+    assert s['requires'] == cfg['fases']['final']['requires']
+    assert s['selection'] == 'select_second' and s['hyperparams'] == 'configuracion_comun'
 
 
 # ── §5 Regla de selección ────────────────────────────────────────────────────

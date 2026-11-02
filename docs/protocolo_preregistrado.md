@@ -164,7 +164,7 @@ Se reporta el veredicto de cada técnica bajo cada variante, sin modificar el ve
 | Formulación A | Margen fijo δ = (1 − r)(0.7039 − 0.5), con $\Delta_t = F1_{BETO} - \overline{F1}_{img,t}$ |
 | Por semilla | Veredicto con cada semilla por separado; se reporta cuántas de las cinco dan V1 |
 | Variabilidad de BETO | F1_BETO desplazado ±0.0128, la diferencia de F1-Val entre las dos corridas nominalmente idénticas de Exp 4.1 (F2.2, H1) |
-| Segundo mejor modelo | Segunda configuración de la clasificación de F3.3 en cada técnica, con hiperparámetros de la primera pasada y cinco semillas (requiere 15 entrenamientos adicionales, §12) |
+| Segundo mejor modelo | Segunda configuración de la clasificación de F3.3 en cada técnica, con hiperparámetros de la primera pasada y cinco semillas (requiere 15 entrenamientos adicionales, §12). Se excluye al finalista y se aplica de nuevo la regla completa de §5 de la matriz (líderes, tolerancia, complejidad) a las cinco configuraciones restantes de la técnica. |
 | Piso sin el visual permutado | Piso = máximo de mayoritaria, estratificado y brillo |
 
 ## 9. Análisis explicativos (Fase 4)

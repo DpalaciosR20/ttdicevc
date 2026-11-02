@@ -53,8 +53,11 @@ Fuente: `results/f13_matriz/reconocimiento_ce.md`, bloque A. Referencias `archiv
 | `final` | F3.5 | 3 finalistas con hiperparámetros de F3.4 | 42, 7, 123, 2024, 99 | `val`, `test` | `docs/protocolo_preregistrado.md` versionado sin cambios **y** etiqueta `protocolo-v1` en el historial |
 | `control_permutacion` | F3.6 | 3 finalistas con `y_train` permutado (§7) | 42, 7, 123, 2024, 99 | `val`, `test` | Ídem `final` |
 | — | F3.7 | Mapas de atribución de los modelos de F3.5 y F3.6 (§8) | Las 5 de F3.5 | `val`, `test` | Modelos guardados |
+| `sensibilidad` | F5.5 | Segundo mejor modelo por técnica según F3.3 (`select_second`, §5), con los hiperparámetros de la primera pasada (§3) | 42, 7, 123, 2024, 99 | `val`, `test` | Ídem `final` |
 
-Total de entrenamientos: 54 (F3.2) + 3 × 12 × 3 = 108 (F3.4) + 15 (F3.5) + 15 (F3.6) = 192. Costo estimado en T4: ≈ 3.9 h si los finalistas son los sugeridos por v0 y ≈ 13.2 h en el peor caso (tres ViT `finetune`), con cotas de 6 h y 21 h (reconocimiento, bloque C).
+Total de entrenamientos: 54 (F3.2) + 3 × 12 × 3 = 108 (F3.4) + 15 (F3.5) + 15 (F3.6) + 15 (F5.5) = 207. Costo estimado en T4: ≈ 3.9 h si los finalistas son los sugeridos por v0 y ≈ 13.2 h en el peor caso (tres ViT `finetune`), con cotas de 6 h y 21 h (reconocimiento, bloque C). Estas estimaciones son anteriores a la fase `sensibilidad` y no la incluyen.
+
+**Enmienda de F1.2.** La fase `sensibilidad` se agregó al congelar el protocolo (`docs/protocolo_preregistrado.md` §8 y §12), antes de consultar cualquier prueba de los modelos visuales.
 
 ## 5. Selección del finalista (F3.3)
 
@@ -69,6 +72,8 @@ Total de entrenamientos: 54 (F3.2) + 3 × 12 × 3 = 108 (F3.4) + 15 (F3.5) + 15 
 Fundamento del criterio de complejidad: el riesgo de sobreajuste a 908 muestras de entrenamiento y a 114 de validación depende de los parámetros que se ajustan a los datos, no de los que se heredan fijos del preentrenamiento. En consecuencia, toda configuración `frozen` es más simple que cualquier `finetune`. Orden resultante: `resnet18 frozen` (1,026) < `vit_b16 frozen` (1,538) < `efficientnet_b0 frozen` (2,562) < `efficientnet_b0 finetune` (4.01 M) < `resnet18 finetune` (11.18 M) < `vit_b16 finetune` (85.80 M).
 
 La selección oficial la produce `src/selection/select_finalist.py`. La columna `seleccion` que escribe `run_grid.py` es informativa.
+
+**Segundo mejor modelo (fase `sensibilidad`).** Se excluye al finalista y se aplica de nuevo esta regla completa (líderes, tolerancia, complejidad) a las cinco configuraciones restantes de la técnica (`select_second`).
 
 **Declaración.** La regla de §3.6 del plan se conocía y la primera pasada v0 ya se había ejecutado cuando se fijó el criterio de complejidad; los resultados v0 están sustituidos y no se usan en la selección.
 
@@ -143,6 +148,7 @@ Contradicciones entre esta matriz y el código vigente, en orden de necesidad:
 | 7 | Guardado de los índices de la permutación | F3.6 |
 | 8 | Grad-CAM y *attention rollout* según §8 | F3.7 |
 | 9 | *Dataset* `tt2-artefactos` y `meta/artefactos_manifest.csv` | F3.5 |
+| 10 | `run_grid.py` admite la fase `sensibilidad` (configuraciones de `select_second`, compuerta de `--evaluate-test` igual a `final`) | F5.5 |
 
 ## 12. Decisiones provisionales de SV (pendientes de visto bueno de CE)
 

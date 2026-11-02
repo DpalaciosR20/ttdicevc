@@ -38,9 +38,10 @@ FASES = {
     'primera_pasada': {'train', 'val'},
     'final': {'train', 'val', 'test'},
     'control_permutacion': {'train', 'val', 'test'},
+    'sensibilidad': {'train', 'val', 'test'},  # enmienda de F1.2 (protocolo §8, §12)
 }
 # Fases en las que test solo se permite si existe la etiqueta del protocolo congelado
-FASES_TEST_REQUIRES_TAG = {'final', 'control_permutacion'}
+FASES_TEST_REQUIRES_TAG = {'final', 'control_permutacion', 'sensibilidad'}
 PROTOCOL_TAG = 'protocolo-v1'
 
 # Clave única; 'fase' la añade load_predictions desde la carpeta y el manifiesto
