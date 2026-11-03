@@ -1,0 +1,31 @@
+﻿diff --git a/docs/protocolo_preregistrado.md b/docs/protocolo_preregistrado.md
+index 90daaf3..0464e4e 100644
+--- a/docs/protocolo_preregistrado.md
++++ b/docs/protocolo_preregistrado.md
+@@ -209,3 +209,26 @@ La compuerta la hacen cumplir `src/predictions/validate.py` (regla 7) y `run_gri
+ | Semilla del *bootstrap* | 2026 |
+ | Umbral equivalente de F1 visual para θ = 0 con F1_BETO observado | 0.6019 |
+ | δ de la formulación A con r = 0.50 / 0.75 / 0.80 | 0.1019 / 0.0510 / 0.0408 |
++
++## Enmienda 1 (2026-11-02)
++
++**Momento.** Es posterior al congelamiento (etiqueta `protocolo-v1`) y **anterior a cualquier consulta de prueba de los finalistas**: aún no se ha ejecutado F3.5.
++
++**Alcance.** Es aclaratoria. No cambia ningún modelo, parámetro, estadístico, regla de decisión ni archivo de configuración: `configs/protocolo.json` y `configs/matriz_experimentos.json` conservan las huellas del encabezado.
++
++**Motivo.** Una revisión independiente del protocolo contra la evidencia, hecha al cerrar F1.2, encontró tres imprecisiones en el texto congelado.
++
++1. **Origen de las cifras (encabezado).** La frase «Toda cifra citada aquí proviene de `results/canonical_numbers.json`» se precisa así:
++   - Las cifras observadas y las cifras de diseño en escala de F1-Macro provienen de `results/canonical_numbers.json`.
++   - Los parámetros provienen de `configs/protocolo.json` y `configs/matriz_experimentos.json`, cuyas huellas registra el encabezado. Son parámetros r, F1_azar, α, B, la semilla del *bootstrap*, las rejillas y tolerancias, las semillas de entrenamiento, el número de entrenamientos y los niveles de los intervalos.
++   - ±0.0128 (§8) es `f12.variabilidad_beto` calculada sin redondear. Restar las cifras redondeadas de F2.2 daría 0.0129.
++2. **Plazo de las plantillas de discusión (§12).** Las plantillas por veredicto (F6.1) se versionan **antes de ejecutar F3.5**, no solo antes de la Fase 5. El motivo es que `run_grid.py` registra el F1 de prueba al evaluar los finalistas en F3.5.
++3. **Desviaciones respecto del plan v2.** Se declaran tres:
++   - **Estadístico y margen.** El plan (§3.1–§3.2) proponía Δ_t con un margen fijo δ = 0.058 («El margen definitivo lo fija SV en la Fase 1»). El protocolo usa θ_t con retención r = 0.50 (formulación B, §5.1). La cadena de motivos es:
++     - el F1-Test verificado de BETO es 0.7039, no el reportado (F2.2, `docs/especificacion_f22.md` §6.5);
++     - con él, el δ del plan pasa a 0.0035 y pierde su lectura (`docs/especificacion_f22.md` §7);
++     - recomendación de F1.1 (`docs/especificacion_f11.md` §8).
++   - **Conjunto de sensibilidad.** El plan (F5.5) preveía δ ∈ {0.03, 0.058, 0.08}. El protocolo lo sustituye por r ∈ {0.75, 0.80} y la formulación A (§8).
++   - **Superioridad sobre el piso.** La prueba de permutación del plan (§3.3) se sustituye por el *bootstrap* pareado. Ya estaba declarado en §5.3.
++
++**Nota de equivalencia.** «Hiperparámetros de la primera pasada» (§8; `segundo_mejor.hyperparams = "primera_pasada"` en `configs/protocolo.json`) designa la configuración común de la matriz (`fases.sensibilidad.hyperparams = "configuracion_comun"`, `docs/matriz_experimentos.md` §3). Es la misma con la que se ejecuta la primera pasada.

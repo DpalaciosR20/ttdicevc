@@ -1,6 +1,6 @@
 # F1.2: congelamiento del protocolo preregistrado
 
-Evidencia de la tarea F1.2 del plan v2 (rol SV). El protocolo es `docs/protocolo_preregistrado.md`, versión v1 (congelado). Su commit y fecha de congelamiento quedan `[completar]` hasta después del merge y de la etiqueta anotada `protocolo-v1`.
+Evidencia de la tarea F1.2 del plan v2 (rol SV). El protocolo es `docs/protocolo_preregistrado.md`, versión v1 (congelado) con la etiqueta anotada `protocolo-v1` sobre `91c84df` (2026-11-02 18:14:54 −0600). Tiene una enmienda aclaratoria, la Enmienda 1 (`0373069`, `diff_enmienda_1.log`), anterior a toda consulta de prueba de los finalistas.
 
 ## Artefactos
 
@@ -19,7 +19,7 @@ Enmienda de la matriz (fase `sensibilidad`, F5.5): `docs/matriz_experimentos.md`
 
 ## Verificación previa (Paso 0)
 
-Se compararon las cifras de §2, §3, §4.4, §5.1, §8 y §13 del protocolo con `results/canonical_numbers.json`, y los conteos por clase con `meta/sample_index.csv`.
+Se compararon las cifras de §2, §3, §4.4, §5.1, §5.3, §8 y §13 del protocolo con `results/canonical_numbers.json`, y los conteos por clase con `meta/sample_index.csv`.
 
 - **Sin discrepancias de valor.**
   - `meta/sample_index.csv`: 908 / 114 / 114; train 555 / 353, val 70 / 44, test 70 / 44. Coincide con §2 y con `n.*` y `support.*`.
@@ -54,6 +54,11 @@ Las tres tienen estado `extraido`.
 4. **«§0».** Es el encabezado del documento: versión, huellas SHA-256 y enmienda de la matriz.
 
 Hay además una elección declarada que no cambia ninguna decisión: el intervalo percentil se calcula con `numpy.quantile(method='linear')` (`contraste.multiplicidad.interval.quantile_method`).
+
+## Congelamiento y pruebas por mutación (posteriores al merge)
+
+- **Etiqueta.** `protocolo-v1` es una etiqueta anotada sobre `91c84df` (merge del PR #16), con fecha 2026-11-02 18:14:54 −0600. El commit `d0d6a24` solo completa commit y fecha en el encabezado del protocolo; `diff_encabezado_post_etiqueta.log` contiene `git diff protocolo-v1 HEAD` sobre el protocolo.
+- **Mutaciones.** `mutaciones.py` introduce 19 defectos, uno a la vez, en `src/protocol/verdict.py`, `select_second`, `configs/protocolo.json`, `configs/matriz_experimentos.json` y el protocolo. Corre las pruebas correspondientes y restaura cada archivo. La salida está en `mutaciones.log`. La suite completa después de restaurar está en `pytest_suite_post_mutaciones.log`.
 
 ## Reproducción
 
