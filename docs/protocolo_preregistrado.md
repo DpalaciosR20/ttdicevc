@@ -1,7 +1,7 @@
 # Protocolo preregistrado del Objetivo V
 
 > Tarea F1.2 del plan v2 · Rol: SV · Versión: **v1 (congelado)**
-> Congelamiento: commit `[completar]`, etiqueta anotada `protocolo-v1`, fecha `[completar]`.
+> Congelamiento: commit `91c84dfa7e192a32403abdaf401bb8f6ae5ff179`, etiqueta anotada `protocolo-v1`, fecha `2026-11-02 18:14:54 -0600`.
 > Parámetros legibles por código: `configs/protocolo.json` (SHA-256 `92ef8774f10f6c7ca04abd71a6a55be6ef29852b049932fb54dcecfe7ee00e5a`).
 > Matriz de experimentos: `configs/matriz_experimentos.json` (SHA-256 `ce0e0ed6602ba0f53441eb77dbd90c7704e6d7f2b877d6f0ea9c295c689a8f15`). Huellas calculadas con fines de línea LF; `tests/test_protocolo.py` las verifica.
 > Enmienda previa de la matriz: fase `sensibilidad` (F1.2).
