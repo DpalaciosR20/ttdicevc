@@ -85,6 +85,7 @@ Cada archivo pertenece a una fase, indicada por su carpeta y su manifiesto:
 | `primera_pasada` | F3.2 | `val` (**`test` prohibido**) |
 | `final` | F3.5 | `val`, `test` solo si existe la etiqueta `protocolo-v1` en el historial |
 | `control_permutacion` | F3.6 | Ídem `final` |
+| `sensibilidad` | F5.5 | Ídem `final` (enmienda de F1.2: segundo mejor modelo, `docs/protocolo_preregistrado.md` §8) |
 
 `train` es opcional en todas las fases. La clave única es (`fase`, `sample_id`, `technique`, `arch`, `strategy`, `seed`). La fase forma parte de la clave porque una misma combinación puede repetirse entre fases con configuraciones distintas; por ejemplo, la semilla 99 se usa tanto en los finalistas como en el control de permutación. La función de carga añade la columna `fase` desde el manifiesto; los archivos conservan las ocho columnas de la regla 9.
 

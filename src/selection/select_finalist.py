@@ -17,6 +17,10 @@ docs/matriz_experimentos.md §5, leída de configs/matriz_experimentos.json
   5. Si persiste el empate, la de mayor media; si aún persiste, error
      (UnresolvedTieError) y la resuelve SV.
 
+Segundo mejor modelo (select_second, fase sensibilidad, protocolo §8): se
+excluye al finalista y se aplican de nuevo los pasos 2-5 a las configuraciones
+restantes de la técnica.
+
 Los conteos de parámetros se leen del JSON (bloque «parametros»); no se
 instancian modelos ni se importa torch.
 
@@ -174,6 +178,30 @@ def select_from_runs(runs, matrix):
     return select(config_table(runs, matrix))
 
 
+def select_second(table):
+    """Segundo mejor modelo por técnica (fase sensibilidad, protocolo §8):
+    se excluye al finalista y se aplica de nuevo la regla completa de §5
+    (líderes, tolerancia, complejidad) a las configuraciones restantes.
+
+    `table` es la salida de config_table (o de select). Devuelve la tabla de
+    select con la columna adicional `second`; lanza UnresolvedTieError si la
+    regla no decide entre las restantes."""
+    first = select(table)
+    fin = set(first.loc[first['finalist'], CONFIG_KEY].itertuples(index=False, name=None))
+    keys = list(table[CONFIG_KEY].itertuples(index=False, name=None))
+    rest = table[[k not in fin for k in keys]].reset_index(drop=True)
+    if rest.empty:
+        raise SelectionError('no quedan configuraciones después de excluir al finalista')
+    second = select(rest)
+    sec = set(second.loc[second['finalist'], CONFIG_KEY].itertuples(index=False, name=None))
+    first['second'] = [k in sec for k in first[CONFIG_KEY].itertuples(index=False, name=None)]
+    return first
+
+
+def select_second_from_runs(runs, matrix):
+    return select_second(config_table(runs, matrix))
+
+
 def select_finalists(pattern=DEFAULT_PATTERN, matrix=None, index=None, tag_exists=protocol_tag_exists):
     """Carga las predicciones con load_predictions y aplica §5.
     Devuelve (tabla por configuración, F1 por corrida)."""
@@ -202,6 +230,15 @@ def main():
     print('\nFinalistas:')
     for r in table[table['finalist']].itertuples():
         print(f'  {r.technique:<11} {r.arch}/{r.strategy}  F1-Val {r.f1_val_mean:.4f} ± {r.f1_val_std:.4f}')
+    status = 0
+    try:
+        table = select_second(table)
+        print('\nSegundo mejor (fase sensibilidad, protocolo §8):')
+        for r in table[table['second']].itertuples():
+            print(f'  {r.technique:<11} {r.arch}/{r.strategy}  F1-Val {r.f1_val_mean:.4f} ± {r.f1_val_std:.4f}')
+    except SelectionError as e:
+        print(f'ERROR (segundo mejor): {e}', file=sys.stderr)
+        status = 1
     if args.out:
         out = Path(args.out)
         paths.assert_outside_data_root(out)
@@ -209,7 +246,7 @@ def main():
         table.to_csv(out, index=False, lineterminator='\n')
         runs.to_csv(out.with_name(out.stem + '_corridas.csv'), index=False, lineterminator='\n')
         print(f'\nEscrito {out}')
-    return 0
+    return status
 
 
 if __name__ == '__main__':

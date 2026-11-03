@@ -225,6 +225,20 @@ def test_rule7_test_in_final_requires_tag(tmp_path):
     validate_predictions(path, index=INDEX, tag_exists=TAG_YES)
 
 
+@pytest.mark.parametrize('fase', ['control_permutacion', 'sensibilidad'])
+def test_rule7_test_in_tagged_phases_requires_tag(tmp_path, fase):
+    """F1.2: sensibilidad (segundo mejor modelo) tiene la misma compuerta que final."""
+    assert fase in schema.FASES_TEST_REQUIRES_TAG
+    path = write(tmp_path, make_rows(('val', 'test')), fase=fase)
+    assert rules_of(path, tag_exists=TAG_NO) == {7}
+    validate_predictions(path, index=INDEX, tag_exists=TAG_YES)
+
+
+def test_rule7_sensitivity_val_only_without_tag(tmp_path):
+    path = write(tmp_path, make_rows(('val',)), fase='sensibilidad')
+    validate_predictions(path, index=INDEX, tag_exists=TAG_NO)
+
+
 def test_rule7_first_pass_val_only_passes(tmp_path):
     path = write(tmp_path, make_rows(('train', 'val')), fase='primera_pasada')
     validate_predictions(path, index=INDEX, tag_exists=TAG_NO)

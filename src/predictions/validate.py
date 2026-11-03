@@ -14,8 +14,9 @@ Validador de archivos de predicciones por muestra
      strategy, seed).
   6. Falta el manifiesto, le falta un campo obligatorio, csv_sha256 no
      coincide o la fase del manifiesto no es la de la carpeta.
-  7. Hay filas de test en una fase que no las permite (§3.4). En final y
-     control_permutacion, test exige la etiqueta protocolo-v1 en git.
+  7. Hay filas de test en una fase que no las permite (§3.4). En final,
+     control_permutacion y sensibilidad, test exige la etiqueta protocolo-v1
+     en git.
 
 Uso (desde la raíz del repo):
     python -m src.predictions.validate results/predictions/referencia/*.csv
