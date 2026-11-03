@@ -66,7 +66,10 @@ os.environ["TT_DATA_ROOT"] = "/kaggle/input/<ruta de tt2-insumos verificada con 
 `build_manifest --verify` debe decir `manifiesto OK`. Si reporta archivos no registrados en `perlin/` (los duplicados `... (1).png` de F1.5), la copia de Kaggle es anterior al 28 oct: no sigas.
 
 **Celda 3: prueba de humo** (≈ 10 min, solo validación)
+
+`results/f32_primera_pasada/` del repo todavía tiene la primera pasada v0 (formato anterior); el script se niega a mezclarla con la nueva. En el clon de Kaggle se aparta primero (la integración local la conserva como `results/f32_primera_pasada_v0/`):
 ```python
+!mv results/f32_primera_pasada /kaggle/working/f32_primera_pasada_v0 && mkdir -p results/f32_primera_pasada
 !python -m src.training.check_determinism --technique gray_scott --epochs 2 \
     --configs vit_b16:finetune resnet18:finetune efficientnet_b0:finetune \
     --out results/f32_primera_pasada/determinismo.json 2>&1 | tee results/f32_primera_pasada/determinismo.log
