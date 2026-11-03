@@ -1,0 +1,149 @@
+# Pruebas por mutación de F1.2 — 2026-11-03T00:11:33+00:00
+# python 3.13.2
+
+Línea base (sin mutación): código 0 | 69 passed in 2.70s
+
+[V-1] DETECTADA — §5.5: V2 exige límite superior de θ > 0 (desigualdad invertida)
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 6 failed, 21 passed in 0.33s
+      falla: tests/test_verdict.py::test_v1_v2_v3_v4
+      falla: tests/test_verdict.py::test_v2_depends_on_holm_level
+      falla: tests/test_verdict.py::test_step_down_failure_gives_v4
+      falla: tests/test_verdict.py::test_global_verdicts[theta0-d0-expected0-G1]
+      falla: tests/test_verdict.py::test_global_verdicts[theta1-d1-expected1-G2]
+      falla: tests/test_verdict.py::test_global_verdicts[theta3-d3-expected3-G4]
+
+[V-2] DETECTADA — §5.5: V3 deja de tener precedencia (se evalúa V1 antes que el piso)
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 6 failed, 21 passed in 0.33s
+      falla: tests/test_verdict.py::test_v1_v2_v3_v4
+      falla: tests/test_verdict.py::test_v3_takes_precedence_over_v1
+      falla: tests/test_verdict.py::test_floor_family_uses_holm
+      falla: tests/test_verdict.py::test_global_verdicts[theta1-d1-expected1-G2]
+      falla: tests/test_verdict.py::test_global_verdicts[theta2-d2-expected2-G3]
+      falla: tests/test_verdict.py::test_global_verdicts[theta3-d3-expected3-G4]
+
+[V-3] DETECTADA — §5.4: sin regla de empates (empatadas reciben el α_h del mayor rango)
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 4 failed, 23 passed in 0.28s
+      falla: tests/test_verdict.py::test_holm_three_zero_p_ties
+      falla: tests/test_verdict.py::test_holm_partial_tie_gets_strictest_level
+      falla: tests/test_verdict.py::test_holm_tie_rejection_unaffected
+      falla: tests/test_verdict.py::test_three_zero_p_in_both_families
+
+[V-4] DETECTADA — §5.4: Holm sin parada escalonada
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 4 failed, 23 passed in 0.27s
+      falla: tests/test_verdict.py::test_holm_step_down_stops
+      falla: tests/test_verdict.py::test_holm_first_rank_fails
+      falla: tests/test_verdict.py::test_floor_family_uses_holm
+      falla: tests/test_verdict.py::test_step_down_failure_gives_v4
+
+[V-5] DETECTADA — §5.4: Holm con niveles de Bonferroni (α/m en todos los rangos)
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 2 failed, 25 passed in 0.27s
+      falla: tests/test_verdict.py::test_holm_levels_by_rank
+      falla: tests/test_verdict.py::test_holm_partial_tie_gets_strictest_level
+
+[V-6] DETECTADA — §5.2: p con < en vez de ≤
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 1 failed, 26 passed in 0.26s
+      falla: tests/test_verdict.py::test_p_value_counts_le_zero
+
+[V-7] DETECTADA — §5.4: intervalo al nivel 1 − α_h en vez de 1 − 2α_h
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 2 failed, 25 passed in 0.25s
+      falla: tests/test_verdict.py::test_percentile_interval_level
+      falla: tests/test_verdict.py::test_v2_depends_on_holm_level
+
+[V-8] DETECTADA — §5.5: G2 se declara con V4 en vez de V2
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 2 failed, 25 passed in 0.27s
+      falla: tests/test_verdict.py::test_global_verdicts[theta3-d3-expected3-G4]
+      falla: tests/test_verdict.py::test_global_verdict_function
+
+[V-9] DETECTADA — §5.4: intervalo con α_h de la familia de superioridad
+      archivo: src/protocol/verdict.py | pruebas: tests/test_verdict.py
+      pytest: código 1 | 1 failed, 26 passed in 0.28s
+      falla: tests/test_verdict.py::test_v2_depends_on_holm_level
+
+[S-1] DETECTADA — select_second no excluye al finalista
+      archivo: src/selection/select_finalist.py | pruebas: tests/test_select_finalist.py
+      pytest: código 1 | 5 failed, 17 passed in 2.76s
+      falla: tests/test_select_finalist.py::test_second_normal_case
+      falla: tests/test_select_finalist.py::test_second_when_finalist_is_not_leader
+      falla: tests/test_select_finalist.py::test_second_reapplies_complexity_rule
+      falla: tests/test_select_finalist.py::test_second_unresolved_tie_raises
+      falla: tests/test_select_finalist.py::test_second_is_per_technique_and_distinct
+
+[S-2] DETECTADA — select_second toma al líder de las restantes, sin la regla de complejidad
+      archivo: src/selection/select_finalist.py | pruebas: tests/test_select_finalist.py
+      pytest: código 1 | 1 failed, 21 passed in 2.47s
+      falla: tests/test_select_finalist.py::test_second_reapplies_complexity_rule
+
+[P-1] DETECTADA — configs/protocolo.json: r = 0.75 en el contraste principal
+      archivo: configs/protocolo.json | pruebas: tests/test_protocolo.py
+      pytest: código 1 | 3 failed, 17 passed in 0.81s
+      falla: tests/test_protocolo.py::test_header_hashes_match_configs
+      falla: tests/test_protocolo.py::test_statistic_and_threshold
+      falla: tests/test_protocolo.py::test_design_figures
+
+[P-2] DETECTADA — configs/protocolo.json: B = 2000
+      archivo: configs/protocolo.json | pruebas: tests/test_protocolo.py
+      pytest: código 1 | 3 failed, 17 passed in 0.79s
+      falla: tests/test_protocolo.py::test_header_hashes_match_configs
+      falla: tests/test_protocolo.py::test_bootstrap
+      falla: tests/test_protocolo.py::test_design_figures
+
+[P-3] DETECTADA — configs/protocolo.json: regla de empates distinta
+      archivo: configs/protocolo.json | pruebas: tests/test_protocolo.py tests/test_verdict.py
+      pytest: código 1 | 18 failed, 29 passed in 1.09s
+      falla: tests/test_protocolo.py::test_header_hashes_match_configs
+      falla: tests/test_protocolo.py::test_multiplicity
+      falla: tests/test_verdict.py::test_contrast_config_is_implemented_rule
+      falla: tests/test_verdict.py::test_v1_v2_v3_v4
+      falla: tests/test_verdict.py::test_v3_takes_precedence_over_v1
+      falla: tests/test_verdict.py::test_floor_family_uses_holm
+      falla: tests/test_verdict.py::test_v2_depends_on_holm_level
+      falla: tests/test_verdict.py::test_step_down_failure_gives_v4
+      falla: tests/test_verdict.py::test_three_zero_p_in_both_families
+      falla: tests/test_verdict.py::test_global_verdicts[theta0-d0-expected0-G1]
+      falla: tests/test_verdict.py::test_global_verdicts[theta1-d1-expected1-G2]
+      falla: tests/test_verdict.py::test_global_verdicts[theta2-d2-expected2-G3]
+      falla: tests/test_verdict.py::test_global_verdicts[theta3-d3-expected3-G4]
+      falla: tests/test_verdict.py::test_different_techniques_raise
+      falla: tests/test_verdict.py::test_expected_techniques_enforced
+      falla: tests/test_verdict.py::test_different_B_raises
+      falla: tests/test_verdict.py::test_non_finite_raises
+      falla: tests/test_verdict.py::test_alpha_from_config_by_default
+
+[P-4] DETECTADA — configs/protocolo.json: rejilla de C de LogReg con 12 valores
+      archivo: configs/protocolo.json | pruebas: tests/test_protocolo.py
+      pytest: código 1 | 2 failed, 18 passed in 0.77s
+      falla: tests/test_protocolo.py::test_header_hashes_match_configs
+      falla: tests/test_protocolo.py::test_ceiling_5d_matches_doc
+
+[P-5] DETECTADA — configs/matriz_experimentos.json: sensibilidad con 3 semillas
+      archivo: configs/matriz_experimentos.json | pruebas: tests/test_protocolo.py
+      pytest: código 1 | 2 failed, 18 passed in 0.71s
+      falla: tests/test_protocolo.py::test_header_hashes_match_configs
+      falla: tests/test_protocolo.py::test_sensitivity
+
+[D-1] DETECTADA — Protocolo §13: umbral 0.6020 en vez de 0.6019
+      archivo: docs/protocolo_preregistrado.md | pruebas: tests/test_protocolo.py
+      pytest: código 1 | 1 failed, 19 passed in 0.75s
+      falla: tests/test_protocolo.py::test_design_figures
+
+[D-2] DETECTADA — Protocolo §5.4: se elimina la frase de la regla de empates
+      archivo: docs/protocolo_preregistrado.md | pruebas: tests/test_protocolo.py
+      pytest: código 1 | 1 failed, 19 passed in 0.74s
+      falla: tests/test_protocolo.py::test_multiplicity
+
+[D-3] DETECTADA — Protocolo §8: variabilidad de BETO ±0.0129
+      archivo: docs/protocolo_preregistrado.md | pruebas: tests/test_protocolo.py
+      pytest: código 1 | 1 failed, 19 passed in 0.72s
+      falla: tests/test_protocolo.py::test_sensitivity
+
+Mutaciones detectadas: 19/19
+Archivos restaurados (SHA-256 idéntico al original): sí
+Línea base tras restaurar: código 0 | 69 passed in 2.47s
