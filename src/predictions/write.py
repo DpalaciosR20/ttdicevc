@@ -20,6 +20,7 @@ import json
 import platform
 import subprocess
 from datetime import datetime, timezone
+from pathlib import Path
 
 import pandas as pd
 
@@ -57,9 +58,14 @@ def environment():
             'platform': platform.platform(), 'gpu': gpu}
 
 
-def write_predictions(df, fase, task_id, config, inputs, model_selection, extra=None):
+def write_predictions(df, fase, task_id, config, inputs, model_selection, extra=None, out_root=None):
     """Escribe results/predictions/{fase}/{technique}__{arch}__{strategy}__seed{seed}.csv
-    y su manifiesto. Devuelve la ruta del CSV."""
+    y su manifiesto. Devuelve la ruta del CSV.
+
+    out_root sustituye a results/predictions (p. ej. pruebas de humo fuera del
+    repo); la carpeta de la fase se conserva porque el validador la lee.
+    extra se aplica al final: run_grid.py lo usa para registrar el commit, la
+    fecha y el entorno de la corrida y no los del momento en que se escribe."""
     if fase not in schema.FASES:
         raise ValueError(f'fase {fase!r} no está en {sorted(schema.FASES)}')
     if list(df.columns) != schema.COLUMNS:
@@ -72,7 +78,7 @@ def write_predictions(df, fase, task_id, config, inputs, model_selection, extra=
     order = df['split'].map({s: i for i, s in enumerate(schema.SPLIT_ORDER)})
     df = df.assign(_o=order).sort_values(['_o', 'sample_id'], kind='stable').drop(columns='_o')
 
-    out_dir = PREDICTIONS_DIR / fase
+    out_dir = Path(out_root or PREDICTIONS_DIR) / fase
     name = schema.file_name(*(ident[c][0] for c in ('technique', 'arch', 'strategy', 'seed')))
     csv_path = out_dir / name
     paths.assert_outside_data_root(csv_path)

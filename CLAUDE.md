@@ -45,7 +45,7 @@ Ver `docs/hallazgos_metodologicos.md` para el detalle completo. Resumen:
 El v2 reencuadra TT2: la pregunta ya no es si la imagen *añade* poder discriminativo (eso lo acota la desigualdad de procesamiento de datos, `I(Y;X) ≤ I(Y;u)`), sino **cuánta información se conserva, dónde se pierde y por qué**. El Objetivo V se decide con una prueba de **no inferioridad pareada frente a BETO** (margen preregistrado δ, bootstrap pareado, Holm), con cuatro veredictos posibles (V1 conservación, V2 parcial, V3 no conservación, V4 no concluyente). McNemar pasa a ser complementario: su no significancia con n=114 no demuestra equivalencia.
 
 Reglas del v2 que afectan cualquier trabajo nuevo:
-- **El conjunto de prueba está bloqueado** hasta que `docs/protocolo_preregistrado.md` esté congelado (commit fechado, Fase 1). La primera pasada del grid (18 configs × 3 semillas: 42, 7, 123) es **solo validación**. `run_grid.py` hace cumplir esto: sin `--evaluate-test` no carga test, y con él se niega si el protocolo no está commiteado.
+- **El conjunto de prueba está bloqueado** hasta que `docs/protocolo_preregistrado.md` esté congelado (commit fechado, Fase 1). La primera pasada del grid (18 configs × 3 semillas: 42, 7, 123) es **solo validación**. `run_grid.py` hace cumplir esto: sin `--evaluate-test` no carga test, y con él se niega si el protocolo no está commiteado o si falta la etiqueta `protocolo-v1` (ya existe desde el 2 nov 2026).
 - Selección de finalistas por **F1-val promedio entre semillas**; empate dentro de 1 std → el modelo con menos parámetros entrenables. Test se consulta una sola vez por finalista (5 semillas: 42, 7, 123, 2024, 99).
 - CE entrega a SV **predicciones por muestra** (`predictions.csv`: `sample_id, split, y_true, technique, arch, strategy, seed, p_dep`), no solo métricas.
 - Aumentos y resolución de entrada se validan por técnica (F1.4) antes de fijarlos; por ahora se usan los del camera-ready (224 px + flip horizontal).
@@ -78,10 +78,13 @@ ttdicevc/
 │       ├── build_model.py
 │       ├── data.py                    ← preprocesamiento/loaders compartidos (3ch, 224, ImageNet)
 │       ├── train_model.py
-│       ├── run_grid.py                ← grid 18 configs / multi-seed, reanudable (ver docs/correr_grid_kaggle.md)
+│       ├── config.py                  ← lee configs/preprocesamiento.json (F1.4) y configs/matriz_experimentos.json (F1.3)
+│       ├── run_grid.py                ← grid 18 configs / multi-seed, reanudable, salida F1.5 (ver docs/correr_grid_kaggle.md)
+│       ├── check_determinism.py       ← prueba de humo de determinismo (matriz §11.6)
 │       └── umap_io.py                 ← lee umap_params.pkl sin umap/numba (F0.2)
 ├── tests/
-│   └── smoke_test_training.py         ← 3 arquitecturas × frozen/fine-tune, corre en CPU
+│   ├── smoke_test_training.py         ← 3 arquitecturas × frozen/fine-tune, corre en CPU
+│   └── test_run_grid.py               ← run_grid con datos sintéticos: configs, fases, formato F1.5
 ├── notebooks/                         ← notebooks de Kaggle/Colab (limpiar outputs pesados antes de commitear)
 ├── docs/
 │   ├── artefactos_datos.md            ← dónde están los .pkl y los datasets de imágenes
