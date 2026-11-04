@@ -4,64 +4,64 @@
   "results/f11_potencia/canonical_fragment.json": "4f3d0ec8b449f36d5d76ef8d412b5b5d03be6e8ac91ab30669f60dbabf913bd0",
   "results/f12_protocolo/canonical_fragment.json": "76989a351802d11e0dc710f3e4754accaee0886831b709ca97d7693619091f45",
   "results/f22_referencias_textuales/canonical_fragment.json": "fa778353dbc9304f434ab401cb6b7b71974dd8b36b4c37fa4749d2216ffa5e04",
-  "results/f32_primera_pasada/grid_meta.json": "903976351f665577ed020efcf1bd949ea5e11480b08557541dd08c44515f320e",
-  "results/f32_primera_pasada/predictions.csv": "46a9a4cba45681de266c4d9e9ce15c5d61aa57ca8164574959ce56b930c8c30e",
-  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.json": "56df853fe466f3b14890323d8c37e64a3caea601b567feeb95332021314cea77",
-  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.json": "e93e0ace3907469f7da429b065df171ff98c99d89fe48b6169b3be1b92a17d3a",
-  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.json": "d148b78263cc11539829dcad3aa311383e19391064178395b6d531c39b3275a4",
-  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed123.json": "0cf36d5ddad02708f5d1b924b3b4c968abb87a2a38c858f8e9ab0c79a1419d57",
-  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed42.json": "afb05fb0efcc24054a6e53789287ea4e8bf7bb5a02fc4e99e77196c4e246ae29",
-  "results/f32_primera_pasada/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed7.json": "7ec4557ea753b5b4137784d108bb17d5d42263af21b6ca181288cce954aea4b6",
-  "results/f32_primera_pasada/runs/gray_scott__resnet18__finetune__px224-flip__seed123.json": "4a690d5bef2e0b374cccb0c4fff3814d3b775eb9f197b35947105bdc782a7a1e",
-  "results/f32_primera_pasada/runs/gray_scott__resnet18__finetune__px224-flip__seed42.json": "2ccfa8bb9ec725ade3821a9f90b6696cba034f162d7da7d126eaed3df4c358eb",
-  "results/f32_primera_pasada/runs/gray_scott__resnet18__finetune__px224-flip__seed7.json": "9cfc1bc783fd5fa01bc4fbfde59ac9cb25bdb3e8cb024b3e473e051aca4c526c",
-  "results/f32_primera_pasada/runs/gray_scott__resnet18__frozen__px224-flip__seed123.json": "2a1e554ff85780b0f5c60cbeaa864915bcb3fa9a3df232d7a0fa863bf25de251",
-  "results/f32_primera_pasada/runs/gray_scott__resnet18__frozen__px224-flip__seed42.json": "af628bf1f0d9fb67091cf20c770f739a9a9072c47990df5f4f29dcde82fa696c",
-  "results/f32_primera_pasada/runs/gray_scott__resnet18__frozen__px224-flip__seed7.json": "186385ce9de5b36e239d76443fc5e089905f4ee958c8d3da11e487a2b90a20ef",
-  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__finetune__px224-flip__seed123.json": "113fef8d80ce3424119e2a7fe69dfbf1e7c3a127b4059603c817cebc74a47718",
-  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__finetune__px224-flip__seed42.json": "b126c1a59b6539f4d2f7b2c7c2547354289283b0c83299f4cbfed940c79d0c56",
-  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__finetune__px224-flip__seed7.json": "b46bf3c6a43c2a7bae278ea5a6884e1037e338697a753cfd743f5cf0e907dd13",
-  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__frozen__px224-flip__seed123.json": "b5cb7d4aab2674f5ae21a392913782209e4cca585e17fae639f84cfc93729645",
-  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__frozen__px224-flip__seed42.json": "bddfc6f122800f0eb3e9b8cbee34cffc136b63b91541476f7d64d840344ffff1",
-  "results/f32_primera_pasada/runs/gray_scott__vit_b_16__frozen__px224-flip__seed7.json": "9d34200452f0f2caf78555d4ee43640a768eb5b3ea04bbf5e3dc7667bcf31d8a",
-  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed123.json": "e4696930d7767443d1abc3a3fdb76827acf9e51b26c3e2c8f96107d52c15b2e9",
-  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed42.json": "489c8b45554d745d3e707ca8949c954a809a2ce2cb929b34153c90d1f84640b0",
-  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed7.json": "1fdbf8d7d6d63279a5b4aeb2a2caeb7b278ffcbe728b410a1baf406eadaec856",
-  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed123.json": "c87400449bbd494473acc8bea6bae3ab63219654603c97ffb60464b7d6e8af99",
-  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed42.json": "3db33b6caec1459a4b0bb2deeaff6d53e1b5ca7848f86bf98baf38529931bd3d",
-  "results/f32_primera_pasada/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed7.json": "2c5fc672bc9273777a14ff702b4fb4baca7cf9fa83d82ce344087cb81134ece7",
-  "results/f32_primera_pasada/runs/lorenz__resnet18__finetune__px224-flip__seed123.json": "72170f2a58e31e2749e86a714e878b299c1d9ecb99cd46fbe4e984ccd721f1a2",
-  "results/f32_primera_pasada/runs/lorenz__resnet18__finetune__px224-flip__seed42.json": "35e870da9959225a6281a82ad810118e8959286068f3bed09c28438f67a2f465",
-  "results/f32_primera_pasada/runs/lorenz__resnet18__finetune__px224-flip__seed7.json": "292473e3a26133e91c3679987e6de38ab075fa8cb7c1a44a8a09dc691389bdea",
-  "results/f32_primera_pasada/runs/lorenz__resnet18__frozen__px224-flip__seed123.json": "7f0d3adde598c5778cfa42f799c65ea3093056bc7ef576380f8b40512556c1c8",
-  "results/f32_primera_pasada/runs/lorenz__resnet18__frozen__px224-flip__seed42.json": "c91fa996f4a96309684e7e4451df3f95f9f749cf7a4753b645ff2cfda81a9064",
-  "results/f32_primera_pasada/runs/lorenz__resnet18__frozen__px224-flip__seed7.json": "0502ce526b315afaecc7be1cbe1badbec5fa607765e66c25f123788c6900d79d",
-  "results/f32_primera_pasada/runs/lorenz__vit_b_16__finetune__px224-flip__seed123.json": "08e38dc1d56bd42676fe7cc3bbe7008b60eb2a02414071e4a20286f6ec631512",
-  "results/f32_primera_pasada/runs/lorenz__vit_b_16__finetune__px224-flip__seed42.json": "b98faddd7efcc448c97a411ae8c195c9322b1013096f6a22d2345b5d9f357a7c",
-  "results/f32_primera_pasada/runs/lorenz__vit_b_16__finetune__px224-flip__seed7.json": "4a3a513930ae0e807e004a1f843e31d986cb1c018d58ab3436dc65da4742122b",
-  "results/f32_primera_pasada/runs/lorenz__vit_b_16__frozen__px224-flip__seed123.json": "f3505a9d12dee242b21f1e2d5050009b98c0d552d7b607799bf922e3fd13beff",
-  "results/f32_primera_pasada/runs/lorenz__vit_b_16__frozen__px224-flip__seed42.json": "0ec43d5a081601f0a40b47e4e60bb8e94e8affeba63e14792338805dca47cbaa",
-  "results/f32_primera_pasada/runs/lorenz__vit_b_16__frozen__px224-flip__seed7.json": "59745567ed6c8d838ffd35a7f0a442fbf9876667d6dd22e343d9b8faab153e13",
-  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__finetune__px224-flip__seed123.json": "e779b4456ab7cc92982ca24872c4c1c111d9909b1c641c9d4f5291fd91122493",
-  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__finetune__px224-flip__seed42.json": "db455f587717ddcabaaf2615bd4c9fcdf3c6a02b93309f8d1f5d6089e8ce0d0e",
-  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__finetune__px224-flip__seed7.json": "8d966f7662fa1ba12b5b23445254dd83cc8346aa0bd92cc14e17f75a19a0672c",
-  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__frozen__px224-flip__seed123.json": "fd910c0b0b3510640808576bbe361ebc80f2b2065a57fd06ff0c516a8787cb00",
-  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__frozen__px224-flip__seed42.json": "e12b025138a707076cb2e0d6479e7bf928e885a8cbf4f99aad7dabe626ba5f57",
-  "results/f32_primera_pasada/runs/perlin__efficientnet_b0__frozen__px224-flip__seed7.json": "669aaba3fab9ca98f60736498d05680340765644b572f925aef9528c4e15407e",
-  "results/f32_primera_pasada/runs/perlin__resnet18__finetune__px224-flip__seed123.json": "a0b2a28b54685f8f72d6919d4063d6e98ba17723982a195f55c2081da1f2037c",
-  "results/f32_primera_pasada/runs/perlin__resnet18__finetune__px224-flip__seed42.json": "157fce0caee324e7a598fb275aa851ea7a20cc500f967d0c59c83332b491f1e0",
-  "results/f32_primera_pasada/runs/perlin__resnet18__finetune__px224-flip__seed7.json": "dde5bd1211eaf049ce5bc74c1c08e7b2ae521465f539de75fa2057ee82092f1b",
-  "results/f32_primera_pasada/runs/perlin__resnet18__frozen__px224-flip__seed123.json": "ef41cc03e2e5d0d31cace7590d7a8c20f15bab831b74c09911319ce914041a88",
-  "results/f32_primera_pasada/runs/perlin__resnet18__frozen__px224-flip__seed42.json": "4d74f76cdfd5daeccfbfe8539853977ae87d16ba54d166d14d7c065a16165f1f",
-  "results/f32_primera_pasada/runs/perlin__resnet18__frozen__px224-flip__seed7.json": "c7655b3a604e13794a7fc10d3b09e7523bd62ef83a511df9f191efebdf61c062",
-  "results/f32_primera_pasada/runs/perlin__vit_b_16__finetune__px224-flip__seed123.json": "9fab186583597572fa03e2ece1e99bae5692faadf0612bd06dc0f77d2f276fcd",
-  "results/f32_primera_pasada/runs/perlin__vit_b_16__finetune__px224-flip__seed42.json": "499dbd13d7380fe1055603d529d357dc8d794609fbf983ef3f0057cce405459e",
-  "results/f32_primera_pasada/runs/perlin__vit_b_16__finetune__px224-flip__seed7.json": "90a5a234e8882fed829f193408b78d7271267f424f5850010a52a1c374c74611",
-  "results/f32_primera_pasada/runs/perlin__vit_b_16__frozen__px224-flip__seed123.json": "0bf525b85bee532c4bafbae6e7a0a807afe8aa0f646c3381ab5f572bb81c41ce",
-  "results/f32_primera_pasada/runs/perlin__vit_b_16__frozen__px224-flip__seed42.json": "ae1090f96d3e1ef23648ba53062e3d3fe06e1421de1233dc15462dc62ed567e5",
-  "results/f32_primera_pasada/runs/perlin__vit_b_16__frozen__px224-flip__seed7.json": "c5977566685e88ca9b20d1a4c7a46e405578ad479ced545740da74f6ba7aefdf",
-  "results/f32_primera_pasada/summary.csv": "5cf0524a60e5b983b7551e9ea85be5eb4523424e59676b238cc95efcb621e70b",
-  "results/f32_primera_pasada/summary_by_config.csv": "197529356fa2128e897e375a800c3162b6017fb3cbc2e5f18de3367b9056fdda",
+  "results/f32_primera_pasada_v0/grid_meta.json": "903976351f665577ed020efcf1bd949ea5e11480b08557541dd08c44515f320e",
+  "results/f32_primera_pasada_v0/predictions.csv": "46a9a4cba45681de266c4d9e9ce15c5d61aa57ca8164574959ce56b930c8c30e",
+  "results/f32_primera_pasada_v0/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.json": "56df853fe466f3b14890323d8c37e64a3caea601b567feeb95332021314cea77",
+  "results/f32_primera_pasada_v0/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.json": "e93e0ace3907469f7da429b065df171ff98c99d89fe48b6169b3be1b92a17d3a",
+  "results/f32_primera_pasada_v0/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.json": "d148b78263cc11539829dcad3aa311383e19391064178395b6d531c39b3275a4",
+  "results/f32_primera_pasada_v0/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed123.json": "0cf36d5ddad02708f5d1b924b3b4c968abb87a2a38c858f8e9ab0c79a1419d57",
+  "results/f32_primera_pasada_v0/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed42.json": "afb05fb0efcc24054a6e53789287ea4e8bf7bb5a02fc4e99e77196c4e246ae29",
+  "results/f32_primera_pasada_v0/runs/gray_scott__efficientnet_b0__frozen__px224-flip__seed7.json": "7ec4557ea753b5b4137784d108bb17d5d42263af21b6ca181288cce954aea4b6",
+  "results/f32_primera_pasada_v0/runs/gray_scott__resnet18__finetune__px224-flip__seed123.json": "4a690d5bef2e0b374cccb0c4fff3814d3b775eb9f197b35947105bdc782a7a1e",
+  "results/f32_primera_pasada_v0/runs/gray_scott__resnet18__finetune__px224-flip__seed42.json": "2ccfa8bb9ec725ade3821a9f90b6696cba034f162d7da7d126eaed3df4c358eb",
+  "results/f32_primera_pasada_v0/runs/gray_scott__resnet18__finetune__px224-flip__seed7.json": "9cfc1bc783fd5fa01bc4fbfde59ac9cb25bdb3e8cb024b3e473e051aca4c526c",
+  "results/f32_primera_pasada_v0/runs/gray_scott__resnet18__frozen__px224-flip__seed123.json": "2a1e554ff85780b0f5c60cbeaa864915bcb3fa9a3df232d7a0fa863bf25de251",
+  "results/f32_primera_pasada_v0/runs/gray_scott__resnet18__frozen__px224-flip__seed42.json": "af628bf1f0d9fb67091cf20c770f739a9a9072c47990df5f4f29dcde82fa696c",
+  "results/f32_primera_pasada_v0/runs/gray_scott__resnet18__frozen__px224-flip__seed7.json": "186385ce9de5b36e239d76443fc5e089905f4ee958c8d3da11e487a2b90a20ef",
+  "results/f32_primera_pasada_v0/runs/gray_scott__vit_b_16__finetune__px224-flip__seed123.json": "113fef8d80ce3424119e2a7fe69dfbf1e7c3a127b4059603c817cebc74a47718",
+  "results/f32_primera_pasada_v0/runs/gray_scott__vit_b_16__finetune__px224-flip__seed42.json": "b126c1a59b6539f4d2f7b2c7c2547354289283b0c83299f4cbfed940c79d0c56",
+  "results/f32_primera_pasada_v0/runs/gray_scott__vit_b_16__finetune__px224-flip__seed7.json": "b46bf3c6a43c2a7bae278ea5a6884e1037e338697a753cfd743f5cf0e907dd13",
+  "results/f32_primera_pasada_v0/runs/gray_scott__vit_b_16__frozen__px224-flip__seed123.json": "b5cb7d4aab2674f5ae21a392913782209e4cca585e17fae639f84cfc93729645",
+  "results/f32_primera_pasada_v0/runs/gray_scott__vit_b_16__frozen__px224-flip__seed42.json": "bddfc6f122800f0eb3e9b8cbee34cffc136b63b91541476f7d64d840344ffff1",
+  "results/f32_primera_pasada_v0/runs/gray_scott__vit_b_16__frozen__px224-flip__seed7.json": "9d34200452f0f2caf78555d4ee43640a768eb5b3ea04bbf5e3dc7667bcf31d8a",
+  "results/f32_primera_pasada_v0/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed123.json": "e4696930d7767443d1abc3a3fdb76827acf9e51b26c3e2c8f96107d52c15b2e9",
+  "results/f32_primera_pasada_v0/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed42.json": "489c8b45554d745d3e707ca8949c954a809a2ce2cb929b34153c90d1f84640b0",
+  "results/f32_primera_pasada_v0/runs/lorenz__efficientnet_b0__finetune__px224-flip__seed7.json": "1fdbf8d7d6d63279a5b4aeb2a2caeb7b278ffcbe728b410a1baf406eadaec856",
+  "results/f32_primera_pasada_v0/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed123.json": "c87400449bbd494473acc8bea6bae3ab63219654603c97ffb60464b7d6e8af99",
+  "results/f32_primera_pasada_v0/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed42.json": "3db33b6caec1459a4b0bb2deeaff6d53e1b5ca7848f86bf98baf38529931bd3d",
+  "results/f32_primera_pasada_v0/runs/lorenz__efficientnet_b0__frozen__px224-flip__seed7.json": "2c5fc672bc9273777a14ff702b4fb4baca7cf9fa83d82ce344087cb81134ece7",
+  "results/f32_primera_pasada_v0/runs/lorenz__resnet18__finetune__px224-flip__seed123.json": "72170f2a58e31e2749e86a714e878b299c1d9ecb99cd46fbe4e984ccd721f1a2",
+  "results/f32_primera_pasada_v0/runs/lorenz__resnet18__finetune__px224-flip__seed42.json": "35e870da9959225a6281a82ad810118e8959286068f3bed09c28438f67a2f465",
+  "results/f32_primera_pasada_v0/runs/lorenz__resnet18__finetune__px224-flip__seed7.json": "292473e3a26133e91c3679987e6de38ab075fa8cb7c1a44a8a09dc691389bdea",
+  "results/f32_primera_pasada_v0/runs/lorenz__resnet18__frozen__px224-flip__seed123.json": "7f0d3adde598c5778cfa42f799c65ea3093056bc7ef576380f8b40512556c1c8",
+  "results/f32_primera_pasada_v0/runs/lorenz__resnet18__frozen__px224-flip__seed42.json": "c91fa996f4a96309684e7e4451df3f95f9f749cf7a4753b645ff2cfda81a9064",
+  "results/f32_primera_pasada_v0/runs/lorenz__resnet18__frozen__px224-flip__seed7.json": "0502ce526b315afaecc7be1cbe1badbec5fa607765e66c25f123788c6900d79d",
+  "results/f32_primera_pasada_v0/runs/lorenz__vit_b_16__finetune__px224-flip__seed123.json": "08e38dc1d56bd42676fe7cc3bbe7008b60eb2a02414071e4a20286f6ec631512",
+  "results/f32_primera_pasada_v0/runs/lorenz__vit_b_16__finetune__px224-flip__seed42.json": "b98faddd7efcc448c97a411ae8c195c9322b1013096f6a22d2345b5d9f357a7c",
+  "results/f32_primera_pasada_v0/runs/lorenz__vit_b_16__finetune__px224-flip__seed7.json": "4a3a513930ae0e807e004a1f843e31d986cb1c018d58ab3436dc65da4742122b",
+  "results/f32_primera_pasada_v0/runs/lorenz__vit_b_16__frozen__px224-flip__seed123.json": "f3505a9d12dee242b21f1e2d5050009b98c0d552d7b607799bf922e3fd13beff",
+  "results/f32_primera_pasada_v0/runs/lorenz__vit_b_16__frozen__px224-flip__seed42.json": "0ec43d5a081601f0a40b47e4e60bb8e94e8affeba63e14792338805dca47cbaa",
+  "results/f32_primera_pasada_v0/runs/lorenz__vit_b_16__frozen__px224-flip__seed7.json": "59745567ed6c8d838ffd35a7f0a442fbf9876667d6dd22e343d9b8faab153e13",
+  "results/f32_primera_pasada_v0/runs/perlin__efficientnet_b0__finetune__px224-flip__seed123.json": "e779b4456ab7cc92982ca24872c4c1c111d9909b1c641c9d4f5291fd91122493",
+  "results/f32_primera_pasada_v0/runs/perlin__efficientnet_b0__finetune__px224-flip__seed42.json": "db455f587717ddcabaaf2615bd4c9fcdf3c6a02b93309f8d1f5d6089e8ce0d0e",
+  "results/f32_primera_pasada_v0/runs/perlin__efficientnet_b0__finetune__px224-flip__seed7.json": "8d966f7662fa1ba12b5b23445254dd83cc8346aa0bd92cc14e17f75a19a0672c",
+  "results/f32_primera_pasada_v0/runs/perlin__efficientnet_b0__frozen__px224-flip__seed123.json": "fd910c0b0b3510640808576bbe361ebc80f2b2065a57fd06ff0c516a8787cb00",
+  "results/f32_primera_pasada_v0/runs/perlin__efficientnet_b0__frozen__px224-flip__seed42.json": "e12b025138a707076cb2e0d6479e7bf928e885a8cbf4f99aad7dabe626ba5f57",
+  "results/f32_primera_pasada_v0/runs/perlin__efficientnet_b0__frozen__px224-flip__seed7.json": "669aaba3fab9ca98f60736498d05680340765644b572f925aef9528c4e15407e",
+  "results/f32_primera_pasada_v0/runs/perlin__resnet18__finetune__px224-flip__seed123.json": "a0b2a28b54685f8f72d6919d4063d6e98ba17723982a195f55c2081da1f2037c",
+  "results/f32_primera_pasada_v0/runs/perlin__resnet18__finetune__px224-flip__seed42.json": "157fce0caee324e7a598fb275aa851ea7a20cc500f967d0c59c83332b491f1e0",
+  "results/f32_primera_pasada_v0/runs/perlin__resnet18__finetune__px224-flip__seed7.json": "dde5bd1211eaf049ce5bc74c1c08e7b2ae521465f539de75fa2057ee82092f1b",
+  "results/f32_primera_pasada_v0/runs/perlin__resnet18__frozen__px224-flip__seed123.json": "ef41cc03e2e5d0d31cace7590d7a8c20f15bab831b74c09911319ce914041a88",
+  "results/f32_primera_pasada_v0/runs/perlin__resnet18__frozen__px224-flip__seed42.json": "4d74f76cdfd5daeccfbfe8539853977ae87d16ba54d166d14d7c065a16165f1f",
+  "results/f32_primera_pasada_v0/runs/perlin__resnet18__frozen__px224-flip__seed7.json": "c7655b3a604e13794a7fc10d3b09e7523bd62ef83a511df9f191efebdf61c062",
+  "results/f32_primera_pasada_v0/runs/perlin__vit_b_16__finetune__px224-flip__seed123.json": "9fab186583597572fa03e2ece1e99bae5692faadf0612bd06dc0f77d2f276fcd",
+  "results/f32_primera_pasada_v0/runs/perlin__vit_b_16__finetune__px224-flip__seed42.json": "499dbd13d7380fe1055603d529d357dc8d794609fbf983ef3f0057cce405459e",
+  "results/f32_primera_pasada_v0/runs/perlin__vit_b_16__finetune__px224-flip__seed7.json": "90a5a234e8882fed829f193408b78d7271267f424f5850010a52a1c374c74611",
+  "results/f32_primera_pasada_v0/runs/perlin__vit_b_16__frozen__px224-flip__seed123.json": "0bf525b85bee532c4bafbae6e7a0a807afe8aa0f646c3381ab5f572bb81c41ce",
+  "results/f32_primera_pasada_v0/runs/perlin__vit_b_16__frozen__px224-flip__seed42.json": "ae1090f96d3e1ef23648ba53062e3d3fe06e1421de1233dc15462dc62ed567e5",
+  "results/f32_primera_pasada_v0/runs/perlin__vit_b_16__frozen__px224-flip__seed7.json": "c5977566685e88ca9b20d1a4c7a46e405578ad479ced545740da74f6ba7aefdf",
+  "results/f32_primera_pasada_v0/summary.csv": "5cf0524a60e5b983b7551e9ea85be5eb4523424e59676b238cc95efcb621e70b",
+  "results/f32_primera_pasada_v0/summary_by_config.csv": "197529356fa2128e897e375a800c3162b6017fb3cbc2e5f18de3367b9056fdda",
   "umap_params.pkl (externo)": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
  },
  "numbers": {
@@ -356,7 +356,7 @@
    },
    "source": {
     "locator": "gray_scott / efficientnet_b0 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -383,7 +383,7 @@
    },
    "source": {
     "locator": "gray_scott / efficientnet_b0 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -412,7 +412,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__efficientnet_b0__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -441,7 +441,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__efficientnet_b0__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -470,7 +470,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__efficientnet_b0__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -497,7 +497,7 @@
    },
    "source": {
     "locator": "gray_scott / efficientnet_b0 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -524,7 +524,7 @@
    },
    "source": {
     "locator": "gray_scott / efficientnet_b0 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -553,7 +553,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__efficientnet_b0__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -582,7 +582,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__efficientnet_b0__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -611,7 +611,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__efficientnet_b0__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -638,7 +638,7 @@
    },
    "source": {
     "locator": "gray_scott / resnet18 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -665,7 +665,7 @@
    },
    "source": {
     "locator": "gray_scott / resnet18 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -694,7 +694,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__resnet18__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -723,7 +723,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__resnet18__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -752,7 +752,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__resnet18__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -779,7 +779,7 @@
    },
    "source": {
     "locator": "gray_scott / resnet18 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -806,7 +806,7 @@
    },
    "source": {
     "locator": "gray_scott / resnet18 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -835,7 +835,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__resnet18__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -864,7 +864,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__resnet18__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -893,7 +893,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__resnet18__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -920,7 +920,7 @@
    },
    "source": {
     "locator": "gray_scott / vit_b_16 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -947,7 +947,7 @@
    },
    "source": {
     "locator": "gray_scott / vit_b_16 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -976,7 +976,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__vit_b_16__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1005,7 +1005,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__vit_b_16__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1034,7 +1034,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__vit_b_16__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1061,7 +1061,7 @@
    },
    "source": {
     "locator": "gray_scott / vit_b_16 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1088,7 +1088,7 @@
    },
    "source": {
     "locator": "gray_scott / vit_b_16 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1117,7 +1117,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__vit_b_16__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1146,7 +1146,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__vit_b_16__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1175,7 +1175,7 @@
    },
    "source": {
     "locator": "run_id=gray_scott__vit_b_16__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1202,7 +1202,7 @@
    },
    "source": {
     "locator": "lorenz / efficientnet_b0 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1229,7 +1229,7 @@
    },
    "source": {
     "locator": "lorenz / efficientnet_b0 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1258,7 +1258,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__efficientnet_b0__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1287,7 +1287,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__efficientnet_b0__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1316,7 +1316,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__efficientnet_b0__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1343,7 +1343,7 @@
    },
    "source": {
     "locator": "lorenz / efficientnet_b0 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1370,7 +1370,7 @@
    },
    "source": {
     "locator": "lorenz / efficientnet_b0 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1399,7 +1399,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__efficientnet_b0__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1428,7 +1428,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__efficientnet_b0__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1457,7 +1457,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__efficientnet_b0__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1484,7 +1484,7 @@
    },
    "source": {
     "locator": "lorenz / resnet18 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1511,7 +1511,7 @@
    },
    "source": {
     "locator": "lorenz / resnet18 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1540,7 +1540,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__resnet18__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1569,7 +1569,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__resnet18__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1598,7 +1598,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__resnet18__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1625,7 +1625,7 @@
    },
    "source": {
     "locator": "lorenz / resnet18 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1652,7 +1652,7 @@
    },
    "source": {
     "locator": "lorenz / resnet18 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1681,7 +1681,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__resnet18__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1710,7 +1710,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__resnet18__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1739,7 +1739,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__resnet18__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1766,7 +1766,7 @@
    },
    "source": {
     "locator": "lorenz / vit_b_16 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1793,7 +1793,7 @@
    },
    "source": {
     "locator": "lorenz / vit_b_16 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1822,7 +1822,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__vit_b_16__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1851,7 +1851,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__vit_b_16__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1880,7 +1880,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__vit_b_16__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1907,7 +1907,7 @@
    },
    "source": {
     "locator": "lorenz / vit_b_16 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1934,7 +1934,7 @@
    },
    "source": {
     "locator": "lorenz / vit_b_16 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1963,7 +1963,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__vit_b_16__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -1992,7 +1992,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__vit_b_16__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2021,7 +2021,7 @@
    },
    "source": {
     "locator": "run_id=lorenz__vit_b_16__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2048,7 +2048,7 @@
    },
    "source": {
     "locator": "perlin / efficientnet_b0 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2075,7 +2075,7 @@
    },
    "source": {
     "locator": "perlin / efficientnet_b0 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2104,7 +2104,7 @@
    },
    "source": {
     "locator": "run_id=perlin__efficientnet_b0__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2133,7 +2133,7 @@
    },
    "source": {
     "locator": "run_id=perlin__efficientnet_b0__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2162,7 +2162,7 @@
    },
    "source": {
     "locator": "run_id=perlin__efficientnet_b0__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2189,7 +2189,7 @@
    },
    "source": {
     "locator": "perlin / efficientnet_b0 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2216,7 +2216,7 @@
    },
    "source": {
     "locator": "perlin / efficientnet_b0 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2245,7 +2245,7 @@
    },
    "source": {
     "locator": "run_id=perlin__efficientnet_b0__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2274,7 +2274,7 @@
    },
    "source": {
     "locator": "run_id=perlin__efficientnet_b0__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2303,7 +2303,7 @@
    },
    "source": {
     "locator": "run_id=perlin__efficientnet_b0__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2330,7 +2330,7 @@
    },
    "source": {
     "locator": "perlin / resnet18 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2357,7 +2357,7 @@
    },
    "source": {
     "locator": "perlin / resnet18 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2386,7 +2386,7 @@
    },
    "source": {
     "locator": "run_id=perlin__resnet18__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2415,7 +2415,7 @@
    },
    "source": {
     "locator": "run_id=perlin__resnet18__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2444,7 +2444,7 @@
    },
    "source": {
     "locator": "run_id=perlin__resnet18__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2471,7 +2471,7 @@
    },
    "source": {
     "locator": "perlin / resnet18 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2498,7 +2498,7 @@
    },
    "source": {
     "locator": "perlin / resnet18 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2527,7 +2527,7 @@
    },
    "source": {
     "locator": "run_id=perlin__resnet18__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2556,7 +2556,7 @@
    },
    "source": {
     "locator": "run_id=perlin__resnet18__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2585,7 +2585,7 @@
    },
    "source": {
     "locator": "run_id=perlin__resnet18__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2612,7 +2612,7 @@
    },
    "source": {
     "locator": "perlin / vit_b_16 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2639,7 +2639,7 @@
    },
    "source": {
     "locator": "perlin / vit_b_16 / finetune / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2668,7 +2668,7 @@
    },
    "source": {
     "locator": "run_id=perlin__vit_b_16__finetune__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2697,7 +2697,7 @@
    },
    "source": {
     "locator": "run_id=perlin__vit_b_16__finetune__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2726,7 +2726,7 @@
    },
    "source": {
     "locator": "run_id=perlin__vit_b_16__finetune__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2753,7 +2753,7 @@
    },
    "source": {
     "locator": "perlin / vit_b_16 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2780,7 +2780,7 @@
    },
    "source": {
     "locator": "perlin / vit_b_16 / frozen / px224-flip",
-    "path": "results/f32_primera_pasada/summary_by_config.csv"
+    "path": "results/f32_primera_pasada_v0/summary_by_config.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2809,7 +2809,7 @@
    },
    "source": {
     "locator": "run_id=perlin__vit_b_16__frozen__px224-flip__seed123",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2838,7 +2838,7 @@
    },
    "source": {
     "locator": "run_id=perlin__vit_b_16__frozen__px224-flip__seed42",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {
@@ -2867,7 +2867,7 @@
    },
    "source": {
     "locator": "run_id=perlin__vit_b_16__frozen__px224-flip__seed7",
-    "path": "results/f32_primera_pasada/predictions.csv"
+    "path": "results/f32_primera_pasada_v0/predictions.csv"
    },
    "status": "verificado",
    "supports_ref": {

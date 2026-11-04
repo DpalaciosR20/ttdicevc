@@ -4,7 +4,9 @@ Nota técnica de la tarea **F0.2** del plan v2: *fijar versiones del entorno y r
 
 ## 1. Entorno de referencia
 
-Es el de Kaggle donde se produjeron los resultados de F3.2 (`results/f32_primera_pasada/`). Las versiones exactas están en `requirements.txt`.
+Es el de Kaggle donde se produjo la primera pasada v0 de F3.2 (`results/f32_primera_pasada_v0/`). Las versiones exactas están en `requirements.txt`.
+
+> **La imagen de Kaggle cambió (repetición de F3.2, 2 nov 2026):** Python 3.13.16, torch 2.11.0+**cu130**, torchvision 0.26.0+cu130, cuDNN 9.27 (92700), transformers 5.20.2, tokenizers 0.23.3. El resto de las versiones de la tabla no cambió. `results/f32_primera_pasada/entorno/pip_freeze.txt` tiene la lista completa y cada manifiesto registra su entorno.
 
 | Componente | Versión |
 | --- | --- |
@@ -17,7 +19,7 @@ Es el de Kaggle donde se produjeron los resultados de F3.2 (`results/f32_primera
 
 - Cada corrida de `run_grid.py` registra su propio entorno en el JSON (`env`: python, torch, cuDNN, GPU, commit). Si Kaggle actualiza su imagen, esa diferencia queda registrada.
 - **Kaggle no trae `noise`** (necesario para generar Perlin). Si se regenera Perlin allí: `!pip install noise==1.2.2`.
-- **Reproducibilidad de entrenamiento:** con el mismo entorno, las CNN y ViT frozen se reproducen bit a bit con la misma semilla. ViT fine-tuning no: hay que reportarlo en distribución (hallazgo 8).
+- **Reproducibilidad de entrenamiento:** con el mismo entorno, las CNN y ViT frozen se reproducen bit a bit con la misma semilla. ViT fine-tuning no lo hacía en la v0 (hallazgo 8). Con los ajustes de determinismo de la matriz (§3: `use_deterministic_algorithms`, `CUBLAS_WORKSPACE_CONFIG=:4096:8`, SDPA *flash* y *memory-efficient* desactivados), la prueba de humo de la repetición de F3.2 dio pesos idénticos en ViT fine-tuning, ResNet-18 y EfficientNet-B0 fine-tuning (`results/f32_primera_pasada/determinismo.json`).
 
 **Pendiente (no se puede saber desde aquí):** con qué versiones se **generaron las imágenes** del Módulo 2 y se creó `umap_params.pkl` (al menos scikit-learn 1.7.2, ver abajo, lo que sugiere Colab y no Kaggle). La capa C de la prueba de independencia (F0.3) responde si las imágenes guardadas se reproducen bit a bit con este entorno. Lorenz es el caso más sensible, porque renderiza con matplotlib.
 
@@ -30,7 +32,7 @@ Es el de Kaggle donde se produjeron los resultados de F3.2 (`results/f32_primera
 - `scaler`: MinMaxScaler, guardado con **scikit-learn 1.7.2**, `clip=False`, ajustado con 908 muestras.
 - `train` / `val` / `test`: `params` (float32, n×5) y `labels`.
 - `n_components`, `metric`, `random_state`.
-- Etiquetas por split: train 353 label 1 / 555 label 0; val 44 / 70; test 44 / 70. Las de val coinciden 1 a 1 con `y_true` de `results/f32_primera_pasada/predictions.csv`.
+- Etiquetas por split: train 353 label 1 / 555 label 0; val 44 / 70; test 44 / 70. Las de val coinciden 1 a 1 con `y_true` de `results/f32_primera_pasada_v0/predictions.csv`.
 
 **Por qué fallaba:**
 - `joblib.load` reconstruye el objeto UMAP completo, y para eso necesita umap-learn, pynndescent y numba en versiones compatibles con las que lo crearon. Las funciones compiladas de numba son lo que rompe.

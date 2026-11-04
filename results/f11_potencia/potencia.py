@@ -83,7 +83,7 @@ from src.predictions.validate import load_index, load_predictions  # noqa: E402
 OUT_DIR = Path(__file__).resolve().parent
 TASK_ID = 'F1.1'
 CANON = REPO / 'results' / 'canonical_numbers.json'
-F32_PRED = REPO / 'results' / 'f32_primera_pasada' / 'predictions.csv'
+F32_PRED = REPO / 'results' / 'f32_primera_pasada_v0' / 'predictions.csv'
 BETO_PRED = REPO / 'results' / 'predictions' / 'referencia' / 'text__beto__finetune__seed42.csv'
 EMB_PRED = REPO / 'results' / 'predictions' / 'referencia' / 'emb768__logreg__none__seed42.csv'
 

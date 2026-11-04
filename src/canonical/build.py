@@ -55,7 +55,10 @@ from umap_io import EXPECTED_SIZES, SPLITS, load_umap_arrays, sha256  # noqa: E4
 
 SCHEMA_PATH = REPO / 'src' / 'canonical' / 'schema.json'
 OUT_PATH = REPO / 'results' / 'canonical_numbers.json'
-F32_DIR = REPO / 'results' / 'f32_primera_pasada'
+# Primera pasada v0 (formato anterior a F1.5). La repeticion de F3.2 esta en
+# results/f32_primera_pasada + results/predictions/primera_pasada; migrar este
+# colector a ella queda para SV (F0.4).
+F32_DIR = REPO / 'results' / 'f32_primera_pasada_v0'
 HALLAZGOS = REPO / 'docs' / 'hallazgos_metodologicos.md'
 FRAGMENT_GLOB = 'results/*/canonical_fragment.json'
 

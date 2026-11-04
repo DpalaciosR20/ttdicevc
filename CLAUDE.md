@@ -68,7 +68,7 @@ ttdicevc/
 ├── README.md
 ├── .gitignore
 ├── requirements.txt                   ← versiones exactas del entorno de Kaggle (F0.2)
-├── results/                           ← resultados versionados (p. ej. f32_primera_pasada/)
+├── results/                           ← resultados versionados (p. ej. f32_primera_pasada/, predictions/<fase>/)
 ├── src/
 │   ├── generation/                    ← generadores class-blind de las 3 técnicas
 │   │   ├── gray_scott_lib.py

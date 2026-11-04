@@ -67,7 +67,9 @@ os.environ["TT_DATA_ROOT"] = "/kaggle/input/<ruta de tt2-insumos verificada con 
 
 **Celda 3: prueba de humo** (≈ 10 min, solo validación)
 
-`results/f32_primera_pasada/` del repo todavía tiene la primera pasada v0 (formato anterior); el script se niega a mezclarla con la nueva. En el clon de Kaggle se aparta primero (la integración local la conserva como `results/f32_primera_pasada_v0/`):
+> **Ya ejecutada (2 nov 2026, commit `36c6398`):** los resultados están en `results/f32_primera_pasada/` y `results/predictions/primera_pasada/`, y la v0 está en `results/f32_primera_pasada_v0/` (bitácora `docs/bitacora/F3.2.md`). Las celdas 3–5 quedan como registro de lo que se corrió. En un commit posterior a la integración, `run_grid` con el mismo `--out-dir` encontraría las 54 corridas hechas y no entrenaría nada; para repetirla se usa otro `--out-dir` y otra `--predictions-root`, porque el script no sobrescribe predicciones de otra variante.
+
+En `36c6398`, `results/f32_primera_pasada/` del repo todavía tenía la primera pasada v0 (formato anterior), y el script se niega a mezclarla con la nueva. Por eso en el clon de Kaggle se apartó primero:
 ```python
 !mv results/f32_primera_pasada /kaggle/working/f32_primera_pasada_v0 && mkdir -p results/f32_primera_pasada
 !python -m src.training.check_determinism --technique gray_scott --epochs 2 \

@@ -1,3 +1,4 @@
 {
- "evaluate_test": false
+ "fase": "primera_pasada",
+ "smoke": false
 }

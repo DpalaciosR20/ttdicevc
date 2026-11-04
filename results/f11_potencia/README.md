@@ -45,7 +45,7 @@ Hay dos SHA-256 por archivo:
 | `meta/sample_index.csv` | `y_val`, `y_test` (70/44) | `d2f789bb2812e55bed0ddc71ed13695fe092859722e4826a324a8569f1bd040a` | `74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5` |
 | `results/predictions/referencia/text__beto__finetune__seed42.csv` | BETO, val y test | `3d3587469545e592e39fa62d3b00b0acd52889bfe21dceb0a5c2816a28f7916e` | ídem |
 | `results/predictions/referencia/emb768__logreg__none__seed42.csv` | LogReg-768D, solo val | `b8c3d471a860b943df962fa8e4652d2ff400e3fcbcf6b9af2e84871091cb778a` | ídem |
-| `results/f32_primera_pasada/predictions.csv` | F3.2 v0, solo val (54 corridas) | `46a9a4cba45681de266c4d9e9ce15c5d61aa57ca8164574959ce56b930c8c30e` | `448b457f37921ab5549218fb870de1642820305fce0df317ab5d212f2ba515ed` |
+| `results/f32_primera_pasada_v0/predictions.csv` | F3.2 v0, solo val (54 corridas) | `46a9a4cba45681de266c4d9e9ce15c5d61aa57ca8164574959ce56b930c8c30e` | `448b457f37921ab5549218fb870de1642820305fce0df317ab5d212f2ba515ed` |
 | `results/canonical_numbers.json` (antes de integrar F1.1) | F1_BETO, piso, Δ de WITCOM, F1-val de F3.2 | `7f17e3bf8c74c9578a76540ec5d55e49cd6713e6daae032b8921a16e939c62bb` | `f94c37f677dc89f262fc366d75784d77b2a83c3e09d25552b1163e0b411bf660` |
 
 ## Archivos
