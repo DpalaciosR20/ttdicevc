@@ -13,7 +13,7 @@ Un paper derivado de este proyecto (WITCOM 2026) **ya fue aceptado y publicado**
 Se transforma texto (depresivo/no depresivo, corpus SPADE-BERT en español, 1,136 muestras, split 80/10/10 = 908/114/114) en imágenes abstractas deterministas mediante 3 técnicas generativas, con el objetivo de clasificar esas imágenes por visión computacional y comparar el resultado contra un clasificador de texto.
 
 **Pipeline (3 módulos):**
-1. **Módulo 1** (completo): BETO (BERT en español) fine-tuneado + HPO con Optuna → embeddings de 768D. F1-Macro final = 0.7586. **No usó class weights** (a diferencia del clasificador clásico de referencia, que sí usa `class_weight='balanced'`).
+1. **Módulo 1** (completo): BETO (BERT en español) fine-tuneado + HPO con Optuna → embeddings de 768D. F1-Macro **verificado** (F2.2, checkpoint del 11 de marzo): **val 0.7199, prueba 0.7039**. El 0.7586 que se reportó en TT-I no viene de la cabeza de BETO y no es alcanzable con los soportes de prueba 70/44 (`docs/especificacion_f22.md` §6.5). Solo se cita como "cifra reportada en TT-I"; todos los contrastes usan 0.7039 (protocolo preregistrado). **No usó class weights** (a diferencia del clasificador clásico de referencia, que sí usa `class_weight='balanced'`).
 2. **Módulo 2** (completo): UMAP reduce 768D → 5D (`n_neighbors=15, min_dist=0.1, metric='cosine', random_state=42`, luego `MinMaxScaler`). Esos 5 valores se mapean de forma determinista a los parámetros de control de 3 algoritmos generativos independientes:
    - **Perlin Flow Fields** — `src/generation/perlin_lib.py`
    - **Atractor de Lorenz** — `src/generation/lorenz_lib.py`
@@ -52,9 +52,14 @@ Reglas del v2 que afectan cualquier trabajo nuevo:
 
 ## Resultado de WITCOM (exploratorio, no confirmatorio)
 
-Gray-Scott + ResNet-18 fine-tuning (`lr=3e-5`, Adam, CE con pesos de clase, batch=32, paciencia=4 sobre F1-val): **F1-Macro = 0.7142 ± 0.0095** (5 semillas). Referencias: 5D-UMAP LogReg/SVM=0.7246, RF=0.7304, MLP=0.6933; BETO=0.7586; McNemar CNN vs LogReg-5D no significativo.
+Gray-Scott + ResNet-18 fine-tuning (`lr=3e-5`, Adam, CE con pesos de clase, batch=32, paciencia=4 sobre F1-val): **F1-Macro = 0.7142 ± 0.0095** (5 semillas). Referencias: 5D-UMAP LogReg/SVM=0.7246, RF=0.7304, MLP=0.6933; BETO=0.7586 tal como se reportó entonces (la cifra verificada es 0.7039, ver Módulo 1); McNemar CNN vs LogReg-5D no significativo.
 
 Su conjunto de prueba ya se consultó antes de fijar el protocolo del v2, así que **se reporta como evidencia exploratoria y no participa en la selección de finalistas**. Sirve como chequeo de cordura del pipeline (si ResNet-18 en Gray-Scott da algo muy distinto en validación, revisar antes de seguir), no como conclusión del proyecto.
+
+## Redacción del documento de TT2 (RP)
+
+- **El documento no menciona WITCOM, el paper ni el artículo.** Ese nombre aparece en el repo solo como etiqueta interna (claves `witcom.*` en `results/canonical_numbers.json`, esta sección de arriba); no se copia al documento. Si se usa el 0.7142 ± 0.0095 de Gray-Scott + ResNet-18, se presenta como resultado exploratorio previo al protocolo, sin nombrar su origen.
+- **BETO:** se reporta 0.7039 (prueba) y 0.7199 (validación). El 0.7586 aparece solo como el valor reportado en TT-I, dentro del párrafo de reproducibilidad de la línea base textual, que explica la discrepancia con lo documentado en F2.2.
 
 ## Alcance de TT2 (lo que falta)
 
