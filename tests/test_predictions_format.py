@@ -275,3 +275,17 @@ def test_real_index_structure():
     assert not idx['sample_id'].str.contains('label').any()
     assert (idx['truncated_128'] == (idx['n_tokens_beto'] > 128)).all()
     assert idx['img_gray_scott'].str.startswith('rd_').all()
+
+
+# ── Enmienda 2: clasificador de longitud ─────────────────────────────────────
+
+def test_text_length_vocab_and_filename(tmp_path):
+    """Enmienda 2 del protocolo: technique = text_length (F4.5)."""
+    assert 'text_length' in schema.VOCAB['technique']
+    df = make_rows(('val', 'test'), technique='text_length', arch='logreg', strategy='none', seed=42)
+    path = write(tmp_path, df, fase='referencia')
+    assert path.name == 'text_length__logreg__none__seed42.csv'
+    m = schema.FILENAME_RE.match(path.name)
+    assert (m['technique'], m['arch'], m['strategy'], m['seed']) == ('text_length', 'logreg', 'none', '42')
+    out = validate_predictions(path, index=INDEX, tag_exists=TAG_NO)
+    assert set(out['technique']) == {'text_length'}

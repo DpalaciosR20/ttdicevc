@@ -33,7 +33,16 @@
       "model": "logreg",
       "C_grid": "techo_5d.familias.logreg.C",
       "selection": "f1_val",
-      "task": "F4.5"
+      "task": "F4.5",
+      "_enmienda": "Enmienda 2, punto 4",
+      "technique": "text_length",
+      "arch": "logreg",
+      "strategy": "none",
+      "seed": 42,
+      "fase": "referencia",
+      "source": "meta/sample_index.csv",
+      "grid": "techo_5d.familias.logreg",
+      "selection_rule": "techo_5d.selection"
     }
   },
   "techo_5d": {
@@ -88,6 +97,57 @@
     "stratified": {"technique": "none", "arch": "stratified", "proportion_split": "train", "expected_f1": 0.5},
     "brightness": {"arch": "brightness", "feature": "mean_intensity", "model": "logreg", "C_grid": "techo_5d.familias.logreg.C", "selection": "f1_val", "per_technique": true, "task": "F2.3"},
     "visual_permutado": {"fase": "control_permutacion", "aggregate": "mean", "seeds": [42, 7, 123, 2024, 99], "per_technique": true, "task": "F3.6"}
+  },
+  "pisos_triviales": {
+    "_seccion": "§4.4; Enmienda 2, punto 3",
+    "task": "F2.3",
+    "majority": {"technique": "none", "arch": "majority", "strategy": "none", "seed": 42, "fase": "referencia", "p_dep": 0.0},
+    "stratified": {
+      "technique": "none", "arch": "stratified", "strategy": "none", "seed": 42, "fase": "referencia",
+      "p_dep_values": [0.0, 1.0],
+      "rng": "numpy.random.default_rng",
+      "rng_seed": 42,
+      "proportion_split": "train",
+      "contrast_constant": 0.5,
+      "used_in_contrasts": false
+    }
+  },
+  "piso_brillo": {
+    "_seccion": "§4.4; Enmienda 2, punto 2",
+    "task": "F2.3",
+    "per_technique": true,
+    "arch": "brightness",
+    "strategy": "none",
+    "seed": 42,
+    "fase": "referencia",
+    "feature": "mean_intensity",
+    "image": {"source": "nativa", "size": [256, 256], "mode": "L", "scale": "mean / 255", "visual_preprocessing": false},
+    "model": "logreg",
+    "grid": "techo_5d.familias.logreg",
+    "scaler": {"name": "StandardScaler", "fit_split": "train"},
+    "selection_rule": "techo_5d.selection"
+  },
+  "descriptores": {
+    "_seccion": "§4.2; Enmienda 2, punto 1",
+    "task": "F2.4",
+    "_pendiente": "se fijan en F2.4 antes de calcular",
+    "per_technique": true,
+    "arch": "descriptors",
+    "strategy": "none",
+    "features": ["shannon_entropy", "contrast", "edge_density", "lbp_energy"],
+    "definition": "Tabla 11 del Módulo 2, tal como la implementa el código original",
+    "implementation": null,
+    "params": {
+      "shannon_entropy": {"bins": null},
+      "contrast": {"definition": null},
+      "edge_density": {"detector": null, "thresholds": null},
+      "lbp_energy": {"P": null, "R": null, "method": null}
+    },
+    "image": {"source": "nativa", "size": [256, 256], "mode": "L", "visual_preprocessing": false},
+    "families": "techo_5d.family_order",
+    "grids": "techo_5d.familias",
+    "scaler": {"name": "StandardScaler", "fit_split": "train", "families": ["logreg", "svm_rbf", "mlp"]},
+    "selection_rule": "techo_5d.selection"
   },
   "contraste": {
     "_seccion": "§5",
