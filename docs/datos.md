@@ -2,7 +2,7 @@
 
 > Fuente de verdad sobre **dónde están** los insumos del proyecto, **qué contienen** y **cómo se usan**.
 > Todo código del repositorio resuelve rutas mediante `src/paths.py` a partir de `TT_DATA_ROOT`; ninguna ruta se escribe a mano.
-> Los campos **[completar]** restantes solo afectan la ejecución en Kaggle.
+> Sin campos pendientes: la ruta de Kaggle se verificó el 2 nov 2026.
 
 ## 1. Reglas
 
@@ -20,7 +20,7 @@
 |---|---|---|
 | Local (Windows, Claude Code) | `G:\Mi unidad\tt2-insumos` | Google Drive para escritorio en modo *duplicar archivos* |
 | Google Colab | `/content/drive/MyDrive/tt2-insumos` | Drive montado |
-| Kaggle | `/kaggle/input/datasets/santiagosoria26ss/tt2-insumos` [completar: verificar con `ls`] | Copia de Drive; debe coincidir con `meta/data_manifest.csv` |
+| Kaggle | `/kaggle/input/datasets/santiagosoria26ss/tt2-insumos/tt2-insumos` (la carpeta se repite: el dataset envuelve a `tt2-insumos/`) | Copia de Drive, dataset público. `build_manifest --verify` dio `manifiesto OK` el 2 nov 2026 (repetición de F3.2) |
 
 ## 3. Estructura e insumos
 
@@ -117,6 +117,6 @@ y su identificador es `sample_id = {split}_{i:04d}`.
 
 ## 9. Pendientes
 
-- [ ] Ruta exacta del dataset en Kaggle.
+- [x] Ruta exacta del dataset en Kaggle (2 nov 2026, sección 2).
 
 > Nota: el nombre correcto del PKL es `Exp_4.1_BETO_HPO_embeddings.pkl`; la bitácora de F0.3 lo transcribe con guion bajo.

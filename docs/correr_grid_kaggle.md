@@ -1,94 +1,115 @@
 # Correr el grid en Kaggle (CE, plan v2 — Fase 3)
 
-Script: `src/training/run_grid.py`. Cubre 3 técnicas × 3 arquitecturas × 2 estrategias = 18 configuraciones. El orden es Gray-Scott → Perlin → Lorenz.
+Script: `src/training/run_grid.py`. Cubre 3 técnicas × 3 arquitecturas × 2 estrategias = 18 configuraciones (`docs/matriz_experimentos.md`). Se ejecuta en Gray-Scott → Perlin → Lorenz. Convención general de Kaggle: `docs/ejecucion_kaggle.md`.
 
-| Paso del plan v2 | Comando (resumen) | ¿Toca test? |
+| Paso | Comando (resumen) | Fase (`results/predictions/<fase>/`) | ¿Toca test? |
+| --- | --- | --- | --- |
+| **F3.2** Primera pasada | sin banderas: 18 configs × semillas de la matriz (42, 7, 123) | `primera_pasada` | **No**: test ni se carga |
+| **F3.5** Finalistas | `--evaluate-test --configs <tec:arq:est> ... --save-models` | `final` | Sí |
+| **F3.6** Control de permutación | `--evaluate-test --permute-labels 99 --configs ... --save-models` | `control_permutacion` | Sí |
+| **F5.5** Sensibilidad | `--evaluate-test --sensitivity --configs ...` (segundo mejor, `select_second`) | `sensibilidad` | Sí |
+| Prueba de humo | `--smoke --epochs 1 ...` | `<out-dir>/predictions/primera_pasada` | No |
+
+## De dónde sale cada valor
+
+| Qué | Fuente única | Qué hace el script si no coincide |
 | --- | --- | --- |
-| **F3.2** Primera pasada | por defecto: 18 configs × semillas 42, 7, 123 | **No**: test ni se carga |
-| **F3.5** Finalistas | `--evaluate-test --seeds 42 7 123 2024 99` + filtros del finalista | Sí. Requiere el protocolo congelado |
-| **F3.6** Control de permutación | finalista + `--permute-labels 99` | Solo si se combina con `--evaluate-test` |
-| **F1.4** Preprocesamiento | `--img-size 224\|256`, `--no-hflip` | — |
+| Tamaño, interpolación, antialias y volteo por técnica | `configs/preprocesamiento.json` (F1.4): `perlin` y `lorenz` = `px224-noflip`, `gray_scott` = `px224-flip` | Falla si falta la técnica o si un valor no está implementado. `--img-size` y `--no-hflip` se aceptan solo si coinciden con el JSON |
+| Arquitecturas, estrategias, AdamW, `lr`, `weight_decay`, lote, épocas, paciencia, semillas por fase, determinismo | `configs/matriz_experimentos.json` (F1.3) | En `primera_pasada` y `sensibilidad` no se aceptan `--lr`, `--weight-decay`, `--batch-size`, `--epochs` ni `--patience` (solo `--smoke` acorta épocas). En `final` y `control_permutacion` se aceptan los de la HPO (F3.4) y quedan en el manifiesto |
+| Insumos | `TT_DATA_ROOT` (`docs/datos.md` §2, `src/paths.py`) | Antes de entrenar compara el SHA-256 agregado de cada carpeta de imágenes con `meta/data_manifest.csv` y cada nombre y etiqueta con `meta/sample_index.csv`. Si algo difiere, no entrena nada |
+
+Los nombres de salida siguen el vocabulario de F1.5: `vit_b16` (internamente torchvision usa `vit_b_16`).
+
+**Determinismo** (matriz §3, §11.6): además de `cudnn.deterministic`, el script activa `torch.use_deterministic_algorithms(True)`, `CUBLAS_WORKSPACE_CONFIG=:4096:8` y desactiva los kernels SDPA *flash* y *memory-efficient*. Si una operación no tiene versión determinista en CUDA, PyTorch lanza `RuntimeError` y la corrida cae en `errors/`. Por eso la prueba de humo va antes del grid. `--deterministic-warn-only` relaja esto a un aviso, pero solo se usa si SV lo aprueba, y queda registrado en cada manifiesto.
 
 ## Reglas que el script hace cumplir
 
-- **Compuerta de test:** sin `--evaluate-test` no se construye el loader de test. Con `--evaluate-test`, el script se niega si `docs/protocolo_preregistrado.md` no existe, no está commiteado o tiene cambios sin commitear. El commit y la fecha del protocolo quedan dentro de cada JSON.
-- **Un `--out-dir` es de un solo modo.** No se mezclan corridas solo-val con corridas con test; para la fase con test usa otro `--out-dir`.
-- **Verificación previa** antes de entrenar:
-  - las 3 carpetas existen y no faltan idx;
-  - con `--umap-params`, los labels coinciden con `umap_params.pkl`;
-  - ViT no se pide con una resolución distinta de 224 (el ViT-B/16 preentrenado de torchvision solo acepta 224).
-- **Reanudable:** un JSON por corrida en `runs/`; las que ya existen se saltan. Los errores van a `errors/` y se reintentan en la siguiente ejecución.
+- **Compuerta de test:** sin `--evaluate-test` no se construye el loader de test. Con `--evaluate-test`, el script se niega si `docs/protocolo_preregistrado.md` no está commiteado sin cambios **o** si la etiqueta `protocolo-v1` no existe o no es ancestro de `HEAD`. El commit del protocolo y la etiqueta quedan en cada JSON.
+- **Un `--out-dir` es de una sola fase** (y de humo o no). No se mezclan.
+- **No se sobrescriben predicciones de otro experimento:** si ya existe un CSV con la misma clave (fase, técnica, arquitectura, estrategia, semilla) y su manifiesto registra otra variante de preprocesamiento o de permutación, el script se detiene.
+- **Reanudable:** un JSON por corrida en `runs/`; las que ya existen se saltan. Los errores van a `errors/` y se reintentan en la siguiente ejecución. Los JSON de una versión anterior del script (sin `fase`) se rechazan.
 
 ## Salidas (se regeneran después de cada corrida)
 
 | Archivo | Contenido | Para quién |
 | --- | --- | --- |
-| `summary.csv` | una fila por corrida: F1-val (y F1-test si aplica), épocas, parámetros entrenables, minutos, `warning` | CE (bitácora) |
-| `summary_by_config.csv` | media ± std de F1-val sobre semillas. Columna `seleccion`: `finalista_sugerido` es el mejor promedio, y ante empate dentro de 1 std, el de menos parámetros entrenables (regla 3.6). `empate_1std` marca las configuraciones empatadas | SV confirma el finalista (F3.3) |
-| `predictions.csv` | `sample_id, split, y_true, technique, arch, strategy, seed, p_dep, run_id` (formato F1.5). `p_dep` = P(label=1 = depresivo); `sample_id` = `<split>_<idx:04d>` (mismo idx que `umap_params.pkl`); `run_id` distingue variantes de preprocesamiento y controles de permutación | SV (pruebas pareadas) |
+| `results/predictions/<fase>/<tec>__<arq>__<est>__seed<k>.csv` | Formato F1.5 (`docs/especificacion_predicciones.md`): `sample_id, split, y_true, technique, arch, strategy, seed, p_dep`, con `p_dep` en float64 sin redondear y filas ordenadas por split y `sample_id` | SV (pruebas pareadas, `load_predictions`, `select_finalist`) |
+| `... .manifest.json` | `task_id`, `fase`, `git_commit`, `created_at`, `config` (variante y preprocesamiento, hiperparámetros, determinismo aplicado, SHA-256 de los dos JSON de configuración, índices de permutación), `inputs` (carpeta de imágenes con `dir_digest` e índice maestro), `model_selection`, `environment`, `csv_sha256`, `n_rows` | Trazabilidad del protocolo |
+| `<out-dir>/runs/*.json` | Todo lo anterior más el historial por época (`history`: `train_loss`, `f1_val`) para las curvas de aprendizaje | CE (bitácora, figuras) |
+| `<out-dir>/summary.csv` | Una fila por corrida: F1-val (y F1-test si aplica), épocas, parámetros entrenables y totales, minutos, `warning` | CE |
+| `<out-dir>/summary_by_config.csv` | Media ± DE de F1-val por configuración. La columna `seleccion` aplica `src/selection/select_finalist.py` sobre las técnicas completas; es informativa, la selección oficial de F3.3 la corre SV | SV |
 
-Los controles de permutación (variantes `-perm<semilla>`) aparecen en los resúmenes, pero nunca se eligen como finalistas.
+## Notebook (F3.2)
 
-## Notebook
+Requisitos de la cuenta: `docs/ejecucion_kaggle.md` §3 (internet, *secret* `GITHUB_TOKEN`, dataset `tt2-insumos` como *Input*, GPU T4).
 
-**Celda 1: código**. El `%cd /kaggle/working` del inicio evita el error `getcwd` si la carpeta ya existía.
+**Celda 1: repositorio en el commit indicado**
 ```python
-%cd /kaggle/working
-!rm -rf /kaggle/working/ttdicevc
 from kaggle_secrets import UserSecretsClient
+import os, subprocess
 token = UserSecretsClient().get_secret("GITHUB_TOKEN")
-!git clone -q https://{token}@github.com/DpalaciosR20/ttdicevc.git /kaggle/working/ttdicevc
-%cd /kaggle/working/ttdicevc
-!git remote set-url origin https://github.com/DpalaciosR20/ttdicevc.git
-!git log --oneline -1
+COMMIT = "<sha>"   # lo indica Claude Code
+subprocess.run(["rm", "-rf", "/kaggle/working/ttdicevc"], check=True)
+subprocess.run(["git", "clone", f"https://{token}@github.com/DpalaciosR20/ttdicevc.git", "/kaggle/working/ttdicevc"], check=True)
+os.chdir("/kaggle/working/ttdicevc")
+subprocess.run(["git", "checkout", COMMIT], check=True)
+subprocess.run(["git", "log", "--oneline", "-1"], check=True)
 ```
 
-**Celda 2: rutas y dry-run** (no entrena nada)
+**Celda 2: insumos y entorno**
 ```python
-DATA = "/kaggle/input/datasets/palaciosroblesdiego/data-files/TT/images_grayscale_classblind"
-UMAP = "/kaggle/input/datasets/palaciosroblesdiego/data-files/<ruta>/umap_params.pkl"  # !find /kaggle/input -name umap_params.pkl
-OUT  = "/kaggle/working/f32_primera_pasada"
-!python src/training/run_grid.py --data-root {DATA} --umap-params {UMAP} --out-dir {OUT} --dry-run
+os.environ["TT_DATA_ROOT"] = "/kaggle/input/<ruta de tt2-insumos verificada con ls>"   # docs/datos.md §2
+!pip install -q -r requirements-kaggle.txt
+!python -m src.build_manifest --verify
+!mkdir -p results/_entorno && pip freeze > results/_entorno/pip_freeze.txt && nvidia-smi > results/_entorno/gpu.txt
 ```
-Debe decir `Modo: SOLO VALIDACION` y `54 corridas ... 54 pendientes` (18 × 3 semillas).
+`build_manifest --verify` debe decir `manifiesto OK`. Si reporta archivos no registrados en `perlin/` (los duplicados `... (1).png` de F1.5), la copia de Kaggle es anterior al 28 oct: no sigas.
 
-**Celda 3: primera pasada (F3.2)**
+**Celda 3: prueba de humo** (≈ 10 min, solo validación)
+
+> **Ya ejecutada (2 nov 2026, commit `36c6398`):** los resultados están en `results/f32_primera_pasada/` y `results/predictions/primera_pasada/`, y la v0 está en `results/f32_primera_pasada_v0/` (bitácora `docs/bitacora/F3.2.md`). Las celdas 3–5 quedan como registro de lo que se corrió. En un commit posterior a la integración, `run_grid` con el mismo `--out-dir` encontraría las 54 corridas hechas y no entrenaría nada; para repetirla se usa otro `--out-dir` y otra `--predictions-root`, porque el script no sobrescribe predicciones de otra variante.
+
+En `36c6398`, `results/f32_primera_pasada/` del repo todavía tenía la primera pasada v0 (formato anterior), y el script se niega a mezclarla con la nueva. Por eso en el clon de Kaggle se apartó primero:
 ```python
-!python src/training/run_grid.py --data-root {DATA} --umap-params {UMAP} --out-dir {OUT}
+!mv results/f32_primera_pasada /kaggle/working/f32_primera_pasada_v0 && mkdir -p results/f32_primera_pasada
+!python -m src.training.check_determinism --technique gray_scott --epochs 2 \
+    --configs vit_b16:finetune resnet18:finetune efficientnet_b0:finetune \
+    --out results/f32_primera_pasada/determinismo.json 2>&1 | tee results/f32_primera_pasada/determinismo.log
+!python -m src.training.run_grid --smoke --epochs 1 --out-dir /kaggle/working/smoke \
+    --archs resnet18 --strategies frozen --seeds 42 2>&1 | tee results/f32_primera_pasada/smoke.log
+!python -m src.predictions.validate "/kaggle/working/smoke/predictions/primera_pasada/*.csv"
+!grep -h '"variant"' /kaggle/working/smoke/predictions/primera_pasada/*.manifest.json
 ```
+- `check_determinism`: cada configuración reporta `identical_weights`. Una `error` con `RuntimeError ... does not have a deterministic implementation` significa que ese kernel no es determinista en CUDA: **detente y avisa a SV** antes del grid.
+- `validate`: `3/3 archivos válidos`. Las variantes: `px224-flip` en Gray-Scott y `px224-noflip` en Perlin y Lorenz.
 
-**Celda 4: ver resultados**
+**Celda 4: primera pasada completa** (≈ 90 min de T4 en v0; puede subir con el modo determinista)
 ```python
-import pandas as pd
-pd.read_csv(f"{OUT}/summary_by_config.csv")
+OUT = "results/f32_primera_pasada"
+!python -m src.training.run_grid --out-dir {OUT} --dry-run
+!python -m src.training.run_grid --out-dir {OUT} 2>&1 | tee {OUT}/run_grid.log
+!python -m src.predictions.validate "results/predictions/primera_pasada/*.csv"
 ```
+El dry-run debe decir `Fase: primera_pasada`, `SOLO VALIDACION` y `54 corridas ... 54 pendientes`. Al final, `54/54 archivos válidos`.
 
-## Recomendaciones
-
-- **Empieza con una sola técnica para medir tiempos:** `--techniques gray_scott`. ResNet-18 fine-tuning en Gray-Scott debería quedar en un F1-val cercano a lo que se vio en el camera-ready. Si sale muy distinto, revisa antes de lanzar el resto. La columna `minutes` de `summary.csv` sirve para estimar lo que falta, que el v2 multiplica (3 semillas, HPO, 5 semillas por finalista, controles).
-- **Corre con *Save Version → Save & Run All (Commit)*.** Así sigue en segundo plano (hasta 12 h con GPU) y `/kaggle/working/` queda como output de la versión.
-- **Si se corta a medias:** en una versión nueva, haz *Add Input → Notebook Output* de la anterior y agrega `--prev-results /kaggle/input/<output-anterior>/f32_primera_pasada`. Solo se entrena lo que faltaba.
-- **`--umap-params` ya no necesita umap-learn** (F0.2): el script lee solo los arreglos con `src/training/umap_io.py`. Acepta el `.pkl` o un `.npz` exportado, y cada corrida registra el sha256 del archivo usado en `labels_verified_against`.
-- **Modelos:** por defecto no se guardan (ViT ~330 MB c/u). Para Grad-CAM y *attention rollout* (F3.7), entrena los finalistas con `--save-models`.
-- **Preprocesamiento (F1.4):** hasta que SV decida, usa el default (224 + flip). Si se decide otra cosa para una técnica, córrela con su propio comando, por ejemplo `--techniques perlin --img-size 256 --no-hflip --archs resnet18 efficientnet_b0`, y ViT aparte con 224. La variante queda en el nombre de cada corrida (`px256-noflip`), así que no se pisa con las demás.
-
-## Fase de finalistas (después de congelar el protocolo)
-
-Ejemplo, si SV elige ResNet-18 fine-tuning para Gray-Scott:
+**Celda 5: empaquetado**
 ```python
-OUT_TEST = "/kaggle/working/f35_finalistas"
-!python src/training/run_grid.py --data-root {DATA} --umap-params {UMAP} --out-dir {OUT_TEST} \
-    --evaluate-test --techniques gray_scott --archs resnet18 --strategies finetune \
-    --seeds 42 7 123 2024 99 --save-models
-# Control de permutación (F3.6), mismo finalista:
-!python src/training/run_grid.py --data-root {DATA} --umap-params {UMAP} --out-dir {OUT_TEST} \
-    --evaluate-test --techniques gray_scott --archs resnet18 --strategies finetune \
-    --seeds 99 --permute-labels 99
+!cd /kaggle/working/ttdicevc && zip -qr /kaggle/working/f32_resultados.zip results/f32_primera_pasada results/predictions/primera_pasada results/_entorno
 ```
-Si los hiperparámetros cambian por la HPO (F3.4), habrá que pasarlos al script. Todavía no están expuestos: se agregan cuando exista la HPO.
+
+Si la sesión interactiva no aguanta las ~90 min, corre el mismo notebook con *Save Version → Save & Run All* y descarga el `.zip` del output de la versión. Si se corta a medias: *Add Input → Notebook Output* de la versión anterior y agrega `--prev-results /kaggle/input/<output>/ttdicevc/results/f32_primera_pasada` a la celda 4; solo se entrena lo que falta.
+
+## Fases con test (después de F3.3 y F3.4)
+
+```python
+FIN = "--configs gray_scott:<arq>:<est> perlin:<arq>:<est> lorenz:<arq>:<est>"   # de select_finalist
+!python -m src.training.run_grid --out-dir results/f35_final --evaluate-test {FIN} --lr <F3.4> --weight-decay <F3.4> --save-models
+!python -m src.training.run_grid --out-dir results/f36_permutacion --evaluate-test --permute-labels 99 {FIN} --lr <F3.4> --weight-decay <F3.4> --save-models
+```
+Las semillas por defecto son las de la matriz para cada fase (42, 7, 123, 2024, 99). Si cada finalista tiene hiperparámetros distintos, se corre un comando por técnica (y un `--out-dir` por comando).
 
 ## Al terminar
 
-1. Descarga la carpeta de salida (CSVs y `runs/`) desde el output de la versión.
-2. Pasa `summary_by_config.csv` y `predictions.csv` a SV.
+1. Descarga el `.zip` y descomprímelo en la raíz del repo.
+2. Verificación local: `python -m src.predictions.validate "results/predictions/primera_pasada/*.csv"`, que el commit de los manifiestos sea el entregado y que `errors/` esté vacío.
 3. Si aparece algo en `errors/` o en la columna `warning`, documéntalo en la bitácora. No lo descartes.

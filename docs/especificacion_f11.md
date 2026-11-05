@@ -37,7 +37,7 @@ En ambas, $\overline{F1}_{img,t}$ es la media del F1-Macro de prueba de las cinc
 |---|---|---|
 | `y_test` y `y_val` (70/44) | `meta/sample_index.csv` | Estructura de clases |
 | Predicciones de BETO, val y test | `results/predictions/referencia/text__beto__finetune__seed42.csv` | Término de BETO; patrón de aciertos |
-| Predicciones de la primera pasada (F3.2, versión sustituida), solo validación | `results/f32_primera_pasada/predictions.csv` | Calibración empírica del acuerdo BETO–visual y de la variabilidad entre semillas |
+| Predicciones de la primera pasada (F3.2, versión sustituida), solo validación | `results/f32_primera_pasada_v0/predictions.csv` | Calibración empírica del acuerdo BETO–visual y de la variabilidad entre semillas |
 | Predicciones del clasificador sobre 768D, val | `results/predictions/referencia/emb768__logreg__none__seed42.csv` | Calibración del acuerdo entre BETO y un clasificador que no ve el texto |
 
 Las predicciones de F3.2 son de validación, usan un preprocesamiento sustituido en Perlin y Lorenz (F1.4) y tienen `p_dep` redondeado a seis decimales. Se usan **solo para planificar**: no seleccionan modelos ni intervienen en ninguna decisión confirmatoria. No se dispone de predicciones por muestra de la CNN de WITCOM.

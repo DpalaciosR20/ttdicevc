@@ -3,15 +3,22 @@ train_model.py
 ───────────────
 Entrenamiento generico (cualquiera de las 3 arquitecturas de build_model.py)
 con la misma logica ya validada para ResNet-18+Gray-Scott en el camera-ready
-(F1-Macro=0.7142+-0.0095, 5 semillas): Adam, CrossEntropyLoss con pesos de
-clase, early stopping por F1-val, historial de loss/F1 registrado por epoca.
+(F1-Macro=0.7142+-0.0095, 5 semillas): CrossEntropyLoss con pesos de clase,
+early stopping por F1-val, historial de loss/F1 registrado por epoca. Desde la
+repeticion de F3.2 el optimizador es AdamW (matriz de experimentos §3); con
+weight_decay=0 da exactamente los mismos pasos que el Adam de la primera
+pasada v0.
+
+Prediccion: y_hat = 1 si y solo si p_dep > 0.5 (F1.5 §3.3), con p_dep del
+softmax en float64. Es la misma regla con la que SV recalcula F1 desde
+predictions, asi que el F1-val del JSON y el recalculado coinciden siempre.
 
 Uso tipico:
     from data import make_loaders
     train_loader, val_loader, test_loader, class_weights = make_loaders(
         image_dir, 'gray_scott', seed=42)
     model, history, results = train_model(
-        arch_name='resnet18',       # o 'efficientnet_b0', 'vit_b_16'
+        arch_name='resnet18',       # o 'efficientnet_b0', 'vit_b_16' (alias 'vit_b16')
         freeze_backbone=False,      # o True
         train_loader=train_loader, val_loader=val_loader, test_loader=test_loader,
         class_weights=class_weights, device=device, seed=42
@@ -26,6 +33,7 @@ lr por defecto (si lr=None), tomado de la busqueda del camera-ready
 """
 
 import copy
+import os
 import random
 import numpy as np
 import torch
@@ -38,6 +46,24 @@ except ImportError:
     from build_model import build_model, get_head, get_trainable_params
 
 DEFAULT_LR = {False: 3e-5, True: 1e-3}  # clave: freeze_backbone
+DECISION_THRESHOLD = 0.5                # F1.5 §3.3
+
+
+def configure_determinism(cfg):
+    """Ajustes de determinismo de la matriz (§3, §11.6). Llamar ANTES de
+    crear cualquier tensor de CUDA: CUBLAS_WORKSPACE_CONFIG solo tiene efecto
+    si esta definida al inicializar cuBLAS. Devuelve lo aplicado."""
+    import torch.backends.cuda as tbc
+    os.environ['CUBLAS_WORKSPACE_CONFIG'] = cfg['CUBLAS_WORKSPACE_CONFIG']
+    torch.backends.cudnn.deterministic = cfg['cudnn_deterministic']
+    torch.backends.cudnn.benchmark = cfg['cudnn_benchmark']
+    torch.use_deterministic_algorithms(cfg['use_deterministic_algorithms'])
+    tbc.enable_flash_sdp(cfg['flash_sdp'])
+    tbc.enable_mem_efficient_sdp(cfg['mem_efficient_sdp'])
+    return {**cfg, 'applied': {
+        'deterministic_algorithms': torch.are_deterministic_algorithms_enabled(),
+        'flash_sdp': tbc.flash_sdp_enabled(), 'mem_efficient_sdp': tbc.mem_efficient_sdp_enabled(),
+        'CUBLAS_WORKSPACE_CONFIG': os.environ.get('CUBLAS_WORKSPACE_CONFIG')}}
 
 
 def set_seed(seed):
@@ -69,18 +95,20 @@ def _predict(model, loader, device):
     with torch.no_grad():
         for imgs, labels in loader:
             logits = model(imgs.to(device))
-            probs.append(torch.softmax(logits, dim=1)[:, 1].cpu().numpy())
-            preds.append(logits.argmax(dim=1).cpu().numpy())
+            p = torch.softmax(logits.double(), dim=1)[:, 1].cpu().numpy()
+            probs.append(p)
+            preds.append((p > DECISION_THRESHOLD).astype(np.int64))
             true.append(labels.numpy())
     return np.concatenate(preds), np.concatenate(probs), np.concatenate(true)
 
 
 def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loader,
-                 class_weights, device, lr=None, n_epochs=15, patience=4, seed=None):
+                 class_weights, device, lr=None, n_epochs=15, patience=4, seed=None, weight_decay=0.0):
     """
     Entrena un modelo (arch_name, freeze_backbone) con la misma logica que ya
-    se uso para ResNet-18 en el camera-ready: Adam, CrossEntropyLoss con pesos
-    de clase, early stopping por F1-val, batch ya definido en los loaders.
+    se uso para ResNet-18 en el camera-ready: CrossEntropyLoss con pesos de
+    clase, early stopping por F1-val, batch ya definido en los loaders.
+    Optimizador AdamW(lr, weight_decay); betas/eps por defecto, sin scheduler.
 
     La seleccion del mejor epoch usa SOLO F1-val; test se evalua una vez al final.
     test_loader=None no toca test en absoluto (primera pasada del plan v2,
@@ -88,11 +116,11 @@ def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loade
 
     Devuelve: (model con los mejores pesos, history, results)
       history = {'train_loss': [...], 'f1_val': [...]}
-      results = {'arch', 'freeze_backbone', 'lr', 'seed', 'best_epoch' (1-based),
-                 'epochs_run', 'n_trainable_params', 'best_f1_val', 'f1_test',
+      results = {'arch', 'freeze_backbone', 'lr', 'weight_decay', 'seed', 'best_epoch' (1-based),
+                 'epochs_run', 'n_trainable_params', 'n_total_params', 'best_f1_val', 'f1_test',
                  'val_preds', 'val_probs', 'val_true',
                  'test_preds', 'test_probs', 'test_true'}
-      *_probs = P(clase 1 = depresivo), del mejor epoch.
+      *_probs = P(clase 1 = depresivo) en float64, del mejor epoch, sin redondear.
     """
     if lr is None:
         lr = DEFAULT_LR[freeze_backbone]
@@ -106,12 +134,12 @@ def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loade
     model = build_model(arch_name, freeze_backbone=freeze_backbone)
     model = model.to(device)
 
-    optimizer = torch.optim.Adam(get_trainable_params(model), lr=lr)
+    optimizer = torch.optim.AdamW(get_trainable_params(model), lr=lr, weight_decay=weight_decay)
     criterion = nn.CrossEntropyLoss(weight=class_weights.to(device))
 
     history = {'train_loss': [], 'f1_val': []}
     best_f1_val, best_epoch, best_state, best_val, no_improve = -1.0, 0, None, None, 0
-    tag = f'[{arch_name}, freeze={freeze_backbone}, lr={lr:g}]'
+    tag = f'[{arch_name}, freeze={freeze_backbone}, lr={lr:g}, wd={weight_decay:g}]'
 
     for epoch in range(n_epochs):
         _set_train_mode(model, arch_name, freeze_backbone)
@@ -157,9 +185,10 @@ def train_model(arch_name, freeze_backbone, train_loader, val_loader, test_loade
         print(f'*** {tag} F1-val(best, epoch {best_epoch})={best_f1_val:.4f}  (test no evaluado) ***\n')
 
     results = {
-        'arch': arch_name, 'freeze_backbone': freeze_backbone, 'lr': lr, 'seed': seed,
-        'best_epoch': best_epoch, 'epochs_run': len(history['f1_val']),
+        'arch': arch_name, 'freeze_backbone': freeze_backbone, 'lr': lr, 'weight_decay': weight_decay,
+        'seed': seed, 'best_epoch': best_epoch, 'epochs_run': len(history['f1_val']),
         'n_trainable_params': sum(p.numel() for p in get_trainable_params(model)),
+        'n_total_params': sum(p.numel() for p in model.parameters()),
         'best_f1_val': best_f1_val, 'f1_test': f1_test,
         'val_preds': best_val[0], 'val_probs': best_val[1], 'val_true': best_val[2],
         'test_preds': test_preds, 'test_probs': test_probs, 'test_true': test_true,

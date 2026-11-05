@@ -25,14 +25,19 @@ de mantener el backbone en eval() durante el entrenamiento frozen.
 import torch.nn as nn
 from torchvision import models
 
+ARCH_ALIASES = {'vit_b16': 'vit_b_16'}
+
+
 def build_model(arch_name, freeze_backbone=False, num_classes=2):
     """
     Construye un modelo de las 3 arquitecturas soportadas, con la capa final
     ya reemplazada para 'num_classes'. Si freeze_backbone=True, congela todo
     menos la capa final (transfer learning tipo 'frozen').
 
-    arch_name: 'resnet18' | 'efficientnet_b0' | 'vit_b_16'
+    arch_name: 'resnet18' | 'efficientnet_b0' | 'vit_b_16' (alias 'vit_b16',
+    el nombre del vocabulario de F1.5)
     """
+    arch_name = ARCH_ALIASES.get(arch_name, arch_name)
     if arch_name == 'resnet18':
         model = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)
         if freeze_backbone:
@@ -62,6 +67,7 @@ def build_model(arch_name, freeze_backbone=False, num_classes=2):
 
 def get_head(model, arch_name):
     """Devuelve la capa final (la unica entrenable en modo frozen)."""
+    arch_name = ARCH_ALIASES.get(arch_name, arch_name)
     if arch_name == 'resnet18':
         return model.fc
     if arch_name == 'efficientnet_b0':

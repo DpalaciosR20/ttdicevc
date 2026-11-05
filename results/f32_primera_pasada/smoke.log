@@ -1,0 +1,39 @@
+Fase: primera_pasada (SMOKE) | SOLO VALIDACION (test no se carga)
+Preprocesamiento: {'gray_scott': 'px224-flip', 'perlin': 'px224-noflip', 'lorenz': 'px224-noflip'}
+Hiperparametros: {'lr': {'finetune': 3e-05, 'frozen': 0.001}, 'weight_decay': 0.0, 'batch_size': 32, 'epochs': 1, 'patience': 4, 'num_workers': 2}
+Predicciones -> /kaggle/working/smoke/predictions
+3 corridas, 0 ya hechas, 3 pendientes
+Entorno: {'python': '3.13.16', 'libraries': {'numpy': '2.1.3', 'pandas': '2.3.3', 'scikit-learn': '1.6.1', 'torch': '2.11.0+cu130', 'transformers': '5.20.2', 'tokenizers': '0.23.3', 'joblib': '1.6.0'}, 'platform': 'Linux-6.18.55+-x86_64-with-glibc2.39', 'gpu': 'Tesla T4', 'torch': '2.11.0+cu130', 'cudnn': 92700, 'device': 'cuda', 'torchvision': '0.26.0+cu130'} | commit 36c6398d894bdb4dfedc5252b6e5957d4620cd9c
+Determinismo: {'deterministic_algorithms': True, 'flash_sdp': False, 'mem_efficient_sdp': False, 'CUBLAS_WORKSPACE_CONFIG': ':4096:8'}
+  gray_scott train   908 imagenes OK
+  gray_scott val     114 imagenes OK
+  gray_scott test    114 imagenes OK
+  perlin     train   908 imagenes OK
+  perlin     val     114 imagenes OK
+  perlin     test    114 imagenes OK
+  lorenz     train   908 imagenes OK
+  lorenz     val     114 imagenes OK
+  lorenz     test    114 imagenes OK
+
+===== [1/3] gray_scott__resnet18__frozen__px224-flip__seed42 =====
+[resnet18, freeze=True, lr=0.001, wd=0] Epoch 1/1 - loss=0.4299 - F1-val=0.6720
+*** [resnet18, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 1)=0.6720  (test no evaluado) ***
+
+Salidas actualizadas (1 corridas, 0.1 min esta)
+
+===== [2/3] perlin__resnet18__frozen__px224-noflip__seed42 =====
+[resnet18, freeze=True, lr=0.001, wd=0] Epoch 1/1 - loss=0.5434 - F1-val=0.6341
+*** [resnet18, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 1)=0.6341  (test no evaluado) ***
+
+Salidas actualizadas (2 corridas, 0.1 min esta)
+
+===== [3/3] lorenz__resnet18__frozen__px224-noflip__seed42 =====
+[resnet18, freeze=True, lr=0.001, wd=0] Epoch 1/1 - loss=0.4796 - F1-val=0.6419
+*** [resnet18, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 1)=0.6419  (test no evaluado) ***
+
+Salidas actualizadas (3 corridas, 0.1 min esta)
+
+===== RESUMEN POR CONFIGURACION (F1-val media +- std sobre semillas) =====
+gray_scott resnet18         frozen   px224-flip          n=1  val=0.6720           
+perlin     resnet18         frozen   px224-noflip        n=1  val=0.6341           
+lorenz     resnet18         frozen   px224-noflip        n=1  val=0.6419           
