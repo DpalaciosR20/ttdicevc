@@ -219,7 +219,7 @@ def canonical_values():
         'floor_id': max(floors, key=floors.get),
         'witcom_delta': numbers['witcom.delta_beto_gs_resnet18.f1_macro']['value']['test'],
         'f32': {k: v['value']['val'] for k, v in numbers.items()
-                if k.startswith('f32.') and '.seed' in k and k.endswith('.f1_macro')},
+                if k.startswith('f32v0.') and '.seed' in k and k.endswith('.f1_macro')},
     }
 
 
@@ -291,7 +291,7 @@ def block_e(rng, data, canon, log, B=B_E):
         raise AssertionError('F1-val de BETO o de LogReg-768D difiere de canonical_numbers.json')
     worst = 0.0
     for r, f in zip(runs, f1_obs[2:]):
-        key = (f"f32.{r['technique']}.{r['arch']}.{r['strategy']}.px224_flip.seed{r['seed']}.f1_macro")
+        key = (f"f32v0.{r['technique']}.{r['arch']}.{r['strategy']}.px224_flip.seed{r['seed']}.f1_macro")
         worst = max(worst, abs(canon['f32'][key] - f))
     log(f'E: F1-val recalculado de las {len(runs)} corridas vs canonical_numbers.json, máx |dif| = {worst:.3e}')
     if worst > 1e-12:
