@@ -1,0 +1,61 @@
+{
+ "task_id": "F2.1",
+ "fase": "referencia",
+ "git_commit": "eea2ae1a2c9c5708d7888deae9c993bf6d84b8f2",
+ "created_at": "2026-11-04T00:41:15+00:00",
+ "config": {
+  "features": "umap_params.pkl, 5 componentes u (params)",
+  "pipeline": "HistGradientBoostingClassifier",
+  "estimator_params": {
+   "early_stopping": false,
+   "random_state": 42,
+   "learning_rate": 0.03,
+   "max_depth": 3,
+   "max_iter": 100
+  },
+  "other_params": "valores por defecto de scikit-learn 1.6.1",
+  "fit": "solo train",
+  "decision": "p_dep > 0.5",
+  "protocol": "docs/protocolo_preregistrado.md §4.3",
+  "protocol_config": "configs/protocolo.json",
+  "protocol_config_sha256_lf": "92ef8774f10f6c7ca04abd71a6a55be6ef29852b049932fb54dcecfe7ee00e5a",
+  "script": "results/f21_techo5d/f21_techo5d.py",
+  "script_sha256_lf": "a2332df58ffc393d2254197eca14e795a828b737f9a890c93a6baec5ff91add4"
+ },
+ "inputs": {
+  "umap_params.pkl": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224",
+  "meta/sample_index.csv (repo)": "74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5",
+  "configs/protocolo.json (repo, LF)": "92ef8774f10f6c7ca04abd71a6a55be6ef29852b049932fb54dcecfe7ee00e5a"
+ },
+ "model_selection": {
+  "criterio": "F1-Macro de validación (ŷ = 1[p_dep > 0.5]) sobre la rejilla de §4.3; empate con tolerancia 1e-12 → combinación anterior en la rejilla",
+  "orden_en_rejilla": 2,
+  "combinacion": {
+   "learning_rate": 0.03,
+   "max_depth": 3,
+   "max_iter": 100
+  },
+  "f1_val": 0.6874117158288326,
+  "techo_5d": false,
+  "tabla": "results/f21_techo5d/rejilla_completa.csv"
+ },
+ "environment": {
+  "python": "3.13.2",
+  "libraries": {
+   "numpy": "2.1.3",
+   "pandas": "2.3.3",
+   "scikit-learn": "1.6.1",
+   "torch": "2.11.0+cpu",
+   "transformers": "5.21.0",
+   "tokenizers": "0.23.3",
+   "joblib": "1.6.0"
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "gpu": null
+ },
+ "csv_sha256": "1abd93e2e1002f8ee7bb62413fc3f80c9f994d324879ccd958c825b6736ba68b",
+ "n_rows": {
+  "val": 114,
+  "test": 114
+ }
+}

@@ -130,18 +130,41 @@
   "descriptores": {
     "_seccion": "§4.2; Enmienda 2, punto 1",
     "task": "F2.4",
-    "_pendiente": "se fijan en F2.4 antes de calcular",
+    "_fijado": "F2.4, antes de calcular (Enmienda 2, punto 1)",
     "per_technique": true,
     "arch": "descriptors",
     "strategy": "none",
     "features": ["shannon_entropy", "contrast", "edge_density", "lbp_energy"],
     "definition": "Tabla 11 del Módulo 2, tal como la implementa el código original",
-    "implementation": null,
+    "implementation": {
+      "original": "notebooks/historial/camera_ready_CE.ipynb",
+      "original_cell": 20,
+      "original_commit": "f126052",
+      "reimplementation": "results/f24_descriptores/f24_descriptores.py",
+      "input": "np.array(Image.open(path).convert('L')), uint8"
+    },
+    "software": {
+      "scikit-image": "0.25.2",
+      "scikit-image_kaggle": null,
+      "_nota": "la versión de scikit-image de la ejecución de Kaggle no consta en el notebook (solo Python 3.12.13)"
+    },
     "params": {
-      "shannon_entropy": {"bins": null},
-      "contrast": {"definition": null},
-      "edge_density": {"detector": null, "thresholds": null},
-      "lbp_energy": {"P": null, "R": null, "method": null}
+      "shannon_entropy": {"bins": 256, "range": [0, 256], "density": true, "log_base": 2,
+                          "zero_bins": "descartados"},
+      "contrast": {"definition": "desviación estándar de los niveles de gris 0-255 (RMS, no GLCM)", "ddof": 0},
+      "edge_density": {"detector": "skimage.filters.sobel (valores por defecto)", "input_scale": "img / 255",
+                       "thresholds": "media + 1 DE (ddof 0) de la magnitud de Sobel de la propia imagen",
+                       "comparison": ">", "fraction_over": "todos los píxeles de 256 × 256"},
+      "lbp_energy": {"P": 24, "R": 3, "method": "uniform", "bins": 26, "input": "uint8",
+                     "energy": "suma de cuadrados del histograma normalizado"}
+    },
+    "tabla11": {
+      "split": "train",
+      "test": "welch (scipy.stats.ttest_ind, equal_var=False), depresivo − no depresivo",
+      "effect_size": "d de Cohen no ponderado: (m1 − m0) / sqrt((s1² + s0²) / 2), s con ddof 0",
+      "multiplicity": "holm",
+      "k": 12,
+      "alpha": 0.05
     },
     "image": {"source": "nativa", "size": [256, 256], "mode": "L", "visual_preprocessing": false},
     "families": "techo_5d.family_order",
