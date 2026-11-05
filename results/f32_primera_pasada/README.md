@@ -17,7 +17,7 @@ Resultados de la tarea **F3.2** del plan v2 (`plan/plan_tt2_v2.md`), repetida co
 | `smoke.log` | Prueba de humo del grid: 1 época, ResNet-18 congelado, semilla 42, tres técnicas. Su salida no se versiona |
 | `run_grid.log` | Salida completa de las 54 corridas |
 | `entorno/pip_freeze.txt`, `entorno/gpu.txt` | Entorno de Kaggle de la corrida |
-| `figures/*.png` | Figuras de `notebooks/F3.2_primera_pasada.ipynb`, en PNG a 300 dpi |
+| `figures/*.png` | Figuras de `notebooks/F3.2_primera_pasada.ipynb`, en PNG a 300 dpi: F1-val por configuración, curvas de aprendizaje por técnica, v0 frente a la repetición, parada temprana, distribución de `p_dep` y matriz de confusión de los candidatos, y acuerdo entre semillas |
 
 `errors/` quedó vacío; por eso no se versiona.
 
