@@ -1,0 +1,38 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\DELL\Desktop\TT\TT2\ttdicevc
+plugins: anyio-4.15.1, platformdirs-4.14.0
+collected 1 item
+
+tests\test_label_independence.py .                                       [100%]
+
+============================== warnings summary ===============================
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+tests/test_label_independence.py::test_B_contrato_salida[lorenz]
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: C:\Users\DELL\Desktop\TT\TT2\ttdicevc\results\f24_descriptores\pytest_2b_f03_lorenz.xml -
+================= 1 passed, 14 warnings in 223.32s (0:03:43) ==================

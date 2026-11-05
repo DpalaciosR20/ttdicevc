@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="223.320" timestamp="2026-11-04T22:21:40.924328-06:00" hostname="DESKTOP-GG88U5M"><testcase classname="tests.test_label_independence" name="test_B_contrato_salida[lorenz]" time="223.023" /></testsuite></testsuites>

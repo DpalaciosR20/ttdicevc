@@ -1,0 +1,117 @@
+{
+ "numbers": {
+  "m2.tabla11.original.n_sig_holm": {
+   "evaluator": "mismo cálculo que la Tabla 11 recalculada, ejecutado en Kaggle el 29 jul 2026",
+   "kind": "count",
+   "note": "imágenes de sesión de Kaggle, no versionadas (/kaggle/working/images_grayscale_classblind). No se sustituye por m2.tabla11.recalculada.n_sig_holm: se refieren a imágenes distintas.",
+   "source": {
+    "locator": "celda 20, salida guardada, columna sig_holm",
+    "path": "notebooks/historial/camera_ready_CE.ipynb"
+   },
+   "status": "reportado",
+   "value": 8
+  },
+  "m2.tabla11.recalculada.n_sig_holm": {
+   "evaluator": "comparaciones con p de Holm < 0.05 (statsmodels multipletests, k = 12) de la t de Welch depresivo − no depresivo (scipy ttest_ind, equal_var=False) por técnica y descriptor; solo train (908); imágenes de tt2-insumos verificadas con meta/data_manifest.csv",
+   "kind": "count",
+   "note": "F2.4. Tabla 11 del Módulo 2 recalculada con el código de la celda 20 de notebooks/historial/camera_ready_CE.ipynb; t, p y d de Cohen en el CSV.",
+   "source": {
+    "locator": "suma de la columna sig_holm",
+    "path": "results/f24_descriptores/tabla11_recalculada.csv"
+   },
+   "status": "verificado",
+   "value": 8
+  },
+  "ref.descriptores.gray_scott.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 16,
+     "fp": 13,
+     "tn": 57,
+     "tp": 28
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (gray_scott; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): RandomForestClassifier ({\"n_estimators\": 500, \"random_state\": 42, \"max_depth\": null, \"min_samples_leaf\": 1, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/gray_scott__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7280131633072809
+   }
+  },
+  "ref.descriptores.lorenz.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 22,
+     "fp": 13,
+     "tn": 57,
+     "tp": 22
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (lorenz; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): StandardScaler (ajustado en train) + SVC ({\"kernel\": \"rbf\", \"probability\": true, \"random_state\": 42, \"C\": 100.0, \"gamma\": 1.0, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/lorenz__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6610313482286976
+   }
+  },
+  "ref.descriptores.perlin.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 16,
+     "fp": 17,
+     "tn": 53,
+     "tp": 28
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (perlin; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): StandardScaler (ajustado en train) + LogisticRegression ({\"penalty\": \"l2\", \"solver\": \"lbfgs\", \"max_iter\": 5000, \"random_state\": 42, \"C\": 0.001, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/perlin__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6959017056018106
+   }
+  }
+ },
+ "schema_version": "1.0"
+}

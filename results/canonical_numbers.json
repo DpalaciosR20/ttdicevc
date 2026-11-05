@@ -6,6 +6,7 @@
   "results/f21_techo5d/canonical_fragment.json": "7264d44683272d16e4096aaf457994d7d57d0b45a553bb5d3a66dabc9cd2f3f5",
   "results/f22_referencias_textuales/canonical_fragment.json": "fa778353dbc9304f434ab401cb6b7b71974dd8b36b4c37fa4749d2216ffa5e04",
   "results/f23_pisos/canonical_fragment.json": "6675dd3e312de57aa51a8058aefb3c44a7173a20469dde2f26c3d4a86260fc2f",
+  "results/f24_descriptores/canonical_fragment.json": "027b04aa9fc95cdeaeb11c492e2011793e250864b447918529d60d8400ace2b6",
   "results/f32_primera_pasada_v0/grid_meta.json": "903976351f665577ed020efcf1bd949ea5e11480b08557541dd08c44515f320e",
   "results/f32_primera_pasada_v0/predictions.csv": "46a9a4cba45681de266c4d9e9ce15c5d61aa57ca8164574959ce56b930c8c30e",
   "results/f32_primera_pasada_v0/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.json": "56df853fe466f3b14890323d8c37e64a3caea601b567feeb95332021314cea77",
@@ -2950,6 +2951,28 @@
     "val": null
    }
   },
+  "m2.tabla11.original.n_sig_holm": {
+   "evaluator": "mismo cálculo que la Tabla 11 recalculada, ejecutado en Kaggle el 29 jul 2026",
+   "kind": "count",
+   "note": "imágenes de sesión de Kaggle, no versionadas (/kaggle/working/images_grayscale_classblind). No se sustituye por m2.tabla11.recalculada.n_sig_holm: se refieren a imágenes distintas.",
+   "source": {
+    "locator": "celda 20, salida guardada, columna sig_holm",
+    "path": "notebooks/historial/camera_ready_CE.ipynb"
+   },
+   "status": "reportado",
+   "value": 8
+  },
+  "m2.tabla11.recalculada.n_sig_holm": {
+   "evaluator": "comparaciones con p de Holm < 0.05 (statsmodels multipletests, k = 12) de la t de Welch depresivo − no depresivo (scipy ttest_ind, equal_var=False) por técnica y descriptor; solo train (908); imágenes de tt2-insumos verificadas con meta/data_manifest.csv",
+   "kind": "count",
+   "note": "F2.4. Tabla 11 del Módulo 2 recalculada con el código de la celda 20 de notebooks/historial/camera_ready_CE.ipynb; t, p y d de Cohen en el CSV.",
+   "source": {
+    "locator": "suma de la columna sig_holm",
+    "path": "results/f24_descriptores/tabla11_recalculada.csv"
+   },
+   "status": "verificado",
+   "value": 8
+  },
   "n.test": {
    "evaluator": "len(labels) vía umap_io.load_umap_arrays",
    "kind": "count",
@@ -3057,6 +3080,96 @@
    "value": {
     "test": 0.003496103896103886,
     "val": null
+   }
+  },
+  "ref.descriptores.gray_scott.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 16,
+     "fp": 13,
+     "tn": 57,
+     "tp": 28
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (gray_scott; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): RandomForestClassifier ({\"n_estimators\": 500, \"random_state\": 42, \"max_depth\": null, \"min_samples_leaf\": 1, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/gray_scott__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7280131633072809
+   }
+  },
+  "ref.descriptores.lorenz.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 22,
+     "fp": 13,
+     "tn": 57,
+     "tp": 22
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (lorenz; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): StandardScaler (ajustado en train) + SVC ({\"kernel\": \"rbf\", \"probability\": true, \"random_state\": 42, \"C\": 100.0, \"gamma\": 1.0, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/lorenz__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6610313482286976
+   }
+  },
+  "ref.descriptores.perlin.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 16,
+     "fp": 17,
+     "tn": 53,
+     "tp": 28
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (perlin; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): StandardScaler (ajustado en train) + LogisticRegression ({\"penalty\": \"l2\", \"solver\": \"lbfgs\", \"max_iter\": 5000, \"random_state\": 42, \"C\": 0.001, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/perlin__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6959017056018106
    }
   },
   "ref.emb768_logreg.f1_macro": {
