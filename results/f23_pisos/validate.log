@@ -1,0 +1,14 @@
+OK     results\predictions\referencia\emb768__logreg__none__seed42.csv
+OK     results\predictions\referencia\gray_scott__brightness__none__seed42.csv
+OK     results\predictions\referencia\lorenz__brightness__none__seed42.csv
+OK     results\predictions\referencia\none__majority__none__seed42.csv
+OK     results\predictions\referencia\none__stratified__none__seed42.csv
+OK     results\predictions\referencia\perlin__brightness__none__seed42.csv
+OK     results\predictions\referencia\text__beto__finetune__seed42.csv
+OK     results\predictions\referencia\umap5d__gbm__none__seed42.csv
+OK     results\predictions\referencia\umap5d__logreg__none__seed42.csv
+OK     results\predictions\referencia\umap5d__mlp__none__seed42.csv
+OK     results\predictions\referencia\umap5d__rf__none__seed42.csv
+OK     results\predictions\referencia\umap5d__svm_rbf__none__seed42.csv
+
+12/12 archivos válidos
