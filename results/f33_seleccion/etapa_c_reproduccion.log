@@ -1,0 +1,26 @@
+F3.3, etapa C — comprobaciones de reproducción (2026-11-05, local, Windows 11, Python 3.13.2, CPU)
+
+== 1c. Reejecución de results/f33_seleccion/fragilidad.py ==
+Comando: python results/f33_seleccion/fragilidad.py   (código de salida 0)
+Comparación byte a byte con la versión de la etapa A (commit 58f0fa2):
+  IDENTICO fragilidad_volteos.csv
+  IDENTICO fragilidad_volteo_unico.csv
+  IDENTICO epocas_finalista_segundo.csv
+  fragilidad.log: idéntico salvo las 4 últimas líneas de la etapa A (salida de `time`: real 0m6.146s, user, sys)
+sha256 de fragilidad_volteos.csv (text_sha256, LF):  c40695d91a0e7a1488e1ab7a6e18e8c12b16541d15e7ffb6ae129ff5405a6d80
+inputs["results/f33_seleccion/fragilidad_volteos.csv"] en canonical_numbers.json: c40695d91a0e7a1488e1ab7a6e18e8c12b16541d15e7ffb6ae129ff5405a6d80
+  coincide: True
+
+== Etapa B, punto 3. Reejecución de results/f11_potencia/potencia.py (claves f32v0.*) ==
+Comando: python results/f11_potencia/potencia.py --out <scratchpad>/f11_rerun --jobs 6   (código de salida 0; 5.6 min)
+Log completo: results/f33_seleccion/potencia_reejecucion.log
+Comparación con results/f11_potencia/ (sin \r):
+  IDENTICO empirico.csv
+  IDENTICO empirico_corridas.csv
+  IDENTICO malla_escenarios.csv
+  IDENTICO retencion_minima.csv
+  IDENTICO potencia_piso.csv
+  IDENTICO bytes curva_potencia.png
+  IDENTICO bytes curva_potencia.pdf
+  potencia.log: idéntico tras enmascarar tiempos por escenario y totales, línea «Inicio:» (fecha y commit),
+                la ruta de predictions.csv de la v0 (mismo sha256 448b457f…15ed) y el sha256 de canonical_numbers.json
