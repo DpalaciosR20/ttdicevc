@@ -23,7 +23,7 @@ SPLIT_ORDER = ['train', 'val', 'test']
 VOCAB = {
     'split': set(SPLIT_ORDER),
     'y_true': {0, 1},
-    'technique': {'perlin', 'gray_scott', 'lorenz', 'text', 'emb768', 'umap5d', 'none'},
+    'technique': {'perlin', 'gray_scott', 'lorenz', 'text', 'emb768', 'umap5d', 'text_length', 'none'},  # text_length: Enmienda 2
     'arch': {'resnet18', 'efficientnet_b0', 'vit_b16', 'beto', 'logreg', 'svm_rbf', 'gbm', 'rf', 'mlp',
              'majority', 'stratified', 'brightness', 'descriptors'},
     'strategy': {'frozen', 'finetune', 'none'},

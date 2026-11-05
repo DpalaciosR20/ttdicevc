@@ -14,8 +14,10 @@ Ejecución (desde la raíz del repo):
     python -m pytest tests/test_protocolo.py -v
 """
 
+import hashlib
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -107,13 +109,38 @@ def header(doc):
     return doc.split('\n## ', 1)[0]
 
 
+# Huella LF vigente de configs/protocolo.json. La Enmienda 2 (2026-11-04) añadió
+# pisos_triviales, piso_brillo, descriptores y referencias.longitud.{technique,...};
+# el encabezado conserva la huella de protocolo-v1 (el documento solo recibe la
+# enmienda al final). Todo cambio posterior del config exige una enmienda nueva
+# y actualizar esta constante.
+CONFIG_SHA256_ENMIENDA_2 = '8538487a8911e2ef2c906a335337727ee4ba84ae26f6d0f042655640720829b0'
+
+
+def header_sha(doc, path):
+    rel = path.relative_to(REPO).as_posix()
+    m = re.search(rf'`{re.escape(rel)}`[^\n]*?SHA-256 `([0-9a-f]{{64}})`', header(doc))
+    assert m, f'el encabezado no registra el SHA-256 de {rel}'
+    return m.group(1)
+
+
+def sha_at_tag(path):
+    """SHA-256 LF del archivo en la etiqueta del protocolo; skip si no hay git o etiqueta."""
+    rel = path.relative_to(REPO).as_posix()
+    try:
+        blob = subprocess.run(['git', '-C', str(REPO), 'show', f'{schema.PROTOCOL_TAG}:{rel}'],
+                              capture_output=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        pytest.skip(f'git o la etiqueta {schema.PROTOCOL_TAG} no están disponibles')
+    return hashlib.sha256(blob.replace(b'\r\n', b'\n')).hexdigest()
+
+
 def test_header_hashes_match_configs(doc):
-    head = header(doc)
-    for path in (CONFIG, MATRIX):
-        rel = path.relative_to(REPO).as_posix()
-        m = re.search(rf'`{re.escape(rel)}`[^\n]*?SHA-256 `([0-9a-f]{{64}})`', head)
-        assert m, f'el encabezado no registra el SHA-256 de {rel}'
-        assert m.group(1) == text_sha256(path), f'SHA-256 de {rel} desactualizado en el encabezado'
+    assert header_sha(doc, MATRIX) == text_sha256(MATRIX), 'SHA-256 de la matriz desactualizado en el encabezado'
+    assert header_sha(doc, CONFIG) == sha_at_tag(CONFIG), \
+        f'el encabezado debe registrar la huella de configs/protocolo.json en {schema.PROTOCOL_TAG}'
+    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_2, \
+        'configs/protocolo.json cambió después de la Enmienda 2: registra una enmienda y actualiza la constante'
 
 
 def test_header_version_tag_and_amendment(doc, cfg):
@@ -386,3 +413,88 @@ def test_canonical_ids_exist(cfg, canon):
            cfg['referencias']['emb768']['canonical'], *cfg['cifras_diseno']['delta_formulacion_A'].values()]
     for nid in ids:
         assert nid in canon, nid
+
+
+# ── Enmienda 2 (2026-11-04): F2.3, F2.4 y longitud ───────────────────────────
+
+def enmienda_2(doc):
+    m = re.search(r'^## Enmienda 2 \(2026-11-04\)$(.*)\Z', doc, re.M | re.S)
+    assert m, 'falta la Enmienda 2 al final del protocolo'
+    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 2 debe ser la última sección'
+    return m.group(1)
+
+
+def test_enmienda_2_es_la_ultima_y_sigue_a_la_1(doc):
+    sec = enmienda_2(doc)
+    assert doc.index('## Enmienda 1 (2026-11-02)') < doc.index('## Enmienda 2 (2026-11-04)')
+    assert '**antes de cualquier consulta de prueba de los finalistas**' in sec
+    for n in (1, 2, 3, 4):
+        assert f'**{n}. ' in sec
+
+
+def test_enmienda_2_pisos_triviales(doc, cfg):
+    sec = enmienda_2(doc)
+    t = cfg['pisos_triviales']
+    maj, st = t['majority'], t['stratified']
+    assert '`p_dep = 0.0` en todas las muestras' in sec and maj['p_dep'] == 0.0
+    assert maj['arch'] == cfg['pisos']['majority']['arch'] and maj['technique'] == cfg['pisos']['majority']['technique']
+    assert 'como la constante 0.5 (§5.3)' in sec
+    assert st['contrast_constant'] == cfg['pisos']['stratified']['expected_f1'] \
+        == cfg['contraste']['superioridad_piso']['stratified_as_constant']
+    assert f"`{st['rng']}({st['rng_seed']})`" in sec and st['proportion_split'] == 'train'
+    assert '`p_dep ∈ {0.0, 1.0}`' in sec and st['p_dep_values'] == [0.0, 1.0]
+    assert 'no interviene en ningún contraste' in sec and st['used_in_contrasts'] is False
+    for e in (maj, st):
+        assert (e['strategy'], e['seed'], e['fase']) == ('none', 42, 'referencia')
+
+
+def test_enmienda_2_piso_brillo(doc, cfg):
+    sec = enmienda_2(doc)
+    b = cfg['piso_brillo']
+    assert '256 × 256 en escala de grises, dividida entre 255' in sec
+    assert b['image'] == {'source': 'nativa', 'size': [256, 256], 'mode': 'L', 'scale': 'mean / 255',
+                          'visual_preprocessing': False}
+    assert b['arch'] == cfg['pisos']['brightness']['arch'] and b['per_technique'] is True
+    assert 'rejilla completa de LogReg de §4.3 (C y `class_weight`)' in sec
+    assert b['grid'] == 'techo_5d.familias.logreg' and b['selection_rule'] == 'techo_5d.selection'
+    assert b['scaler'] == {'name': 'StandardScaler', 'fit_split': 'train'}
+    assert (b['strategy'], b['seed'], b['fase']) == ('none', 42, 'referencia')
+
+
+def test_enmienda_2_descriptores(doc, cfg):
+    sec = enmienda_2(doc)
+    d = cfg['descriptores']
+    assert 'entropía de Shannon, contraste, densidad de bordes y energía LBP' in sec
+    assert d['features'] == ['shannon_entropy', 'contrast', 'edge_density', 'lbp_energy']
+    assert '`configs/protocolo.json` → `descriptores`' in sec
+    # Solo estructura: los parámetros se fijan en F2.4 antes de calcular
+    assert d['_pendiente'] and d['implementation'] is None
+    assert all(v is None for p in d['params'].values() for v in p.values())
+    assert set(d['params']) == set(d['features'])
+    assert d['image']['size'] == [256, 256] and d['image']['visual_preprocessing'] is False
+    assert d['families'] == 'techo_5d.family_order' and d['grids'] == 'techo_5d.familias'
+    assert d['scaler']['families'] == cfg['techo_5d']['scaler']['families']
+    assert d['arch'] == cfg['referencias']['descriptores']['arch']
+
+
+def test_enmienda_2_longitud(doc, cfg):
+    sec = enmienda_2(doc)
+    lo = cfg['referencias']['longitud']
+    assert ('`technique = text_length`, `arch = logreg`, `strategy = none`, `seed = 42`, fase `referencia`'
+            in sec)
+    assert (lo['technique'], lo['arch'], lo['strategy'], lo['seed'], lo['fase']) == \
+        ('text_length', 'logreg', 'none', 42, 'referencia')
+    assert lo['grid'] == 'techo_5d.familias.logreg' and lo['selection_rule'] == 'techo_5d.selection'
+    assert lo['features'] == ['log(n_tokens_beto)', 'truncated_128']
+    assert lo['fase'] in schema.FASES
+
+
+def test_enmienda_2_vocabulario(cfg):
+    combos = [cfg['pisos_triviales']['majority'], cfg['pisos_triviales']['stratified'],
+              {**cfg['piso_brillo'], 'technique': 'perlin'}, cfg['referencias']['longitud']]
+    for e in combos:
+        for col in ('technique', 'arch', 'strategy'):
+            assert e[col] in schema.VOCAB[col], (col, e[col])
+    assert cfg['descriptores']['arch'] in schema.VOCAB['arch']
+    assert schema.FILENAME_RE.match(schema.file_name('text_length', 'logreg', 'none', 42)).groupdict() == \
+        {'technique': 'text_length', 'arch': 'logreg', 'strategy': 'none', 'seed': '42'}
