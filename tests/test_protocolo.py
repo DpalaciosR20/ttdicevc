@@ -113,8 +113,10 @@ def header(doc):
 # pisos_triviales, piso_brillo, descriptores y referencias.longitud.{technique,...};
 # el encabezado conserva la huella de protocolo-v1 (el documento solo recibe la
 # enmienda al final). Todo cambio posterior del config exige una enmienda nueva
-# y actualizar esta constante.
-CONFIG_SHA256_ENMIENDA_2 = '8538487a8911e2ef2c906a335337727ee4ba84ae26f6d0f042655640720829b0'
+# y actualizar esta constante. Única excepción prevista por la propia Enmienda 2
+# (punto 1): F2.4 llenó descriptores.{implementation,software,params,tabla11}
+# antes de calcular (huella de la Enmienda 2 sin ese bloque: 8538487a…).
+CONFIG_SHA256_ENMIENDA_2 = '708ead595fe59bd0c5a58f0a11e156b3e3cb48f350cfa82d39152d3bd3b70e4a'
 
 
 def header_sha(doc, path):
@@ -467,10 +469,35 @@ def test_enmienda_2_descriptores(doc, cfg):
     assert 'entropía de Shannon, contraste, densidad de bordes y energía LBP' in sec
     assert d['features'] == ['shannon_entropy', 'contrast', 'edge_density', 'lbp_energy']
     assert '`configs/protocolo.json` → `descriptores`' in sec
-    # Solo estructura: los parámetros se fijan en F2.4 antes de calcular
-    assert d['_pendiente'] and d['implementation'] is None
-    assert all(v is None for p in d['params'].values() for v in p.values())
     assert set(d['params']) == set(d['features'])
+    assert d['image']['source'] == 'nativa' and d['image']['mode'] == 'L'
+
+
+def test_f24_descriptores_fijados(cfg):
+    """F2.4 fija la implementación de la celda 20 del notebook de CE antes de calcular."""
+    d = cfg['descriptores']
+    assert '_pendiente' not in d and d['_fijado'].startswith('F2.4, antes de calcular')
+    impl = d['implementation']
+    assert impl['original'] == 'notebooks/historial/camera_ready_CE.ipynb'
+    assert (impl['original_cell'], impl['original_commit']) == (20, 'f126052')
+    assert impl['reimplementation'] == 'results/f24_descriptores/f24_descriptores.py'
+    assert (REPO / impl['original']).is_file()
+    assert d['software']['scikit-image'] == '0.25.2'
+    assert d['software']['scikit-image_kaggle'] is None and d['software']['_nota']
+    p = d['params']
+    assert all(v is not None for q in p.values() for v in q.values())
+    assert (p['shannon_entropy']['bins'], p['shannon_entropy']['range'], p['shannon_entropy']['log_base']) ==         (256, [0, 256], 2)
+    assert p['contrast']['ddof'] == 0 and 'no GLCM' in p['contrast']['definition']
+    e = p['edge_density']
+    assert e['detector'].startswith('skimage.filters.sobel') and e['input_scale'] == 'img / 255'
+    assert 'media + 1 DE (ddof 0)' in e['thresholds'] and e['comparison'] == '>'
+    lbp = p['lbp_energy']
+    assert (lbp['P'], lbp['R'], lbp['method'], lbp['bins']) == (24, 3, 'uniform', 26)
+    assert lbp['bins'] == lbp['P'] + 2
+    t = d['tabla11']
+    assert (t['split'], t['multiplicity'], t['k'], t['alpha']) == ('train', 'holm', 12, 0.05)
+    assert t['k'] == 3 * len(d['features'])
+    assert 'welch' in t['test'] and 'ddof 0' in t['effect_size']
     assert d['image']['size'] == [256, 256] and d['image']['visual_preprocessing'] is False
     assert d['families'] == 'techo_5d.family_order' and d['grids'] == 'techo_5d.familias'
     assert d['scaler']['families'] == cfg['techo_5d']['scaler']['families']
