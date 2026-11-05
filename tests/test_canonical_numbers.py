@@ -16,7 +16,10 @@ Alcanzabilidad   Cada F1-Macro (no derivado) es alcanzable con una matriz de
 Confusión        El F1 recalculado de cada matriz es el valor guardado y la matriz
                  suma los soportes del split.
 Estructura       908 + 114 + 114 = 1,136; soportes por clase coherentes; 54 corridas
-                 de F3.2 con el mismo y_true de val.
+                 de F3.2 (repetición, f32.*) con el mismo y_true de val; la v0
+                 sustituida se conserva como f32v0.* (54 + 18 + 18, con nota).
+Selección F3.3   f33.*: finalista, segundo y líder por técnica coinciden con
+                 select_finalist/select_second; límite, holgura y volteos coherentes.
 Derivadas        Cada derivada se recalcula desde depends_on; cada agregado
                  transcrito (summarizes) es compatible con sus cifras.
 Fusión           Una clave repetida entre fragmentos o colectores es un error,
@@ -195,20 +198,127 @@ def test_conteos_estructurales():
     assert (NUMBERS['support.test.label0']['value'], NUMBERS['support.test.label1']['value']) == (70, 44)
 
 
+PREP = json.loads((REPO / 'configs' / 'preprocesamiento.json').read_text(encoding='utf-8'))
+
+
+def _f32_keys(prefix):
+    seeds = sorted(k for k in NUMBERS if k.startswith(prefix + '.') and '.seed' in k)
+    means = sorted(k for k in NUMBERS if k.startswith(prefix + '.') and k.endswith('.f1_macro_mean'))
+    stds = sorted(k for k in NUMBERS if k.startswith(prefix + '.') and k.endswith('.f1_macro_std'))
+    return seeds, means, stds
+
+
 def test_f32_estructura():
-    with open(canon.F32_DIR / 'predictions.csv', newline='', encoding='utf-8') as f:
+    """F3.2, repetición: 54 CSV F1.5 de primera_pasada con el mismo y_true de val y
+    claves con los identificadores de la repetición (vit_b16, variante de F1.4)."""
+    y_by_run = {}
+    for path in sorted(canon.F32_PRED_DIR.glob('*.csv')):
+        with open(path, newline='', encoding='utf-8') as f:
+            rows = list(csv.DictReader(f))
+        assert {r['split'] for r in rows} == {'val'}, f'{path.name}: F3.2 solo tiene val'
+        y_by_run[path.name] = tuple(int(r['y_true']) for r in rows)
+    assert len(y_by_run) == 54
+    assert len(set(y_by_run.values())) == 1, 'y_true distinto entre corridas'
+    y = next(iter(y_by_run.values()))
+    assert Counter(y) == {0: NUMBERS['support.val.label0']['value'], 1: NUMBERS['support.val.label1']['value']}
+    seeds, means, stds = _f32_keys('f32')
+    assert len(seeds) == 54 and len(means) == 18 and len(stds) == 18
+    assert all(NUMBERS[k]['value']['test'] is None for k in seeds + means + stds), 'F3.2 no debe tener test'
+    for k in seeds:
+        _, tech, arch, _, variant = k.split('.')[:5]
+        assert arch in {'resnet18', 'efficientnet_b0', 'vit_b16'}, k
+        assert variant == PREP[tech]['variant'].replace('-', '_'), k
+        assert NUMBERS[k]['source']['path'].startswith('results/predictions/primera_pasada/'), k
+
+
+def test_f32v0_estructura():
+    """F3.2 v0 (sustituida): mismas 54 + 18 + 18 cifras que antes de la repetición,
+    con prefijo f32v0.* y marcadas como sustituidas."""
+    with open(canon.F32V0_DIR / 'predictions.csv', newline='', encoding='utf-8') as f:
         rows = list(csv.DictReader(f))
     y_by_run = defaultdict(list)
     for r in rows:
         y_by_run[r['run_id']].append(int(r['y_true']))
     assert len(y_by_run) == 54
     assert len({tuple(y) for y in y_by_run.values()}) == 1, 'y_true distinto entre corridas'
-    y = next(iter(y_by_run.values()))
-    assert Counter(y) == {0: NUMBERS['support.val.label0']['value'], 1: NUMBERS['support.val.label1']['value']}
-    seeds = [k for k in NUMBERS if k.startswith('f32.') and '.seed' in k]
-    means = [k for k in NUMBERS if k.startswith('f32.') and k.endswith('.f1_macro_mean')]
-    assert len(seeds) == 54 and len(means) == 18
-    assert all(NUMBERS[k]['value']['test'] is None for k in seeds + means), 'F3.2 no debe tener test'
+    seeds, means, stds = _f32_keys('f32v0')
+    assert len(seeds) == 54 and len(means) == 18 and len(stds) == 18
+    for k in seeds + means + stds:
+        e = NUMBERS[k]
+        assert e['value']['test'] is None, k
+        assert e['note'] == canon.F32V0_NOTE, k
+        assert k.split('.')[4] == 'px224_flip', k
+        assert all(d.startswith('f32v0.') for d in e.get('depends_on', [])), k
+        if 'depends_on' not in e:
+            assert e['source']['path'] == 'results/f32_primera_pasada_v0/predictions.csv', k
+
+
+# ── Selección de F3.3 (f33.*) ─────────────────────────────────────────────
+F33_ROLES = ('finalista', 'segundo', 'lider')
+F33_PER_TECH = 3 * 2 + 4   # 3 roles × (media, DE) + límite + holgura + 2 volteos
+
+
+def _f33_role(tech, role):
+    keys = sorted(k for k in NUMBERS if k.startswith(f'f33.{tech}.{role}.'))
+    configs = {tuple(k.split('.')[3:5]) for k in keys}
+    assert len(configs) == 1 and len(keys) == 2, f'f33.{tech}.{role}: {keys}'
+    (arch, strat), = configs
+    return arch, strat, f'f33.{tech}.{role}.{arch}.{strat}'
+
+
+@pytest.fixture(scope='module')
+def seleccion():
+    from src.selection.select_finalist import select_finalists, select_second
+    table, _ = select_finalists(str(canon.F32_PRED_DIR / '*.csv'))
+    return select_second(table)
+
+
+def test_f33_presencia():
+    keys = [k for k in NUMBERS if k.startswith('f33.')]
+    assert len(keys) == 3 * F33_PER_TECH
+    for tech in ('perlin', 'gray_scott', 'lorenz'):
+        for role in F33_ROLES:
+            _f33_role(tech, role)
+        for k in ('limite_empate.f1_macro', 'holgura_finalista.f1_macro',
+                  'volteos_min.una_corrida', 'volteos_min.repartido'):
+            assert f'f33.{tech}.{k}' in NUMBERS, f'falta f33.{tech}.{k}'
+
+
+@pytest.mark.parametrize('tech', ['perlin', 'gray_scott', 'lorenz'])
+def test_f33_consistencia(tech, seleccion):
+    g = seleccion[seleccion['technique'] == tech]
+    cols = {'finalista': 'finalist', 'segundo': 'second', 'lider': 'leader'}
+    base = {}
+    for role, col in cols.items():
+        arch, strat, base[role] = _f33_role(tech, role)
+        row = g[g[col]]
+        assert len(row) == 1 and (row['arch'].iloc[0], row['strategy'].iloc[0]) == (arch, strat), \
+            f'{tech}/{role}: canónico {arch}/{strat} != select_finalist'
+        # La cifra f33 es la misma que la media/DE f32 de esa configuración
+        variant = PREP[tech]['variant'].replace('-', '_')
+        for s in ('mean', 'std'):
+            f32 = NUMBERS[f'f32.{tech}.{arch}.{strat}.{variant}.f1_macro_{s}']
+            e = NUMBERS[f'{base[role]}.f1_macro_{s}']
+            assert e['value'] == f32['value'] and e['depends_on'] == f32['depends_on'], f'{base[role]}.{s}'
+        assert NUMBERS[f'{base[role]}.f1_macro_mean']['value']['val'] == pytest.approx(row['f1_val_mean'].iloc[0], abs=1e-12)
+        assert NUMBERS[f'{base[role]}.f1_macro_std']['value']['val'] == pytest.approx(row['f1_val_std'].iloc[0], abs=1e-12)
+    lim = NUMBERS[f'f33.{tech}.limite_empate.f1_macro']
+    hol = NUMBERS[f'f33.{tech}.holgura_finalista.f1_macro']
+    assert lim['depends_on'] == [f'{base["lider"]}.f1_macro_mean', f'{base["lider"]}.f1_macro_std']
+    assert hol['depends_on'] == [f'{base["finalista"]}.f1_macro_mean', f'f33.{tech}.limite_empate.f1_macro']
+    lead = g[g['leader']].iloc[0]
+    assert lim['value']['val'] == pytest.approx(lead['f1_val_mean'] - lead['tolerance'], abs=1e-12)
+    assert hol['value']['val'] >= 0, 'el finalista debe estar dentro de la zona de empate'
+    assert lim['value']['test'] is None and hol['value']['test'] is None
+    # Volteos: del CSV de fragilidad, que se refiere a este finalista
+    with open(canon.F33_VOLTEOS, newline='', encoding='utf-8') as f:
+        rows = [r for r in csv.DictReader(f) if r['tecnica'] == tech]
+    single = [int(r['min_volteos']) for r in rows if r['busqueda'] == 'una corrida']
+    spread = [int(r['min_volteos']) for r in rows if r['busqueda'].startswith('repartida')]
+    assert NUMBERS[f'f33.{tech}.volteos_min.una_corrida']['value'] == min(single)
+    assert NUMBERS[f'f33.{tech}.volteos_min.repartido']['value'] == spread[0]
+    assert 1 <= NUMBERS[f'f33.{tech}.volteos_min.repartido']['value'] <= min(single)
+    assert DOC['inputs'][canon.rel(canon.F33_VOLTEOS)] == canon.text_sha256(canon.F33_VOLTEOS)
 
 
 # ── Derivadas y agregados transcritos ─────────────────────────────────────

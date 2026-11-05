@@ -1,0 +1,19 @@
+tecnica,busqueda,corrida,min_volteos,ejemplo,nuevo_finalista
+gray_scott,una corrida,efficientnet_b0/finetune s42,3,"{'VP→FN': 2, 'VN→FP': 1}",resnet18/finetune
+gray_scott,una corrida,efficientnet_b0/finetune s7,3,"{'VP→FN': 2, 'VN→FP': 1}",resnet18/finetune
+gray_scott,una corrida,efficientnet_b0/finetune s123,2,{'FP→VN': 2},vit_b16/frozen
+gray_scott,una corrida,resnet18/finetune s42,10,"{'FN→VP': 7, 'FP→VN': 3}",vit_b16/frozen
+gray_scott,una corrida,resnet18/finetune s7,3,{'FP→VN': 3},vit_b16/frozen
+gray_scott,una corrida,resnet18/finetune s123,8,{'FN→VP': 8},vit_b16/frozen
+gray_scott,repartida (cualquier corrida de finalista/líder),"efficientnet_b0/finetune s42, efficientnet_b0/finetune s7, efficientnet_b0/finetune s123, resnet18/finetune s42, resnet18/finetune s7, resnet18/finetune s123",2,{'efficientnet_b0/finetune s123': {'FN→VP': 2}},vit_b16/frozen
+perlin,una corrida,vit_b16/frozen s42,7,{'VP→FN': 7},efficientnet_b0/frozen
+perlin,una corrida,vit_b16/frozen s7,7,{'VP→FN': 7},efficientnet_b0/frozen
+perlin,una corrida,vit_b16/frozen s123,7,"{'VP→FN': 6, 'VN→FP': 1}",efficientnet_b0/frozen
+perlin,repartida (cualquier corrida de finalista/líder),"vit_b16/frozen s42, vit_b16/frozen s7, vit_b16/frozen s123",6,"{'vit_b16/frozen s42': {'FN→VP': 3}, 'vit_b16/frozen s123': {'VP→FN': 3}}",resnet18/frozen
+lorenz,una corrida,vit_b16/frozen s42,1,{'VN→FP': 1},efficientnet_b0/finetune
+lorenz,una corrida,vit_b16/frozen s7,1,{'VN→FP': 1},efficientnet_b0/finetune
+lorenz,una corrida,vit_b16/frozen s123,1,{'VN→FP': 1},efficientnet_b0/finetune
+lorenz,una corrida,efficientnet_b0/finetune s42,2,"{'VP→FN': 1, 'FP→VN': 1}",efficientnet_b0/finetune
+lorenz,una corrida,efficientnet_b0/finetune s7,2,"{'FN→VP': 1, 'VN→FP': 1}",efficientnet_b0/finetune
+lorenz,una corrida,efficientnet_b0/finetune s123,1,{'FP→VN': 1},efficientnet_b0/finetune
+lorenz,repartida (cualquier corrida de finalista/líder),"vit_b16/frozen s42, vit_b16/frozen s7, vit_b16/frozen s123, efficientnet_b0/finetune s42, efficientnet_b0/finetune s7, efficientnet_b0/finetune s123",1,{'vit_b16/frozen s42': {'VP→FN': 1}},efficientnet_b0/finetune

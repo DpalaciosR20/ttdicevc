@@ -1,0 +1,32 @@
+ technique            arch strategy  n_seeds    seeds  f1_val_mean  f1_val_std  trainable    total  tolerance  leader  tied  finalist
+    perlin         vit_b16   frozen        3 7 42 123       0.7028      0.0073       1538 85800194     0.0073    True  True      True
+    perlin         vit_b16 finetune        3 7 42 123       0.6999      0.0203   85800194 85800194     0.0073   False  True     False
+    perlin efficientnet_b0 finetune        3 7 42 123       0.6933      0.0137    4010110  4010110     0.0073   False False     False
+    perlin efficientnet_b0   frozen        3 7 42 123       0.6918      0.0101       2562  4010110     0.0073   False False     False
+    perlin        resnet18 finetune        3 7 42 123       0.6707      0.0146   11177538 11177538     0.0073   False False     False
+    perlin        resnet18   frozen        3 7 42 123       0.6673      0.0080       1026 11177538     0.0073   False False     False
+gray_scott        resnet18 finetune        3 7 42 123       0.7197      0.0113   11177538 11177538     0.0113    True  True     False
+gray_scott efficientnet_b0 finetune        3 7 42 123       0.7176      0.0125    4010110  4010110     0.0113   False  True      True
+gray_scott         vit_b16 finetune        3 7 42 123       0.7175      0.0080   85800194 85800194     0.0113   False  True     False
+gray_scott         vit_b16   frozen        3 7 42 123       0.7031      0.0104       1538 85800194     0.0113   False False     False
+gray_scott efficientnet_b0   frozen        3 7 42 123       0.6965      0.0021       2562  4010110     0.0113   False False     False
+gray_scott        resnet18   frozen        3 7 42 123       0.6955      0.0093       1026 11177538     0.0113   False False     False
+    lorenz efficientnet_b0 finetune        3 7 42 123       0.7166      0.0018    4010110  4010110     0.0018    True  True     False
+    lorenz         vit_b16   frozen        3 7 42 123       0.7148      0.0047       1538 85800194     0.0018   False  True      True
+    lorenz efficientnet_b0   frozen        3 7 42 123       0.7070      0.0115       2562  4010110     0.0018   False False     False
+    lorenz         vit_b16 finetune        3 7 42 123       0.7010      0.0252   85800194 85800194     0.0018   False False     False
+    lorenz        resnet18 finetune        3 7 42 123       0.6972      0.0067   11177538 11177538     0.0018   False False     False
+    lorenz        resnet18   frozen        3 7 42 123       0.6900      0.0040       1026 11177538     0.0018   False False     False
+
+Finalistas:
+  perlin      vit_b16/frozen  F1-Val 0.7028 ± 0.0073
+  gray_scott  efficientnet_b0/finetune  F1-Val 0.7176 ± 0.0125
+  lorenz      vit_b16/frozen  F1-Val 0.7148 ± 0.0047
+
+Segundo mejor (fase sensibilidad, protocolo §8):
+  perlin      efficientnet_b0/frozen  F1-Val 0.6918 ± 0.0101
+  gray_scott  resnet18/finetune  F1-Val 0.7197 ± 0.0113
+  lorenz      efficientnet_b0/finetune  F1-Val 0.7166 ± 0.0018
+
+Escrito results\f33_seleccion\seleccion.csv
+exit=0

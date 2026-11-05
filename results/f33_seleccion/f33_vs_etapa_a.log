@@ -1,0 +1,13 @@
+gray_scott finalista efficientnet_b0/finetune  clave existe=True |Δmedia|=2.22e-16 |ΔDE|=0
+gray_scott segundo   resnet18/finetune         clave existe=True |Δmedia|=0 |ΔDE|=0
+gray_scott lider     resnet18/finetune         clave existe=True |Δmedia|=0 |ΔDE|=0
+gray_scott límite |Δ|=0  holgura |Δ|=2.22e-16  volteos una=2 (A: 2)  repartido=2 (A: 2)
+perlin     finalista vit_b16/frozen            clave existe=True |Δmedia|=0 |ΔDE|=8.67e-19
+perlin     segundo   efficientnet_b0/frozen    clave existe=True |Δmedia|=0 |ΔDE|=1.73e-18
+perlin     lider     vit_b16/frozen            clave existe=True |Δmedia|=0 |ΔDE|=8.67e-19
+perlin     límite |Δ|=0  holgura |Δ|=0  volteos una=7 (A: 7)  repartido=6 (A: 6)
+lorenz     finalista vit_b16/frozen            clave existe=True |Δmedia|=0 |ΔDE|=0
+lorenz     segundo   efficientnet_b0/finetune  clave existe=True |Δmedia|=0 |ΔDE|=0
+lorenz     lider     efficientnet_b0/finetune  clave existe=True |Δmedia|=0 |ΔDE|=0
+lorenz     límite |Δ|=0  holgura |Δ|=0  volteos una=1 (A: 1)  repartido=1 (A: 1)
+máx |Δ| f33 vs tabla_seleccion.csv de la etapa A: 2.220446049250313e-16

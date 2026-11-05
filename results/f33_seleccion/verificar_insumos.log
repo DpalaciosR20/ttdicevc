@@ -1,0 +1,28 @@
+sha256 configs actual   : {'prep': '53f838ea8ccff05b466a6b3abf2756711871f066e6aa823764bc1c0d9188cb4d', 'mat': '5fa4298a8c6c5decb949fa1d4115ce6e121296d217de7868007bacc719314721'}
+sha256 configs @36c6398 : {'prep': '7a13a3b2442b03485248732c9e61abc4306147b6c1ba7419285b522aff73a451', 'mat': 'ce0e0ed6602ba0f53441eb77dbd90c7704e6d7f2b877d6f0ea9c295c689a8f15'}
+CSV encontrados: 54
+
+== 1d valores únicos en manifiestos ==
+class_weights (1 valores distintos)
+    (0.8180180191993713, 1.286118984222412)
+determinism (1 valores distintos)
+    {"CUBLAS_WORKSPACE_CONFIG": ":4096:8", "applied": {"CUBLAS_WORKSPACE_CONFIG": ":4096:8", "deterministic_algorithms": true, "flash_sdp": false, "mem_efficient_sdp": false}, "cudnn_benchmark": false, "cudnn_deterministic": true, "flash_sdp": false, "mem_efficient_sdp": false, "use_deterministic_algorithms": true, "warn_only": false}
+environment (1 valores distintos)
+    {"cudnn": 92700, "device": "cuda", "gpu": "Tesla T4", "libraries": {"joblib": "1.6.0", "numpy": "2.1.3", "pandas": "2.3.3", "scikit-learn": "1.6.1", "tokenizers": "0.23.3", "torch": "2.11.0+cu130", "transformers": "5.20.2"}, "platform": "Linux-6.18.55+-x86_64-with-glibc2.39", "python": "3.13.16", "torch": "2.11.0+cu130", "torchvision": "0.26.0+cu130"}
+
+== 1e created_at ==
+min 2026-11-03T02:20:35+00:00 max 2026-11-03T03:52:10+00:00
+
+== 2 F1 ==
+max |recalc - json|     = np.float64(0.0)
+max |recalc - manifest| = np.float64(0.0)
+max |recalc - summary|  = np.float64(4.864864864873031e-05) (summary.csv redondea a 4 decimales)
+p_dep == val_probs bit a bit: 54 / 54
+y_true == val_true: 54 / 54
+yhat(p>0.5) == val_preds: 54 / 54
+corridas con algún p_dep distinto con el lector por omisión: 54 ; valores distintos en total: 3291
+|p_dep-0.5|<1e-6: total 0 ; mínimo global |p_dep-0.5| = np.float64(0.00011577456982653223)
+y_true: positivos por corrida [44]
+
+PROBLEMAS: 0
+exit=0

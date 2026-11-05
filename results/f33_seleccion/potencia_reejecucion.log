@@ -1,0 +1,79 @@
+F1.1 — análisis de potencia (corrida completa)
+Inicio: 2026-11-05 16:04:18 -0600; commit 06b95c4be9882f04d4af6801dab7f5ecc9a98f70 (árbol con cambios)
+Entorno: Python 3.13.2 · numpy 2.1.3 · scipy 1.16.3 · pandas 2.3.3 · scikit-learn 1.6.1 · Windows-11-10.0.26200-SP0 · Intel64 Family 6 Model 140 Stepping 1, GenuineIntel · 8 núcleos · CPU · jobs=6
+Parámetros: semilla maestra 2026; α = 0.05; r ∈ (0.5, 0.75, 0.8); ρ ∈ (0.25, 0.5, 0.75, 0.9, 1.0, 1.1); discordancia p(10, 50, 90); DE ∈ (0.005, 0.01, 0.015); B_E = 10000; B_S = 2000; sims = 1000; permutaciones = 10000
+canonical_numbers.json: F1_BETO test = 0.7038961038961039, val = 0.7199475925319359; piso = 0.529 (floor.brightness.gray_scott.f1_macro); Δ WITCOM = -0.010303896103896037
+Insumos: y_val [70, 44], y_test [70, 44] (0/1); 54 corridas de F3.2 (solo val)
+  sha256 meta/sample_index.csv  74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5
+  sha256 results/predictions/referencia/text__beto__finetune__seed42.csv  3d3587469545e592e39fa62d3b00b0acd52889bfe21dceb0a5c2816a28f7916e
+  sha256 results/predictions/referencia/emb768__logreg__none__seed42.csv  b8c3d471a860b943df962fa8e4652d2ff400e3fcbcf6b9af2e84871091cb778a
+  sha256 results/f32_primera_pasada_v0/predictions.csv  448b457f37921ab5549218fb870de1642820305fce0df317ab5d212f2ba515ed
+  sha256 results/canonical_numbers.json  bfb77c09b981870c4b8892ae6ceb8e1e3434869f70e526ea4c36d26d944c68dd
+δ(r) = (1 − r)(F1_BETO − 0.5): r=0.50: 0.1019, r=0.75: 0.0510, r=0.80: 0.0408
+Verificación F1 vectorizado vs sklearn: 100 réplicas × 6 columnas, máx |dif| = 0.000e+00
+E: F1-val recalculado de las 54 corridas vs canonical_numbers.json, máx |dif| = 0.000e+00
+E: discordancia BETO–visual (54 corridas): p10 = 0.0877, p50 = 0.1140, p90 = 0.1404; LogReg-768D = 0.0088
+E: DE entre semillas (18 configs, ddof=1): min 0.0021, mediana 0.0136, max 0.0254
+E: ancho del IC de Δ (18 configs): α_h=0.0167: mediana 0.1294 [0.1111, 0.1464]; α_h=0.0250: mediana 0.1194 [0.1025, 0.1337]; α_h=0.0500: mediana 0.1000 [0.0866, 0.1121]
+E: 0.1 s (B = 10000)
+S: ρ=0.25 p10 DE=0.005: no factible
+S: ρ=0.25 p10 DE=0.010: no factible
+S: ρ=0.25 p10 DE=0.015: no factible
+S: ρ=0.25 p50 DE=0.005: no factible
+S: ρ=0.25 p50 DE=0.010: no factible
+S: ρ=0.25 p50 DE=0.015: no factible
+S: ρ=0.25 p90 DE=0.005: no factible
+S: ρ=0.25 p90 DE=0.010: no factible
+S: ρ=0.25 p90 DE=0.015: no factible
+S: ρ=0.50 p10 DE=0.005: no factible
+S: ρ=0.50 p10 DE=0.010: no factible
+S: ρ=0.50 p10 DE=0.015: no factible
+S: ρ=0.50 p50 DE=0.005: a=0.8258 η=-2.8425 κ=0.802; realizadas ret=0.499 DE=0.0050 disc=0.1137; 45 s
+S: ρ=0.50 p50 DE=0.010: a=0.8258 η=-2.8425 κ=0.333; realizadas ret=0.498 DE=0.0099 disc=0.1142; 43 s
+S: ρ=0.50 p50 DE=0.015: a=0.8258 η=-2.8425 κ=0.000 (DE no alcanzable); realizadas ret=0.501 DE=0.0123 disc=0.1136; 44 s
+S: ρ=0.50 p90 DE=0.005: a=0.7566 η=-1.8029 κ=0.917; realizadas ret=0.491 DE=0.0051 disc=0.1413; 44 s
+S: ρ=0.50 p90 DE=0.010: a=0.7566 η=-1.8029 κ=0.747; realizadas ret=0.495 DE=0.0097 disc=0.1403; 44 s
+S: ρ=0.50 p90 DE=0.015: a=0.7566 η=-1.8029 κ=0.416; realizadas ret=0.501 DE=0.0150 disc=0.1402; 44 s
+S: ρ=0.75 p10 DE=0.005: a=0.8327 η=-1.2890 κ=0.908; realizadas ret=0.753 DE=0.0047 disc=0.0871; 44 s
+S: ρ=0.75 p10 DE=0.010: a=0.8327 η=-1.2890 κ=0.670; realizadas ret=0.749 DE=0.0101 disc=0.0871; 44 s
+S: ρ=0.75 p10 DE=0.015: a=0.8327 η=-1.2890 κ=0.286; realizadas ret=0.752 DE=0.0150 disc=0.0873; 44 s
+S: ρ=0.75 p50 DE=0.005: a=0.7654 η=-0.9321 κ=0.931; realizadas ret=0.752 DE=0.0052 disc=0.1131; 44 s
+S: ρ=0.75 p50 DE=0.010: a=0.7654 η=-0.9321 κ=0.773; realizadas ret=0.748 DE=0.0101 disc=0.1142; 44 s
+S: ρ=0.75 p50 DE=0.015: a=0.7654 η=-0.9321 κ=0.505; realizadas ret=0.746 DE=0.0152 disc=0.1149; 44 s
+S: ρ=0.75 p90 DE=0.005: a=0.6984 η=-0.7368 κ=0.946; realizadas ret=0.744 DE=0.0050 disc=0.1407; 47 s
+S: ρ=0.75 p90 DE=0.010: a=0.6984 η=-0.7368 κ=0.825; realizadas ret=0.743 DE=0.0100 disc=0.1409; 47 s
+S: ρ=0.75 p90 DE=0.015: a=0.6984 η=-0.7368 κ=0.625; realizadas ret=0.742 DE=0.0149 disc=0.1411; 47 s
+S: ρ=0.90 p10 DE=0.005: a=0.7992 η=-0.4568 κ=0.919; realizadas ret=0.897 DE=0.0050 disc=0.0881; 47 s
+S: ρ=0.90 p10 DE=0.010: a=0.7992 η=-0.4568 κ=0.731; realizadas ret=0.897 DE=0.0101 disc=0.0877; 48 s
+S: ρ=0.90 p10 DE=0.015: a=0.7992 η=-0.4568 κ=0.399; realizadas ret=0.898 DE=0.0151 disc=0.0881; 48 s
+S: ρ=0.90 p50 DE=0.005: a=0.7325 η=-0.3485 κ=0.934; realizadas ret=0.898 DE=0.0052 disc=0.1143; 50 s
+S: ρ=0.90 p50 DE=0.010: a=0.7325 η=-0.3485 κ=0.794; realizadas ret=0.898 DE=0.0100 disc=0.1146; 50 s
+S: ρ=0.90 p50 DE=0.015: a=0.7325 η=-0.3485 κ=0.543; realizadas ret=0.899 DE=0.0151 disc=0.1141; 50 s
+S: ρ=0.90 p90 DE=0.005: a=0.6659 η=-0.2820 κ=0.947; realizadas ret=0.898 DE=0.0051 disc=0.1399; 51 s
+S: ρ=0.90 p90 DE=0.010: a=0.6659 η=-0.2820 κ=0.832; realizadas ret=0.903 DE=0.0102 disc=0.1406; 50 s
+S: ρ=0.90 p90 DE=0.015: a=0.6659 η=-0.2820 κ=0.628; realizadas ret=0.894 DE=0.0151 disc=0.1405; 50 s
+S: ρ=1.00 p10 DE=0.005: a=0.7780 η=+0.0000 κ=0.918; realizadas ret=1.001 DE=0.0049 disc=0.0872; 50 s
+S: ρ=1.00 p10 DE=0.010: a=0.7780 η=+0.0000 κ=0.730; realizadas ret=1.001 DE=0.0101 disc=0.0876; 50 s
+S: ρ=1.00 p10 DE=0.015: a=0.7780 η=+0.0000 κ=0.405; realizadas ret=1.000 DE=0.0150 disc=0.0893; 51 s
+S: ρ=1.00 p50 DE=0.005: a=0.7114 η=+0.0000 κ=0.933; realizadas ret=1.000 DE=0.0052 disc=0.1138; 52 s
+S: ρ=1.00 p50 DE=0.010: a=0.7114 η=+0.0000 κ=0.785; realizadas ret=0.997 DE=0.0101 disc=0.1147; 50 s
+S: ρ=1.00 p50 DE=0.015: a=0.7114 η=+0.0000 κ=0.539; realizadas ret=1.002 DE=0.0148 disc=0.1141; 51 s
+S: ρ=1.00 p90 DE=0.005: a=0.6448 η=+0.0000 κ=0.950; realizadas ret=1.002 DE=0.0048 disc=0.1403; 48 s
+S: ρ=1.00 p90 DE=0.010: a=0.6448 η=+0.0000 κ=0.828; realizadas ret=0.996 DE=0.0099 disc=0.1389; 47 s
+S: ρ=1.00 p90 DE=0.015: a=0.6448 η=+0.0000 κ=0.612; realizadas ret=1.001 DE=0.0151 disc=0.1408; 48 s
+S: ρ=1.10 p10 DE=0.005: a=0.7574 η=+0.4521 κ=0.905; realizadas ret=1.097 DE=0.0050 disc=0.0873; 48 s
+S: ρ=1.10 p10 DE=0.010: a=0.7574 η=+0.4521 κ=0.692; realizadas ret=1.097 DE=0.0101 disc=0.0876; 47 s
+S: ρ=1.10 p10 DE=0.015: a=0.7574 η=+0.4521 κ=0.298; realizadas ret=1.100 DE=0.0153 disc=0.0880; 47 s
+S: ρ=1.10 p50 DE=0.005: a=0.6908 η=+0.3456 κ=0.925; realizadas ret=1.099 DE=0.0053 disc=0.1132; 45 s
+S: ρ=1.10 p50 DE=0.010: a=0.6908 η=+0.3456 κ=0.771; realizadas ret=1.099 DE=0.0099 disc=0.1128; 45 s
+S: ρ=1.10 p50 DE=0.015: a=0.6908 η=+0.3456 κ=0.512; realizadas ret=1.101 DE=0.0148 disc=0.1149; 45 s
+S: ρ=1.10 p90 DE=0.005: a=0.6242 η=+0.2800 κ=0.943; realizadas ret=1.097 DE=0.0050 disc=0.1403; 45 s
+S: ρ=1.10 p90 DE=0.010: a=0.6242 η=+0.2800 κ=0.817; realizadas ret=1.095 DE=0.0101 disc=0.1401; 44 s
+S: ρ=1.10 p90 DE=0.015: a=0.6242 η=+0.2800 κ=0.582; realizadas ret=1.099 DE=0.0152 disc=0.1405; 44 s
+D (central): A, r=0.50: ρ_min = 0.919 (F1 = 0.6873; interpolación lineal)
+D (central): A, r=0.75: ρ_min = nan (F1 = nan; no alcanzada en la malla)
+D (central): A, r=0.80: ρ_min = nan (F1 = nan; no alcanzada en la malla)
+D (central): B, r=0.50: ρ_min = 0.920 (F1 = 0.6875; interpolación lineal)
+D (central): B, r=0.75: ρ_min = nan (F1 = nan; no alcanzada en la malla)
+D (central): B, r=0.80: ρ_min = nan (F1 = nan; no alcanzada en la malla)
+Duración total: 5.6 min
