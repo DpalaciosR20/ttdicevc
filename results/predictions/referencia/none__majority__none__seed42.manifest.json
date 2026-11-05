@@ -1,0 +1,42 @@
+{
+ "task_id": "F2.3",
+ "fase": "referencia",
+ "git_commit": "53f6e283bf6af130e8471ee503cdc6841a118263",
+ "created_at": "2026-11-05T01:30:31+00:00",
+ "config": {
+  "rule": "p_dep = 0.0 en todas las muestras (Enmienda 2, punto 3)",
+  "script": "results/f23_pisos/f23_pisos.py",
+  "script_sha256_lf": "31d90b960d51cb52e18f631dd89ee5b975cef159ded6d6b556dd6231783316cb",
+  "protocol": "docs/protocolo_preregistrado.md §4.4 y Enmienda 2",
+  "protocol_config": "configs/protocolo.json",
+  "protocol_config_sha256_lf": "8538487a8911e2ef2c906a335337727ee4ba84ae26f6d0f042655640720829b0",
+  "decision": "p_dep > 0.5"
+ },
+ "inputs": {
+  "meta/sample_index.csv (repo)": "74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5",
+  "configs/protocolo.json (repo, LF)": "8538487a8911e2ef2c906a335337727ee4ba84ae26f6d0f042655640720829b0"
+ },
+ "model_selection": {
+  "criterio": "sin selección: predice siempre la clase 0",
+  "f1_val": 0.3804347826086957
+ },
+ "environment": {
+  "python": "3.13.2",
+  "libraries": {
+   "numpy": "2.1.3",
+   "pandas": "2.3.3",
+   "scikit-learn": "1.6.1",
+   "torch": "2.11.0+cpu",
+   "transformers": "5.21.0",
+   "tokenizers": "0.23.3",
+   "joblib": "1.6.0"
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "gpu": null
+ },
+ "csv_sha256": "14c4b6efbcfcaaedb6112eab13b9b06edf49150101d5f38b68e9602beb6ef819",
+ "n_rows": {
+  "val": 114,
+  "test": 114
+ }
+}

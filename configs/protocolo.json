@@ -33,7 +33,16 @@
       "model": "logreg",
       "C_grid": "techo_5d.familias.logreg.C",
       "selection": "f1_val",
-      "task": "F4.5"
+      "task": "F4.5",
+      "_enmienda": "Enmienda 2, punto 4",
+      "technique": "text_length",
+      "arch": "logreg",
+      "strategy": "none",
+      "seed": 42,
+      "fase": "referencia",
+      "source": "meta/sample_index.csv",
+      "grid": "techo_5d.familias.logreg",
+      "selection_rule": "techo_5d.selection"
     }
   },
   "techo_5d": {
@@ -88,6 +97,80 @@
     "stratified": {"technique": "none", "arch": "stratified", "proportion_split": "train", "expected_f1": 0.5},
     "brightness": {"arch": "brightness", "feature": "mean_intensity", "model": "logreg", "C_grid": "techo_5d.familias.logreg.C", "selection": "f1_val", "per_technique": true, "task": "F2.3"},
     "visual_permutado": {"fase": "control_permutacion", "aggregate": "mean", "seeds": [42, 7, 123, 2024, 99], "per_technique": true, "task": "F3.6"}
+  },
+  "pisos_triviales": {
+    "_seccion": "§4.4; Enmienda 2, punto 3",
+    "task": "F2.3",
+    "majority": {"technique": "none", "arch": "majority", "strategy": "none", "seed": 42, "fase": "referencia", "p_dep": 0.0},
+    "stratified": {
+      "technique": "none", "arch": "stratified", "strategy": "none", "seed": 42, "fase": "referencia",
+      "p_dep_values": [0.0, 1.0],
+      "rng": "numpy.random.default_rng",
+      "rng_seed": 42,
+      "proportion_split": "train",
+      "contrast_constant": 0.5,
+      "used_in_contrasts": false
+    }
+  },
+  "piso_brillo": {
+    "_seccion": "§4.4; Enmienda 2, punto 2",
+    "task": "F2.3",
+    "per_technique": true,
+    "arch": "brightness",
+    "strategy": "none",
+    "seed": 42,
+    "fase": "referencia",
+    "feature": "mean_intensity",
+    "image": {"source": "nativa", "size": [256, 256], "mode": "L", "scale": "mean / 255", "visual_preprocessing": false},
+    "model": "logreg",
+    "grid": "techo_5d.familias.logreg",
+    "scaler": {"name": "StandardScaler", "fit_split": "train"},
+    "selection_rule": "techo_5d.selection"
+  },
+  "descriptores": {
+    "_seccion": "§4.2; Enmienda 2, punto 1",
+    "task": "F2.4",
+    "_fijado": "F2.4, antes de calcular (Enmienda 2, punto 1)",
+    "per_technique": true,
+    "arch": "descriptors",
+    "strategy": "none",
+    "features": ["shannon_entropy", "contrast", "edge_density", "lbp_energy"],
+    "definition": "Tabla 11 del Módulo 2, tal como la implementa el código original",
+    "implementation": {
+      "original": "notebooks/historial/camera_ready_CE.ipynb",
+      "original_cell": 20,
+      "original_commit": "f126052",
+      "reimplementation": "results/f24_descriptores/f24_descriptores.py",
+      "input": "np.array(Image.open(path).convert('L')), uint8"
+    },
+    "software": {
+      "scikit-image": "0.25.2",
+      "scikit-image_kaggle": null,
+      "_nota": "la versión de scikit-image de la ejecución de Kaggle no consta en el notebook (solo Python 3.12.13)"
+    },
+    "params": {
+      "shannon_entropy": {"bins": 256, "range": [0, 256], "density": true, "log_base": 2,
+                          "zero_bins": "descartados"},
+      "contrast": {"definition": "desviación estándar de los niveles de gris 0-255 (RMS, no GLCM)", "ddof": 0},
+      "edge_density": {"detector": "skimage.filters.sobel (valores por defecto)", "input_scale": "img / 255",
+                       "thresholds": "media + 1 DE (ddof 0) de la magnitud de Sobel de la propia imagen",
+                       "comparison": ">", "fraction_over": "todos los píxeles de 256 × 256"},
+      "lbp_energy": {"P": 24, "R": 3, "method": "uniform", "bins": 26, "input": "uint8",
+                     "energy": "suma de cuadrados del histograma normalizado"}
+    },
+    "tabla11": {
+      "split": "train",
+      "test": "welch (scipy.stats.ttest_ind, equal_var=False), depresivo − no depresivo",
+      "effect_size": "d de Cohen no ponderado: (m1 − m0) / sqrt((s1² + s0²) / 2), s con ddof 0",
+      "multiplicity": "holm",
+      "k": 12,
+      "alpha": 0.05
+    },
+    "image": {"source": "nativa", "size": [256, 256], "mode": "L", "visual_preprocessing": false},
+    "families": "techo_5d.family_order",
+    "grids": "techo_5d.familias",
+    "scaler": {"name": "StandardScaler", "fit_split": "train", "families": ["logreg", "svm_rbf", "mlp"]},
+    "selection_rule": "techo_5d.selection"
   },
   "contraste": {
     "_seccion": "§5",

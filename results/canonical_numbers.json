@@ -3,7 +3,10 @@
   "results/f04_cifras_canonicas/canonical_fragment.json": "6ce7c079b3a1e2d845fece8d6db097fe643b6d5afe1de8687ebf768e4066ae52",
   "results/f11_potencia/canonical_fragment.json": "4f3d0ec8b449f36d5d76ef8d412b5b5d03be6e8ac91ab30669f60dbabf913bd0",
   "results/f12_protocolo/canonical_fragment.json": "76989a351802d11e0dc710f3e4754accaee0886831b709ca97d7693619091f45",
+  "results/f21_techo5d/canonical_fragment.json": "7264d44683272d16e4096aaf457994d7d57d0b45a553bb5d3a66dabc9cd2f3f5",
   "results/f22_referencias_textuales/canonical_fragment.json": "fa778353dbc9304f434ab401cb6b7b71974dd8b36b4c37fa4749d2216ffa5e04",
+  "results/f23_pisos/canonical_fragment.json": "6675dd3e312de57aa51a8058aefb3c44a7173a20469dde2f26c3d4a86260fc2f",
+  "results/f24_descriptores/canonical_fragment.json": "027b04aa9fc95cdeaeb11c492e2011793e250864b447918529d60d8400ace2b6",
   "results/f32_primera_pasada_v0/grid_meta.json": "903976351f665577ed020efcf1bd949ea5e11480b08557541dd08c44515f320e",
   "results/f32_primera_pasada_v0/predictions.csv": "46a9a4cba45681de266c4d9e9ce15c5d61aa57ca8164574959ce56b930c8c30e",
   "results/f32_primera_pasada_v0/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.json": "56df853fe466f3b14890323d8c37e64a3caea601b567feeb95332021314cea77",
@@ -2948,6 +2951,28 @@
     "val": null
    }
   },
+  "m2.tabla11.original.n_sig_holm": {
+   "evaluator": "mismo cálculo que la Tabla 11 recalculada, ejecutado en Kaggle el 29 jul 2026",
+   "kind": "count",
+   "note": "imágenes de sesión de Kaggle, no versionadas (/kaggle/working/images_grayscale_classblind). No se sustituye por m2.tabla11.recalculada.n_sig_holm: se refieren a imágenes distintas.",
+   "source": {
+    "locator": "celda 20, salida guardada, columna sig_holm",
+    "path": "notebooks/historial/camera_ready_CE.ipynb"
+   },
+   "status": "reportado",
+   "value": 8
+  },
+  "m2.tabla11.recalculada.n_sig_holm": {
+   "evaluator": "comparaciones con p de Holm < 0.05 (statsmodels multipletests, k = 12) de la t de Welch depresivo − no depresivo (scipy ttest_ind, equal_var=False) por técnica y descriptor; solo train (908); imágenes de tt2-insumos verificadas con meta/data_manifest.csv",
+   "kind": "count",
+   "note": "F2.4. Tabla 11 del Módulo 2 recalculada con el código de la celda 20 de notebooks/historial/camera_ready_CE.ipynb; t, p y d de Cohen en el CSV.",
+   "source": {
+    "locator": "suma de la columna sig_holm",
+    "path": "results/f24_descriptores/tabla11_recalculada.csv"
+   },
+   "status": "verificado",
+   "value": 8
+  },
   "n.test": {
    "evaluator": "len(labels) vía umap_io.load_umap_arrays",
    "kind": "count",
@@ -3057,6 +3082,96 @@
     "val": null
    }
   },
+  "ref.descriptores.gray_scott.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 16,
+     "fp": 13,
+     "tn": 57,
+     "tp": 28
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (gray_scott; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): RandomForestClassifier ({\"n_estimators\": 500, \"random_state\": 42, \"max_depth\": null, \"min_samples_leaf\": 1, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/gray_scott__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7280131633072809
+   }
+  },
+  "ref.descriptores.lorenz.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 22,
+     "fp": 13,
+     "tn": 57,
+     "tp": 22
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (lorenz; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): StandardScaler (ajustado en train) + SVC ({\"kernel\": \"rbf\", \"probability\": true, \"random_state\": 42, \"C\": 100.0, \"gamma\": 1.0, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/lorenz__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6610313482286976
+   }
+  },
+  "ref.descriptores.perlin.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 16,
+     "fp": 17,
+     "tn": 53,
+     "tp": 28
+    }
+   },
+   "evaluator": "clasificador sobre 4 descriptores de bajo nivel (perlin; entropía de Shannon, contraste, densidad de bordes y energía LBP de la imagen nativa, configs/protocolo.json → descriptores): StandardScaler (ajustado en train) + LogisticRegression ({\"penalty\": \"l2\", \"solver\": \"lbfgs\", \"max_iter\": 5000, \"random_state\": 42, \"C\": 0.001, \"class_weight\": \"balanced\"}), mejor de las cinco familias y rejillas de §4.3 por F1-Val (empate 1e-12 → familia anterior, luego combinación anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.4; rejilla en results/f24_descriptores/rejilla_descriptores.csv, selección en results/f24_descriptores/seleccion.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/perlin__descriptors__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6959017056018106
+   }
+  },
   "ref.emb768_logreg.f1_macro": {
    "confusion": {
     "val": {
@@ -3085,6 +3200,336 @@
    "value": {
     "test": null,
     "val": 0.7304964539007093
+   }
+  },
+  "ref.piso.brightness.gray_scott.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 38,
+     "fp": 12,
+     "tn": 58,
+     "tp": 6
+    }
+   },
+   "evaluator": "piso de brillo (gray_scott): intensidad media / 255 de la imagen nativa de 256 × 256; StandardScaler (ajustado en train) + LogisticRegression ({\"penalty\": \"l2\", \"solver\": \"lbfgs\", \"max_iter\": 5000, \"random_state\": 42, \"C\": 0.1, \"class_weight\": null}), mejor combinación de la rejilla completa de LogReg de §4.3 por F1-Val (empate 1e-12 → anterior en la rejilla); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.3; rejilla en results/f23_pisos/rejilla_brillo.csv. No sustituye a la cifra WITCOM floor.brightness.gray_scott.f1_macro.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/gray_scott__brightness__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.4461717839098329
+   }
+  },
+  "ref.piso.brightness.lorenz.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 23,
+     "fp": 39,
+     "tn": 31,
+     "tp": 21
+    }
+   },
+   "evaluator": "piso de brillo (lorenz): intensidad media / 255 de la imagen nativa de 256 × 256; StandardScaler (ajustado en train) + LogisticRegression ({\"penalty\": \"l2\", \"solver\": \"lbfgs\", \"max_iter\": 5000, \"random_state\": 42, \"C\": 0.00031622776601683794, \"class_weight\": \"balanced\"}), mejor combinación de la rejilla completa de LogReg de §4.3 por F1-Val (empate 1e-12 → anterior en la rejilla); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.3; rejilla en results/f23_pisos/rejilla_brillo.csv. No sustituye a la cifra WITCOM floor.brightness.lorenz.f1_macro.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/lorenz__brightness__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.4519230769230769
+   }
+  },
+  "ref.piso.brightness.perlin.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 27,
+     "tn": 43,
+     "tp": 31
+    }
+   },
+   "evaluator": "piso de brillo (perlin): intensidad media / 255 de la imagen nativa de 256 × 256; StandardScaler (ajustado en train) + LogisticRegression ({\"penalty\": \"l2\", \"solver\": \"lbfgs\", \"max_iter\": 5000, \"random_state\": 42, \"C\": 0.001, \"class_weight\": \"balanced\"}), mejor combinación de la rejilla completa de LogReg de §4.3 por F1-Val (empate 1e-12 → anterior en la rejilla); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.3; rejilla en results/f23_pisos/rejilla_brillo.csv. No sustituye a la cifra WITCOM floor.brightness.perlin.f1_macro.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/perlin__brightness__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6451914098972922
+   }
+  },
+  "ref.piso.majority.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 44,
+     "fp": 0,
+     "tn": 70,
+     "tp": 0
+    }
+   },
+   "evaluator": "piso de clase mayoritaria: p_dep = 0.0 en todas las muestras (protocolo §4.4; Enmienda 2, punto 3); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.3. Su F1-Test es la cifra de diseño f12.piso_mayoritaria.f1_macro; aquí test queda nulo.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/none__majority__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.3804347826086957
+   }
+  },
+  "ref.piso.stratified.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 24,
+     "fp": 24,
+     "tn": 46,
+     "tp": 20
+    }
+   },
+   "evaluator": "piso aleatorio estratificado: numpy.random.default_rng(42).random(228) < 353/908 (proporción de clase 1 en train), una extracción sobre val y luego test, por sample_id (Enmienda 2, punto 3); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F2.3. Archivo por completitud del formato (Enmienda 2, punto 3): en los contrastes interviene la constante 0.5 (§5.3), no este archivo.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/none__stratified__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.5558441558441558
+   }
+  },
+  "ref.techo5d.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 14,
+     "fp": 16,
+     "tn": 54,
+     "tp": 30
+    }
+   },
+   "evaluator": "techo 5D = familia svm_rbf (SVM-RBF, {\"kernel\": \"rbf\", \"probability\": true, \"random_state\": 42, \"C\": 1.0, \"gamma\": 1.0, \"class_weight\": \"balanced\"}), la de mayor F1-Val entre logreg, svm_rbf, rf, gbm, mlp (§4.3; empate 1e-12 → familia anterior); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Familia seleccionada como techo 5D: svm_rbf. Mismas predicciones que ref.techo5d.svm_rbf.f1_macro. No sustituye a las cifras WITCOM ref.umap5d.*.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/umap5d__svm_rbf__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7246376811594203
+   }
+  },
+  "ref.techo5d.gbm.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 19,
+     "fp": 14,
+     "tn": 56,
+     "tp": 25
+    }
+   },
+   "evaluator": "HistGradientBoosting sobre los 5 componentes u de umap_params.pkl (HistGradientBoostingClassifier; {\"early_stopping\": false, \"random_state\": 42, \"learning_rate\": 0.03, \"max_depth\": 3, \"max_iter\": 100}), mejor combinación de la rejilla de §4.3 por F1-Val (empate 1e-12 → anterior en la rejilla); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Familia de F2.1; rejilla completa en results/f21_techo5d/rejilla_completa.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/umap5d__gbm__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6874117158288326
+   }
+  },
+  "ref.techo5d.logreg.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 14,
+     "fp": 19,
+     "tn": 51,
+     "tp": 30
+    }
+   },
+   "evaluator": "LogReg (L2, lbfgs) sobre los 5 componentes u de umap_params.pkl (StandardScaler (ajustado en train) + LogisticRegression; {\"penalty\": \"l2\", \"solver\": \"lbfgs\", \"max_iter\": 5000, \"random_state\": 42, \"C\": 0.1, \"class_weight\": \"balanced\"}), mejor combinación de la rejilla de §4.3 por F1-Val (empate 1e-12 → anterior en la rejilla); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Familia de F2.1; rejilla completa en results/f21_techo5d/rejilla_completa.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/umap5d__logreg__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.700358422939068
+   }
+  },
+  "ref.techo5d.mlp.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 17,
+     "fp": 16,
+     "tn": 54,
+     "tp": 27
+    }
+   },
+   "evaluator": "MLP sobre los 5 componentes u de umap_params.pkl (StandardScaler (ajustado en train) + MLPClassifier; {\"max_iter\": 2000, \"random_state\": 42, \"hidden_layer_sizes\": [16], \"alpha\": 0.0001}), mejor combinación de la rejilla de §4.3 por F1-Val (empate 1e-12 → anterior en la rejilla); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Familia de F2.1; rejilla completa en results/f21_techo5d/rejilla_completa.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/umap5d__mlp__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6933235509904623
+   }
+  },
+  "ref.techo5d.rf.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 19,
+     "fp": 14,
+     "tn": 56,
+     "tp": 25
+    }
+   },
+   "evaluator": "Random Forest sobre los 5 componentes u de umap_params.pkl (RandomForestClassifier; {\"n_estimators\": 500, \"random_state\": 42, \"max_depth\": null, \"min_samples_leaf\": 1, \"class_weight\": \"balanced\"}), mejor combinación de la rejilla de §4.3 por F1-Val (empate 1e-12 → anterior en la rejilla); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Familia de F2.1; rejilla completa en results/f21_techo5d/rejilla_completa.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/umap5d__rf__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6874117158288326
+   }
+  },
+  "ref.techo5d.svm_rbf.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 14,
+     "fp": 16,
+     "tn": 54,
+     "tp": 30
+    }
+   },
+   "evaluator": "SVM-RBF sobre los 5 componentes u de umap_params.pkl (StandardScaler (ajustado en train) + SVC; {\"kernel\": \"rbf\", \"probability\": true, \"random_state\": 42, \"C\": 1.0, \"gamma\": 1.0, \"class_weight\": \"balanced\"}), mejor combinación de la rejilla de §4.3 por F1-Val (empate 1e-12 → anterior en la rejilla); y_pred = 1[p_dep > 0.5]; f1_macro_from_confusion (= sklearn f1_score(average='macro'))",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "Familia de F2.1; rejilla completa en results/f21_techo5d/rejilla_completa.csv.",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split val",
+    "path": "results/predictions/referencia/umap5d__svm_rbf__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7246376811594203
    }
   },
   "ref.tfidf_lemma.f1_macro": {

@@ -56,7 +56,7 @@ Sin valores faltantes. Filas ordenadas por `split` (`train`, `val`, `test`) y, d
 
 | Columna | Valores |
 |---|---|
-| `technique` | `perlin`, `gray_scott`, `lorenz` (entrada visual o descriptores de imagen); `text` (BETO); `emb768` (clasificador sobre los embeddings); `umap5d` (techo 5D); `none` (pisos que no dependen de la entrada) |
+| `technique` | `perlin`, `gray_scott`, `lorenz` (entrada visual o descriptores de imagen); `text` (BETO); `emb768` (clasificador sobre los embeddings); `umap5d` (techo 5D); `text_length` (clasificador de longitud, F4.5; Enmienda 2 del protocolo); `none` (pisos que no dependen de la entrada) |
 | `arch` | `resnet18`, `efficientnet_b0`, `vit_b16`, `beto`, `logreg`, `svm_rbf`, `gbm`, `rf`, `mlp`, `majority`, `stratified`, `brightness`, `descriptors` |
 | `strategy` | `frozen`, `finetune` (modelos preentrenados); `none` (resto) |
 
@@ -70,6 +70,7 @@ Correspondencia con las referencias de la Fase 2:
 | Clase mayoritaria / aleatorio estratificado (F2.3) | `none` | `majority` / `stratified` | `none` |
 | Brillo promedio (F2.3) | técnica | `brightness` | `none` |
 | Descriptores de bajo nivel (F2.4) | técnica | `descriptors` | `none` |
+| Clasificador de longitud (F4.5) | `text_length` | `logreg` | `none` |
 
 ### 3.3 Regla de decisión
 

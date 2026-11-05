@@ -1,0 +1,6 @@
+familia,orden,combinacion,f1_val,n_empate_tolerancia,techo
+logreg,13,"{""C"": 0.1, ""class_weight"": ""balanced""}",0.700358422939068,6,False
+svm_rbf,33,"{""C"": 1.0, ""gamma"": 1.0, ""class_weight"": ""balanced""}",0.7246376811594203,1,True
+rf,1,"{""max_depth"": null, ""min_samples_leaf"": 1, ""class_weight"": ""balanced""}",0.6874117158288326,1,False
+gbm,2,"{""learning_rate"": 0.03, ""max_depth"": 3, ""max_iter"": 100}",0.6874117158288326,3,False
+mlp,0,"{""hidden_layer_sizes"": [16], ""alpha"": 0.0001}",0.6933235509904623,2,False

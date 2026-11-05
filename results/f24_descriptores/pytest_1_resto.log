@@ -1,0 +1,21 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\DELL\Desktop\TT\TT2\ttdicevc
+plugins: anyio-4.15.1, platformdirs-4.14.0
+collected 406 items
+
+tests\test_canonical_numbers.py ........................................ [  9%]
+........................................................................ [ 27%]
+........................................................................ [ 45%]
+....................................................................     [ 62%]
+tests\test_f24_descriptores.py ....                                      [ 63%]
+tests\test_matriz_experimentos.py ......................                 [ 68%]
+tests\test_predictions_format.py ................................        [ 76%]
+tests\test_preprocesamiento_config.py .......                            [ 78%]
+tests\test_protocolo.py ...........................                      [ 84%]
+tests\test_run_grid.py .............                                     [ 87%]
+tests\test_select_finalist.py ......................                     [ 93%]
+tests\test_verdict.py ...........................                        [100%]
+
+- generated xml file: C:\Users\DELL\Desktop\TT\TT2\ttdicevc\results\f24_descriptores\pytest_1_resto.xml -
+======================= 406 passed in 63.16s (0:01:03) ========================

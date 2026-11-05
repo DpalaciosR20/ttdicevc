@@ -1,0 +1,80 @@
+{
+ "task_id": "F2.4",
+ "fase": "referencia",
+ "git_commit": "1d68a4ac1bfb2419def4b6370a59e89aac034dbc",
+ "created_at": "2026-11-05T03:58:23+00:00",
+ "config": {
+  "features": "4 descriptores de la imagen nativa de 256 × 256 (modo L): shannon_entropy, contrast, edge_density, lbp_energy; definición de configs/protocolo.json → descriptores (celda 20 de notebooks/historial/camera_ready_CE.ipynb)",
+  "familia": "rf",
+  "combinacion": {
+   "max_depth": null,
+   "min_samples_leaf": 1,
+   "class_weight": "balanced"
+  },
+  "pipeline": "RandomForestClassifier",
+  "estimator_params": {
+   "n_estimators": 500,
+   "random_state": 42,
+   "max_depth": null,
+   "min_samples_leaf": 1,
+   "class_weight": "balanced"
+  },
+  "other_params": "valores por defecto de scikit-learn 1.6.1",
+  "descriptor_software": "scikit-image 0.25.2",
+  "fit": "solo train",
+  "script": "results/f24_descriptores/f24_descriptores.py",
+  "script_sha256_lf": "49c1bd90bfe0d5f56470baff1f25a863e54e9e07182bd4f31e63c728d02ec75a",
+  "reused_code": {
+   "results/f21_techo5d/f21_techo5d.py": "a2332df58ffc393d2254197eca14e795a828b737f9a890c93a6baec5ff91add4",
+   "results/f23_pisos/f23_pisos.py": "31d90b960d51cb52e18f631dd89ee5b975cef159ded6d6b556dd6231783316cb"
+  },
+  "protocol": "docs/protocolo_preregistrado.md §4.2, §4.3 y Enmienda 2, punto 1",
+  "protocol_config": "configs/protocolo.json",
+  "protocol_config_sha256_lf": "708ead595fe59bd0c5a58f0a11e156b3e3cb48f350cfa82d39152d3bd3b70e4a",
+  "decision": "p_dep > 0.5"
+ },
+ "inputs": {
+  "meta/sample_index.csv (repo)": "74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5",
+  "meta/data_manifest.csv (repo)": "a4fb841cddb57e93328d9866b3cce1713dceab0275e643d1627e3fd8d7aa1e20",
+  "configs/protocolo.json (repo, LF)": "708ead595fe59bd0c5a58f0a11e156b3e3cb48f350cfa82d39152d3bd3b70e4a",
+  "notebooks/historial/camera_ready_CE.ipynb (repo, LF)": "ce10cf8e26da67c9aa2f82b403dcaec66370d4b757cd38b5142302c684fc7b99",
+  "IMAGES[gray_scott]": {
+   "rel_path": "images_grayscale_classblind/gray_scott",
+   "sha256": "c3593c9bd04b4abb45afe7958bded087b53b7812a7cb11e72bda8e382f2d31db",
+   "n_files": 1136,
+   "verificacion": "sha256 de cada imagen contra meta/data_manifest.csv"
+  }
+ },
+ "model_selection": {
+  "criterio": "F1-Macro de validación (ŷ = 1[p_dep > 0.5]) sobre las cinco familias y rejillas de §4.3; empate con tolerancia 1e-12 → familia anterior en family_order y, dentro de ella, combinación anterior en la rejilla",
+  "familia": "rf",
+  "orden_en_rejilla": 1,
+  "combinacion": {
+   "max_depth": null,
+   "min_samples_leaf": 1,
+   "class_weight": "balanced"
+  },
+  "f1_val": 0.7280131633072809,
+  "tabla": "results/f24_descriptores/rejilla_descriptores.csv",
+  "seleccion": "results/f24_descriptores/seleccion.csv"
+ },
+ "environment": {
+  "python": "3.13.2",
+  "libraries": {
+   "numpy": "2.1.3",
+   "pandas": "2.3.3",
+   "scikit-learn": "1.6.1",
+   "torch": "2.11.0+cpu",
+   "transformers": "5.21.0",
+   "tokenizers": "0.23.3",
+   "joblib": "1.6.0"
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "gpu": null
+ },
+ "csv_sha256": "a464b321e40d9601067352e349f40a8d2f9baee608a5b2f31276a185bedbb51b",
+ "n_rows": {
+  "val": 114,
+  "test": 114
+ }
+}
