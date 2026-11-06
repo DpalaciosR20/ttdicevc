@@ -1,0 +1,33 @@
+30 corridas | dispositivo cuda | commit b169a264c137358c27c50c6ccd42cef0d78215fc | smoke=False
+[1/30] gray_scott__efficientnet_b0__finetune__px224-flip__seed123: n=228 Δp_dep=3.63e-06 Δlogit=0.00e+00 3s 16.2 MiB
+[2/30] gray_scott__efficientnet_b0__finetune__px224-flip__seed2024: n=228 Δp_dep=2.23e-06 Δlogit=0.00e+00 3s 14.3 MiB
+[3/30] gray_scott__efficientnet_b0__finetune__px224-flip__seed42: n=228 Δp_dep=2.63e-06 Δlogit=0.00e+00 3s 15.7 MiB
+[4/30] gray_scott__efficientnet_b0__finetune__px224-flip__seed7: n=228 Δp_dep=2.90e-06 Δlogit=0.00e+00 3s 14.9 MiB
+[5/30] gray_scott__efficientnet_b0__finetune__px224-flip__seed99: n=228 Δp_dep=7.73e-06 Δlogit=0.00e+00 3s 16.1 MiB
+[6/30] lorenz__vit_b16__frozen__px224-noflip__seed123: n=228 Δp_dep=5.07e-07 Δlogit=9.54e-07 15s 58.9 MiB
+[7/30] lorenz__vit_b16__frozen__px224-noflip__seed2024: n=228 Δp_dep=2.68e-07 Δlogit=7.15e-07 15s 58.2 MiB
+[8/30] lorenz__vit_b16__frozen__px224-noflip__seed42: n=228 Δp_dep=3.40e-07 Δlogit=1.07e-06 15s 58.3 MiB
+[9/30] lorenz__vit_b16__frozen__px224-noflip__seed7: n=228 Δp_dep=2.86e-07 Δlogit=9.54e-07 15s 59.0 MiB
+[10/30] lorenz__vit_b16__frozen__px224-noflip__seed99: n=228 Δp_dep=4.60e-07 Δlogit=1.43e-06 15s 58.6 MiB
+[11/30] perlin__vit_b16__frozen__px224-noflip__seed123: n=228 Δp_dep=0.00e+00 Δlogit=4.77e-07 15s 57.3 MiB
+[12/30] perlin__vit_b16__frozen__px224-noflip__seed2024: n=228 Δp_dep=0.00e+00 Δlogit=8.34e-07 16s 57.4 MiB
+[13/30] perlin__vit_b16__frozen__px224-noflip__seed42: n=228 Δp_dep=0.00e+00 Δlogit=9.54e-07 16s 57.3 MiB
+[14/30] perlin__vit_b16__frozen__px224-noflip__seed7: n=228 Δp_dep=0.00e+00 Δlogit=1.25e-06 16s 57.3 MiB
+[15/30] perlin__vit_b16__frozen__px224-noflip__seed99: n=228 Δp_dep=0.00e+00 Δlogit=1.25e-06 16s 57.2 MiB
+[16/30] gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123: n=228 Δp_dep=9.77e-07 Δlogit=0.00e+00 3s 22.1 MiB
+[17/30] gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024: n=228 Δp_dep=1.26e-06 Δlogit=0.00e+00 3s 21.3 MiB
+[18/30] gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42: n=228 Δp_dep=5.74e-06 Δlogit=0.00e+00 3s 18.9 MiB
+[19/30] gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7: n=228 Δp_dep=5.03e-06 Δlogit=0.00e+00 3s 21.2 MiB
+[20/30] gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99: n=228 Δp_dep=1.21e-05 Δlogit=0.00e+00 3s 21.7 MiB
+[21/30] lorenz__vit_b16__frozen__px224-noflip-perm99__seed123: n=228 Δp_dep=4.46e-07 Δlogit=5.14e-07 16s 58.9 MiB
+[22/30] lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024: n=228 Δp_dep=3.14e-07 Δlogit=6.56e-07 16s 58.1 MiB
+[23/30] lorenz__vit_b16__frozen__px224-noflip-perm99__seed42: n=228 Δp_dep=3.88e-07 Δlogit=3.43e-07 17s 58.5 MiB
+[24/30] lorenz__vit_b16__frozen__px224-noflip-perm99__seed7: n=228 Δp_dep=4.61e-07 Δlogit=4.17e-07 16s 58.7 MiB
+[25/30] lorenz__vit_b16__frozen__px224-noflip-perm99__seed99: n=228 Δp_dep=4.56e-07 Δlogit=5.66e-07 16s 58.7 MiB
+[26/30] perlin__vit_b16__frozen__px224-noflip-perm99__seed123: n=228 Δp_dep=0.00e+00 Δlogit=1.19e-06 17s 57.4 MiB
+[27/30] perlin__vit_b16__frozen__px224-noflip-perm99__seed2024: n=228 Δp_dep=0.00e+00 Δlogit=8.94e-07 17s 57.5 MiB
+[28/30] perlin__vit_b16__frozen__px224-noflip-perm99__seed42: n=228 Δp_dep=0.00e+00 Δlogit=9.54e-07 17s 57.8 MiB
+[29/30] perlin__vit_b16__frozen__px224-noflip-perm99__seed7: n=228 Δp_dep=0.00e+00 Δlogit=8.34e-07 17s 57.5 MiB
+[30/30] perlin__vit_b16__frozen__px224-noflip-perm99__seed99: n=228 Δp_dep=0.00e+00 Δlogit=8.34e-07 17s 57.5 MiB
+
+30 mapas registrados, 0 fallas

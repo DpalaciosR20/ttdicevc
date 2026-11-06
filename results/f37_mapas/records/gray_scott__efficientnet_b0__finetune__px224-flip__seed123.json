@@ -1,0 +1,68 @@
+{
+ "task": "F3.7",
+ "smoke": false,
+ "run": "gray_scott__efficientnet_b0__finetune__px224-flip__seed123",
+ "run_json": "results/f35_final/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.json",
+ "fase": "final",
+ "technique": "gray_scott",
+ "arch": "efficientnet_b0",
+ "strategy": "finetune",
+ "seed": 123,
+ "permute_labels": null,
+ "methods": {
+  "map": "grad_cam"
+ },
+ "model_sha256_verified": "2670c32a9827dc1bf26905a5368469ada05c5e57d72e8c88abd4c78964b8229f",
+ "p_dep_max_abs_diff": {
+  "val": 3.489287191460466e-06,
+  "test": 3.630568255585942e-06
+ },
+ "logits_hooked_max_abs_diff": 0.0,
+ "n": 228,
+ "seconds_compute": 2.361509084701538,
+ "target_logit_class": 1,
+ "npz": {
+  "path": "results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.npz",
+  "sha256": "103da6cd5bb0137d73ac3af5647257970d09f641b60652d4f9add944e5276cd3",
+  "bytes": 16987585
+ },
+ "matrix_file": {
+  "path": "configs/matriz_experimentos.json",
+  "sha256": "01d177bbe4ea6b0795f5da5f39fce358edcbcc1419d86b20c926e725ccac29aa"
+ },
+ "determinism": {
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "use_deterministic_algorithms": true,
+  "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+  "flash_sdp": false,
+  "mem_efficient_sdp": false,
+  "applied": {
+   "deterministic_algorithms": true,
+   "flash_sdp": false,
+   "mem_efficient_sdp": false,
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  }
+ },
+ "environment": {
+  "python": "3.13.16",
+  "libraries": {
+   "numpy": "2.1.3",
+   "pandas": "2.3.3",
+   "scikit-learn": "1.6.1",
+   "torch": "2.11.0+cu130",
+   "transformers": "5.20.2",
+   "tokenizers": "0.23.3",
+   "joblib": "1.6.0"
+  },
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+  "gpu": "Tesla T4",
+  "torch": "2.11.0+cu130",
+  "device": "cuda",
+  "cudnn": 92700
+ },
+ "git_commit": "b169a264c137358c27c50c6ccd42cef0d78215fc",
+ "batch_size": 16,
+ "created_at": "2026-11-06T06:43:37+00:00",
+ "seconds": 3.420258045196533
+}
