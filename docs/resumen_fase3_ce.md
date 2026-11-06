@@ -77,6 +77,6 @@ Cinco semillas; la prueba se consultó una sola vez. Antes de consultarla quedó
 - El texto base está en el §9 de cada bitácora.
 - La referencia textual sigue siendo BETO 0.7039 en prueba. El contraste formal lo hace Sant en F5.
 
-## Pendiente de mi lado
+## Copia en Drive
 
-- Copia en Drive de los tres datasets.
+- Los tres datasets están copiados en `MiUnidad/tt2-artefactos/` (una subcarpeta por dataset, sin `f37_humo/`) y verificados 60/60 contra el manifiesto (`results/artefactos_drive/verificacion.json`).
