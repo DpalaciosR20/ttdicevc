@@ -1,0 +1,97 @@
+Seleccion: {'role': 'second', 'source': 'results/predictions/primera_pasada', 'expected': {'perlin': ['efficientnet_b0', 'frozen'], 'gray_scott': ['resnet18', 'finetune'], 'lorenz': ['efficientnet_b0', 'finetune']}, 'matches': True, 'override': None}
+Fase: sensibilidad | CON TEST (protocolo 9027167, etiqueta protocolo-v1)
+Preprocesamiento: {'perlin': 'px224-noflip'}
+Hiperparametros: {'lr': {'finetune': 3e-05, 'frozen': 0.001}, 'weight_decay': 0.0, 'batch_size': 32, 'epochs': 15, 'patience': 4, 'num_workers': 2}
+Predicciones -> /kaggle/working/ttdicevc/results/predictions
+5 corridas, 0 ya hechas, 5 pendientes
+Entorno: {'python': '3.13.16', 'libraries': {'numpy': '2.1.3', 'pandas': '2.3.3', 'scikit-learn': '1.6.1', 'torch': '2.11.0+cu130', 'transformers': '5.20.2', 'tokenizers': '0.23.3', 'joblib': '1.6.0'}, 'platform': 'Linux-6.18.55+-x86_64-with-glibc2.39', 'gpu': 'Tesla T4', 'torch': '2.11.0+cu130', 'cudnn': 92700, 'device': 'cuda', 'torchvision': '0.26.0+cu130'} | commit b170d8455a0fb9e715f3bae5f97aff897cb26406
+Determinismo: {'deterministic_algorithms': True, 'flash_sdp': False, 'mem_efficient_sdp': False, 'CUBLAS_WORKSPACE_CONFIG': ':4096:8'}
+  perlin     train   908 imagenes OK
+  perlin     val     114 imagenes OK
+  perlin     test    114 imagenes OK
+
+===== [1/5] perlin__efficientnet_b0__frozen__px224-noflip__seed42 =====
+Downloading: "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth" to /root/.cache/torch/hub/checkpoints/efficientnet_b0_rwightman-7f5810bc.pth
+  0%|          | 0.00/20.5M [00:00<?, ?B/s] 41%|████      | 8.38M/20.5M [00:00<00:00, 87.5MB/s]100%|██████████| 20.5M/20.5M [00:00<00:00, 138MB/s] 
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4323 - F1-val=0.6530
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3640 - F1-val=0.6717
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3577 - F1-val=0.6717
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3495 - F1-val=0.6796
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3399 - F1-val=0.6747
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3346 - F1-val=0.6762
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3246 - F1-val=0.6822
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 8/15 - loss=0.3223 - F1-val=0.6761
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 9/15 - loss=0.3225 - F1-val=0.6876
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 10/15 - loss=0.3356 - F1-val=0.6720
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 11/15 - loss=0.3241 - F1-val=0.6764
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 12/15 - loss=0.3117 - F1-val=0.6882
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 13/15 - loss=0.3057 - F1-val=0.6640
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 14/15 - loss=0.3009 - F1-val=0.6562
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 15/15 - loss=0.2975 - F1-val=0.6669
+*** [efficientnet_b0, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 12)=0.6882  F1-test=0.6919 ***
+
+Salidas actualizadas (1 corridas, 0.8 min esta)
+
+===== [2/5] perlin__efficientnet_b0__frozen__px224-noflip__seed7 =====
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4140 - F1-val=0.6538
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3724 - F1-val=0.6600
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3673 - F1-val=0.6841
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3513 - F1-val=0.6796
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3458 - F1-val=0.6796
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3324 - F1-val=0.6762
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3281 - F1-val=0.6762
+Early stopping en epoch 7 (mejor F1-val=0.6841)
+*** [efficientnet_b0, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 3)=0.6841  F1-test=0.6874 ***
+
+Salidas actualizadas (2 corridas, 0.4 min esta)
+
+===== [3/5] perlin__efficientnet_b0__frozen__px224-noflip__seed123 =====
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4289 - F1-val=0.6512
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3647 - F1-val=0.6639
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3514 - F1-val=0.6484
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3653 - F1-val=0.6717
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3384 - F1-val=0.6762
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3312 - F1-val=0.7032
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3323 - F1-val=0.6874
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 8/15 - loss=0.3243 - F1-val=0.6796
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 9/15 - loss=0.3198 - F1-val=0.6874
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 10/15 - loss=0.3167 - F1-val=0.7032
+Early stopping en epoch 10 (mejor F1-val=0.7032)
+*** [efficientnet_b0, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 6)=0.7032  F1-test=0.6841 ***
+
+Salidas actualizadas (3 corridas, 0.5 min esta)
+
+===== [4/5] perlin__efficientnet_b0__frozen__px224-noflip__seed2024 =====
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4409 - F1-val=0.6639
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3649 - F1-val=0.6717
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3524 - F1-val=0.6639
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3484 - F1-val=0.6669
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3434 - F1-val=0.6775
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3364 - F1-val=0.6998
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3363 - F1-val=0.6826
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 8/15 - loss=0.3279 - F1-val=0.6406
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 9/15 - loss=0.3205 - F1-val=0.6874
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 10/15 - loss=0.3168 - F1-val=0.6764
+Early stopping en epoch 10 (mejor F1-val=0.6998)
+*** [efficientnet_b0, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 6)=0.6998  F1-test=0.6919 ***
+
+Salidas actualizadas (4 corridas, 0.5 min esta)
+
+===== [5/5] perlin__efficientnet_b0__frozen__px224-noflip__seed99 =====
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4433 - F1-val=0.6495
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3639 - F1-val=0.6717
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3518 - F1-val=0.6639
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3482 - F1-val=0.6697
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3397 - F1-val=0.6826
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3416 - F1-val=0.6919
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3354 - F1-val=0.6681
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 8/15 - loss=0.3300 - F1-val=0.6562
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 9/15 - loss=0.3197 - F1-val=0.6712
+[efficientnet_b0, freeze=True, lr=0.001, wd=0] Epoch 10/15 - loss=0.3181 - F1-val=0.6538
+Early stopping en epoch 10 (mejor F1-val=0.6919)
+*** [efficientnet_b0, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 6)=0.6919  F1-test=0.6762 ***
+
+Salidas actualizadas (5 corridas, 0.6 min esta)
+
+===== RESUMEN POR CONFIGURACION (F1-val media +- std sobre semillas) =====
+perlin     efficientnet_b0  frozen   px224-noflip        n=5  val=0.6934+-0.0080   test=0.6863  

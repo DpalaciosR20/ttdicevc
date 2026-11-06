@@ -1,0 +1,6 @@
+technique,arch,strategy,variant,seed,lr,weight_decay,best_epoch,epochs_run,n_trainable_params,n_total_params,f1_val,f1_test,acc_test,minutes,warning
+perlin,efficientnet_b0,frozen,px224-noflip,7,0.001,0.0,3,7,2562,4010110,0.6841,0.6874,0.7105,0.4,
+perlin,efficientnet_b0,frozen,px224-noflip,42,0.001,0.0,12,15,2562,4010110,0.6882,0.6919,0.7193,0.8,
+perlin,efficientnet_b0,frozen,px224-noflip,99,0.001,0.0,6,10,2562,4010110,0.6919,0.6762,0.7018,0.6,
+perlin,efficientnet_b0,frozen,px224-noflip,123,0.001,0.0,6,10,2562,4010110,0.7032,0.6841,0.7105,0.5,
+perlin,efficientnet_b0,frozen,px224-noflip,2024,0.001,0.0,6,10,2562,4010110,0.6998,0.6919,0.7193,0.5,
