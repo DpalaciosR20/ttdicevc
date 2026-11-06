@@ -66,7 +66,7 @@ Cinco semillas; la prueba se consultó una sola vez. Antes de consultarla quedó
 - En F4.3 hay que decidir dos cosas:
   - cómo reportar la atribución de los ViT congelados (F3.7 H2);
   - qué hacer con los mapas constantes de Grad-CAM (F3.7 H5).
-- Avísame cuando quieras correr los segundos mejores de F5.5 (fase `sensibilidad`).
+- Los segundos mejores de F5.5 (fase `sensibilidad`) ya están entrenados: `results/predictions/sensibilidad/`. F1-prueba: Gray-Scott (ResNet-18 FT) 0.715, Perlin (EfficientNet-B0 congelado) 0.686, Lorenz (EfficientNet-B0 FT) 0.694. Detalle en `docs/bitacora/F5.5-entrenamiento.md`.
 
 ## Para Marco (documento)
 
