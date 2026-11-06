@@ -103,6 +103,36 @@ with open("results/f35_final/models_sha256.csv", "w", newline="") as f:
 !ls -la /kaggle/working/f35_resultados.zip
 ```
 
+Las celdas 4 y 5 deben quedar **en la misma versión guardada**. Si la celda 5 se corre en la sesión interactiva después de *Save & Run All*, el zip sale casi vacío, porque los resultados solo existen en la salida de la versión. Así pasó en la primera ejecución. En ese caso **no se vuelve a entrenar**, porque la prueba ya se consultó. Se recupera la salida con la celda 5b, en un notebook nuevo con CPU y con *Add Input → Notebook Output* de la versión que entrenó como única entrada:
+
+```python
+import glob, os, hashlib, csv, shutil
+src = glob.glob("/kaggle/input/**/ttdicevc/results/f35_final", recursive=True)
+assert len(src) == 1, src
+root = os.path.dirname(os.path.dirname(src[0]))            # .../ttdicevc
+runs = sorted(glob.glob(f"{root}/results/f35_final/*/runs/*.json"))
+preds = sorted(glob.glob(f"{root}/results/predictions/final/*.csv"))
+models = sorted(glob.glob(f"{root}/results/f35_final/*/models/*.pt"))
+print(len(runs), "runs |", len(preds), "csv |", len(models), "modelos")   # 15 | 15 | 15
+assert len(runs) == len(preds) == len(models) == 15
+
+stage = "/kaggle/working/stage"
+shutil.rmtree(stage, ignore_errors=True)
+for rel in ["results/f35_final", "results/predictions/final"]:
+    shutil.copytree(f"{root}/{rel}", f"{stage}/{rel}", ignore=shutil.ignore_patterns("*.pt"))
+with open(f"{stage}/results/f35_final/models_sha256.csv", "w", newline="") as f:
+    w = csv.writer(f); w.writerow(["path", "bytes", "sha256"])
+    for p in models:
+        h = hashlib.sha256()
+        with open(p, "rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b""):
+                h.update(chunk)
+        w.writerow([os.path.relpath(p, root).replace(os.sep, "/"), os.path.getsize(p), h.hexdigest()])
+!cat {stage}/results/f35_final/models_sha256.csv
+!cd {stage} && zip -qr /kaggle/working/f35_resultados.zip results
+!ls -la /kaggle/working/f35_resultados.zip
+```
+
 Si se corta a medias: *Add Input → Notebook Output* de la versión anterior y agrega a esa técnica `--prev-results /kaggle/input/<output>/ttdicevc/results/f35_final/<técnica>`. Las corridas terminadas se saltan; no se repiten semillas que ya consultaron la prueba.
 
 ## Contenido esperado de `f35_resultados.zip`
