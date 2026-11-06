@@ -58,3 +58,11 @@ def test_verificacion_de_tt2_mapas_y_resumen():
     assert {f['file']: f['sha256'] for f in rep['files']} == recs
     filas = list(csv.DictReader(open(os.path.join(RES, 'resumen', 'per_run.csv'))))
     assert len(filas) == 50 and {f['run'] for f in filas} == {r['run'] for r in _records()}
+
+
+def test_copia_en_drive():
+    rep = json.load(open(os.path.join(REPO, 'results', 'artefactos_drive', 'verificacion.json')))
+    assert rep['passed'] and rep['n_ok'] == rep['n_expected'] == 60
+    assert not rep['ambiguous'] and not rep['discarded_copies'] and not rep['extra']
+    filas = {os.path.basename(f['rel_path']): f['sha256'] for f in csv.DictReader(open(MANIFEST))}
+    assert {f['file']: f['sha256'] for f in rep['files']} == filas

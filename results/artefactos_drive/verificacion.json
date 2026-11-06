@@ -1,0 +1,442 @@
+{
+ "manifest": "meta/artefactos_manifest.csv",
+ "task": null,
+ "root": "/content/drive/MyDrive/tt2-artefactos",
+ "dataset_dirs": [
+  "tt2-artefactos",
+  "tt2-artefactos-f36",
+  "tt2-mapas"
+ ],
+ "n_expected": 60,
+ "n_ok": 60,
+ "missing": [],
+ "mismatch": [],
+ "ambiguous": [],
+ "duplicates": [],
+ "discarded_copies": [],
+ "extra": [],
+ "passed": true,
+ "checked_at": "2026-11-06T08:19:03+00:00",
+ "files": [
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.npz",
+   "bytes": 23185691,
+   "sha256": "4c3dc883d275ef097066f7dab08fe4f1aeefb9fa98fffb8227ce04739fcbb594"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.pt",
+   "bytes": 16365339,
+   "sha256": "7aad97be5b15d7e32313d5bbf1a8c40f7bd432674b75f3c4303b596552420212"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.npz",
+   "bytes": 22363016,
+   "sha256": "b626a037cbd233c24c3919990d790619b34d1802a3a5ecae012938a40e47a13a"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.pt",
+   "bytes": 16365769,
+   "sha256": "f3ee6df0859edeb081b570899f058607e84fb41e72ade9671fe6e7c6284c85b3"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.npz",
+   "bytes": 19769825,
+   "sha256": "f69dffabd7021e50f098d600bf7d72169a04c90fd475e21c6fa9e291bfcef13e"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.pt",
+   "bytes": 16364973,
+   "sha256": "9d2e04a28b3f840f131d83468d22aac56a19df25cf0ff67e473092ec59d81621"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.npz",
+   "bytes": 22251198,
+   "sha256": "39dc3707ea1d5ca6e65fabb91a2fbda3b7b234e986941e0b86d0b8a67d2f483b"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.pt",
+   "bytes": 16364543,
+   "sha256": "5537b61e2d43737ff1a86c54008dd8ad59c9477a6a693c3d25e7519a4e030e2f"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.npz",
+   "bytes": 22715745,
+   "sha256": "d1c35312f1f3170212d737bc70f1ab3bbb842597487b478d4f6a4a5ba680a7de"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.pt",
+   "bytes": 16364973,
+   "sha256": "3a785a82036699d452edff52c0eb505dc902ec2286d29d81966d82b97bde65ef"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed123.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.npz",
+   "bytes": 16987585,
+   "sha256": "103da6cd5bb0137d73ac3af5647257970d09f641b60652d4f9add944e5276cd3"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed123.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.pt",
+   "bytes": 16359513,
+   "sha256": "2670c32a9827dc1bf26905a5368469ada05c5e57d72e8c88abd4c78964b8229f"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.npz",
+   "bytes": 14985575,
+   "sha256": "b1fb4e9489859ce614bd1c9e2ae4130da520448619814d06db21342140cd39ad"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.pt",
+   "bytes": 16359943,
+   "sha256": "9a67482a8a7af4208c7b61c945dbe360bead36bd3756819266016360f19dfaad"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed42.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.npz",
+   "bytes": 16450376,
+   "sha256": "021e3e1a32b0427180fe4852d8b6e3da5694ca2b3d40fd260af0669a464b5c5c"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed42.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.pt",
+   "bytes": 16359147,
+   "sha256": "e6adc5407fb0f0fc211b88eb2a303716e3903374e63b4f654e7aa9d41161a04b"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed7.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.npz",
+   "bytes": 15664497,
+   "sha256": "1fee9d39126e1656de4a342cb771103e59e1b2753f7e5572590ea32d9080e5fc"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed7.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.pt",
+   "bytes": 16358781,
+   "sha256": "e301948090455b2a98a2a7b6b2b8670a677b316d9574304b0549879ca7069105"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed99.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed99.npz",
+   "bytes": 16836155,
+   "sha256": "f7b21ee8e363646dc9182beb6e7a75f977de65e9c4ea3260e5b92e8e1a2549e2"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed99.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed99.pt",
+   "bytes": 16359147,
+   "sha256": "ddf3b4e573779888ff3b29a25af7b8dcfbd23b62889e351ef5f235db08f8bdaf"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+   "bytes": 61720613,
+   "sha256": "7073431b57da9b8f5a777d58a11d1a9c126c5e5af5c7ea4efec56c7d55cd6764"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.pt",
+   "bytes": 343268915,
+   "sha256": "9903d98a8ddae881383652db1c44f3ea124b871800b0b5f33ef46ed22951a7b4"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+   "bytes": 60964547,
+   "sha256": "fb884659fa51be744931fa66f8ab40e10a85b1960063e27dd1efe513b10a13fe"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.pt",
+   "bytes": 343269137,
+   "sha256": "8d7ae40c2ccd2f3a00059ed98255320459b5dd4800ff49dccea8b7975d33de7f"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+   "bytes": 61300358,
+   "sha256": "f09159602a309d1780bbba84a87a19133f0580b833b32f4151720e5e6ddb5c98"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.pt",
+   "bytes": 343268757,
+   "sha256": "4ad23231b9fab0771db063620356ade84941f3a6262dac8a8f0d7ef8afebd577"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+   "bytes": 61578074,
+   "sha256": "8610a7f8902ce8d661c605b71da783b944a713227aa51fd919b1466830880451"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.pt",
+   "bytes": 343268599,
+   "sha256": "47a51c88ad68469c8abafd15ae71095db5a2407b8a62f87b3cdb0f847f83d19d"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+   "bytes": 61538149,
+   "sha256": "bb5c4569b4d203e4c0a385169ad3d9cd713adf5ae2ce9eb09c18375e93842e1a"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.pt",
+   "bytes": 343268757,
+   "sha256": "616f944da810a260c625ac331664ccc56c279fe030618889f466b70932928ecd"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed123.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed123.npz",
+   "bytes": 61749719,
+   "sha256": "67c9a1e69b768712b1332a8f2743b39c6d805fb521178f64e0e94f0cdcf1c44c"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed123.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed123.pt",
+   "bytes": 343267809,
+   "sha256": "e11700ae13ab628c21a6418d870df6e582a362901c846f41fd9480dcc8915510"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed2024.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed2024.npz",
+   "bytes": 61019485,
+   "sha256": "4d01a5a86d1353faf097ad2c124896982958b29f116328e71258150ef11b4ec6"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed2024.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed2024.pt",
+   "bytes": 343267967,
+   "sha256": "08201d97e5bef0b71314b7d5d701beaf02aac64328133753b1f0d66cf82c59df"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed42.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed42.npz",
+   "bytes": 61171122,
+   "sha256": "0e465fd2dd3e826532daad4c52be26737ce685f61e34eb3b3ee73dc439f36af0"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed42.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed42.pt",
+   "bytes": 343267651,
+   "sha256": "95f7367c45189eeead8607deb2e3d23f84c76c491a4b3b50743c23c2ac7cde93"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed7.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed7.npz",
+   "bytes": 61815880,
+   "sha256": "fb67198a44e3077be5c073466e7dbe4fab1bf739609da809bf91a25184b7ecff"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed7.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed7.pt",
+   "bytes": 343267493,
+   "sha256": "cd66c4001172363a4a3fe9a6957e3408222c3d0ca6b0d4820187454e08635d58"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed99.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed99.npz",
+   "bytes": 61396035,
+   "sha256": "abf7ce956c76f61b5e9d5baca4f0887f656c4e2b7c2a71b80b3e4241a66e6e10"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed99.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed99.pt",
+   "bytes": 343267651,
+   "sha256": "98be656328c4e84577bd7e89ffce98e36de8c9844572c36a93bffb4ba1fa054d"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+   "bytes": 60227338,
+   "sha256": "032fc80862bf4415130a1d4775298698b6eb83d5ee64ff8924ee5e0c1dc1ec47"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed123.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed123.pt",
+   "bytes": 343268915,
+   "sha256": "fa487ec5af97f60b21feb53d4c5dd069a1c621d7a0f5c981a544a38d398335b3"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+   "bytes": 60272197,
+   "sha256": "8a35dcc7263aac13081946f0e40eb157f55fcaecea8ead8a01bd53b511db65c3"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.pt",
+   "bytes": 343269137,
+   "sha256": "38668ecf6e155a18b60b15630b4f1f8ba86fa43a084d9eba979741fab46b7a06"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+   "bytes": 60590436,
+   "sha256": "1aa488ef9370a1e131b233974df29c0fac06fa17a2902d955eb57853b72804e9"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed42.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed42.pt",
+   "bytes": 343268757,
+   "sha256": "13cd06ff58e10baa848bc4f1d093be272720b0747fa7131aee8689c8c0bf7203"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+   "bytes": 60296079,
+   "sha256": "b1b66941d888f954dd89b6a2df3abf62b002965ccf24159e90d9d9567f6d11cd"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed7.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed7.pt",
+   "bytes": 343268599,
+   "sha256": "7bd3be600abbc45021450273721ff24b883d7d74f5dbb0a3046abbf78451f440"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+   "bytes": 60288060,
+   "sha256": "a6ba675710275f741e345dcd6495713c5a94db18aa2a94bfa9e14590f1b449e2"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed99.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed99.pt",
+   "bytes": 343268757,
+   "sha256": "6c03c613b4f2f06f06e7b6e416417ee1245ffe5ca79a4c67fae3c48b96715d07"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed123.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed123.npz",
+   "bytes": 60047731,
+   "sha256": "891b495810cc09997f8cb353d805c9ba8c381706380c2e18317e111d98b12c52"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed123.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed123.pt",
+   "bytes": 343267809,
+   "sha256": "6502a2bb23a9a80dbed5a3b73920a903245a4490a10796481488bfb1b0a82f0b"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed2024.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed2024.npz",
+   "bytes": 60204257,
+   "sha256": "64419276db85abe20b5c9db1df3d482dac72bf4b4998a638fd230238d2c438e7"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed2024.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed2024.pt",
+   "bytes": 343267967,
+   "sha256": "be4eaeac3b379dcb6e6a88c480c16861fe54d89df385cbd85e34df61daf9f5bd"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed42.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed42.npz",
+   "bytes": 60048141,
+   "sha256": "a70d33b64572fcbf16be754944f56ab0395c1edbcbac0f3ed6353e05f5571596"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed42.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed42.pt",
+   "bytes": 343267651,
+   "sha256": "2c21a4e6b30a9699b466f63b23482f3fda916592afe02066321184a8effe0b64"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed7.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed7.npz",
+   "bytes": 60067318,
+   "sha256": "75527670a2e1a3e0395738b78290e54c98744b9ca077e26c24c87c772745fcda"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed7.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed7.pt",
+   "bytes": 343267493,
+   "sha256": "a1dad340793961ce9716af1a8ba0cd49b05f052cb5d6ea2c697b51954330eec7"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed99.npz",
+   "status": "ok",
+   "found_at": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed99.npz",
+   "bytes": 59954268,
+   "sha256": "3a3e283497e2f1d2333754673b98fa54624486995f6ab95809bff2be97de567d"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed99.pt",
+   "status": "ok",
+   "found_at": "tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed99.pt",
+   "bytes": 343267651,
+   "sha256": "27bcd8cb5a956614c58f5c3a3bb6be41f293e681691f57de86368078df68c27b"
+  }
+ ]
+}

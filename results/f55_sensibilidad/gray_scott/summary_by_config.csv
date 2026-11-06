@@ -1,0 +1,2 @@
+technique,arch,strategy,variant,n_seeds,seeds,n_trainable_params,n_total_params,f1_val_mean,f1_val_std,f1_test_mean,f1_test_std,seleccion
+gray_scott,resnet18,finetune,px224-flip,5,7 42 99 123 2024,11177538,11177538,0.7272,0.0142,0.715,0.02,
