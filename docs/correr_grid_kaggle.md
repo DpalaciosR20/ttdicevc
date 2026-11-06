@@ -103,10 +103,12 @@ Si la sesión interactiva no aguanta las ~90 min, corre el mismo notebook con *S
 
 ```python
 FIN = "--configs gray_scott:<arq>:<est> perlin:<arq>:<est> lorenz:<arq>:<est>"   # de select_finalist
-!python -m src.training.run_grid --out-dir results/f35_final --evaluate-test {FIN} --lr <F3.4> --weight-decay <F3.4> --save-models
-!python -m src.training.run_grid --out-dir results/f36_permutacion --evaluate-test --permute-labels 99 {FIN} --lr <F3.4> --weight-decay <F3.4> --save-models
+!python -m src.training.run_grid --out-dir results/f35_final --evaluate-test {FIN} <run_grid_flags de results/f34_hpo/<tec>/hpo_result.json> --save-models
+!python -m src.training.run_grid --out-dir results/f36_permutacion --evaluate-test --permute-labels 99 {FIN} <run_grid_flags de results/f34_hpo/<tec>/hpo_result.json> --save-models
 ```
 Las semillas por defecto son las de la matriz para cada fase (42, 7, 123, 2024, 99). Si cada finalista tiene hiperparámetros distintos, se corre un comando por técnica (y un `--out-dir` por comando).
+
+`final` y `control_permutacion` solo aceptan los finalistas de `select_finalist`, y `sensibilidad` los segundos de `select_second`; los dos se calculan sobre `results/predictions/primera_pasada` (F3.3 H10). Cualquier otra configuración se rechaza, salvo que se pase `--override-selection "<motivo>"`. Pasa siempre las tres banderas de `run_grid_flags` (`--lr --weight-decay --batch-size`): la que falte toma el valor común de la matriz.
 
 ## Al terminar
 

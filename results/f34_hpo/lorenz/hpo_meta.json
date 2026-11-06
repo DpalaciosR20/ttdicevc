@@ -1,0 +1,66 @@
+{
+ "task": "F3.4",
+ "fase": "hpo",
+ "smoke": false,
+ "technique": "lorenz",
+ "arch": "vit_b16",
+ "strategy": "frozen",
+ "variant": "px224-noflip",
+ "preprocessing": {
+  "size": 224,
+  "resize_mode": "resize",
+  "interpolation": "bilinear",
+  "antialias": true,
+  "hflip": false,
+  "vit": "same",
+  "variant": "px224-noflip"
+ },
+ "sampler": {
+  "name": "TPESampler",
+  "seed": 42,
+  "params": "default"
+ },
+ "pruner": null,
+ "n_trials": 12,
+ "seeds": [
+  42,
+  7,
+  123
+ ],
+ "space": {
+  "lr": {
+   "low": 0.0001,
+   "high": 0.01,
+   "log": true
+  },
+  "weight_decay": {
+   "low": 0.0,
+   "high": 0.1,
+   "log": false
+  },
+  "batch_size": [
+   16,
+   32,
+   64
+  ]
+ },
+ "trial0": {
+  "lr": 0.001,
+  "weight_decay": 0.0,
+  "batch_size": 32
+ },
+ "fixed": {
+  "optimizer": "AdamW",
+  "max_epochs": 15,
+  "patience": 4
+ },
+ "selection": {
+  "source": "results/predictions/primera_pasada",
+  "suggested": [
+   "vit_b16",
+   "frozen"
+  ],
+  "is_suggested_finalist": true,
+  "override": null
+ }
+}

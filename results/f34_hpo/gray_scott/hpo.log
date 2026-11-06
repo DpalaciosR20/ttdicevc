@@ -1,0 +1,496 @@
+F3.4 HPO | gray_scott:efficientnet_b0:finetune | SOLO VALIDACION (test no se carga) | variante px224-flip
+12 trials x semillas [42, 7, 123] = 36 entrenamientos | epocas 15, paciencia 4
+Espacio: {'lr': {'low': 5e-06, 'high': 0.0003, 'log': True}, 'weight_decay': {'low': 0.0, 'high': 0.1, 'log': False}, 'batch_size': [16, 32, 64]} | trial 0: {'lr': 3e-05, 'weight_decay': 0.0, 'batch_size': 32}
+Seleccion: {'source': 'results/predictions/primera_pasada', 'suggested': ('efficientnet_b0', 'finetune'), 'is_suggested_finalist': True, 'override': None}
+0 de 36 entrenamientos ya hechos
+Entorno: {'python': '3.13.16', 'libraries': {'numpy': '2.1.3', 'pandas': '2.3.3', 'scikit-learn': '1.6.1', 'torch': '2.11.0+cu130', 'transformers': '5.20.2', 'tokenizers': '0.23.3', 'joblib': '1.6.0'}, 'platform': 'Linux-6.18.55+-x86_64-with-glibc2.39', 'gpu': 'Tesla T4', 'torch': '2.11.0+cu130', 'cudnn': 92700, 'device': 'cuda', 'optuna': '5.0.0'} | commit b848d2c88cf8d1ddc2f9543847fe99ff37e336f3
+  gray_scott train   908 imagenes OK
+  gray_scott val     114 imagenes OK
+  gray_scott test    114 imagenes OK
+
+===== trial 0/11 semilla 42 {'lr': 3e-05, 'weight_decay': 0.0, 'batch_size': 32} =====
+Downloading: "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth" to /root/.cache/torch/hub/checkpoints/efficientnet_b0_rwightman-7f5810bc.pth
+  0%|          | 0.00/20.5M [00:00<?, ?B/s] 83%|████████▎ | 16.9M/20.5M [00:00<00:00, 176MB/s]100%|██████████| 20.5M/20.5M [00:00<00:00, 170MB/s]
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 1/15 - loss=0.4945 - F1-val=0.6199
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 2/15 - loss=0.3678 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 3/15 - loss=0.3418 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 4/15 - loss=0.3163 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 5/15 - loss=0.3096 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 6/15 - loss=0.3018 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 7/15 - loss=0.3003 - F1-val=0.7004
+Early stopping en epoch 7 (mejor F1-val=0.7203)
+*** [efficientnet_b0, freeze=False, lr=3e-05, wd=0] F1-val(best, epoch 3)=0.7203  (test no evaluado) ***
+
+
+===== trial 0/11 semilla 7 {'lr': 3e-05, 'weight_decay': 0.0, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 1/15 - loss=0.5292 - F1-val=0.4469
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 2/15 - loss=0.3840 - F1-val=0.6941
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 3/15 - loss=0.3529 - F1-val=0.6941
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 4/15 - loss=0.3379 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 5/15 - loss=0.3261 - F1-val=0.7039
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 6/15 - loss=0.3063 - F1-val=0.6842
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 7/15 - loss=0.3089 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 8/15 - loss=0.2888 - F1-val=0.6720
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 9/15 - loss=0.2736 - F1-val=0.6941
+Early stopping en epoch 9 (mejor F1-val=0.7039)
+*** [efficientnet_b0, freeze=False, lr=3e-05, wd=0] F1-val(best, epoch 5)=0.7039  (test no evaluado) ***
+
+
+===== trial 0/11 semilla 123 {'lr': 3e-05, 'weight_decay': 0.0, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 1/15 - loss=0.5205 - F1-val=0.6675
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 2/15 - loss=0.3873 - F1-val=0.6905
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 3/15 - loss=0.3375 - F1-val=0.6800
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 4/15 - loss=0.3434 - F1-val=0.6696
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 5/15 - loss=0.3239 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 6/15 - loss=0.3047 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 7/15 - loss=0.2956 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 8/15 - loss=0.2790 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 9/15 - loss=0.2696 - F1-val=0.6775
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 10/15 - loss=0.2715 - F1-val=0.7285
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 11/15 - loss=0.2633 - F1-val=0.7185
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 12/15 - loss=0.2412 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 13/15 - loss=0.2388 - F1-val=0.7039
+[efficientnet_b0, freeze=False, lr=3e-05, wd=0] Epoch 14/15 - loss=0.2369 - F1-val=0.7084
+Early stopping en epoch 14 (mejor F1-val=0.7285)
+*** [efficientnet_b0, freeze=False, lr=3e-05, wd=0] F1-val(best, epoch 10)=0.7285  (test no evaluado) ***
+
+
+===== trial 1/11 semilla 42 {'lr': 2.3171758042400852e-05, 'weight_decay': 0.09507143064099162, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 1/15 - loss=0.4854 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 2/15 - loss=0.3710 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 3/15 - loss=0.3533 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 4/15 - loss=0.3252 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 5/15 - loss=0.3210 - F1-val=0.7084
+Early stopping en epoch 5 (mejor F1-val=0.7104)
+*** [efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] F1-val(best, epoch 1)=0.7104  (test no evaluado) ***
+
+
+===== trial 1/11 semilla 7 {'lr': 2.3171758042400852e-05, 'weight_decay': 0.09507143064099162, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 1/15 - loss=0.5120 - F1-val=0.6822
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 2/15 - loss=0.3822 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 3/15 - loss=0.3677 - F1-val=0.6941
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 4/15 - loss=0.3463 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 5/15 - loss=0.3510 - F1-val=0.7285
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 6/15 - loss=0.3163 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 7/15 - loss=0.3305 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 8/15 - loss=0.3030 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 9/15 - loss=0.2983 - F1-val=0.7023
+Early stopping en epoch 9 (mejor F1-val=0.7285)
+*** [efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] F1-val(best, epoch 5)=0.7285  (test no evaluado) ***
+
+
+===== trial 1/11 semilla 123 {'lr': 2.3171758042400852e-05, 'weight_decay': 0.09507143064099162, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 1/15 - loss=0.5067 - F1-val=0.6959
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 2/15 - loss=0.3892 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 3/15 - loss=0.3533 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 4/15 - loss=0.3322 - F1-val=0.6696
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 5/15 - loss=0.3560 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 6/15 - loss=0.3108 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 7/15 - loss=0.3075 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 8/15 - loss=0.3006 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 9/15 - loss=0.2909 - F1-val=0.6669
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 10/15 - loss=0.2899 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 11/15 - loss=0.2668 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] Epoch 12/15 - loss=0.2659 - F1-val=0.6879
+Early stopping en epoch 12 (mejor F1-val=0.7203)
+*** [efficientnet_b0, freeze=False, lr=2.31718e-05, wd=0.0950714] F1-val(best, epoch 8)=0.7203  (test no evaluado) ***
+
+
+===== trial 2/11 semilla 42 {'lr': 9.470040922904436e-06, 'weight_decay': 0.005808361216819946, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 1/15 - loss=0.5595 - F1-val=0.6982
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 2/15 - loss=0.4436 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 3/15 - loss=0.3993 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 4/15 - loss=0.3619 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 5/15 - loss=0.3568 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 6/15 - loss=0.3463 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 7/15 - loss=0.3433 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 8/15 - loss=0.3312 - F1-val=0.7004
+Early stopping en epoch 8 (mejor F1-val=0.7203)
+*** [efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] F1-val(best, epoch 4)=0.7203  (test no evaluado) ***
+
+
+===== trial 2/11 semilla 7 {'lr': 9.470040922904436e-06, 'weight_decay': 0.005808361216819946, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 1/15 - loss=0.6006 - F1-val=0.6762
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 2/15 - loss=0.4667 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 3/15 - loss=0.4221 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 4/15 - loss=0.3880 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 5/15 - loss=0.3866 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 6/15 - loss=0.3543 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 7/15 - loss=0.3644 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 8/15 - loss=0.3444 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 9/15 - loss=0.3398 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 10/15 - loss=0.3172 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 11/15 - loss=0.3317 - F1-val=0.7121
+Early stopping en epoch 11 (mejor F1-val=0.7121)
+*** [efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] F1-val(best, epoch 7)=0.7121  (test no evaluado) ***
+
+
+===== trial 2/11 semilla 123 {'lr': 9.470040922904436e-06, 'weight_decay': 0.005808361216819946, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 1/15 - loss=0.5906 - F1-val=0.6681
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 2/15 - loss=0.4629 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 3/15 - loss=0.4036 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 4/15 - loss=0.3752 - F1-val=0.6800
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 5/15 - loss=0.3892 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 6/15 - loss=0.3487 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 7/15 - loss=0.3467 - F1-val=0.6696
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 8/15 - loss=0.3380 - F1-val=0.6800
+[efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] Epoch 9/15 - loss=0.3292 - F1-val=0.6590
+Early stopping en epoch 9 (mejor F1-val=0.7104)
+*** [efficientnet_b0, freeze=False, lr=9.47004e-06, wd=0.00580836] F1-val(best, epoch 5)=0.7104  (test no evaluado) ***
+
+
+===== trial 3/11 semilla 42 {'lr': 5.439667429522982e-06, 'weight_decay': 0.09699098521619944, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 1/15 - loss=0.5953 - F1-val=0.6982
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 2/15 - loss=0.5020 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 3/15 - loss=0.4497 - F1-val=0.7316
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 4/15 - loss=0.4041 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 5/15 - loss=0.3922 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 6/15 - loss=0.3739 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 7/15 - loss=0.3691 - F1-val=0.7104
+Early stopping en epoch 7 (mejor F1-val=0.7316)
+*** [efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] F1-val(best, epoch 3)=0.7316  (test no evaluado) ***
+
+
+===== trial 3/11 semilla 7 {'lr': 5.439667429522982e-06, 'weight_decay': 0.09699098521619944, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 1/15 - loss=0.6424 - F1-val=0.6687
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 2/15 - loss=0.5355 - F1-val=0.6800
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 3/15 - loss=0.4793 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 4/15 - loss=0.4346 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 5/15 - loss=0.4242 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 6/15 - loss=0.3905 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 7/15 - loss=0.3903 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 8/15 - loss=0.3743 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 9/15 - loss=0.3674 - F1-val=0.6923
+Early stopping en epoch 9 (mejor F1-val=0.7023)
+*** [efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] F1-val(best, epoch 5)=0.7023  (test no evaluado) ***
+
+
+===== trial 3/11 semilla 123 {'lr': 5.439667429522982e-06, 'weight_decay': 0.09699098521619944, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 1/15 - loss=0.6321 - F1-val=0.6641
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 2/15 - loss=0.5258 - F1-val=0.6876
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 3/15 - loss=0.4581 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 4/15 - loss=0.4192 - F1-val=0.6800
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 5/15 - loss=0.4226 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 6/15 - loss=0.3810 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 7/15 - loss=0.3733 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 8/15 - loss=0.3620 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 9/15 - loss=0.3514 - F1-val=0.6696
+[efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] Epoch 10/15 - loss=0.3661 - F1-val=0.7104
+Early stopping en epoch 10 (mejor F1-val=0.7104)
+*** [efficientnet_b0, freeze=False, lr=5.43967e-06, wd=0.096991] F1-val(best, epoch 6)=0.7104  (test no evaluado) ***
+
+
+===== trial 4/11 semilla 42 {'lr': 1.0594756088100136e-05, 'weight_decay': 0.030424224295953775, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 1/15 - loss=0.5510 - F1-val=0.6982
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 2/15 - loss=0.4323 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 3/15 - loss=0.3912 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 4/15 - loss=0.3557 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 5/15 - loss=0.3513 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 6/15 - loss=0.3418 - F1-val=0.7004
+Early stopping en epoch 6 (mejor F1-val=0.7203)
+*** [efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] F1-val(best, epoch 2)=0.7203  (test no evaluado) ***
+
+
+===== trial 4/11 semilla 7 {'lr': 1.0594756088100136e-05, 'weight_decay': 0.030424224295953775, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 1/15 - loss=0.5906 - F1-val=0.6796
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 2/15 - loss=0.4534 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 3/15 - loss=0.4128 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 4/15 - loss=0.3809 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 5/15 - loss=0.3810 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 6/15 - loss=0.3486 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 7/15 - loss=0.3602 - F1-val=0.7121
+Early stopping en epoch 7 (mejor F1-val=0.7121)
+*** [efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] F1-val(best, epoch 3)=0.7121  (test no evaluado) ***
+
+
+===== trial 4/11 semilla 123 {'lr': 1.0594756088100136e-05, 'weight_decay': 0.030424224295953775, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 1/15 - loss=0.5808 - F1-val=0.6842
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 2/15 - loss=0.4511 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 3/15 - loss=0.3949 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 4/15 - loss=0.3684 - F1-val=0.6696
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 5/15 - loss=0.3842 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 6/15 - loss=0.3434 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 7/15 - loss=0.3421 - F1-val=0.6696
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 8/15 - loss=0.3338 - F1-val=0.6822
+[efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] Epoch 9/15 - loss=0.3250 - F1-val=0.6590
+Early stopping en epoch 9 (mejor F1-val=0.7004)
+*** [efficientnet_b0, freeze=False, lr=1.05948e-05, wd=0.0304242] F1-val(best, epoch 5)=0.7004  (test no evaluado) ***
+
+
+===== trial 5/11 semilla 42 {'lr': 6.122615606028034e-05, 'weight_decay': 0.013949386065204183, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 1/15 - loss=0.4838 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 2/15 - loss=0.3437 - F1-val=0.6083
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 3/15 - loss=0.3189 - F1-val=0.5588
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 4/15 - loss=0.2917 - F1-val=0.6982
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 5/15 - loss=0.2949 - F1-val=0.6902
+Early stopping en epoch 5 (mejor F1-val=0.7121)
+*** [efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] F1-val(best, epoch 1)=0.7121  (test no evaluado) ***
+
+
+===== trial 5/11 semilla 7 {'lr': 6.122615606028034e-05, 'weight_decay': 0.013949386065204183, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 1/15 - loss=0.4981 - F1-val=0.6761
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 2/15 - loss=0.3541 - F1-val=0.5205
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 3/15 - loss=0.3273 - F1-val=0.5737
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 4/15 - loss=0.3019 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 5/15 - loss=0.3040 - F1-val=0.7039
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 6/15 - loss=0.2660 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 7/15 - loss=0.2695 - F1-val=0.7185
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 8/15 - loss=0.2582 - F1-val=0.7063
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 9/15 - loss=0.2329 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 10/15 - loss=0.2164 - F1-val=0.7165
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 11/15 - loss=0.2010 - F1-val=0.7143
+Early stopping en epoch 11 (mejor F1-val=0.7185)
+*** [efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] F1-val(best, epoch 7)=0.7185  (test no evaluado) ***
+
+
+===== trial 5/11 semilla 123 {'lr': 6.122615606028034e-05, 'weight_decay': 0.013949386065204183, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 1/15 - loss=0.5094 - F1-val=0.7162
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 2/15 - loss=0.3460 - F1-val=0.6083
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 3/15 - loss=0.3229 - F1-val=0.6272
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 4/15 - loss=0.3149 - F1-val=0.6562
+[efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] Epoch 5/15 - loss=0.3023 - F1-val=0.6923
+Early stopping en epoch 5 (mejor F1-val=0.7162)
+*** [efficientnet_b0, freeze=False, lr=6.12262e-05, wd=0.0139494] F1-val(best, epoch 1)=0.7162  (test no evaluado) ***
+
+
+===== trial 6/11 semilla 42 {'lr': 0.0001244891844633782, 'weight_decay': 0.019967378215835975, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 1/15 - loss=0.4021 - F1-val=0.5439
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 2/15 - loss=0.3220 - F1-val=0.7219
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 3/15 - loss=0.2972 - F1-val=0.6972
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 4/15 - loss=0.2678 - F1-val=0.6530
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 5/15 - loss=0.2613 - F1-val=0.6561
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 6/15 - loss=0.2299 - F1-val=0.6761
+Early stopping en epoch 6 (mejor F1-val=0.7219)
+*** [efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] F1-val(best, epoch 2)=0.7219  (test no evaluado) ***
+
+
+===== trial 6/11 semilla 7 {'lr': 0.0001244891844633782, 'weight_decay': 0.019967378215835975, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 1/15 - loss=0.4093 - F1-val=0.5569
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 2/15 - loss=0.3409 - F1-val=0.6530
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 3/15 - loss=0.3014 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 4/15 - loss=0.2825 - F1-val=0.6761
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 5/15 - loss=0.2738 - F1-val=0.6982
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 6/15 - loss=0.2358 - F1-val=0.6607
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 7/15 - loss=0.2120 - F1-val=0.6581
+Early stopping en epoch 7 (mejor F1-val=0.7004)
+*** [efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] F1-val(best, epoch 3)=0.7004  (test no evaluado) ***
+
+
+===== trial 6/11 semilla 123 {'lr': 0.0001244891844633782, 'weight_decay': 0.019967378215835975, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 1/15 - loss=0.4196 - F1-val=0.6495
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 2/15 - loss=0.3326 - F1-val=0.6669
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 3/15 - loss=0.2970 - F1-val=0.6639
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 4/15 - loss=0.2886 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 5/15 - loss=0.2584 - F1-val=0.6669
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 6/15 - loss=0.2101 - F1-val=0.6842
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 7/15 - loss=0.1919 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] Epoch 8/15 - loss=0.1682 - F1-val=0.6826
+Early stopping en epoch 8 (mejor F1-val=0.7104)
+*** [efficientnet_b0, freeze=False, lr=0.000124489, wd=0.0199674] F1-val(best, epoch 4)=0.7104  (test no evaluado) ***
+
+
+===== trial 7/11 semilla 42 {'lr': 6.015568027492312e-05, 'weight_decay': 0.017052412368729154, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 1/15 - loss=0.4852 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 2/15 - loss=0.3446 - F1-val=0.6012
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 3/15 - loss=0.3197 - F1-val=0.5522
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 4/15 - loss=0.2924 - F1-val=0.7084
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 5/15 - loss=0.2958 - F1-val=0.6902
+Early stopping en epoch 5 (mejor F1-val=0.7121)
+*** [efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] F1-val(best, epoch 1)=0.7121  (test no evaluado) ***
+
+
+===== trial 7/11 semilla 7 {'lr': 6.015568027492312e-05, 'weight_decay': 0.017052412368729154, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 1/15 - loss=0.5000 - F1-val=0.6761
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 2/15 - loss=0.3551 - F1-val=0.5205
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 3/15 - loss=0.3282 - F1-val=0.5807
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 4/15 - loss=0.3026 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 5/15 - loss=0.3049 - F1-val=0.7039
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 6/15 - loss=0.2671 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 7/15 - loss=0.2707 - F1-val=0.7185
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 8/15 - loss=0.2595 - F1-val=0.7063
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 9/15 - loss=0.2346 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 10/15 - loss=0.2180 - F1-val=0.7267
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 11/15 - loss=0.2029 - F1-val=0.7143
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 12/15 - loss=0.1908 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 13/15 - loss=0.1819 - F1-val=0.7084
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 14/15 - loss=0.1849 - F1-val=0.7481
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 15/15 - loss=0.1689 - F1-val=0.7084
+*** [efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] F1-val(best, epoch 14)=0.7481  (test no evaluado) ***
+
+
+===== trial 7/11 semilla 123 {'lr': 6.015568027492312e-05, 'weight_decay': 0.017052412368729154, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 1/15 - loss=0.5111 - F1-val=0.7162
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 2/15 - loss=0.3471 - F1-val=0.6083
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 3/15 - loss=0.3236 - F1-val=0.6272
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 4/15 - loss=0.3157 - F1-val=0.6562
+[efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] Epoch 5/15 - loss=0.3032 - F1-val=0.6923
+Early stopping en epoch 5 (mejor F1-val=0.7162)
+*** [efficientnet_b0, freeze=False, lr=6.01557e-05, wd=0.0170524] F1-val(best, epoch 1)=0.7162  (test no evaluado) ***
+
+
+===== trial 8/11 semilla 42 {'lr': 0.00013690608760126308, 'weight_decay': 0.03046137691733707, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 1/15 - loss=0.3997 - F1-val=0.5569
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 2/15 - loss=0.3213 - F1-val=0.7219
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 3/15 - loss=0.2948 - F1-val=0.6972
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 4/15 - loss=0.2649 - F1-val=0.6530
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 5/15 - loss=0.2612 - F1-val=0.6380
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 6/15 - loss=0.2254 - F1-val=0.7023
+Early stopping en epoch 6 (mejor F1-val=0.7219)
+*** [efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] F1-val(best, epoch 2)=0.7219  (test no evaluado) ***
+
+
+===== trial 8/11 semilla 7 {'lr': 0.00013690608760126308, 'weight_decay': 0.03046137691733707, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 1/15 - loss=0.4052 - F1-val=0.5723
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 2/15 - loss=0.3427 - F1-val=0.6458
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 3/15 - loss=0.2998 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 4/15 - loss=0.2823 - F1-val=0.6761
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 5/15 - loss=0.2720 - F1-val=0.6982
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 6/15 - loss=0.2371 - F1-val=0.6879
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 7/15 - loss=0.2100 - F1-val=0.6879
+Early stopping en epoch 7 (mejor F1-val=0.7004)
+*** [efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] F1-val(best, epoch 3)=0.7004  (test no evaluado) ***
+
+
+===== trial 8/11 semilla 123 {'lr': 0.00013690608760126308, 'weight_decay': 0.03046137691733707, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 1/15 - loss=0.4162 - F1-val=0.6549
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 2/15 - loss=0.3306 - F1-val=0.6669
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 3/15 - loss=0.2962 - F1-val=0.6382
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 4/15 - loss=0.2858 - F1-val=0.6761
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 5/15 - loss=0.2570 - F1-val=0.6562
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 6/15 - loss=0.2074 - F1-val=0.6640
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 7/15 - loss=0.1932 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 8/15 - loss=0.1646 - F1-val=0.6419
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 9/15 - loss=0.1483 - F1-val=0.6149
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 10/15 - loss=0.1433 - F1-val=0.6747
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 11/15 - loss=0.1379 - F1-val=0.7063
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 12/15 - loss=0.1108 - F1-val=0.6222
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 13/15 - loss=0.1068 - F1-val=0.6419
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 14/15 - loss=0.0857 - F1-val=0.6355
+[efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] Epoch 15/15 - loss=0.0947 - F1-val=0.6902
+Early stopping en epoch 15 (mejor F1-val=0.7063)
+*** [efficientnet_b0, freeze=False, lr=0.000136906, wd=0.0304614] F1-val(best, epoch 11)=0.7063  (test no evaluado) ***
+
+
+===== trial 9/11 semilla 42 {'lr': 8.240858254970413e-06, 'weight_decay': 0.04951769101112702, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 1/15 - loss=0.5939 - F1-val=0.6289
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 2/15 - loss=0.4962 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 3/15 - loss=0.4419 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 4/15 - loss=0.3987 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 5/15 - loss=0.3812 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 6/15 - loss=0.3660 - F1-val=0.7203
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 7/15 - loss=0.3600 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 8/15 - loss=0.3495 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 9/15 - loss=0.3427 - F1-val=0.7004
+Early stopping en epoch 9 (mejor F1-val=0.7203)
+*** [efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] F1-val(best, epoch 5)=0.7203  (test no evaluado) ***
+
+
+===== trial 9/11 semilla 7 {'lr': 8.240858254970413e-06, 'weight_decay': 0.04951769101112702, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 1/15 - loss=0.6484 - F1-val=0.3569
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 2/15 - loss=0.5320 - F1-val=0.6796
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 3/15 - loss=0.4670 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 4/15 - loss=0.4295 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 5/15 - loss=0.4009 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 6/15 - loss=0.3805 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 7/15 - loss=0.3754 - F1-val=0.6923
+Early stopping en epoch 7 (mejor F1-val=0.7004)
+*** [efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] F1-val(best, epoch 3)=0.7004  (test no evaluado) ***
+
+
+===== trial 9/11 semilla 123 {'lr': 8.240858254970413e-06, 'weight_decay': 0.04951769101112702, 'batch_size': 32} =====
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 1/15 - loss=0.6299 - F1-val=0.6382
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 2/15 - loss=0.5245 - F1-val=0.6941
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 3/15 - loss=0.4450 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 4/15 - loss=0.4282 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 5/15 - loss=0.3998 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 6/15 - loss=0.3762 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] Epoch 7/15 - loss=0.3620 - F1-val=0.6902
+Early stopping en epoch 7 (mejor F1-val=0.7121)
+*** [efficientnet_b0, freeze=False, lr=8.24086e-06, wd=0.0495177] F1-val(best, epoch 3)=0.7121  (test no evaluado) ***
+
+
+===== trial 10/11 semilla 42 {'lr': 0.00023085989231806807, 'weight_decay': 0.07160875307305781, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 1/15 - loss=0.4136 - F1-val=0.6669
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 2/15 - loss=0.3082 - F1-val=0.6341
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 3/15 - loss=0.2781 - F1-val=0.6534
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 4/15 - loss=0.2504 - F1-val=0.6984
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 5/15 - loss=0.2391 - F1-val=0.6826
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 6/15 - loss=0.2152 - F1-val=0.6669
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 7/15 - loss=0.1705 - F1-val=0.6266
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 8/15 - loss=0.1427 - F1-val=0.6959
+Early stopping en epoch 8 (mejor F1-val=0.6984)
+*** [efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] F1-val(best, epoch 4)=0.6984  (test no evaluado) ***
+
+
+===== trial 10/11 semilla 7 {'lr': 0.00023085989231806807, 'weight_decay': 0.07160875307305781, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 1/15 - loss=0.3991 - F1-val=0.6958
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 2/15 - loss=0.3278 - F1-val=0.5147
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 3/15 - loss=0.2931 - F1-val=0.5569
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 4/15 - loss=0.2507 - F1-val=0.6747
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 5/15 - loss=0.2474 - F1-val=0.6933
+Early stopping en epoch 5 (mejor F1-val=0.6958)
+*** [efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] F1-val(best, epoch 1)=0.6958  (test no evaluado) ***
+
+
+===== trial 10/11 semilla 123 {'lr': 0.00023085989231806807, 'weight_decay': 0.07160875307305781, 'batch_size': 64} =====
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 1/15 - loss=0.4207 - F1-val=0.7039
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 2/15 - loss=0.2975 - F1-val=0.6453
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 3/15 - loss=0.2871 - F1-val=0.6266
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 4/15 - loss=0.2690 - F1-val=0.6761
+[efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] Epoch 5/15 - loss=0.2455 - F1-val=0.6902
+Early stopping en epoch 5 (mejor F1-val=0.7039)
+*** [efficientnet_b0, freeze=False, lr=0.00023086, wd=0.0716088] F1-val(best, epoch 1)=0.7039  (test no evaluado) ***
+
+
+===== trial 11/11 semilla 42 {'lr': 3.271964951850116e-05, 'weight_decay': 0.07364492644406771, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 1/15 - loss=0.4578 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 2/15 - loss=0.3548 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 3/15 - loss=0.3435 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 4/15 - loss=0.3147 - F1-val=0.6923
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 5/15 - loss=0.3100 - F1-val=0.6923
+Early stopping en epoch 5 (mejor F1-val=0.7104)
+*** [efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] F1-val(best, epoch 1)=0.7104  (test no evaluado) ***
+
+
+===== trial 11/11 semilla 7 {'lr': 3.271964951850116e-05, 'weight_decay': 0.07364492644406771, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 1/15 - loss=0.4780 - F1-val=0.6822
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 2/15 - loss=0.3651 - F1-val=0.6842
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 3/15 - loss=0.3541 - F1-val=0.6941
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 4/15 - loss=0.3357 - F1-val=0.7063
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 5/15 - loss=0.3396 - F1-val=0.7185
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 6/15 - loss=0.3032 - F1-val=0.7104
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 7/15 - loss=0.3143 - F1-val=0.7121
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 8/15 - loss=0.2844 - F1-val=0.7023
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 9/15 - loss=0.2766 - F1-val=0.7121
+Early stopping en epoch 9 (mejor F1-val=0.7185)
+*** [efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] F1-val(best, epoch 5)=0.7185  (test no evaluado) ***
+
+
+===== trial 11/11 semilla 123 {'lr': 3.271964951850116e-05, 'weight_decay': 0.07364492644406771, 'batch_size': 16} =====
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 1/15 - loss=0.4759 - F1-val=0.6959
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 2/15 - loss=0.3735 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 3/15 - loss=0.3413 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 4/15 - loss=0.3194 - F1-val=0.6902
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 5/15 - loss=0.3441 - F1-val=0.7004
+[efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] Epoch 6/15 - loss=0.2963 - F1-val=0.6982
+Early stopping en epoch 6 (mejor F1-val=0.7004)
+*** [efficientnet_b0, freeze=False, lr=3.27196e-05, wd=0.0736449] F1-val(best, epoch 2)=0.7004  (test no evaluado) ***
+
+
+===== TRIALS (F1-val media +- DE sobre semillas) =====
+trial  7  lr=6.02e-05  wd=0.0171  lote=64  0.7255 +- 0.0197
+trial  1  lr=2.32e-05  wd=0.0951  lote=16  0.7197 +- 0.0091
+trial  0  lr=3e-05  wd=0  lote=32  0.7176 +- 0.0125
+trial  5  lr=6.12e-05  wd=0.0139  lote=64  0.7156 +- 0.0032
+trial  3  lr=5.44e-06  wd=0.097  lote=16  0.7147 +- 0.0151
+trial  2  lr=9.47e-06  wd=0.00581  lote=16  0.7143 +- 0.0053
+trial  4  lr=1.06e-05  wd=0.0304  lote=16  0.7109 +- 0.0100
+trial  9  lr=8.24e-06  wd=0.0495  lote=32  0.7109 +- 0.0100
+trial  6  lr=0.000124  wd=0.02  lote=32  0.7109 +- 0.0108
+trial 11  lr=3.27e-05  wd=0.0736  lote=16  0.7098 +- 0.0091
+trial  8  lr=0.000137  wd=0.0305  lote=32  0.7095 +- 0.0111
+trial 10  lr=0.000231  wd=0.0716  lote=64  0.6994 +- 0.0042
+
+Mejor trial 7 (0.7255); trial 0 0.7176 +- 0.0125; ganancia +0.0079 -> se conserva el trial 0
+Trial 0 frente a F3.2 (F1-val por semilla): {'42': 'identico', '7': 'identico', '123': 'identico'}
+Para F3.5/F3.6 (run_grid): --lr 3e-05 --weight-decay 0.0 --batch-size 32
