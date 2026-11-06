@@ -1,0 +1,228 @@
+{
+ "manifest": "meta/artefactos_manifest.csv",
+ "task": null,
+ "root": "/kaggle/input",
+ "dataset_dirs": [
+  "datasets"
+ ],
+ "n_expected": 30,
+ "n_ok": 30,
+ "missing": [],
+ "mismatch": [],
+ "duplicates": [],
+ "extra": [],
+ "passed": true,
+ "checked_at": "2026-11-06T06:13:52+00:00",
+ "files": [
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.pt",
+   "bytes": 16365339,
+   "sha256": "7aad97be5b15d7e32313d5bbf1a8c40f7bd432674b75f3c4303b596552420212"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.pt",
+   "bytes": 16365769,
+   "sha256": "f3ee6df0859edeb081b570899f058607e84fb41e72ade9671fe6e7c6284c85b3"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.pt",
+   "bytes": 16364973,
+   "sha256": "9d2e04a28b3f840f131d83468d22aac56a19df25cf0ff67e473092ec59d81621"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.pt",
+   "bytes": 16364543,
+   "sha256": "5537b61e2d43737ff1a86c54008dd8ad59c9477a6a693c3d25e7519a4e030e2f"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.pt",
+   "bytes": 16364973,
+   "sha256": "3a785a82036699d452edff52c0eb505dc902ec2286d29d81966d82b97bde65ef"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed123.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.pt",
+   "bytes": 16359513,
+   "sha256": "2670c32a9827dc1bf26905a5368469ada05c5e57d72e8c88abd4c78964b8229f"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.pt",
+   "bytes": 16359943,
+   "sha256": "9a67482a8a7af4208c7b61c945dbe360bead36bd3756819266016360f19dfaad"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed42.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.pt",
+   "bytes": 16359147,
+   "sha256": "e6adc5407fb0f0fc211b88eb2a303716e3903374e63b4f654e7aa9d41161a04b"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed7.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.pt",
+   "bytes": 16358781,
+   "sha256": "e301948090455b2a98a2a7b6b2b8670a677b316d9574304b0549879ca7069105"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed99.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/gray_scott/models/gray_scott__efficientnet_b0__finetune__px224-flip__seed99.pt",
+   "bytes": 16359147,
+   "sha256": "ddf3b4e573779888ff3b29a25af7b8dcfbd23b62889e351ef5f235db08f8bdaf"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.pt",
+   "bytes": 343268915,
+   "sha256": "9903d98a8ddae881383652db1c44f3ea124b871800b0b5f33ef46ed22951a7b4"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.pt",
+   "bytes": 343269137,
+   "sha256": "8d7ae40c2ccd2f3a00059ed98255320459b5dd4800ff49dccea8b7975d33de7f"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.pt",
+   "bytes": 343268757,
+   "sha256": "4ad23231b9fab0771db063620356ade84941f3a6262dac8a8f0d7ef8afebd577"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.pt",
+   "bytes": 343268599,
+   "sha256": "47a51c88ad68469c8abafd15ae71095db5a2407b8a62f87b3cdb0f847f83d19d"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/lorenz/models/lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.pt",
+   "bytes": 343268757,
+   "sha256": "616f944da810a260c625ac331664ccc56c279fe030618889f466b70932928ecd"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed123.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed123.pt",
+   "bytes": 343267809,
+   "sha256": "e11700ae13ab628c21a6418d870df6e582a362901c846f41fd9480dcc8915510"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed2024.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed2024.pt",
+   "bytes": 343267967,
+   "sha256": "08201d97e5bef0b71314b7d5d701beaf02aac64328133753b1f0d66cf82c59df"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed42.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed42.pt",
+   "bytes": 343267651,
+   "sha256": "95f7367c45189eeead8607deb2e3d23f84c76c491a4b3b50743c23c2ac7cde93"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed7.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed7.pt",
+   "bytes": 343267493,
+   "sha256": "cd66c4001172363a4a3fe9a6957e3408222c3d0ca6b0d4820187454e08635d58"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed99.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/lorenz/models/lorenz__vit_b16__frozen__px224-noflip__seed99.pt",
+   "bytes": 343267651,
+   "sha256": "98be656328c4e84577bd7e89ffce98e36de8c9844572c36a93bffb4ba1fa054d"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed123.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed123.pt",
+   "bytes": 343268915,
+   "sha256": "fa487ec5af97f60b21feb53d4c5dd069a1c621d7a0f5c981a544a38d398335b3"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.pt",
+   "bytes": 343269137,
+   "sha256": "38668ecf6e155a18b60b15630b4f1f8ba86fa43a084d9eba979741fab46b7a06"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed42.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed42.pt",
+   "bytes": 343268757,
+   "sha256": "13cd06ff58e10baa848bc4f1d093be272720b0747fa7131aee8689c8c0bf7203"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed7.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed7.pt",
+   "bytes": 343268599,
+   "sha256": "7bd3be600abbc45021450273721ff24b883d7d74f5dbb0a3046abbf78451f440"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed99.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos-f36/ttdicevc/results/f36_permutacion/perlin/models/perlin__vit_b16__frozen__px224-noflip-perm99__seed99.pt",
+   "bytes": 343268757,
+   "sha256": "6c03c613b4f2f06f06e7b6e416417ee1245ffe5ca79a4c67fae3c48b96715d07"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed123.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed123.pt",
+   "bytes": 343267809,
+   "sha256": "6502a2bb23a9a80dbed5a3b73920a903245a4490a10796481488bfb1b0a82f0b"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed2024.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed2024.pt",
+   "bytes": 343267967,
+   "sha256": "be4eaeac3b379dcb6e6a88c480c16861fe54d89df385cbd85e34df61daf9f5bd"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed42.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed42.pt",
+   "bytes": 343267651,
+   "sha256": "2c21a4e6b30a9699b466f63b23482f3fda916592afe02066321184a8effe0b64"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed7.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed7.pt",
+   "bytes": 343267493,
+   "sha256": "a1dad340793961ce9716af1a8ba0cd49b05f052cb5d6ea2c697b51954330eec7"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed99.pt",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-artefactos/ttdicevc/results/f35_final/perlin/models/perlin__vit_b16__frozen__px224-noflip__seed99.pt",
+   "bytes": 343267651,
+   "sha256": "27bcd8cb5a956614c58f5c3a3bb6be41f293e681691f57de86368078df68c27b"
+  }
+ ]
+}
