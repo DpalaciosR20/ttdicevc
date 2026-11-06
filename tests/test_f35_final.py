@@ -49,7 +49,7 @@ def test_f1_recalculado(tech):
 
 
 def test_manifiesto_de_artefactos():
-    filas = list(csv.DictReader(open(os.path.join(REPO, 'meta', 'artefactos_manifest.csv'))))
+    filas = [f for f in csv.DictReader(open(os.path.join(REPO, 'meta', 'artefactos_manifest.csv'))) if f['task'] == 'F3.5']
     assert len(filas) == 15
     for f in filas:
         run = json.load(open(os.path.join(REPO, f['run_json'])))

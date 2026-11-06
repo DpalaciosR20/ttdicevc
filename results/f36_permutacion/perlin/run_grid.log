@@ -1,0 +1,87 @@
+Seleccion: {'role': 'finalist', 'source': 'results/predictions/primera_pasada', 'expected': {'perlin': ['vit_b16', 'frozen'], 'gray_scott': ['efficientnet_b0', 'finetune'], 'lorenz': ['vit_b16', 'frozen']}, 'matches': True, 'override': None}
+Fase: control_permutacion | CON TEST (protocolo 9027167, etiqueta protocolo-v1)
+Preprocesamiento: {'perlin': 'px224-noflip'}
+Hiperparametros: {'lr': {'finetune': 0.008597392498054104, 'frozen': 0.008597392498054104}, 'weight_decay': 0.06998750099215974, 'batch_size': 16, 'epochs': 15, 'patience': 4, 'num_workers': 2}
+Predicciones -> /kaggle/working/ttdicevc/results/predictions
+5 corridas, 0 ya hechas, 5 pendientes
+Entorno: {'python': '3.13.16', 'libraries': {'numpy': '2.1.3', 'pandas': '2.3.3', 'scikit-learn': '1.6.1', 'torch': '2.11.0+cu130', 'transformers': '5.20.2', 'tokenizers': '0.23.3', 'joblib': '1.6.0'}, 'platform': 'Linux-6.18.55+-x86_64-with-glibc2.39', 'gpu': 'Tesla T4', 'torch': '2.11.0+cu130', 'cudnn': 92700, 'device': 'cuda', 'torchvision': '0.26.0+cu130'} | commit a005f75c7bd8c41a866a731d23e71c5c1c379283
+Determinismo: {'deterministic_algorithms': True, 'flash_sdp': False, 'mem_efficient_sdp': False, 'CUBLAS_WORKSPACE_CONFIG': ':4096:8'}
+  perlin     train   908 imagenes OK
+  perlin     val     114 imagenes OK
+  perlin     test    114 imagenes OK
+
+===== [1/5] perlin__vit_b16__frozen__px224-noflip-perm99__seed42 =====
+Downloading: "https://download.pytorch.org/models/vit_b_16-c867db91.pth" to /root/.cache/torch/hub/checkpoints/vit_b_16-c867db91.pth
+  0%|          | 0.00/330M [00:00<?, ?B/s]  6%|▌         | 19.8M/330M [00:00<00:01, 207MB/s] 13%|█▎        | 44.2M/330M [00:00<00:01, 236MB/s] 21%|██        | 69.2M/330M [00:00<00:01, 248MB/s] 28%|██▊       | 94.1M/330M [00:00<00:00, 253MB/s] 36%|███▌      | 119M/330M [00:00<00:00, 255MB/s]  43%|████▎     | 143M/330M [00:00<00:00, 255MB/s] 51%|█████     | 168M/330M [00:00<00:00, 256MB/s] 58%|█████▊    | 193M/330M [00:00<00:00, 257MB/s] 66%|██████▌   | 218M/330M [00:00<00:00, 258MB/s] 73%|███████▎  | 243M/330M [00:01<00:00, 258MB/s] 81%|████████  | 268M/330M [00:01<00:00, 259MB/s] 88%|████████▊ | 292M/330M [00:01<00:00, 258MB/s] 96%|█████████▌| 317M/330M [00:01<00:00, 260MB/s]100%|██████████| 330M/330M [00:01<00:00, 255MB/s]
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 1/15 - loss=0.9681 - F1-val=0.4904
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 2/15 - loss=0.8214 - F1-val=0.3235
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 3/15 - loss=0.7832 - F1-val=0.3736
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 4/15 - loss=0.7262 - F1-val=0.4021
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 5/15 - loss=0.7724 - F1-val=0.3988
+Early stopping en epoch 5 (mejor F1-val=0.4904)
+*** [vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] F1-val(best, epoch 1)=0.4904  F1-test=0.5502 ***
+
+Salidas actualizadas (1 corridas, 1.1 min esta)
+
+===== [2/5] perlin__vit_b16__frozen__px224-noflip-perm99__seed7 =====
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 1/15 - loss=0.9220 - F1-val=0.4319
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 2/15 - loss=0.8965 - F1-val=0.3511
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 3/15 - loss=0.8150 - F1-val=0.4682
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 4/15 - loss=0.8287 - F1-val=0.3317
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 5/15 - loss=0.7728 - F1-val=0.5373
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 6/15 - loss=0.7759 - F1-val=0.3987
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 7/15 - loss=0.7368 - F1-val=0.3858
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 8/15 - loss=0.9462 - F1-val=0.4028
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 9/15 - loss=0.8560 - F1-val=0.3523
+Early stopping en epoch 9 (mejor F1-val=0.5373)
+*** [vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] F1-val(best, epoch 5)=0.5373  F1-test=0.6421 ***
+
+Salidas actualizadas (2 corridas, 1.9 min esta)
+
+===== [3/5] perlin__vit_b16__frozen__px224-noflip-perm99__seed123 =====
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 1/15 - loss=1.3281 - F1-val=0.3592
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 2/15 - loss=0.9177 - F1-val=0.3684
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 3/15 - loss=0.8154 - F1-val=0.3179
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 4/15 - loss=0.8605 - F1-val=0.3736
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 5/15 - loss=0.8327 - F1-val=0.3216
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 6/15 - loss=0.8498 - F1-val=0.3768
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 7/15 - loss=0.7190 - F1-val=0.4064
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 8/15 - loss=0.7227 - F1-val=0.4384
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 9/15 - loss=0.6711 - F1-val=0.4626
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 10/15 - loss=0.7063 - F1-val=0.3208
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 11/15 - loss=0.7191 - F1-val=0.3873
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 12/15 - loss=0.7369 - F1-val=0.4669
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 13/15 - loss=0.7145 - F1-val=0.3777
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 14/15 - loss=0.7079 - F1-val=0.3702
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 15/15 - loss=0.7214 - F1-val=0.4868
+*** [vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] F1-val(best, epoch 15)=0.4868  F1-test=0.5588 ***
+
+Salidas actualizadas (3 corridas, 3.1 min esta)
+
+===== [4/5] perlin__vit_b16__frozen__px224-noflip-perm99__seed2024 =====
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 1/15 - loss=0.9672 - F1-val=0.4519
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 2/15 - loss=0.8066 - F1-val=0.4098
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 3/15 - loss=0.7539 - F1-val=0.3944
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 4/15 - loss=0.7798 - F1-val=0.3344
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 5/15 - loss=0.8601 - F1-val=0.3334
+Early stopping en epoch 5 (mejor F1-val=0.4519)
+*** [vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] F1-val(best, epoch 1)=0.4519  F1-test=0.4715 ***
+
+Salidas actualizadas (4 corridas, 1.1 min esta)
+
+===== [5/5] perlin__vit_b16__frozen__px224-noflip-perm99__seed99 =====
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 1/15 - loss=1.0448 - F1-val=0.4045
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 2/15 - loss=0.8429 - F1-val=0.4556
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 3/15 - loss=0.8085 - F1-val=0.5446
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 4/15 - loss=0.8122 - F1-val=0.6193
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 5/15 - loss=0.7263 - F1-val=0.4146
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 6/15 - loss=0.8128 - F1-val=0.5602
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 7/15 - loss=0.8234 - F1-val=0.3613
+[vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] Epoch 8/15 - loss=0.7607 - F1-val=0.3026
+Early stopping en epoch 8 (mejor F1-val=0.6193)
+*** [vit_b_16, freeze=True, lr=0.00859739, wd=0.0699875] F1-val(best, epoch 4)=0.6193  F1-test=0.5191 ***
+
+Salidas actualizadas (5 corridas, 1.7 min esta)
+
+===== RESUMEN POR CONFIGURACION (F1-val media +- std sobre semillas) =====
+perlin     vit_b16          frozen   px224-noflip-perm99 n=5  val=0.5172+-0.0647   test=0.5483  
