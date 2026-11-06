@@ -28,7 +28,7 @@ from torchvision import models
 ARCH_ALIASES = {'vit_b16': 'vit_b_16'}
 
 
-def build_model(arch_name, freeze_backbone=False, num_classes=2):
+def build_model(arch_name, freeze_backbone=False, num_classes=2, pretrained=True):
     """
     Construye un modelo de las 3 arquitecturas soportadas, con la capa final
     ya reemplazada para 'num_classes'. Si freeze_backbone=True, congela todo
@@ -36,24 +36,26 @@ def build_model(arch_name, freeze_backbone=False, num_classes=2):
 
     arch_name: 'resnet18' | 'efficientnet_b0' | 'vit_b_16' (alias 'vit_b16',
     el nombre del vocabulario de F1.5)
+    pretrained=False: sin pesos de ImageNet (para cargar despues un state_dict
+    guardado, F3.7; evita la descarga).
     """
     arch_name = ARCH_ALIASES.get(arch_name, arch_name)
     if arch_name == 'resnet18':
-        model = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)
+        model = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1 if pretrained else None)
         if freeze_backbone:
             for p in model.parameters():
                 p.requires_grad = False
         model.fc = nn.Linear(model.fc.in_features, num_classes)
 
     elif arch_name == 'efficientnet_b0':
-        model = models.efficientnet_b0(weights=models.EfficientNet_B0_Weights.IMAGENET1K_V1)
+        model = models.efficientnet_b0(weights=models.EfficientNet_B0_Weights.IMAGENET1K_V1 if pretrained else None)
         if freeze_backbone:
             for p in model.parameters():
                 p.requires_grad = False
         model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, num_classes)
 
     elif arch_name == 'vit_b_16':
-        model = models.vit_b_16(weights=models.ViT_B_16_Weights.IMAGENET1K_V1)
+        model = models.vit_b_16(weights=models.ViT_B_16_Weights.IMAGENET1K_V1 if pretrained else None)
         if freeze_backbone:
             for p in model.parameters():
                 p.requires_grad = False

@@ -4,9 +4,10 @@ verify_artefacts.py
 Verifica una copia publicada de los modelos (dataset privado `tt2-artefactos`,
 matriz §9) contra `meta/artefactos_manifest.csv`.
 
-Busca todos los `.pt` bajo --root, los empareja por nombre de archivo con el
+Busca bajo --root los archivos con las extensiones del manifiesto (`.pt` de los
+modelos, `.npz` de los mapas de F3.7), los empareja por nombre de archivo con el
 manifiesto y compara bytes y SHA-256. Falla (código 1) si falta algún modelo
-del manifiesto, si alguno no coincide o si hay nombres duplicados. Los `.pt`
+del manifiesto, si alguno no coincide o si hay nombres duplicados. Los archivos
 que no están en el manifiesto se reportan como extra, sin fallar.
 
 Uso (Kaggle, con el dataset como input):
@@ -32,12 +33,12 @@ def sha256(path, chunk=1 << 20):
     return h.hexdigest()
 
 
-def find_models(root):
+def find_models(root, exts=('.pt',)):
     found = {}
     dup = []
     for dirpath, _, files in os.walk(root):
         for name in files:
-            if name.endswith('.pt'):
+            if name.endswith(tuple(exts)):
                 p = os.path.join(dirpath, name)
                 if name in found:
                     dup.append(name)
@@ -49,8 +50,8 @@ def verify(root, manifest, task=None):
     rows = list(csv.DictReader(open(manifest, encoding='utf-8')))
     if task:
         rows = [r for r in rows if r['task'] == task]
-    found, dup = find_models(root)
     expected = {os.path.basename(r['rel_path']): r for r in rows}
+    found, dup = find_models(root, sorted({os.path.splitext(n)[1] for n in expected}) or ['.pt'])
     files = []
     for name, r in sorted(expected.items()):
         p = found.get(name)
@@ -81,7 +82,7 @@ def verify(root, manifest, task=None):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('--root', required=True, help='carpeta donde buscar los .pt (p. ej. /kaggle/input)')
+    ap.add_argument('--root', required=True, help='carpeta donde buscar los archivos (p. ej. /kaggle/input)')
     ap.add_argument('--manifest', default=os.path.join(REPO, 'meta', 'artefactos_manifest.csv'))
     ap.add_argument('--task', default=None, help='verificar solo las filas de esta tarea (p. ej. F3.5)')
     ap.add_argument('--out', default=None, help='JSON con el reporte')

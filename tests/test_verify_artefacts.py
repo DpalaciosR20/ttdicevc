@@ -65,3 +65,9 @@ def test_hash_models_y_verificacion(tmp_path):
     assert rows[0]['sha256'] == hashlib.sha256(b'abc').hexdigest() and rows[0]['bytes'] == '3'
     with pytest.raises(SystemExit):
         hash_models.write_hashes(str(res), expected=15)
+
+
+def test_verifica_npz_si_el_manifiesto_los_lista(tmp_path):
+    inp, root, man = _setup(tmp_path, {'m.npz': b'mapas', 'a.pt': b'uno'})
+    rep = va.verify(str(inp), str(man))
+    assert rep['passed'] and rep['n_ok'] == 2
