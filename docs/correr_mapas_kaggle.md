@@ -34,9 +34,9 @@ os.environ["TT_DATA_ROOT"] = "/kaggle/input/datasets/santiagosoria26ss/tt2-insum
 ```
 `verify_artefacts` debe decir `30/30 modelos coinciden con el manifiesto -> OK`.
 
-**Celda 3: prueba de humo y estimación** (≈ 1–2 min). Corre 8 muestras por split en Perlin (ViT) y Gray-Scott (EfficientNet), en una carpeta aparte.
+**Celda 3: prueba de humo y estimación** (≈ 1–2 min). Corre 8 muestras por split en Perlin (ViT) y Gray-Scott (EfficientNet) en `/tmp`, fuera de la salida del notebook: en la primera ejecución se escribió en `/kaggle/working/f37_humo`, y esos `.npz` de prueba, con los mismos nombres, terminaron dentro de `tt2-mapas`.
 ```python
-!python -m src.interpretability.run_maps --models-root /kaggle/input --out-dir /kaggle/working/f37_humo --limit 8 --only perlin gray_scott 2>&1 | tail -25
+!python -m src.interpretability.run_maps --models-root /kaggle/input --out-dir /tmp/f37_humo --limit 8 --only perlin gray_scott 2>&1 | tail -25
 ```
 Cada línea debe mostrar `Δp_dep` ≤ 1e-4 y `Δlogit` del orden de 1e-5 o menos. Para estimar la corrida completa, multiplica el tiempo por corrida (`…s`) por 228/16 ≈ 14 y súmalo sobre las 30 corridas. Si la estimación pasa de 2 h, detente y avísale a Claude Code.
 

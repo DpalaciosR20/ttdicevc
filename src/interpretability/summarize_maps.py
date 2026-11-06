@@ -6,7 +6,8 @@ viven en el dataset `tt2-mapas`). No es el análisis de F4.3: solo comprueba
 que los mapas no son degenerados y deja los insumos agregados para las figuras.
 
 Por cada corrida de results/f37_mapas/records/ busca su .npz bajo --root
-(por nombre) y comprueba su SHA-256. Salidas en --out-dir:
+(por nombre; si hay copias, la que termina en la ruta del registro, como
+verify_artefacts) y comprueba su SHA-256. Salidas en --out-dir:
 
   per_run.csv     por corrida y tipo de mapa (map, backbone_map):
                     frac_constantes   mapas sin variación (normalizados a 0)
@@ -82,22 +83,21 @@ def main(argv=None):
     ap.add_argument('--records', default=os.path.join(REPO, 'results', 'f37_mapas', 'records'))
     ap.add_argument('--out-dir', default=os.path.join(REPO, 'results', 'f37_mapas', 'resumen'))
     a = ap.parse_args(argv)
-    from src.verify_artefacts import find_models, sha256
+    from src.verify_artefacts import find_all, locate, sha256
 
     recs = [json.load(open(p, encoding='utf-8')) for p in sorted(glob.glob(os.path.join(a.records, '*.json')))]
-    found, dup = find_models(a.root, ('.npz',))
-    if dup:
-        raise SystemExit(f'npz duplicados: {dup[:5]}')
-    names = {r['run']: os.path.basename(r['npz']['path']) for r in recs}
-    missing = [n for n in names.values() if n not in found]
-    if missing:
-        raise SystemExit(f'faltan {len(missing)} npz bajo {a.root}: {missing[:5]}')
+    allf = find_all(a.root, ('.npz',))
+    paths = {}
     for r in recs:
-        if sha256(found[names[r['run']]]) != r['npz']['sha256']:
+        p, _, amb = locate(allf.get(os.path.basename(r['npz']['path']), []), r['npz']['path'])
+        if p is None:
+            raise SystemExit(f"{r['run']}: npz {'ambiguo' if amb else 'ausente'} bajo {a.root}")
+        if sha256(p) != r['npz']['sha256']:
             raise SystemExit(f"{r['run']}: SHA-256 del npz distinto del registro")
+        paths[r['run']] = p
     print(f'{len(recs)} npz con huella correcta', flush=True)
 
-    data = {r['run']: load(found[names[r['run']]]) for r in recs}
+    data = {r['run']: load(paths[r['run']]) for r in recs}
     by_key = {(r['technique'], r['seed'], r['fase']): r['run'] for r in recs}
     rows, means = [], {}
     for r in recs:

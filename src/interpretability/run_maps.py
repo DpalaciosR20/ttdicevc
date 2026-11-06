@@ -78,11 +78,24 @@ def list_runs(sources, only=None):
     return runs
 
 
-def find_models(root):
-    from src.verify_artefacts import find_models as fm
-    found, dup = fm(root)
-    if dup:
-        raise SystemExit(f'modelos duplicados bajo {root}: {dup[:5]}')
+def model_rel_path(run_rel, d):
+    """results/<fuente>/<técnica>/runs/x.json -> results/<fuente>/<técnica>/models/<archivo>.pt"""
+    return os.path.dirname(os.path.dirname(run_rel)) + '/models/' + d['model_file']['path']
+
+
+def find_models(root, runs):
+    """{nombre: ruta}; con copias repetidas, la que termina en la ruta del modelo (verify_artefacts)."""
+    from src.verify_artefacts import find_all, locate
+    allf = find_all(root, ('.pt',))
+    found, bad = {}, []
+    for run_rel, d in runs:
+        p, _, amb = locate(allf.get(d['model_file']['path'], []), model_rel_path(run_rel, d))
+        if p is None:
+            bad.append(('ambiguo ' if amb else 'falta ') + d['model_file']['path'])
+        else:
+            found[d['model_file']['path']] = p
+    if bad:
+        raise SystemExit(f'{len(bad)} modelos sin ubicar bajo {root}: {bad[:5]}')
     return found
 
 
@@ -212,10 +225,7 @@ def main(argv=None):
     write_json_atomic(meta_path, meta)
 
     runs = list_runs(a.sources, a.only)
-    found = find_models(a.models_root)
-    missing = [d['model_file']['path'] for _, d in runs if d['model_file']['path'] not in found]
-    if missing:
-        raise SystemExit(f'faltan {len(missing)} modelos bajo {a.models_root}: {missing[:5]}')
+    found = find_models(a.models_root, runs)
     index = load_sample_index(str(paths.SAMPLE_INDEX))
     expected = {s: [r[1] for r in index[s]] for s in paths.SPLITS}
     env = environment()
