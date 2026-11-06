@@ -51,3 +51,17 @@ def test_duplicado_falla(tmp_path):
     (copia / 'a.pt').write_bytes(b'uno')
     rep = va.verify(str(inp), str(man))
     assert rep['duplicates'] == ['a.pt'] and not rep['passed']
+
+
+def test_hash_models_y_verificacion(tmp_path):
+    import pytest
+    from src import hash_models
+    res = tmp_path / 'results' / 'f36_permutacion'
+    (res / 'perlin' / 'models').mkdir(parents=True)
+    (res / 'perlin' / 'models' / 'm.pt').write_bytes(b'abc')
+    out, n = hash_models.write_hashes(str(res), expected=1)
+    rows = list(csv.DictReader(open(out)))
+    assert n == 1 and rows[0]['path'] == 'results/f36_permutacion/perlin/models/m.pt'
+    assert rows[0]['sha256'] == hashlib.sha256(b'abc').hexdigest() and rows[0]['bytes'] == '3'
+    with pytest.raises(SystemExit):
+        hash_models.write_hashes(str(res), expected=15)
