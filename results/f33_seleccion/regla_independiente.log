@@ -1,0 +1,22 @@
+gray_scott  finalista efficientnet_b0/finetune   segundo resnet18/finetune          select_finalist: efficientnet_b0/finetune, resnet18/finetune  COINCIDE
+perlin      finalista vit_b16/frozen             segundo efficientnet_b0/frozen     select_finalist: vit_b16/frozen, efficientnet_b0/frozen  COINCIDE
+lorenz      finalista vit_b16/frozen             segundo efficientnet_b0/finetune   select_finalist: vit_b16/frozen, efficientnet_b0/finetune  COINCIDE
+max |media − select_finalist| = np.float64(2.220446049250313e-16) ; max |DE − select_finalist| = np.float64(9.8879238130678e-17)
+Reimplementación coincide con select_finalist/select_second: True
+   tecnica                    variante                finalista                                                                          empatadas
+gray_scott regla_§5 (DE líder, ddof=1) efficientnet_b0/finetune                      resnet18/finetune; efficientnet_b0/finetune; vit_b16/finetune
+gray_scott             DE líder ddof=0 efficientnet_b0/finetune                      resnet18/finetune; efficientnet_b0/finetune; vit_b16/finetune
+gray_scott            EE líder = DE/√3 efficientnet_b0/finetune                      resnet18/finetune; efficientnet_b0/finetune; vit_b16/finetune
+gray_scott     DE del retador (ddof=1) efficientnet_b0/finetune                      resnet18/finetune; efficientnet_b0/finetune; vit_b16/finetune
+gray_scott DE combinada √(DE_l²+DE_r²) efficientnet_b0/finetune                      resnet18/finetune; efficientnet_b0/finetune; vit_b16/finetune
+    perlin regla_§5 (DE líder, ddof=1)           vit_b16/frozen                                                   vit_b16/frozen; vit_b16/finetune
+    perlin             DE líder ddof=0           vit_b16/frozen                                                   vit_b16/frozen; vit_b16/finetune
+    perlin            EE líder = DE/√3           vit_b16/frozen                                                   vit_b16/frozen; vit_b16/finetune
+    perlin     DE del retador (ddof=1)           vit_b16/frozen                         vit_b16/frozen; vit_b16/finetune; efficientnet_b0/finetune
+    perlin DE combinada √(DE_l²+DE_r²)           vit_b16/frozen vit_b16/frozen; vit_b16/finetune; efficientnet_b0/finetune; efficientnet_b0/frozen
+    lorenz regla_§5 (DE líder, ddof=1)           vit_b16/frozen                                           efficientnet_b0/finetune; vit_b16/frozen
+    lorenz             DE líder ddof=0 efficientnet_b0/finetune                                                           efficientnet_b0/finetune
+    lorenz            EE líder = DE/√3 efficientnet_b0/finetune                                                           efficientnet_b0/finetune
+    lorenz     DE del retador (ddof=1)           vit_b16/frozen efficientnet_b0/finetune; vit_b16/frozen; efficientnet_b0/frozen; vit_b16/finetune
+    lorenz DE combinada √(DE_l²+DE_r²)           vit_b16/frozen efficientnet_b0/finetune; vit_b16/frozen; efficientnet_b0/frozen; vit_b16/finetune
+exit=0

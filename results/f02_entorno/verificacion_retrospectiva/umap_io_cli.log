@@ -1,0 +1,17 @@
+# 2026-11-05 19:05:37-0600 · python src/training/umap_io.py <TT_DATA_ROOT>/umap_params.pkl · commit b2cf9f8
+archivo: G:/Mi unidad/tt2-insumos/umap_params.pkl
+sha256:  081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224
+train  n= 908  label1= 353  label0= 555  dtype params=float32
+val    n= 114  label1=  44  label0=  70  dtype params=float32
+test   n= 114  label1=  44  label0=  70  dtype params=float32
+
+Rango de u (hallazgo 7):
+train  min=+0.0000 max=1.0000  muestras con algun u fuera de [0,1]: 0/908
+val    min=+0.0000 max=1.0000  muestras con algun u fuera de [0,1]: 0/114
+test   min=+0.0000 max=1.0000  muestras con algun u fuera de [0,1]: 0/114
+
+Saturacion en 0/1 (hallazgo 7):
+train  valores exactamente en 0/1 por componente: [2, 2, 2, 2, 2]  muestras con alguno: 9/908 (label1 4/353, label0 5/555)
+val    valores exactamente en 0/1 por componente: [2, 2, 6, 5, 6]  muestras con alguno: 20/114 (label1 5/44, label0 15/70)
+test   valores exactamente en 0/1 por componente: [1, 1, 2, 3, 1]  muestras con alguno: 8/114 (label1 4/44, label0 4/70)
+# exit=0

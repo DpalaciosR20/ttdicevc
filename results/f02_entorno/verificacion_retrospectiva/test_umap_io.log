@@ -1,0 +1,40 @@
+# 2026-11-05 19:05:37-0600 · worktree desacoplado en ea0467e (origin/ce/f0.2-bitacora) · UMAP_PKL=G:/Mi unidad/tt2-insumos/umap_params.pkl
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Scripts\python.exe
+rootdir: C:\Users\DELL\AppData\Local\Temp\claude\77d6191c75a29e6f\56face55-a35f-4783-938b-ef589328a292\scratchpad\wt_ea0467e
+plugins: anyio-4.15.1, platformdirs-4.14.0
+collecting ... collected 5 items
+
+tests/test_umap_io.py::test_sintetico_umap_real_bloqueado SINTETICO: arreglos identicos con umap/numba/sklearn bloqueados; npz identico
+
+PASSED
+tests/test_umap_io.py::test_real_sha256 sha256 081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224  tamano 3021128 bytes
+PASSED
+tests/test_umap_io.py::test_real_lectura_bloqueada REAL train: params (908, 5) float32 label1=353 label0=555
+REAL val: params (114, 5) float32 label1=44 label0=70
+REAL test: params (114, 5) float32 label1=44 label0=70
+train  min=+0.0000 max=1.0000  muestras con algun u fuera de [0,1]: 0/908
+val    min=+0.0000 max=1.0000  muestras con algun u fuera de [0,1]: 0/114
+test   min=+0.0000 max=1.0000  muestras con algun u fuera de [0,1]: 0/114
+train  valores exactamente en 0/1 por componente: [2, 2, 2, 2, 2]  muestras con alguno: 9/908 (label1 4/353, label0 5/555)
+val    valores exactamente en 0/1 por componente: [2, 2, 6, 5, 6]  muestras con alguno: 20/114 (label1 5/44, label0 15/70)
+test   valores exactamente en 0/1 por componente: [1, 1, 2, 3, 1]  muestras con alguno: 8/114 (label1 4/44, label0 4/70)
+
+PASSED
+tests/test_umap_io.py::test_real_carga_auditada AUDITORIA modulos resueltos normalmente: ['joblib', 'numpy', 'scipy']
+AUDITORIA clases sustituidas: ['numba', 'sklearn', 'umap'] 4
+AUDITORIA no numpy/joblib: ['scipy.sparse._csr.csr_matrix']
+
+PASSED
+tests/test_umap_io.py::test_real_etiquetas_val_coinciden_con_f32 val: 114 filas de F3.2; coinciden con umap_params: True
+PASSED
+
+============================== warnings summary ===============================
+tests/test_umap_io.py::test_sintetico_umap_real_bloqueado
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\umap\umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+    warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: C:\Users\DELL\Desktop\TT\TT2\ttdicevc\results\f02_entorno\verificacion_retrospectiva\test_umap_io_junit.xml -
+======================== 5 passed, 1 warning in 25.04s ========================
+# exit=0

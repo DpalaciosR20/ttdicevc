@@ -1,0 +1,17 @@
+TT_DATA_ROOT = G:\Mi unidad\tt2-insumos
+Manifiesto  = meta/data_manifest.csv
+
+IMAGES[perlin]       manifiesto=1136 insumos=1136 coinciden=1136 difieren=0 faltantes=0 sobrantes=0
+                     dir_digest manifiesto  b8ce53c6fa339d3a4dcca2ba647c55aeaec79909f7137563efd8b5d04f7e3ccb
+                     dir_digest recalculado b8ce53c6fa339d3a4dcca2ba647c55aeaec79909f7137563efd8b5d04f7e3ccb  (coincide)
+                     ignorados (archivos de sistema): desktop.ini
+IMAGES[gray_scott]   manifiesto=1136 insumos=1136 coinciden=1136 difieren=0 faltantes=0 sobrantes=0
+                     dir_digest manifiesto  c3593c9bd04b4abb45afe7958bded087b53b7812a7cb11e72bda8e382f2d31db
+                     dir_digest recalculado c3593c9bd04b4abb45afe7958bded087b53b7812a7cb11e72bda8e382f2d31db  (coincide)
+                     ignorados (archivos de sistema): desktop.ini
+IMAGES[lorenz]       manifiesto=1136 insumos=1136 coinciden=1136 difieren=0 faltantes=0 sobrantes=0
+                     dir_digest manifiesto  6fc478a58477f5ba76d9105435be179c52539db2d67dbee3918a67dc5cfdde9b
+                     dir_digest recalculado 6fc478a58477f5ba76d9105435be179c52539db2d67dbee3918a67dc5cfdde9b  (coincide)
+                     ignorados (archivos de sistema): desktop.ini
+
+TOTAL coinciden 3408 / 3408
