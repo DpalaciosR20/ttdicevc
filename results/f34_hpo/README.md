@@ -25,6 +25,8 @@ Las banderas exactas para `run_grid` están en `run_grid_flags` de cada `hpo_res
 | `hpo.log` | Salida completa |
 | `grid_meta.json` | `{"fase": "hpo", "smoke": false}` |
 
+`git_seleccion.log` documenta la procedencia de las corridas frente a la etiqueta `seleccion-f33` (bitácora, H5).
+
 `errors/` quedó vacío en las tres técnicas, por eso no se versiona. `study.pkl` tampoco se versiona porque `.gitignore` excluye `*.pkl`. Si hace falta, el estudio se reconstruye con el mismo *sampler* a partir de `runs/` (`run_hpo.py --prev-results`). `entorno/` guarda `pip_freeze.txt` y `gpu.txt` de la sesión.
 
 ## Procedencia

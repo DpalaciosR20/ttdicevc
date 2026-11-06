@@ -210,3 +210,40 @@ def test_test_bloqueado_sin_etiqueta(monkeypatch):
     monkeypatch.setattr(run_grid, 'git', lambda *a: None if a[0] == 'rev-parse' else '')
     with pytest.raises(SystemExit, match='protocolo-v1'):
         run_grid.check_protocol_frozen(run_grid.PROTOCOL_DEFAULT, 'protocolo-v1')
+
+
+# ─────────────────────────────────────────────────────────────
+# Selección en las fases con test (F3.3 H10; matriz §11.10)
+# ─────────────────────────────────────────────────────────────
+
+FINALISTAS = [('gray_scott', 'efficientnet_b0', 'finetune'), ('perlin', 'vit_b16', 'frozen'),
+              ('lorenz', 'vit_b16', 'frozen')]
+SEGUNDOS = [('gray_scott', 'resnet18', 'finetune'), ('perlin', 'efficientnet_b0', 'frozen'),
+            ('lorenz', 'efficientnet_b0', 'finetune')]
+
+
+@pytest.mark.parametrize('fase', ['final', 'control_permutacion'])
+def test_fases_finales_exigen_finalistas(fase):
+    m = config.load_matrix()
+    info = run_grid.check_selection(fase, FINALISTAS, None, m)
+    assert info['matches'] and info['role'] == 'finalist'
+    assert info['source'] == 'results/predictions/primera_pasada'
+    with pytest.raises(SystemExit, match='override-selection'):
+        run_grid.check_selection(fase, SEGUNDOS[:1], None, m)
+    info = run_grid.check_selection(fase, SEGUNDOS[:1], 'decision de SV', m)
+    assert not info['matches'] and info['override'] == 'decision de SV'
+
+
+def test_sensibilidad_exige_segundos():
+    m = config.load_matrix()
+    info = run_grid.check_selection('sensibilidad', SEGUNDOS, None, m)
+    assert info['matches'] and info['role'] == 'second'
+    assert info['expected'] == {t: [a, s] for t, a, s in SEGUNDOS}
+    with pytest.raises(SystemExit, match='override-selection'):
+        run_grid.check_selection('sensibilidad', FINALISTAS, None, m)
+
+
+def test_seleccion_no_aplica_en_primera_pasada_ni_smoke():
+    m = config.load_matrix()
+    assert run_grid.check_selection('primera_pasada', SEGUNDOS, None, m) is None
+    assert run_grid.check_selection('final', SEGUNDOS, None, m, smoke=True) is None

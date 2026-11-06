@@ -21,6 +21,12 @@ esta commiteado sin cambios o si la etiqueta protocolo-v1 no esta en el
 historial de HEAD. En primera_pasada y sensibilidad los hiperparametros son
 los de la matriz y no se pueden cambiar por linea de comandos.
 
+Seleccion (matriz §11.10; F3.3 H10): final y control_permutacion solo aceptan
+los finalistas de select_finalist, y sensibilidad los segundos de
+select_second, ambos calculados sobre results/predictions/primera_pasada.
+Otra configuracion exige --override-selection "<motivo>", que queda en cada
+JSON. Con --smoke no se comprueba.
+
 Insumos: TT_DATA_ROOT (docs/datos.md, src/paths.py). Antes de entrenar se
 verifica cada carpeta de imagenes contra meta/data_manifest.csv (SHA-256
 agregado) y cada nombre de archivo y etiqueta contra meta/sample_index.csv.
@@ -493,6 +499,38 @@ def parse_configs(items, matrix):
     return out
 
 
+SELECTION_ROLE = {'final': 'finalist', 'control_permutacion': 'finalist', 'sensibilidad': 'second'}
+
+
+def expected_selection(fase, matrix, pattern=None):
+    """Configuraciones que la regla §5 asigna a la fase: {tecnica: (arq, estrategia)}."""
+    from src.selection import select_finalist as sf
+    pattern = pattern or os.path.join(REPO, 'results', 'predictions', 'primera_pasada', '*.csv')
+    table, runs = sf.select_finalists(pattern, matrix=matrix)
+    role = SELECTION_ROLE[fase]
+    if role == 'second':
+        table = sf.select_second_from_runs(runs, matrix)
+    chosen = table[table[role]]
+    return {r.technique: (r.arch, r.strategy) for r in chosen.itertuples()}, rel_repo(os.path.dirname(pattern))
+
+
+def check_selection(fase, triples, override, matrix, smoke=False, pattern=None):
+    """F3.3 H10: en final/control_permutacion/sensibilidad cada configuracion
+    debe ser la que select_finalist/select_second asigna a su tecnica."""
+    if fase not in SELECTION_ROLE or smoke:
+        return None
+    expected, source = expected_selection(fase, matrix, pattern)
+    mismatches = [f'{t}:{a}:{s} (esperado {t}:{":".join(expected[t]) if t in expected else "ninguno"})'
+                  for t, a, s in triples if expected.get(t) != (a, s)]
+    info = {'role': SELECTION_ROLE[fase], 'source': source,
+            'expected': {t: list(v) for t, v in expected.items()},
+            'matches': not mismatches, 'override': override}
+    if mismatches and not override:
+        raise SystemExit(f'Fase {fase}: estas configuraciones no son las de {SELECTION_ROLE[fase]} '
+                         f'segun la regla §5: {mismatches}. Si SV las eligio, pasa --override-selection "<motivo>".')
+    return info
+
+
 def main():
     matrix = config.load_matrix()
     f = matrix['factores']
@@ -509,6 +547,8 @@ def main():
     ap.add_argument('--strategies', nargs='+', default=None, choices=f['strategy'])
     ap.add_argument('--configs', nargs='+', default=None, metavar='TEC:ARQ:EST',
                     help='lista explicita de configuraciones (finalistas, segundo mejor); excluye los filtros')
+    ap.add_argument('--override-selection', default=None, metavar='MOTIVO',
+                    help='permite en final/control/sensibilidad configuraciones distintas de las de la regla §5')
     ap.add_argument('--seeds', nargs='+', type=int, default=None, help='default: las de la fase en la matriz')
     ap.add_argument('--img-size', type=int, default=None, help='solo se acepta si coincide con el JSON de F1.4')
     ap.add_argument('--no-hflip', action='store_true', help='solo se acepta si el JSON de F1.4 no permite volteo')
@@ -546,6 +586,9 @@ def main():
                    for s in (args.strategies or f['strategy'])]
     triples.sort(key=lambda c: (_tech_order(c[0]), f['arch'].index(c[1]), f['strategy'].index(c[2])))
     techniques = sorted({c[0] for c in triples}, key=_tech_order)
+    selection = check_selection(fase, triples, args.override_selection, matrix, smoke=args.smoke)
+    if selection:
+        print('Seleccion:', selection)
 
     prep = config.load_preprocessing(techniques)
     check_cli_preprocessing(prep, args.img_size, args.no_hflip)
@@ -649,7 +692,7 @@ def main():
                 'best_epoch': res['best_epoch'], 'epochs_run': res['epochs_run'],
                 'n_trainable_params': res['n_trainable_params'], 'n_total_params': res['n_total_params'],
                 'best_f1_val': float(res['best_f1_val']),
-                'evaluate_test': args.evaluate_test, 'protocol': protocol,
+                'evaluate_test': args.evaluate_test, 'protocol': protocol, 'selection': selection,
                 'f1_test': float(res['f1_test']) if has_test else None,
                 'acc_test': float(accuracy_score(res['test_true'], res['test_preds'])) if has_test else None,
                 'class_weights': class_weights.tolist(),

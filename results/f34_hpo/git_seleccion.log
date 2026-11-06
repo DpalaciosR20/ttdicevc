@@ -1,0 +1,28 @@
+# Generado el 2026-11-06T02:16Z en la rama ce/f3.4-hpo (HEAD a92e4b6)
+
+$ git rev-parse seleccion-f33^{commit}
+b2cf9f878542ef63105caa228512c4e74f418cf2
+$ git log -1 --format="%H %cI" seleccion-f33
+b2cf9f878542ef63105caa228512c4e74f418cf2 2026-11-05T16:38:01-06:00
+
+$ git merge-base --is-ancestor seleccion-f33 b848d2c; echo $?
+1
+$ git merge-base --is-ancestor seleccion-f33 HEAD; echo $?
+0
+$ git merge-base --is-ancestor protocolo-v1 b848d2c; echo $?
+0
+
+$ git diff --stat b848d2c seleccion-f33 -- src/training src/generation src/selection configs
+ src/training/run_hpo.py | 403 ------------------------------------------------
+ 1 file changed, 403 deletions(-)
+(fin del diff)
+
+$ git diff --stat b848d2c HEAD -- src/training/train_model.py src/training/data.py src/training/build_model.py src/training/config.py src/training/run_hpo.py src/generation src/selection configs
+(fin del diff)
+
+$ git for-each-ref refs/tags/seleccion-f33 --format="%(objecttype) %(taggerdate:iso8601)"
+tag 2026-11-05 16:46:46 -0600
+
+# Inicio de la sesión de Kaggle (entorno/gpu.txt, nvidia-smi en UTC): 2026-11-05T22:47:47+00:00
+# Primera corrida terminada (gray_scott/runs, created_at mínimo): 2026-11-05T22:51:39+00:00
+# Etiqueta seleccion-f33 (taggerdate): 2026-11-05T22:46:46+00:00
