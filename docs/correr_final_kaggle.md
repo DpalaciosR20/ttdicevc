@@ -165,3 +165,15 @@ Además:
 - El F1 de val y de test, recalculado desde `val_probs` y `test_probs`, coincide con el registrado.
 - `model_file.sha256` coincide con `models_sha256.csv`.
 - Por finalista: cuántas semillas terminan por el tope de 15 épocas (F3.3 H4) y la dispersión de Perlin (F3.4 H2).
+
+## Verificación de `tt2-artefactos` (después de publicar el *dataset*)
+
+En un notebook nuevo: **acelerador** ninguno (CPU), **internet** activado, **input** solo el *dataset* `tt2-artefactos`. La verificación tarda ≈ 1–2 min, lo que cuesta calcular el SHA-256 de 3.27 GiB.
+
+**Celda 1:** igual que la celda 1 de arriba, con el `COMMIT` que indique Claude Code y sin la línea de `seleccion-f33`.
+
+**Celda 2: huellas contra el manifiesto** (el código vive en `src/verify_artefacts.py`)
+```python
+!python -m src.verify_artefacts --root /kaggle/input --task F3.5 --out /kaggle/working/artefactos_verificacion.json
+```
+Debe terminar con `15/15 modelos coinciden con el manifiesto -> OK`. Descarga `artefactos_verificacion.json` de la pestaña *Output* y anota la versión del *dataset* que aparece en su página (*Version N*). Claude Code los integra en `results/f35_final/` y en la bitácora.

@@ -44,7 +44,7 @@ def test_corridas_de_finalistas(tech):
 def test_f1_recalculado(tech):
     for r in _runs(tech):
         for split, ref in (('val', r['best_f1_val']), ('test', r['f1_test'])):
-            pred = (np.array(r[f'{split}_probs']) >= 0.5).astype(int)
+            pred = (np.array(r[f"{split}_probs"]) > 0.5).astype(int)
             assert f1_score(r[f'{split}_true'], pred, average='macro') == pytest.approx(ref, abs=1e-12)
 
 
