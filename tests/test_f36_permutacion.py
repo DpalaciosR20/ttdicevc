@@ -63,3 +63,15 @@ def test_manifiesto_f36():
         run = json.load(open(os.path.join(REPO, f['run_json'])))
         assert run['model_file']['sha256'] == f['sha256'] and os.path.basename(f['rel_path']) == run['model_file']['path']
     assert len(glob.glob(os.path.join(REPO, 'results', 'predictions', 'control_permutacion', '*.csv'))) == 15
+
+
+def test_verificacion_de_artefactos_f35_y_f36():
+    rep = json.load(open(os.path.join(RES, 'artefactos_verificacion.json')))
+    assert rep['passed'] and rep['n_ok'] == rep['n_expected'] == 30 and rep['task'] is None
+    filas = {os.path.basename(f['rel_path']): f for f in
+             csv.DictReader(open(os.path.join(REPO, 'meta', 'artefactos_manifest.csv')))}
+    assert len(filas) == 30
+    for f in rep['files']:
+        fila = filas[f['file']]
+        assert f['status'] == 'ok' and f['sha256'] == fila['sha256']
+        assert f['found_at'] == f"datasets/{fila['dataset']}/{fila['rel_path']}"

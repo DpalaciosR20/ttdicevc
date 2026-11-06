@@ -97,7 +97,7 @@ results/predictions/control_permutacion/*.csv   15 CSV F1.5 (val y test) con su 
 
 ## Modelos
 
-Los 15 `.pt` (≈ 3.3 GiB) se quedan en la salida de la versión. Publícalos en `tt2-artefactos`. Lo preferible es una versión nueva del *dataset* que conserve los de F3.5. Si Kaggle no permite versionarlo desde esta salida, publícalos como *dataset* aparte, `tt2-artefactos-f36`. `src/verify_artefacts.py` busca por nombre de archivo, así que la verificación funciona en ambos casos:
+Los 15 `.pt` (≈ 3.3 GiB) se quedan en la salida de la versión. Publícalos en `tt2-artefactos`. Lo preferible es una versión nueva del *dataset* que conserve los de F3.5. Si Kaggle no permite versionarlo desde esta salida, publícalos como *dataset* aparte, `tt2-artefactos-f36`. Eso fue lo que se hizo: `palaciosroblesdiego/tt2-artefactos-f36`, registrado en la columna `dataset` del manifiesto. `src/verify_artefacts.py` busca por nombre de archivo, así que la verificación funciona en ambos casos:
 
 ```python
 !python -m src.verify_artefacts --root /kaggle/input --task F3.6 --out /kaggle/working/artefactos_verificacion_f36.json
