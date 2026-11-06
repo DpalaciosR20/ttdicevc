@@ -1,0 +1,4 @@
+# 2026-11-05 18:44:46-0600 · TT_DATA_ROOT=G:\Mi unidad\tt2-insumos · commit b2cf9f8
+# python -m src.build_manifest --verify
+manifiesto OK
+# exit=0
