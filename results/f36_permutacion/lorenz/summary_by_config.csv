@@ -1,0 +1,2 @@
+technique,arch,strategy,variant,n_seeds,seeds,n_trainable_params,n_total_params,f1_val_mean,f1_val_std,f1_test_mean,f1_test_std,seleccion
+lorenz,vit_b16,frozen,px224-noflip-perm99,5,7 42 99 123 2024,1538,85800194,0.4831,0.0326,0.5329,0.0419,

@@ -1,0 +1,2 @@
+technique,arch,strategy,variant,n_seeds,seeds,n_trainable_params,n_total_params,f1_val_mean,f1_val_std,f1_test_mean,f1_test_std,seleccion
+gray_scott,efficientnet_b0,finetune,px224-flip-perm99,5,7 42 99 123 2024,4010110,4010110,0.5054,0.061,0.527,0.1192,
