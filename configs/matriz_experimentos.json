@@ -162,12 +162,22 @@
       "resnet18": {"method": "grad_cam", "layer": "layer4"},
       "efficientnet_b0": {"method": "grad_cam", "layer": "features[-1]"},
       "vit_b16": {
-        "method": "attention_rollout",
+        "_enmienda": "Enmienda 3 (2026-11-05), protocolo y matriz §8",
+        "method": "gradient_weighted_rollout",
+        "reference": "Chefer, Gur y Wolf (2021), ICCV",
         "head_fusion": "mean",
-        "add_identity": true,
-        "renormalize": true,
-        "discard_ratio": 0.0,
-        "exclude_cls_token": true
+        "block_relevance": "mean_h(relu(grad_A * A))",
+        "update": "R <- R + Abar @ R, R0 = I",
+        "exclude_cls_token": true,
+        "secondary": {
+          "role": "atencion_backbone",
+          "method": "attention_rollout",
+          "head_fusion": "mean",
+          "add_identity": true,
+          "renormalize": true,
+          "discard_ratio": 0.0,
+          "exclude_cls_token": true
+        }
       }
     },
     "target": {"logit_class": 1},

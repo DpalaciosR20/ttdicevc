@@ -1,0 +1,6 @@
+technique,arch,strategy,variant,seed,lr,weight_decay,best_epoch,epochs_run,n_trainable_params,n_total_params,f1_val,f1_test,acc_test,minutes,warning
+gray_scott,efficientnet_b0,finetune,px224-flip,7,3e-05,0.0,5,9,4010110,4010110,0.7039,0.7267,0.7368,0.9,
+gray_scott,efficientnet_b0,finetune,px224-flip,42,3e-05,0.0,3,7,4010110,4010110,0.7203,0.7449,0.7544,0.8,
+gray_scott,efficientnet_b0,finetune,px224-flip,99,3e-05,0.0,12,15,4010110,4010110,0.7203,0.7185,0.7281,1.6,
+gray_scott,efficientnet_b0,finetune,px224-flip,123,3e-05,0.0,10,14,4010110,4010110,0.7285,0.6982,0.7105,1.5,
+gray_scott,efficientnet_b0,finetune,px224-flip,2024,3e-05,0.0,3,7,4010110,4010110,0.7121,0.7367,0.7456,0.7,

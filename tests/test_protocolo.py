@@ -420,9 +420,10 @@ def test_canonical_ids_exist(cfg, canon):
 # ── Enmienda 2 (2026-11-04): F2.3, F2.4 y longitud ───────────────────────────
 
 def enmienda_2(doc):
-    m = re.search(r'^## Enmienda 2 \(2026-11-04\)$(.*)\Z', doc, re.M | re.S)
-    assert m, 'falta la Enmienda 2 al final del protocolo'
-    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 2 debe ser la última sección'
+    # Desde la Enmienda 3 (2026-11-05) ya no es la última sección: llega hasta la siguiente enmienda
+    m = re.search(r'^## Enmienda 2 \(2026-11-04\)$(.*?)(?=^## Enmienda 3 \(2026-11-05\)$)', doc, re.M | re.S)
+    assert m, 'falta la Enmienda 2, seguida de la Enmienda 3'
+    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 2 no debe contener otras secciones'
     return m.group(1)
 
 
@@ -525,3 +526,34 @@ def test_enmienda_2_vocabulario(cfg):
     assert cfg['descriptores']['arch'] in schema.VOCAB['arch']
     assert schema.FILENAME_RE.match(schema.file_name('text_length', 'logreg', 'none', 42)).groupdict() == \
         {'technique': 'text_length', 'arch': 'logreg', 'strategy': 'none', 'seed': '42'}
+
+
+# ── Enmienda 3 (2026-11-05): atribución de ViT-B/16 (F3.3 H5) ────────────────
+
+def enmienda_3(doc):
+    m = re.search(r'^## Enmienda 3 \(2026-11-05\)$(.*)\Z', doc, re.M | re.S)
+    assert m, 'falta la Enmienda 3 al final del protocolo'
+    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 3 debe ser la última sección'
+    return m.group(1)
+
+
+def test_enmienda_3_es_la_ultima_y_previa_a_prueba(doc):
+    sec = enmienda_3(doc)
+    assert doc.index('## Enmienda 2 (2026-11-04)') < doc.index('## Enmienda 3 (2026-11-05)')
+    assert '**antes de cualquier consulta de prueba de los finalistas**' in sec
+    assert 'antes de generar cualquier mapa de F3.7' in sec
+    for n in (1, 2, 3):
+        assert f'{n}. **' in sec
+
+
+def test_enmienda_3_coincide_con_la_matriz(doc, matrix):
+    sec, vit = enmienda_3(doc), matrix['interpretabilidad']['methods']['vit_b16']
+    assert vit['method'] == 'gradient_weighted_rollout' and 'Chefer, Gur y Wolf, 2021' in sec
+    assert 'Ā_b = E_h[(∇A_b ⊙ A_b)⁺]' in sec and vit['block_relevance'] == 'mean_h(relu(grad_A * A))'
+    assert 'R = I' in sec and 'R ← R + Ā_b·R' in sec and vit['update'] == 'R <- R + Abar @ R, R0 = I'
+    assert 'clase Depresivo (1)' in sec and matrix['interpretabilidad']['target'] == {'logit_class': 1}
+    s2 = vit['secondary']
+    assert s2['method'] == 'attention_rollout' and s2['role'] == 'atencion_backbone' and 'Abnar y Zuidema, 2020' in sec
+    assert 'aleatorización de la cabeza' in sec
+    # el config del protocolo no cambia con esta enmienda
+    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_2

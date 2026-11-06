@@ -1,0 +1,98 @@
+{
+ "task_id": "F3.5",
+ "fase": "final",
+ "git_commit": "ef16ab598ad68aaee075c0e628d7d7cda8f2831e",
+ "created_at": "2026-11-06T04:08:13+00:00",
+ "config": {
+  "variant": "px224-noflip",
+  "preprocessing": {
+   "size": 224,
+   "resize_mode": "resize",
+   "interpolation": "bilinear",
+   "antialias": true,
+   "hflip": false,
+   "vit": "same",
+   "variant": "px224-noflip"
+  },
+  "preprocessing_file": {
+   "path": "configs/preprocesamiento.json",
+   "sha256": "7a13a3b2442b03485248732c9e61abc4306147b6c1ba7419285b522aff73a451"
+  },
+  "matrix_file": {
+   "path": "configs/matriz_experimentos.json",
+   "sha256": "01d177bbe4ea6b0795f5da5f39fce358edcbcc1419d86b20c926e725ccac29aa"
+  },
+  "optimizer": "AdamW",
+  "lr": 0.008597392498054104,
+  "weight_decay": 0.06998750099215974,
+  "batch_size": 16,
+  "max_epochs": 15,
+  "patience": 4,
+  "loss": "CrossEntropyLoss",
+  "class_weights": [
+   0.8180180191993713,
+   1.286118984222412
+  ],
+  "pretrained_weights": "IMAGENET1K_V1",
+  "determinism": {
+   "cudnn_deterministic": true,
+   "cudnn_benchmark": false,
+   "use_deterministic_algorithms": true,
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+   "flash_sdp": false,
+   "mem_efficient_sdp": false,
+   "warn_only": false,
+   "applied": {
+    "deterministic_algorithms": true,
+    "flash_sdp": false,
+    "mem_efficient_sdp": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+   }
+  },
+  "permute_labels": null,
+  "permutation_indices": null,
+  "smoke": false,
+  "run_json": "perlin__vit_b16__frozen__px224-noflip__seed123.json"
+ },
+ "inputs": {
+  "IMAGES[perlin]": {
+   "rel_path": "images_grayscale_classblind/perlin",
+   "sha256": "b8ce53c6fa339d3a4dcca2ba647c55aeaec79909f7137563efd8b5d04f7e3ccb",
+   "n_files": 1136
+  },
+  "SAMPLE_INDEX": {
+   "path": "meta/sample_index.csv",
+   "sha256": "d2f789bb2812e55bed0ddc71ed13695fe092859722e4826a324a8569f1bd040a"
+  }
+ },
+ "model_selection": {
+  "criterion": "max F1-Macro val (p_dep > 0.5), mejora estricta, restaura la mejor epoca",
+  "patience": 4,
+  "best_epoch": 2,
+  "epochs_run": 6,
+  "best_f1_val": 0.7039427087432124
+ },
+ "environment": {
+  "python": "3.13.16",
+  "libraries": {
+   "numpy": "2.1.3",
+   "pandas": "2.3.3",
+   "scikit-learn": "1.6.1",
+   "torch": "2.11.0+cu130",
+   "transformers": "5.20.2",
+   "tokenizers": "0.23.3",
+   "joblib": "1.6.0"
+  },
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+  "gpu": "Tesla T4",
+  "torch": "2.11.0+cu130",
+  "cudnn": 92700,
+  "device": "cuda",
+  "torchvision": "0.26.0+cu130"
+ },
+ "csv_sha256": "de5d1a7c55bb629174cccacaa6da27e7acece57930262147b19f0248ca93108d",
+ "n_rows": {
+  "val": 114,
+  "test": 114
+ }
+}

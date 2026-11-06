@@ -377,17 +377,25 @@ def test_interpretability_matches_doc(doc, cfg):
     sec, it = section(doc, 8), cfg['interpretabilidad']
     rows = {ticks(k)[0]: v for k, v in table_dict(sec).items()}
     assert set(rows) == set(it['methods'])
-    names = {'grad_cam': 'Grad-CAM', 'attention_rollout': '*Attention rollout*'}
+    names = {'grad_cam': 'Grad-CAM', 'attention_rollout': '*Attention rollout*',
+             'gradient_weighted_rollout': '*Rollout* ponderado por gradiente'}
     layers = {'layer4': 'Salida de `layer4`', 'features[-1]': 'Salida del último bloque de `features`'}
     for arch, m in it['methods'].items():
         assert rows[arch][0].startswith(names[m['method']]), arch
         if 'layer' in m:
             assert rows[arch][1] == layers[m['layer']], arch
+    # Enmienda 3 (2026-11-05): principal ponderado por gradiente; el rollout puro queda como secundario
     vit, cell = it['methods']['vit_b16'], rows['vit_b16'][1]
-    assert vit['head_fusion'] == 'mean' and 'cabezas por media' in cell
-    assert vit['add_identity'] and vit['renormalize'] and 'identidad añadida y renormalizada' in cell
-    assert vit['discard_ratio'] == 0.0 and 'sin descarte' in cell
+    assert vit['method'] == 'gradient_weighted_rollout' and 'Chefer' in rows['vit_b16'][0]
+    assert vit['head_fusion'] == 'mean' and 'media sobre cabezas de (∇A ⊙ A)⁺' in cell
+    assert vit['update'] == 'R <- R + Abar @ R, R0 = I' and 'R ← R + Ā·R desde R = I' in cell
     assert vit['exclude_cls_token'] and 'se excluye el *token* de clase' in cell
+    sec2 = vit['secondary']
+    assert sec2['role'] == 'atencion_backbone' and sec2['method'] == 'attention_rollout'
+    assert sec2['head_fusion'] == 'mean' and 'fusión de cabezas por media' in sec
+    assert sec2['add_identity'] and sec2['renormalize'] and 'identidad añadida y renormalizada' in sec
+    assert sec2['discard_ratio'] == 0.0 and 'sin descarte' in sec
+    assert sec2['exclude_cls_token'] and '**atención del *backbone***' in sec
 
     assert it['target'] == {'logit_class': 1} and 'el *logit* de la clase Depresivo (1)' in sec
     assert it['splits'] == ['val', 'test'] and '114 de `val` y las 114 de `test`' in sec

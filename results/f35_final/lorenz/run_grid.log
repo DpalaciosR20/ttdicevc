@@ -1,0 +1,92 @@
+Seleccion: {'role': 'finalist', 'source': 'results/predictions/primera_pasada', 'expected': {'perlin': ['vit_b16', 'frozen'], 'gray_scott': ['efficientnet_b0', 'finetune'], 'lorenz': ['vit_b16', 'frozen']}, 'matches': True, 'override': None}
+Fase: final | CON TEST (protocolo 9027167, etiqueta protocolo-v1)
+Preprocesamiento: {'lorenz': 'px224-noflip'}
+Hiperparametros: {'lr': {'finetune': 0.001, 'frozen': 0.001}, 'weight_decay': 0.0, 'batch_size': 32, 'epochs': 15, 'patience': 4, 'num_workers': 2}
+Predicciones -> /kaggle/working/ttdicevc/results/predictions
+5 corridas, 0 ya hechas, 5 pendientes
+Entorno: {'python': '3.13.16', 'libraries': {'numpy': '2.1.3', 'pandas': '2.3.3', 'scikit-learn': '1.6.1', 'torch': '2.11.0+cu130', 'transformers': '5.20.2', 'tokenizers': '0.23.3', 'joblib': '1.6.0'}, 'platform': 'Linux-6.18.55+-x86_64-with-glibc2.39', 'gpu': 'Tesla T4', 'torch': '2.11.0+cu130', 'cudnn': 92700, 'device': 'cuda', 'torchvision': '0.26.0+cu130'} | commit ef16ab598ad68aaee075c0e628d7d7cda8f2831e
+Determinismo: {'deterministic_algorithms': True, 'flash_sdp': False, 'mem_efficient_sdp': False, 'CUBLAS_WORKSPACE_CONFIG': ':4096:8'}
+  lorenz     train   908 imagenes OK
+  lorenz     val     114 imagenes OK
+  lorenz     test    114 imagenes OK
+
+===== [1/5] lorenz__vit_b16__frozen__px224-noflip__seed42 =====
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4266 - F1-val=0.6879
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3447 - F1-val=0.6747
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3394 - F1-val=0.6826
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3423 - F1-val=0.6775
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3277 - F1-val=0.6923
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3235 - F1-val=0.6342
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3115 - F1-val=0.7121
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 8/15 - loss=0.3117 - F1-val=0.6876
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 9/15 - loss=0.3192 - F1-val=0.6889
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 10/15 - loss=0.3364 - F1-val=0.7084
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 11/15 - loss=0.3275 - F1-val=0.6534
+Early stopping en epoch 11 (mejor F1-val=0.7121)
+*** [vit_b_16, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 7)=0.7121  F1-test=0.7121 ***
+
+Salidas actualizadas (1 corridas, 2.7 min esta)
+
+===== [2/5] lorenz__vit_b16__frozen__px224-noflip__seed7 =====
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4078 - F1-val=0.7004
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3541 - F1-val=0.7121
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3514 - F1-val=0.6458
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3370 - F1-val=0.6495
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3320 - F1-val=0.6800
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3216 - F1-val=0.7039
+Early stopping en epoch 6 (mejor F1-val=0.7121)
+*** [vit_b_16, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 2)=0.7121  F1-test=0.7316 ***
+
+Salidas actualizadas (2 corridas, 1.5 min esta)
+
+===== [3/5] lorenz__vit_b16__frozen__px224-noflip__seed123 =====
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.3907 - F1-val=0.6775
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3370 - F1-val=0.6879
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3318 - F1-val=0.6902
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3433 - F1-val=0.6530
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3204 - F1-val=0.6747
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3213 - F1-val=0.7203
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3175 - F1-val=0.6639
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 8/15 - loss=0.3093 - F1-val=0.6923
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 9/15 - loss=0.3132 - F1-val=0.6530
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 10/15 - loss=0.3053 - F1-val=0.6607
+Early stopping en epoch 10 (mejor F1-val=0.7203)
+*** [vit_b_16, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 6)=0.7203  F1-test=0.7449 ***
+
+Salidas actualizadas (3 corridas, 2.5 min esta)
+
+===== [4/5] lorenz__vit_b16__frozen__px224-noflip__seed2024 =====
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4140 - F1-val=0.6902
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3377 - F1-val=0.6495
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3323 - F1-val=0.6879
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3299 - F1-val=0.7121
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3375 - F1-val=0.7104
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3151 - F1-val=0.6902
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3143 - F1-val=0.7004
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 8/15 - loss=0.3119 - F1-val=0.7039
+Early stopping en epoch 8 (mejor F1-val=0.7121)
+*** [vit_b_16, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 4)=0.7121  F1-test=0.7449 ***
+
+Salidas actualizadas (4 corridas, 2.0 min esta)
+
+===== [5/5] lorenz__vit_b16__frozen__px224-noflip__seed99 =====
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 1/15 - loss=0.4689 - F1-val=0.6669
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 2/15 - loss=0.3478 - F1-val=0.6747
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 3/15 - loss=0.3345 - F1-val=0.6879
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 4/15 - loss=0.3396 - F1-val=0.6984
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 5/15 - loss=0.3329 - F1-val=0.7084
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 6/15 - loss=0.3251 - F1-val=0.6382
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 7/15 - loss=0.3225 - F1-val=0.7121
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 8/15 - loss=0.3191 - F1-val=0.7023
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 9/15 - loss=0.3137 - F1-val=0.7137
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 10/15 - loss=0.3177 - F1-val=0.7137
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 11/15 - loss=0.3126 - F1-val=0.6775
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 12/15 - loss=0.3067 - F1-val=0.6775
+[vit_b_16, freeze=True, lr=0.001, wd=0] Epoch 13/15 - loss=0.3104 - F1-val=0.6958
+Early stopping en epoch 13 (mejor F1-val=0.7137)
+*** [vit_b_16, freeze=True, lr=0.001, wd=0] F1-val(best, epoch 9)=0.7137  F1-test=0.7203 ***
+
+Salidas actualizadas (5 corridas, 3.2 min esta)
+
+===== RESUMEN POR CONFIGURACION (F1-val media +- std sobre semillas) =====
+lorenz     vit_b16          frozen   px224-noflip        n=5  val=0.7141+-0.0035   test=0.7307  

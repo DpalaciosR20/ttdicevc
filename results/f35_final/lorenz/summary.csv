@@ -1,0 +1,6 @@
+technique,arch,strategy,variant,seed,lr,weight_decay,best_epoch,epochs_run,n_trainable_params,n_total_params,f1_val,f1_test,acc_test,minutes,warning
+lorenz,vit_b16,frozen,px224-noflip,7,0.001,0.0,2,6,1538,85800194,0.7121,0.7316,0.7368,1.5,
+lorenz,vit_b16,frozen,px224-noflip,42,0.001,0.0,7,11,1538,85800194,0.7121,0.7121,0.7193,2.7,
+lorenz,vit_b16,frozen,px224-noflip,99,0.001,0.0,9,13,1538,85800194,0.7137,0.7203,0.7281,3.2,
+lorenz,vit_b16,frozen,px224-noflip,123,0.001,0.0,6,10,1538,85800194,0.7203,0.7449,0.7544,2.4,
+lorenz,vit_b16,frozen,px224-noflip,2024,0.001,0.0,4,8,1538,85800194,0.7121,0.7449,0.7544,2.0,

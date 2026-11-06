@@ -1,6 +1,6 @@
 {
  "inputs": {
-  "configs/matriz_experimentos.json": "ce0e0ed6602ba0f53441eb77dbd90c7704e6d7f2b877d6f0ea9c295c689a8f15",
+  "configs/matriz_experimentos.json": "01d177bbe4ea6b0795f5da5f39fce358edcbcc1419d86b20c926e725ccac29aa",
   "results/f04_cifras_canonicas/canonical_fragment.json": "6ce7c079b3a1e2d845fece8d6db097fe643b6d5afe1de8687ebf768e4066ae52",
   "results/f11_potencia/canonical_fragment.json": "4f3d0ec8b449f36d5d76ef8d412b5b5d03be6e8ac91ab30669f60dbabf913bd0",
   "results/f12_protocolo/canonical_fragment.json": "76989a351802d11e0dc710f3e4754accaee0886831b709ca97d7693619091f45",

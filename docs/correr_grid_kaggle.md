@@ -101,6 +101,8 @@ Si la sesión interactiva no aguanta las ~90 min, corre el mismo notebook con *S
 
 ## Fases con test (después de F3.3 y F3.4)
 
+Para F3.5, las celdas completas, con las compuertas, la comprobación sin entrenar, las huellas de los modelos y el empaquetado, están en `docs/correr_final_kaggle.md`. Abajo queda la forma general del comando.
+
 ```python
 FIN = "--configs gray_scott:<arq>:<est> perlin:<arq>:<est> lorenz:<arq>:<est>"   # de select_finalist
 !python -m src.training.run_grid --out-dir results/f35_final --evaluate-test {FIN} <run_grid_flags de results/f34_hpo/<tec>/hpo_result.json> --save-models
