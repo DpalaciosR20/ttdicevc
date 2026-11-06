@@ -107,7 +107,9 @@ La selección oficial la produce `src/selection/select_finalist.py`. La columna 
 |---|---|---|
 | `resnet18` | Grad-CAM | Salida de `layer4` |
 | `efficientnet_b0` | Grad-CAM | Salida del último bloque de `features` |
-| `vit_b16` | *Attention rollout* (Abnar y Zuidema, 2020) | Fusión de cabezas por media, identidad añadida y renormalizada, sin descarte; se excluye el *token* de clase del mapa final |
+| `vit_b16` | *Rollout* ponderado por gradiente (Chefer, Gur y Wolf, 2021) | Por bloque, Ā = media sobre cabezas de (∇A ⊙ A)⁺, con ∇A el gradiente del *logit* objetivo respecto de la atención; R ← R + Ā·R desde R = I; se excluye el *token* de clase del mapa final |
+
+**Enmienda 3 (2026-11-05).** En `vit_b16`, el método principal pasa a ser el *rollout* ponderado por gradiente (`docs/protocolo_preregistrado.md`, Enmienda 3). Se calcula además, como **atención del *backbone***, el *attention rollout* (Abnar y Zuidema, 2020) con fusión de cabezas por media, identidad añadida y renormalizada, sin descarte, y excluyendo el *token* de clase (`interpretabilidad.methods.vit_b16.secondary`). Este segundo mapa solo describe la atención del *backbone*.
 
 - **Objetivo del mapa:** el *logit* de la clase Depresivo (1) en todas las muestras, para que el signo sea comparable entre muestras y clases.
 - **Muestras:** las 114 de `val` y las 114 de `test` para las cinco semillas de cada finalista.
@@ -115,7 +117,8 @@ La selección oficial la produce `src/selection/select_finalist.py`. La columna 
 - **Formato:** `float16`, un archivo `.npz` comprimido por finalista y semilla, indexado por `sample_id`.
 - **Modelos `frozen`:** el cálculo de gradientes requiere habilitar `requires_grad` en las activaciones de la capa objetivo, porque los parámetros del *backbone* están congelados.
 - **ViT:** `EncoderBlock.forward` de torchvision llama a la atención con `need_weights=False`; los pesos se obtienen con *hooks* que recalculan la atención con `need_weights=True` y `average_attn_weights=False`. Una prueba verifica que la salida del modelo no cambia con los *hooks*.
-- **Pruebas de cordura (para F4.3):** aleatorización en cascada de los parámetros (Adebayo et al., 2018) y aleatorización de datos con los modelos de F3.6.
+- **ViT, gradiente de la atención:** los *hooks* conservan las probabilidades de atención de cada bloque y su gradiente respecto del *logit* objetivo. Esto funciona aunque el *backbone* esté congelado, porque la cabeza entrenada transmite el gradiente.
+- **Pruebas de cordura (para F4.3):** aleatorización en cascada de los parámetros (Adebayo et al., 2018), empezando por la cabeza, y aleatorización de datos con los modelos de F3.6. En los ViT congelados, al aleatorizar la cabeza el mapa ponderado por gradiente debe cambiar y la atención del *backbone* no.
 
 ## 9. Artefactos obligatorios
 

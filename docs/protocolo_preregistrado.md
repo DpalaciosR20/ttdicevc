@@ -3,7 +3,7 @@
 > Tarea F1.2 del plan v2 · Rol: SV · Versión: **v1 (congelado)**
 > Congelamiento: commit `91c84dfa7e192a32403abdaf401bb8f6ae5ff179`, etiqueta anotada `protocolo-v1`, fecha `2026-11-02 18:14:54 -0600`.
 > Parámetros legibles por código: `configs/protocolo.json` (SHA-256 `92ef8774f10f6c7ca04abd71a6a55be6ef29852b049932fb54dcecfe7ee00e5a`).
-> Matriz de experimentos: `configs/matriz_experimentos.json` (SHA-256 `ce0e0ed6602ba0f53441eb77dbd90c7704e6d7f2b877d6f0ea9c295c689a8f15`). Huellas calculadas con fines de línea LF; `tests/test_protocolo.py` las verifica.
+> Matriz de experimentos: `configs/matriz_experimentos.json` (SHA-256 `01d177bbe4ea6b0795f5da5f39fce358edcbcc1419d86b20c926e725ccac29aa`, vigente desde la Enmienda 3; en `protocolo-v1`: `ce0e0ed6602ba0f53441eb77dbd90c7704e6d7f2b877d6f0ea9c295c689a8f15`). Huellas calculadas con fines de línea LF; `tests/test_protocolo.py` las verifica.
 > Enmienda previa de la matriz: fase `sensibilidad` (F1.2).
 > Toda cifra citada aquí proviene de `results/canonical_numbers.json`.
 
@@ -250,3 +250,23 @@ La compuerta la hacen cumplir `src/predictions/validate.py` (regla 7) y `run_gri
 - *Aleatorio estratificado:* en los contrastes interviene como la constante 0.5 (§5.3). Se archiva además un archivo de predicciones con `p_dep ∈ {0.0, 1.0}`, generado con `numpy.random.default_rng(42)` y la proporción de clases de `train`, por completitud del formato; ese archivo no interviene en ningún contraste.
 
 **4. Clasificador de longitud (§4.2, F4.5).** Se añade al vocabulario controlado de `technique` (especificación de predicciones, §3.2) el valor `text_length`. El clasificador se registra como `technique = text_length`, `arch = logreg`, `strategy = none`, `seed = 42`, fase `referencia`. Características: `log(n_tokens_beto)` y `truncated_128` de `meta/sample_index.csv`. Modelo: LogReg con la rejilla completa de LogReg de §4.3, `StandardScaler` ajustado en `train` y la regla de selección y desempate de §4.3.
+
+## Enmienda 3 (2026-11-05)
+
+**Momento.** Se registra **antes de cualquier consulta de prueba de los finalistas**, es decir, antes de ejecutar F3.5, y antes de generar cualquier mapa de F3.7. Los finalistas ya están fijados (F3.3, etiqueta `seleccion-f33`). Conforme a §11, no modifica ningún modelo, hiperparámetro, estadístico ni criterio de decisión del Objetivo V: solo afecta a los análisis explicativos de F3.7 y F4.3 (§9).
+
+**Alcance.** Cambia el método de atribución de `vit_b16` en `configs/matriz_experimentos.json` (`interpretabilidad.methods.vit_b16`) y en `docs/matriz_experimentos.md` §8. La nueva huella de la matriz queda en el encabezado. `configs/protocolo.json` no cambia.
+
+**Motivo** (`docs/bitacora/F3.3.md`, H5). Los finalistas de Perlin y Lorenz son ViT-B/16 congelados: solo se entrena la cabeza lineal. El *attention rollout* sin gradientes que fijaba la matriz §8 depende solo de la imagen y de los pesos de ImageNet. Sus mapas serían idénticos entre semillas y respecto de los modelos del control de permutación (F3.6), así que F4.3 y su prueba de cordura por aleatorización de datos no serían informativas para esas dos técnicas.
+
+**Cambio.**
+
+1. **Método principal para `vit_b16`:** *rollout* ponderado por gradiente (Chefer, Gur y Wolf, 2021, «Generic Attention-model Explainability for Interpreting Bi-Modal and Encoder-Decoder Transformers», ICCV).
+   - En cada bloque *b*, Ā_b = E_h[(∇A_b ⊙ A_b)⁺], donde A_b son las probabilidades de atención por cabeza y ∇A_b su gradiente respecto del *logit* de la clase Depresivo (1). La parte positiva se toma después del producto, y E_h es la media sobre cabezas.
+   - R se inicializa en R = I y se actualiza R ← R + Ā_b·R en orden de bloques.
+   - El mapa es la fila del *token* de clase de R, restringida a los 196 *tokens* de parche (sin el de clase), reescalada de 14 × 14 a 224 × 224.
+   - El gradiente atraviesa la cabeza entrenada, así que el mapa depende del modelo ajustado aunque el *backbone* esté congelado.
+2. **Atención del *backbone* (secundario):** se conserva el *attention rollout* de la versión congelada (Abnar y Zuidema, 2020), con fusión por media, identidad añadida y renormalizada, sin descarte y sin el *token* de clase. Se guarda junto al principal y se reporta solo como descripción de la atención del *backbone*. No se usa para interpretar qué estructuras discrimina el modelo.
+3. **Pruebas de cordura (F4.3):** a la aleatorización en cascada (Adebayo et al., 2018) se añade la aleatorización de la cabeza como primer paso. En los ViT congelados, el mapa principal debe cambiar y la atención del *backbone* no. Si el mapa principal no cambia, la prueba falla y el mapa no se interpreta.
+
+Los demás puntos de la matriz §8 (objetivo, muestras, resolución, normalización, formato y *hooks* que recalculan la atención con `need_weights=True`) se aplican sin cambios a los dos mapas. Grad-CAM de `resnet18` y `efficientnet_b0` no cambia.
