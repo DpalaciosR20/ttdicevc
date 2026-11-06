@@ -47,3 +47,14 @@ def test_manifiestos_de_mapas():
 def test_verificacion_de_modelos_en_kaggle():
     rep = json.load(open(os.path.join(RES, 'modelos_verificacion.json')))
     assert rep['passed'] and rep['n_ok'] == rep['n_expected'] == 30
+
+
+def test_verificacion_de_tt2_mapas_y_resumen():
+    rep = json.load(open(os.path.join(RES, 'mapas_verificacion.json')))
+    assert rep['passed'] and rep['n_ok'] == rep['n_expected'] == 30 and rep['task'] == 'F3.7' and not rep['ambiguous']
+    assert all(f['found_at'].startswith('datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/')
+               for f in rep['files'])
+    recs = {r['run'] + '.npz': r['npz']['sha256'] for r in _records()}
+    assert {f['file']: f['sha256'] for f in rep['files']} == recs
+    filas = list(csv.DictReader(open(os.path.join(RES, 'resumen', 'per_run.csv'))))
+    assert len(filas) == 50 and {f['run'] for f in filas} == {r['run'] for r in _records()}
