@@ -72,3 +72,18 @@ Los 30 `.npz` (`results/f37_mapas/maps/`; estimado 1–2.5 GiB) se quedan en la 
 - 30 registros con `n = 228`, Δp_dep ≤ 1e-4 y la huella del modelo igual a la del manifiesto;
 - el commit y la huella de la matriz son los entregados;
 - `maps_manifest.csv` se incorpora a `meta/artefactos_manifest.csv` como filas `task = F3.7`.
+
+## Verificación y resumen de `tt2-mapas` (después de publicar el *dataset*)
+
+Notebook nuevo: **CPU**, internet activado, **input** solo `palaciosroblesdiego/tt2-mapas`. Tarda ≈ 3–6 min, porque descomprime 1.3 GiB.
+
+**Celda 1:** clonado con el `COMMIT` que indique Claude Code, sin la línea de `seleccion-f33`.
+
+**Celda 2: huellas y resumen** (el código está en `src/verify_artefacts.py` y `src/interpretability/summarize_maps.py`)
+```python
+!python -m src.verify_artefacts --root /kaggle/input --task F3.7 --out results/f37_mapas/mapas_verificacion.json
+!python -m src.interpretability.summarize_maps --root /kaggle/input --out-dir results/f37_mapas/resumen 2>&1 | tee results/f37_mapas/resumen.log
+!zip -qr /kaggle/working/f37_resumen.zip results/f37_mapas/mapas_verificacion.json results/f37_mapas/resumen results/f37_mapas/resumen.log
+!ls -la /kaggle/working/f37_resumen.zip
+```
+La primera línea debe terminar en `30/30 … -> OK`. El zip pesa unos pocos MB: `per_run.csv` y `class_means.npz` (mapas medios por clase en 56 × 56).
