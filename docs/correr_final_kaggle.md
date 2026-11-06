@@ -149,7 +149,7 @@ results/f35_final/
 results/predictions/final/*.csv       15 CSV F1.5 (val y test) con su .manifest.json
 ```
 
-Los modelos (`results/f35_final/<técnica>/models/*.pt`) se quedan en la salida de la versión del notebook. De ahí se publican como el *dataset* privado `tt2-artefactos` que usa F3.7 (matriz §9), y sus huellas se registran en `meta/artefactos_manifest.csv`.
+Los modelos (`results/f35_final/<técnica>/models/*.pt`) se quedan en la salida de la versión del notebook. De ahí se publican como el *dataset* privado `tt2-artefactos` que usa F3.7 (matriz §9), y sus huellas se registran en `meta/artefactos_manifest.csv`. Publicado como `palaciosroblesdiego/tt2-artefactos`, con los modelos en `ttdicevc/results/f35_final/<técnica>/models/` (columnas `dataset` y `rel_path` del manifiesto).
 
 ## Verificación local (Claude Code, al recibir el zip)
 

@@ -63,3 +63,14 @@ def test_manifiesto_de_artefactos():
 def test_predicciones_final():
     csvs = glob.glob(os.path.join(REPO, 'results', 'predictions', 'final', '*.csv'))
     assert len(csvs) == 15
+
+
+def test_verificacion_de_tt2_artefactos():
+    rep = json.load(open(os.path.join(FINAL, 'artefactos_verificacion.json')))
+    assert rep['passed'] and rep['n_ok'] == rep['n_expected'] == 15 and rep['task'] == 'F3.5'
+    filas = {os.path.basename(f['rel_path']): f for f in
+             csv.DictReader(open(os.path.join(REPO, 'meta', 'artefactos_manifest.csv')))}
+    for f in rep['files']:
+        fila = filas[f['file']]
+        assert f['status'] == 'ok' and f['sha256'] == fila['sha256']
+        assert f['found_at'] == f"datasets/{fila['dataset']}/{fila['rel_path']}"
