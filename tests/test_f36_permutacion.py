@@ -69,7 +69,7 @@ def test_verificacion_de_artefactos_f35_y_f36():
     rep = json.load(open(os.path.join(RES, 'artefactos_verificacion.json')))
     assert rep['passed'] and rep['n_ok'] == rep['n_expected'] == 30 and rep['task'] is None
     filas = {os.path.basename(f['rel_path']): f for f in
-             csv.DictReader(open(os.path.join(REPO, 'meta', 'artefactos_manifest.csv')))}
+             csv.DictReader(open(os.path.join(REPO, 'meta', 'artefactos_manifest.csv'))) if f['task'] in ('F3.5', 'F3.6')}
     assert len(filas) == 30
     for f in rep['files']:
         fila = filas[f['file']]
