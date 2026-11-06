@@ -44,13 +44,28 @@ def test_falta_distinto_y_extra(tmp_path):
     assert va.main(['--root', str(inp), '--manifest', str(man)]) == 1
 
 
-def test_duplicado_falla(tmp_path):
+def test_copia_de_humo_se_descarta_por_ruta(tmp_path):
+    """Caso de F3.7: el dataset trae también la prueba de humo con el mismo nombre
+    y otro contenido; vale la copia cuya ruta termina en rel_path."""
     inp, root, man = _setup(tmp_path, {'a.pt': b'uno'})
-    copia = inp / 'otra_version'
-    copia.mkdir()
-    (copia / 'a.pt').write_bytes(b'uno')
+    humo = inp / 'tt2-artefactos' / 'f37_humo' / 'maps'
+    humo.mkdir(parents=True)
+    (humo / 'a.pt').write_bytes(b'humo')
     rep = va.verify(str(inp), str(man))
-    assert rep['duplicates'] == ['a.pt'] and not rep['passed']
+    assert rep['passed'] and rep['duplicates'] == ['a.pt'] and rep['ambiguous'] == []
+    assert rep['discarded_copies'] == ['tt2-artefactos/f37_humo/maps/a.pt']
+    assert rep['files'][0]['found_at'].endswith('f35_final/perlin/models/a.pt')
+
+
+def test_duplicado_ambiguo_falla(tmp_path):
+    inp, root, man = _setup(tmp_path, {'a.pt': b'uno'})
+    for d in ('x', 'y'):
+        (inp / d).mkdir()
+        (inp / d / 'a.pt').write_bytes(b'uno')
+    (root / 'a.pt').unlink()                      # ninguna copia termina en rel_path
+    rep = va.verify(str(inp), str(man))
+    assert rep['ambiguous'] == ['a.pt'] and not rep['passed']
+    assert va.main(['--root', str(inp), '--manifest', str(man)]) == 1
 
 
 def test_hash_models_y_verificacion(tmp_path):
@@ -65,3 +80,9 @@ def test_hash_models_y_verificacion(tmp_path):
     assert rows[0]['sha256'] == hashlib.sha256(b'abc').hexdigest() and rows[0]['bytes'] == '3'
     with pytest.raises(SystemExit):
         hash_models.write_hashes(str(res), expected=15)
+
+
+def test_verifica_npz_si_el_manifiesto_los_lista(tmp_path):
+    inp, root, man = _setup(tmp_path, {'m.npz': b'mapas', 'a.pt': b'uno'})
+    rep = va.verify(str(inp), str(man))
+    assert rep['passed'] and rep['n_ok'] == 2
