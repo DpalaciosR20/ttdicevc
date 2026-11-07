@@ -93,7 +93,10 @@
      "description": "verificado: recalculado por build.py desde datos por muestra. extraido: leído por código de un artefacto del repo, sin recálculo por muestra. reportado: transcrito de un documento. exploratorio: usa un test consultado antes de congelar el protocolo.",
      "enum": ["verificado", "extraido", "reportado", "exploratorio"]
     },
-    "metric": {"enum": ["f1_macro"]},
+    "metric": {
+     "description": "f1_macro: F1-Macro o diferencia en su escala. Las demás (Fase 5 y F4.6, solo prueba): p_value (p de bootstrap o exacto), alpha (α de Holm), confidence_level (nivel de un IC), ratio (retención ρ̂), kappa (κ de Cohen), proportion (contención y su nula), statistic (Q de Cochran).",
+     "enum": ["f1_macro", "p_value", "alpha", "confidence_level", "ratio", "kappa", "proportion", "statistic"]
+    },
     "value": {},
     "null_reason": {
      "type": "object",

@@ -45,6 +45,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -78,6 +79,8 @@ def supports(entry, split):
 
 # Cifras de diseño en escala de F1 que no provienen de una matriz de confusión
 DESIGN_PREFIXES = ('f11.', 'f12.')
+# Cifras extraídas de la Fase 5 y de F4.6 (bootstrap, p, α, κ...): tampoco salen de una matriz de confusión
+F5_PREFIXES = ('f5.', 'f46.')
 
 
 def is_leaf_metric(entry):
@@ -88,7 +91,7 @@ def leaf_cases():
     """(id, split) de cada F1 no derivado y no nulo; xfail si la entrada lo declara."""
     cases = []
     for nid, e in sorted(NUMBERS.items()):
-        if not is_leaf_metric(e) or nid.startswith(DESIGN_PREFIXES):
+        if not is_leaf_metric(e) or nid.startswith(DESIGN_PREFIXES + F5_PREFIXES):
             continue
         for s in canon.METRIC_SPLITS:
             if e['value'][s] is None:
@@ -605,18 +608,163 @@ def test_f36_nota_enmienda_4_a16():
 
 def test_ref_longitud():
     e = NUMBERS['ref.longitud.f1_macro']
-    assert e['status'] == 'verificado' and e['value']['test'] is None and 'test' not in e['confusion']
-    # mismo motivo que las demás referencias de la Fase 2
-    assert e['null_reason']['test'] == NUMBERS['ref.techo5d.f1_macro']['null_reason']['test']
+    assert e['status'] == 'verificado' and e['value']['test'] is not None and 'test' in e['confusion']
+    assert 'null_reason' not in e
     path = 'results/predictions/referencia/text_length__logreg__none__seed42.csv'
-    assert e['source'] == {'path': path, 'locator': 'split=val'}
+    assert e['source'] == {'path': path, 'locator': 'split=val, split=test'}
     res = json.loads((REPO / 'results' / 'f45_longitud' / 'resultado.json').read_text(encoding='utf-8'))
     assert e['value']['val'] == pytest.approx(res['f1_val'], abs=1e-12)
 
 
-def test_sin_metricas_de_test_de_referencias():
-    """Ninguna referencia de la Fase 2 ni la longitud registra test antes de la Fase 5."""
-    for nid, e in NUMBERS.items():
-        if nid.startswith(('ref.techo5d.', 'ref.piso.', 'ref.descriptores.', 'ref.emb768', 'ref.longitud')):
-            if e['kind'] == 'metric':
-                assert e['value']['test'] is None, nid
+# ── Fase 5 (f5.*), F4.6 (f46.*) y desbloqueo de ref.* (protocolo §10) ─────
+F5_RES = json.loads((REPO / 'results' / 'f5_contraste' / 'resultados.json').read_text(encoding='utf-8'))
+F46_RES = json.loads((REPO / 'results' / 'f5_contraste' / 'f46_resultados.json').read_text(encoding='utf-8'))
+REF_PREFIXES = ('ref.techo5d', 'ref.piso.', 'ref.descriptores.', 'ref.emb768', 'ref.longitud')
+# Cifras commiteadas antes de la Fase 5 (merge de F5-ejecución, PR #36)
+PRE_F5_COMMIT = 'dd2e462ca7d2f40326392da6997916a34c7c3606'
+
+
+def _f1_csv(path, split):
+    with open(REPO / path, newline='', encoding='utf-8') as f:
+        rows = [r for r in csv.DictReader(f) if r['split'] == split]
+    return canon.f1_macro_from_confusion(canon.confusion_counts(
+        [int(r['y_true']) for r in rows], [int(float(r['p_dep']) > 0.5) for r in rows]))
+
+
+def test_referencias_desbloqueadas_tras_fase5():
+    """Tras la Fase 5, ninguna referencia queda bloqueada y su prueba sale de su CSV."""
+    keys = [k for k, e in NUMBERS.items() if k.startswith(REF_PREFIXES) and e['kind'] == 'metric']
+    assert len(keys) == 16
+    for nid in keys:
+        e = NUMBERS[nid]
+        assert e['status'] == 'verificado' and e['value']['test'] is not None, nid
+        assert 'bloqueado' not in json.dumps(e.get('null_reason', {}), ensure_ascii=False), nid
+        assert e['value']['test'] == _f1_csv(e['source']['path'], 'test'), nid
+        assert DOC['inputs'][e['source']['path']] == canon.text_sha256(REPO / e['source']['path'])
+        assert canon.REF_UNLOCK_NOTE in e['note'], nid
+
+
+@pytest.mark.parametrize('nid,key', sorted(canon.REF_TO_OBSERVADO.items()))
+def test_referencias_coinciden_con_observados(nid, key):
+    assert NUMBERS[nid]['value']['test'] == F5_RES['resultados']['observados'][key]
+
+
+def test_desbloqueo_se_niega_si_no_coincide_con_observados(tmp_path, monkeypatch):
+    doc = json.loads(json.dumps(F5_RES))
+    doc['resultados']['observados']['majority'] += 1e-9
+    fake = tmp_path / 'resultados.json'
+    fake.write_text(json.dumps(doc), encoding='utf-8')
+    monkeypatch.setattr(canon, 'F5_RESULT', fake)
+    monkeypatch.setattr(canon, 'rel', lambda p: str(p))
+    e = json.loads(json.dumps(NUMBERS['ref.piso.majority.f1_macro']))
+    e['value']['test'] = None
+    e['null_reason'] = {'test': canon.REF_TEST_BLOCKED}
+    with pytest.raises(canon.CanonicalError, match='observados'):
+        canon.unlock_ref_test({'ref.piso.majority.f1_macro': e}, {})
+
+
+def test_f5_observados_desde_predicciones():
+    """Cada F1 observado de resultados.json se recalcula desde los CSV de sus insumos."""
+    obs = F5_RES['resultados']['observados']
+    inputs = F5_RES['meta']['inputs']
+    for path, h in inputs.items():
+        assert canon.sha256(REPO / path) == h, path      # mismos bytes que leyó run_fase5
+    seeds = (42, 7, 123, 2024, 99)
+    for fase in ('final', 'control_permutacion', 'sensibilidad'):
+        for t in TECHS:
+            paths = sorted((p for p in inputs if p.startswith(f'results/predictions/{fase}/{t}__')),
+                           key=lambda p: seeds.index(int(p.split('__seed')[1].split('.')[0])))
+            assert len(paths) == 5
+            assert [_f1_csv(p, 'test') for p in paths] == obs[str(('img', fase, t))], (fase, t)
+    refs = {'beto': 'text__beto__finetune', 'emb768': 'emb768__logreg__none', 'techo5d': 'umap5d__svm_rbf__none',
+            'majority': 'none__majority__none', 'longitud': 'text_length__logreg__none',
+            **{str((k, t)): f'{t}__{k}__none' for t in TECHS for k in ('brightness', 'descriptors')}}
+    assert set(refs) | {k for k in obs if k.startswith("('img'")} == set(obs)
+    for key, stem in refs.items():
+        path = f'results/predictions/referencia/{stem}__seed42.csv'
+        assert path in inputs
+        assert _f1_csv(path, 'test') == obs[key], key
+    for t in TECHS:
+        r = F5_RES['resultados']['principal']['techniques'][t]
+        assert r['f1_img_obs'] == pytest.approx(np.mean(obs[str(('img', 'final', t))]), abs=1e-15)
+        assert r['piso_f1_obs']['visual_permutado'] == pytest.approx(
+            np.mean(obs[str(('img', 'control_permutacion', t))]), abs=1e-15)
+
+
+def test_f5_insumos_con_hash():
+    for path in ('results/f5_contraste/resultados.json', 'results/f5_contraste/f46_resultados.json'):
+        assert DOC['inputs'][path] == canon.text_sha256(REPO / path)
+
+
+def _at(doc, locator):
+    """Lee a.b[0]["r=0.5"] (formato de build._F5Collector._loc)."""
+    o = doc
+    for quoted, index, plain in re.findall(r'\["([^"]*)"\]|\[(\d+)\]|([^.\[\]"]+)', locator):
+        o = o[quoted] if quoted else (o[int(index)] if index else o[plain])
+    return o
+
+
+@pytest.mark.parametrize('prefix,doc', [('f5.', 'f5'), ('f46.', 'f46')])
+def test_f5_f46_valores_en_su_localizador(prefix, doc):
+    """Cada cifra f5/f46 es exactamente el valor de resultados.json en su localizador."""
+    src = {'f5': F5_RES, 'f46': F46_RES}[doc]
+    path = {'f5': 'results/f5_contraste/resultados.json', 'f46': 'results/f5_contraste/f46_resultados.json'}[doc]
+    keys = [k for k in NUMBERS if k.startswith(prefix)]
+    assert keys
+    for nid in keys:
+        e = NUMBERS[nid]
+        assert e['status'] == 'extraido' and e['source']['path'] == path, nid
+        v = _at(src, e['source']['locator'])
+        if e['kind'] == 'metric':
+            assert e['value'] == {'val': None, 'test': v} and e['null_reason']['val'], nid
+        elif '.veredicto.' in nid or '.global.' in nid or '.piso.' in nid:
+            # identidad en la clave: el último segmento es el valor del localizador
+            ident = v[0] if isinstance(v, list) else v
+            assert e['value'] == 1 and nid.split('.')[-1] == ident.lower(), nid
+        else:
+            assert e['value'] == int(v), nid
+
+
+def test_f5_veredictos_y_conteos():
+    R = F5_RES['resultados']
+    for t in TECHS:
+        v = R['principal']['techniques'][t]['verdict'].lower()
+        assert [k for k in NUMBERS if k.startswith(f'f5.principal.{t}.veredicto.')] == [f'f5.principal.{t}.veredicto.{v}']
+        assert NUMBERS[f'f5.sensibilidad.por_semilla.n_semillas_v1.{t}']['value'] == \
+            R['sensibilidad']['por_semilla']['n_semillas_V1'][t]
+        a14 = next(a for a in R['robustez'] if a['alternativa'].startswith('A14'))
+        assert NUMBERS[f'f5.robustez.a14.n_semillas_v1.{t}']['value'] == a14['n_semillas_V1'][t]
+    g = R['principal']['global'].lower()
+    assert [k for k in NUMBERS if k.startswith('f5.principal.global.')] == [f'f5.principal.global.{g}']
+    # una identidad de veredicto por técnica y variante
+    groups = Counter(k.rsplit('.veredicto.', 1)[0] for k in NUMBERS if '.veredicto.' in k)
+    assert set(groups.values()) == {1}
+
+
+def test_f46_condicion_1():
+    for t in TECHS:
+        e = NUMBERS[f'f46.contencion.{t}.condicion_1']
+        assert e['value'] == int(F46_RES['resultados']['contencion'][t]['condicion_1'])
+        assert 'PENDIENTE (P6)' in e['note']
+
+
+def test_sin_cambios_previos_salvo_desbloqueo():
+    """Frente al archivo previo a la Fase 5, solo se añaden f5/f46 y solo cambian las ref.* desbloqueadas."""
+    import subprocess
+    r = subprocess.run(['git', '-C', str(REPO), 'show', f'{PRE_F5_COMMIT}:results/canonical_numbers.json'],
+                       capture_output=True)
+    if r.returncode != 0:
+        pytest.skip(f'git show {PRE_F5_COMMIT[:7]} no disponible')
+    old = json.loads(r.stdout.decode('utf-8'))
+    assert set(old['numbers']) <= set(NUMBERS)
+    assert {k for k in NUMBERS if k not in old['numbers']} == {k for k in NUMBERS if k.startswith(F5_PREFIXES)}
+    changed = {k for k, e in old['numbers'].items() if NUMBERS[k] != e}
+    unlocked = {k for k in changed if k.startswith(REF_PREFIXES)}
+    assert changed == unlocked and len(unlocked) == 16
+    for k in unlocked:
+        o, n = old['numbers'][k], NUMBERS[k]
+        assert o['value']['val'] == n['value']['val'] and o['value']['test'] is None
+        assert o['confusion']['val'] == n['confusion']['val']
+        assert {f for f in set(o) | set(n) if o.get(f) != n.get(f)} <= {'value', 'confusion', 'null_reason', 'source', 'note'}
+    assert old.get('superseded') == DOC.get('superseded')
+    assert all(DOC['inputs'][k] == h for k, h in old['inputs'].items())

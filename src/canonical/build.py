@@ -22,8 +22,13 @@ Orígenes de las entradas:
      f32.*), F3.2 v0 sustituida (f32v0.*, histórica), selección de F3.3 (f33.*),
      HPO de F3.4 (f34.*, solo val), finalistas de F3.5 (f35.*), controles
      permutados de F3.6 (f36.*, prueba registrada por la Enmienda 4, A16),
-     segundos de F5.5 (f55.*) y referencia de longitud de F4.5
-     (ref.longitud.*, test bloqueado hasta la Fase 5).
+     segundos de F5.5 (f55.*), referencia de longitud de F4.5 (ref.longitud.*),
+     Fase 5 (f5.*, de results/f5_contraste/resultados.json) y F4.6 (f46.*, de
+     f46_resultados.json). Las cifras f5/f46 son extraídas y solo de prueba; los
+     veredictos y pisos van como identidad en la clave (conteo 1), como en f33.*.
+  Tras la fusión, la prueba de cada ref.* «bloqueada hasta la Fase 5» se
+  recalcula desde su CSV (unlock_ref_test) y check_f5 contrasta los F1
+  observados de resultados.json con ref.*, f35.*, f36.* y f55.*.
   2. Fragmentos results/<tarea>/canonical_fragment.json, uno por tarea, con las
      cifras transcritas. Una clave repetida entre orígenes es un error, salvo
      sustitución explícita: la entrada que declara supersedes=<id> reemplaza a
@@ -747,9 +752,9 @@ REF_TEST_BLOCKED = ('bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md 
 
 
 def collect_ref_longitud(inputs):
-    """F1-Macro de val verificado desde el CSV de la referencia de longitud; test
-    nulo (bloqueado hasta la Fase 5, como las demás referencias). Solo se leen
-    las filas de val."""
+    """F1-Macro de val verificado desde el CSV de la referencia de longitud. Aquí
+    test queda nulo (bloqueado hasta la Fase 5, como las demás referencias);
+    unlock_ref_test lo rellena después de la fusión."""
     from src.predictions import schema as pred_schema
     from src.predictions.validate import validate_predictions
     df = validate_predictions(LONGITUD_CSV)
@@ -768,6 +773,331 @@ def collect_ref_longitud(inputs):
     if not math.isclose(e['value']['val'], res['f1_val'], rel_tol=0, abs_tol=1e-12):
         raise CanonicalError(f'{nid}: {e["value"]["val"]!r} != resultado.json {res["f1_val"]!r}')
     return {nid: e}
+
+
+# ── Desbloqueo de prueba de las referencias (protocolo §10, tras la Fase 5) ─
+F5_DIR = REPO / 'results' / 'f5_contraste'
+F5_RESULT = F5_DIR / 'resultados.json'
+F46_RESULT = F5_DIR / 'f46_resultados.json'
+REF_BLOCKED_PREFIX = 'bloqueado hasta la Fase 5'
+REF_UNLOCK_NOTE = ('Prueba desbloqueada tras la ejecución confirmatoria de la Fase 5 (protocolo §10; '
+                   'commit e02104f, results/f5_contraste/resultados.json).')
+# ref.* → clave de resultados.json:resultados.observados (las demás referencias no entran en la Fase 5)
+REF_TO_OBSERVADO = {
+    'ref.beto_exp41.f1_macro': 'beto',
+    'ref.emb768_logreg.f1_macro': 'emb768',
+    'ref.techo5d.f1_macro': 'techo5d',
+    'ref.techo5d.svm_rbf.f1_macro': 'techo5d',
+    'ref.piso.majority.f1_macro': 'majority',
+    'ref.longitud.f1_macro': 'longitud',
+    **{f'ref.piso.brightness.{t}.f1_macro': str(('brightness', t)) for t in ('gray_scott', 'perlin', 'lorenz')},
+    **{f'ref.descriptores.{t}.f1_macro': str(('descriptors', t)) for t in ('gray_scott', 'perlin', 'lorenz')},
+}
+
+
+def _f5_result(path, inputs):
+    if not path.is_file():
+        raise CanonicalError(f'falta {rel(path)} (python -m src.protocol.run_fase5)')
+    inputs[rel(path)] = text_sha256(path)
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def unlock_ref_test(numbers, inputs):
+    """Rellena la prueba de cada ref.* bloqueada «hasta la Fase 5» con el F1-Macro
+    recalculado desde su CSV (split=test, ŷ = 1[p_dep > 0.5]) y lo contrasta con
+    resultados.json:observados cuando la referencia entra en la Fase 5."""
+    obs = _f5_result(F5_RESULT, inputs)['resultados']['observados']
+    unlocked = []
+    for nid in sorted(numbers):
+        e = numbers[nid]
+        if not nid.startswith('ref.') or e['kind'] != 'metric':
+            continue
+        reason = e.get('null_reason', {}).get('test', '')
+        if not reason.startswith(REF_BLOCKED_PREFIX):
+            continue
+        if e['status'] != 'verificado' or 'depends_on' in e or 'path' not in e['source']:
+            raise CanonicalError(f'{nid}: solo se desbloquea una referencia verificada desde su CSV')
+        path = REPO / e['source']['path']
+        with open(path, newline='', encoding='utf-8') as f:
+            rows = [r for r in csv.DictReader(f) if r['split'] == 'test']
+        if [r['sample_id'] for r in rows] != [f'test_{i:04d}' for i in range(EXPECTED_SIZES['test'])]:
+            raise CanonicalError(f'{rel(path)}: filas de test distintas del índice')
+        inputs[rel(path)] = text_sha256(path)
+        cm = confusion_counts([int(r['y_true']) for r in rows], [int(float(r['p_dep']) > 0.5) for r in rows])
+        f1 = f1_macro_from_confusion(cm)
+        key = REF_TO_OBSERVADO.get(nid)
+        if key is not None and f1 != obs[key]:
+            raise CanonicalError(f'{nid}: F1 de prueba {f1!r} != resultados.json:observados[{key}] {obs[key]!r}')
+        e['value'] = {**e['value'], 'test': f1}
+        e['confusion'] = {**e.get('confusion', {}), 'test': cm}
+        e['null_reason'] = {k: v for k, v in e['null_reason'].items() if k != 'test'}
+        if not e['null_reason']:
+            del e['null_reason']
+        e['source'] = {**e['source'], 'locator': e['source']['locator'].replace('split val', 'split val y test')
+                       .replace('split=val', 'split=val, split=test')}
+        e['note'] = f'{e["note"]} {REF_UNLOCK_NOTE}' if e.get('note') else REF_UNLOCK_NOTE
+        unlocked.append(nid)
+    return unlocked
+
+
+# ── Colector 9: Fase 5 (f5.*) y F4.6 (f46.*), solo prueba ─────────────────
+F5_VAL_NULL = 'la Fase 5 se calcula solo sobre prueba (protocolo §10; Enmienda 4)'
+F46_VAL_NULL = 'F4.6 se calcula solo sobre prueba, después del veredicto (docs/plan_fase4.md, G1)'
+F5_EVAL = 'run_fase5 --ejecutar-prueba (src/protocol/run_fase5.py; B = 10000, bootstrap pareado de A1)'
+F46_EVAL = 'run_fase5 --analisis-f46 (src/protocol/run_fase5.py; mismas réplicas de A1)'
+F5_TECHS = ('gray_scott', 'perlin', 'lorenz')
+# Variantes y alternativas → segmento de clave
+F5_VARIANT_SLUG = {'r=0.5': 'r0_50', 'r=0.75': 'r0_75', 'r=0.8': 'r0_80'}
+F5_ROBUSTEZ_SLUG = {'A2': 'a2', 'A3': 'a3', 'A7': 'a7', 'A12': 'a12', 'A14': 'a14'}
+
+
+class _F5Collector:
+    """Arma entradas extraídas de un JSON de run_fase5 con su localizador."""
+
+    def __init__(self, doc, path, val_null, evaluator):
+        self.doc, self.path, self.val_null, self.evaluator = doc, rel(path), val_null, evaluator
+        self.out = {}
+
+    def get(self, loc):
+        o = self.doc
+        for k in loc:
+            o = o[k]
+        return o
+
+    def _loc(self, loc):
+        """Ruta JSON: a.b[0]; una clave con punto o corchete va entre comillas: a["r=0.5"]."""
+        parts = []
+        for k in loc:
+            if isinstance(k, int):
+                parts.append(f'[{k}]')
+            elif re.search(r'[.\[\]"]', k):
+                parts.append(f'["{k}"]')
+            else:
+                parts.append(('.' if parts else '') + k)
+        return ''.join(parts)
+
+    def metric(self, nid, metric, loc, note=None):
+        v = self.get(loc)
+        if isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v):
+            raise CanonicalError(f'{nid}: {self.path}:{self._loc(loc)} = {v!r} no es un número finito')
+        e = {'kind': 'metric', 'metric': metric, 'status': 'extraido', 'value': {'val': None, 'test': float(v)},
+             'null_reason': {'val': self.val_null}, 'supports_ref': dict(SUPPORTS), 'evaluator': self.evaluator,
+             'source': {'path': self.path, 'locator': self._loc(loc)}}
+        if note:
+            e['note'] = note
+        self._put(nid, e)
+
+    def count(self, nid, loc, value=None, note=None):
+        """Conteo leído en loc (bool → 0/1); con value, loc solo es el localizador."""
+        v = self.get(loc) if value is None else value
+        if isinstance(v, bool):
+            v = int(v)
+        if not isinstance(v, int):
+            raise CanonicalError(f'{nid}: {v!r} no es entero')
+        e = {'kind': 'count', 'status': 'extraido', 'value': v, 'evaluator': self.evaluator,
+             'source': {'path': self.path, 'locator': self._loc(loc)}}
+        if note:
+            e['note'] = note
+        self._put(nid, e)
+
+    def identity(self, nid, loc, note):
+        """Identidad (veredicto, piso) codificada en la clave, como en f33.*: conteo con valor 1."""
+        self.count(nid, loc, value=1, note=f'{note}; identidad en la clave (valor 1)')
+
+    def interval(self, nid, metric, loc):
+        for i, side in enumerate(('ic_inf', 'ic_sup')):
+            self.metric(f'{nid}_{side}', metric, (*loc, i))
+
+    def _put(self, nid, e):
+        if nid in self.out:
+            raise CanonicalError(f'{nid}: clave repetida en el colector')
+        self.out[nid] = e
+
+
+def _f5_holm(c, base, loc):
+    c.metric(f'{base}.p', 'p_value', (*loc, 'p'))
+    c.metric(f'{base}.alpha_h', 'alpha', (*loc, 'alpha_h'))
+    c.count(f'{base}.rango_holm', (*loc, 'rank'))
+    c.count(f'{base}.rechaza', (*loc, 'reject'), note='1 = se rechaza H0')
+
+
+def _f5_verdicts(c, base, loc, by_tech=('techniques', '{t}', 'verdict')):
+    """Veredicto por técnica y global como identidad en la clave; by_tech es la ruta
+    del veredicto de cada técnica dentro de loc ('{t}' se sustituye)."""
+    for t in F5_TECHS:
+        tl = (*loc, *(k.format(t=t) for k in by_tech))
+        v = c.get(tl)
+        c.identity(f'{base}.{t}.veredicto.{v.lower()}', tl, f'veredicto {v}')
+    g = c.get((*loc, 'global'))
+    c.identity(f'{base}.global.{g.lower()}', (*loc, 'global'), f'veredicto global {g}')
+
+
+def collect_f5(inputs):
+    """Cifras de la Fase 5 (resultados.json) sin recálculo: veredictos, contraste
+    principal, retención, descomposición, frente a descriptores, longitud,
+    Cochran/McNemar, sensibilidad y robustez. Los F1 observados no se duplican:
+    se contrastan con ref.*, f35.* y f36.* en check_f5."""
+    doc = _f5_result(F5_RESULT, inputs)
+    R = doc['resultados']
+    c = _F5Collector(doc, F5_RESULT, F5_VAL_NULL, F5_EVAL)
+    P = ('resultados', 'principal')
+
+    # Contraste principal (F5.1, F5.2, F5.6)
+    _f5_verdicts(c, 'f5.principal', P)
+    for t in F5_TECHS:
+        T, b = (*P, 'techniques', t), f'f5.principal.{t}'
+        r = R['principal']['techniques'][t]
+        c.metric(f'{b}.theta', 'f1_macro', (*T, 'theta_obs'))
+        c.interval(f'{b}.theta', 'f1_macro', (*T, 'theta_interval'))
+        c.metric(f'{b}.theta_ic_nivel', 'confidence_level', (*T, 'interval_level'))
+        _f5_holm(c, f'{b}.no_inferioridad', (*T, 'no_inferioridad'))
+        c.metric(f'{b}.d', 'f1_macro', (*T, 'D_obs'))
+        c.interval(f'{b}.d', 'f1_macro', (*T, 'D_interval'))
+        c.metric(f'{b}.d_ic_nivel', 'confidence_level', (*T, 'D_interval_level'))
+        _f5_holm(c, f'{b}.superioridad_piso', (*T, 'superioridad_piso'))
+        if len(r['piso']) != 1:
+            raise CanonicalError(f'{b}: piso {r["piso"]!r}; se espera una sola identidad')
+        c.identity(f'{b}.piso.{r["piso"][0]}', (*T, 'piso'), f'piso aplicado {r["piso"][0]}')
+        c.count(f'{b}.piso_empate', (*T, 'empate'), note='1 = empate en el máximo observado')
+    c.metric('f5.piso.stratified.f1_macro', 'f1_macro', (*P, 'techniques', 'gray_scott', 'piso_f1_obs', 'stratified'),
+             note='piso estratificado del contraste (constante; no es ref.piso.stratified, que es una corrida)')
+
+    # Retención (F5.6), descomposición y frente a descriptores (F5.3)
+    for t in F5_TECHS:
+        L = ('resultados', 'retencion', t)
+        c.metric(f'f5.retencion.{t}.rho', 'ratio', (*L, 'rho_obs'))
+        c.interval(f'f5.retencion.{t}.rho', 'ratio', (*L, 'interval'))
+        c.count(f'f5.retencion.{t}.n_denominador_no_positivo', (*L, 'n_denominador_no_positivo'))
+        for comp in ('cabeza', 'reduccion', 'renderizado'):
+            L = ('resultados', 'descomposicion', t, comp)
+            c.metric(f'f5.descomposicion.{t}.{comp}', 'f1_macro', (*L, 'obs'))
+            c.interval(f'f5.descomposicion.{t}.{comp}', 'f1_macro', (*L, 'interval'))
+        c.metric(f'f5.descomposicion.{t}.total', 'f1_macro', ('resultados', 'descomposicion', t, 'total_obs'))
+        L = ('resultados', 'frente_a_descriptores', t)
+        c.metric(f'f5.frente_a_descriptores.{t}', 'f1_macro', (*L, 'obs'))
+        c.interval(f'f5.frente_a_descriptores.{t}', 'f1_macro', (*L, 'interval'))
+
+    # Longitud (F4.5)
+    c.count('f5.longitud.m', ('resultados', 'longitud', 'm'))
+    for t in R['longitud']['techniques']:
+        L = ('resultados', 'longitud', 'techniques', t)
+        if R['longitud']['techniques'][t]['calificacion'] is not None:
+            raise CanonicalError(f'f5.longitud.{t}: calificación no nula; falta su codificación')
+        c.metric(f'f5.longitud.{t}.l', 'f1_macro', (*L, 'L_obs'), note='calificación nula en resultados.json')
+        _f5_holm(c, f'f5.longitud.{t}', L)
+
+    # Cochran y McNemar (F5.4)
+    M = ('resultados', 'mcnemar')
+    c.metric('f5.cochran.q', 'statistic', (*M, 'cochran', 'Q'))
+    c.metric('f5.cochran.p', 'p_value', (*M, 'cochran', 'p'))
+    c.count('f5.cochran.gl', (*M, 'cochran', 'gl'))
+    c.count('f5.cochran.todos_concordantes', (*M, 'cochran', 'todos_concordantes'))
+    if R['mcnemar']['pares'] is not None:
+        raise CanonicalError('f5.mcnemar.pares no es nulo; falta su codificación')
+    for ref_name, fam in R['mcnemar']['frente_a'].items():
+        for t, x in fam.items():
+            L, b = (*M, 'frente_a', ref_name, t), f'f5.mcnemar.{ref_name}.{x["lado"]}.{t}'
+            c.count(f'{b}.b', (*L, 'b'))
+            c.count(f'{b}.c', (*L, 'c'))
+            _f5_holm(c, b, L)
+
+    # Sensibilidad (F5.5)
+    S = ('resultados', 'sensibilidad')
+    for name in ('retencion_exigida', 'formulacion_A'):
+        for k in R['sensibilidad'][name]:
+            _f5_verdicts(c, f'f5.sensibilidad.{name.lower()}.{F5_VARIANT_SLUG[k]}', (*S, name, k))
+    for k in R['sensibilidad']['variabilidad_beto']:
+        slug = {'+': 'mas', '-': 'menos'}[k[0]]
+        _f5_verdicts(c, f'f5.sensibilidad.variabilidad_beto.{slug}', (*S, 'variabilidad_beto', k))
+    for s in R['sensibilidad']['por_semilla']['por_semilla']:
+        _f5_verdicts(c, f'f5.sensibilidad.por_semilla.seed{s}', (*S, 'por_semilla', 'por_semilla', s))
+    for t in F5_TECHS:
+        c.count(f'f5.sensibilidad.por_semilla.n_semillas_v1.{t}', (*S, 'por_semilla', 'n_semillas_V1', t))
+    for name in ('segundo_mejor', 'piso_sin_permutado'):
+        _f5_verdicts(c, f'f5.sensibilidad.{name}', (*S, name))
+
+    # Robustez (§11 de la Enmienda 4)
+    for i, a in enumerate(R['robustez']):
+        alt = a['alternativa'].split(':')[0]
+        b, L = f'f5.robustez.{F5_ROBUSTEZ_SLUG[alt]}', ('resultados', 'robustez', i)
+        if 'veredictos' in a:
+            _f5_verdicts(c, b, L, by_tech=('veredictos', '{t}'))
+            for t in F5_TECHS:
+                c.count(f'{b}.cambia.{t}', (*L, 'cambia_tecnica', t))
+            c.count(f'{b}.cambia.global', (*L, 'cambia_global'))
+        if 'n_semillas_V1' in a:
+            for t in F5_TECHS:
+                c.count(f'{b}.n_semillas_v1.{t}', (*L, 'n_semillas_V1', t))
+                c.count(f'{b}.cambia_n_semillas_v1.{t}', (*L, 'cambia_n_semillas_V1', t))
+            for s in a['por_semilla']:
+                _f5_verdicts(c, f'{b}.seed{s}', (*L, 'por_semilla', s), by_tech=('veredictos', '{t}'))
+    return c.out
+
+
+def collect_f46(inputs):
+    """F4.6 (f46_resultados.json): kappa y contención; condición 1 por técnica.
+    La condición 2 queda PENDIENTE (P6, F4.1) y no tiene entrada."""
+    doc = _f5_result(F46_RESULT, inputs)
+    R = doc['resultados']
+    c = _F5Collector(doc, F46_RESULT, F46_VAL_NULL, F46_EVAL)
+    for kind, pairs in R['kappa'].items():
+        for pair, x in pairs.items():
+            L, b = ('resultados', 'kappa', kind, pair), f'f46.kappa.{kind}.{pair}'
+            c.metric(f'{b}.kappa', 'kappa', (*L, 'obs'))
+            c.interval(f'{b}.kappa', 'kappa', (*L, 'interval'))
+            c.count(f'{b}.n_replicas_indefinidas', (*L, 'n_replicas_indefinidas'))
+
+    def contencion(b, L):
+        c.metric(f'{b}.c', 'proportion', (*L, 'C_obs'))
+        c.interval(f'{b}.c', 'proportion', (*L, 'interval'))
+        c.metric(f'{b}.nula', 'proportion', (*L, 'nula_obs'))
+        for k in ('n_replicas_indefinidas', 'n_errores_vis', 'n_errores_ref', 'n_interseccion'):
+            c.count(f'{b}.{k}', (*L, k))
+
+    for t in F5_TECHS:
+        for ref_name in ('techo5d', 'beto', 'emb768'):
+            contencion(f'f46.contencion.{t}.{ref_name}', ('resultados', 'contencion', t, ref_name))
+        cond = R['contencion'][t]['condicion_1']
+        if not isinstance(cond, bool):
+            raise CanonicalError(f'f46.contencion.{t}.condicion_1 = {cond!r}')
+        c.count(f'f46.contencion.{t}.condicion_1', ('resultados', 'contencion', t, 'condicion_1'),
+                note='1 = cumplida; la condición 2 (IC de ΔF1 de F4.1) está PENDIENTE (P6)')
+        for s in R['contencion_por_semilla'][t]:
+            contencion(f'f46.contencion_por_semilla.{t}.seed{s}.techo5d', ('resultados', 'contencion_por_semilla', t, s))
+    return c.out
+
+
+def check_f5(numbers):
+    """Los F1 observados de resultados.json coinciden con las cifras verificadas
+    desde las predicciones (ref.*, f35.*, f36.*)."""
+    R = json.loads(F5_RESULT.read_text(encoding='utf-8'))['resultados']
+    obs = R['observados']
+
+    def test_of(nid):
+        return numbers[nid]['value']['test']
+
+    def one(prefix, t, role):
+        ks = [k for k in numbers if k.startswith(f'{prefix}.{t}.{role}.') and k.endswith('.f1_macro') and '.seed' in k]
+        return ks
+
+    for t in F5_TECHS:
+        r = R['principal']['techniques'][t]
+        for prefix, role, fase in (('f35', 'finalista', 'final'), ('f36', 'permutado', 'control_permutacion'),
+                                   ('f55', 'segundo', 'sensibilidad')):
+            ks = one(prefix, t, role)
+            by_seed = {int(k.split('.seed')[1].split('.')[0]): test_of(k) for k in ks}
+            per_seed = obs[str(('img', fase, t))]
+            if [by_seed[s] for s in F3X_SEEDS] != per_seed:
+                raise CanonicalError(f'{prefix}.{t}: F1 de prueba por semilla != resultados.json observados ({fase})')
+        checks = {'f1_img_obs': f'f35.{t}.finalista.f1_macro_mean', 'f1_beto_obs': 'ref.beto_exp41.f1_macro'}
+        floors = {'majority': 'ref.piso.majority.f1_macro', 'brightness': f'ref.piso.brightness.{t}.f1_macro',
+                  'visual_permutado': f'f36.{t}.permutado.f1_macro_mean'}
+        for field, nid in checks.items():
+            if not math.isclose(r[field], test_of(nid), rel_tol=0, abs_tol=1e-12):
+                raise CanonicalError(f'f5.principal.{t}.{field} {r[field]!r} != {nid} {test_of(nid)!r}')
+        for floor, nid in floors.items():
+            if not math.isclose(r['piso_f1_obs'][floor], test_of(nid), rel_tol=0, abs_tol=1e-12):
+                raise CanonicalError(f'piso {floor} de {t} {r["piso_f1_obs"][floor]!r} != {nid} {test_of(nid)!r}')
 
 # ── Fragmentos, fusión y derivadas ────────────────────────────────────────
 def load_schema():
@@ -929,9 +1259,13 @@ def build(umap_path=None, fragment_paths=None, strict=False):
     for prefix in F3X_PHASES:
         sources[f'build.py:collect_{prefix}'] = collect_f3x(prefix, selection, inputs)
     sources['build.py:collect_ref_longitud'] = collect_ref_longitud(inputs)
+    sources['build.py:collect_f5'] = collect_f5(inputs)
+    sources['build.py:collect_f46'] = collect_f46(inputs)
     sources.update(load_fragments(fragment_paths, inputs))
     numbers, superseded = merge(sources)
+    unlock_ref_test(numbers, inputs)
     resolve_derived(numbers)
+    check_f5(numbers)
     doc = {'schema_version': SCHEMA_VERSION, 'inputs': inputs, 'numbers': numbers}
     if superseded:
         doc['superseded'] = superseded
