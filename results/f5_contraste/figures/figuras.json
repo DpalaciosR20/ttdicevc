@@ -1,0 +1,49 @@
+{
+ "figuras": [
+  {
+   "archivo": "results/f5_contraste/figures/f5_01_f1_prueba_modelos.png",
+   "figura": "F1-Macro de prueba de todos los clasificadores, con umbral θ = 0 y BETO"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f5_02_theta_forest.png",
+   "figura": "F5.2: θ con IC de Holm por técnica (a) y en cada variante de sensibilidad (b)"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f5_03_superioridad_piso.png",
+   "figura": "F5.1: finalista frente a cada piso (a) y D con IC de Holm (b)"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f5_04_distribuciones_bootstrap.png",
+   "figura": "Distribuciones bootstrap de θ* y D* por técnica (réplicas reconstruidas y verificadas)"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f5_05_descomposicion_descriptores.png",
+   "figura": "F5.3: cascada de la descomposición por etapa (a) y visual − descriptores (b), con IC 95 %"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f5_06_retencion.png",
+   "figura": "F5.6: retención ρ̂ con IC 95 %, líneas en 1 y en r = 0.50"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f5_07_veredictos_robustez.png",
+   "figura": "F5.5: veredictos por variante de sensibilidad (a), alternativas de robustez y A14 por semilla (b)"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f45_01_longitud.png",
+   "figura": "F4.5: L por técnica con p (a), F1 por tercil de longitud (b) y Spearman de u0–u4 con la longitud (c)"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f46_01_kappa.png",
+   "figura": "F4.6: mapa de calor de κ de Cohen sobre ŷ y sobre vectores de acierto, con IC 95 %"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f46_02_contencion.png",
+   "figura": "F4.6: contención C frente a la referencia nula con IC 95 %, por referencia y por semilla"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f46_03_interseccion_errores.png",
+   "figura": "F4.6: diagrama de intersección de errores (BETO, techo 5D, finalista) por técnica"
+  }
+ ],
+ "segundos_kernel": 20.9
+}
