@@ -1,0 +1,20 @@
+[
+ {
+  "técnica": "Gray-Scott",
+  "ρ recalculado": 0.8019337781831091,
+  "ρ en resultados.json": 0.8019337781831091,
+  "|dif|": 0.0
+ },
+ {
+  "técnica": "Perlin",
+  "ρ recalculado": 0.5221038592161575,
+  "ρ en resultados.json": 0.5221038592161575,
+  "|dif|": 0.0
+ },
+ {
+  "técnica": "Lorenz",
+  "ρ recalculado": 0.3190933701840265,
+  "ρ en resultados.json": 0.3190933701840265,
+  "|dif|": 0.0
+ }
+]
