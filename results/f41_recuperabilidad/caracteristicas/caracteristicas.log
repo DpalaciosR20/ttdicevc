@@ -1,0 +1,9 @@
+gray_scott  efficientnet_b0_finetune_seed42  (1136, 1280)     5.7 s  662fffa11582
+gray_scott  efficientnet_b0_finetune_seed7   (1136, 1280)     4.9 s  fb9e0d05fede
+gray_scott  efficientnet_b0_finetune_seed123 (1136, 1280)     4.6 s  7f1a77a5d9b2
+gray_scott  efficientnet_b0_finetune_seed2024 (1136, 1280)     4.6 s  72674fb5ec7f
+gray_scott  efficientnet_b0_finetune_seed99  (1136, 1280)     4.6 s  92eba28bc5b8
+gray_scott  efficientnet_b0_imagenet         (1136, 1280)     4.6 s  95a6ceb31836
+perlin      vit_b16_imagenet                 (1136, 768)    14.7 s  7c73f0542589
+lorenz      vit_b16_imagenet                 (1136, 768)    14.7 s  17a7443bbf85
+8 archivos de características; 81.2 s

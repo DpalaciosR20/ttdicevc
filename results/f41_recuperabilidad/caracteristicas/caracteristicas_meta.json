@@ -1,0 +1,222 @@
+{
+ "task": "F4.1",
+ "smoke": false,
+ "limit": null,
+ "git_commit": "9f3b7b016bcb24d41b58d46ffdb8af7f26267295",
+ "created_at": "2026-11-07T20:49:35+00:00",
+ "device": "cuda",
+ "torch": "2.11.0+cu130",
+ "python": "3.13.16",
+ "cuda": "13.0",
+ "gpu": "Tesla T4",
+ "g2": "sin logits ni p_dep: la cabeza se reemplaza por Identity",
+ "tecnicas": {
+  "gray_scott": {
+   "arch": "efficientnet_b0",
+   "preprocessing": {
+    "size": 224,
+    "resize_mode": "resize",
+    "interpolation": "bilinear",
+    "antialias": true,
+    "hflip": true,
+    "vit": "same",
+    "variant": "px224-flip"
+   },
+   "n_imagenes": 1136,
+   "dir_digest": "c3593c9bd04b4abb45afe7958bded087b53b7812a7cb11e72bda8e382f2d31db",
+   "imagenet": {
+    "weights": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+    "url": "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth",
+    "file_sha256": "7f5810bc96def8f7552d5b7e68d53c4786f81167d28291b21c0d90e1fca14934"
+   },
+   "modelos": {
+    "42": {
+     "archivo": "gray_scott__efficientnet_b0__finetune__px224-flip__seed42.pt",
+     "sha256": "e6adc5407fb0f0fc211b88eb2a303716e3903374e63b4f654e7aa9d41161a04b"
+    },
+    "7": {
+     "archivo": "gray_scott__efficientnet_b0__finetune__px224-flip__seed7.pt",
+     "sha256": "e301948090455b2a98a2a7b6b2b8670a677b316d9574304b0549879ca7069105"
+    },
+    "123": {
+     "archivo": "gray_scott__efficientnet_b0__finetune__px224-flip__seed123.pt",
+     "sha256": "2670c32a9827dc1bf26905a5368469ada05c5e57d72e8c88abd4c78964b8229f"
+    },
+    "2024": {
+     "archivo": "gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.pt",
+     "sha256": "9a67482a8a7af4208c7b61c945dbe360bead36bd3756819266016360f19dfaad"
+    },
+    "99": {
+     "archivo": "gray_scott__efficientnet_b0__finetune__px224-flip__seed99.pt",
+     "sha256": "ddf3b4e573779888ff3b29a25af7b8dcfbd23b62889e351ef5f235db08f8bdaf"
+    }
+   },
+   "segundos": 31.8
+  },
+  "perlin": {
+   "arch": "vit_b16",
+   "preprocessing": {
+    "size": 224,
+    "resize_mode": "resize",
+    "interpolation": "bilinear",
+    "antialias": true,
+    "hflip": false,
+    "vit": "same",
+    "variant": "px224-noflip"
+   },
+   "n_imagenes": 1136,
+   "dir_digest": "b8ce53c6fa339d3a4dcca2ba647c55aeaec79909f7137563efd8b5d04f7e3ccb",
+   "imagenet": {
+    "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+    "url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+    "file_sha256": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9"
+   },
+   "modelos": {
+    "42": {
+     "archivo": "perlin__vit_b16__frozen__px224-noflip__seed42.pt",
+     "sha256": "2c21a4e6b30a9699b466f63b23482f3fda916592afe02066321184a8effe0b64",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    },
+    "7": {
+     "archivo": "perlin__vit_b16__frozen__px224-noflip__seed7.pt",
+     "sha256": "a1dad340793961ce9716af1a8ba0cd49b05f052cb5d6ea2c697b51954330eec7",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    },
+    "123": {
+     "archivo": "perlin__vit_b16__frozen__px224-noflip__seed123.pt",
+     "sha256": "6502a2bb23a9a80dbed5a3b73920a903245a4490a10796481488bfb1b0a82f0b",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    },
+    "2024": {
+     "archivo": "perlin__vit_b16__frozen__px224-noflip__seed2024.pt",
+     "sha256": "be4eaeac3b379dcb6e6a88c480c16861fe54d89df385cbd85e34df61daf9f5bd",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    },
+    "99": {
+     "archivo": "perlin__vit_b16__frozen__px224-noflip__seed99.pt",
+     "sha256": "27bcd8cb5a956614c58f5c3a3bb6be41f293e681691f57de86368078df68c27b",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    }
+   },
+   "segundos": 24.9
+  },
+  "lorenz": {
+   "arch": "vit_b16",
+   "preprocessing": {
+    "size": 224,
+    "resize_mode": "resize",
+    "interpolation": "bilinear",
+    "antialias": true,
+    "hflip": false,
+    "vit": "same",
+    "variant": "px224-noflip"
+   },
+   "n_imagenes": 1136,
+   "dir_digest": "6fc478a58477f5ba76d9105435be179c52539db2d67dbee3918a67dc5cfdde9b",
+   "imagenet": {
+    "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+    "url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+    "file_sha256": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9"
+   },
+   "modelos": {
+    "42": {
+     "archivo": "lorenz__vit_b16__frozen__px224-noflip__seed42.pt",
+     "sha256": "95f7367c45189eeead8607deb2e3d23f84c76c491a4b3b50743c23c2ac7cde93",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    },
+    "7": {
+     "archivo": "lorenz__vit_b16__frozen__px224-noflip__seed7.pt",
+     "sha256": "cd66c4001172363a4a3fe9a6957e3408222c3d0ca6b0d4820187454e08635d58",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    },
+    "123": {
+     "archivo": "lorenz__vit_b16__frozen__px224-noflip__seed123.pt",
+     "sha256": "e11700ae13ab628c21a6418d870df6e582a362901c846f41fd9480dcc8915510",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    },
+    "2024": {
+     "archivo": "lorenz__vit_b16__frozen__px224-noflip__seed2024.pt",
+     "sha256": "08201d97e5bef0b71314b7d5d701beaf02aac64328133753b1f0d66cf82c59df",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    },
+    "99": {
+     "archivo": "lorenz__vit_b16__frozen__px224-noflip__seed99.pt",
+     "sha256": "98be656328c4e84577bd7e89ffce98e36de8c9844572c36a93bffb4ba1fa054d",
+     "backbone_vs_imagenet": {
+      "n_tensores": 150,
+      "iguales": 150,
+      "faltan_en_a": [],
+      "faltan_en_b": [],
+      "identico": true,
+      "distintos": []
+     }
+    }
+   },
+   "segundos": 24.5
+  }
+ },
+ "segundos_total": 81.2
+}
