@@ -520,5 +520,60 @@
       "F3.7: la pasada sobre prueba no generó predicciones archivadas",
       "D1 y D2 (bitácora F3.5, CE): errores de redacción"
     ]
+  },
+  "enmienda_5": {
+    "_seccion": "Enmienda 5 (2026-11-07)",
+    "_autor": "SV",
+    "_fuente": "results/f5_preparacion/reporte_bloque_d1.md",
+    "_momento": "posterior a la Enmienda 4 y a la implementación con datos sintéticos; anterior a todo cálculo de la Fase 5 sobre datos reales",
+    "relacion_s11": {
+      "desviacion_declarada": true,
+      "misma_que": "enmienda_4",
+      "compromiso_robustez": true,
+      "filas_nuevas_robustez": [
+        "P1",
+        "P2"
+      ]
+    },
+    "resoluciones": {
+      "P1": "por_semilla.sensibilidad",
+      "P2": "piso",
+      "P3": "kappa",
+      "P4": "contencion",
+      "P5": "cochran",
+      "A3": "piso",
+      "P6": "pendiente_F4.1"
+    },
+    "por_semilla": {
+      "sensibilidad": {
+        "comparacion": "por_replica"
+      }
+    },
+    "piso": {
+      "empate_alternativa": "primero_en_pisos_order",
+      "empate_tolerancia": 1e-12
+    },
+    "kappa": {
+      "indefinida": {
+        "replicas": "excluir_y_contar",
+        "observado": "no_aplica"
+      }
+    },
+    "contencion": {
+      "indefinida": {
+        "replicas": "excluir_y_contar",
+        "observado": "no_aplica"
+      }
+    },
+    "cochran": {
+      "todos_concordantes": {
+        "Q": 0,
+        "p": 1,
+        "mcnemar_pares": false
+      }
+    },
+    "pendiente": {
+      "P6": "condición 2 de F4.6 (IC de ΔF1 de F4.1), hasta el bloque E"
+    }
   }
 }

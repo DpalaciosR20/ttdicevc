@@ -120,6 +120,10 @@ CONFIG_SHA256_ENMIENDA_2 = '708ead595fe59bd0c5a58f0a11e156b3e3cb48f350cfa82d3915
 # Enmienda 4 (2026-11-06): solo añade el bloque enmienda_4 al final; los demás
 # bloques son idénticos a los de la Enmienda 3 (commit 9027167, huella anterior).
 CONFIG_SHA256_ENMIENDA_4 = '08fb0e2bdad45f1515ab00899ac5fc839c1087429ec04da586ad7b68c7cebcdf'
+# Enmienda 5 (2026-11-07): solo añade el bloque enmienda_5 al final; el resto es idéntico al de la
+# etiqueta enmienda-4 (cuya huella es CONFIG_SHA256_ENMIENDA_4).
+CONFIG_SHA256_ENMIENDA_5 = '068f33521968cecd35c461a21f6fc456407d1e5cc44bc9ae8a5d4af4a6351544'
+ENMIENDA_4_TAG = 'enmienda-4'
 ENMIENDA_3_COMMIT = '9027167'
 
 
@@ -158,8 +162,8 @@ def test_header_hashes_match_configs(doc):
     assert header_sha(doc, MATRIX) == text_sha256(MATRIX), 'SHA-256 de la matriz desactualizado en el encabezado'
     assert header_sha(doc, CONFIG) == sha_at_tag(CONFIG), \
         f'el encabezado debe registrar la huella de configs/protocolo.json en {schema.PROTOCOL_TAG}'
-    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_4, \
-        'configs/protocolo.json cambió después de la Enmienda 4: registra una enmienda y actualiza la constante'
+    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_5, \
+        'configs/protocolo.json cambió después de la Enmienda 5: registra una enmienda y actualiza la constante'
 
 
 def test_header_version_tag_and_amendment(doc, cfg):
@@ -583,9 +587,10 @@ AMBIGUEDADES = [f'A{i}' for i in range(1, 18)]
 
 
 def enmienda_4(doc):
-    m = re.search(r'^## Enmienda 4 \(2026-11-06\)$(.*)\Z', doc, re.M | re.S)
-    assert m, 'falta la Enmienda 4 al final del protocolo'
-    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 4 debe ser la última sección'
+    # Desde la Enmienda 5 (2026-11-07) llega hasta la siguiente enmienda
+    m = re.search(r'^## Enmienda 4 \(2026-11-06\)$(.*?)(?=^## Enmienda 5 \(2026-11-07\)$)', doc, re.M | re.S)
+    assert m, 'falta la Enmienda 4, seguida de la Enmienda 5'
+    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 4 no debe contener otras secciones'
     return m.group(1)
 
 
@@ -626,7 +631,7 @@ def test_enmienda_4_relacion_s11(doc, cfg):
 
 def test_enmienda_4_bloque_presente_y_tipos(cfg):
     e = cfg['enmienda_4']
-    assert list(cfg)[-1] == 'enmienda_4', 'enmienda_4 debe ser el último bloque'
+    assert list(cfg)[-2:] == ['enmienda_4', 'enmienda_5'], 'enmienda_4 debe ir justo antes de enmienda_5'
     assert e['_seccion'] == 'Enmienda 4 (2026-11-06)' and e['_autor'] == 'SV'
     assert e['regla_resolucion'] == ['texto_literal', 'verdict_py_protocolo_v1',
                                      'menos_favorable_conservacion_con_la_otra_como_sensibilidad']
@@ -699,8 +704,9 @@ def test_bloques_previos_intactos_frente_a_enmienda_3(cfg):
     """La Enmienda 4 solo añade enmienda_4: el resto es idéntico al config del commit de la Enmienda 3."""
     prev = config_at(ENMIENDA_3_COMMIT)
     assert 'enmienda_4' not in prev
-    assert {k: v for k, v in cfg.items() if k != 'enmienda_4'} == prev
-    assert list(prev) == [k for k in cfg if k != 'enmienda_4']
+    later = ('enmienda_4', 'enmienda_5')
+    assert {k: v for k, v in cfg.items() if k not in later} == prev
+    assert list(prev) == [k for k in cfg if k not in later]
 
 
 # Bloques añadidos o ampliados por la Enmienda 2 (y F2.4, prevista por ella) respecto de protocolo-v1
@@ -711,7 +717,7 @@ def test_bloques_previos_intactos_frente_a_protocolo_v1(cfg):
     """Todo bloque de protocolo-v1 sigue igual; la única ampliación es referencias.longitud
     (Enmienda 2, punto 4), que conserva sus claves de v1 con los mismos valores."""
     v1 = config_at(schema.PROTOCOL_TAG)
-    assert set(cfg) - set(v1) == BLOQUES_NUEVOS_ENMIENDA_2 | {'enmienda_4'}
+    assert set(cfg) - set(v1) == BLOQUES_NUEVOS_ENMIENDA_2 | {'enmienda_4', 'enmienda_5'}
     for key, val in v1.items():
         if key == 'referencias':
             assert set(cfg[key]) == set(val)
@@ -724,3 +730,57 @@ def test_bloques_previos_intactos_frente_a_protocolo_v1(cfg):
             assert cfg[key] == val, key
     # en particular, lo que lee src/protocol/verdict.py
     assert cfg['contraste'] == v1['contraste']
+
+
+# ── Enmienda 5 (2026-11-07): resolución de P1–P5 y tolerancia de A3 ───────────
+
+def enmienda_5(doc):
+    m = re.search(r'^## Enmienda 5 \(2026-11-07\)$(.*)\Z', doc, re.M | re.S)
+    assert m, 'falta la Enmienda 5 al final del protocolo'
+    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 5 debe ser la última sección'
+    return m.group(1)
+
+
+def test_enmienda_5_texto(doc):
+    sec = enmienda_5(doc)
+    assert doc.index('## Enmienda 4 (2026-11-06)') < doc.index('## Enmienda 5 (2026-11-07)')
+    fields = ('**Autor.** SV', '**Momento.**', '**Motivo.**', '**Regla de resolución.**',
+              '**Declaración de exposición.**', '**Alcance.**', '**Relación con el §11.**', '**Cambios.**')
+    for field in fields:
+        assert field in sec, field
+    assert [sec.index(f) for f in fields] == sorted(sec.index(f) for f in fields), 'orden de los campos'
+    assert '`results/f5_preparacion/reporte_bloque_d1.md`' in sec
+    assert 'anterior** a todo cálculo de la Fase 5 sobre datos reales' in sec
+    assert 'misma desviación declarada en la Enmienda 4' in sec
+    assert '`configs/protocolo.json` → `enmienda_5`' in sec
+    rows = table_dict(sec)
+    assert list(rows) == ['P1', 'P2', 'P3', 'P4', 'P5', 'A3', 'P6']
+    cell = {k: '|'.join(v) for k, v in rows.items()}   # las celdas con \| escapados se parten al leer la tabla
+    assert 'por réplica' in cell['P1'] and '`pisos.order`' in cell['P2'] and '1e-12' in cell['A3']
+    assert 'Q = 0, p = 1' in cell['P5'] and 'F4.1' in cell['P6']
+
+
+def test_enmienda_5_bloque(cfg):
+    e = cfg['enmienda_5']
+    assert list(cfg)[-1] == 'enmienda_5', 'enmienda_5 debe ser el último bloque'
+    assert (e['_seccion'], e['_autor']) == ('Enmienda 5 (2026-11-07)', 'SV') and isinstance(e['_momento'], str)
+    r = e['relacion_s11']
+    assert r['desviacion_declarada'] is True and r['misma_que'] == 'enmienda_4' and r['compromiso_robustez'] is True
+    assert list(e['resoluciones']) == ['P1', 'P2', 'P3', 'P4', 'P5', 'A3', 'P6']
+    assert e['por_semilla']['sensibilidad']['comparacion'] == 'por_replica'
+    assert e['piso']['empate_alternativa'] == 'primero_en_pisos_order'
+    assert isinstance(e['piso']['empate_tolerancia'], float) and e['piso']['empate_tolerancia'] == 1e-12
+    for k in ('kappa', 'contencion'):
+        assert e[k]['indefinida'] == {'replicas': 'excluir_y_contar', 'observado': 'no_aplica'}
+    assert e['cochran']['todos_concordantes'] == {'Q': 0, 'p': 1, 'mcnemar_pares': False}
+    assert 'P6' in e['pendiente']
+    assert 'comparacion' not in cfg['enmienda_4']['por_semilla']['sensibilidad']
+
+
+def test_bloques_previos_intactos_frente_a_enmienda_4(cfg):
+    """La Enmienda 5 solo añade enmienda_5: el resto es idéntico al config de la etiqueta enmienda-4."""
+    prev = config_at(ENMIENDA_4_TAG)
+    assert sha_at(ENMIENDA_4_TAG, CONFIG) == CONFIG_SHA256_ENMIENDA_4
+    assert 'enmienda_5' not in prev
+    assert {k: v for k, v in cfg.items() if k != 'enmienda_5'} == prev
+    assert list(prev) == [k for k in cfg if k != 'enmienda_5']
