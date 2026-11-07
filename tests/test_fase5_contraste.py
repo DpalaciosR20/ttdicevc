@@ -365,6 +365,26 @@ def test_formulacion_A_p_y_V2():
             assert lo_delta > delta
 
 
+def _sin_params(res):
+    return {k: v for k, v in res.items() if k != 'params'}
+
+
+@pytest.mark.parametrize('k', [0, 20, 40])
+def test_formulacion_A_solo_usa_delta_y_registra_r(k):
+    """Erratum D3: con δ fijo, variar r no cambia nada salvo params.r; formulacion_a registra su r."""
+    F = table(S.make(img_errors={'gray_scott': 0, 'perlin': k, 'lorenz': 40}, beto_errors=4))
+    delta = S.CANON['f11.delta_margen.r0_50']['value']['test']
+    base = cx.contraste(F, CFG, r=0.5, formulation='A', delta=delta)
+    for r in (0.75, 0.8, 0.1):
+        res = cx.contraste(F, CFG, r=r, formulation='A', delta=delta)
+        assert _sin_params(res) == _sin_params(base)
+        assert res['params']['r'] == r and res['params']['delta'] == delta
+    out = sens.formulacion_a(F, CFG, S.CANON)
+    for key, res in out.items():
+        assert res['params']['r'] == float(key.split('=')[1])
+        assert res['params']['formulation'] == 'A'
+
+
 def test_beto_desplazado_traslada_theta():
     F = table(S.make())
     base = cx.contraste(F, CFG)

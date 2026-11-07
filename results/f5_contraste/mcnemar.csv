@@ -1,0 +1,8 @@
+contraste,Q,p,gl,alpha,todos_concordantes,b,c,rank,alpha_h,reject,lado
+cochran,3.2941176470588234,0.19261559277384016,2,0.05,False,,,,,,
+beto/gray_scott,,0.9375,,,,1,3,2,0.025,False,unilateral
+beto/perlin,,0.38720703125,,,,7,5,1,0.016666666666666666,False,unilateral
+beto/lorenz,,0.9453125,,,,3,7,3,0.05,False,unilateral
+techo5d/gray_scott,,0.96875,,,,1,4,3,0.05,False,unilateral
+techo5d/perlin,,0.5,,,,7,6,1,0.016666666666666666,False,unilateral
+techo5d/lorenz,,0.96728515625,,,,3,8,2,0.025,False,unilateral

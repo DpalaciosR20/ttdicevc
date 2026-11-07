@@ -54,7 +54,8 @@ def formulacion_a(F, cfg, canon):
     for r in e['r']:
         key = {0.5: '0.5', 0.75: '0.75', 0.8: '0.8'}[r]
         delta = canonical_value(canon, e['canonical_delta'][key])
-        out[f'r={r}'] = cx.contraste(F, cfg, formulation='A', delta=delta)
+        # r solo se registra en params (la formulación A usa δ); antes quedaba el r por omisión (erratum D3)
+        out[f'r={r}'] = cx.contraste(F, cfg, r=r, formulation='A', delta=delta)
     return out
 
 

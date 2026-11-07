@@ -1,0 +1,58 @@
+........................................................................ [  6%]
+........................................................................ [ 12%]
+........................................................................ [ 18%]
+........................................................................ [ 24%]
+........................................................................ [ 31%]
+........................................................................ [ 37%]
+........................................................................ [ 43%]
+........................................................................ [ 49%]
+........................................................................ [ 56%]
+........................................................................ [ 62%]
+........................................................................ [ 68%]
+........................................................................ [ 74%]
+........................................................................ [ 80%]
+...
+[rendimiento] Fase 5 sintética: 0.2 s; F4.6: 0.1 s (B = 10000)
+....ssssssssssssssssssssssssssssss................................... [ 87%]
+........................................................................ [ 93%]
+........................................................................ [ 99%]
+.....                                                                    [100%]
+============================== warnings summary ===============================
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib]
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: C:\Users\DELL\AppData\Local\Temp\claude\77d6191c75a29e6f\036ae6cb-d2eb-47f9-8a1a-2464165caef8\scratchpad\pytest_d3.xml -
+=========================== short test summary info ===========================
+SKIPPED [16] tests\test_label_independence.py:289: Define F03_UMAP_PARAMS para correr esta prueba (ver docstring del módulo)
+SKIPPED [4] tests\test_label_independence.py:300: Define F03_UMAP_PARAMS para correr esta prueba (ver docstring del módulo)
+SKIPPED [1] tests\test_label_independence.py:310: Define F03_UMAP_PARAMS para correr esta prueba (ver docstring del módulo)
+SKIPPED [1] tests\test_label_independence.py:319: Define F03_UMAP_PARAMS para correr esta prueba (ver docstring del módulo)
+SKIPPED [1] tests\test_label_independence.py:333: Define F03_UMAP_PARAMS para correr esta prueba (ver docstring del módulo)
+SKIPPED [3] tests\test_label_independence.py:341: Define F03_UMAP_PARAMS para correr esta prueba (ver docstring del módulo)
+SKIPPED [3] tests\test_label_independence.py:361: Define F03_UMAP_PARAMS para correr esta prueba (ver docstring del módulo)
+SKIPPED [1] tests\test_label_independence.py:384: Define F03_UMAP_PARAMS para correr esta prueba (ver docstring del módulo)
+1127 passed, 30 skipped, 14 warnings in 165.22s (0:02:45)

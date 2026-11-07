@@ -1,0 +1,4 @@
+tecnica,m,L_obs,p,below_resolution,rank,alpha_h,reject,calificacion
+gray_scott,3,0.21079301647974102,0.0001,False,1,0.016666666666666666,True,
+perlin,3,0.1576648121841686,0.0029,False,3,0.05,True,
+lorenz,3,0.21654464356512793,0.0001,False,1,0.016666666666666666,True,
