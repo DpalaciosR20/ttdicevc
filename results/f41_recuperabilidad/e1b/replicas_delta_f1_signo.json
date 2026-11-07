@@ -1,0 +1,50 @@
+{
+ "gray_scott/efficientnet_b0_finetune_seed42": {
+  "reps_lt0": 6290,
+  "reps_eq0": 3710,
+  "reps_gt0": 0,
+  "n_pred_distintas": 1
+ },
+ "gray_scott/efficientnet_b0_finetune_seed7": {
+  "reps_lt0": 5310,
+  "reps_eq0": 780,
+  "reps_gt0": 3910,
+  "n_pred_distintas": 4
+ },
+ "gray_scott/efficientnet_b0_finetune_seed123": {
+  "reps_lt0": 1487,
+  "reps_eq0": 830,
+  "reps_gt0": 7683,
+  "n_pred_distintas": 4
+ },
+ "gray_scott/efficientnet_b0_finetune_seed2024": {
+  "reps_lt0": 208,
+  "reps_eq0": 31,
+  "reps_gt0": 9761,
+  "n_pred_distintas": 6
+ },
+ "gray_scott/efficientnet_b0_finetune_seed99": {
+  "reps_lt0": 483,
+  "reps_eq0": 176,
+  "reps_gt0": 9341,
+  "n_pred_distintas": 6
+ },
+ "gray_scott/efficientnet_b0_imagenet": {
+  "reps_lt0": 0,
+  "reps_eq0": 536,
+  "reps_gt0": 9464,
+  "n_pred_distintas": 3
+ },
+ "perlin/vit_b16_imagenet": {
+  "reps_lt0": 0,
+  "reps_eq0": 56,
+  "reps_gt0": 9944,
+  "n_pred_distintas": 5
+ },
+ "lorenz/vit_b16_imagenet": {
+  "reps_lt0": 7692,
+  "reps_eq0": 523,
+  "reps_gt0": 1785,
+  "n_pred_distintas": 3
+ }
+}
