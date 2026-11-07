@@ -81,6 +81,8 @@ def supports(entry, split):
 DESIGN_PREFIXES = ('f11.', 'f12.')
 # Cifras extraídas de la Fase 5 y de F4.6 (bootstrap, p, α, κ...): tampoco salen de una matriz de confusión
 F5_PREFIXES = ('f5.', 'f46.')
+# F4.1 y F4.7: R², alpha, ρ, ΔF1... Sus F1 de prueba verificados se prueban aparte (test_f41_*)
+F4_PREFIXES = ('f41.', 'f47.')
 
 
 def is_leaf_metric(entry):
@@ -91,7 +93,7 @@ def leaf_cases():
     """(id, split) de cada F1 no derivado y no nulo; xfail si la entrada lo declara."""
     cases = []
     for nid, e in sorted(NUMBERS.items()):
-        if not is_leaf_metric(e) or nid.startswith(DESIGN_PREFIXES + F5_PREFIXES):
+        if not is_leaf_metric(e) or nid.startswith(DESIGN_PREFIXES + F5_PREFIXES + F4_PREFIXES):
             continue
         for s in canon.METRIC_SPLITS:
             if e['value'][s] is None:
@@ -128,7 +130,7 @@ def test_evaluator_y_null_reason():
     for nid, e in NUMBERS.items():
         assert e['evaluator'].strip(), nid
         if e['kind'] == 'metric':
-            assert set(e['value']) == {'val', 'test'}, nid
+            assert set(e['value']) == ({'val', 'test', 'train'} if nid.startswith('f47.') else {'val', 'test'}), nid
             for s in canon.METRIC_SPLITS:
                 if e['value'][s] is None:
                     assert e['null_reason'][s].strip(), f'{nid}[{s}]'
@@ -757,7 +759,7 @@ def test_sin_cambios_previos_salvo_desbloqueo():
         pytest.skip(f'git show {PRE_F5_COMMIT[:7]} no disponible')
     old = json.loads(r.stdout.decode('utf-8'))
     assert set(old['numbers']) <= set(NUMBERS)
-    assert {k for k in NUMBERS if k not in old['numbers']} == {k for k in NUMBERS if k.startswith(F5_PREFIXES)}
+    assert {k for k in NUMBERS if k not in old['numbers']} == {k for k in NUMBERS if k.startswith(F5_PREFIXES + F4_PREFIXES)}
     changed = {k for k, e in old['numbers'].items() if NUMBERS[k] != e}
     unlocked = {k for k in changed if k.startswith(REF_PREFIXES)}
     assert changed == unlocked and len(unlocked) == 16
@@ -768,3 +770,93 @@ def test_sin_cambios_previos_salvo_desbloqueo():
         assert {f for f in set(o) | set(n) if o.get(f) != n.get(f)} <= {'value', 'confusion', 'null_reason', 'source', 'note'}
     assert old.get('superseded') == DOC.get('superseded')
     assert all(DOC['inputs'][k] == h for k, h in old['inputs'].items())
+
+
+# ── F4.1 (f41.*) y F4.7 (f47.*) ───────────────────────────────────────────
+F41_VAL_RES = json.loads((REPO / 'results' / 'f41_recuperabilidad' / 'val' / 'resultados_val.json').read_text(encoding='utf-8'))
+F41_TEST_RES = json.loads((REPO / 'results' / 'f41_recuperabilidad' / 'prueba' / 'resultados_prueba.json').read_text(encoding='utf-8'))
+F47_RES = json.loads((REPO / 'results' / 'f47_geometria' / 'resultados.json').read_text(encoding='utf-8'))
+F41_PATHS = {'results/f41_recuperabilidad/val/resultados_val.json': (F41_VAL_RES, 'val'),
+             'results/f41_recuperabilidad/prueba/resultados_prueba.json': (F41_TEST_RES, 'test'),
+             'results/f47_geometria/resultados.json': (F47_RES, 'train')}
+F41_PRED_PATH = 'results/f41_recuperabilidad/prueba/predicciones_prueba.csv'
+
+
+def test_f41_f47_presencia():
+    for t in TECHS:
+        for b in F41_VAL_RES['resultados']['tecnicas'][t]:
+            for split in ('val', 'prueba'):
+                base = f'f41.{split}.{t}.{b}'
+                assert all(f'{base}.r2.u{i}' in NUMBERS for i in range(5)), base
+                assert f'{base}.logreg_u_hat.f1_macro' in NUMBERS
+            assert f'f41.val.{t}.{b}.alpha' in NUMBERS
+            for k in ('delta_f1', 'delta_f1_ic_inf', 'delta_f1_ic_sup', 'delta_f1.nivel', 'delta_f1.ic_contiene_0'):
+                assert f'f41.prueba.{t}.{b}.{k}' in NUMBERS, k
+        assert f'f41.prueba.{t}.condicion_2_f46' in NUMBERS
+        for k in ('rho_spearman', 'p', 'k', 'n_perm', 'n', 'holm.alpha_h', 'holm.rango', 'holm.rechaza'):
+            assert f'f47.{t}.{k}' in NUMBERS, k
+    assert 'f41.val.u.logreg.f1_macro' in NUMBERS and 'f41.prueba.u.logreg.f1_macro' in NUMBERS
+
+
+def test_f41_f47_valores_en_su_localizador():
+    """Cada cifra extraída es exactamente el valor del JSON en su localizador, en su split."""
+    keys = [k for k in NUMBERS if k.startswith(F4_PREFIXES) and NUMBERS[k]['status'] == 'extraido']
+    assert keys
+    for nid in keys:
+        e = NUMBERS[nid]
+        src, split = F41_PATHS[e['source']['path']]
+        v = _at(src, e['source']['locator'])
+        if e['kind'] == 'metric':
+            assert e['value'][split] == v, nid
+            assert all(e['value'][s] is None and e['null_reason'][s] for s in ('val', 'test') if s != split), nid
+        else:
+            assert e['value'] == int(v), nid
+
+
+def test_f41_f1_prueba_desde_predicciones():
+    """Los F1 de prueba (û y u) son verificados: se recalculan desde predicciones_prueba.csv."""
+    with open(REPO / F41_PRED_PATH, newline='', encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+    assert DOC['inputs'][F41_PRED_PATH] == canon.text_sha256(REPO / F41_PRED_PATH)
+    f1 = lambda rr, col: canon.f1_macro_from_confusion(canon.confusion_counts(  # noqa: E731
+        [int(r['y_true']) for r in rr], [int(float(r[col]) > 0.5) for r in rr]))
+    for t in TECHS:
+        for b, x in F41_TEST_RES['resultados']['tecnicas'][t].items():
+            if not isinstance(x, dict):
+                continue
+            rr = [r for r in rows if r['tecnica'] == t and r['backbone'] == b]
+            assert [r['sample_id'] for r in rr] == [f'test_{i:04d}' for i in range(114)]
+            e = NUMBERS[f'f41.prueba.{t}.{b}.logreg_u_hat.f1_macro']
+            assert e['status'] == 'verificado' and e['value']['test'] == f1(rr, 'p_dep_u_hat') == x['f1_u_hat']
+            assert f1(rr, 'p_dep_u') == x['f1_u'] == NUMBERS['f41.prueba.u.logreg.f1_macro']['value']['test']
+
+
+def test_f41_u_coincide_con_f21():
+    ref = NUMBERS['ref.techo5d.logreg.f1_macro']['value']
+    assert NUMBERS['f41.val.u.logreg.f1_macro']['value']['val'] == ref['val']
+    assert NUMBERS['f41.prueba.u.logreg.f1_macro']['value']['test'] == ref['test']
+
+
+def test_f41_condicion_2_y_contiene_0():
+    for t in TECHS:
+        T = F41_TEST_RES['resultados']['tecnicas'][t]
+        prin = canon.PRINCIPAL_F41[t]
+        assert T[prin]['principal'] is True
+        assert NUMBERS[f'f41.prueba.{t}.condicion_2_f46']['value'] == int(T['condicion_2_F46']) == int(T[prin]['contiene_0'])
+        for b, x in T.items():
+            if isinstance(x, dict):
+                lo, hi = x['ic']
+                assert x['contiene_0'] == (lo <= 0 <= hi)
+                assert x['delta_f1_obs'] == pytest.approx(x['f1_u'] - x['f1_u_hat'], abs=1e-15)
+
+
+def test_f47_solo_train_y_holm():
+    from src.protocol import verdict
+    P = F47_RES['resultados']['principal']
+    assert set(P) == set(TECHS) and F47_RES['resultados']['sensibilidad'] == {}
+    holm = verdict.holm({t: P[t]['p'] for t in TECHS}, 0.05)
+    for t in TECHS:
+        assert P[t]['holm'] == holm[t]
+        assert P[t]['p'] == (P[t]['k'] + 1) / (P[t]['n_perm'] + 1) and P[t]['n'] == 908
+        e = NUMBERS[f'f47.{t}.rho_spearman']
+        assert e['value']['train'] == P[t]['rho_spearman'] and e['value']['val'] is None and e['value']['test'] is None
