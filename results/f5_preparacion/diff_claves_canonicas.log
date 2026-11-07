@@ -1,0 +1,111 @@
+# Diff de claves canónicas: HEAD (ef9bae0, = main 5c17047 en este archivo) frente al build regenerado
+# CANON_UMAP_PARAMS=G:/Mi unidad/tt2-insumos/umap_params.pkl CANON_STRICT=1 python -m src.canonical.build
+
+## numbers: 276 → 376; nuevas 100, eliminadas 0, cambiadas 0
+  por prefijo: {'f34': 36, 'f35': 21, 'f36': 21, 'f55': 21, 'ref.longitud': 1}
+  claves nuevas fuera de f34/f35/f36/f55/ref.longitud: []
+  + f34.gray_scott.ganancia.f1_macro
+  + f34.gray_scott.mejor_trial.f1_macro_mean
+  + f34.gray_scott.mejor_trial.seed123.f1_macro
+  + f34.gray_scott.mejor_trial.seed42.f1_macro
+  + f34.gray_scott.mejor_trial.seed7.f1_macro
+  + f34.gray_scott.trial0.f1_macro_mean
+  + f34.gray_scott.trial0.f1_macro_std
+  + f34.gray_scott.trial0.seed123.f1_macro
+  + f34.gray_scott.trial0.seed42.f1_macro
+  + f34.gray_scott.trial0.seed7.f1_macro
+  + f34.gray_scott.trial_adoptado
+  + f34.gray_scott.trials
+  + f34.lorenz.ganancia.f1_macro
+  + f34.lorenz.mejor_trial.f1_macro_mean
+  + f34.lorenz.mejor_trial.seed123.f1_macro
+  + f34.lorenz.mejor_trial.seed42.f1_macro
+  + f34.lorenz.mejor_trial.seed7.f1_macro
+  + f34.lorenz.trial0.f1_macro_mean
+  + f34.lorenz.trial0.f1_macro_std
+  + f34.lorenz.trial0.seed123.f1_macro
+  + f34.lorenz.trial0.seed42.f1_macro
+  + f34.lorenz.trial0.seed7.f1_macro
+  + f34.lorenz.trial_adoptado
+  + f34.lorenz.trials
+  + f34.perlin.ganancia.f1_macro
+  + f34.perlin.mejor_trial.f1_macro_mean
+  + f34.perlin.mejor_trial.seed123.f1_macro
+  + f34.perlin.mejor_trial.seed42.f1_macro
+  + f34.perlin.mejor_trial.seed7.f1_macro
+  + f34.perlin.trial0.f1_macro_mean
+  + f34.perlin.trial0.f1_macro_std
+  + f34.perlin.trial0.seed123.f1_macro
+  + f34.perlin.trial0.seed42.f1_macro
+  + f34.perlin.trial0.seed7.f1_macro
+  + f34.perlin.trial_adoptado
+  + f34.perlin.trials
+  + f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro
+  + f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro
+  + f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro
+  + f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro
+  + f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro
+  + f35.gray_scott.finalista.f1_macro_mean
+  + f35.gray_scott.finalista.f1_macro_std
+  + f35.lorenz.finalista.f1_macro_mean
+  + f35.lorenz.finalista.f1_macro_std
+  + f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro
+  + f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro
+  + f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro
+  + f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro
+  + f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro
+  + f35.perlin.finalista.f1_macro_mean
+  + f35.perlin.finalista.f1_macro_std
+  + f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro
+  + f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro
+  + f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro
+  + f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro
+  + f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro
+  + f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro
+  + f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro
+  + f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro
+  + f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro
+  + f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro
+  + f36.gray_scott.permutado.f1_macro_mean
+  + f36.gray_scott.permutado.f1_macro_std
+  + f36.lorenz.permutado.f1_macro_mean
+  + f36.lorenz.permutado.f1_macro_std
+  + f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro
+  + f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro
+  + f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro
+  + f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro
+  + f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro
+  + f36.perlin.permutado.f1_macro_mean
+  + f36.perlin.permutado.f1_macro_std
+  + f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro
+  + f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro
+  + f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro
+  + f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro
+  + f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro
+  + f55.gray_scott.segundo.f1_macro_mean
+  + f55.gray_scott.segundo.f1_macro_std
+  + f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro
+  + f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro
+  + f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro
+  + f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro
+  + f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro
+  + f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro
+  + f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro
+  + f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro
+  + f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro
+  + f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro
+  + f55.lorenz.segundo.f1_macro_mean
+  + f55.lorenz.segundo.f1_macro_std
+  + f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro
+  + f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro
+  + f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro
+  + f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro
+  + f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro
+  + f55.perlin.segundo.f1_macro_mean
+  + f55.perlin.segundo.f1_macro_std
+  + ref.longitud.f1_macro
+
+## inputs: 233 → 413; nuevas 180, eliminadas 0, cambiadas 0
+  prefijos de ruta: {'results/f34_hpo/gray_scott': 8, 'results/f34_hpo/lorenz': 8, 'results/f34_hpo/perlin': 8, 'results/f35_final/gray_scott': 7, 'results/f35_final/lorenz': 7, 'results/f35_final/perlin': 7, 'results/f36_permutacion/gray_scott': 7, 'results/f36_permutacion/lorenz': 7, 'results/f36_permutacion/perlin': 7, 'results/f45_longitud/resultado.json': 1, 'results/f55_sensibilidad/gray_scott': 7, 'results/f55_sensibilidad/lorenz': 7, 'results/f55_sensibilidad/perlin': 7, 'results/predictions/control_permutacion': 30, 'results/predictions/final': 30, 'results/predictions/referencia': 2, 'results/predictions/sensibilidad': 30}
+
+superseded igual: True ; schema_version igual: True

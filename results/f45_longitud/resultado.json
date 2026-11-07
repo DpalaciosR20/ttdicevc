@@ -1,0 +1,33 @@
+{
+ "task_id": "F4.5",
+ "predictions": "results/predictions/referencia/text_length__logreg__none__seed42.csv",
+ "n_combinaciones": 26,
+ "seleccion": {
+  "criterio": "F1-Macro de validación (ŷ = 1[p_dep > 0.5]) sobre la rejilla completa de LogReg de §4.3; empate con tolerancia 1e-12 → combinación anterior",
+  "orden_en_rejilla": 15,
+  "combinacion": {
+   "C": 0.31622776601683794,
+   "class_weight": "balanced"
+  },
+  "f1_val": 0.5525902668759812,
+  "tabla": "results/f45_longitud/rejilla_longitud.csv"
+ },
+ "n_empate_tolerancia": 1,
+ "f1_val": 0.5525902668759812,
+ "splits_evaluados": [
+  "val"
+ ],
+ "estimator_params": {
+  "penalty": "l2",
+  "solver": "lbfgs",
+  "max_iter": 5000,
+  "random_state": 42,
+  "C": 0.31622776601683794,
+  "class_weight": "balanced"
+ },
+ "inputs": {
+  "meta/sample_index.csv (repo)": "74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5",
+  "configs/protocolo.json (repo, LF)": "08fb0e2bdad45f1515ab00899ac5fc839c1087429ec04da586ad7b68c7cebcdf"
+ },
+ "sklearn": "1.6.1"
+}

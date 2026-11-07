@@ -19,7 +19,11 @@ Toda cifra del documento de TT-II se toma de ese archivo. Cada entrada lleva:
 
 Orígenes de las entradas:
   1. Colectores en código (este archivo): conteos estructurales, F3.2 (repetición,
-     f32.*), F3.2 v0 sustituida (f32v0.*, histórica) y selección de F3.3 (f33.*).
+     f32.*), F3.2 v0 sustituida (f32v0.*, histórica), selección de F3.3 (f33.*),
+     HPO de F3.4 (f34.*, solo val), finalistas de F3.5 (f35.*), controles
+     permutados de F3.6 (f36.*, prueba registrada por la Enmienda 4, A16),
+     segundos de F5.5 (f55.*) y referencia de longitud de F4.5
+     (ref.longitud.*, test bloqueado hasta la Fase 5).
   2. Fragmentos results/<tarea>/canonical_fragment.json, uno por tarea, con las
      cifras transcritas. Una clave repetida entre orígenes es un error, salvo
      sustitución explícita: la entrada que declara supersedes=<id> reemplaza a
@@ -510,6 +514,261 @@ def collect_f33(preds, f32_numbers, inputs):
     return out
 
 
+# ── Colector 4: HPO de los finalistas (F3.4, solo validación) ─────────────
+F34_DIR = REPO / 'results' / 'f34_hpo'
+F34_TEST_NULL = 'F3.4 solo validación (matriz §4)'
+F34_SEEDS = (42, 7, 123)
+F34_EXPECTED_TRIALS = 12
+TECHNIQUES = ('gray_scott', 'perlin', 'lorenz')
+
+
+def _verified_val(label, y_true, probs, src, null_test, note=None):
+    """F1-Macro verificado de val desde probabilidades por muestra (ŷ = 1[p > 0.5])."""
+    y_pred = [int(p > 0.5) for p in probs]
+    cm = confusion_counts(y_true, y_pred)
+    e = {'kind': 'metric', 'metric': 'f1_macro', 'status': 'verificado',
+         'value': {'val': f1_macro_from_confusion(cm), 'test': None}, 'null_reason': {'test': null_test},
+         'confusion': {'val': cm}, 'supports_ref': dict(SUPPORTS), 'evaluator': F1_EVALUATOR, 'source': src}
+    if note:
+        e['note'] = note
+    return e
+
+
+def _derived(ids, op, src, evaluator, note=None):
+    e = {'kind': 'metric', 'metric': 'f1_macro', 'supports_ref': dict(SUPPORTS), 'evaluator': evaluator,
+         'source': src, 'depends_on': list(ids), 'derivation': op}
+    if note:
+        e['note'] = note
+    return e
+
+
+def collect_f34(inputs):
+    """F3.4: trial 0 y mejor trial de cada finalista (media y DE ddof=1 sobre las
+    semillas 42, 7, 123), ganancia, trial adoptado y número de trials. Los F1 se
+    recalculan desde val_probs/val_true de results/f34_hpo/<tec>/runs/*.json y se
+    contrastan con hpo_result.json y trials.csv. Sin test (matriz §4)."""
+    from sklearn.metrics import f1_score
+    out = {}
+    for tech in TECHNIQUES:
+        d = F34_DIR / tech
+        res_path, trials_path = d / 'hpo_result.json', d / 'trials.csv'
+        for p in (res_path, trials_path):
+            inputs[rel(p)] = text_sha256(p)
+        res = json.loads(res_path.read_text(encoding='utf-8'))
+        dec = res['decision']
+        trials_csv = _read_csv_dict(trials_path, lambda r: int(r['trial']))
+        runs = {}
+        for p in sorted((d / 'runs').glob('trial*__seed*.json')):
+            r = json.loads(p.read_text(encoding='utf-8'))
+            if r.get('fase') != 'hpo' or r.get('smoke') is not False:
+                raise CanonicalError(f'{rel(p)}: fase {r.get("fase")!r}, smoke {r.get("smoke")!r}')
+            filled = [k for k in RUN_TEST_FIELDS if r.get(k) is not None]
+            if filled:
+                raise CanonicalError(f'{rel(p)}: campos de test no nulos {filled}')
+            runs[(int(r['trial']), int(r['seed']))] = (p, r)
+        trial_ids = sorted({t for t, _ in runs})
+        if trial_ids != list(range(F34_EXPECTED_TRIALS)) or res['n_trials'] != F34_EXPECTED_TRIALS \
+                or sorted(trials_csv) != trial_ids:
+            raise CanonicalError(f'{rel(d)}: trials {trial_ids}; hpo_result n_trials {res["n_trials"]}')
+        f1 = {}
+        for (t, s), (p, r) in runs.items():
+            if s not in F34_SEEDS:
+                raise CanonicalError(f'{rel(p)}: semilla {s}')
+            y_pred = [int(v > 0.5) for v in r['val_probs']]
+            if y_pred != r['val_preds']:
+                raise CanonicalError(f'{rel(p)}: val_preds != 1[val_probs > 0.5]')
+            f1[(t, s)] = f1_macro_from_confusion(confusion_counts(r['val_true'], y_pred))
+            for other in (r['best_f1_val'], f1_score(r['val_true'], y_pred, average='macro')):
+                if not math.isclose(f1[(t, s)], other, rel_tol=0, abs_tol=1e-12):
+                    raise CanonicalError(f'{rel(p)}: F1 {f1[(t, s)]!r} != {other!r}')
+        if len(f1) != F34_EXPECTED_TRIALS * len(F34_SEEDS):
+            raise CanonicalError(f'{rel(d)}: {len(f1)} corridas')
+        means = {t: float(np.mean([f1[(t, s)] for s in F34_SEEDS])) for t in trial_ids}
+        stds = {t: float(np.std([f1[(t, s)] for s in F34_SEEDS], ddof=1)) for t in trial_ids}
+        for t in trial_ids:
+            row = trials_csv[t]
+            if not (math.isclose(means[t], float(row['f1_val_mean']), rel_tol=0, abs_tol=1e-12)
+                    and math.isclose(stds[t], float(row['f1_val_std']), rel_tol=0, abs_tol=1e-12)):
+                raise CanonicalError(f'{rel(trials_path)}: trial {t} no coincide con runs/')
+        best = max(trial_ids, key=lambda t: (means[t], -t))
+        gain = means[best] - means[0]
+        adopted = best if gain > stds[0] else 0          # matriz §6: se conserva el trial 0 si gana ≤ 1 DE
+        checks = {'trial0_mean': means[0], 'trial0_std': stds[0], 'best_mean': means[best], 'gain': gain}
+        for k, v in checks.items():
+            if not math.isclose(v, dec[k], rel_tol=0, abs_tol=1e-12):
+                raise CanonicalError(f'{rel(res_path)}: decision.{k} {dec[k]!r} != {v!r}')
+        if (dec['best_trial'], dec['adopted_trial'], dec['trial0']) != (best, adopted, 0):
+            raise CanonicalError(f'{rel(res_path)}: decision {dec} != best {best}, adoptado {adopted}')
+
+        base = f'f34.{tech}'
+        note = (f'{res["arch"]}/{res["strategy"]} ({res["variant"]}); F1-val por semilla recalculado desde '
+                f'val_probs de runs/; test no existe en F3.4')
+        ids = {}
+        for role, t in (('trial0', 0), ('mejor_trial', best)):
+            ids[role] = []
+            for s in F34_SEEDS:
+                p, r = runs[(t, s)]
+                inputs[rel(p)] = text_sha256(p)
+                nid = f'{base}.{role}.seed{s}.f1_macro'
+                out[nid] = _verified_val(nid, r['val_true'], r['val_probs'],
+                                         {'path': rel(p), 'locator': 'val_probs, val_true'}, F34_TEST_NULL,
+                                         note=f'trial {t}; ' + note)
+                ids[role].append(nid)
+        src = {'path': rel(res_path), 'locator': 'decision'}
+        for suffix, op in (('mean', 'mean'), ('std', 'std_ddof1')):
+            out[f'{base}.trial0.f1_macro_{suffix}'] = _derived(ids['trial0'], op, src, f'{op} sobre semillas',
+                                                               'trial 0 (configuración común de F3.2)')
+        out[f'{base}.mejor_trial.f1_macro_mean'] = _derived(ids['mejor_trial'], 'mean', src, 'mean sobre semillas',
+                                                            f'mejor trial por F1-val medio: trial {best}')
+        out[f'{base}.ganancia.f1_macro'] = _derived(
+            [f'{base}.mejor_trial.f1_macro_mean', f'{base}.trial0.f1_macro_mean'], 'diff', src,
+            'media del mejor trial − media del trial 0',
+            'se adopta el mejor trial solo si la ganancia supera 1 DE (ddof=1) del trial 0 (matriz §6)')
+        out[f'{base}.trial_adoptado'] = {
+            'kind': 'count', 'status': 'verificado', 'value': int(adopted),
+            'evaluator': ('regla de la matriz §6 aplicada a las medias y DE recalculadas desde runs/ '
+                          '(los 36 entrenamientos); coincide con decision.adopted_trial'),
+            'source': src}
+        out[f'{base}.trials'] = {
+            'kind': 'count', 'status': 'extraido', 'value': len(trial_ids),
+            'evaluator': 'trials distintos en runs/ (= n_trials de hpo_result.json = filas de trials.csv)',
+            'source': {'path': rel(trials_path), 'locator': 'columna trial'}}
+    return out
+
+
+# ── Colectores 5–7: fases con prueba (F3.5, F3.6, F5.5) ──────────────────
+F3X_PHASES = {
+    # prefijo: (fase, carpeta de resultados, rol, columna de select_finalist, nota)
+    'f35': ('final', 'f35_final', 'finalista', 'finalist',
+            'finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)'),
+    'f36': ('control_permutacion', 'f36_permutacion', 'permutado', 'finalist',
+            ('control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como '
+             'canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin '
+             'decisiones dependientes). Su media es el piso visual permutado (§4.4)')),
+    'f55': ('sensibilidad', 'f55_sensibilidad', 'segundo', 'second',
+            'segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba'),
+}
+F3X_SEEDS = (42, 7, 123, 2024, 99)
+
+
+def collect_f3x(prefix, selection_table, inputs):
+    """F1-Macro de val y de prueba por semilla (verificado desde
+    results/predictions/<fase>/*.csv) y media y DE (ddof=1) por técnica, para la
+    configuración que select_finalist / select_second asigna a cada técnica.
+    Cada CSV se contrasta con el JSON de su corrida, summary.csv y
+    summary_by_config.csv."""
+    from sklearn.metrics import f1_score
+    from src.predictions import schema as pred_schema
+    from src.predictions.validate import load_predictions
+
+    fase, rdir, role, col, note = F3X_PHASES[prefix]
+    pred_dir = REPO / 'results' / 'predictions' / fase
+    preds = load_predictions(str(pred_dir / '*.csv'))
+    expected = {r.technique: (r.arch, r.strategy) for r in selection_table[selection_table[col]].itertuples()}
+    if sorted(expected) != sorted(TECHNIQUES):
+        raise CanonicalError(f'{prefix}: la selección no cubre las tres técnicas: {expected}')
+    out = {}
+    ids_val = {s: [f'val_{i:04d}' for i in range(EXPECTED_SIZES[s])] if s == 'val' else
+               [f'test_{i:04d}' for i in range(EXPECTED_SIZES[s])] for s in METRIC_SPLITS}
+    for tech in TECHNIQUES:
+        arch, strat = expected[tech]
+        g_tech = preds[preds['technique'] == tech]
+        if set(zip(g_tech['arch'], g_tech['strategy'])) != {(arch, strat)}:
+            raise CanonicalError(f'{prefix}.{tech}: configuraciones {sorted(set(zip(g_tech["arch"], g_tech["strategy"])))}'
+                                 f' != selección {(arch, strat)}')
+        if sorted(set(g_tech['seed'])) != sorted(F3X_SEEDS):
+            raise CanonicalError(f'{prefix}.{tech}: semillas {sorted(set(g_tech["seed"]))}')
+        res_dir = REPO / 'results' / rdir / tech
+        for name in ('summary.csv', 'summary_by_config.csv'):
+            inputs[rel(res_dir / name)] = text_sha256(res_dir / name)
+        summary = _read_csv_dict(res_dir / 'summary.csv', lambda r: int(r['seed']))
+        by_config = list(_read_csv_dict(res_dir / 'summary_by_config.csv', lambda r: r['technique']).values())
+        if len(by_config) != 1 or (by_config[0]['arch'], by_config[0]['strategy']) != (arch, strat):
+            raise CanonicalError(f'{rel(res_dir / "summary_by_config.csv")}: se espera una fila {arch}/{strat}')
+        base = f'{prefix}.{tech}.{role}'
+        seed_ids = []
+        for seed in F3X_SEEDS:
+            path = pred_dir / pred_schema.file_name(tech, arch, strat, seed)
+            mpath = path.with_name(pred_schema.manifest_name(path.name))
+            manifest = json.loads(mpath.read_text(encoding='utf-8'))
+            if manifest.get('csv_sha256') != sha256(path) or manifest.get('fase') != fase:
+                raise CanonicalError(f'{rel(mpath)}: csv_sha256 o fase no coinciden')
+            run_path = REPO / manifest['config']['run_json'] if '/' in manifest['config']['run_json'] else \
+                res_dir / 'runs' / manifest['config']['run_json']
+            run = json.loads(run_path.read_text(encoding='utf-8'))
+            if (run['fase'], run['evaluate_test'], run['smoke']) != (fase, True, False) \
+                    or not run['selection'].get('matches') or run['selection'].get('override'):
+                raise CanonicalError(f'{rel(run_path)}: fase/evaluate_test/selección inesperados')
+            if (run['permute_labels'] == 99) != (fase == 'control_permutacion'):
+                raise CanonicalError(f'{rel(run_path)}: permute_labels {run["permute_labels"]!r}')
+            for p in (path, mpath, run_path):
+                inputs[rel(p)] = text_sha256(p)
+            g = g_tech[g_tech['seed'] == seed]
+            value, conf = {}, {}
+            for s in METRIC_SPLITS:
+                gs = g[g['split'] == s]
+                if list(gs['sample_id']) != ids_val[s]:
+                    raise CanonicalError(f'{path.name}: filas de {s} distintas del índice')
+                y_true = [int(v) for v in gs['y_true']]
+                probs = list(gs['p_dep'])
+                if probs != list(run[f'{s}_probs']) or y_true != list(run[f'{s}_true']):
+                    raise CanonicalError(f'{path.name}: {s} distinto de {run_path.name}')
+                y_pred = [int(p > 0.5) for p in probs]
+                conf[s] = confusion_counts(y_true, y_pred)
+                value[s] = f1_macro_from_confusion(conf[s])
+                ref = run['best_f1_val'] if s == 'val' else run['f1_test']
+                for other in (ref, f1_score(y_true, y_pred, average='macro')):
+                    if not math.isclose(value[s], other, rel_tol=0, abs_tol=1e-12):
+                        raise CanonicalError(f'{path.name}: F1 {s} {value[s]!r} != {other!r}')
+                if round(value[s], 4) != float(summary[seed][f'f1_{s}']):
+                    raise CanonicalError(f'{path.name}: F1 {s} != summary.csv {summary[seed][f"f1_{s}"]}')
+            nid = f'{base}.{_slug(arch)}.{_slug(strat)}.seed{seed}.f1_macro'
+            out[nid] = {'kind': 'metric', 'metric': 'f1_macro', 'status': 'verificado', 'value': value,
+                        'confusion': conf, 'supports_ref': dict(SUPPORTS), 'evaluator': F1_EVALUATOR,
+                        'source': {'path': rel(path), 'locator': 'split=val, split=test'},
+                        'note': f'{arch}/{strat}; ' + note}
+            seed_ids.append(nid)
+        src = {'path': rel(res_dir / 'summary_by_config.csv'), 'locator': f'{tech} / {arch} / {strat}'}
+        for suffix, op, f in (('mean', 'mean', np.mean), ('std', 'std_ddof1', lambda x: np.std(x, ddof=1))):
+            for s in METRIC_SPLITS:
+                v = float(f([out[i]['value'][s] for i in seed_ids]))
+                if round(v, 4) != float(by_config[0][f'f1_{s}_{suffix}']):
+                    raise CanonicalError(f'{base}.f1_macro_{suffix}[{s}]: {v:.4f} != summary_by_config.csv')
+            out[f'{base}.f1_macro_{suffix}'] = _derived(seed_ids, op, src, f'{op} sobre las 5 semillas',
+                                                        f'{arch}/{strat}; ' + note)
+    return out
+
+
+# ── Colector 8: referencia de longitud (F4.5, Enmienda 2 punto 4 y Enmienda 4 A9) ─
+LONGITUD_CSV = REPO / 'results' / 'predictions' / 'referencia' / 'text_length__logreg__none__seed42.csv'
+LONGITUD_RESULT = REPO / 'results' / 'f45_longitud' / 'resultado.json'
+REF_TEST_BLOCKED = ('bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); '
+                    'las predicciones de test están archivadas')
+
+
+def collect_ref_longitud(inputs):
+    """F1-Macro de val verificado desde el CSV de la referencia de longitud; test
+    nulo (bloqueado hasta la Fase 5, como las demás referencias). Solo se leen
+    las filas de val."""
+    from src.predictions import schema as pred_schema
+    from src.predictions.validate import validate_predictions
+    df = validate_predictions(LONGITUD_CSV)
+    mpath = LONGITUD_CSV.with_name(pred_schema.manifest_name(LONGITUD_CSV.name))
+    for p in (LONGITUD_CSV, mpath, LONGITUD_RESULT):
+        inputs[rel(p)] = text_sha256(p)
+    val = df[df['split'] == 'val'].sort_values('sample_id')
+    if len(val) != EXPECTED_SIZES['val']:
+        raise CanonicalError(f'{rel(LONGITUD_CSV)}: {len(val)} filas de val')
+    nid = 'ref.longitud.f1_macro'
+    e = _verified_val(nid, [int(v) for v in val['y_true']], list(val['p_dep']),
+                      {'path': rel(LONGITUD_CSV), 'locator': 'split=val'}, REF_TEST_BLOCKED,
+                      note=('LogReg sobre ln(n_tokens_beto) y truncated_128 (F4.5; Enmienda 2, punto 4; '
+                            'Enmienda 4, A9); selección por F1-val en la rejilla de §4.3'))
+    res = json.loads(LONGITUD_RESULT.read_text(encoding='utf-8'))
+    if not math.isclose(e['value']['val'], res['f1_val'], rel_tol=0, abs_tol=1e-12):
+        raise CanonicalError(f'{nid}: {e["value"]["val"]!r} != resultado.json {res["f1_val"]!r}')
+    return {nid: e}
+
 # ── Fragmentos, fusión y derivadas ────────────────────────────────────────
 def load_schema():
     return json.loads(SCHEMA_PATH.read_text(encoding='utf-8'))
@@ -662,7 +921,14 @@ def build(umap_path=None, fragment_paths=None, strict=False):
     sources = {'build.py:collect_structural': collect_structural(umap_path, (y_val, y_src), inputs),
                'build.py:collect_f32': f32,
                'build.py:collect_f32v0': collect_f32v0(_read_predictions_v0(), inputs),
-               'build.py:collect_f33': collect_f33(preds, f32, inputs)}
+               'build.py:collect_f33': collect_f33(preds, f32, inputs),
+               'build.py:collect_f34': collect_f34(inputs)}
+    from src.selection import select_finalist as sf
+    matrix = sf.load_matrix()
+    selection = sf.select_second(sf.config_table(sf.f1_by_run(preds, matrix), matrix))
+    for prefix in F3X_PHASES:
+        sources[f'build.py:collect_{prefix}'] = collect_f3x(prefix, selection, inputs)
+    sources['build.py:collect_ref_longitud'] = collect_ref_longitud(inputs)
     sources.update(load_fragments(fragment_paths, inputs))
     numbers, superseded = merge(sources)
     resolve_derived(numbers)
