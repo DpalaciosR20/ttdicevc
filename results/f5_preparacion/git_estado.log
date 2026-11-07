@@ -1,0 +1,193 @@
+$ git rev-parse --abbrev-ref HEAD
+sv/f5-contraste
+
+$ git rev-parse HEAD
+1cbf606ce39ec98cac0f248b6e6dcbd74e7024cf
+
+$ git rev-parse main
+1cbf606ce39ec98cac0f248b6e6dcbd74e7024cf
+
+$ git rev-parse origin/main
+1cbf606ce39ec98cac0f248b6e6dcbd74e7024cf
+
+$ git rev-parse origin/sv/f5-contraste
+1cbf606ce39ec98cac0f248b6e6dcbd74e7024cf
+
+$ git log --oneline --merges -6 main
+1cbf606 Merge pull request #33 from DpalaciosR20/ce/f5.5-sensibilidad
+6178433 Merge pull request #31 from DpalaciosR20/ce/f3.6-artefactos
+28ae3ec [F3.6] Integra main (F3.7) en la rama de verificación de artefactos
+711606f Merge pull request #32 from DpalaciosR20/ce/f3.7-mapas
+c170901 Merge pull request #30 from DpalaciosR20/ce/f3.6-permutacion
+f20520b Merge pull request #29 from DpalaciosR20/ce/f3.5-final
+
+$ git log -1 --format=%H%n%ci%n%s 6178433
+6178433a3350fd0df4c997e69c37ffbc9f7b24e3
+2026-11-06 01:25:22 -0600
+Merge pull request #31 from DpalaciosR20/ce/f3.6-artefactos
+
+$ git log -1 --format=%H%n%ci%n%s 711606f
+711606fbfc5d419f5d2f4edcc3cb5de147842591
+2026-11-06 01:19:24 -0600
+Merge pull request #32 from DpalaciosR20/ce/f3.7-mapas
+
+$ git rev-parse protocolo-v1^{commit}
+91c84dfa7e192a32403abdaf401bb8f6ae5ff179
+
+$ git diff --stat protocolo-v1 HEAD -- src/protocol/
+
+$ git diff --stat protocolo-v1 HEAD -- tests/test_verdict.py configs/protocolo.json
+ configs/protocolo.json | 85 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 84 insertions(+), 1 deletion(-)
+
+$ git log --oneline protocolo-v1..HEAD -- src/protocol tests/test_verdict.py configs/protocolo.json docs/protocolo_preregistrado.md
+9027167 [F3.7, F4.3] Protocolo: Enmienda 3 (rollout ponderado por gradiente en ViT, antes de F3.5)
+8d7fbb2 [F2.4] F2.4: parámetros de descriptores (antes de calcular)
+41dd200 [F2.3, F2.4, F4.5] Protocolo: Enmienda 2 (definiciones de F2.3, F2.4 y longitud, antes de ejecutar)
+0373069 [F1.2] Enmienda 1 del protocolo (aclaratoria, anterior a toda consulta de prueba)
+d0d6a24 [F1.2] Encabezado del protocolo: commit y fecha del congelamiento
+
+$ git log -1 --format=%H_%cI 9027167
+90271670921dee799b217b5e865ed35519cbc2ef_2026-11-05T20:32:22-06:00
+
+$ git show --stat --format=%H%n%an%n%cI%n%s 9027167
+90271670921dee799b217b5e865ed35519cbc2ef
+DpalaciosR20
+2026-11-05T20:32:22-06:00
+[F3.7, F4.3] Protocolo: Enmienda 3 (rollout ponderado por gradiente en ViT, antes de F3.5)
+
+ configs/matriz_experimentos.json  | 20 +++++++++++++++-----
+ docs/matriz_experimentos.md       |  7 +++++--
+ docs/protocolo_preregistrado.md   | 22 +++++++++++++++++++++-
+ results/canonical_numbers.json    |  2 +-
+ tests/test_matriz_experimentos.py | 16 ++++++++++++----
+ tests/test_protocolo.py           | 38 +++++++++++++++++++++++++++++++++++---
+ 6 files changed, 89 insertions(+), 16 deletions(-)
+
+$ git for-each-ref refs/tags --format="%(refname:short) %(objecttype) %(taggerdate:iso8601) %(*objectname)"
+protocolo-v1 tag 2026-11-02 18:14:54 -0600 91c84dfa7e192a32403abdaf401bb8f6ae5ff179
+seleccion-f33 tag 2026-11-05 16:46:46 -0600 b2cf9f878542ef63105caa228512c4e74f418cf2
+
+$ comparación por bloque de configs/protocolo.json (protocolo-v1 frente a HEAD)
+  _fuente          igual
+  _git_tag         igual
+  _version         igual
+  cifras_diseno    igual
+  contraste        igual
+  datos            igual
+  descriptores     NUEVO
+  longitud         igual
+  modelos          igual
+  piso_brillo      NUEVO
+  pisos            igual
+  pisos_triviales  NUEVO
+  referencias      CAMBIADO
+  secundarios      igual
+  sensibilidad     igual
+  techo_5d         igual
+     referencias . longitud : {"features": ["log(n_tokens_beto)", "truncated_128"], "scaler": {"name": "StandardScaler", "fit_split": "train"}, "model": "logreg", "C_grid": "techo_5d.familias.logreg.C", "selection": "f1_val", "task": "F4.5"} -> {"features": ["log(n_tokens_beto)", "truncated_128"], "scaler": {"name": "StandardScaler", "fit_split": "train"}, "model": "logreg", "C_grid": "techo_5d.familias.logreg.C", "selection": "f1_val", "task": "F4.5", "_enmienda": "Enmienda 2, punto 4", "technique": "text_length", "arch": "logreg", "strategy": "none", "seed": 42, "fase": "referencia", "source": "meta/sample_index.csv", "grid": "techo_5d.familias.logreg", "selection_rule": "techo_5d.selection"}
+
+$ git diff protocolo-v1 HEAD -- configs/protocolo.json
+diff --git a/configs/protocolo.json b/configs/protocolo.json
+index f7a7b6d..ed31d10 100644
+--- a/configs/protocolo.json
++++ b/configs/protocolo.json
+@@ -33,7 +33,16 @@
+       "model": "logreg",
+       "C_grid": "techo_5d.familias.logreg.C",
+       "selection": "f1_val",
+-      "task": "F4.5"
++      "task": "F4.5",
++      "_enmienda": "Enmienda 2, punto 4",
++      "technique": "text_length",
++      "arch": "logreg",
++      "strategy": "none",
++      "seed": 42,
++      "fase": "referencia",
++      "source": "meta/sample_index.csv",
++      "grid": "techo_5d.familias.logreg",
++      "selection_rule": "techo_5d.selection"
+     }
+   },
+   "techo_5d": {
+@@ -89,6 +98,80 @@
+     "brightness": {"arch": "brightness", "feature": "mean_intensity", "model": "logreg", "C_grid": "techo_5d.familias.logreg.C", "selection": "f1_val", "per_technique": true, "task": "F2.3"},
+     "visual_permutado": {"fase": "control_permutacion", "aggregate": "mean", "seeds": [42, 7, 123, 2024, 99], "per_technique": true, "task": "F3.6"}
+   },
++  "pisos_triviales": {
++    "_seccion": "§4.4; Enmienda 2, punto 3",
++    "task": "F2.3",
++    "majority": {"technique": "none", "arch": "majority", "strategy": "none", "seed": 42, "fase": "referencia", "p_dep": 0.0},
++    "stratified": {
++      "technique": "none", "arch": "stratified", "strategy": "none", "seed": 42, "fase": "referencia",
++      "p_dep_values": [0.0, 1.0],
++      "rng": "numpy.random.default_rng",
++      "rng_seed": 42,
++      "proportion_split": "train",
++      "contrast_constant": 0.5,
++      "used_in_contrasts": false
++    }
++  },
++  "piso_brillo": {
++    "_seccion": "§4.4; Enmienda 2, punto 2",
++    "task": "F2.3",
++    "per_technique": true,
++    "arch": "brightness",
++    "strategy": "none",
++    "seed": 42,
++    "fase": "referencia",
++    "feature": "mean_intensity",
++    "image": {"source": "nativa", "size": [256, 256], "mode": "L", "scale": "mean / 255", "visual_preprocessing": false},
++    "model": "logreg",
++    "grid": "techo_5d.familias.logreg",
++    "scaler": {"name": "StandardScaler", "fit_split": "train"},
++    "selection_rule": "techo_5d.selection"
++  },
++  "descriptores": {
++    "_seccion": "§4.2; Enmienda 2, punto 1",
++    "task": "F2.4",
++    "_fijado": "F2.4, antes de calcular (Enmienda 2, punto 1)",
++    "per_technique": true,
++    "arch": "descriptors",
++    "strategy": "none",
++    "features": ["shannon_entropy", "contrast", "edge_density", "lbp_energy"],
++    "definition": "Tabla 11 del Módulo 2, tal como la implementa el código original",
++    "implementation": {
++      "original": "notebooks/historial/camera_ready_CE.ipynb",
++      "original_cell": 20,
++      "original_commit": "f126052",
++      "reimplementation": "results/f24_descriptores/f24_descriptores.py",
++      "input": "np.array(Image.open(path).convert('L')), uint8"
++    },
++    "software": {
++      "scikit-image": "0.25.2",
++      "scikit-image_kaggle": null,
++      "_nota": "la versión de scikit-image de la ejecución de Kaggle no consta en el notebook (solo Python 3.12.13)"
++    },
++    "params": {
++      "shannon_entropy": {"bins": 256, "range": [0, 256], "density": true, "log_base": 2,
++                          "zero_bins": "descartados"},
++      "contrast": {"definition": "desviación estándar de los niveles de gris 0-255 (RMS, no GLCM)", "ddof": 0},
++      "edge_density": {"detector": "skimage.filters.sobel (valores por defecto)", "input_scale": "img / 255",
++                       "thresholds": "media + 1 DE (ddof 0) de la magnitud de Sobel de la propia imagen",
++                       "comparison": ">", "fraction_over": "todos los píxeles de 256 × 256"},
++      "lbp_energy": {"P": 24, "R": 3, "method": "uniform", "bins": 26, "input": "uint8",
++                     "energy": "suma de cuadrados del histograma normalizado"}
++    },
++    "tabla11": {
++      "split": "train",
++      "test": "welch (scipy.stats.ttest_ind, equal_var=False), depresivo − no depresivo",
++      "effect_size": "d de Cohen no ponderado: (m1 − m0) / sqrt((s1² + s0²) / 2), s con ddof 0",
++      "multiplicity": "holm",
++      "k": 12,
++      "alpha": 0.05
++    },
++    "image": {"source": "nativa", "size": [256, 256], "mode": "L", "visual_preprocessing": false},
++    "families": "techo_5d.family_order",
++    "grids": "techo_5d.familias",
++    "scaler": {"name": "StandardScaler", "fit_split": "train", "families": ["logreg", "svm_rbf", "mlp"]},
++    "selection_rule": "techo_5d.selection"
++  },
+   "contraste": {
+     "_seccion": "§5",
+     "formulacion": "B",

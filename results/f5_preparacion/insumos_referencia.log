@@ -1,0 +1,36 @@
+# Presencia de filas por split en results/predictions/referencia/ (usecols=[split, sample_id]; p_dep no se lee)
+emb768__logreg__none__seed42.csv              val=114 test=114 task=F2.2 commit=fa50f96
+gray_scott__brightness__none__seed42.csv      val=114 test=114 task=F2.3 commit=53f6e28
+gray_scott__descriptors__none__seed42.csv     val=114 test=114 task=F2.4 commit=1d68a4a
+lorenz__brightness__none__seed42.csv          val=114 test=114 task=F2.3 commit=53f6e28
+lorenz__descriptors__none__seed42.csv         val=114 test=114 task=F2.4 commit=1d68a4a
+none__majority__none__seed42.csv              val=114 test=114 task=F2.3 commit=53f6e28
+none__stratified__none__seed42.csv            val=114 test=114 task=F2.3 commit=53f6e28
+perlin__brightness__none__seed42.csv          val=114 test=114 task=F2.3 commit=53f6e28
+perlin__descriptors__none__seed42.csv         val=114 test=114 task=F2.4 commit=1d68a4a
+text__beto__finetune__seed42.csv              val=114 test=114 task=F2.2 commit=fa50f96
+umap5d__gbm__none__seed42.csv                 val=114 test=114 task=F2.1 commit=eea2ae1
+umap5d__logreg__none__seed42.csv              val=114 test=114 task=F2.1 commit=eea2ae1
+umap5d__mlp__none__seed42.csv                 val=114 test=114 task=F2.1 commit=eea2ae1
+umap5d__rf__none__seed42.csv                  val=114 test=114 task=F2.1 commit=eea2ae1
+umap5d__svm_rbf__none__seed42.csv             val=114 test=114 task=F2.1 commit=eea2ae1
+text_length (F4.5): NO EXISTE
+Selección techo 5D (results/f21_techo5d/seleccion.csv, columna techo):
+familia                                                            combinacion   f1_val  techo
+ logreg                                 {"C": 0.1, "class_weight": "balanced"} 0.700358  False
+svm_rbf                   {"C": 1.0, "gamma": 1.0, "class_weight": "balanced"} 0.724638   True
+     rf {"max_depth": null, "min_samples_leaf": 1, "class_weight": "balanced"} 0.687412  False
+    gbm               {"learning_rate": 0.03, "max_depth": 3, "max_iter": 100} 0.687412  False
+    mlp                          {"hidden_layer_sizes": [16], "alpha": 0.0001} 0.693324  False
+Selección descriptores (results/f24_descriptores/seleccion.csv):
+   tecnica familia  orden                                                            combinacion   f1_val  n_empate_tolerancia  seleccionada
+    perlin  logreg      5                               {"C": 0.001, "class_weight": "balanced"} 0.695902                    1          True
+    perlin svm_rbf      2                      {"C": 0.01, "gamma": 0.001, "class_weight": null} 0.672635                    3         False
+    perlin      rf      9    {"max_depth": 8, "min_samples_leaf": 1, "class_weight": "balanced"} 0.656151                    1         False
+    perlin     gbm      3               {"learning_rate": 0.03, "max_depth": 3, "max_iter": 300} 0.652982                    2         False
+    perlin     mlp      0                          {"hidden_layer_sizes": [16], "alpha": 0.0001} 0.626597                    2         False
+gray_scott  logreg     19                  {"C": 3.1622776601683795, "class_weight": "balanced"} 0.690217                    4         False
+gray_scott svm_rbf     35                  {"C": 1.0, "gamma": 10.0, "class_weight": "balanced"} 0.706280                    1         False
+gray_scott      rf      1 {"max_depth": null, "min_samples_leaf": 1, "class_weight": "balanced"} 0.728013                    1          True
+gray_scott     gbm     10             {"learning_rate": 0.1, "max_depth": null, "max_iter": 100} 0.728013                    1         False
+gray_scott     mlp      4                      {"hidden_layer_sizes": [32, 16], "alpha": 0
