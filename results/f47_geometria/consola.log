@@ -1,0 +1,4 @@
+﻿gray_scott  efficientnet_b0_finetune_seed42  ρ = 0.8019  p = 0.0001
+perlin      vit_b16_imagenet                 ρ = 0.5221  p = 0.0001
+lorenz      vit_b16_imagenet                 ρ = 0.3191  p = 0.0001
+escrito C:\Users\DELL\Desktop\TT\TT2\ttdicevc\results\f47_geometria\resultados.json
