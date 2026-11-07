@@ -325,3 +325,41 @@ Los demás puntos de la matriz §8 (objetivo, muestras, resolución, normalizaci
 - La desviación de procedencia de F3.4 (bitácora, H5) se acepta como desviación formal.
 - La pasada de F3.7 sobre prueba solo verificó el `p_dep` de los modelos cargados y no generó predicciones archivadas.
 - D1 y D2 del bloque A son errores de redacción de la bitácora de F3.5 (CE) y no afectan ninguna cifra.
+
+## Enmienda 5 (2026-11-07)
+
+**Autor.** SV (Santiago Elihu Soria Solís).
+
+**Momento.**
+- Es **posterior** a la Enmienda 4 (etiqueta `enmienda-4`) y a la implementación de la Fase 5 con datos sintéticos (`results/f5_preparacion/reporte_bloque_d1.md`).
+- Es **anterior** a todo cálculo de la Fase 5 sobre datos reales.
+
+**Motivo.** Al implementar la Fase 5 aparecieron dos tipos de problemas:
+- cinco puntos que no eran computables (P1–P5 del reporte del bloque D, etapa 1);
+- una tolerancia de empate que no estaba fijada (A3).
+
+**Regla de resolución.** La misma de la Enmienda 4.
+
+**Declaración de exposición.**
+- La misma de la Enmienda 4. Ningún estadístico de la Fase 5 se conoce.
+- Desde la Enmienda 4 solo se añadió el F1 de **validación** del clasificador de longitud (F4.5, `results/f45_longitud/`). Ninguna métrica de prueba de las referencias se ha calculado.
+
+**Alcance.** No cambia ningún modelo, estadístico principal, margen, α, B ni la regla de veredicto. Solo fija detalles de cálculo. La forma legible por código está en `configs/protocolo.json` → `enmienda_5`; los bloques anteriores del archivo no cambian.
+
+**Relación con el §11.**
+- Es la misma desviación declarada en la Enmienda 4: fija detalles de cálculo de análisis confirmatorios (A3) y de sensibilidad (P1) después de la consulta de prueba de los finalistas.
+- Las filas nuevas se incluyen en el compromiso de robustez de la Enmienda 4:
+  - la alternativa de A3 (P2);
+  - la comparación por réplica de la sensibilidad de A14 (P1).
+
+**Cambios.**
+
+| Punto | Resolución |
+|---|---|
+| P1 | A14, sensibilidad: comparación por réplica. En cada réplica se usa el mayor entre el piso permutado de la semilla emparejada y la media de las 5 semillas. |
+| P2 | A3, alternativa de robustez: entre los pisos empatados, el primero según `pisos.order`. |
+| P3 | Kappa indefinida: las réplicas con kappa indefinida se excluyen del IC y se reporta su número; si es indefinida en el observado, «no aplica». |
+| P4 | Contención indefinida (\|E_vis\| = 0): igual que P3. |
+| P5 | Q de Cochran con todos los bloques concordantes: Q = 0, p = 1, sin McNemar por pares. |
+| A3 | Tolerancia: hay empate si \|F1_a − F1_b\| ≤ 1e-12 en el observado. |
+| P6 | La condición 2 de la frase de F4.6 queda pendiente hasta F4.1 (bloque E); no se cambia. |
