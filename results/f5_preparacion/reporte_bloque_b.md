@@ -1,0 +1,703 @@
+# Bloque B de la Fase 5 — Enmienda 4 y plan de la Fase 4
+
+> Rol: SV · Fecha: 2026-11-06 · Rama `sv/f5-contraste` @ `1cbf606`. Sin commit.
+> No se calculó ninguna métrica de prueba ni ningún estadístico de la Fase 5, y no se ajustó el clasificador de longitud.
+
+## Archivos
+
+| Archivo | Estado | Cambio |
+|---|---|---|
+| `docs/protocolo_preregistrado.md` | modificado | Enmienda 4 añadida al final (+49 líneas). No se tocó ninguna línea anterior. Se conservaron los fines de línea CRLF de la copia de trabajo |
+| `configs/protocolo.json` | modificado | Bloque `enmienda_4` añadido como último bloque. El script de inserción comprobó que el resto del JSON queda **idéntico** (`assert` de igualdad). En el texto, la única línea anterior que cambia es la llave de cierre de `cifras_diseno`, que recibe la coma |
+| `tests/test_protocolo.py` | modificado | Huella nueva, `enmienda_3()` delimitada por la Enmienda 4 y 5 pruebas nuevas (ver abajo) |
+| `docs/plan_fase4.md` | nuevo | Borrador del plan de F4.1, F4.2, F4.3, F4.4, F4.6, F4.7 y F4.8 |
+| `results/f5_preparacion/diff_bloque_b.patch` | nuevo | `git diff` de los tres archivos modificados |
+| `results/f5_preparacion/pytest_bloque_b.log` | nuevo | Salida de pytest |
+
+## 1. Enmienda 4
+
+Sigue el formato de las Enmiendas 1–3 (`## Enmienda 4 (2026-11-06)`) e incluye, en este orden:
+- autor (SV);
+- momento;
+- motivo;
+- regla de resolución;
+- declaración de exposición;
+- alcance;
+- la tabla A1–A17, transcrita sin cambios de las resoluciones dadas;
+- observaciones sin marca: F3.4 H5, F3.7, D1 y D2.
+
+El campo **Momento** no venía en las instrucciones. Lo añadí por coherencia con el formato de las enmiendas anteriores, con un texto solo factual: es posterior a las consultas de prueba de F3.5, F3.6 y sensibilidad, y anterior a todo cálculo de la Fase 5 y al ajuste de la longitud.
+
+## 2. `configs/protocolo.json` → `enmienda_4`
+
+**Estructura.**
+- `resoluciones` asigna cada punto A1–A17 a su ruta dentro del bloque:
+  - A1 → `bootstrap`;
+  - A2 y A3 → `piso`;
+  - A4 → `ic.D`;
+  - A5 → `ic.descriptivo`;
+  - A6 → `retencion`;
+  - A7 → `longitud.contraste`;
+  - A8 → `longitud.terciles`;
+  - A9 → `longitud.clasificador`;
+  - A10 → `kappa`;
+  - A11 → `ic.descriptores`;
+  - A12 → `cochran_mcnemar`;
+  - A13 → `formulacion_A`;
+  - A14 → `por_semilla`;
+  - A15 → `variabilidad_beto`;
+  - A16 → `permutado_canonico`;
+  - A17 → `segundo_mejor`.
+- Además: `regla_resolucion`, `exposicion`, `alcance` (todos los campos `false`) y `observaciones`.
+- Se usan los nombres propuestos: `bootstrap.call`, `piso.identidad = "max_observado"`, `piso.sensibilidad = "max_por_replica"`, `ic.descriptivo = {"tipo": "percentil", "lado": "bilateral", "nivel": 0.95, "cuantiles": "linear", …}` y `cochran_mcnemar.mcnemar.lado_vs_beto = "unilateral"`.
+- Huella LF nueva: `b365de8270e3ca0c0d818c6ebde1d575992db1495a5d30aae904bce5fa1d1e2e`. Las anteriores eran `708ead59…` (Enmienda 2, igual en `9027167`) y `92ef8774…` (`protocolo-v1`, la que registra el encabezado).
+
+**Pruebas nuevas en `tests/test_protocolo.py`.**
+
+| Prueba | Qué comprueba |
+|---|---|
+| `test_enmienda_4_texto` | Es la última sección; tiene todos los campos; la tabla tiene exactamente A1–A17 |
+| `test_enmienda_4_bloque_presente_y_tipos` | El bloque existe y es el último; los tipos y valores son los de la tabla; cada resolución apunta a una ruta existente; hay coherencia con `contraste`, `referencias.longitud` y `sensibilidad` |
+| `test_enmienda_4_cifras_canonicas` | Los ids canónicos citados existen |
+| `test_bloques_previos_intactos_frente_a_enmienda_3` | Sin `enmienda_4`, el config es igual, clave a clave y en orden, al del commit `9027167` |
+| `test_bloques_previos_intactos_frente_a_protocolo_v1` | Todos los bloques de `protocolo-v1` siguen iguales. La única ampliación permitida es `referencias.longitud` (Enmienda 2, punto 4), que conserva sus claves de v1 con los mismos valores. Los bloques nuevos son exactamente `pisos_triviales`, `piso_brillo`, `descriptores` y `enmienda_4`. Afirma además que `contraste`, el bloque que lee `verdict.py`, es idéntico |
+
+**Pruebas que se ajustaron.**
+- `test_header_hashes_match_configs` usa la nueva constante `CONFIG_SHA256_ENMIENDA_4`.
+- `enmienda_3()` ahora termina en la Enmienda 4.
+- La comprobación de que la Enmienda 3 no cambió el config pasa a verificar la huella del config **en el commit `9027167`**, con un nuevo `sha_at(ref, path)`, en vez de la huella vigente.
+- La prueba `test_enmienda_3_es_la_ultima_y_previa_a_prueba` pasa a llamarse `test_enmienda_3_previa_a_prueba`.
+
+**Prueba de mutación** (manual, sin versionar): cambiar `contraste.r`, una clave de v1 de `referencias.longitud` o `techo_5d.random_state` hace fallar las dos pruebas de integridad. Poner `max_iter` como cadena hace fallar la de tipos.
+
+## Salida de pytest
+
+```text
+$ python -m pytest tests/test_protocolo.py -v
+34 passed
+$ python -m pytest tests -q --ignore=tests/test_label_independence.py
+697 passed, 1 skipped in 127.99s
+```
+
+Detalle en `pytest_bloque_b.log`. No se corrió `tests/test_label_independence.py`: tarda unos 28 min (F2.1) y no lee ninguno de los archivos modificados.
+
+## Observaciones para SV (no resueltas)
+
+1. **Choque con el §11 del protocolo.** El §11 dice: «Las enmiendas posteriores a esa consulta [de prueba de los finalistas] solo pueden añadir análisis exploratorios».
+   - La Enmienda 4 es posterior a esa consulta y fija detalles de cálculos que **no** son exploratorios: A1–A3 del contraste principal, A7 del control de longitud, que el §1 declara confirmatorio, y A13–A15 y A17 de la sensibilidad.
+   - La declaración de exposición y la regla de resolución (texto literal, después `verdict.py`, después la opción menos favorable) mitigan el riesgo, pero el texto de la enmienda no menciona el §11.
+   - Cómo se trata es decisión de SV. Por ejemplo, declararlo como desviación del §11 dentro de la propia enmienda, con el argumento de que solo fija lo que el texto dejó sin especificar.
+2. **Detalles que las resoluciones dadas no fijan** (los dejé fuera del JSON en vez de inventarlos):
+   - A4: el método de cuantiles del IC de D_t (para θ es `linear`);
+   - A10: el lado del IC de kappa;
+   - A11: el método de cuantiles (A5 dice `linear`, A11 no).
+3. **A3** solo puede aplicarse cuando se conozcan los F1 de prueba observados de los pisos, es decir, en la Fase 5.
+4. **A16** pide registrar como canónicas las métricas de prueba del control permutado. Eso exige un colector en `src/canonical/build.py` (bloque A, §3), que no se ha hecho.
+5. **Puerta de `run_grid.py --evaluate-test`.** Mientras `docs/protocolo_preregistrado.md` tenga cambios sin commitear, el protocolo no está limpio y la puerta de `--evaluate-test` se negaría. No afecta a nada pendiente, porque no hay más consultas de prueba previstas.
+6. **Encabezado del protocolo.** Sigue registrando la huella de `configs/protocolo.json` en `protocolo-v1`, como en las Enmiendas 2 y 3. La huella vigente queda en `tests/test_protocolo.py`.
+
+## 3. Puntos ABIERTOS de `docs/plan_fase4.md`
+
+**Comunes.**
+- G1: qué análisis de la Fase 4 pueden usar el conjunto de prueba.
+- G2: si una inferencia sobre imágenes de prueba transformadas (ablación de F4.3, regresor de F4.1) cuenta como consulta del §10.
+- G3: definición de la familia de Holm «dentro de cada análisis».
+
+**F4.1. Recuperabilidad.**
+1. Arquitectura del regresor: pesos de qué semilla; congelado o ajustado; salida para **u** en [0, 1] con saturación.
+2. Hiperparámetros, semillas y criterio de parada.
+3. Splits; *cross-fitting* de **û** en `train`.
+4. Rejilla y regla de la LogReg.
+5. Criterio de «reproduce el F1 de **u**» e IC de la diferencia.
+6. Definición de R².
+7. Cómputo: requiere GPU, así que Kaggle.
+
+**F4.2. Régimen dinámico.**
+1. Fronteras de Pearson en (f, k).
+2. Lorenz frente a ρ = 24.74 (equivale a u1 < 0.0925): proporción o prueba.
+3. Splits.
+4. Prueba estadística y Holm.
+5. **Los reintentos de Gray-Scott no están registrados**: regenerarlos en Kaggle o reconstruir la comprobación `V.var() > 1e-4`; equivalencia entre las rutas de CPU y GPU.
+6. Cómo separar el efecto del régimen del de una codificación continua.
+
+**F4.3. Atribución** (las cinco decisiones de SV están incluidas).
+1. Métrica de similitud, resolución y umbral de la cordura.
+2. Orden y granularidad de la cascada; reinicialización (incluida la de la cabeza).
+3. Umbral y referencia del coseno de cabezas.
+4. Marco canónico de Lorenz (la elevación varía con u4) y perfil radial de Gray-Scott.
+5. Agregación por clase real o predicha; split.
+6. Diseño de la ablación espectral (entra en G2 si usa prueba).
+7. Pruebas de hipótesis y Holm.
+8. Mapas constantes cuando una clase queda casi vacía.
+9. Lectura de los ViT si la cordura por datos falla **y el coseno es alto**: las decisiones de SV solo fijan el caso de coseno bajo.
+
+**F4.4. Convergencia con la Tabla 11** (8 comparaciones significativas: Gray-Scott 4, Perlin 2 y Lorenz 2, según `tabla11_recalculada.csv`).
+1. Medida cuantitativa de la convergencia.
+2. Peso de los tamaños de efecto frente a la significancia.
+3. Si se incluye el contraste visual − descriptores de §7.
+
+**F4.6. Análisis de errores** (kappa e IC ya fijados por A10).
+1. Medida de contención de errores y su referencia nula.
+2. IC de las intersecciones.
+3. Análisis por semilla.
+4. Si se incluye el 768D.
+5. Criterio para afirmar que el mecanismo está «demostrado» (F4.1 + F4.6, según el plan).
+
+**F4.7. Correspondencia geométrica (opcional).**
+1. Espacio de características de la imagen.
+2. Métricas de distancia.
+3. Split, número de permutaciones de Mantel y semilla.
+4. Holm entre técnicas.
+5. Si se ejecuta.
+
+**F4.8. Figura ilustrativa.**
+1. Qué LogReg define la dirección (¿`umap5d__logreg` de F2.1?).
+2. Split de los centroides, número de pasos y rango del recorrido.
+3. Si se renderiza con el contrato class-blind exacto.
+
+## Diffs
+
+### `docs/protocolo_preregistrado.md`
+
+```diff
+diff --git a/docs/protocolo_preregistrado.md b/docs/protocolo_preregistrado.md
+index c79c79d..dffdf72 100644
+--- a/docs/protocolo_preregistrado.md
++++ b/docs/protocolo_preregistrado.md
+@@ -270,3 +270,52 @@ La compuerta la hacen cumplir `src/predictions/validate.py` (regla 7) y `run_gri
+ 3. **Pruebas de cordura (F4.3):** a la aleatorización en cascada (Adebayo et al., 2018) se añade la aleatorización de la cabeza como primer paso. En los ViT congelados, el mapa principal debe cambiar y la atención del *backbone* no. Si el mapa principal no cambia, la prueba falla y el mapa no se interpreta.
+ 
+ Los demás puntos de la matriz §8 (objetivo, muestras, resolución, normalización, formato y *hooks* que recalculan la atención con `need_weights=True`) se aplican sin cambios a los dos mapas. Grad-CAM de `resnet18` y `efficientnet_b0` no cambia.
++
++## Enmienda 4 (2026-11-06)
++
++**Autor.** SV (Santiago Elihu Soria Solís).
++
++**Momento.**
++- Es **posterior** a las consultas de prueba de los finalistas (F3.5), de los controles permutados (F3.6) y de los segundos mejores modelos (fase `sensibilidad`).
++- Es **anterior** a cualquier cálculo de la Fase 5 y al ajuste del clasificador de longitud (F4.5).
++
++**Motivo.** El inventario del bloque A (`results/f5_preparacion/reporte_bloque_a.md`) encontró 17 puntos que el protocolo no fija de forma computable (A1–A17).
++
++**Regla de resolución.** Cada punto se resuelve con el primer criterio que lo fija, en este orden:
++1. el texto literal de este protocolo;
++2. `src/protocol/verdict.py` en la etiqueta `protocolo-v1`;
++3. la opción menos favorable a la hipótesis de conservación. En ese caso, la otra opción se reporta como sensibilidad.
++
++**Declaración de exposición.**
++- Al redactar esta enmienda, SV conocía el F1 de prueba de los finalistas (F3.5), de los segundos mejores modelos (fase `sensibilidad`) y de los controles permutados (F3.6), publicados en las bitácoras de CE.
++- No conocía ninguna métrica de prueba de BETO pareada, 768D, techo 5D, brillo, descriptores ni longitud, ni ningún estadístico de la Fase 5.
++- A2 y A14 siguen el texto literal.
++
++**Alcance.** No cambia ningún modelo, estadístico principal, margen, α, B ni la regla de veredicto. Solo fija detalles de cálculo. La forma legible por código está en `configs/protocolo.json` → `enmienda_4`; los bloques anteriores del archivo no cambian.
++
++**Cambios.**
++
++| Punto | Resolución |
++|---|---|
++| A1 | `default_rng(2026)`; `idx = rng.integers(0, 114, size=(10000, 114))`; filas de prueba ordenadas por `sample_id`. |
++| A2 | Piso = referencia con el mayor F1 de prueba observado entre las cuatro; esa identidad se remuestrea en cada réplica. Sensibilidad: máximo recalculado en cada réplica. |
++| A3 | Empate en el máximo observado: en cada réplica, el menor D\* entre los empatados. |
++| A4 | IC de D_t: percentil bilateral al nivel 1 − 2α_h, con α_h de Holm de la familia de superioridad; descriptivo. |
++| A5 | IC al 95 % de ρ̂ y de la descomposición: percentil bilateral 2.5–97.5, cuantiles `linear`. |
++| A6 | Réplicas con F1_BETO\* ≤ 0.5: ρ̂\* = −∞; se reporta su número. |
++| A7 | F4.5: p = #{L\* ≤ 0}/B; Holm con m = número de técnicas con V1, V2 o V4; solo en el veredicto principal. Sensibilidad: m = 3 y calificación aplicada a cada variante de §8. |
++| A8 | Terciles: cortes `np.quantile(n_tokens_beto[train], [1/3, 2/3], method='linear')`; T1 ≤ c1, T2 (c1, c2], T3 > c2; F1 por semilla y luego la media; se incluyen los terciles de BETO y la correlación de Spearman de u0–u4 con `log(n_tokens_beto)` y `truncated_128` en `train`. Descriptivo. |
++| A9 | Clasificador de longitud: `max_iter = 5000`; `truncated_128` → {0, 1}; logaritmo natural; selección de §4.3 en val; se archivan val y test y solo se calcula el F1 de val al ajustarlo. |
++| A10 | Kappa de Cohen sobre ŷ (principal) y sobre vectores de acierto (secundario), con IC percentil al 95 % sobre las réplicas de §5.2; descriptivo. |
++| A11 | Visual − descriptores: mismas réplicas de §5.2; percentil bilateral 2.5–97.5. |
++| A12 | Q de Cochran asintótica (χ², gl = 2). McNemar exacto: bilateral entre técnicas; unilateral frente a BETO y al techo (H1: el visual comete más errores). Sensibilidad: bilateral frente a BETO y al techo. |
++| A13 | Formulación A: H0 Δ ≥ δ; p = #{Δ\* ≥ δ}/B; V1 si supera el piso y Holm rechaza; V2 si el límite inferior del IC de Δ (nivel 1 − 2α_h) > δ; V3 y V4 como en §5.5; r ∈ {0.50, 0.75, 0.80}, δ fijo (canónicos `f11.delta_margen.*`). |
++| A14 | Por semilla: piso permutado = media de las 5 semillas; Holm entre técnicas dentro de cada semilla; se reporta cuántas semillas dan V1. Sensibilidad: piso permutado de la semilla emparejada, si es mayor. |
++| A15 | BETO ± 0.0128: se suma al F1_BETO observado y a cada réplica, en ambos signos. |
++| A16 | Las métricas de prueba del control permutado se registran ya como canónicas; su publicación en F3.6 antes de la Fase 5 se declara como desviación menor, sin ninguna decisión dependiente. |
++| A17 | Segundo mejor: se usa el piso permutado del finalista de su técnica. |
++
++**Observaciones (sin marca).**
++- La desviación de procedencia de F3.4 (bitácora, H5) se acepta como desviación formal.
++- La pasada de F3.7 sobre prueba solo verificó el `p_dep` de los modelos cargados y no generó predicciones archivadas.
++- D1 y D2 del bloque A son errores de redacción de la bitácora de F3.5 (CE) y no afectan ninguna cifra.
+```
+
+### `configs/protocolo.json`
+
+```diff
+diff --git a/configs/protocolo.json b/configs/protocolo.json
+index ed31d10..f993d92 100644
+--- a/configs/protocolo.json
++++ b/configs/protocolo.json
+@@ -266,5 +266,250 @@
+     "bootstrap_seed": 2026,
+     "umbral_f1_visual": "f12.umbral_f1_visual",
+     "delta_formulacion_A": {"0.5": "f11.delta_margen.r0_50", "0.75": "f11.delta_margen.r0_75", "0.8": "f11.delta_margen.r0_80"}
++  },
++  "enmienda_4": {
++    "_seccion": "Enmienda 4 (2026-11-06)",
++    "_autor": "SV",
++    "_fuente": "results/f5_preparacion/reporte_bloque_a.md",
++    "_momento": "posterior a las consultas de prueba de F3.5, F3.6 y sensibilidad; anterior a todo cálculo de la Fase 5 y al ajuste del clasificador de longitud",
++    "regla_resolucion": [
++      "texto_literal",
++      "verdict_py_protocolo_v1",
++      "menos_favorable_conservacion_con_la_otra_como_sensibilidad"
++    ],
++    "exposicion": {
++      "conocido_test": [
++        "final",
++        "sensibilidad",
++        "control_permutacion"
++      ],
++      "desconocido_test": [
++        "beto_pareado",
++        "emb768",
++        "techo_5d",
++        "brillo",
++        "descriptores",
++        "longitud"
++      ],
++      "estadisticos_fase_5_conocidos": false,
++      "texto_literal": [
++        "A2",
++        "A14"
++      ]
++    },
++    "alcance": {
++      "cambia_modelos": false,
++      "cambia_estadistico_principal": false,
++      "cambia_margen": false,
++      "cambia_alpha": false,
++      "cambia_B": false,
++      "cambia_regla_veredicto": false
++    },
++    "resoluciones": {
++      "A1": "bootstrap",
++      "A2": "piso",
++      "A3": "piso",
++      "A4": "ic.D",
++      "A5": "ic.descriptivo",
++      "A6": "retencion",
++      "A7": "longitud.contraste",
++      "A8": "longitud.terciles",
++      "A9": "longitud.clasificador",
++      "A10": "kappa",
++      "A11": "ic.descriptores",
++      "A12": "cochran_mcnemar",
++      "A13": "formulacion_A",
++      "A14": "por_semilla",
++      "A15": "variabilidad_beto",
++      "A16": "permutado_canonico",
++      "A17": "segundo_mejor"
++    },
++    "bootstrap": {
++      "rng": "numpy.random.default_rng",
++      "seed": 2026,
++      "call": "rng.integers(0, 114, size=(10000, 114))",
++      "low": 0,
++      "high": 114,
++      "size": [
++        10000,
++        114
++      ],
++      "row_order": "sample_id"
++    },
++    "piso": {
++      "identidad": "max_observado",
++      "remuestreo": "identidad_fija_en_cada_replica",
++      "sensibilidad": "max_por_replica",
++      "empate_observado": "min_D_por_replica_entre_empatados"
++    },
++    "ic": {
++      "D": {
++        "tipo": "percentil",
++        "lado": "bilateral",
++        "nivel": "1 - 2 * alpha_h",
++        "alpha_h_from": "superioridad_piso",
++        "descriptivo": true
++      },
++      "descriptivo": {
++        "tipo": "percentil",
++        "lado": "bilateral",
++        "nivel": 0.95,
++        "cuantiles": "linear",
++        "aplica_a": [
++          "retencion",
++          "descomposicion"
++        ]
++      },
++      "descriptores": {
++        "tipo": "percentil",
++        "lado": "bilateral",
++        "nivel": 0.95,
++        "replicas": "contraste.bootstrap"
++      }
++    },
++    "retencion": {
++      "denominador_no_positivo": "F1_BETO* <= 0.5",
++      "valor_replica": "-inf",
++      "reportar_conteo": true
++    },
++    "longitud": {
++      "contraste": {
++        "p_value": "#{L* <= 0} / B",
++        "holm_m": "n_tecnicas_V1_V2_V4",
++        "aplica_a": "veredicto_principal",
++        "sensibilidad": {
++          "holm_m": 3,
++          "aplica_a": "cada_variante_seccion_8"
++        }
++      },
++      "terciles": {
++        "variable": "n_tokens_beto",
++        "split_cortes": "train",
++        "cortes": "np.quantile(n_tokens_beto[train], [1/3, 2/3], method='linear')",
++        "quantile_method": "linear",
++        "intervalos": {
++          "T1": "<= c1",
++          "T2": "(c1, c2]",
++          "T3": "> c2"
++        },
++        "f1": "por_semilla_luego_media",
++        "modelos": [
++          "finalista",
++          "beto"
++        ],
++        "correlacion": {
++          "metodo": "spearman",
++          "variables": [
++            "u0",
++            "u1",
++            "u2",
++            "u3",
++            "u4"
++          ],
++          "contra": [
++            "log(n_tokens_beto)",
++            "truncated_128"
++          ],
++          "split": "train"
++        },
++        "descriptivo": true
++      },
++      "clasificador": {
++        "max_iter": 5000,
++        "truncated_128": {
++          "false": 0,
++          "true": 1
++        },
++        "log": "natural",
++        "seleccion": "techo_5d.selection",
++        "split_seleccion": "val",
++        "archiva": [
++          "val",
++          "test"
++        ],
++        "metricas_al_ajustar": [
++          "f1_val"
++        ]
++      }
++    },
++    "kappa": {
++      "estadistico": "cohen",
++      "principal": "y_hat",
++      "secundario": "vector_acierto",
++      "ic": {
++        "tipo": "percentil",
++        "nivel": 0.95,
++        "replicas": "contraste.bootstrap"
++      },
++      "descriptivo": true
++    },
++    "cochran_mcnemar": {
++      "cochran": {
++        "tipo": "asintotico",
++        "distribucion": "chi2",
++        "gl": 2
++      },
++      "mcnemar": {
++        "tipo": "exacto",
++        "lado_entre_tecnicas": "bilateral",
++        "lado_vs_beto": "unilateral",
++        "lado_vs_techo": "unilateral",
++        "h1_unilateral": "el visual comete más errores",
++        "sensibilidad": {
++          "lado_vs_beto": "bilateral",
++          "lado_vs_techo": "bilateral"
++        }
++      }
++    },
++    "formulacion_A": {
++      "h0": "Delta >= delta",
++      "p_value": "#{Delta* >= delta} / B",
++      "V1": "supera el piso y Holm rechaza H0",
++      "V2": "supera el piso y el límite inferior del IC de Delta (nivel 1 - 2 * alpha_h) > delta",
++      "V3_V4": "como §5.5",
++      "r": [
++        0.5,
++        0.75,
++        0.8
++      ],
++      "delta": "fijo",
++      "canonical_delta": {
++        "0.5": "f11.delta_margen.r0_50",
++        "0.75": "f11.delta_margen.r0_75",
++        "0.8": "f11.delta_margen.r0_80"
++      }
++    },
++    "por_semilla": {
++      "piso_permutado": "media_5_semillas",
++      "holm": "entre_tecnicas_dentro_de_cada_semilla",
++      "reporte": "n_semillas_V1",
++      "sensibilidad": {
++        "piso_permutado": "semilla_emparejada_si_mayor"
++      }
++    },
++    "variabilidad_beto": {
++      "canonical": "f12.variabilidad_beto",
++      "signos": [
++        1,
++        -1
++      ],
++      "aplica_a": [
++        "observado",
++        "replicas"
++      ]
++    },
++    "permutado_canonico": {
++      "registrar_test": true,
++      "desviacion": "menor",
++      "decisiones_dependientes": false
++    },
++    "segundo_mejor": {
++      "piso_permutado": "finalista_de_la_tecnica"
++    },
++    "observaciones": [
++      "F3.4 H5: desviación de procedencia aceptada como desviación formal",
++      "F3.7: la pasada sobre prueba no generó predicciones archivadas",
++      "D1 y D2 (bitácora F3.5, CE): errores de redacción"
++    ]
+   }
+ }
+```
+
+### `tests/test_protocolo.py`
+
+```diff
+diff --git a/tests/test_protocolo.py b/tests/test_protocolo.py
+index 6e1593a..a22e6f2 100644
+--- a/tests/test_protocolo.py
++++ b/tests/test_protocolo.py
+@@ -117,6 +117,10 @@ def header(doc):
+ # (punto 1): F2.4 llenó descriptores.{implementation,software,params,tabla11}
+ # antes de calcular (huella de la Enmienda 2 sin ese bloque: 8538487a…).
+ CONFIG_SHA256_ENMIENDA_2 = '708ead595fe59bd0c5a58f0a11e156b3e3cb48f350cfa82d39152d3bd3b70e4a'
++# Enmienda 4 (2026-11-06): solo añade el bloque enmienda_4 al final; los demás
++# bloques son idénticos a los de la Enmienda 3 (commit 9027167, huella anterior).
++CONFIG_SHA256_ENMIENDA_4 = 'b365de8270e3ca0c0d818c6ebde1d575992db1495a5d30aae904bce5fa1d1e2e'
++ENMIENDA_3_COMMIT = '9027167'
+ 
+ 
+ def header_sha(doc, path):
+@@ -126,23 +130,36 @@ def header_sha(doc, path):
+     return m.group(1)
+ 
+ 
+-def sha_at_tag(path):
+-    """SHA-256 LF del archivo en la etiqueta del protocolo; skip si no hay git o etiqueta."""
++def blob_at(ref, path):
++    """Contenido (bytes, LF) del archivo en `ref`; skip si no hay git o la referencia."""
+     rel = path.relative_to(REPO).as_posix()
+     try:
+-        blob = subprocess.run(['git', '-C', str(REPO), 'show', f'{schema.PROTOCOL_TAG}:{rel}'],
++        blob = subprocess.run(['git', '-C', str(REPO), 'show', f'{ref}:{rel}'],
+                               capture_output=True, check=True).stdout
+     except (OSError, subprocess.CalledProcessError):
+-        pytest.skip(f'git o la etiqueta {schema.PROTOCOL_TAG} no están disponibles')
+-    return hashlib.sha256(blob.replace(b'\r\n', b'\n')).hexdigest()
++        pytest.skip(f'git o la referencia {ref} no están disponibles')
++    return blob.replace(b'\r\n', b'\n')
++
++
++def sha_at(ref, path):
++    return hashlib.sha256(blob_at(ref, path)).hexdigest()
++
++
++def sha_at_tag(path):
++    """SHA-256 LF del archivo en la etiqueta del protocolo; skip si no hay git o etiqueta."""
++    return sha_at(schema.PROTOCOL_TAG, path)
++
++
++def config_at(ref):
++    return json.loads(blob_at(ref, CONFIG).decode('utf-8'))
+ 
+ 
+ def test_header_hashes_match_configs(doc):
+     assert header_sha(doc, MATRIX) == text_sha256(MATRIX), 'SHA-256 de la matriz desactualizado en el encabezado'
+     assert header_sha(doc, CONFIG) == sha_at_tag(CONFIG), \
+         f'el encabezado debe registrar la huella de configs/protocolo.json en {schema.PROTOCOL_TAG}'
+-    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_2, \
+-        'configs/protocolo.json cambió después de la Enmienda 2: registra una enmienda y actualiza la constante'
++    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_4, \
++        'configs/protocolo.json cambió después de la Enmienda 4: registra una enmienda y actualiza la constante'
+ 
+ 
+ def test_header_version_tag_and_amendment(doc, cfg):
+@@ -531,13 +548,14 @@ def test_enmienda_2_vocabulario(cfg):
+ # ── Enmienda 3 (2026-11-05): atribución de ViT-B/16 (F3.3 H5) ────────────────
+ 
+ def enmienda_3(doc):
+-    m = re.search(r'^## Enmienda 3 \(2026-11-05\)$(.*)\Z', doc, re.M | re.S)
+-    assert m, 'falta la Enmienda 3 al final del protocolo'
+-    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 3 debe ser la última sección'
++    # Desde la Enmienda 4 (2026-11-06) llega hasta la siguiente enmienda
++    m = re.search(r'^## Enmienda 3 \(2026-11-05\)$(.*?)(?=^## Enmienda 4 \(2026-11-06\)$)', doc, re.M | re.S)
++    assert m, 'falta la Enmienda 3, seguida de la Enmienda 4'
++    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 3 no debe contener otras secciones'
+     return m.group(1)
+ 
+ 
+-def test_enmienda_3_es_la_ultima_y_previa_a_prueba(doc):
++def test_enmienda_3_previa_a_prueba(doc):
+     sec = enmienda_3(doc)
+     assert doc.index('## Enmienda 2 (2026-11-04)') < doc.index('## Enmienda 3 (2026-11-05)')
+     assert '**antes de cualquier consulta de prueba de los finalistas**' in sec
+@@ -555,5 +573,133 @@ def test_enmienda_3_coincide_con_la_matriz(doc, matrix):
+     s2 = vit['secondary']
+     assert s2['method'] == 'attention_rollout' and s2['role'] == 'atencion_backbone' and 'Abnar y Zuidema, 2020' in sec
+     assert 'aleatorización de la cabeza' in sec
+-    # el config del protocolo no cambia con esta enmienda
+-    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_2
++    # el config del protocolo no cambia con esta enmienda (huella en su commit)
++    assert sha_at(ENMIENDA_3_COMMIT, CONFIG) == CONFIG_SHA256_ENMIENDA_2
++
++
++# ── Enmienda 4 (2026-11-06): detalles de cálculo A1–A17 (bloque A de la Fase 5) ─
++
++AMBIGUEDADES = [f'A{i}' for i in range(1, 18)]
++
++
++def enmienda_4(doc):
++    m = re.search(r'^## Enmienda 4 \(2026-11-06\)$(.*)\Z', doc, re.M | re.S)
++    assert m, 'falta la Enmienda 4 al final del protocolo'
++    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 4 debe ser la última sección'
++    return m.group(1)
++
++
++def dig(d, dotted):
++    for k in dotted.split('.'):
++        d = d[k]
++    return d
++
++
++def test_enmienda_4_texto(doc):
++    sec = enmienda_4(doc)
++    assert doc.index('## Enmienda 3 (2026-11-05)') < doc.index('## Enmienda 4 (2026-11-06)')
++    for field in ('**Autor.** SV', '**Momento.**', '**Motivo.**', '**Regla de resolución.**',
++                  '**Declaración de exposición.**', '**Alcance.**', '**Cambios.**', '**Observaciones (sin marca).**'):
++        assert field in sec, field
++    assert '`results/f5_preparacion/reporte_bloque_a.md`' in sec and '17 puntos' in sec
++    assert 'A2 y A14 siguen el texto literal' in sec
++    assert '`configs/protocolo.json` → `enmienda_4`' in sec
++    rows = table_dict(sec)
++    assert list(rows) == AMBIGUEDADES
++
++
++def test_enmienda_4_bloque_presente_y_tipos(cfg):
++    e = cfg['enmienda_4']
++    assert list(cfg)[-1] == 'enmienda_4', 'enmienda_4 debe ser el último bloque'
++    assert e['_seccion'] == 'Enmienda 4 (2026-11-06)' and e['_autor'] == 'SV'
++    assert e['regla_resolucion'] == ['texto_literal', 'verdict_py_protocolo_v1',
++                                     'menos_favorable_conservacion_con_la_otra_como_sensibilidad']
++    assert set(e['alcance'].values()) == {False}
++    assert e['exposicion']['texto_literal'] == ['A2', 'A14'] and e['exposicion']['estadisticos_fase_5_conocidos'] is False
++    # cada ambigüedad apunta a una ruta existente del bloque
++    assert list(e['resoluciones']) == AMBIGUEDADES
++    for a, ruta in e['resoluciones'].items():
++        assert isinstance(dig(e, ruta), dict), (a, ruta)
++
++    b = e['bootstrap']
++    assert b['rng'] == cfg['contraste']['bootstrap']['rng'] and b['seed'] == cfg['contraste']['bootstrap']['seed']
++    assert b['size'] == [cfg['contraste']['bootstrap']['B'], 114] and (b['low'], b['high']) == (0, 114)
++    assert b['call'] == 'rng.integers(0, 114, size=(10000, 114))' and b['row_order'] == 'sample_id'
++
++    p = e['piso']
++    assert (p['identidad'], p['sensibilidad']) == ('max_observado', 'max_por_replica')
++    assert isinstance(p['empate_observado'], str)
++
++    ic = e['ic']
++    assert ic['D']['alpha_h_from'] == 'superioridad_piso' and ic['D']['nivel'] == '1 - 2 * alpha_h'
++    assert ic['descriptivo'] == {'tipo': 'percentil', 'lado': 'bilateral', 'nivel': 0.95, 'cuantiles': 'linear',
++                                 'aplica_a': ['retencion', 'descomposicion']}
++    assert ic['descriptores']['replicas'] == 'contraste.bootstrap' and ic['descriptores']['nivel'] == 0.95
++    assert e['retencion']['valor_replica'] == '-inf' and e['retencion']['reportar_conteo'] is True
++
++    lo = e['longitud']
++    assert lo['contraste']['p_value'] == '#{L* <= 0} / B' and lo['contraste']['sensibilidad']['holm_m'] == 3
++    t = lo['terciles']
++    assert t['quantile_method'] == 'linear' and t['split_cortes'] == 'train' and t['f1'] == 'por_semilla_luego_media'
++    assert t['correlacion']['variables'] == [f'u{i}' for i in range(5)]
++    assert t['correlacion']['contra'] == cfg['referencias']['longitud']['features']
++    c = lo['clasificador']
++    assert isinstance(c['max_iter'], int) and c['max_iter'] == 5000
++    assert c['truncated_128'] == {'false': 0, 'true': 1} and c['log'] == 'natural'
++    assert c['seleccion'] == cfg['referencias']['longitud']['selection_rule'] and c['metricas_al_ajustar'] == ['f1_val']
++
++    assert (e['kappa']['principal'], e['kappa']['secundario']) == ('y_hat', 'vector_acierto')
++    cm = e['cochran_mcnemar']
++    assert cm['cochran'] == {'tipo': 'asintotico', 'distribucion': 'chi2', 'gl': 2}
++    m = cm['mcnemar']
++    assert (m['lado_entre_tecnicas'], m['lado_vs_beto'], m['lado_vs_techo']) == ('bilateral', 'unilateral', 'unilateral')
++    assert m['sensibilidad'] == {'lado_vs_beto': 'bilateral', 'lado_vs_techo': 'bilateral'}
++
++    fa = e['formulacion_A']
++    assert fa['r'] == [cfg['contraste']['r']] + cfg['sensibilidad']['retencion_exigida']['r']
++    assert fa['canonical_delta'] == cfg['sensibilidad']['formulacion_A']['canonical_delta'] and fa['delta'] == 'fijo'
++
++    assert e['por_semilla']['piso_permutado'] == 'media_5_semillas'
++    assert e['variabilidad_beto']['canonical'] == cfg['sensibilidad']['variabilidad_beto']['canonical']
++    assert e['variabilidad_beto']['signos'] == [1, -1]
++    assert e['permutado_canonico']['registrar_test'] is True
++    assert e['permutado_canonico']['decisiones_dependientes'] is False
++    assert e['segundo_mejor']['piso_permutado'] == 'finalista_de_la_tecnica'
++    assert all(isinstance(o, str) for o in e['observaciones'])
++
++
++def test_enmienda_4_cifras_canonicas(cfg, canon):
++    e = cfg['enmienda_4']
++    for nid in [*e['formulacion_A']['canonical_delta'].values(), e['variabilidad_beto']['canonical']]:
++        assert nid in canon, nid
++
++
++def test_bloques_previos_intactos_frente_a_enmienda_3(cfg):
++    """La Enmienda 4 solo añade enmienda_4: el resto es idéntico al config del commit de la Enmienda 3."""
++    prev = config_at(ENMIENDA_3_COMMIT)
++    assert 'enmienda_4' not in prev
++    assert {k: v for k, v in cfg.items() if k != 'enmienda_4'} == prev
++    assert list(prev) == [k for k in cfg if k != 'enmienda_4']
++
++
++# Bloques añadidos o ampliados por la Enmienda 2 (y F2.4, prevista por ella) respecto de protocolo-v1
++BLOQUES_NUEVOS_ENMIENDA_2 = {'pisos_triviales', 'piso_brillo', 'descriptores'}
++
++
++def test_bloques_previos_intactos_frente_a_protocolo_v1(cfg):
++    """Todo bloque de protocolo-v1 sigue igual; la única ampliación es referencias.longitud
++    (Enmienda 2, punto 4), que conserva sus claves de v1 con los mismos valores."""
++    v1 = config_at(schema.PROTOCOL_TAG)
++    assert set(cfg) - set(v1) == BLOQUES_NUEVOS_ENMIENDA_2 | {'enmienda_4'}
++    for key, val in v1.items():
++        if key == 'referencias':
++            assert set(cfg[key]) == set(val)
++            for ref, spec in val.items():
++                if ref == 'longitud':
++                    assert {k: cfg[key][ref][k] for k in spec} == spec
++                else:
++                    assert cfg[key][ref] == spec, ref
++        else:
++            assert cfg[key] == val, key
++    # en particular, lo que lee src/protocol/verdict.py
++    assert cfg['contraste'] == v1['contraste']
+```
+
+### `docs/plan_fase4.md`
+
+Archivo nuevo (320 líneas); su contenido completo está en el propio archivo.

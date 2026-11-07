@@ -1,0 +1,45 @@
+$ python -m pytest tests/test_protocolo.py -v
+rootdir: C:\Users\DELL\Desktop\TT\TT2\ttdicevc
+plugins: anyio-4.15.1, platformdirs-4.14.0
+collecting ... collected 34 items
+
+tests/test_protocolo.py::test_header_hashes_match_configs PASSED         [  2%]
+tests/test_protocolo.py::test_header_version_tag_and_amendment PASSED    [  5%]
+tests/test_protocolo.py::test_data_table_matches_canonical_and_index PASSED [  8%]
+tests/test_protocolo.py::test_known_information_matches_canonical PASSED [ 11%]
+tests/test_protocolo.py::test_models_seeds_and_rule PASSED               [ 14%]
+tests/test_protocolo.py::test_references PASSED                          [ 17%]
+tests/test_protocolo.py::test_ceiling_5d_matches_doc PASSED              [ 20%]
+tests/test_protocolo.py::test_floors_match_doc_and_canonical PASSED      [ 23%]
+tests/test_protocolo.py::test_statistic_and_threshold PASSED             [ 26%]
+tests/test_protocolo.py::test_bootstrap PASSED                           [ 29%]
+tests/test_protocolo.py::test_floor_superiority PASSED                   [ 32%]
+tests/test_protocolo.py::test_multiplicity PASSED                        [ 35%]
+tests/test_protocolo.py::test_verdicts PASSED                            [ 38%]
+tests/test_protocolo.py::test_retention PASSED                           [ 41%]
+tests/test_protocolo.py::test_length_control PASSED                      [ 44%]
+tests/test_protocolo.py::test_secondary PASSED                           [ 47%]
+tests/test_protocolo.py::test_sensitivity PASSED                         [ 50%]
+tests/test_protocolo.py::test_test_access_gate PASSED                    [ 52%]
+tests/test_protocolo.py::test_design_figures PASSED                      [ 55%]
+tests/test_protocolo.py::test_canonical_ids_exist PASSED                 [ 58%]
+tests/test_protocolo.py::test_enmienda_2_es_la_ultima_y_sigue_a_la_1 PASSED [ 61%]
+tests/test_protocolo.py::test_enmienda_2_pisos_triviales PASSED          [ 64%]
+tests/test_protocolo.py::test_enmienda_2_piso_brillo PASSED              [ 67%]
+tests/test_protocolo.py::test_enmienda_2_descriptores PASSED             [ 70%]
+tests/test_protocolo.py::test_f24_descriptores_fijados PASSED            [ 73%]
+tests/test_protocolo.py::test_enmienda_2_longitud PASSED                 [ 76%]
+tests/test_protocolo.py::test_enmienda_2_vocabulario PASSED              [ 79%]
+tests/test_protocolo.py::test_enmienda_3_previa_a_prueba PASSED          [ 82%]
+tests/test_protocolo.py::test_enmienda_3_coincide_con_la_matriz PASSED   [ 85%]
+tests/test_protocolo.py::test_enmienda_4_texto PASSED                    [ 88%]
+tests/test_protocolo.py::test_enmienda_4_bloque_presente_y_tipos PASSED  [ 91%]
+tests/test_protocolo.py::test_enmienda_4_cifras_canonicas PASSED         [ 94%]
+tests/test_protocolo.py::test_bloques_previos_intactos_frente_a_enmienda_3 PASSED [ 97%]
+tests/test_protocolo.py::test_bloques_previos_intactos_frente_a_protocolo_v1 PASSED [100%]
+
+============================= 34 passed in 0.70s ==============================
+
+$ python -m pytest tests -q --ignore=tests/test_label_independence.py
+..................................................                       [100%]
+697 passed, 1 skipped in 127.99s (0:02:07)

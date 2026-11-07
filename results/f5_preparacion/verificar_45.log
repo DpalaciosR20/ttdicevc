@@ -1,0 +1,147 @@
+Barrera: CSV de BETO leído con usecols=[sample_id, split, y_true]; p_dep no se carga.
+
+select_finalist: {'perlin': ('vit_b16', 'frozen'), 'gray_scott': ('efficientnet_b0', 'finetune'), 'lorenz': ('vit_b16', 'frozen')}
+select_second:   {'perlin': ('efficientnet_b0', 'frozen'), 'gray_scott': ('resnet18', 'finetune'), 'lorenz': ('efficientnet_b0', 'finetune')}
+
+== Fase final
+  OK    final: 15 CSV (se esperan 15)
+  OK    gray_scott__efficientnet_b0__finetune__seed123.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.728485 F1t=0.698243 (json 0.728485/0.698243; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__efficientnet_b0__finetune__seed2024.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.712121 F1t=0.736679 (json 0.712121/0.736679; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__efficientnet_b0__finetune__seed42.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.720301 F1t=0.744885 (json 0.720301/0.744885; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__efficientnet_b0__finetune__seed7.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.703943 F1t=0.726662 (json 0.703943/0.726662; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__efficientnet_b0__finetune__seed99.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.720301 F1t=0.718519 (json 0.720301/0.718519; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed123.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.720301 F1t=0.744885 (json 0.720301/0.744885; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed2024.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.712121 F1t=0.744885 (json 0.712121/0.744885; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed42.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.712121 F1t=0.712121 (json 0.712121/0.712121; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed7.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.712121 F1t=0.731554 (json 0.712121/0.731554; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed99.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.713658 F1t=0.720301 (json 0.713658/0.720301; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed123.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.703943 F1t=0.686000 (json 0.703943/0.686000; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed2024.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.721886 F1t=0.659969 (json 0.721886/0.659969; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed42.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.733894 F1t=0.658144 (json 0.733894/0.658144; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed7.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.720301 F1t=0.690217 (json 0.720301/0.690217; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed99.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.691057 F1t=0.665017 (json 0.691057/0.665017; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    final: semillas [7, 42, 99, 123, 2024] en las 3 técnicas
+
+== Fase control_permutacion
+  OK    control_permutacion: 15 CSV (se esperan 15)
+  OK    gray_scott__efficientnet_b0__finetune__seed123.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.514205 F1t=0.427316 (json 0.514205/0.427316; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__efficientnet_b0__finetune__seed2024.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.587434 F1t=0.718519 (json 0.587434/0.718519; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__efficientnet_b0__finetune__seed42.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.533246 F1t=0.566468 (json 0.533246/0.566468; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__efficientnet_b0__finetune__seed7.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.457971 F1t=0.467105 (json 0.457971/0.467105; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__efficientnet_b0__finetune__seed99.csv: un JSON de corrida (1)
+gray_scott__efficientnet_b0__finetune__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.434243 F1t=0.455470 (json 0.434243/0.455470; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed123.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.434800 F1t=0.514518 (json 0.434800/0.514518; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed2024.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.514205 F1t=0.591398 (json 0.514205/0.591398; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed42.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.467787 F1t=0.506341 (json 0.467787/0.506341; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed7.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.508772 F1t=0.561268 (json 0.508772/0.561268; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__vit_b16__frozen__seed99.csv: un JSON de corrida (1)
+lorenz__vit_b16__frozen__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.489770 F1t=0.491071 (json 0.489770/0.491071; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed123.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.486842 F1t=0.558786 (json 0.486842/0.558786; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed2024.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.451923 F1t=0.471482 (json 0.451923/0.471482; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed42.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.490421 F1t=0.550249 (json 0.490421/0.550249; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed7.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.537329 F1t=0.642056 (json 0.537329/0.642056; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__vit_b16__frozen__seed99.csv: un JSON de corrida (1)
+perlin__vit_b16__frozen__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.619262 F1t=0.519062 (json 0.619262/0.519062; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    control_permutacion: semillas [7, 42, 99, 123, 2024] en las 3 técnicas
+
+== Fase sensibilidad
+  OK    sensibilidad: 15 CSV (se esperan 15)
+  OK    gray_scott__resnet18__finetune__seed123.csv: un JSON de corrida (1)
+gray_scott__resnet18__finetune__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.714333 F1t=0.695289 (json 0.714333/0.695289; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__resnet18__finetune__seed2024.csv: un JSON de corrida (1)
+gray_scott__resnet18__finetune__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.730114 F1t=0.718519 (json 0.730114/0.718519; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__resnet18__finetune__seed42.csv: un JSON de corrida (1)
+gray_scott__resnet18__finetune__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.712121 F1t=0.742995 (json 0.712121/0.742995; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__resnet18__finetune__seed7.csv: un JSON de corrida (1)
+gray_scott__resnet18__finetune__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.732762 F1t=0.722403 (json 0.732762/0.722403; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    gray_scott__resnet18__finetune__seed99.csv: un JSON de corrida (1)
+gray_scott__resnet18__finetune__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.746586 F1t=0.695902 (json 0.746586/0.695902; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__efficientnet_b0__finetune__seed123.csv: un JSON de corrida (1)
+lorenz__efficientnet_b0__finetune__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.715000 F1t=0.686000 (json 0.715000/0.686000; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__efficientnet_b0__finetune__seed2024.csv: un JSON de corrida (1)
+lorenz__efficientnet_b0__finetune__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.695902 F1t=0.718519 (json 0.695902/0.718519; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__efficientnet_b0__finetune__seed42.csv: un JSON de corrida (1)
+lorenz__efficientnet_b0__finetune__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.718519 F1t=0.679955 (json 0.718519/0.679955; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__efficientnet_b0__finetune__seed7.csv: un JSON de corrida (1)
+lorenz__efficientnet_b0__finetune__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.716153 F1t=0.677865 (json 0.716153/0.677865; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    lorenz__efficientnet_b0__finetune__seed99.csv: un JSON de corrida (1)
+lorenz__efficientnet_b0__finetune__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.720301 F1t=0.708440 (json 0.720301/0.708440; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__efficientnet_b0__frozen__seed123.csv: un JSON de corrida (1)
+perlin__efficientnet_b0__frozen__seed123.csv: b=True c=True d=True e=True f=True  F1v=0.703200 F1t=0.684051 (json 0.703200/0.684051; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__efficientnet_b0__frozen__seed2024.csv: un JSON de corrida (1)
+perlin__efficientnet_b0__frozen__seed2024.csv: b=True c=True d=True e=True f=True  F1v=0.699771 F1t=0.691892 (json 0.699771/0.691892; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__efficientnet_b0__frozen__seed42.csv: un JSON de corrida (1)
+perlin__efficientnet_b0__frozen__seed42.csv: b=True c=True d=True e=True f=True  F1v=0.688205 F1t=0.691892 (json 0.688205/0.691892; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__efficientnet_b0__frozen__seed7.csv: un JSON de corrida (1)
+perlin__efficientnet_b0__frozen__seed7.csv: b=True c=True d=True e=True f=True  F1v=0.684051 F1t=0.687412 (json 0.684051/0.687412; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    perlin__efficientnet_b0__frozen__seed99.csv: un JSON de corrida (1)
+perlin__efficientnet_b0__frozen__seed99.csv: b=True c=True d=True e=True f=True  F1v=0.691892 F1t=0.676245 (json 0.691892/0.676245; |dv|=0.0e+00 |dt|=0.0e+00) p_dep==0.5: 0
+  OK    sensibilidad: semillas [7, 42, 99, 123, 2024] en las 3 técnicas
+
+== f) Resúmenes por técnica y fase (ddof=0 frente a ddof=1)
+  final                gray_scott  val 0.7170 sd1 0.0093 sd0 0.0083 | test 0.7250 sd1 0.0180 sd0 0.0161 | summary_by_config: val 0.717 ± 0.0093, test 0.725 ± 0.018
+  OK    final/gray_scott: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+  final                lorenz      val 0.7141 sd1 0.0035 sd0 0.0032 | test 0.7307 sd1 0.0146 sd0 0.0131 | summary_by_config: val 0.7141 ± 0.0035, test 0.7307 ± 0.0146
+  OK    final/lorenz: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+  final                perlin      val 0.7142 sd1 0.0168 sd0 0.0150 | test 0.6719 sd1 0.0151 sd0 0.0135 | summary_by_config: val 0.7142 ± 0.0168, test 0.6719 ± 0.0151
+  OK    final/perlin: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+  control_permutacion  gray_scott  val 0.5054 sd1 0.0610 sd0 0.0546 | test 0.5270 sd1 0.1192 sd0 0.1067 | summary_by_config: val 0.5054 ± 0.061, test 0.527 ± 0.1192
+  OK    control_permutacion/gray_scott: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+  control_permutacion  lorenz      val 0.4831 sd1 0.0326 sd0 0.0291 | test 0.5329 sd1 0.0419 sd0 0.0375 | summary_by_config: val 0.4831 ± 0.0326, test 0.5329 ± 0.0419
+  OK    control_permutacion/lorenz: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+  control_permutacion  perlin      val 0.5172 sd1 0.0647 sd0 0.0578 | test 0.5483 sd1 0.0626 sd0 0.0560 | summary_by_config: val 0.5172 ± 0.0647, test 0.5483 ± 0.0626
+  OK    control_permutacion/perlin: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+  sensibilidad         gray_scott  val 0.7272 sd1 0.0142 sd0 0.0127 | test 0.7150 sd1 0.0200 sd0 0.0179 | summary_by_config: val 0.7272 ± 0.0142, test 0.715 ± 0.02
+  OK    sensibilidad/gray_scott: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+  sensibilidad         lorenz      val 0.7132 sd1 0.0099 sd0 0.0088 | test 0.6942 sd1 0.0182 sd0 0.0163 | summary_by_config: val 0.7132 ± 0.0099, test 0.6942 ± 0.0182
+  OK    sensibilidad/lorenz: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+  sensibilidad         perlin      val 0.6934 sd1 0.0080 sd0 0.0071 | test 0.6863 sd1 0.0065 sd0 0.0058 | summary_by_config: val 0.6934 ± 0.008, test 0.6863 ± 0.0065
+  OK    sensibilidad/perlin: summary_by_config.csv = media y DE ddof=1 (4 decimales)
+
+== g) Ancestría
+  OK    final: protocolo-v1 es ancestro de ef16ab5 (rc=0)
+  OK    final: seleccion-f33 es ancestro de ef16ab5 (rc=0)
+  OK    final: 9027167 es ancestro de ef16ab5 (rc=0)
+  final: task_id=['F3.5']; protocol.commit=['9027167']; selection.role=['finalist']; matches=['True']; override=['None']
+  final: created_at [2026-11-06T03:58:56+00:00, 2026-11-06T04:21:41+00:00]
+  OK    control_permutacion: protocolo-v1 es ancestro de a005f75 (rc=0)
+  OK    control_permutacion: seleccion-f33 es ancestro de a005f75 (rc=0)
+  OK    control_permutacion: 9027167 es ancestro de a005f75 (rc=0)
+  control_permutacion: task_id=['F3.6']; protocol.commit=['9027167']; selection.role=['finalist']; matches=['True']; override=['None']
+  control_permutacion: created_at [2026-11-06T05:27:09+00:00, 2026-11-06T05:46:59+00:00]
+  OK    sensibilidad: protocolo-v1 es ancestro de b170d84 (rc=0)
+  OK    sensibilidad: seleccion-f33 es ancestro de b170d84 (rc=0)
+  OK    sensibilidad: 9027167 es ancestro de b170d84 (rc=0)
+  sensibilidad: task_id=['F5.5']; protocol.commit=['9027167']; selection.role=['second']; matches=['True']; override=['None']
+  sensibilidad: created_at [2026-11-06T07:42:06+00:00, 2026-11-06T07:54:13+00:00]
+  Enmienda 3: 90271670921dee799b217b5e865ed35519cbc2ef 2026-11-05T20:32:22-06:00 (= 2026-11-06 02:32:22+00:00 UTC); created_at mínimo de F3.5 = 2026-11-06T03:58:56+00:00
+  OK    Enmienda 3 anterior a la primera corrida de F3.5
+
+FALLAS: 0

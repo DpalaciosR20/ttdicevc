@@ -270,3 +270,58 @@ La compuerta la hacen cumplir `src/predictions/validate.py` (regla 7) y `run_gri
 3. **Pruebas de cordura (F4.3):** a la aleatorización en cascada (Adebayo et al., 2018) se añade la aleatorización de la cabeza como primer paso. En los ViT congelados, el mapa principal debe cambiar y la atención del *backbone* no. Si el mapa principal no cambia, la prueba falla y el mapa no se interpreta.
 
 Los demás puntos de la matriz §8 (objetivo, muestras, resolución, normalización, formato y *hooks* que recalculan la atención con `need_weights=True`) se aplican sin cambios a los dos mapas. Grad-CAM de `resnet18` y `efficientnet_b0` no cambia.
+
+## Enmienda 4 (2026-11-06)
+
+**Autor.** SV (Santiago Elihu Soria Solís).
+
+**Momento.**
+- Es **posterior** a las consultas de prueba de los finalistas (F3.5), de los controles permutados (F3.6) y de los segundos mejores modelos (fase `sensibilidad`).
+- Es **anterior** a cualquier cálculo de la Fase 5 y al ajuste del clasificador de longitud (F4.5).
+
+**Motivo.** El inventario del bloque A (`results/f5_preparacion/reporte_bloque_a.md`) encontró 17 puntos que el protocolo no fija de forma computable (A1–A17).
+
+**Regla de resolución.** Cada punto se resuelve con el primer criterio que lo fija, en este orden:
+1. el texto literal de este protocolo;
+2. `src/protocol/verdict.py` en la etiqueta `protocolo-v1`;
+3. la opción menos favorable a la hipótesis de conservación. En ese caso, la otra opción se reporta como sensibilidad.
+
+**Declaración de exposición.**
+- Al redactar esta enmienda, SV conocía el F1 de prueba de los finalistas (F3.5), de los segundos mejores modelos (fase `sensibilidad`) y de los controles permutados (F3.6), publicados en las bitácoras de CE.
+- No conocía ninguna métrica de prueba de BETO pareada, 768D, techo 5D, brillo, descriptores ni longitud, ni ningún estadístico de la Fase 5.
+- A2 y A14 siguen el texto literal.
+
+**Alcance.** No cambia ningún modelo, estadístico principal, margen, α, B ni la regla de veredicto. Solo fija detalles de cálculo. La forma legible por código está en `configs/protocolo.json` → `enmienda_4`; los bloques anteriores del archivo no cambian.
+
+**Relación con el §11.**
+- El §11 limita las enmiendas posteriores a la consulta de prueba de los finalistas a añadir análisis exploratorios. Esta enmienda fija detalles de cálculo de análisis confirmatorios (A1–A3, A7) y de sensibilidad (A13–A15, A17), por lo que **se declara como desviación del §11**.
+- Justificación: no añade análisis ni modifica estadísticos, márgenes, α, B ni la regla de veredicto; solo vuelve computable lo que el texto dejó sin especificar, sin lo cual la Fase 5 no puede ejecutarse. En los puntos que determinan el veredicto, A2 y A7 siguen el texto literal, A1 no tiene dirección conocida y A3 elige la opción menos favorable a la conservación.
+- Compromiso de robustez: la bitácora de la Fase 5 reporta, para cada punto con alternativa (A2, A7, A12, A14 y las demás que la tabla declare), si el veredicto por técnica o el global cambia con ella. Si alguno cambia, el veredicto se presenta con esa dependencia explícita.
+- El plan de los análisis explicativos de la Fase 4 se fija en `docs/plan_fase4.md`, en el mismo commit que esta enmienda.
+
+**Cambios.**
+
+| Punto | Resolución |
+|---|---|
+| A1 | `default_rng(2026)`; `idx = rng.integers(0, 114, size=(10000, 114))`; filas de prueba ordenadas por `sample_id`. |
+| A2 | Piso = referencia con el mayor F1 de prueba observado entre las cuatro; esa identidad se remuestrea en cada réplica. Sensibilidad: máximo recalculado en cada réplica. |
+| A3 | Empate en el máximo observado: en cada réplica, el menor D\* entre los empatados. |
+| A4 | IC de D_t: percentil bilateral al nivel 1 − 2α_h, con α_h de Holm de la familia de superioridad; cuantiles `linear`; descriptivo. |
+| A5 | IC al 95 % de ρ̂ y de la descomposición: percentil bilateral 2.5–97.5, cuantiles `linear`. |
+| A6 | Réplicas con F1_BETO\* ≤ 0.5: ρ̂\* = −∞; se reporta su número. |
+| A7 | F4.5: p = #{L\* ≤ 0}/B; Holm con m = número de técnicas con V1, V2 o V4; solo en el veredicto principal. Sensibilidad: m = 3 y calificación aplicada a cada variante de §8. |
+| A8 | Terciles: cortes `np.quantile(n_tokens_beto[train], [1/3, 2/3], method='linear')`; T1 ≤ c1, T2 (c1, c2], T3 > c2; F1 por semilla y luego la media; se incluyen los terciles de BETO y la correlación de Spearman de u0–u4 con `log(n_tokens_beto)` y `truncated_128` en `train`. Descriptivo. |
+| A9 | Clasificador de longitud: `max_iter = 5000`; `truncated_128` → {0, 1}; logaritmo natural; selección de §4.3 en val; se archivan val y test y solo se calcula el F1 de val al ajustarlo. |
+| A10 | Kappa de Cohen sobre ŷ (principal) y sobre vectores de acierto (secundario), con IC percentil al 95 % sobre las réplicas de §5.2, bilateral, cuantiles `linear`; descriptivo. |
+| A11 | Visual − descriptores: mismas réplicas de §5.2; percentil bilateral 2.5–97.5, cuantiles `linear`. |
+| A12 | Q de Cochran asintótica (χ², gl = 2). McNemar exacto: bilateral entre técnicas; unilateral frente a BETO y al techo (H1: el visual comete más errores). Sensibilidad: bilateral frente a BETO y al techo. |
+| A13 | Formulación A: H0 Δ ≥ δ; p = #{Δ\* ≥ δ}/B; V1 si supera el piso y Holm rechaza; V2 si el límite inferior del IC de Δ (nivel 1 − 2α_h) > δ; V3 y V4 como en §5.5; r ∈ {0.50, 0.75, 0.80}, δ fijo (canónicos `f11.delta_margen.*`). |
+| A14 | Por semilla: piso permutado = media de las 5 semillas; Holm entre técnicas dentro de cada semilla; se reporta cuántas semillas dan V1. Sensibilidad: piso permutado de la semilla emparejada, si es mayor. |
+| A15 | BETO ± 0.0128: se suma al F1_BETO observado y a cada réplica, en ambos signos. |
+| A16 | Las métricas de prueba del control permutado se registran ya como canónicas; su publicación en F3.6 antes de la Fase 5 se declara como desviación menor, sin ninguna decisión dependiente. |
+| A17 | Segundo mejor: se usa el piso permutado del finalista de su técnica. |
+
+**Observaciones (sin marca).**
+- La desviación de procedencia de F3.4 (bitácora, H5) se acepta como desviación formal.
+- La pasada de F3.7 sobre prueba solo verificó el `p_dep` de los modelos cargados y no generó predicciones archivadas.
+- D1 y D2 del bloque A son errores de redacción de la bitácora de F3.5 (CE) y no afectan ninguna cifra.

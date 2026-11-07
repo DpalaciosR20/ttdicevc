@@ -1,0 +1,37 @@
+Registros con predicciones de prueba de modelos visuales: 90 (CSV: 45, JSON: 45)
+
+Por directorio:
+fase_dir             tipo
+control_permutacion  csv     15
+final                csv     15
+gray_scott           json    15
+lorenz               json    15
+perlin               json    15
+sensibilidad         csv     15
+
+Claves (técnica, arch, estrategia, fase, semilla): 45
+n_registros
+2    45
+
+Claves con más de una inferencia distinta (huellas distintas): 0
+
+Claves por fase:
+fase_key
+control_permutacion    15
+final                  15
+sensibilidad           15
+
+Registros fuera de final / control_permutacion / sensibilidad: 0
+
+Claves en las tres fases: 45 (se esperan 45); todas con una sola huella: True
+
+CSV con columna f1_test no nula (métricas de prueba, no predicciones):
+  results/f35_final/gray_scott/summary.csv: 5 filas
+  results/f35_final/lorenz/summary.csv: 5 filas
+  results/f35_final/perlin/summary.csv: 5 filas
+  results/f36_permutacion/gray_scott/summary.csv: 5 filas
+  results/f36_permutacion/lorenz/summary.csv: 5 filas
+  results/f36_permutacion/perlin/summary.csv: 5 filas
+  results/f55_sensibilidad/gray_scott/summary.csv: 5 filas
+  results/f55_sensibilidad/lorenz/summary.csv: 5 filas
+  results/f55_sensibilidad/perlin/summary.csv: 5 filas
