@@ -124,6 +124,154 @@
   "results/f32_primera_pasada_v0/summary.csv": "5cf0524a60e5b983b7551e9ea85be5eb4523424e59676b238cc95efcb621e70b",
   "results/f32_primera_pasada_v0/summary_by_config.csv": "197529356fa2128e897e375a800c3162b6017fb3cbc2e5f18de3367b9056fdda",
   "results/f33_seleccion/fragilidad_volteos.csv": "c40695d91a0e7a1488e1ab7a6e18e8c12b16541d15e7ffb6ae129ff5405a6d80",
+  "results/f34_hpo/gray_scott/hpo_result.json": "e1ca89382fae6ea9e081801a22b198c8e24b8e3137b58c4e51eef2bf46c3173c",
+  "results/f34_hpo/gray_scott/runs/trial00__seed123.json": "d58ee27fe9c25f7178b78621b97739982eb57989a27755674032f5f66bc4e998",
+  "results/f34_hpo/gray_scott/runs/trial00__seed42.json": "a94377cef563a06e02b81fff782f97d1d7b76188df641f6a4d0a7f6cfd975843",
+  "results/f34_hpo/gray_scott/runs/trial00__seed7.json": "82c9291b6f3da6e8a510c4f3e4a8479dbc3013777c6c6011a636a3394eef5d90",
+  "results/f34_hpo/gray_scott/runs/trial07__seed123.json": "fd28cf1d2bc3660e4a89250e3a08420fe421e3022e14c44003d9e4037c204b17",
+  "results/f34_hpo/gray_scott/runs/trial07__seed42.json": "f1e3575a1f5f280492116d4ae2cb7d1ddd3450ae97e153f2ed90971c76de826d",
+  "results/f34_hpo/gray_scott/runs/trial07__seed7.json": "669a6cc89ff0b97d328a1bec620a1f45747de4706ced3e8650e9c2d92b6d9b4d",
+  "results/f34_hpo/gray_scott/trials.csv": "c043b54115ffe3b957978529002db6addf54986ce9e1575f2daeaf33168a5787",
+  "results/f34_hpo/lorenz/hpo_result.json": "6360fb0938985bee03a7a0432bd68bb10ff129c79e2bcb9356e6c587324c956f",
+  "results/f34_hpo/lorenz/runs/trial00__seed123.json": "21ba2083f354675185eef9380fad6d615428b6bb83318c6fde67b3a9f6a7438f",
+  "results/f34_hpo/lorenz/runs/trial00__seed42.json": "bf7f40c658d4016cc6ee5905df87ac8bfdc636b116ab42b335fe83561c87bdfb",
+  "results/f34_hpo/lorenz/runs/trial00__seed7.json": "90c00bb95b5bb26efcdc351c99a94072c611e8f11b77b8a66418e610fe144b66",
+  "results/f34_hpo/lorenz/runs/trial05__seed123.json": "df61c60833b7f1053dcb86ab501939adf5757c9216cd4606a70de44f34412701",
+  "results/f34_hpo/lorenz/runs/trial05__seed42.json": "90bc6a3d0ca4990b4ab77d9edcc99f5f6835968cbef7f9ecdbe2f311361af413",
+  "results/f34_hpo/lorenz/runs/trial05__seed7.json": "0df7f44d6a9641bc56877fa83d2ee2763cb87aab1e2cacabe31ab04a641c9ee1",
+  "results/f34_hpo/lorenz/trials.csv": "0c6cfca54383863032759355af535b48f792584fe0636d8fb7101de853c513d2",
+  "results/f34_hpo/perlin/hpo_result.json": "cace6a4d02067d03f0b02e5d7708f50f3651d6bd9cc69fe8b4e76546b3d01040",
+  "results/f34_hpo/perlin/runs/trial00__seed123.json": "b6657a62be42f85ac3ca84e761ba2cea84950d85d5626fd8388b9ae705062560",
+  "results/f34_hpo/perlin/runs/trial00__seed42.json": "dc43d42f59e246ceedf470e36f10dc100fb183fbb2fa09dcaba735f6090fa56a",
+  "results/f34_hpo/perlin/runs/trial00__seed7.json": "26992eedc0ef68476174b45eec7ce1021decb6313f8deb29bd79d74db6452c02",
+  "results/f34_hpo/perlin/runs/trial10__seed123.json": "b4573a317e2147accfaebb4580bbda1004ac506d329550849aefea6c95b58a06",
+  "results/f34_hpo/perlin/runs/trial10__seed42.json": "78dead4e1c07b4231a496f9de16bcfdef7902015ea1f560b187fcb0242f3666d",
+  "results/f34_hpo/perlin/runs/trial10__seed7.json": "e348b5f8ac9a154f404fe3a35e126c8a239c351750404539484da427810561a7",
+  "results/f34_hpo/perlin/trials.csv": "75087078073c767055df921e90f6dfea9c9dc065879bb0576de666a5b07cb297",
+  "results/f35_final/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.json": "6a1ac427d936dc88bab46b9fa70c502adf5fb57a17dc8cc7fa2b26b46296c30a",
+  "results/f35_final/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.json": "e1530e8e8494802e9671c3d7da3bbb1abc97c3d80636ffb058e7bc01d853605d",
+  "results/f35_final/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.json": "eb99d5d02e85d90aedfaea3cfb6ad1a3e557e4a62a034ef02535b3bd45075694",
+  "results/f35_final/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.json": "304d790aa3cf8edd81a0304855d63da588aeea846cf264c7aa11b977e8e15cd8",
+  "results/f35_final/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip__seed99.json": "f667141e7fdea8bf76e83efa34643cd74968fcd893cc42de2314cb75d3b42473",
+  "results/f35_final/gray_scott/summary.csv": "e7779dabccac24ae93461d95e8ec10a62ff31d9eacc1c49b3d619ef21de42b8e",
+  "results/f35_final/gray_scott/summary_by_config.csv": "7d5c73a548d1721c76f35c7d79bf415cef563096c3b24207992671e80a9576f2",
+  "results/f35_final/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip__seed123.json": "175eee06e93c445b0ffcae4e5e11a83f661242befa5991e90ec2b5ec15f42f8f",
+  "results/f35_final/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip__seed2024.json": "ed3ad311020575ff84604c0671bfb3662d18e9781542d40453a53e3d96f286ab",
+  "results/f35_final/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip__seed42.json": "b70f1f1928c2bd0bafd81ff7bd212a79bfe2b585f05b36e7bad7f08f3206f5d7",
+  "results/f35_final/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip__seed7.json": "d9b874b166a0802dd2733f8b0760b16d443d6d6a2fc2ada2ac7889da3565d81b",
+  "results/f35_final/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip__seed99.json": "0ab55e8b3d612d1ad993aada58cf1fafed686d30770e75d7895e845044ddd947",
+  "results/f35_final/lorenz/summary.csv": "662ca9cf62258cd19b9c67534bebc11a074b50cd29198e59f8820ce8a1922ba5",
+  "results/f35_final/lorenz/summary_by_config.csv": "c47a0e94349f3145d7b3b3376097debb71b395f9cc42189f705cdab806238e55",
+  "results/f35_final/perlin/runs/perlin__vit_b16__frozen__px224-noflip__seed123.json": "baadf5cf9db0c3cfe9c54f13b6c42e588c340073d0a29867b1fd884f28a6db2e",
+  "results/f35_final/perlin/runs/perlin__vit_b16__frozen__px224-noflip__seed2024.json": "5414f83f30c98f9aeb504ab8d6c8d1935edb5d3d5af78081645d57ba55dbb2b3",
+  "results/f35_final/perlin/runs/perlin__vit_b16__frozen__px224-noflip__seed42.json": "637428d5d907c389095d80ae95d896e1373d12661b750087abebbca01b8f0da3",
+  "results/f35_final/perlin/runs/perlin__vit_b16__frozen__px224-noflip__seed7.json": "20ae5fdb5eb7f27996f07c8f25b378992576097a23aecef7837c317cf7e9296e",
+  "results/f35_final/perlin/runs/perlin__vit_b16__frozen__px224-noflip__seed99.json": "b9ca3ac3ded721a9c460463a3c94111265dcfbf37b97daae056aa33c3ac9a39e",
+  "results/f35_final/perlin/summary.csv": "1c41632f710aa88c572d7d8c35113c8ce729e7d9e9133a4c3a031d8a48c6ca16",
+  "results/f35_final/perlin/summary_by_config.csv": "a6df42e1b48adae9a4fd016e66044932f45a7200d94ce79f442fd7fbfb0dbbc1",
+  "results/f36_permutacion/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.json": "fe28a9fd58865ad5b1d512c6a7a93a1590996fafe7d72ee4df77c4d391333783",
+  "results/f36_permutacion/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.json": "f4457b24afabb3c9aa44055ced1b645e007fd1be366258a9f78541c4773531ca",
+  "results/f36_permutacion/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.json": "a64222ff3949ba1c664943975b43db1e0b8967cb5f6b49207a39dcffbc26969e",
+  "results/f36_permutacion/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.json": "9503f7614a3f8067218a4c30eac1f63b8bfed0b9dda25c780064c4484b93dc88",
+  "results/f36_permutacion/gray_scott/runs/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.json": "c75b0c0a09119f6deea68f55e0e7d901215b09ec9ed0ff5d6c12278a4f321e63",
+  "results/f36_permutacion/gray_scott/summary.csv": "1cc52c1058853f3311ec626e28937f43b3acab45d4ef210d6337900add788621",
+  "results/f36_permutacion/gray_scott/summary_by_config.csv": "1077ba62224abf711929023cdd7413924c16d1c4b641a6b7fea93ece64d2adc3",
+  "results/f36_permutacion/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.json": "c626956cf4a92b1985b6321d88a3bf3ae5a7b461adff777312bcc6e344be7eb4",
+  "results/f36_permutacion/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.json": "58e389c7746b4375241304f97122463ed493c44ed8ac1cca99dfb7ad6e996abb",
+  "results/f36_permutacion/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.json": "e127ebe74ae9caa339e1eece260ffe650da052a531c82af2c364e9d716986047",
+  "results/f36_permutacion/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.json": "40260c02d5747e05186884bcbe7fa08329b1e21f967c8319b617edc3e5eb1b40",
+  "results/f36_permutacion/lorenz/runs/lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.json": "3ec2f0d627eaa116809b08f886ed2d244067a47fec9f36533f5afa42f06a40dc",
+  "results/f36_permutacion/lorenz/summary.csv": "1159216f08acb166f448c3c4132937a7096a2097e808f99eb8b79bf148e8c351",
+  "results/f36_permutacion/lorenz/summary_by_config.csv": "9ea9308b4e9147007b6801329d770e0fb051abfac28780b42f1480575962a4ce",
+  "results/f36_permutacion/perlin/runs/perlin__vit_b16__frozen__px224-noflip-perm99__seed123.json": "17d567fa38f88a3dbcd35e77e2a6607fb50d04caffa5f11c89bb175556263d50",
+  "results/f36_permutacion/perlin/runs/perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.json": "380e34ed27720bfaa2b65ac9056e33c965cf09b32d0c65c5a8ae300609fbbe5a",
+  "results/f36_permutacion/perlin/runs/perlin__vit_b16__frozen__px224-noflip-perm99__seed42.json": "b5e8dda3b21ab6d92591c9e711091e7ec528b9c18a0bab928e9622c13e8bca2a",
+  "results/f36_permutacion/perlin/runs/perlin__vit_b16__frozen__px224-noflip-perm99__seed7.json": "04eb907588f6ca53e92afc2ac62ee8f3e2cc074a58ab4c6bfd627d7e16ec7360",
+  "results/f36_permutacion/perlin/runs/perlin__vit_b16__frozen__px224-noflip-perm99__seed99.json": "3b0a9e6dab2ac7e9d88c5062b89bb9059d90b0bf94d5e6973129ae17a144685d",
+  "results/f36_permutacion/perlin/summary.csv": "645b7a3239bbb73da81332b4921244d94f37721d328b8d33fc7bea9e74eb6b72",
+  "results/f36_permutacion/perlin/summary_by_config.csv": "d8fee392d0b809766dc67ae8ed82a39de8c3fdd8c3a98671313c643d4cce9c2e",
+  "results/f45_longitud/resultado.json": "bfd293b0ac8fbd0c5699a52b194713a160523fc42559b74daccafe92707c0085",
+  "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed123.json": "7213d4af2fea1bee72e418e13349da4543ea91f19e59cc54e36773348b225934",
+  "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed2024.json": "1fcb21ddde681c1f1cecb0a8feeee4712950b2d5bc0927ecec89677e7be6e674",
+  "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed42.json": "cdd92b1ca3146a36449b4f91d5c0a8c12a36965de67b3edf7955602726488b71",
+  "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed7.json": "91492e2dc8cbce537c83d2785e52f4986ae7ad60da97753ca776443edc18c4fb",
+  "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed99.json": "02df03aed12c04b57687128eb867395f8927b0bc15cf2c2ff44616c282a488ae",
+  "results/f55_sensibilidad/gray_scott/summary.csv": "1346aaf0dce3f4b44108587ba8ad4b459e32e2d6d9739a1da74983febceee6b6",
+  "results/f55_sensibilidad/gray_scott/summary_by_config.csv": "f46fcd11d818684911671995c4d5d9e1a9339b8a641d9e35b4361ddb43c79f8c",
+  "results/f55_sensibilidad/lorenz/runs/lorenz__efficientnet_b0__finetune__px224-noflip__seed123.json": "9083a911c2896a267b8b7f369c513a969b895a38d643c01cedb5c042e2f66682",
+  "results/f55_sensibilidad/lorenz/runs/lorenz__efficientnet_b0__finetune__px224-noflip__seed2024.json": "2f0a61af6b16a829ab8e70d7a15656df4d3c14cb9887627de2c8f364c6b88cb7",
+  "results/f55_sensibilidad/lorenz/runs/lorenz__efficientnet_b0__finetune__px224-noflip__seed42.json": "39a87581c895af4cc4a6538357964e4492fdd26eb66f4417e9af52d2e25b8b1c",
+  "results/f55_sensibilidad/lorenz/runs/lorenz__efficientnet_b0__finetune__px224-noflip__seed7.json": "0c57df6bd176e6ee4eb29d67e990da8534a7475fa0498d71d31546204dbde31b",
+  "results/f55_sensibilidad/lorenz/runs/lorenz__efficientnet_b0__finetune__px224-noflip__seed99.json": "4bc2c0969d4f48eccbfe07f21427ba0f97d07b54b569fe13f18204b8a7e707f6",
+  "results/f55_sensibilidad/lorenz/summary.csv": "b5223a35e59beed76a9654fd4a6ec6152a8bd6191d2c2d931bd35d68ff9827e8",
+  "results/f55_sensibilidad/lorenz/summary_by_config.csv": "0fe4d74a235cb5a10cb617893e3bb1dd468fe967c4d1dd9d3b795b04843c2c56",
+  "results/f55_sensibilidad/perlin/runs/perlin__efficientnet_b0__frozen__px224-noflip__seed123.json": "0e88173d7dd2c5365962ad44dbe7d491d70d913a8721bd2a1cc27fc12437ef0b",
+  "results/f55_sensibilidad/perlin/runs/perlin__efficientnet_b0__frozen__px224-noflip__seed2024.json": "bc3841759aef215a368336b4b0f6e5212f3f94d425258982fc00a2c901d4b0c8",
+  "results/f55_sensibilidad/perlin/runs/perlin__efficientnet_b0__frozen__px224-noflip__seed42.json": "18a7e6d2ad370fd0036985f7d976a138e2c34d3dac9f0ad9a2d20ebf2f62ce57",
+  "results/f55_sensibilidad/perlin/runs/perlin__efficientnet_b0__frozen__px224-noflip__seed7.json": "ca736909a09e3f781043a3ca77502c73bcdc3ab4aecb5f8414d22abdd203be27",
+  "results/f55_sensibilidad/perlin/runs/perlin__efficientnet_b0__frozen__px224-noflip__seed99.json": "ed1681f4c00c8fd39da44be1b26c2e30bba04b24c0c4a6b505a17f602eca6de8",
+  "results/f55_sensibilidad/perlin/summary.csv": "a09f1927d0ee013f5d69da9413bede40fb6dcd209876b9d2844a215506e6b5da",
+  "results/f55_sensibilidad/perlin/summary_by_config.csv": "815b5593da329c3b974025bb97bbc2289e7075c5e3a990021769cb9ce7dd7f74",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed123.csv": "a78c6a0c488508cfb9b7ede881c109a5847bfbedad05646c421a7295bee17767",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed123.manifest.json": "c1d5d8af0ffe0a5dfaaac76f94c8059ea84315a2b6387e6efc9909a9799cc3a4",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed2024.csv": "d0bfa556abd14ab29374ed7bd2e17c0f3a9391f1586b1f3e55a03b93c3717ad0",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed2024.manifest.json": "030bd0eb9ff9f9f0df97429e2ae5b2561f9a272452e15bdc84985e3ac9ee8bda",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed42.csv": "802f2d3143b3369027ecf6c5d86fa72c464c581f8311045dc549cb29bbbf6dbc",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed42.manifest.json": "4aaef69ebc3caabca4f9968f0275a41248beec79d429eb65488e8cd628c953c9",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed7.csv": "7abad718cd67923a8bbe88e6d68c282204b700f19fbff0e879741f932f233cc7",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed7.manifest.json": "c6419fb46fe07f5302555602ddb95a7b65c2d71723960c9fbc24ed137ca4c385",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed99.csv": "3b69706f50dd061ad6611d23b7f628133edaccbe9f9324b7596b9aed24489125",
+  "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed99.manifest.json": "b386b5a09d684fc5f23b1a921659fbc4466dd98bac494ada3b6a1f3723645120",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed123.csv": "63f90471574326b1dcf2136fe4dd8ffbb9130471ea8415d32b072d9e31c6e50b",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed123.manifest.json": "eed6516b6e7beb439c0a81addba1bb4b558c3d1726348ff07b91ccbfe996b710",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed2024.csv": "4b45ffd6d7844d5f9169f7b3126628114e3fdefc0a50320dd3a42da7baa9fc7d",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed2024.manifest.json": "57513528fb220d6fd2517cedec25b29cb5500a587b2cf82246382a97e9cd352e",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed42.csv": "f272063680c0d81558d8b8447fe7323c49ff376f6512d2230281715a0fe72ef8",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed42.manifest.json": "06ed2209c895b443b04647f35e65a4882d7df1b2eff768c2271d4c2f0266679f",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed7.csv": "23dc97cded39c49d5304dc291e5c4130b7504e4c65318d2de955f2abcd97bd18",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed7.manifest.json": "e5205329d56edbee3948e7f8874363c6194aacbc8d331b9885aa8a7d3e880ce9",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed99.csv": "dce8e1428b257a1cf3aed55cb92cabb1bf8c429e9d83cab789341fa7cc0960f2",
+  "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed99.manifest.json": "1fc900324f6766b6484b6b2f5558db9b0a9f3a38903be2f19742dd0359619b4e",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed123.csv": "92da843b7d92e4dcabaeaa0947564923232964f06751480adbc6915d9e04ec04",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed123.manifest.json": "cc370529a6547a9f59e0a02ea49ee8780354356bafbb0b80376e769b22d9d02e",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed2024.csv": "bca015ec3a0179fad98d1c00b5b5932cba927cc4529eb703d3912acfef33a01e",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed2024.manifest.json": "3d71810912bfb17805861d2e9d3ac4793e2c5dfc85ea6309ebba4552d1c56149",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed42.csv": "4670a24a37d61e1e8c5adb6bd645b1f8147911a051cfa85d8f1dd097bee348e6",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed42.manifest.json": "0e05a63af300740f2cf16de0d9010521f53a6fe4aa592b1cfde2d77ae2aa032c",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed7.csv": "58d101eea5df718ae07a17e54a253dc26b797e57340bb2f280607233e226e602",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed7.manifest.json": "55750cc41ccf9d7cab0e1306ffa5803bc40b9ec341b9160bbb365099b5d848ac",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed99.csv": "f16ba0fc86c345d3e2d50de09c26c8d3c2730228c385928aa24fbe20e7162a5c",
+  "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed99.manifest.json": "abcd011e662dd57b1e2c45ac9d4e603269b6179616381cab564034195edd734c",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed123.csv": "b51a2d0227a2bb9110b076fa9cb6ede73497fde3a67a26754707ca795f80bf41",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed123.manifest.json": "6bb548e45be6093978283741cd7aca6f1dc7e03ed7030e7b8ff5ec7a1cb8fd68",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed2024.csv": "8c5c9b633612e41facc8cd8e46d1af804da9b46faaec191dc966ae15edcc374a",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed2024.manifest.json": "74f8278779e0216538c0989b7c8af2270f30d925b85b4e7f99e6404671595fc5",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed42.csv": "60e78e5c2f3d4cbde2584a7622ad5ff148d9e83257858e50142889a8556fc6bb",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed42.manifest.json": "bd44c6a7609513a77069b08e817367eff85e18f1db0e9068423852c730b5771c",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed7.csv": "3ead6bb773fbf2e586282a76f761c529ca24198f3d88005de0740835016acaf1",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed7.manifest.json": "de73548db287970851ec2e2615fe079db6bf8d7edcb322a36b86b44a6a478c7c",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed99.csv": "e72dc2ae668f54ed1581ad172abc802cb73b99a405656a0f430b11e3490799d7",
+  "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed99.manifest.json": "6ef63e5f15947e2f61a09d254ab097b7e9eb66984e4fec2047fc8c7aa5a8ad6b",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed123.csv": "0b66f60777549bcf2181f931bc10e85d2dd77ffc02d71d321c74359b9484b065",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed123.manifest.json": "70643d99663570abd1cf2776cc91db75fa63c465efb362a3bbe4bce42ee5a89f",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed2024.csv": "5e2e09af39e19ec568d24ab765ee340eb8d697314c4a72138f450e89a76c640e",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed2024.manifest.json": "d4ba4285bf2199eff0ed57a5e1bf23a14d105b4b3ddbe914a92e60320dbe766e",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed42.csv": "fcac7c6b35a380637b0462ee4d541ec69d911278eed02d5f634cd38b67f91b76",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed42.manifest.json": "44693f4f68b832e45e0e86c3cbe9f2caa0db34535e3ac5d6ca42f12403f451ed",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed7.csv": "67b61ae0124831f7f7011be3d30d68a01fd8d89079783f5a320614f8a6387e38",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed7.manifest.json": "f8c85891fe2c3459fb23dcdb2ea0bd33e8c871c2b5307d13b2a950af9505d456",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed99.csv": "2ef17e032c1d861cc3b161a1ec6a47dc41b75f7cf8ecdddac6346bde30ce6d30",
+  "results/predictions/final/lorenz__vit_b16__frozen__seed99.manifest.json": "1d5126c0316163da25e5a66d2fb769091ab3fd79e8034fbff9c60e8820341f0c",
+  "results/predictions/final/perlin__vit_b16__frozen__seed123.csv": "de5d1a7c55bb629174cccacaa6da27e7acece57930262147b19f0248ca93108d",
+  "results/predictions/final/perlin__vit_b16__frozen__seed123.manifest.json": "2cb71585f5e0aafc687722bca95513a44c1615e9eae1f31a0569195cdfc1b161",
+  "results/predictions/final/perlin__vit_b16__frozen__seed2024.csv": "52588352631a8a3e7e8108e071a50a07e4e5c5f0a423b9781f880934d2788920",
+  "results/predictions/final/perlin__vit_b16__frozen__seed2024.manifest.json": "31374e57824e4555d08a4a0d0469c4e5f8f6fa71d6890c367b9553eaa39d6537",
+  "results/predictions/final/perlin__vit_b16__frozen__seed42.csv": "2807eec87fca0391d8ce06538921571854c8b77ec6744a3145685981f5688f0d",
+  "results/predictions/final/perlin__vit_b16__frozen__seed42.manifest.json": "cdc43414c77af641cc2bba98b60ba9a97405506e8f8356ec0a286dfb83a1011f",
+  "results/predictions/final/perlin__vit_b16__frozen__seed7.csv": "f2ec421680245dadfaad2eea27b0f26a5416eba09ac291aae207abe70ececec2",
+  "results/predictions/final/perlin__vit_b16__frozen__seed7.manifest.json": "05253420448db98b9a99ad138ac4c4d9ee4e4816dea1e78d414becb8cc419f42",
+  "results/predictions/final/perlin__vit_b16__frozen__seed99.csv": "27f74169fca562b1711d10ccb26411c74c5d295b2743f5ebaa284a2d3f39f199",
+  "results/predictions/final/perlin__vit_b16__frozen__seed99.manifest.json": "8e9924baf9669dc7b21257099f4dad7004cff0be9c18ffe207285cc08e364854",
   "results/predictions/primera_pasada/gray_scott__efficientnet_b0__finetune__seed123.csv": "b72cf2368150e2ba92d52bd8f115867732407b910cece57a9356e76031ac87a6",
   "results/predictions/primera_pasada/gray_scott__efficientnet_b0__finetune__seed123.manifest.json": "f30cb04bd6f4c86f96f674627f012d5fce731ae0fc0f4e589775cb224651e8c6",
   "results/predictions/primera_pasada/gray_scott__efficientnet_b0__finetune__seed42.csv": "1cb81304fca01f19674e0aa405452a68c85630b59e5af2ce78920afd273e0e95",
@@ -232,6 +380,38 @@
   "results/predictions/primera_pasada/perlin__vit_b16__frozen__seed42.manifest.json": "1f600d331e89a2b9b85d406ec554babacdbc8b402f69791893f3d6e385ea4b7b",
   "results/predictions/primera_pasada/perlin__vit_b16__frozen__seed7.csv": "eef80167d9975a56640de5ab3993812d72db88df8fc69fa1b00f768e3e9b86a9",
   "results/predictions/primera_pasada/perlin__vit_b16__frozen__seed7.manifest.json": "f0c2a44cb961a3a4e00c6d075edd7bfe31f140e50d336f8d85089b8784ce01b3",
+  "results/predictions/referencia/text_length__logreg__none__seed42.csv": "9aabed280470c07c5641a6858e8a401ed5f9f8144b1e26c5b71c245ca7c24f29",
+  "results/predictions/referencia/text_length__logreg__none__seed42.manifest.json": "d07b01fbc2304ec8a4a42900e1d5fed33dd69bda7aaa5d924fcd8be81ea8b907",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed123.csv": "010b75c6c546582e2e91beb3f51578934a1e1ca1aa9195ba0d9b10ef3bd75fd4",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed123.manifest.json": "dee6633c0311ac588d6a1df83bf3b8cfd33b8d59b8e5c16450b4cdc154b27ffe",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed2024.csv": "ed7db9b98fa6427f88da79b7de0fa115183a2523b52e7f3e6568f85b440ca325",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed2024.manifest.json": "819c31c75cd3e6613c4eb8d97b0ae0c2dd6cbebf84d8303e6cf8c521bb6b270f",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed42.csv": "8db328356c77a886edae1ee7eb132f56776734710b156b2b9af35394a708f3cf",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed42.manifest.json": "365445fb03be053f79c275e4835d8053600a84a47bb404b83055eb3e413ef82b",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed7.csv": "8b30a94d339f1a9e4230addfc1058dacafc402e3586e59db3d170f9b5bf5a9f5",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed7.manifest.json": "ec6f1c175560e3c7277aea043a0d97f5e44f3c1837da0419119135e82a8ecb6e",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed99.csv": "513acfa971f22b00661be2e685033d7c21d63f8f448229a9b57d0a2792c3be4d",
+  "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed99.manifest.json": "928d49ab402ae040b8495b770a661e0713c608c47b61c02c0f0b0faa15182296",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed123.csv": "2da90da74434010236f50febc410bb51b37c7bab16fd87cfc4e8e59d482f5262",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed123.manifest.json": "a6dbf7623cf41df7fdd9a636e125ac6e83787e1d3af18380cce7e36439dd33ea",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed2024.csv": "842591a0d2404514e92166331ea661a9934383939dce3030c635f2dfb9797649",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed2024.manifest.json": "ca7b97d5b2a0814ac6ed97efb12804abee77ca42e3d908032b0771e240ef4756",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed42.csv": "f19b54953dcafff28663af8b2f88fc120914ba94cb255ffd88f5d711935aef65",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed42.manifest.json": "c60fab4e522ee228d6b8f796c1c0400614f731650a9b7b18a8de09072957dec7",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed7.csv": "c6c7f9d49a3f2a68a82fd13cd790e0c4be7ed0e078b360fb4d7a658c1c4646c2",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed7.manifest.json": "1c0815bff6bde46fd25a0b901a43a7821bdf7faf74baf62bc5424349ac9faa18",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed99.csv": "99cd0a5067583ae5b7a7616afe3cbc3452ee0ae4b3f21bad93ebbfd061b5f452",
+  "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed99.manifest.json": "6137e2ecd4d007952c581341bfc4b40677affb5f4316aad40e6de6bafeda5f42",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed123.csv": "adae665f11ac829d1e7765c062fd7672a1effa1678bd42d81d0422e0ef149d37",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed123.manifest.json": "c01261d32ff42c507f803c189400a8169bb5b5329ebabb9b36e193b41a068662",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed2024.csv": "cdf46053eb806708ce9db7811d2462b5a4ff3fd27ad23d6790ec89880da32b2a",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed2024.manifest.json": "8e532c2f3e0f7df4efad2b44f2518a24b3c0f522d6b288d77165bbfa622450ea",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed42.csv": "53a32af82b18a73e9eb7cb44da43698007da69232b52713cea58f63be3e0e447",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed42.manifest.json": "7b656e54816c23055e2bd8aad24b746f78be2cc3291157ad9d774926e2ee9e65",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed7.csv": "aa10c07988cddf8feb2cc77ed99b798971cb9ec45a13ca67bb88869028241424",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed7.manifest.json": "a36984d449690375c08dfeb14f1838ba98a618ff3d85203501bffb9cc813edb2",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed99.csv": "045a8c533f5291c385a6c6fa2d38059ee9ec89672f146ce99e80548194bcc6c9",
+  "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed99.manifest.json": "135454123de57659f885e9e30a19e2953a23930aa2a6208f8e8aca504331343c",
   "umap_params.pkl (externo)": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224"
  },
  "numbers": {
@@ -6409,6 +6589,2910 @@
    "status": "extraido",
    "value": 7
   },
+  "f34.gray_scott.ganancia.f1_macro": {
+   "depends_on": [
+    "f34.gray_scott.mejor_trial.f1_macro_mean",
+    "f34.gray_scott.trial0.f1_macro_mean"
+   ],
+   "derivation": "diff",
+   "evaluator": "media del mejor trial − media del trial 0",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "se adopta el mejor trial solo si la ganancia supera 1 DE (ddof=1) del trial 0 (matriz §6)",
+   "null_reason": {
+    "test": "diferencia sin término en este split (f34.gray_scott.mejor_trial.f1_macro_mean, f34.gray_scott.trial0.f1_macro_mean es nulo)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/gray_scott/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.007883902204921411
+   }
+  },
+  "f34.gray_scott.mejor_trial.f1_macro_mean": {
+   "depends_on": [
+    "f34.gray_scott.mejor_trial.seed42.f1_macro",
+    "f34.gray_scott.mejor_trial.seed7.f1_macro",
+    "f34.gray_scott.mejor_trial.seed123.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "mejor trial por F1-val medio: trial 7",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/gray_scott/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7254601335483688
+   }
+  },
+  "f34.gray_scott.mejor_trial.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 9,
+     "fp": 23,
+     "tn": 47,
+     "tp": 35
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 7; efficientnet_b0/finetune (px224-flip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/gray_scott/runs/trial07__seed123.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7161531279178338
+   }
+  },
+  "f34.gray_scott.mejor_trial.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 7; efficientnet_b0/finetune (px224-flip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/gray_scott/runs/trial07__seed42.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7121212121212122
+   }
+  },
+  "f34.gray_scott.mejor_trial.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 10,
+     "fp": 18,
+     "tn": 52,
+     "tp": 34
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 7; efficientnet_b0/finetune (px224-flip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/gray_scott/runs/trial07__seed7.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7481060606060606
+   }
+  },
+  "f34.gray_scott.trial0.f1_macro_mean": {
+   "depends_on": [
+    "f34.gray_scott.trial0.seed42.f1_macro",
+    "f34.gray_scott.trial0.seed7.f1_macro",
+    "f34.gray_scott.trial0.seed123.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0 (configuración común de F3.2)",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/gray_scott/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7175762313434474
+   }
+  },
+  "f34.gray_scott.trial0.f1_macro_std": {
+   "depends_on": [
+    "f34.gray_scott.trial0.seed42.f1_macro",
+    "f34.gray_scott.trial0.seed7.f1_macro",
+    "f34.gray_scott.trial0.seed123.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0 (configuración común de F3.2)",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/gray_scott/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.012496044907801315
+   }
+  },
+  "f34.gray_scott.trial0.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 18,
+     "tn": 52,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; efficientnet_b0/finetune (px224-flip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/gray_scott/runs/trial00__seed123.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.728485233407431
+   }
+  },
+  "f34.gray_scott.trial0.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; efficientnet_b0/finetune (px224-flip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/gray_scott/runs/trial00__seed42.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7203007518796992
+   }
+  },
+  "f34.gray_scott.trial0.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 21,
+     "tn": 49,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; efficientnet_b0/finetune (px224-flip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/gray_scott/runs/trial00__seed7.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7039427087432124
+   }
+  },
+  "f34.gray_scott.trial_adoptado": {
+   "evaluator": "regla de la matriz §6 aplicada a las medias y DE recalculadas desde runs/ (los 36 entrenamientos); coincide con decision.adopted_trial",
+   "kind": "count",
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/gray_scott/hpo_result.json"
+   },
+   "status": "verificado",
+   "value": 0
+  },
+  "f34.gray_scott.trials": {
+   "evaluator": "trials distintos en runs/ (= n_trials de hpo_result.json = filas de trials.csv)",
+   "kind": "count",
+   "source": {
+    "locator": "columna trial",
+    "path": "results/f34_hpo/gray_scott/trials.csv"
+   },
+   "status": "extraido",
+   "value": 12
+  },
+  "f34.lorenz.ganancia.f1_macro": {
+   "depends_on": [
+    "f34.lorenz.mejor_trial.f1_macro_mean",
+    "f34.lorenz.trial0.f1_macro_mean"
+   ],
+   "derivation": "diff",
+   "evaluator": "media del mejor trial − media del trial 0",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "se adopta el mejor trial solo si la ganancia supera 1 DE (ddof=1) del trial 0 (matriz §6)",
+   "null_reason": {
+    "test": "diferencia sin término en este split (f34.lorenz.mejor_trial.f1_macro_mean, f34.lorenz.trial0.f1_macro_mean es nulo)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/lorenz/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.0036025792716789518
+   }
+  },
+  "f34.lorenz.mejor_trial.f1_macro_mean": {
+   "depends_on": [
+    "f34.lorenz.mejor_trial.seed42.f1_macro",
+    "f34.lorenz.mejor_trial.seed7.f1_macro",
+    "f34.lorenz.mejor_trial.seed123.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "mejor trial por F1-val medio: trial 5",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/lorenz/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7184503046457201
+   }
+  },
+  "f34.lorenz.mejor_trial.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 14,
+     "fp": 17,
+     "tn": 53,
+     "tp": 30
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 5; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/lorenz/runs/trial05__seed123.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7165316435389428
+   }
+  },
+  "f34.lorenz.mejor_trial.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 18,
+     "tn": 52,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 5; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/lorenz/runs/trial05__seed42.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7185185185185186
+   }
+  },
+  "f34.lorenz.mejor_trial.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 5; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/lorenz/runs/trial05__seed7.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7203007518796992
+   }
+  },
+  "f34.lorenz.trial0.f1_macro_mean": {
+   "depends_on": [
+    "f34.lorenz.trial0.seed42.f1_macro",
+    "f34.lorenz.trial0.seed7.f1_macro",
+    "f34.lorenz.trial0.seed123.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0 (configuración común de F3.2)",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/lorenz/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7148477253740412
+   }
+  },
+  "f34.lorenz.trial0.f1_macro_std": {
+   "depends_on": [
+    "f34.lorenz.trial0.seed42.f1_macro",
+    "f34.lorenz.trial0.seed7.f1_macro",
+    "f34.lorenz.trial0.seed123.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0 (configuración común de F3.2)",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/lorenz/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.004722459481409753
+   }
+  },
+  "f34.lorenz.trial0.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/lorenz/runs/trial00__seed123.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7203007518796992
+   }
+  },
+  "f34.lorenz.trial0.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/lorenz/runs/trial00__seed42.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7121212121212122
+   }
+  },
+  "f34.lorenz.trial0.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/lorenz/runs/trial00__seed7.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7121212121212122
+   }
+  },
+  "f34.lorenz.trial_adoptado": {
+   "evaluator": "regla de la matriz §6 aplicada a las medias y DE recalculadas desde runs/ (los 36 entrenamientos); coincide con decision.adopted_trial",
+   "kind": "count",
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/lorenz/hpo_result.json"
+   },
+   "status": "verificado",
+   "value": 0
+  },
+  "f34.lorenz.trials": {
+   "evaluator": "trials distintos en runs/ (= n_trials de hpo_result.json = filas de trials.csv)",
+   "kind": "count",
+   "source": {
+    "locator": "columna trial",
+    "path": "results/f34_hpo/lorenz/trials.csv"
+   },
+   "status": "extraido",
+   "value": 12
+  },
+  "f34.perlin.ganancia.f1_macro": {
+   "depends_on": [
+    "f34.perlin.mejor_trial.f1_macro_mean",
+    "f34.perlin.trial0.f1_macro_mean"
+   ],
+   "derivation": "diff",
+   "evaluator": "media del mejor trial − media del trial 0",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "se adopta el mejor trial solo si la ganancia supera 1 DE (ddof=1) del trial 0 (matriz §6)",
+   "null_reason": {
+    "test": "diferencia sin término en este split (f34.perlin.mejor_trial.f1_macro_mean, f34.perlin.trial0.f1_macro_mean es nulo)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/perlin/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.016531808126133307
+   }
+  },
+  "f34.perlin.mejor_trial.f1_macro_mean": {
+   "depends_on": [
+    "f34.perlin.mejor_trial.seed42.f1_macro",
+    "f34.perlin.mejor_trial.seed7.f1_macro",
+    "f34.perlin.mejor_trial.seed123.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "mejor trial por F1-val medio: trial 10",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/perlin/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7193790060152937
+   }
+  },
+  "f34.perlin.mejor_trial.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 21,
+     "tn": 49,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 10; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/perlin/runs/trial10__seed123.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7039427087432124
+   }
+  },
+  "f34.perlin.mejor_trial.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 8,
+     "fp": 22,
+     "tn": 48,
+     "tp": 36
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 10; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/perlin/runs/trial10__seed42.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7338935574229692
+   }
+  },
+  "f34.perlin.mejor_trial.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 10; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/perlin/runs/trial10__seed7.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7203007518796992
+   }
+  },
+  "f34.perlin.trial0.f1_macro_mean": {
+   "depends_on": [
+    "f34.perlin.trial0.seed42.f1_macro",
+    "f34.perlin.trial0.seed7.f1_macro",
+    "f34.perlin.trial0.seed123.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0 (configuración común de F3.2)",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/perlin/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7028471978891604
+   }
+  },
+  "f34.perlin.trial0.f1_macro_std": {
+   "depends_on": [
+    "f34.perlin.trial0.seed42.f1_macro",
+    "f34.perlin.trial0.seed7.f1_macro",
+    "f34.perlin.trial0.seed123.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0 (configuración común de F3.2)",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/perlin/hpo_result.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.0072593713185530985
+   }
+  },
+  "f34.perlin.trial0.seed123.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 16,
+     "fp": 17,
+     "tn": 53,
+     "tp": 28
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/perlin/runs/trial00__seed123.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6959017056018106
+   }
+  },
+  "f34.perlin.trial0.seed42.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 19,
+     "tn": 51,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/perlin/runs/trial00__seed42.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7103842489679263
+   }
+  },
+  "f34.perlin.trial0.seed7.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 13,
+     "fp": 20,
+     "tn": 50,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "trial 0; vit_b16/frozen (px224-noflip); F1-val por semilla recalculado desde val_probs de runs/; test no existe en F3.4",
+   "null_reason": {
+    "test": "F3.4 solo validación (matriz §4)"
+   },
+   "source": {
+    "locator": "val_probs, val_true",
+    "path": "results/f34_hpo/perlin/runs/trial00__seed7.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7022556390977444
+   }
+  },
+  "f34.perlin.trial_adoptado": {
+   "evaluator": "regla de la matriz §6 aplicada a las medias y DE recalculadas desde runs/ (los 36 entrenamientos); coincide con decision.adopted_trial",
+   "kind": "count",
+   "source": {
+    "locator": "decision",
+    "path": "results/f34_hpo/perlin/hpo_result.json"
+   },
+   "status": "verificado",
+   "value": 10
+  },
+  "f34.perlin.trials": {
+   "evaluator": "trials distintos en runs/ (= n_trials de hpo_result.json = filas de trials.csv)",
+   "kind": "count",
+   "source": {
+    "locator": "columna trial",
+    "path": "results/f34_hpo/perlin/trials.csv"
+   },
+   "status": "extraido",
+   "value": 12
+  },
+  "f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 15,
+     "fp": 18,
+     "tn": 52,
+     "tp": 29
+    },
+    "val": {
+     "fn": 12,
+     "fp": 18,
+     "tn": 52,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6982433624769391,
+    "val": 0.728485233407431
+   }
+  },
+  "f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 12,
+     "fp": 17,
+     "tn": 53,
+     "tp": 32
+    },
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.736678614097969,
+    "val": 0.7121212121212122
+   }
+  },
+  "f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 12,
+     "fp": 16,
+     "tn": 54,
+     "tp": 32
+    },
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7448849104859334,
+    "val": 0.7203007518796992
+   }
+  },
+  "f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 17,
+     "tn": 53,
+     "tp": 31
+    },
+    "val": {
+     "fn": 12,
+     "fp": 21,
+     "tn": 49,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7266624040920716,
+    "val": 0.7039427087432124
+   }
+  },
+  "f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 18,
+     "tn": 52,
+     "tp": 31
+    },
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7185185185185186,
+    "val": 0.7203007518796992
+   }
+  },
+  "f35.gray_scott.finalista.f1_macro_mean": {
+   "depends_on": [
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro",
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro",
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro",
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro",
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "gray_scott / efficientnet_b0 / finetune",
+    "path": "results/f35_final/gray_scott/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7249975619342864,
+    "val": 0.7170301316062507
+   }
+  },
+  "f35.gray_scott.finalista.f1_macro_std": {
+   "depends_on": [
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro",
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro",
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro",
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro",
+    "f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "gray_scott / efficientnet_b0 / finetune",
+    "path": "results/f35_final/gray_scott/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.017975611976109723,
+    "val": 0.009327263785914888
+   }
+  },
+  "f35.lorenz.finalista.f1_macro_mean": {
+   "depends_on": [
+    "f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro",
+    "f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro",
+    "f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro",
+    "f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro",
+    "f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "lorenz / vit_b16 / frozen",
+    "path": "results/f35_final/lorenz/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7307491890196733,
+    "val": 0.7140644318087928
+   }
+  },
+  "f35.lorenz.finalista.f1_macro_std": {
+   "depends_on": [
+    "f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro",
+    "f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro",
+    "f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro",
+    "f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro",
+    "f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "lorenz / vit_b16 / frozen",
+    "path": "results/f35_final/lorenz/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.014632639741536082,
+    "val": 0.0035491326216751514
+   }
+  },
+  "f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 12,
+     "fp": 16,
+     "tn": 54,
+     "tp": 32
+    },
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/lorenz__vit_b16__frozen__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7448849104859334,
+    "val": 0.7203007518796992
+   }
+  },
+  "f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 12,
+     "fp": 16,
+     "tn": 54,
+     "tp": 32
+    },
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/lorenz__vit_b16__frozen__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7448849104859334,
+    "val": 0.7121212121212122
+   }
+  },
+  "f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    },
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/lorenz__vit_b16__frozen__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7121212121212122,
+    "val": 0.7121212121212122
+   }
+  },
+  "f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 10,
+     "fp": 20,
+     "tn": 50,
+     "tp": 34
+    },
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/lorenz__vit_b16__frozen__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7315541601255887,
+    "val": 0.7121212121212122
+   }
+  },
+  "f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    },
+    "val": {
+     "fn": 11,
+     "fp": 21,
+     "tn": 49,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/lorenz__vit_b16__frozen__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7203007518796992,
+    "val": 0.713657770800628
+   }
+  },
+  "f35.perlin.finalista.f1_macro_mean": {
+   "depends_on": [
+    "f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro",
+    "f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro",
+    "f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro",
+    "f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro",
+    "f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "perlin / vit_b16 / frozen",
+    "path": "results/f35_final/perlin/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.671869357638714,
+    "val": 0.7142159006989949
+   }
+  },
+  "f35.perlin.finalista.f1_macro_std": {
+   "depends_on": [
+    "f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro",
+    "f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro",
+    "f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro",
+    "f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro",
+    "f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "perlin / vit_b16 / frozen",
+    "path": "results/f35_final/perlin/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.015110349564274775,
+    "val": 0.016770038661830335
+   }
+  },
+  "f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 22,
+     "tn": 48,
+     "tp": 31
+    },
+    "val": {
+     "fn": 12,
+     "fp": 21,
+     "tn": 49,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/perlin__vit_b16__frozen__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6859998426064373,
+    "val": 0.7039427087432124
+   }
+  },
+  "f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 14,
+     "fp": 24,
+     "tn": 46,
+     "tp": 30
+    },
+    "val": {
+     "fn": 11,
+     "fp": 20,
+     "tn": 50,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/perlin__vit_b16__frozen__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6599686028257457,
+    "val": 0.7218855748799875
+   }
+  },
+  "f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 15,
+     "fp": 23,
+     "tn": 47,
+     "tp": 29
+    },
+    "val": {
+     "fn": 8,
+     "fp": 22,
+     "tn": 48,
+     "tp": 36
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/perlin__vit_b16__frozen__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6581439393939394,
+    "val": 0.7338935574229692
+   }
+  },
+  "f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 15,
+     "fp": 19,
+     "tn": 51,
+     "tp": 29
+    },
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/perlin__vit_b16__frozen__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6902173913043479,
+    "val": 0.7203007518796992
+   }
+  },
+  "f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 10,
+     "fp": 28,
+     "tn": 42,
+     "tp": 34
+    },
+    "val": {
+     "fn": 9,
+     "fp": 26,
+     "tn": 44,
+     "tp": 35
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; finalista (select_finalist), hiperparámetros de F3.4; consulta única de prueba (protocolo §10)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/final/perlin__vit_b16__frozen__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6650170120630993,
+    "val": 0.6910569105691057
+   }
+  },
+  "f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 27,
+     "fp": 37,
+     "tn": 33,
+     "tp": 17
+    },
+    "val": {
+     "fn": 23,
+     "fp": 31,
+     "tn": 39,
+     "tp": 21
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.42731554160125584,
+    "val": 0.5142045454545454
+   }
+  },
+  "f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 6,
+     "fp": 26,
+     "tn": 44,
+     "tp": 38
+    },
+    "val": {
+     "fn": 12,
+     "fp": 35,
+     "tn": 35,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7185185185185186,
+    "val": 0.5874335874335874
+   }
+  },
+  "f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 25,
+     "fp": 21,
+     "tn": 49,
+     "tp": 19
+    },
+    "val": {
+     "fn": 26,
+     "fp": 24,
+     "tn": 46,
+     "tp": 18
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.566468253968254,
+    "val": 0.5332459875532264
+   }
+  },
+  "f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 33,
+     "fp": 21,
+     "tn": 49,
+     "tp": 11
+    },
+    "val": {
+     "fn": 35,
+     "fp": 18,
+     "tn": 52,
+     "tp": 9
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.46710526315789475,
+    "val": 0.4579707544630842
+   }
+  },
+  "f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 16,
+     "fp": 46,
+     "tn": 24,
+     "tp": 28
+    },
+    "val": {
+     "fn": 24,
+     "fp": 40,
+     "tn": 30,
+     "tp": 20
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/gray_scott__efficientnet_b0__finetune__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.4554699537750385,
+    "val": 0.43424317617866004
+   }
+  },
+  "f36.gray_scott.permutado.f1_macro_mean": {
+   "depends_on": [
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro",
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro",
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro",
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro",
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "gray_scott / efficientnet_b0 / finetune",
+    "path": "results/f36_permutacion/gray_scott/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5269755062041923,
+    "val": 0.5054196102166207
+   }
+  },
+  "f36.gray_scott.permutado.f1_macro_std": {
+   "depends_on": [
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro",
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro",
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro",
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro",
+    "f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "gray_scott / efficientnet_b0 / finetune",
+    "path": "results/f36_permutacion/gray_scott/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.1192455463190153,
+    "val": 0.06102305608628371
+   }
+  },
+  "f36.lorenz.permutado.f1_macro_mean": {
+   "depends_on": [
+    "f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro",
+    "f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro",
+    "f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro",
+    "f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro",
+    "f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "lorenz / vit_b16 / frozen",
+    "path": "results/f36_permutacion/lorenz/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5329193226291082,
+    "val": 0.48306662555769986
+   }
+  },
+  "f36.lorenz.permutado.f1_macro_std": {
+   "depends_on": [
+    "f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro",
+    "f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro",
+    "f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro",
+    "f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro",
+    "f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "lorenz / vit_b16 / frozen",
+    "path": "results/f36_permutacion/lorenz/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.04189177105972816,
+    "val": 0.03255158786754981
+   }
+  },
+  "f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 10,
+     "fp": 45,
+     "tn": 25,
+     "tp": 34
+    },
+    "val": {
+     "fn": 10,
+     "fp": 53,
+     "tn": 17,
+     "tp": 34
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5145180023228804,
+    "val": 0.4347997166915873
+   }
+  },
+  "f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 20,
+     "fp": 25,
+     "tn": 45,
+     "tp": 24
+    },
+    "val": {
+     "fn": 23,
+     "fp": 31,
+     "tn": 39,
+     "tp": 21
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5913978494623655,
+    "val": 0.5142045454545454
+   }
+  },
+  "f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 11,
+     "fp": 45,
+     "tn": 25,
+     "tp": 33
+    },
+    "val": {
+     "fn": 11,
+     "fp": 49,
+     "tn": 21,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5063408598824621,
+    "val": 0.4677871148459384
+   }
+  },
+  "f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 37,
+     "tn": 33,
+     "tp": 31
+    },
+    "val": {
+     "fn": 15,
+     "fp": 41,
+     "tn": 29,
+     "tp": 29
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5612684729064039,
+    "val": 0.5087719298245614
+   }
+  },
+  "f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 29,
+     "fp": 25,
+     "tn": 45,
+     "tp": 15
+    },
+    "val": {
+     "fn": 26,
+     "fp": 30,
+     "tn": 40,
+     "tp": 18
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/lorenz__vit_b16__frozen__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.4910714285714286,
+    "val": 0.48976982097186705
+   }
+  },
+  "f36.perlin.permutado.f1_macro_mean": {
+   "depends_on": [
+    "f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro",
+    "f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro",
+    "f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro",
+    "f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro",
+    "f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "perlin / vit_b16 / frozen",
+    "path": "results/f36_permutacion/perlin/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5483271786205862,
+    "val": 0.5171555405574468
+   }
+  },
+  "f36.perlin.permutado.f1_macro_std": {
+   "depends_on": [
+    "f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro",
+    "f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro",
+    "f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro",
+    "f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro",
+    "f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "perlin / vit_b16 / frozen",
+    "path": "results/f36_permutacion/perlin/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.06256940778422385,
+    "val": 0.06465603676247816
+   }
+  },
+  "f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 28,
+     "fp": 17,
+     "tn": 53,
+     "tp": 16
+    },
+    "val": {
+     "fn": 32,
+     "fp": 20,
+     "tn": 50,
+     "tp": 12
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5587855852756516,
+    "val": 0.4868421052631579
+   }
+  },
+  "f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 39,
+     "fp": 4,
+     "tn": 66,
+     "tp": 5
+    },
+    "val": {
+     "fn": 40,
+     "fp": 4,
+     "tn": 66,
+     "tp": 4
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.47148247978436664,
+    "val": 0.4519230769230769
+   }
+  },
+  "f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 35,
+     "fp": 3,
+     "tn": 67,
+     "tp": 9
+    },
+    "val": {
+     "fn": 38,
+     "fp": 4,
+     "tn": 66,
+     "tp": 6
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.550249169435216,
+    "val": 0.4904214559386973
+   }
+  },
+  "f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 26,
+     "fp": 9,
+     "tn": 61,
+     "tp": 18
+    },
+    "val": {
+     "fn": 33,
+     "fp": 10,
+     "tn": 60,
+     "tp": 11
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6420561586076972,
+    "val": 0.5373289287399716
+   }
+  },
+  "f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 21,
+     "fp": 33,
+     "tn": 37,
+     "tp": 23
+    },
+    "val": {
+     "fn": 14,
+     "fp": 29,
+     "tn": 41,
+     "tp": 30
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "vit_b16/frozen; control permutado del finalista (y_train permutado, default_rng(99)); su prueba se registra como canónica por la Enmienda 4, A16 (publicada en F3.6 antes de la Fase 5: desviación menor, sin decisiones dependientes). Su media es el piso visual permutado (§4.4)",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/control_permutacion/perlin__vit_b16__frozen__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.5190625,
+    "val": 0.61926213592233
+   }
+  },
+  "f55.gray_scott.segundo.f1_macro_mean": {
+   "depends_on": [
+    "f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro",
+    "f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro",
+    "f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro",
+    "f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro",
+    "f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "resnet18/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "gray_scott / resnet18 / finetune",
+    "path": "results/f55_sensibilidad/gray_scott/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.71502139965793,
+    "val": 0.7271833231917795
+   }
+  },
+  "f55.gray_scott.segundo.f1_macro_std": {
+   "depends_on": [
+    "f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro",
+    "f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro",
+    "f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro",
+    "f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro",
+    "f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "resnet18/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "gray_scott / resnet18 / finetune",
+    "path": "results/f55_sensibilidad/gray_scott/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.02002606857359847,
+    "val": 0.014214151653646834
+   }
+  },
+  "f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 19,
+     "fp": 13,
+     "tn": 57,
+     "tp": 25
+    },
+    "val": {
+     "fn": 18,
+     "fp": 12,
+     "tn": 58,
+     "tp": 26
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "resnet18/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6952890076845974,
+    "val": 0.71433344470431
+   }
+  },
+  "f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 18,
+     "tn": 52,
+     "tp": 31
+    },
+    "val": {
+     "fn": 11,
+     "fp": 19,
+     "tn": 51,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "resnet18/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7185185185185186,
+    "val": 0.7301136363636364
+   }
+  },
+  "f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 15,
+     "tn": 55,
+     "tp": 31
+    },
+    "val": {
+     "fn": 12,
+     "fp": 20,
+     "tn": 50,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "resnet18/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7429951690821256,
+    "val": 0.7121212121212122
+   }
+  },
+  "f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 15,
+     "fp": 15,
+     "tn": 55,
+     "tp": 29
+    },
+    "val": {
+     "fn": 14,
+     "fp": 15,
+     "tn": 55,
+     "tp": 30
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "resnet18/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7224025974025974,
+    "val": 0.7327621049228032
+   }
+  },
+  "f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 16,
+     "fp": 17,
+     "tn": 53,
+     "tp": 28
+    },
+    "val": {
+     "fn": 11,
+     "fp": 17,
+     "tn": 53,
+     "tp": 33
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "resnet18/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/gray_scott__resnet18__finetune__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6959017056018106,
+    "val": 0.7465862178469356
+   }
+  },
+  "f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 22,
+     "tn": 48,
+     "tp": 31
+    },
+    "val": {
+     "fn": 10,
+     "fp": 22,
+     "tn": 48,
+     "tp": 34
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6859998426064373,
+    "val": 0.7150000000000001
+   }
+  },
+  "f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 18,
+     "tn": 52,
+     "tp": 31
+    },
+    "val": {
+     "fn": 16,
+     "fp": 17,
+     "tn": 53,
+     "tp": 28
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7185185185185186,
+    "val": 0.6959017056018106
+   }
+  },
+  "f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 16,
+     "fp": 19,
+     "tn": 51,
+     "tp": 28
+    },
+    "val": {
+     "fn": 13,
+     "fp": 18,
+     "tn": 52,
+     "tp": 31
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6799550814149354,
+    "val": 0.7185185185185186
+   }
+  },
+  "f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 23,
+     "tn": 47,
+     "tp": 31
+    },
+    "val": {
+     "fn": 9,
+     "fp": 23,
+     "tn": 47,
+     "tp": 35
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6778649921507065,
+    "val": 0.7161531279178338
+   }
+  },
+  "f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 14,
+     "fp": 18,
+     "tn": 52,
+     "tp": 30
+    },
+    "val": {
+     "fn": 12,
+     "fp": 19,
+     "tn": 51,
+     "tp": 32
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/lorenz__efficientnet_b0__finetune__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7084398976982097,
+    "val": 0.7203007518796992
+   }
+  },
+  "f55.lorenz.segundo.f1_macro_mean": {
+   "depends_on": [
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro",
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro",
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro",
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro",
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "lorenz / efficientnet_b0 / finetune",
+    "path": "results/f55_sensibilidad/lorenz/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6941556664777615,
+    "val": 0.7131748207835724
+   }
+  },
+  "f55.lorenz.segundo.f1_macro_std": {
+   "depends_on": [
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro",
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro",
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro",
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro",
+    "f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/finetune; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "lorenz / efficientnet_b0 / finetune",
+    "path": "results/f55_sensibilidad/lorenz/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.01824245028974888,
+    "val": 0.009872893447587901
+   }
+  },
+  "f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 20,
+     "fp": 13,
+     "tn": 57,
+     "tp": 24
+    },
+    "val": {
+     "fn": 19,
+     "fp": 12,
+     "tn": 58,
+     "tp": 25
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/frozen; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed123.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6840513983371126,
+    "val": 0.7031997984378937
+   }
+  },
+  "f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 20,
+     "fp": 12,
+     "tn": 58,
+     "tp": 24
+    },
+    "val": {
+     "fn": 20,
+     "fp": 11,
+     "tn": 59,
+     "tp": 24
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/frozen; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed2024.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6918918918918919,
+    "val": 0.6997706227168465
+   }
+  },
+  "f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 20,
+     "fp": 12,
+     "tn": 58,
+     "tp": 24
+    },
+    "val": {
+     "fn": 21,
+     "fp": 11,
+     "tn": 59,
+     "tp": 23
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/frozen; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6918918918918919,
+    "val": 0.6882051282051282
+   }
+  },
+  "f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 19,
+     "fp": 14,
+     "tn": 56,
+     "tp": 25
+    },
+    "val": {
+     "fn": 20,
+     "fp": 13,
+     "tn": 57,
+     "tp": 24
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/frozen; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed7.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6874117158288326,
+    "val": 0.6840513983371126
+   }
+  },
+  "f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 20,
+     "fp": 14,
+     "tn": 56,
+     "tp": 24
+    },
+    "val": {
+     "fn": 20,
+     "fp": 12,
+     "tn": 58,
+     "tp": 24
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/frozen; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "split=val, split=test",
+    "path": "results/predictions/sensibilidad/perlin__efficientnet_b0__frozen__seed99.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6762445706648847,
+    "val": 0.6918918918918919
+   }
+  },
+  "f55.perlin.segundo.f1_macro_mean": {
+   "depends_on": [
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro",
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro",
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro",
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro",
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro"
+   ],
+   "derivation": "mean",
+   "evaluator": "mean sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/frozen; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "perlin / efficientnet_b0 / frozen",
+    "path": "results/f55_sensibilidad/perlin/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6862982937229228,
+    "val": 0.6934237679177746
+   }
+  },
+  "f55.perlin.segundo.f1_macro_std": {
+   "depends_on": [
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro",
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro",
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro",
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro",
+    "f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro"
+   ],
+   "derivation": "std_ddof1",
+   "evaluator": "std_ddof1 sobre las 5 semillas",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "efficientnet_b0/frozen; segundo mejor (select_second, protocolo §8), configuración común; consulta única de prueba",
+   "source": {
+    "locator": "perlin / efficientnet_b0 / frozen",
+    "path": "results/f55_sensibilidad/perlin/summary_by_config.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.006518095502909948,
+    "val": 0.007957315733593914
+   }
+  },
   "floor.brightness.gray_scott.f1_macro": {
    "decimals": 3,
    "evaluator": "no documentado en la fuente (clasificador sobre brillo promedio)",
@@ -6727,6 +9811,36 @@
    "value": {
     "test": null,
     "val": 0.7304964539007093
+   }
+  },
+  "ref.longitud.f1_macro": {
+   "confusion": {
+    "val": {
+     "fn": 20,
+     "fp": 30,
+     "tn": 40,
+     "tp": 24
+    }
+   },
+   "evaluator": "f1_macro_from_confusion (= sklearn.metrics.f1_score(average='macro')) con y_pred = 1[p_dep > 0.5], equivalente al argmax de train_model.py",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "LogReg sobre ln(n_tokens_beto) y truncated_128 (F4.5; Enmienda 2, punto 4; Enmienda 4, A9); selección por F1-val en la rejilla de §4.3",
+   "null_reason": {
+    "test": "bloqueado hasta la Fase 5 (docs/protocolo_preregistrado.md §10); las predicciones de test están archivadas"
+   },
+   "source": {
+    "locator": "split=val",
+    "path": "results/predictions/referencia/text_length__logreg__none__seed42.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.5525902668759812
    }
   },
   "ref.piso.brightness.gray_scott.f1_macro": {

@@ -489,3 +489,134 @@ def test_verificado_desde_predicciones(nid):
                                     [int(float(r['p_dep']) > 0.5) for r in sel])
         assert cm == e['confusion'][s], f'{nid}[{s}]'
         assert canon.f1_macro_from_confusion(cm) == e['value'][s], f'{nid}[{s}]'
+
+
+# ── F3.4 (f34.*), F3.5/F3.6/F5.5 (f35/f36/f55.*) y longitud (ref.longitud) ─
+TECHS = ('gray_scott', 'perlin', 'lorenz')
+F34_PER_TECH = 2 * 3 + 2 + 1 + 1 + 2   # 2 roles × 3 semillas + media/DE trial 0 + media mejor + ganancia + 2 conteos
+F3X = {'f35': ('final', 'finalista', 'finalist'), 'f36': ('control_permutacion', 'permutado', 'finalist'),
+       'f55': ('sensibilidad', 'segundo', 'second')}
+F3X_SEEDS = (42, 7, 123, 2024, 99)
+
+
+def test_f34_presencia_y_conteos():
+    keys = [k for k in NUMBERS if k.startswith('f34.')]
+    assert len(keys) == 3 * F34_PER_TECH
+    for tech in TECHS:
+        for role in ('trial0', 'mejor_trial'):
+            for s in (42, 7, 123):
+                e = NUMBERS[f'f34.{tech}.{role}.seed{s}.f1_macro']
+                assert e['status'] == 'verificado' and e['value']['test'] is None
+                assert e['null_reason']['test'] == 'F3.4 solo validación (matriz §4)'
+        for k in ('trial0.f1_macro_mean', 'trial0.f1_macro_std', 'mejor_trial.f1_macro_mean', 'ganancia.f1_macro'):
+            assert NUMBERS[f'f34.{tech}.{k}']['value']['test'] is None, k
+        assert NUMBERS[f'f34.{tech}.trials']['value'] == 12
+
+
+@pytest.mark.parametrize('tech', TECHS)
+def test_f34_recalculo_y_hpo_result(tech):
+    d = REPO / 'results' / 'f34_hpo' / tech
+    dec = json.loads((d / 'hpo_result.json').read_text(encoding='utf-8'))['decision']
+    best = dec['best_trial']
+    for role, trial in (('trial0', 0), ('mejor_trial', best)):
+        for s in (42, 7, 123):
+            e = NUMBERS[f'f34.{tech}.{role}.seed{s}.f1_macro']
+            run = json.loads((d / 'runs' / f'trial{trial:02d}__seed{s}.json').read_text(encoding='utf-8'))
+            assert e['source']['path'] == canon.rel(d / 'runs' / f'trial{trial:02d}__seed{s}.json')
+            cm = canon.confusion_counts(run['val_true'], [int(p > 0.5) for p in run['val_probs']])
+            assert cm == e['confusion']['val'] and canon.f1_macro_from_confusion(cm) == e['value']['val']
+            assert DOC['inputs'][e['source']['path']] == canon.text_sha256(REPO / e['source']['path'])
+    v = lambda k: NUMBERS[f'f34.{tech}.{k}']['value']['val']  # noqa: E731
+    assert v('trial0.f1_macro_mean') == pytest.approx(dec['trial0_mean'], abs=1e-12)
+    assert v('trial0.f1_macro_std') == pytest.approx(dec['trial0_std'], abs=1e-12)
+    assert v('mejor_trial.f1_macro_mean') == pytest.approx(dec['best_mean'], abs=1e-12)
+    assert v('ganancia.f1_macro') == pytest.approx(dec['gain'], abs=1e-12)
+    assert NUMBERS[f'f34.{tech}.trial_adoptado']['value'] == dec['adopted_trial']
+    # regla de la matriz §6 sobre las cifras canónicas
+    adopted = best if v('ganancia.f1_macro') > v('trial0.f1_macro_std') else 0
+    assert NUMBERS[f'f34.{tech}.trial_adoptado']['value'] == adopted
+
+
+def _f3x_role_keys(prefix, tech, role):
+    keys = sorted(k for k in NUMBERS if k.startswith(f'{prefix}.{tech}.{role}.') and '.seed' in k)
+    configs = {tuple(k.split('.')[3:5]) for k in keys}
+    assert len(configs) == 1, f'{prefix}.{tech}: {configs}'
+    return keys, configs.pop()
+
+
+def test_f3x_presencia_y_conteos():
+    for prefix in F3X:
+        assert len([k for k in NUMBERS if k.startswith(f'{prefix}.')]) == 3 * (5 + 2), prefix
+        for tech in TECHS:
+            _, role, _ = F3X[prefix]
+            keys, _ = _f3x_role_keys(prefix, tech, role)
+            assert sorted(int(k.split('.seed')[1].split('.')[0]) for k in keys) == sorted(F3X_SEEDS)
+            for suffix in ('mean', 'std'):
+                e = NUMBERS[f'{prefix}.{tech}.{role}.f1_macro_{suffix}']
+                assert sorted(e['depends_on']) == keys
+                assert e['derivation'] == {'mean': 'mean', 'std': 'std_ddof1'}[suffix]
+                assert e['value']['val'] is not None and e['value']['test'] is not None
+
+
+@pytest.mark.parametrize('prefix', sorted(F3X))
+def test_f3x_configuracion_de_seleccion(prefix, seleccion):
+    """f35/f36 usan exactamente el finalista de select_finalist; f55 el de select_second."""
+    _, role, col = F3X[prefix]
+    for tech in TECHS:
+        row = seleccion[(seleccion['technique'] == tech) & seleccion[col]]
+        assert len(row) == 1
+        _, (arch, strat) = _f3x_role_keys(prefix, tech, role)
+        assert (arch, strat) == (row['arch'].iloc[0], row['strategy'].iloc[0]), f'{prefix}.{tech}'
+
+
+@pytest.mark.parametrize('prefix', sorted(F3X))
+def test_f3x_recalculo_desde_predicciones(prefix):
+    fase, role, _ = F3X[prefix]
+    for tech in TECHS:
+        keys, (arch, strat) = _f3x_role_keys(prefix, tech, role)
+        for nid in keys:
+            e = NUMBERS[nid]
+            seed = int(nid.split('.seed')[1].split('.')[0])
+            path = f'results/predictions/{fase}/{tech}__{arch}__{strat}__seed{seed}.csv'
+            assert e['source']['path'] == path and e['status'] == 'verificado'
+            assert DOC['inputs'][path] == canon.text_sha256(REPO / path)
+            with open(REPO / path, newline='', encoding='utf-8') as f:
+                rows = list(csv.DictReader(f))
+            for s in canon.METRIC_SPLITS:
+                sel = [r for r in rows if r['split'] == s]
+                cm = canon.confusion_counts([int(r['y_true']) for r in sel], [int(float(r['p_dep']) > 0.5) for r in sel])
+                assert cm == e['confusion'][s] and canon.f1_macro_from_confusion(cm) == e['value'][s], f'{nid}[{s}]'
+        # contra summary_by_config.csv de la fase (4 decimales)
+        rdir = {'final': 'f35_final', 'control_permutacion': 'f36_permutacion', 'sensibilidad': 'f55_sensibilidad'}[fase]
+        with open(REPO / 'results' / rdir / tech / 'summary_by_config.csv', newline='', encoding='utf-8') as f:
+            row, = list(csv.DictReader(f))
+        for suffix in ('mean', 'std'):
+            e = NUMBERS[f'{prefix}.{tech}.{role}.f1_macro_{suffix}']
+            for s in canon.METRIC_SPLITS:
+                assert round(e['value'][s], 4) == float(row[f'f1_{s}_{suffix}']), f'{prefix}.{tech}.{suffix}[{s}]'
+
+
+def test_f36_nota_enmienda_4_a16():
+    for tech in TECHS:
+        keys, _ = _f3x_role_keys('f36', tech, 'permutado')
+        for nid in keys + [f'f36.{tech}.permutado.f1_macro_mean', f'f36.{tech}.permutado.f1_macro_std']:
+            assert 'Enmienda 4, A16' in NUMBERS[nid]['note'], nid
+
+
+def test_ref_longitud():
+    e = NUMBERS['ref.longitud.f1_macro']
+    assert e['status'] == 'verificado' and e['value']['test'] is None and 'test' not in e['confusion']
+    # mismo motivo que las demás referencias de la Fase 2
+    assert e['null_reason']['test'] == NUMBERS['ref.techo5d.f1_macro']['null_reason']['test']
+    path = 'results/predictions/referencia/text_length__logreg__none__seed42.csv'
+    assert e['source'] == {'path': path, 'locator': 'split=val'}
+    res = json.loads((REPO / 'results' / 'f45_longitud' / 'resultado.json').read_text(encoding='utf-8'))
+    assert e['value']['val'] == pytest.approx(res['f1_val'], abs=1e-12)
+
+
+def test_sin_metricas_de_test_de_referencias():
+    """Ninguna referencia de la Fase 2 ni la longitud registra test antes de la Fase 5."""
+    for nid, e in NUMBERS.items():
+        if nid.startswith(('ref.techo5d.', 'ref.piso.', 'ref.descriptores.', 'ref.emb768', 'ref.longitud')):
+            if e['kind'] == 'metric':
+                assert e['value']['test'] is None, nid
