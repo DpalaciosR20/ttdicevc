@@ -117,6 +117,10 @@ def header(doc):
 # (punto 1): F2.4 llenó descriptores.{implementation,software,params,tabla11}
 # antes de calcular (huella de la Enmienda 2 sin ese bloque: 8538487a…).
 CONFIG_SHA256_ENMIENDA_2 = '708ead595fe59bd0c5a58f0a11e156b3e3cb48f350cfa82d39152d3bd3b70e4a'
+# Enmienda 4 (2026-11-06): solo añade el bloque enmienda_4 al final; los demás
+# bloques son idénticos a los de la Enmienda 3 (commit 9027167, huella anterior).
+CONFIG_SHA256_ENMIENDA_4 = '08fb0e2bdad45f1515ab00899ac5fc839c1087429ec04da586ad7b68c7cebcdf'
+ENMIENDA_3_COMMIT = '9027167'
 
 
 def header_sha(doc, path):
@@ -126,23 +130,36 @@ def header_sha(doc, path):
     return m.group(1)
 
 
-def sha_at_tag(path):
-    """SHA-256 LF del archivo en la etiqueta del protocolo; skip si no hay git o etiqueta."""
+def blob_at(ref, path):
+    """Contenido (bytes, LF) del archivo en `ref`; skip si no hay git o la referencia."""
     rel = path.relative_to(REPO).as_posix()
     try:
-        blob = subprocess.run(['git', '-C', str(REPO), 'show', f'{schema.PROTOCOL_TAG}:{rel}'],
+        blob = subprocess.run(['git', '-C', str(REPO), 'show', f'{ref}:{rel}'],
                               capture_output=True, check=True).stdout
     except (OSError, subprocess.CalledProcessError):
-        pytest.skip(f'git o la etiqueta {schema.PROTOCOL_TAG} no están disponibles')
-    return hashlib.sha256(blob.replace(b'\r\n', b'\n')).hexdigest()
+        pytest.skip(f'git o la referencia {ref} no están disponibles')
+    return blob.replace(b'\r\n', b'\n')
+
+
+def sha_at(ref, path):
+    return hashlib.sha256(blob_at(ref, path)).hexdigest()
+
+
+def sha_at_tag(path):
+    """SHA-256 LF del archivo en la etiqueta del protocolo; skip si no hay git o etiqueta."""
+    return sha_at(schema.PROTOCOL_TAG, path)
+
+
+def config_at(ref):
+    return json.loads(blob_at(ref, CONFIG).decode('utf-8'))
 
 
 def test_header_hashes_match_configs(doc):
     assert header_sha(doc, MATRIX) == text_sha256(MATRIX), 'SHA-256 de la matriz desactualizado en el encabezado'
     assert header_sha(doc, CONFIG) == sha_at_tag(CONFIG), \
         f'el encabezado debe registrar la huella de configs/protocolo.json en {schema.PROTOCOL_TAG}'
-    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_2, \
-        'configs/protocolo.json cambió después de la Enmienda 2: registra una enmienda y actualiza la constante'
+    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_4, \
+        'configs/protocolo.json cambió después de la Enmienda 4: registra una enmienda y actualiza la constante'
 
 
 def test_header_version_tag_and_amendment(doc, cfg):
@@ -531,13 +548,14 @@ def test_enmienda_2_vocabulario(cfg):
 # ── Enmienda 3 (2026-11-05): atribución de ViT-B/16 (F3.3 H5) ────────────────
 
 def enmienda_3(doc):
-    m = re.search(r'^## Enmienda 3 \(2026-11-05\)$(.*)\Z', doc, re.M | re.S)
-    assert m, 'falta la Enmienda 3 al final del protocolo'
-    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 3 debe ser la última sección'
+    # Desde la Enmienda 4 (2026-11-06) llega hasta la siguiente enmienda
+    m = re.search(r'^## Enmienda 3 \(2026-11-05\)$(.*?)(?=^## Enmienda 4 \(2026-11-06\)$)', doc, re.M | re.S)
+    assert m, 'falta la Enmienda 3, seguida de la Enmienda 4'
+    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 3 no debe contener otras secciones'
     return m.group(1)
 
 
-def test_enmienda_3_es_la_ultima_y_previa_a_prueba(doc):
+def test_enmienda_3_previa_a_prueba(doc):
     sec = enmienda_3(doc)
     assert doc.index('## Enmienda 2 (2026-11-04)') < doc.index('## Enmienda 3 (2026-11-05)')
     assert '**antes de cualquier consulta de prueba de los finalistas**' in sec
@@ -555,5 +573,154 @@ def test_enmienda_3_coincide_con_la_matriz(doc, matrix):
     s2 = vit['secondary']
     assert s2['method'] == 'attention_rollout' and s2['role'] == 'atencion_backbone' and 'Abnar y Zuidema, 2020' in sec
     assert 'aleatorización de la cabeza' in sec
-    # el config del protocolo no cambia con esta enmienda
-    assert text_sha256(CONFIG) == CONFIG_SHA256_ENMIENDA_2
+    # el config del protocolo no cambia con esta enmienda (huella en su commit)
+    assert sha_at(ENMIENDA_3_COMMIT, CONFIG) == CONFIG_SHA256_ENMIENDA_2
+
+
+# ── Enmienda 4 (2026-11-06): detalles de cálculo A1–A17 (bloque A de la Fase 5) ─
+
+AMBIGUEDADES = [f'A{i}' for i in range(1, 18)]
+
+
+def enmienda_4(doc):
+    m = re.search(r'^## Enmienda 4 \(2026-11-06\)$(.*)\Z', doc, re.M | re.S)
+    assert m, 'falta la Enmienda 4 al final del protocolo'
+    assert not re.search(r'^## ', m.group(1), re.M), 'la Enmienda 4 debe ser la última sección'
+    return m.group(1)
+
+
+def dig(d, dotted):
+    for k in dotted.split('.'):
+        d = d[k]
+    return d
+
+
+def test_enmienda_4_texto(doc):
+    sec = enmienda_4(doc)
+    assert doc.index('## Enmienda 3 (2026-11-05)') < doc.index('## Enmienda 4 (2026-11-06)')
+    fields = ('**Autor.** SV', '**Momento.**', '**Motivo.**', '**Regla de resolución.**',
+              '**Declaración de exposición.**', '**Alcance.**', '**Relación con el §11.**', '**Cambios.**',
+              '**Observaciones (sin marca).**')
+    for field in fields:
+        assert field in sec, field
+    assert [sec.index(f) for f in fields] == sorted(sec.index(f) for f in fields), 'orden de los campos'
+    assert '`results/f5_preparacion/reporte_bloque_a.md`' in sec and '17 puntos' in sec
+    assert 'A2 y A14 siguen el texto literal' in sec
+    assert '`configs/protocolo.json` → `enmienda_4`' in sec
+    rows = table_dict(sec)
+    assert list(rows) == AMBIGUEDADES
+    assert 'cuantiles `linear`' in rows['A4'][0]
+    assert 'bilateral, cuantiles `linear`' in rows['A10'][0]
+    assert 'cuantiles `linear`' in rows['A11'][0]
+
+
+def test_enmienda_4_relacion_s11(doc, cfg):
+    sec = enmienda_4(doc)
+    assert '**Relación con el §11.**' in sec and 'desviación del §11' in sec
+    assert '`docs/plan_fase4.md`, en el mismo commit que esta enmienda' in sec
+    r = cfg['enmienda_4']['relacion_s11']
+    assert r == {'desviacion_declarada': True, 'compromiso_robustez': True, 'plan_fase4': 'docs/plan_fase4.md'}
+    assert (REPO / r['plan_fase4']).is_file()
+    assert 'congelado (2026-11-06), junto con la Enmienda 4' in (REPO / r['plan_fase4']).read_text(encoding='utf-8')
+
+
+def test_enmienda_4_bloque_presente_y_tipos(cfg):
+    e = cfg['enmienda_4']
+    assert list(cfg)[-1] == 'enmienda_4', 'enmienda_4 debe ser el último bloque'
+    assert e['_seccion'] == 'Enmienda 4 (2026-11-06)' and e['_autor'] == 'SV'
+    assert e['regla_resolucion'] == ['texto_literal', 'verdict_py_protocolo_v1',
+                                     'menos_favorable_conservacion_con_la_otra_como_sensibilidad']
+    assert set(e['alcance'].values()) == {False}
+    assert e['exposicion']['texto_literal'] == ['A2', 'A14'] and e['exposicion']['estadisticos_fase_5_conocidos'] is False
+    # cada ambigüedad apunta a una ruta existente del bloque
+    assert list(e['resoluciones']) == AMBIGUEDADES
+    for a, ruta in e['resoluciones'].items():
+        assert isinstance(dig(e, ruta), dict), (a, ruta)
+
+    b = e['bootstrap']
+    assert b['rng'] == cfg['contraste']['bootstrap']['rng'] and b['seed'] == cfg['contraste']['bootstrap']['seed']
+    assert b['size'] == [cfg['contraste']['bootstrap']['B'], 114] and (b['low'], b['high']) == (0, 114)
+    assert b['call'] == 'rng.integers(0, 114, size=(10000, 114))' and b['row_order'] == 'sample_id'
+
+    p = e['piso']
+    assert (p['identidad'], p['sensibilidad']) == ('max_observado', 'max_por_replica')
+    assert isinstance(p['empate_observado'], str)
+
+    ic = e['ic']
+    assert ic['D']['alpha_h_from'] == 'superioridad_piso' and ic['D']['nivel'] == '1 - 2 * alpha_h'
+    assert ic['D']['cuantiles'] == 'linear' and ic['D']['lado'] == 'bilateral'
+    assert ic['descriptivo'] == {'tipo': 'percentil', 'lado': 'bilateral', 'nivel': 0.95, 'cuantiles': 'linear',
+                                 'aplica_a': ['retencion', 'descomposicion']}
+    assert ic['descriptores']['replicas'] == 'contraste.bootstrap' and ic['descriptores']['nivel'] == 0.95
+    assert ic['descriptores']['cuantiles'] == 'linear' and ic['descriptores']['lado'] == 'bilateral'
+    assert e['retencion']['valor_replica'] == '-inf' and e['retencion']['reportar_conteo'] is True
+
+    lo = e['longitud']
+    assert lo['contraste']['p_value'] == '#{L* <= 0} / B' and lo['contraste']['sensibilidad']['holm_m'] == 3
+    t = lo['terciles']
+    assert t['quantile_method'] == 'linear' and t['split_cortes'] == 'train' and t['f1'] == 'por_semilla_luego_media'
+    assert t['correlacion']['variables'] == [f'u{i}' for i in range(5)]
+    assert t['correlacion']['contra'] == cfg['referencias']['longitud']['features']
+    c = lo['clasificador']
+    assert isinstance(c['max_iter'], int) and c['max_iter'] == 5000
+    assert c['truncated_128'] == {'false': 0, 'true': 1} and c['log'] == 'natural'
+    assert c['seleccion'] == cfg['referencias']['longitud']['selection_rule'] and c['metricas_al_ajustar'] == ['f1_val']
+
+    assert (e['kappa']['principal'], e['kappa']['secundario']) == ('y_hat', 'vector_acierto')
+    assert e['kappa']['ic'] == {'tipo': 'percentil', 'lado': 'bilateral', 'nivel': 0.95, 'cuantiles': 'linear',
+                                'replicas': 'contraste.bootstrap'}
+    assert all(isinstance(v, bool) for v in e['relacion_s11'].values() if not isinstance(v, str))
+    cm = e['cochran_mcnemar']
+    assert cm['cochran'] == {'tipo': 'asintotico', 'distribucion': 'chi2', 'gl': 2}
+    m = cm['mcnemar']
+    assert (m['lado_entre_tecnicas'], m['lado_vs_beto'], m['lado_vs_techo']) == ('bilateral', 'unilateral', 'unilateral')
+    assert m['sensibilidad'] == {'lado_vs_beto': 'bilateral', 'lado_vs_techo': 'bilateral'}
+
+    fa = e['formulacion_A']
+    assert fa['r'] == [cfg['contraste']['r']] + cfg['sensibilidad']['retencion_exigida']['r']
+    assert fa['canonical_delta'] == cfg['sensibilidad']['formulacion_A']['canonical_delta'] and fa['delta'] == 'fijo'
+
+    assert e['por_semilla']['piso_permutado'] == 'media_5_semillas'
+    assert e['variabilidad_beto']['canonical'] == cfg['sensibilidad']['variabilidad_beto']['canonical']
+    assert e['variabilidad_beto']['signos'] == [1, -1]
+    assert e['permutado_canonico']['registrar_test'] is True
+    assert e['permutado_canonico']['decisiones_dependientes'] is False
+    assert e['segundo_mejor']['piso_permutado'] == 'finalista_de_la_tecnica'
+    assert all(isinstance(o, str) for o in e['observaciones'])
+
+
+def test_enmienda_4_cifras_canonicas(cfg, canon):
+    e = cfg['enmienda_4']
+    for nid in [*e['formulacion_A']['canonical_delta'].values(), e['variabilidad_beto']['canonical']]:
+        assert nid in canon, nid
+
+
+def test_bloques_previos_intactos_frente_a_enmienda_3(cfg):
+    """La Enmienda 4 solo añade enmienda_4: el resto es idéntico al config del commit de la Enmienda 3."""
+    prev = config_at(ENMIENDA_3_COMMIT)
+    assert 'enmienda_4' not in prev
+    assert {k: v for k, v in cfg.items() if k != 'enmienda_4'} == prev
+    assert list(prev) == [k for k in cfg if k != 'enmienda_4']
+
+
+# Bloques añadidos o ampliados por la Enmienda 2 (y F2.4, prevista por ella) respecto de protocolo-v1
+BLOQUES_NUEVOS_ENMIENDA_2 = {'pisos_triviales', 'piso_brillo', 'descriptores'}
+
+
+def test_bloques_previos_intactos_frente_a_protocolo_v1(cfg):
+    """Todo bloque de protocolo-v1 sigue igual; la única ampliación es referencias.longitud
+    (Enmienda 2, punto 4), que conserva sus claves de v1 con los mismos valores."""
+    v1 = config_at(schema.PROTOCOL_TAG)
+    assert set(cfg) - set(v1) == BLOQUES_NUEVOS_ENMIENDA_2 | {'enmienda_4'}
+    for key, val in v1.items():
+        if key == 'referencias':
+            assert set(cfg[key]) == set(val)
+            for ref, spec in val.items():
+                if ref == 'longitud':
+                    assert {k: cfg[key][ref][k] for k in spec} == spec
+                else:
+                    assert cfg[key][ref] == spec, ref
+        else:
+            assert cfg[key] == val, key
+    # en particular, lo que lee src/protocol/verdict.py
+    assert cfg['contraste'] == v1['contraste']
