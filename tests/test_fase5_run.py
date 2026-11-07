@@ -86,14 +86,33 @@ def test_se_niega_sin_compuerta_o_con_arbol_sucio(entorno, monkeypatch, git, msg
 
 def test_se_niega_con_pendientes(entorno, monkeypatch):
     calls, out = entorno
-    monkeypatch.setattr(ins_mod, 'load_config', lambda path=None: S.cfg(comparacion=None))
+    monkeypatch.setattr(ins_mod, 'load_config', lambda path=None: S.cfg(sin_enmienda_5=True))
     rc, log = run(['--ejecutar-prueba'], out)
-    assert rc == 2 and 'PENDIENTES' in log and 'A14' in log and calls['cargar'] == 0
+    assert rc == 2 and 'PENDIENTES' in log and 'P1' in log and calls['cargar'] == 0
 
 
-def test_config_real_tiene_pendientes():
-    """El config congelado (enmienda-4) no fija la comparación de la sensibilidad de A14."""
-    assert any(p.startswith('A14') for p in rf.pendientes(ins_mod.load_config()))
+def test_config_real_sin_pendientes_que_bloqueen():
+    """Con la Enmienda 5 no queda ningún punto que bloquee --ejecutar-prueba; solo el aviso de P6."""
+    cfg = ins_mod.load_config()
+    assert rf.pendientes(cfg) == []
+    av = rf.avisos(cfg)
+    assert len(av) == 1 and av[0].startswith('P6') and 'F4.1' in av[0]
+
+
+def test_compuerta_en_una_sola_constante_y_se_niega_sin_la_etiqueta(monkeypatch):
+    """La compuerta toma la etiqueta de rf.GATE_TAG (enmienda-5) y se niega si no está en la historia."""
+    assert rf.GATE_TAG == 'enmienda-5'
+    src = Path(rf.__file__).read_text(encoding='utf-8')
+    assert src.count("'enmienda-5'") == 1
+    monkeypatch.setattr(rf, 'GATE_TAG', 'etiqueta-que-no-existe-f5')
+    with pytest.raises(rf.Negativa, match='no es ancestro'):
+        rf.check_gate()
+
+
+def test_aviso_P6_en_el_log(entorno):
+    calls, out = entorno
+    rc, log = run(['--ejecutar-prueba'], out)
+    assert rc == 0 and 'AVISO (no bloquea): P6' in log
 
 
 def test_ejecucion_sintetica_y_no_sobrescribe(entorno):

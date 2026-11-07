@@ -1,9 +1,9 @@
 """
 sensibilidad.py
 ───────────────
-Análisis de sensibilidad (§8) con las resoluciones de la Enmienda 4, y la tabla
-de robustez que exige la relación con el §11 de esa enmienda. Ninguna variante
-modifica el veredicto principal.
+Análisis de sensibilidad (§8) con las resoluciones de las Enmiendas 4 y 5, y la
+tabla de robustez que exige la relación con el §11 de la Enmienda 4. Ninguna
+variante modifica el veredicto principal.
 
 Variantes de §8:
   retencion_exigida     r ∈ sensibilidad.retencion_exigida.r
@@ -16,22 +16,18 @@ Variantes de §8:
   segundo_mejor         fase sensibilidad con el piso permutado del finalista (A17)
   piso_sin_permutado    piso = máximo de sensibilidad.piso_sin_permutado
 
-Tabla de robustez (alternativas declaradas): A2 máximo por réplica; A3 (solo
-aplica si hay empate en el máximo observado); A7 con m = 3 y en cada variante;
-A12 bilateral frente a BETO y al techo; A14 semilla emparejada.
-
-PENDIENTE (no resuelto): la sensibilidad de A14, «piso permutado de la semilla
-emparejada, si es mayor», no fija frente a qué se compara (el observado o cada
-réplica). Se exige enmienda_4.por_semilla.sensibilidad.comparacion ∈
-{"observado", "por_replica"}; sin ella, la variante lanza PendienteError.
-Del mismo modo, la alternativa de A3 no está declarada: si hay empate en el
-máximo observado, la fila de A3 lanza PendienteError.
+Tabla de robustez (alternativas declaradas): A2 máximo por réplica; A3 con la
+alternativa de la Enmienda 5, P2 (el primero de los empatados según
+pisos.order); A7 con m = 3 y en cada variante; A12 bilateral frente a BETO y al
+techo; A14 semilla emparejada con la comparación por réplica de la Enmienda 5,
+P1 (en cada réplica, el mayor entre el permutado de la semilla emparejada y la
+media de las 5 semillas).
 """
 
 import numpy as np
 
 from src.protocol import contraste as cx
-from src.protocol.contraste import PendienteError, TECHNIQUES
+from src.protocol.contraste import TECHNIQUES
 
 
 def _verdicts(res):
@@ -62,11 +58,11 @@ def formulacion_a(F, cfg, canon):
     return out
 
 
-def por_semilla(F, cfg, permutado='media', comparacion=None):
+def por_semilla(F, cfg, permutado='media'):
     """Veredicto con cada semilla por separado (A14). Holm entre técnicas dentro de cada semilla
     (cada llamada a contraste es una familia de tres). Piso permutado = media de 5 (principal) o,
-    como sensibilidad, el de la semilla emparejada si es mayor (comparacion = 'observado' o
-    'por_replica', PENDIENTE de fijar)."""
+    como sensibilidad, el de la semilla emparejada si es mayor, comparado en cada réplica
+    (Enmienda 5, P1)."""
     e = cfg['enmienda_4']['por_semilla']
     if (e['piso_permutado'], e['holm'], e['reporte']) != \
             ('media_5_semillas', 'entre_tecnicas_dentro_de_cada_semilla', 'n_semillas_V1'):
@@ -77,17 +73,17 @@ def por_semilla(F, cfg, permutado='media', comparacion=None):
         if permutado == 'media':
             out[s] = cx.contraste(F, cfg, seed_index=i)
         elif permutado == 'emparejada':
-            out[s] = _por_semilla_emparejada(F, cfg, i, comparacion)
+            out[s] = _por_semilla_emparejada(F, cfg, i)
         else:
             raise ValueError(permutado)
     n_v1 = {t: sum(out[s]['techniques'][t]['verdict'] == 'V1' for s in seeds) for t in TECHNIQUES}
     return {'por_semilla': out, 'n_semillas_V1': n_v1}
 
 
-def _por_semilla_emparejada(F, cfg, i, comparacion):
-    if comparacion not in ('observado', 'por_replica'):
-        raise PendienteError('A14 (sensibilidad): «si es mayor» no fija la comparación (observado o por '
-                             'réplica); falta enmienda_4.por_semilla.sensibilidad.comparacion')
+def _por_semilla_emparejada(F, cfg, i):
+    comparacion = cfg['enmienda_5']['por_semilla']['sensibilidad']['comparacion']
+    if comparacion != 'por_replica':
+        raise ValueError(f'enmienda_5.por_semilla.sensibilidad.comparacion inesperado {comparacion!r}')
     seeds = cfg['modelos']['seeds']
     floors = [f for f in cfg['pisos']['order'] if f != 'visual_permutado']
     c = cfg['contraste']
@@ -99,11 +95,9 @@ def _por_semilla_emparejada(F, cfg, i, comparacion):
         cands = cx.floor_candidates(F, t, cfg, include=floors)
         m_obs, m_rep = cx.img(F, 'control_permutacion', t)
         s_obs, s_rep = cx.img(F, 'control_permutacion', t, i)
-        if comparacion == 'observado':
-            cands['visual_permutado'] = (s_obs, s_rep) if s_obs > m_obs else (m_obs, m_rep)
-        else:
-            cands['visual_permutado'] = (max(s_obs, m_obs), np.maximum(s_rep, m_rep))
-        d_obs, d_rep, info = cx.d_reps(i_obs, i_rep, cands)
+        # P1: en cada réplica (y en el observado), el mayor entre la semilla emparejada y la media de 5
+        cands['visual_permutado'] = (max(s_obs, m_obs), np.maximum(s_rep, m_rep))
+        d_obs, d_rep, info = cx.d_reps(i_obs, i_rep, cands, tol=cx.empate_tolerancia(cfg))
         D[t] = (d_obs, d_rep)
         extras[t] = {'f1_img_obs': i_obs, **info, 'semilla': seeds[i]}
     return cx.veredicto(theta, D, cfg, extras)
@@ -149,16 +143,18 @@ def _row(alt, principal, res, nota=None):
             'cambia_global': _global(res) != _global(principal), 'nota': nota}
 
 
-def robustez(F, cfg, principal, variantes, mcnemar_principal=None, mcnemar_bilateral=None, comparacion_a14=None):
+def robustez(F, cfg, principal, variantes, mcnemar_principal=None, mcnemar_bilateral=None):
     """Tabla de robustez (Enmienda 4, relación con el §11): veredicto por técnica y global bajo
     cada alternativa declarada y si cambia respecto del principal."""
     rows = []
     rows.append(_row('A2: máximo por réplica', principal, cx.contraste(F, cfg, floor_mode='max_por_replica')))
-    if any(principal['techniques'][t]['empate'] for t in TECHNIQUES):
-        raise PendienteError('A3: hay empate en el máximo observado y la Enmienda 4 no declara alternativa')
-    rows.append({'alternativa': 'A3: empate en el máximo observado', 'veredictos': _verdicts(principal),
-                 'global': _global(principal), 'cambia_tecnica': {t: False for t in TECHNIQUES},
-                 'cambia_global': False, 'nota': 'sin empate en el máximo observado: A3 no aplica'})
+    if cfg['enmienda_5']['piso']['empate_alternativa'] != 'primero_en_pisos_order':
+        raise ValueError(cfg['enmienda_5']['piso'])
+    empate = {t: principal['techniques'][t]['empate'] for t in TECHNIQUES}
+    rows.append(_row('A3: primero de los empatados según pisos.order (Enmienda 5, P2)', principal,
+                     cx.contraste(F, cfg, ties='primero'),
+                     nota=('empate en el máximo observado en: ' + ', '.join(t for t in TECHNIQUES if empate[t]))
+                     if any(empate.values()) else 'sin empate en el máximo observado: igual al principal'))
     # A7: m = 3 y calificación en cada variante (no cambia V ni G; solo la calificación)
     cal = {'principal': cx.contraste_longitud(F, cfg, _verdicts(principal), m_mode='m3')}
     for name, group in variantes.items():
@@ -181,9 +177,9 @@ def robustez(F, cfg, principal, variantes, mcnemar_principal=None, mcnemar_bilat
         rows.append({'alternativa': 'A12: McNemar bilateral frente a BETO y al techo', 'veredictos': _verdicts(principal),
                      'global': _global(principal), 'cambia_tecnica': {t: False for t in TECHNIQUES},
                      'cambia_global': False, 'nota': '§7: McNemar no modifica veredictos', 'cambia_rechazo_mcnemar': ch})
-    ps = por_semilla(F, cfg, permutado='emparejada', comparacion=comparacion_a14)
+    ps = por_semilla(F, cfg, permutado='emparejada')
     base = variantes['por_semilla']
-    rows.append({'alternativa': 'A14: piso permutado de la semilla emparejada, si es mayor',
+    rows.append({'alternativa': 'A14: piso permutado de la semilla emparejada, si es mayor (por réplica; Enmienda 5, P1)',
                  'n_semillas_V1': ps['n_semillas_V1'],
                  'cambia_n_semillas_V1': {t: ps['n_semillas_V1'][t] != base['n_semillas_V1'][t] for t in TECHNIQUES},
                  'por_semilla': {s: {'veredictos': _verdicts(r), 'global': _global(r)} for s, r in ps['por_semilla'].items()}})

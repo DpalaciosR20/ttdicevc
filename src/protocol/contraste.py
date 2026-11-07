@@ -2,7 +2,7 @@
 contraste.py
 ────────────
 Cálculos de la Fase 5 sobre réplicas pareadas (docs/protocolo_preregistrado.md
-§5–§7 y Enmienda 4), con la regla de decisión de src/protocol/verdict.py (sin
+§5–§7 y Enmiendas 4 y 5), con la regla de decisión de src/protocol/verdict.py (sin
 modificarla). Todo parámetro sale de configs/protocolo.json.
 
 Entrada común: un «F1-tabla» con, para cada clasificador, su F1-Macro observado
@@ -19,13 +19,14 @@ Funciones → protocolo:
                               semillas por réplica (§5.3)
     d_reps                    D* (§5.3) con A2 (identidad del máximo observado,
                               o máximo por réplica como sensibilidad) y A3
+                              (empate con la tolerancia de la Enmienda 5; P2)
     veredicto                 verdict.verdicts con B del protocolo; IC de D (A4)
     retencion                 ρ̂ (§5.6; A5, A6)
     descomposicion            §7 (A5)
     frente_a_descriptores     §7 (A11)
     contraste_longitud        §6 (A7)
-    cochran_q, mcnemar_*      §7 (A12)
-    kappa, contencion         F4.6 (A10; docs/plan_fase4.md)
+    cochran_q, mcnemar_*      §7 (A12; Enmienda 5, P5)
+    kappa, contencion         F4.6 (A10; docs/plan_fase4.md; Enmienda 5, P3 y P4)
     terciles_longitud,
     spearman_u_longitud       §6 descriptivo (A8)
 """
@@ -42,8 +43,12 @@ from src.protocol import verdict
 TECHNIQUES = ('gray_scott', 'perlin', 'lorenz')
 
 
-class PendienteError(RuntimeError):
-    """El cálculo cae en un caso que el protocolo y la Enmienda 4 no fijan (PENDIENTE)."""
+NO_APLICA = 'no_aplica'
+
+
+def empate_tolerancia(cfg):
+    """Tolerancia del empate de A3 (Enmienda 5): |F1_a − F1_b| ≤ tol en el observado."""
+    return float(cfg['enmienda_5']['piso']['empate_tolerancia'])
 
 
 # ── Tabla de F1 ───────────────────────────────────────────────────────────
@@ -105,26 +110,34 @@ def floor_candidates(F, tech, cfg, include=None, permutado_fase='control_permuta
     return out
 
 
-def d_reps(img_obs, img_rep, cands, mode='identidad', ties='min'):
+def d_reps(img_obs, img_rep, cands, mode='identidad', ties='min', tol=0.0):
     """D = F1_img − F1_piso (§5.3).
 
     mode='identidad' (A2): el piso es la referencia con el mayor F1 observado y
-    esa identidad se remuestrea. Empate exacto en el máximo observado (A3,
-    ties='min'): en cada réplica, el menor D* entre los empatados. ties='max' es
-    la opción opuesta, solo para la tabla de robustez.
+    esa identidad se remuestrea. Hay empate si |F1_a − F1_max| ≤ tol en el
+    observado (A3; tolerancia de la Enmienda 5).
+      ties='min' (A3): en cada réplica, el menor D* entre los empatados.
+      ties='primero' (Enmienda 5, P2; alternativa de robustez): el primero de
+      los empatados según el orden de cands (= pisos.order).
     mode='max_por_replica' (sensibilidad de A2): en cada réplica, el máximo de los pisos.
     Devuelve (D_obs, D_rep, info)."""
     obs = {k: float(v[0]) for k, v in cands.items()}
     best = max(obs.values())
-    tied = [k for k, v in obs.items() if v == best]
+    tied = [k for k, v in obs.items() if abs(v - best) <= tol]
     if mode == 'identidad':
-        D = np.stack([img_rep - cands[k][1] for k in tied])
-        D_rep = D.min(axis=0) if ties == 'min' else D.max(axis=0)
+        if ties == 'min':
+            D_obs = min(img_obs - obs[k] for k in tied)
+            D_rep = np.stack([img_rep - cands[k][1] for k in tied]).min(axis=0)
+        elif ties == 'primero':
+            D_obs, D_rep = img_obs - obs[tied[0]], img_rep - cands[tied[0]][1]
+        else:
+            raise ValueError(ties)
     elif mode == 'max_por_replica':
+        D_obs = img_obs - best
         D_rep = img_rep - np.stack([v[1] for v in cands.values()]).max(axis=0)
     else:
         raise ValueError(mode)
-    return img_obs - best, D_rep, {'piso': tied, 'piso_f1_obs': obs, 'empate': len(tied) > 1, 'mode': mode}
+    return D_obs, D_rep, {'piso': tied, 'piso_f1_obs': obs, 'empate': len(tied) > 1, 'mode': mode, 'ties': ties}
 
 
 # ── Veredicto (§5.2–§5.5) ─────────────────────────────────────────────────
@@ -165,7 +178,7 @@ def contraste(F, cfg, fase='final', r=None, formulation='B', delta=None, beto_sh
             raise ValueError(formulation)
         ps = permutado_seed(t) if callable(permutado_seed) else permutado_seed
         cands = floor_candidates(F, t, cfg, include=floors, permutado_seed=ps)
-        d_obs, d_rep, info = d_reps(i_obs, i_rep, cands, floor_mode, ties)
+        d_obs, d_rep, info = d_reps(i_obs, i_rep, cands, floor_mode, ties, empate_tolerancia(cfg))
         D[t] = (d_obs, d_rep)
         extras[t] = {'f1_img_obs': i_obs, 'f1_beto_obs': b_obs, **info}
     res = veredicto(theta, D, cfg, extras)
@@ -281,16 +294,20 @@ def yhat_mean(p_seeds, cfg):
     return (p.mean(axis=1) > s['threshold']).astype(np.int64)
 
 
-def cochran_q(correct):
-    """Q de Cochran asintótica (χ², gl = k − 1) sobre una matriz n × k de aciertos 0/1."""
+def cochran_q(correct, cfg):
+    """Q de Cochran asintótica (χ², gl = k − 1) sobre una matriz n × k de aciertos 0/1.
+
+    Si todos los bloques son concordantes (0/0), Q y p son los de la Enmienda 5,
+    P5 (Q = 0, p = 1). Devuelve (Q, p, gl, todos_concordantes)."""
     X = np.asarray(correct, dtype=np.float64)
     k = X.shape[1]
     C, R, N = X.sum(axis=0), X.sum(axis=1), X.sum()
     den = k * N - (R ** 2).sum()
     if den == 0:
-        raise PendienteError('Q de Cochran indefinida: todos los bloques son concordantes (0/0)')
+        tc = cfg['enmienda_5']['cochran']['todos_concordantes']
+        return float(tc['Q']), float(tc['p']), k - 1, True
     q = (k - 1) * (k * (C ** 2).sum() - N ** 2) / den
-    return float(q), float(stats.chi2.sf(q, k - 1)), k - 1
+    return float(q), float(stats.chi2.sf(q, k - 1)), k - 1, False
 
 
 def _discordant(correct_a, correct_b):
@@ -327,11 +344,13 @@ def comparaciones_mcnemar(y, yhat, cfg, lado_vs_ref=None):
     alpha_ct = cfg['secundarios']['entre_tecnicas']['alpha']
     alpha = cfg['contraste']['multiplicidad']['alpha']          # §13: α = 0.05, Holm por familia
     ok = {k: (np.asarray(v) == y).astype(int) for k, v in yhat.items()}
-    q, p_q, gl = cochran_q(np.column_stack([ok[t] for t in TECHNIQUES]))
+    q, p_q, gl, concordantes = cochran_q(np.column_stack([ok[t] for t in TECHNIQUES]), cfg)
     if gl != e['cochran']['gl']:
         raise ValueError('gl de Cochran')
-    out = {'cochran': {'Q': q, 'p': p_q, 'gl': gl, 'alpha': alpha_ct}, 'pares': None, 'frente_a': {}}
-    if p_q < alpha_ct:
+    out = {'cochran': {'Q': q, 'p': p_q, 'gl': gl, 'alpha': alpha_ct, 'todos_concordantes': concordantes},
+           'pares': None, 'frente_a': {}}
+    pares_ok = not concordantes or cfg['enmienda_5']['cochran']['todos_concordantes']['mcnemar_pares']
+    if pares_ok and p_q < alpha_ct:
         pares = {f'{a}__{b}': mcnemar_bilateral(ok[a], ok[b]) for a, b in combinations(TECHNIQUES, 2)}
         h = verdict.holm({k: v['p'] for k, v in pares.items()}, alpha)
         out['pares'] = {k: {**v, **h[k], 'lado': m['lado_entre_tecnicas']} for k, v in pares.items()}
@@ -360,15 +379,33 @@ def _joint(W, a, b):
 
 
 def kappa_weighted(W, a, b):
-    """Kappa de Cohen de dos vectores 0/1 bajo cada fila de W. 1 − p_e = 0 → PENDIENTE."""
+    """Kappa de Cohen de dos vectores 0/1 bajo cada fila de W; nan donde 1 − p_e = 0 (indefinida)."""
     n11, n10, n01, n00 = _joint(W, a, b)
     N = n11 + n10 + n01 + n00
     po = (n11 + n00) / N
     pa, pb = (n11 + n10) / N, (n11 + n01) / N
     pe = pa * pb + (1 - pa) * (1 - pb)
-    if np.any(1 - pe == 0):
-        raise PendienteError(f'kappa indefinida (1 − p_e = 0) en {int(np.sum(1 - pe == 0))} réplica(s)')
-    return (po - pe) / (1 - pe)
+    den = 1 - pe
+    return np.divide(po - pe, den, out=np.full(den.shape, np.nan), where=den != 0)
+
+
+def _indefinida_spec(cfg, name):
+    s = cfg['enmienda_5'][name]['indefinida']
+    if s != {'replicas': 'excluir_y_contar', 'observado': NO_APLICA}:
+        raise ValueError(f'enmienda_5.{name}.indefinida inesperado {s}')
+    return s
+
+
+def _summary_excluding(obs, reps, lo, hi):
+    """Enmienda 5, P3/P4: observado indefinido → «no aplica»; réplicas indefinidas se excluyen
+    del IC y se cuentan."""
+    reps = np.asarray(reps, dtype=np.float64)
+    bad = np.isnan(reps)
+    if np.isnan(obs):
+        return {'obs': NO_APLICA, 'interval': NO_APLICA, 'n_replicas_indefinidas': int(bad.sum())}
+    ok = reps[~bad]
+    return {'obs': float(obs), 'interval': bs.percentile_interval(ok, lo, hi) if ok.size else NO_APLICA,
+            'n_replicas_indefinidas': int(bad.sum())}
 
 
 def kappa(W, y, yhat, cfg):
@@ -378,6 +415,7 @@ def kappa(W, y, yhat, cfg):
     lo, hi = _ci95(k['ic'])
     if (k['principal'], k['secundario']) != ('y_hat', 'vector_acierto'):
         raise ValueError(k)
+    _indefinida_spec(cfg, 'kappa')
     W_obs = bs.observed_weights(len(y))
     names = ['beto', 'emb768', 'techo5d'] + list(TECHNIQUES)
     out = {}
@@ -387,25 +425,26 @@ def kappa(W, y, yhat, cfg):
         for a, b in combinations(names, 2):
             if a in TECHNIQUES and b in TECHNIQUES:
                 continue
-            res[f'{a}__{b}'] = {'obs': float(kappa_weighted(W_obs, vec[a], vec[b])[0]),
-                                'interval': bs.percentile_interval(kappa_weighted(W, vec[a], vec[b]), lo, hi)}
+            res[f'{a}__{b}'] = _summary_excluding(kappa_weighted(W_obs, vec[a], vec[b])[0],
+                                                  kappa_weighted(W, vec[a], vec[b]), lo, hi)
         out[base] = res
     return out
 
 
 def contencion(W, y, yhat_vis, yhat_ref, cfg):
     """C = |E_vis ∩ E_ref| / |E_vis|, referencia nula |E_ref| / n, IC percentil bilateral 95 %
-    sobre las réplicas de §5.2 (docs/plan_fase4.md, F4.6). |E_vis|* = 0 → PENDIENTE."""
+    sobre las réplicas de §5.2 (docs/plan_fase4.md, F4.6). |E_vis| = 0 → Enmienda 5, P4
+    (observado «no aplica»; réplicas excluidas y contadas)."""
+    _indefinida_spec(cfg, 'contencion')
     lo, hi = _ci95(cfg['enmienda_4']['ic']['descriptivo'])
     ev = (np.asarray(yhat_vis) != y).astype(np.float64)
     er = (np.asarray(yhat_ref) != y).astype(np.float64)
-    if ev.sum() == 0:
-        raise PendienteError('contención indefinida: el visual no comete errores')
     num, den = W @ (ev * er), W @ ev
-    if np.any(den == 0):
-        raise PendienteError(f'contención indefinida en {int(np.sum(den == 0))} réplica(s) sin errores visuales')
-    return {'C_obs': float((ev * er).sum() / ev.sum()), 'nula_obs': float(er.mean()),
-            'interval': bs.percentile_interval(num / den, lo, hi),
+    reps = np.divide(num, den, out=np.full(den.shape, np.nan), where=den > 0)
+    obs = (ev * er).sum() / ev.sum() if ev.sum() > 0 else np.nan
+    s = _summary_excluding(obs, reps, lo, hi)
+    return {'C_obs': s['obs'], 'nula_obs': float(er.mean()), 'interval': s['interval'],
+            'n_replicas_indefinidas': s['n_replicas_indefinidas'],
             'n_errores_vis': int(ev.sum()), 'n_errores_ref': int(er.sum()), 'n_interseccion': int((ev * er).sum())}
 
 

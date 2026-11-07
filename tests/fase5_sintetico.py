@@ -17,10 +17,11 @@ TECHS = ('gray_scott', 'perlin', 'lorenz')
 N, N0, N1 = 114, 70, 44
 
 
-def cfg(comparacion='observado'):
+def cfg(sin_enmienda_5=False):
+    """Config real (con la Enmienda 5) o, para probar la negativa, sin el bloque enmienda_5."""
     c = copy.deepcopy(CFG)
-    if comparacion is not None:
-        c['enmienda_4']['por_semilla']['sensibilidad']['comparacion'] = comparacion
+    if sin_enmienda_5:
+        c.pop('enmienda_5')
     return c
 
 

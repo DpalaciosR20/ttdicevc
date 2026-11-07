@@ -10,9 +10,9 @@ Modos:
         identidad y csv_sha256). No carga p_dep. No escribe resultados.
   --ejecutar-prueba
         Ejecuta la Fase 5 sobre las predicciones de prueba. Exige:
-          · la etiqueta enmienda-4 en la historia de HEAD;
+          · la etiqueta GATE_TAG (enmienda-5) en la historia de HEAD;
           · docs/protocolo_preregistrado.md, configs/protocolo.json y
-            docs/plan_fase4.md sin cambios frente a enmienda-4;
+            docs/plan_fase4.md sin cambios frente a esa etiqueta;
           · el árbol de trabajo limpio (git status --porcelain vacío);
           · que no quede ningún punto PENDIENTE en configs/protocolo.json;
           · que no exista <out>/resultados.json (nunca sobrescribe).
@@ -49,7 +49,7 @@ from src.protocol.contraste import TECHNIQUES
 
 REPO = paths.REPO
 OUT_DEFAULT = paths.RESULTS_DIR / 'f5_contraste'
-GATE_TAG = 'enmienda-4'                     # etiqueta de la Enmienda 4 (bloque C, compuerta)
+GATE_TAG = 'enmienda-5'                     # única constante de la compuerta: etiqueta de la Enmienda 5
 FROZEN = ('docs/protocolo_preregistrado.md', 'configs/protocolo.json', 'docs/plan_fase4.md')
 CANON_PATH = paths.RESULTS_DIR / 'canonical_numbers.json'
 
@@ -78,13 +78,24 @@ def check_clean_tree():
 
 
 def pendientes(cfg):
-    """Puntos que la Enmienda 4 no deja computables y que este código no resuelve."""
+    """Puntos que bloquean --ejecutar-prueba: resoluciones de la Enmienda 5 ausentes del config."""
+    e5 = cfg.get('enmienda_5', {})
+    need = {'P1': ('por_semilla', 'sensibilidad', 'comparacion'), 'P2': ('piso', 'empate_alternativa'),
+            'A3': ('piso', 'empate_tolerancia'), 'P3': ('kappa', 'indefinida'),
+            'P4': ('contencion', 'indefinida'), 'P5': ('cochran', 'todos_concordantes')}
     out = []
-    comp = cfg['enmienda_4']['por_semilla'].get('sensibilidad', {}).get('comparacion')
-    if comp not in ('observado', 'por_replica'):
-        out.append('A14 (sensibilidad): «piso permutado de la semilla emparejada, si es mayor» no fija la '
-                   'comparación (observado o por réplica): enmienda_4.por_semilla.sensibilidad.comparacion')
+    for pid, path in need.items():
+        d = e5
+        for k in path:
+            d = d.get(k) if isinstance(d, dict) else None
+        if d is None:
+            out.append(f'{pid}: falta enmienda_5.{".".join(path)}')
     return out
+
+
+def avisos(cfg):
+    """Pendientes que no bloquean la Fase 5 (se reportan)."""
+    return [f'P6: {v}' for k, v in cfg.get('enmienda_5', {}).get('pendiente', {}).items() if k == 'P6']
 
 
 def check_results_absent(out_dir, name='resultados.json'):
@@ -128,7 +139,6 @@ def ejecutar(ins, cfg, canon, idx, log=print):
     mcn = cx.comparaciones_mcnemar(y, yhat, cfg)
     mcn_bil = cx.comparaciones_mcnemar(y, yhat, cfg, lado_vs_ref={'beto': 'bilateral', 'techo5d': 'bilateral'})
     variantes = sens.todas(F, cfg, canon)
-    comp = cfg['enmienda_4']['por_semilla'].get('sensibilidad', {}).get('comparacion')
     res = {
         'principal': principal,
         'observados': {str(k): v['obs'] for k, v in F.items()},
@@ -138,7 +148,7 @@ def ejecutar(ins, cfg, canon, idx, log=print):
         'longitud': cx.contraste_longitud(F, cfg, v),
         'mcnemar': mcn,
         'sensibilidad': variantes,
-        'robustez': sens.robustez(F, cfg, principal, variantes, mcn, mcn_bil, comparacion_a14=comp),
+        'robustez': sens.robustez(F, cfg, principal, variantes, mcn, mcn_bil),
         'terciles_longitud': cx.terciles_longitud(
             y, ins.test_index['n_tokens_beto'].to_numpy(), ins.train['n_tokens_beto'].to_numpy(),
             {t: bs.predict(ins.visual[('final', t)]['p'], cfg['modelos']['decision_threshold']) for t in TECHNIQUES},
@@ -162,8 +172,9 @@ def ejecutar_f46(ins, cfg, idx):
     for t in TECHNIQUES:
         out['contencion'][t] = {r: cx.contencion(W, y, yhat[t], yhat[r], cfg) for r in ('techo5d', 'beto', 'emb768')}
         c = out['contencion'][t]['techo5d']
-        out['contencion'][t]['condicion_1'] = c['interval'][0] > c['nula_obs']
-        out['contencion'][t]['condicion_2_F41'] = 'PENDIENTE: requiere el IC de ΔF1 de F4.1'
+        out['contencion'][t]['condicion_1'] = (cx.NO_APLICA if c['interval'] == cx.NO_APLICA
+                                               else c['interval'][0] > c['nula_obs'])
+        out['contencion'][t]['condicion_2_F41'] = 'PENDIENTE (P6): requiere el IC de ΔF1 de F4.1'
         P = bs.predict(ins.visual[('final', t)]['p'], thr)
         out['contencion_por_semilla'][t] = {
             str(s): cx.contencion(W, y, P[:, i], yhat['techo5d'], cfg)
@@ -282,7 +293,9 @@ def main(argv=None, out_dir=OUT_DEFAULT, log=print):
         check_clean_tree()
         p = pendientes(cfg)
         if p:
-            raise Negativa('quedan puntos PENDIENTES en la Enmienda 4:\n  - ' + '\n  - '.join(p))
+            raise Negativa('quedan puntos PENDIENTES (Enmienda 5):\n  - ' + '\n  - '.join(p))
+        for a in avisos(cfg):
+            L(f'AVISO (no bloquea): {a}')
         if args.ejecutar_prueba:
             check_results_absent(out_dir)
         else:
