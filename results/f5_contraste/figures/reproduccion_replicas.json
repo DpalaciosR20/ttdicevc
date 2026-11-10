@@ -1,0 +1,239 @@
+{
+ "tolerancia": 1e-12,
+ "comprobaciones": 51,
+ "coinciden": 51,
+ "idx_sha256": "322edaaa5f1175bb4d4a16409d7f852fa7e67fa5daa8a504bb4976e67d0a7e37",
+ "max_abs_diff": 0.0,
+ "detalle": [
+  {
+   "comprobacion": "idx_sha256",
+   "coincide": true
+  },
+  {
+   "comprobacion": "sha256 de los 56 insumos",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · θ_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · p no inferioridad",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · IC θ inferior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · IC θ superior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · D_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · p superioridad",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · IC D inferior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · IC D superior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · F1 visual",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · F1 BETO",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · piso aplicado",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · θ_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · p no inferioridad",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · IC θ inferior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · IC θ superior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · D_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · p superioridad",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · IC D inferior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · IC D superior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · F1 visual",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · F1 BETO",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · piso aplicado",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · θ_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · p no inferioridad",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · IC θ inferior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · IC θ superior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · D_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · p superioridad",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · IC D inferior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · IC D superior",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · F1 visual",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · F1 BETO",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · piso aplicado",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · contraste() theta_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · contraste() D_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · contraste() no_inferioridad.p / rechazo",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · contraste() superioridad_piso.p / rechazo",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Gray-Scott · contraste() veredicto",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · contraste() theta_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · contraste() D_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · contraste() no_inferioridad.p / rechazo",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · contraste() superioridad_piso.p / rechazo",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Perlin · contraste() veredicto",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · contraste() theta_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · contraste() D_obs",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · contraste() no_inferioridad.p / rechazo",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · contraste() superioridad_piso.p / rechazo",
+   "coincide": true
+  },
+  {
+   "comprobacion": "Lorenz · contraste() veredicto",
+   "coincide": true
+  },
+  {
+   "comprobacion": "contraste() veredicto global",
+   "coincide": true
+  }
+ ],
+ "venn": [
+  {
+   "par": "Gray-Scott · techo5d",
+   "coincide": true
+  },
+  {
+   "par": "Gray-Scott · beto",
+   "coincide": true
+  },
+  {
+   "par": "Perlin · techo5d",
+   "coincide": true
+  },
+  {
+   "par": "Perlin · beto",
+   "coincide": true
+  },
+  {
+   "par": "Lorenz · techo5d",
+   "coincide": true
+  },
+  {
+   "par": "Lorenz · beto",
+   "coincide": true
+  }
+ ]
+}
