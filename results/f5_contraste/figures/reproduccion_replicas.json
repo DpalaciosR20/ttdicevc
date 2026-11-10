@@ -234,6 +234,18 @@
   {
    "par": "Lorenz · beto",
    "coincide": true
+  },
+  {
+   "par": "Gray-Scott · emb768",
+   "coincide": true
+  },
+  {
+   "par": "Perlin · emb768",
+   "coincide": true
+  },
+  {
+   "par": "Lorenz · emb768",
+   "coincide": true
   }
  ]
 }

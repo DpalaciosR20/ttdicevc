@@ -190,7 +190,11 @@
   "results/f36_permutacion/perlin/runs/perlin__vit_b16__frozen__px224-noflip-perm99__seed99.json": "3b0a9e6dab2ac7e9d88c5062b89bb9059d90b0bf94d5e6973129ae17a144685d",
   "results/f36_permutacion/perlin/summary.csv": "645b7a3239bbb73da81332b4921244d94f37721d328b8d33fc7bea9e74eb6b72",
   "results/f36_permutacion/perlin/summary_by_config.csv": "d8fee392d0b809766dc67ae8ed82a39de8c3fdd8c3a98671313c643d4cce9c2e",
+  "results/f41_recuperabilidad/prueba/predicciones_prueba.csv": "c7c03fc044482df012dff2d486cbb4b95c40f86ab95576bc937903d244fc883f",
+  "results/f41_recuperabilidad/prueba/resultados_prueba.json": "4205b49d74361f1f397cdd4a39346979f1f6ce19227271b6e3a5bdb1a5f614df",
+  "results/f41_recuperabilidad/val/resultados_val.json": "028a55edc71ec7ad51b1f2dc4e43c963f12c7d29747c62a32fb271704458c597",
   "results/f45_longitud/resultado.json": "bfd293b0ac8fbd0c5699a52b194713a160523fc42559b74daccafe92707c0085",
+  "results/f47_geometria/resultados.json": "492a408ce441dfca998c10a3335f40bbcf6e7fc132fbe45c5c3ddbab05aaa687",
   "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed123.json": "7213d4af2fea1bee72e418e13349da4543ea91f19e59cc54e36773348b225934",
   "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed2024.json": "1fcb21ddde681c1f1cecb0a8feeee4712950b2d5bc0927ecec89677e7be6e674",
   "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed42.json": "cdd92b1ca3146a36449b4f91d5c0a8c12a36965de67b3edf7955602726488b71",
@@ -8852,6 +8856,3201 @@
     "val": 0.61926213592233
    }
   },
+  "f41.prueba.gray_scott.condicion_2_f46": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = cumplida: el IC de ΔF1 del backbone principal (efficientnet_b0_finetune_seed42) contiene 0",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.condicion_2_F46",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.delta_f1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1(u) − F1(û)",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.delta_f1_obs",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.018357487922705307,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.delta_f1.ic_contiene_0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.contiene_0",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.delta_f1.nivel": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.nivel",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.95,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.delta_f1_ic_inf": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.ic[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.019707646949780246,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.delta_f1_ic_sup": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.ic[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.05923763800927109,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.logreg_u_hat.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 15,
+     "fp": 17,
+     "tn": 53,
+     "tp": 29
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u_hat; tecnica=gray_scott, backbone=efficientnet_b0_finetune_seed123",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.706280193236715,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_test[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9652808940609552,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_test[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8901315422863768,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_test[2]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9385924289644342,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_test[3]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8783614678224162,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_test[4]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9634070180373118,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.delta_f1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1(u) − F1(û)",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.delta_f1_obs",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0450741890959282,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.delta_f1.ic_contiene_0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.contiene_0",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.delta_f1.nivel": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.nivel",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.95,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.delta_f1_ic_inf": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.ic[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0009295352503704052,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.delta_f1_ic_sup": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.ic[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.09602649236609097,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.logreg_u_hat.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 19,
+     "fp": 15,
+     "tn": 55,
+     "tp": 25
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u_hat; tecnica=gray_scott, backbone=efficientnet_b0_finetune_seed2024",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6795634920634921,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_test[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9610461674897898,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_test[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8645742037457076,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_test[2]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9487423986734318,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_test[3]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9051385912763013,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_test[4]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9650833088750156,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.delta_f1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1(u) − F1(û)",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.delta_f1_obs",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.010182243441526295,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.delta_f1.ic_contiene_0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.contiene_0",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.delta_f1.nivel": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.nivel",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.95,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.delta_f1_ic_inf": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.ic[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.0335097001763669,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.delta_f1_ic_sup": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.ic[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.logreg_u_hat.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 16,
+     "tn": 54,
+     "tp": 31
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u_hat; tecnica=gray_scott, backbone=efficientnet_b0_finetune_seed42",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7348199246009466,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_test[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9684415240868325,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_test[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8608902616815803,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_test[2]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9390827358144554,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_test[3]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8618813110917833,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_test[4]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9650805953841249,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.delta_f1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1(u) − F1(û)",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.delta_f1_obs",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.002024722932651324,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.delta_f1.ic_contiene_0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.contiene_0",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.delta_f1.nivel": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.nivel",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.95,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.delta_f1_ic_inf": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.ic[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.04096964564073126,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.delta_f1_ic_sup": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.ic[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.035754342474889886,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.logreg_u_hat.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 13,
+     "fp": 17,
+     "tn": 53,
+     "tp": 31
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u_hat; tecnica=gray_scott, backbone=efficientnet_b0_finetune_seed7",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7266624040920716,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_test[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9683644288411994,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_test[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8996685042706152,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_test[2]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9399190860423856,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_test[3]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8866986082570557,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_test[4]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9663713271164206,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.delta_f1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1(u) − F1(û)",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.delta_f1_obs",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.03671497584541061,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.delta_f1.ic_contiene_0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.contiene_0",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.delta_f1.nivel": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.nivel",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.95,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.delta_f1_ic_inf": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.ic[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.0067325302726892805,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.delta_f1_ic_sup": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.ic[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.08454959058976134,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.logreg_u_hat.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 16,
+     "fp": 18,
+     "tn": 52,
+     "tp": 28
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u_hat; tecnica=gray_scott, backbone=efficientnet_b0_finetune_seed99",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6879227053140097,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_test[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9585010695627517,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_test[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8735695868207638,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_test[2]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9368360485845109,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_test[3]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9086185311145702,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_test[4]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.960917020961045,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.delta_f1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1(u) − F1(û)",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.delta_f1_obs",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.02873597555760965,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.delta_f1.ic_contiene_0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.contiene_0",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.delta_f1.nivel": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.nivel",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.95,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.delta_f1_ic_inf": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.ic[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.delta_f1_ic_sup": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.ic[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.06500557784796973,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.logreg_u_hat.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 16,
+     "fp": 17,
+     "tn": 53,
+     "tp": 28
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u_hat; tecnica=gray_scott, backbone=efficientnet_b0_imagenet",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6959017056018106,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_test[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9748424457558356,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_test[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8848311285120202,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_test[2]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.949722790975911,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_test[3]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8987709047198943,
+    "val": null
+   }
+  },
+  "f41.prueba.gray_scott.efficientnet_b0_imagenet.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_test[4]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9817643925952613,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.condicion_2_f46": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = cumplida: el IC de ΔF1 del backbone principal (vit_b16_imagenet) contiene 0",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.condicion_2_F46",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.delta_f1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1(u) − F1(û)",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.delta_f1_obs",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.012040932938548687,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.delta_f1.ic_contiene_0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.contiene_0",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.delta_f1.nivel": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.nivel",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.95,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.delta_f1_ic_inf": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.ic[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": -0.046983987390658684,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.delta_f1_ic_sup": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.ic[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.01660687371110105,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.logreg_u_hat.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 12,
+     "fp": 17,
+     "tn": 53,
+     "tp": 32
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u_hat; tecnica=lorenz, backbone=vit_b16_imagenet",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.736678614097969,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_test[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.929005959888394,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_test[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6142970316355135,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_test[2]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9252707397114472,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_test[3]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8733941076127216,
+    "val": null
+   }
+  },
+  "f41.prueba.lorenz.vit_b16_imagenet.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_test[4]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9920633122959415,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.condicion_2_f46": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = cumplida: el IC de ΔF1 del backbone principal (vit_b16_imagenet) contiene 0",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.condicion_2_F46",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.delta_f1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1(u) − F1(û)",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.delta_f1_obs",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.04990058162408151,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.delta_f1.ic_contiene_0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "count",
+   "note": "1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.contiene_0",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.delta_f1.nivel": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.nivel",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.95,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.delta_f1_ic_inf": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.ic[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.010659765071529659,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.delta_f1_ic_sup": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.ic[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.09714109424893438,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.logreg_u_hat.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 18,
+     "fp": 17,
+     "tn": 53,
+     "tp": 26
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u_hat; tecnica=perlin, backbone=vit_b16_imagenet",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.6747370995353388,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_test[0]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.949195070360783,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_test[1]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7555700246075936,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_test[2]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9514799222415421,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_test[3]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.8529553621629908,
+    "val": null
+   }
+  },
+  "f41.prueba.perlin.vit_b16_imagenet.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_test[4]",
+    "path": "results/f41_recuperabilidad/prueba/resultados_prueba.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.9142155459312702,
+    "val": null
+   }
+  },
+  "f41.prueba.u.logreg.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 14,
+     "fp": 16,
+     "tn": 54,
+     "tp": 30
+    }
+   },
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1); F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "val": "F4.1: la cifra de validación está en la clave f41.val.* correspondiente"
+   },
+   "source": {
+    "locator": "columna p_dep_u",
+    "path": "results/f41_recuperabilidad/prueba/predicciones_prueba.csv"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.7246376811594203,
+    "val": null
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed123.alpha": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "ridge_alpha",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.alpha",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 100.0
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed123.logreg_u_hat.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.logreg_u_hat.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.700358422939068
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed123.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_val[0]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.966098024099973
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed123.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_val[1]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8542970699475776
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed123.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_val[2]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9487689981128542
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed123.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_val[3]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8452227765979291
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed123.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed123.r2_val[4]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9711274373162827
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed2024.alpha": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "ridge_alpha",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.alpha",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 316.22776601683796
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed2024.logreg_u_hat.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.logreg_u_hat.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6853896103896104
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed2024.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_val[0]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9665101022800063
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed2024.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_val[1]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8705491116422017
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed2024.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_val[2]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9479065912106754
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed2024.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_val[3]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8587985683268599
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed2024.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed2024.r2_val[4]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9626767413141945
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed42.alpha": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "ridge_alpha",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.alpha",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 100.0
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed42.logreg_u_hat.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.logreg_u_hat.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6799550814149354
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed42.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_val[0]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9637690489411328
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed42.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_val[1]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8578871708079159
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed42.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_val[2]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9412794710138741
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed42.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_val[3]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8440258179868485
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed42.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed42.r2_val[4]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9642616623877206
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed7.alpha": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "ridge_alpha",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.alpha",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 316.22776601683796
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed7.logreg_u_hat.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.logreg_u_hat.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.700358422939068
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed7.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_val[0]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9642242686194642
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed7.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_val[1]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8443917261342869
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed7.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_val[2]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9326622002053992
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed7.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_val[3]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8691857586112798
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed7.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed7.r2_val[4]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.966636474208834
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed99.alpha": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "ridge_alpha",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.alpha",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 316.22776601683796
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed99.logreg_u_hat.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.logreg_u_hat.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6879227053140097
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed99.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_val[0]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9632984739168392
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed99.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_val[1]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.861731253862335
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed99.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_val[2]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9528642992840476
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed99.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_val[3]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8423627981068713
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_finetune_seed99.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_finetune_seed99.r2_val[4]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9624892310300637
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_imagenet.alpha": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "ridge_alpha",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.alpha",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 100.0
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_imagenet.logreg_u_hat.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.logreg_u_hat.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7165316435389428
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_imagenet.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_val[0]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9807027632132664
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_imagenet.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_val[1]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8621725874850695
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_imagenet.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_val[2]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9435148066751895
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_imagenet.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_val[3]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9009454056979878
+   }
+  },
+  "f41.val.gray_scott.efficientnet_b0_imagenet.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone sensibilidad de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.efficientnet_b0_imagenet.r2_val[4]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9806423243795124
+   }
+  },
+  "f41.val.lorenz.vit_b16_imagenet.alpha": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "ridge_alpha",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.alpha",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 10.0
+   }
+  },
+  "f41.val.lorenz.vit_b16_imagenet.logreg_u_hat.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.logreg_u_hat.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6799550814149354
+   }
+  },
+  "f41.val.lorenz.vit_b16_imagenet.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_val[0]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9421634464367168
+   }
+  },
+  "f41.val.lorenz.vit_b16_imagenet.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_val[1]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6367680717572362
+   }
+  },
+  "f41.val.lorenz.vit_b16_imagenet.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_val[2]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9013534784093601
+   }
+  },
+  "f41.val.lorenz.vit_b16_imagenet.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_val[3]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8009742981258026
+   }
+  },
+  "f41.val.lorenz.vit_b16_imagenet.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.vit_b16_imagenet.r2_val[4]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9928241638356433
+   }
+  },
+  "f41.val.perlin.vit_b16_imagenet.alpha": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "ridge_alpha",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.alpha",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 100.0
+   }
+  },
+  "f41.val.perlin.vit_b16_imagenet.logreg_u_hat.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.logreg_u_hat.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6902173913043479
+   }
+  },
+  "f41.val.perlin.vit_b16_imagenet.r2.u0": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_val[0]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9458183819413856
+   }
+  },
+  "f41.val.perlin.vit_b16_imagenet.r2.u1": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_val[1]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.765574475395759
+   }
+  },
+  "f41.val.perlin.vit_b16_imagenet.r2.u2": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_val[2]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9533904310081821
+   }
+  },
+  "f41.val.perlin.vit_b16_imagenet.r2.u3": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_val[3]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8526090346181501
+   }
+  },
+  "f41.val.perlin.vit_b16_imagenet.r2.u4": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "r2",
+   "note": "backbone principal de F4.1",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.vit_b16_imagenet.r2_val[4]",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9058666754627442
+   }
+  },
+  "f41.val.u.logreg.f1_macro": {
+   "evaluator": "src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "null_reason": {
+    "test": "F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente"
+   },
+   "source": {
+    "locator": "resultados.u.logreg_u.f1_val",
+    "path": "results/f41_recuperabilidad/val/resultados_val.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.700358422939068
+   }
+  },
   "f46.contencion.gray_scott.beto.c": {
    "evaluator": "run_fase5 --analisis-f46 (src/protocol/run_fase5.py; mismas réplicas de A1)",
    "kind": "metric",
@@ -13612,6 +16811,522 @@
    },
    "status": "extraido",
    "value": 0
+  },
+  "f47.gray_scott.holm.alpha_h": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.gray_scott.holm.alpha_h",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.016666666666666666,
+    "val": null
+   }
+  },
+  "f47.gray_scott.holm.rango": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.principal.gray_scott.holm.rank",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f47.gray_scott.holm.rechaza": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 3)",
+   "source": {
+    "locator": "resultados.principal.gray_scott.holm.reject",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f47.gray_scott.k": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "permutaciones con ρ >= ρ observado",
+   "source": {
+    "locator": "resultados.principal.gray_scott.k",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f47.gray_scott.n": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "muestras de train",
+   "source": {
+    "locator": "resultados.principal.gray_scott.n",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 908
+  },
+  "f47.gray_scott.n_perm": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.principal.gray_scott.n_perm",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 9999
+  },
+  "f47.gray_scott.p": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p de Mantel, (k + 1) / (B + 1), cola superior",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.gray_scott.p",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.0001,
+    "val": null
+   }
+  },
+  "f47.gray_scott.perm_de": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "DE (ddof = 1) de ρ bajo permutación",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.gray_scott.perm_de",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.0033511020353439863,
+    "val": null
+   }
+  },
+  "f47.gray_scott.perm_media": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media de ρ bajo permutación",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.gray_scott.perm_media",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": -6.013950180537694e-06,
+    "val": null
+   }
+  },
+  "f47.gray_scott.rho_spearman": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "backbone efficientnet_b0_finetune_seed42",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.gray_scott.rho_spearman",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.8019337781831091,
+    "val": null
+   }
+  },
+  "f47.lorenz.holm.alpha_h": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.lorenz.holm.alpha_h",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.016666666666666666,
+    "val": null
+   }
+  },
+  "f47.lorenz.holm.rango": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.principal.lorenz.holm.rank",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f47.lorenz.holm.rechaza": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 3)",
+   "source": {
+    "locator": "resultados.principal.lorenz.holm.reject",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f47.lorenz.k": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "permutaciones con ρ >= ρ observado",
+   "source": {
+    "locator": "resultados.principal.lorenz.k",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f47.lorenz.n": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "muestras de train",
+   "source": {
+    "locator": "resultados.principal.lorenz.n",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 908
+  },
+  "f47.lorenz.n_perm": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.principal.lorenz.n_perm",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 9999
+  },
+  "f47.lorenz.p": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p de Mantel, (k + 1) / (B + 1), cola superior",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.lorenz.p",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.0001,
+    "val": null
+   }
+  },
+  "f47.lorenz.perm_de": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "DE (ddof = 1) de ρ bajo permutación",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.lorenz.perm_de",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.007027478324237247,
+    "val": null
+   }
+  },
+  "f47.lorenz.perm_media": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media de ρ bajo permutación",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.lorenz.perm_media",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 1.2978540364422558e-05,
+    "val": null
+   }
+  },
+  "f47.lorenz.rho_spearman": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "backbone vit_b16_imagenet",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.lorenz.rho_spearman",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.3190933701840265,
+    "val": null
+   }
+  },
+  "f47.perlin.holm.alpha_h": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.perlin.holm.alpha_h",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.016666666666666666,
+    "val": null
+   }
+  },
+  "f47.perlin.holm.rango": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.principal.perlin.holm.rank",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f47.perlin.holm.rechaza": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 3)",
+   "source": {
+    "locator": "resultados.principal.perlin.holm.reject",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f47.perlin.k": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "permutaciones con ρ >= ρ observado",
+   "source": {
+    "locator": "resultados.principal.perlin.k",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f47.perlin.n": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "note": "muestras de train",
+   "source": {
+    "locator": "resultados.principal.perlin.n",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 908
+  },
+  "f47.perlin.n_perm": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.principal.perlin.n_perm",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "value": 9999
+  },
+  "f47.perlin.p": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p de Mantel, (k + 1) / (B + 1), cola superior",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.perlin.p",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.0001,
+    "val": null
+   }
+  },
+  "f47.perlin.perm_de": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "DE (ddof = 1) de ρ bajo permutación",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.perlin.perm_de",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.007346918329106561,
+    "val": null
+   }
+  },
+  "f47.perlin.perm_media": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media de ρ bajo permutación",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.perlin.perm_media",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": -3.383190893109259e-06,
+    "val": null
+   }
+  },
+  "f47.perlin.rho_spearman": {
+   "evaluator": "src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "backbone vit_b16_imagenet",
+   "null_reason": {
+    "test": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)",
+    "val": "F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)"
+   },
+   "source": {
+    "locator": "resultados.principal.perlin.rho_spearman",
+    "path": "results/f47_geometria/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.5221038592161575,
+    "val": null
+   }
   },
   "f5.cochran.gl": {
    "evaluator": "run_fase5 --ejecutar-prueba (src/protocol/run_fase5.py; B = 10000, bootstrap pareado de A1)",

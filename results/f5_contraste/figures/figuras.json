@@ -43,7 +43,11 @@
   {
    "archivo": "results/f5_contraste/figures/f46_03_interseccion_errores.png",
    "figura": "F4.6: diagrama de intersección de errores (BETO, techo 5D, finalista) por técnica"
+  },
+  {
+   "archivo": "results/f5_contraste/figures/f46_04_interseccion_errores_cuatro.png",
+   "figura": "F4.6: diagrama de intersección de errores (BETO, 768D, techo 5D, finalista) por técnica"
   }
  ],
- "segundos_kernel": 20.9
+ "segundos_kernel": 94.3
 }

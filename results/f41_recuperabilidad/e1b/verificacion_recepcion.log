@@ -1,0 +1,62 @@
+OK    git_commit 9f3b7b016bcb24d41b58d46ffdb8af7f26267295
+OK    smoke=false, limit=None
+OK    modelos 15/15 passed=True
+OK    datos_verificacion: manifiesto OK
+OK    gray_scott dir_digest = data_manifest
+OK    gray_scott n_imagenes 1136
+OK    perlin dir_digest = data_manifest
+OK    perlin n_imagenes 1136
+OK    perlin backbone == ImageNet en semillas ['7', '42', '99', '123', '2024']
+OK    lorenz dir_digest = data_manifest
+OK    lorenz n_imagenes 1136
+OK    lorenz backbone == ImageNet en semillas ['7', '42', '99', '123', '2024']
+OK    gray_scott seed42 sha256 de modelo en artefactos_manifest
+OK    gray_scott seed7 sha256 de modelo en artefactos_manifest
+OK    gray_scott seed123 sha256 de modelo en artefactos_manifest
+OK    gray_scott seed2024 sha256 de modelo en artefactos_manifest
+OK    gray_scott seed99 sha256 de modelo en artefactos_manifest
+OK    perlin seed42 sha256 de modelo en artefactos_manifest
+OK    perlin seed7 sha256 de modelo en artefactos_manifest
+OK    perlin seed123 sha256 de modelo en artefactos_manifest
+OK    perlin seed2024 sha256 de modelo en artefactos_manifest
+OK    perlin seed99 sha256 de modelo en artefactos_manifest
+OK    lorenz seed42 sha256 de modelo en artefactos_manifest
+OK    lorenz seed7 sha256 de modelo en artefactos_manifest
+OK    lorenz seed123 sha256 de modelo en artefactos_manifest
+OK    lorenz seed2024 sha256 de modelo en artefactos_manifest
+OK    lorenz seed99 sha256 de modelo en artefactos_manifest
+OK    manifiesto 8 filas, sha256sum 8
+sample_index cols: ['sample_id', 'split', 'idx', 'id', 'y_true', 'text_sha256', 'n_tokens_beto', 'truncated_128', 'img_perlin', 'img_gray_scott', 'img_lorenz']
+OK    gray_scott__efficientnet_b0_finetune_seed42.npz sha256 662fffa11582 = manifiesto = sha256sum
+OK      features float32 (1136, 1280) finitas
+OK      sample_id/split en orden de sample_index (1136)
+   claves npz: ['features', 'sample_id', 'split']
+OK    gray_scott__efficientnet_b0_finetune_seed7.npz sha256 fb9e0d05fede = manifiesto = sha256sum
+OK      features float32 (1136, 1280) finitas
+OK      sample_id/split en orden de sample_index (1136)
+   claves npz: ['features', 'sample_id', 'split']
+OK    gray_scott__efficientnet_b0_finetune_seed123.npz sha256 7f1a77a5d9b2 = manifiesto = sha256sum
+OK      features float32 (1136, 1280) finitas
+OK      sample_id/split en orden de sample_index (1136)
+   claves npz: ['features', 'sample_id', 'split']
+OK    gray_scott__efficientnet_b0_finetune_seed2024.npz sha256 72674fb5ec7f = manifiesto = sha256sum
+OK      features float32 (1136, 1280) finitas
+OK      sample_id/split en orden de sample_index (1136)
+   claves npz: ['features', 'sample_id', 'split']
+OK    gray_scott__efficientnet_b0_finetune_seed99.npz sha256 92eba28bc5b8 = manifiesto = sha256sum
+OK      features float32 (1136, 1280) finitas
+OK      sample_id/split en orden de sample_index (1136)
+   claves npz: ['features', 'sample_id', 'split']
+OK    gray_scott__efficientnet_b0_imagenet.npz sha256 95a6ceb31836 = manifiesto = sha256sum
+OK      features float32 (1136, 1280) finitas
+OK      sample_id/split en orden de sample_index (1136)
+   claves npz: ['features', 'sample_id', 'split']
+OK    perlin__vit_b16_imagenet.npz sha256 7c73f0542589 = manifiesto = sha256sum
+OK      features float32 (1136, 768) finitas
+OK      sample_id/split en orden de sample_index (1136)
+   claves npz: ['features', 'sample_id', 'split']
+OK    lorenz__vit_b16_imagenet.npz sha256 17a7443bbf85 = manifiesto = sha256sum
+OK      features float32 (1136, 768) finitas
+OK      sample_id/split en orden de sample_index (1136)
+   claves npz: ['features', 'sample_id', 'split']
+TODO OK
