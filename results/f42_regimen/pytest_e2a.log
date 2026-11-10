@@ -1,0 +1,40 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\DELL\Desktop\TT\TT2\ttdicevc
+plugins: anyio-4.15.1, platformdirs-4.14.0
+collecting ... collected 31 items
+
+tests/test_fase4_regimen.py::test_mapeos_coinciden_con_el_plan PASSED    [  3%]
+tests/test_fase4_regimen.py::test_mapeos_son_los_de_src_generation PASSED [  6%]
+tests/test_fase4_regimen.py::test_rangos_de_octavas_y_rho PASSED         [  9%]
+tests/test_fase4_regimen.py::test_estrato_lorenz_equivale_a_u1 PASSED    [ 12%]
+tests/test_fase4_regimen.py::test_f1_por_estrato_y_clase_ausente PASSED  [ 16%]
+tests/test_fase4_regimen.py::test_fisher_contra_scipy_y_manual[t0] PASSED [ 19%]
+tests/test_fase4_regimen.py::test_fisher_contra_scipy_y_manual[t1] PASSED [ 22%]
+tests/test_fase4_regimen.py::test_fisher_contra_scipy_y_manual[t2] PASSED [ 25%]
+tests/test_fase4_regimen.py::test_fisher_contra_scipy_y_manual[t3] PASSED [ 29%]
+tests/test_fase4_regimen.py::test_tabla_2x2_orientacion PASSED           [ 32%]
+tests/test_fase4_regimen.py::test_mann_whitney_contra_scipy_y_manual[True] PASSED [ 35%]
+tests/test_fase4_regimen.py::test_mann_whitney_contra_scipy_y_manual[False] PASSED [ 38%]
+tests/test_fase4_regimen.py::test_mann_whitney_sin_diferencia_y_separacion_total PASSED [ 41%]
+tests/test_fase4_regimen.py::test_holm_familia_y_ajustados PASSED        [ 45%]
+tests/test_fase4_regimen.py::test_holm_contra_statsmodels_si_esta PASSED [ 48%]
+tests/test_fase4_regimen.py::test_resoluciones_pendientes_detienen PASSED [ 51%]
+tests/test_fase4_regimen.py::test_analizar_familia_y_estructura PASSED   [ 54%]
+tests/test_fase4_regimen.py::test_analizar_detiene_si_el_registro_no_cuadra PASSED [ 58%]
+tests/test_fase4_regimen.py::test_registro_no_altera_la_salida PASSED    [ 61%]
+tests/test_fase4_regimen.py::test_registro_misma_imagen_por_la_ruta_de_produccion PASSED [ 64%]
+tests/test_fase4_regimen.py::test_registro_detecta_reintentos_y_respaldo PASSED [ 67%]
+tests/test_fase4_regimen.py::test_coherencia_detiene_si_no_cuadra PASSED [ 70%]
+tests/test_fase4_regimen.py::test_respaldo_coincide_con_el_generador PASSED [ 74%]
+tests/test_fase4_regimen.py::test_reintentos_no_sobrescribe PASSED       [ 77%]
+tests/test_fase4_regimen.py::test_regimen_no_sobrescribe PASSED          [ 80%]
+tests/test_fase4_regimen.py::test_csv_de_reintentos_columnas PASSED      [ 83%]
+tests/test_fase4_regimen.py::test_resumen_por_clase PASSED               [ 87%]
+tests/test_fase4_regimen.py::test_tareas_muestreo_de_humo PASSED         [ 90%]
+tests/test_fase4_regimen.py::test_permutaciones_son_independientes_del_orden PASSED [ 93%]
+tests/test_fase4_regimen.py::test_trabajo_verifica_contra_la_almacenada PASSED [ 96%]
+tests/test_fase4_regimen.py::test_figuras_sinteticas PASSED              [100%]
+
+======================== 31 passed in 65.99s (0:01:05) ========================
