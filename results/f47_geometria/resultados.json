@@ -1,0 +1,77 @@
+{
+ "meta": {
+  "task": "F4.7",
+  "resoluciones": {
+   "mantel_lado": "mayor",
+   "mantel_p": "k_mas_1_sobre_B_mas_1",
+   "mantel_rng": "por_tecnica",
+   "mantel_sensibilidad": false
+  },
+  "n_perm": 9999,
+  "rng_seed": 2026,
+  "alpha": 0.05,
+  "distancias": {
+   "u": "euclidean",
+   "caracteristicas": "cosine"
+  },
+  "split": "train",
+  "git_commit": "71f9277417a59b8c366e14a86522e4390b987f1b",
+  "created_at": "2026-11-07T21:12:00+00:00"
+ },
+ "resultados": {
+  "principal": {
+   "gray_scott": {
+    "rho_spearman": 0.8019337781831091,
+    "p": 0.0001,
+    "k": 0,
+    "n_perm": 9999,
+    "lado": "mayor",
+    "perm_media": -6.013950180537694e-06,
+    "perm_de": 0.0033511020353439863,
+    "backbone": "efficientnet_b0_finetune_seed42",
+    "npz_sha256": "662fffa11582d84049af338a4725521456a3fe3abb943e4993d7e602f2b524fd",
+    "n": 908,
+    "holm": {
+     "rank": 1,
+     "alpha_h": 0.016666666666666666,
+     "reject": true
+    }
+   },
+   "perlin": {
+    "rho_spearman": 0.5221038592161575,
+    "p": 0.0001,
+    "k": 0,
+    "n_perm": 9999,
+    "lado": "mayor",
+    "perm_media": -3.383190893109259e-06,
+    "perm_de": 0.007346918329106561,
+    "backbone": "vit_b16_imagenet",
+    "npz_sha256": "7c73f0542589caf0287dd1963b6b6c67ee8d721614cd0774d32644bc16077816",
+    "n": 908,
+    "holm": {
+     "rank": 1,
+     "alpha_h": 0.016666666666666666,
+     "reject": true
+    }
+   },
+   "lorenz": {
+    "rho_spearman": 0.3190933701840265,
+    "p": 0.0001,
+    "k": 0,
+    "n_perm": 9999,
+    "lado": "mayor",
+    "perm_media": 1.2978540364422558e-05,
+    "perm_de": 0.007027478324237247,
+    "backbone": "vit_b16_imagenet",
+    "npz_sha256": "17a7443bbf85b82805bd58757df13b6f838cab24bb61a297f899a091961498be",
+    "n": 908,
+    "holm": {
+     "rank": 1,
+     "alpha_h": 0.016666666666666666,
+     "reject": true
+    }
+   }
+  },
+  "sensibilidad": {}
+ }
+}

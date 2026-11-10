@@ -1,4 +1,4 @@
-# Reporte de figuras — Fase 5, F4.5 y F4.6 (parcial)
+# Reporte de figuras — Fase 5, F4.5 y F4.6
 
 Notebook: `notebooks/F5_contraste.ipynb`, ejecutado completo con `jupyter nbconvert --to notebook --execute --inplace`. Las salidas quedan guardadas en el notebook.
 - La rama `sv/f5-resultados` se adelantó a `origin/main` (`5af17a8`, merge de PR #37) antes de empezar.
@@ -25,6 +25,7 @@ PNG a 300 dpi en `results/f5_contraste/figures/`. Los colores y marcadores por t
 | 9 | `f46_01_kappa.png` | 10 (F4.6) | Mapa de calor de κ sobre ŷ y sobre vectores de acierto, con IC 95 %. Los pares entre técnicas no se calcularon en F4.6 y aparecen como «n/c» |
 | 10 | `f46_02_contencion.png` | 10 (F4.6) | C frente al techo 5D, BETO y 768D, con IC 95 % y la referencia nula; C por semilla |
 | 11 | `f46_03_interseccion_errores.png` | 10 (F4.6) | Diagrama de intersección de errores (BETO, techo 5D y finalista) por técnica, con áreas no proporcionales |
+| 12 | `f46_04_interseccion_errores_cuatro.png` | 10 (F4.6) | Diagrama de intersección de errores de los cuatro conjuntos (BETO, 768D, techo 5D y finalista) por técnica, en cuatro elipses con las 15 regiones y áreas no proporcionales; los tamaños por par frente a 768D también se verifican contra `f46_resultados.json` |
 
 Todas las figuras llevan:
 - un título descriptivo;
@@ -60,4 +61,8 @@ Estas reconstrucciones solo sirven para graficar. No se reportan estadísticos n
 
 - **Ejecuciones previas.** El notebook se ejecutó varias veces mientras se ajustaba el diseño de las figuras. Hubo un error de código propio (`verdict.p_value` devuelve una tupla) y varias correcciones de solapamiento de etiquetas. Ninguna ejecución tocó `run_fase5` ni archivos commiteados; las figuras y los JSON de `figures/` corresponden a la última ejecución.
 - **Diagrama de F4.6.** El diagrama de intersección figuraba como **[completar]** en `docs/bitacora/F4.6.md` (desviación 3 y tabla de pendientes). Ahora existe (`f46_03_interseccion_errores.png`), pero esas líneas no se cambiaron porque la consigna limitaba el cambio a añadir la sección «Figuras». SV decide si las actualiza.
+- **Actualización (rama `sv/f4-recuperabilidad`, tras integrar `main`).**
+  - Se añadió la figura 12 (`f46_04`, cuatro conjuntos). Con ella se cerraron la desviación 3 y la tabla de pendientes de `docs/bitacora/F4.6.md`.
+  - Los textos de la sección 10 que decían «condición 2 pendiente de F4.1» ahora dan su resultado: cumplida en Gray-Scott y Lorenz, no en Perlin. Por eso cambiaron los pies de `f46_02` y `f46_03`.
+  - El notebook se reejecutó completo. Las demás PNG no cambiaron en bytes, y la tabla de tiempos de arriba corresponde a la ejecución anterior.
 - **Tamaño del notebook.** Con las figuras embebidas en sus salidas, `notebooks/F5_contraste.ipynb` pesa unos 1.4 MB. `notebooks/README.md` pide limpiar salidas pesadas, pero aquí se conservan porque la consigna pide guardarlas.

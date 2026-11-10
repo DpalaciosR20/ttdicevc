@@ -27,3 +27,7 @@ venv/
 
 # Claude Code (configuración local de cada integrante)
 .claude/settings.local.json
+
+# F4.1: características de la penúltima capa (van a Drive y a Kaggle; se versionan sus hashes)
+f41_caracteristicas/
+results/f41_recuperabilidad/**/*.npz

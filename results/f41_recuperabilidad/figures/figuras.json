@@ -1,0 +1,25 @@
+{
+ "figuras": [
+  {
+   "archivo": "results/f41_recuperabilidad/figures/f41_01_r2_por_componente.png",
+   "figura": "R² por componente de u y técnica, val y prueba (F4.1)"
+  },
+  {
+   "archivo": "results/f41_recuperabilidad/figures/f41_02_f1_u_hat_delta.png",
+   "figura": "F1 sobre û frente a u y ΔF1 con IC 95 %, prueba (F4.1)"
+  },
+  {
+   "archivo": "results/f47_geometria/figures/f47_01_matrices_distancia.png",
+   "figura": "Matrices de distancia de train en u y en las características (F4.7)"
+  },
+  {
+   "archivo": "results/f47_geometria/figures/f47_02_pares_mantel.png",
+   "figura": "Distancias por par de train y ρ de Mantel por técnica (F4.7)"
+  },
+  {
+   "archivo": "results/f47_geometria/figures/f47_03_rho_vs_permutacion.png",
+   "figura": "ρ de Mantel observado frente a la distribución bajo permutación (F4.7)"
+  }
+ ],
+ "segundos_kernel": 9.1
+}

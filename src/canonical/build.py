@@ -26,6 +26,9 @@ Orígenes de las entradas:
      Fase 5 (f5.*, de results/f5_contraste/resultados.json) y F4.6 (f46.*, de
      f46_resultados.json). Las cifras f5/f46 son extraídas y solo de prueba; los
      veredictos y pisos van como identidad en la clave (conteo 1), como en f33.*.
+     F4.1 (f41.val.* y f41.prueba.*, de results/f41_recuperabilidad/) y F4.7
+     (f47.*, de results/f47_geometria/resultados.json, solo train: value.train).
+     Los F1 de prueba de F4.1 se recalculan desde predicciones_prueba.csv.
   Tras la fusión, la prueba de cada ref.* «bloqueada hasta la Fase 5» se
   recalcula desde su CSV (unlock_ref_test) y check_f5 contrasta los F1
   observados de resultados.json con ref.*, f35.*, f36.* y f55.*.
@@ -1067,6 +1070,155 @@ def collect_f46(inputs):
     return c.out
 
 
+# ── Colector 10: F4.1 (f41.*) y F4.7 (f47.*) ──────────────────────────────
+F41_DIR = REPO / 'results' / 'f41_recuperabilidad'
+F41_VAL = F41_DIR / 'val' / 'resultados_val.json'
+F41_TEST = F41_DIR / 'prueba' / 'resultados_prueba.json'
+F41_PRED = F41_DIR / 'prueba' / 'predicciones_prueba.csv'
+F47_RESULT = REPO / 'results' / 'f47_geometria' / 'resultados.json'
+F41_EVAL = ('src/fase4/recuperabilidad.py (Ridge multisalida sobre la penúltima capa, predicción recortada a [0, 1]; '
+            'LogReg de §4.3 sobre û y sobre u; ΔF1 = F1(u) − F1(û) con IC percentil sobre las réplicas de A1)')
+F41_PRED_EVAL = (F41_EVAL + '; F1-Macro recalculado desde predicciones_prueba.csv, y_pred = 1[p_dep > 0.5], '
+                 'f1_macro_from_confusion')
+F47_EVAL = ('src/fase4/geometria.py (ρ de Spearman entre distancias euclídeas en u y coseno en la penúltima capa, '
+            'pares i < j de train; Mantel con 9,999 permutaciones, default_rng(2026); Holm m = 3)')
+F41_NULL = {'val': 'F4.1: la cifra de validación está en la clave f41.val.* correspondiente',
+            'test': 'F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente'}
+F47_NULL = {'val': 'F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)',
+            'test': 'F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)'}
+F4_SPLIT_PREFIXES = ('f41.', 'f47.')
+
+
+class _SplitCollector(_F5Collector):
+    """Como _F5Collector, pero la cifra va en el split indicado (val, test o train);
+    los demás splits quedan nulos con su razón."""
+
+    def __init__(self, doc, path, split, null_reasons, evaluator):
+        super().__init__(doc, path, None, evaluator)
+        self.split, self.null_reasons = split, null_reasons
+
+    def metric(self, nid, metric, loc, note=None):
+        v = self.get(loc)
+        if isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v):
+            raise CanonicalError(f'{nid}: {self.path}:{self._loc(loc)} = {v!r} no es un número finito')
+        value = {'val': None, 'test': None}
+        value[self.split] = float(v)
+        e = {'kind': 'metric', 'metric': metric, 'status': 'extraido', 'value': value,
+             'null_reason': {s: self.null_reasons[s] for s in METRIC_SPLITS if value[s] is None},
+             'supports_ref': dict(SUPPORTS), 'evaluator': self.evaluator,
+             'source': {'path': self.path, 'locator': self._loc(loc)}}
+        if note:
+            e['note'] = note
+        self._put(nid, e)
+
+
+def _f41_csv_f1(rows, col):
+    cm = confusion_counts([int(r['y_true']) for r in rows], [int(float(r[col]) > 0.5) for r in rows])
+    return f1_macro_from_confusion(cm), cm
+
+
+def collect_f41(inputs):
+    """F4.1: alpha, R² por componente y F1 de la LogReg sobre û (val y prueba); F1
+    sobre u; ΔF1 con su IC; condición 2 de F4.6. Los F1 de prueba se recalculan desde
+    predicciones_prueba.csv (verificados) y deben coincidir con resultados_prueba.json."""
+    dv, dt = _f5_result(F41_VAL, inputs), _f5_result(F41_TEST, inputs)
+    if not F41_PRED.is_file():
+        raise CanonicalError(f'falta {rel(F41_PRED)}')
+    inputs[rel(F41_PRED)] = text_sha256(F41_PRED)
+    with open(F41_PRED, newline='', encoding='utf-8') as f:
+        pred = list(csv.DictReader(f))
+    cv = _SplitCollector(dv, F41_VAL, 'val', F41_NULL, F41_EVAL)
+    ct = _SplitCollector(dt, F41_TEST, 'test', F41_NULL, F41_EVAL)
+    RV, RT = ('resultados',), ('resultados',)
+    cv.metric('f41.val.u.logreg.f1_macro', 'f1_macro', (*RV, 'u', 'logreg_u', 'f1_val'))
+    out = {}
+    test_ids = [f'test_{i:04d}' for i in range(EXPECTED_SIZES['test'])]
+
+    def verified_f1(nid, rows, col, loc):
+        if [r['sample_id'] for r in rows] != test_ids:
+            raise CanonicalError(f'{nid}: filas de {rel(F41_PRED)} distintas del índice de prueba')
+        f1, cm = _f41_csv_f1(rows, col)
+        v = ct.get(loc)
+        if f1 != v:
+            raise CanonicalError(f'{nid}: F1 desde {rel(F41_PRED)} {f1!r} != {rel(F41_TEST)}:{ct._loc(loc)} {v!r}')
+        out[nid] = {'kind': 'metric', 'metric': 'f1_macro', 'status': 'verificado',
+                    'value': {'val': None, 'test': f1}, 'null_reason': {'val': F41_NULL['val']},
+                    'confusion': {'test': cm}, 'supports_ref': dict(SUPPORTS), 'evaluator': F41_PRED_EVAL,
+                    'source': {'path': rel(F41_PRED), 'locator': f'columna {col}' + (
+                        '' if col == 'p_dep_u' else f'; tecnica={rows[0]["tecnica"]}, backbone={rows[0]["backbone"]}')}}
+
+    first = None
+    for t in F5_TECHS:
+        for b, xv in dv['resultados']['tecnicas'][t].items():
+            Lv, Lt = (*RV, 'tecnicas', t, b), (*RT, 'tecnicas', t, b)
+            role = 'principal' if xv['principal'] else 'sensibilidad'
+            note = f'backbone {role} de F4.1'
+            bv, bt = f'f41.val.{t}.{b}', f'f41.prueba.{t}.{b}'
+            cv.metric(f'{bv}.alpha', 'ridge_alpha', (*Lv, 'alpha'), note=note)
+            cv.metric(f'{bv}.logreg_u_hat.f1_macro', 'f1_macro', (*Lv, 'logreg_u_hat', 'f1_val'), note=note)
+            for i in range(len(xv['r2_val'])):
+                cv.metric(f'{bv}.r2.u{i}', 'r2', (*Lv, 'r2_val', i), note=note)
+                ct.metric(f'{bt}.r2.u{i}', 'r2', (*Lt, 'r2_test', i), note=note)
+            rows = [r for r in pred if r['tecnica'] == t and r['backbone'] == b]
+            verified_f1(f'{bt}.logreg_u_hat.f1_macro', rows, 'p_dep_u_hat', (*Lt, 'f1_u_hat'))
+            if first is None:
+                first = rows
+                verified_f1('f41.prueba.u.logreg.f1_macro', rows, 'p_dep_u', ('resultados', 'u', 'f1_test'))
+            elif [r['p_dep_u'] for r in rows] != [r['p_dep_u'] for r in first]:
+                raise CanonicalError(f'{bt}: p_dep_u distinto entre backbones en {rel(F41_PRED)}')
+            ct.metric(f'{bt}.delta_f1', 'f1_macro', (*Lt, 'delta_f1_obs'), note='ΔF1 = F1(u) − F1(û)')
+            ct.interval(f'{bt}.delta_f1', 'f1_macro', (*Lt, 'ic'))
+            ct.metric(f'{bt}.delta_f1.nivel', 'confidence_level', (*Lt, 'nivel'))
+            ct.count(f'{bt}.delta_f1.ic_contiene_0', (*Lt, 'contiene_0'),
+                     note='1 = el IC cerrado [ic_inf, ic_sup] contiene 0 (ic_inf <= 0 <= ic_sup)')
+        cond = dt['resultados']['tecnicas'][t]['condicion_2_F46']
+        if not isinstance(cond, bool) or cond != dt['resultados']['tecnicas'][t][PRINCIPAL_F41[t]]['contiene_0']:
+            raise CanonicalError(f'f41.prueba.{t}.condicion_2_f46 = {cond!r}')
+        ct.count(f'f41.prueba.{t}.condicion_2_f46', ('resultados', 'tecnicas', t, 'condicion_2_F46'),
+                 note=f'1 = cumplida: el IC de ΔF1 del backbone principal ({PRINCIPAL_F41[t]}) contiene 0')
+    for c in (cv, ct):
+        for k, e in c.out.items():
+            if k in out:
+                raise CanonicalError(f'{k}: clave repetida en el colector')
+            out[k] = e
+    return out
+
+
+PRINCIPAL_F41 = {'gray_scott': 'efficientnet_b0_finetune_seed42', 'perlin': 'vit_b16_imagenet',
+                 'lorenz': 'vit_b16_imagenet'}
+
+
+def collect_f47(inputs):
+    """F4.7 (solo train): ρ de Spearman, p de Mantel y Holm (m = 3) por técnica."""
+    doc = _f5_result(F47_RESULT, inputs)
+    c = _SplitCollector(doc, F47_RESULT, 'train', F47_NULL, F47_EVAL)
+    for t in F5_TECHS:
+        L, b = ('resultados', 'principal', t), f'f47.{t}'
+        if doc['resultados']['principal'][t]['backbone'] != PRINCIPAL_F41[t]:
+            raise CanonicalError(f'{b}: backbone {doc["resultados"]["principal"][t]["backbone"]!r}')
+        c.metric(f'{b}.rho_spearman', 'spearman_rho', (*L, 'rho_spearman'), note=f'backbone {PRINCIPAL_F41[t]}')
+        c.metric(f'{b}.perm_media', 'spearman_rho', (*L, 'perm_media'), note='media de ρ bajo permutación')
+        c.metric(f'{b}.perm_de', 'spearman_rho', (*L, 'perm_de'), note='DE (ddof = 1) de ρ bajo permutación')
+        c.metric(f'{b}.p', 'p_value', (*L, 'p'), note='p de Mantel, (k + 1) / (B + 1), cola superior')
+        c.count(f'{b}.k', (*L, 'k'), note='permutaciones con ρ >= ρ observado')
+        c.count(f'{b}.n_perm', (*L, 'n_perm'))
+        c.count(f'{b}.n', (*L, 'n'), note='muestras de train')
+        c.metric(f'{b}.holm.alpha_h', 'alpha', (*L, 'holm', 'alpha_h'))
+        c.count(f'{b}.holm.rango', (*L, 'holm', 'rank'))
+        c.count(f'{b}.holm.rechaza', (*L, 'holm', 'reject'), note='1 = se rechaza H0 (Holm, m = 3)')
+    return c.out
+
+
+def check_f41(numbers):
+    """El F1 de la LogReg sobre u en prueba (F4.1) es el de F2.1 (ref.techo5d.logreg)."""
+    a, b = numbers['f41.prueba.u.logreg.f1_macro']['value']['test'], numbers['ref.techo5d.logreg.f1_macro']['value']['test']
+    if a != b:
+        raise CanonicalError(f'f41.prueba.u.logreg.f1_macro {a!r} != ref.techo5d.logreg.f1_macro {b!r}')
+    a, b = numbers['f41.val.u.logreg.f1_macro']['value']['val'], numbers['ref.techo5d.logreg.f1_macro']['value']['val']
+    if a != b:
+        raise CanonicalError(f'f41.val.u.logreg.f1_macro {a!r} != ref.techo5d.logreg.f1_macro {b!r}')
+
+
 def check_f5(numbers):
     """Los F1 observados de resultados.json coinciden con las cifras verificadas
     desde las predicciones (ref.*, f35.*, f36.*)."""
@@ -1261,11 +1413,14 @@ def build(umap_path=None, fragment_paths=None, strict=False):
     sources['build.py:collect_ref_longitud'] = collect_ref_longitud(inputs)
     sources['build.py:collect_f5'] = collect_f5(inputs)
     sources['build.py:collect_f46'] = collect_f46(inputs)
+    sources['build.py:collect_f41'] = collect_f41(inputs)
+    sources['build.py:collect_f47'] = collect_f47(inputs)
     sources.update(load_fragments(fragment_paths, inputs))
     numbers, superseded = merge(sources)
     unlock_ref_test(numbers, inputs)
     resolve_derived(numbers)
     check_f5(numbers)
+    check_f41(numbers)
     doc = {'schema_version': SCHEMA_VERSION, 'inputs': inputs, 'numbers': numbers}
     if superseded:
         doc['superseded'] = superseded

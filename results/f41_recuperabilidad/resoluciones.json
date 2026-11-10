@@ -1,0 +1,6 @@
+{"ridge_escalado": "standard_train", "alpha_desempate": "mayor",
+ "alpha_crossfit": "seleccionado", "mantel_lado": "mayor",
+ "mantel_p": "k_mas_1_sobre_B_mas_1", "mantel_rng": "por_tecnica",
+ "mantel_sensibilidad": false,
+ "_autor": "SV", "_fecha": "2026-11-07",
+ "_nota": "Decisiones de implementación de análisis explicativos (protocolo §9, §11), fijadas antes de cualquier cálculo con datos reales"}
