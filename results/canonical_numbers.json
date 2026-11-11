@@ -197,6 +197,7 @@
   "results/f43_atribucion/gpu/ablacion.json": "f0d9774c172ef556df96a732d5823bcbdddbfdab7cf7fc386d3ef1738a220d58",
   "results/f43_atribucion/gpu/cascada.json": "cd1e61b198acfc7bab200067f509a65a19d264ca3d3881ea7f51822be56423d4",
   "results/f43_atribucion/local/resultados.json": "75cb3b02e1755b0e0b3b58656db23a9eec363059c27339e10d7b92dbbdebb3a3",
+  "results/f44_convergencia/resultados.json": "49e81cef8193273a50fccd41237c0b93381fcfad8b6adc8b3c63caf3f15a989c",
   "results/f45_longitud/resultado.json": "bfd293b0ac8fbd0c5699a52b194713a160523fc42559b74daccafe92707c0085",
   "results/f47_geometria/resultados.json": "492a408ce441dfca998c10a3335f40bbcf6e7fc132fbe45c5c3ddbab05aaa687",
   "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed123.json": "7213d4af2fea1bee72e418e13349da4543ea91f19e59cc54e36773348b225934",
@@ -16256,6 +16257,950 @@
    "value": {
     "test": null,
     "val": 0.03559288142371526
+   }
+  },
+  "f44.gray_scott.contrast.ic_contiene_0": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = el IC contiene 0",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.contrast.contiene_0",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f44.gray_scott.contrast.n": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de val con Spearman definido",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.contrast.n",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 114
+  },
+  "f44.gray_scott.contrast.n_indefinidos": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "excluidas: descriptor o masa constante",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.contrast.n_indefinidos",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.gray_scott.contrast.spearman_media": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.contrast.media",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.037632593601705205
+   }
+  },
+  "f44.gray_scott.contrast.spearman_media.nivel": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.contrast.nivel",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.95
+   }
+  },
+  "f44.gray_scott.contrast.spearman_media_ic_inf": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.contrast.ic_inf",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.12128384054847653
+   }
+  },
+  "f44.gray_scott.contrast.spearman_media_ic_sup": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.contrast.ic_sup",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.04497380910935793
+   }
+  },
+  "f44.gray_scott.edge_density.ic_contiene_0": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = el IC contiene 0",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.edge_density.contiene_0",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f44.gray_scott.edge_density.n": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de val con Spearman definido",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.edge_density.n",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 114
+  },
+  "f44.gray_scott.edge_density.n_indefinidos": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "excluidas: descriptor o masa constante",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.edge_density.n_indefinidos",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.gray_scott.edge_density.spearman_media": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.edge_density.media",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.03893392203118281
+   }
+  },
+  "f44.gray_scott.edge_density.spearman_media.nivel": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.edge_density.nivel",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.95
+   }
+  },
+  "f44.gray_scott.edge_density.spearman_media_ic_inf": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.edge_density.ic_inf",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.060824682998988924
+   }
+  },
+  "f44.gray_scott.edge_density.spearman_media_ic_sup": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.edge_density.ic_sup",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.13532110690721233
+   }
+  },
+  "f44.gray_scott.lbp_energy.ic_contiene_0": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = el IC contiene 0",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.lbp_energy.contiene_0",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f44.gray_scott.lbp_energy.n": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de val con Spearman definido",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.lbp_energy.n",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 114
+  },
+  "f44.gray_scott.lbp_energy.n_indefinidos": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "excluidas: descriptor o masa constante",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.lbp_energy.n_indefinidos",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.gray_scott.lbp_energy.spearman_media": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.lbp_energy.media",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.015767185886118737
+   }
+  },
+  "f44.gray_scott.lbp_energy.spearman_media.nivel": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.lbp_energy.nivel",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.95
+   }
+  },
+  "f44.gray_scott.lbp_energy.spearman_media_ic_inf": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.lbp_energy.ic_inf",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.0993568622559496
+   }
+  },
+  "f44.gray_scott.lbp_energy.spearman_media_ic_sup": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.lbp_energy.ic_sup",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.06943541465502284
+   }
+  },
+  "f44.gray_scott.shannon_entropy.ic_contiene_0": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = el IC contiene 0",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.shannon_entropy.contiene_0",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f44.gray_scott.shannon_entropy.n": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de val con Spearman definido",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.shannon_entropy.n",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 114
+  },
+  "f44.gray_scott.shannon_entropy.n_indefinidos": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "excluidas: descriptor o masa constante",
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.shannon_entropy.n_indefinidos",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.gray_scott.shannon_entropy.spearman_media": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.shannon_entropy.media",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.02283781176855165
+   }
+  },
+  "f44.gray_scott.shannon_entropy.spearman_media.nivel": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.shannon_entropy.nivel",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.95
+   }
+  },
+  "f44.gray_scott.shannon_entropy.spearman_media_ic_inf": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.shannon_entropy.ic_inf",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.07403847968198639
+   }
+  },
+  "f44.gray_scott.shannon_entropy.spearman_media_ic_sup": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.gray_scott.map.shannon_entropy.ic_sup",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.11819630289731933
+   }
+  },
+  "f44.lorenz.lbp_energy.ic_contiene_0": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = el IC contiene 0",
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.lbp_energy.contiene_0",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.lorenz.lbp_energy.n": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de val con Spearman definido",
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.lbp_energy.n",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 114
+  },
+  "f44.lorenz.lbp_energy.n_indefinidos": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "excluidas: descriptor o masa constante",
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.lbp_energy.n_indefinidos",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.lorenz.lbp_energy.spearman_media": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.lbp_energy.media",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.647323128569172
+   }
+  },
+  "f44.lorenz.lbp_energy.spearman_media.nivel": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.lbp_energy.nivel",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.95
+   }
+  },
+  "f44.lorenz.lbp_energy.spearman_media_ic_inf": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.lbp_energy.ic_inf",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.6616180480029751
+   }
+  },
+  "f44.lorenz.lbp_energy.spearman_media_ic_sup": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.lbp_energy.ic_sup",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.6324189345249147
+   }
+  },
+  "f44.lorenz.shannon_entropy.ic_contiene_0": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = el IC contiene 0",
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.shannon_entropy.contiene_0",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.lorenz.shannon_entropy.n": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de val con Spearman definido",
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.shannon_entropy.n",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 114
+  },
+  "f44.lorenz.shannon_entropy.n_indefinidos": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "excluidas: descriptor o masa constante",
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.shannon_entropy.n_indefinidos",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.lorenz.shannon_entropy.spearman_media": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.shannon_entropy.media",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6481626694945075
+   }
+  },
+  "f44.lorenz.shannon_entropy.spearman_media.nivel": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.shannon_entropy.nivel",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.95
+   }
+  },
+  "f44.lorenz.shannon_entropy.spearman_media_ic_inf": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.shannon_entropy.ic_inf",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6331325929324305
+   }
+  },
+  "f44.lorenz.shannon_entropy.spearman_media_ic_sup": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.lorenz.map.shannon_entropy.ic_sup",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6625825495168546
+   }
+  },
+  "f44.perlin.contrast.ic_contiene_0": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = el IC contiene 0",
+   "source": {
+    "locator": "resultados.spearman.perlin.map.contrast.contiene_0",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.perlin.contrast.n": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de val con Spearman definido",
+   "source": {
+    "locator": "resultados.spearman.perlin.map.contrast.n",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 114
+  },
+  "f44.perlin.contrast.n_indefinidos": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "excluidas: descriptor o masa constante",
+   "source": {
+    "locator": "resultados.spearman.perlin.map.contrast.n_indefinidos",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.perlin.contrast.spearman_media": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.perlin.map.contrast.media",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.4122825891079011
+   }
+  },
+  "f44.perlin.contrast.spearman_media.nivel": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.perlin.map.contrast.nivel",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.95
+   }
+  },
+  "f44.perlin.contrast.spearman_media_ic_inf": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.perlin.map.contrast.ic_inf",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.38581185769690024
+   }
+  },
+  "f44.perlin.contrast.spearman_media_ic_sup": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.perlin.map.contrast.ic_sup",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.4374033454808997
+   }
+  },
+  "f44.perlin.edge_density.ic_contiene_0": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = el IC contiene 0",
+   "source": {
+    "locator": "resultados.spearman.perlin.map.edge_density.contiene_0",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f44.perlin.edge_density.n": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de val con Spearman definido",
+   "source": {
+    "locator": "resultados.spearman.perlin.map.edge_density.n",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 114
+  },
+  "f44.perlin.edge_density.n_indefinidos": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "count",
+   "note": "excluidas: descriptor o masa constante",
+   "source": {
+    "locator": "resultados.spearman.perlin.map.edge_density.n_indefinidos",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f44.perlin.edge_density.spearman_media": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.perlin.map.edge_density.media",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.012513207918647894
+   }
+  },
+  "f44.perlin.edge_density.spearman_media.nivel": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "confidence_level",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.perlin.map.edge_density.nivel",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.95
+   }
+  },
+  "f44.perlin.edge_density.spearman_media_ic_inf": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.perlin.map.edge_density.ic_inf",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.001741390369559143
+   }
+  },
+  "f44.perlin.edge_density.spearman_media_ic_sup": {
+   "evaluator": "src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en results/f44_convergencia/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "null_reason": {
+    "test": "F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)"
+   },
+   "source": {
+    "locator": "resultados.spearman.perlin.map.edge_density.ic_sup",
+    "path": "results/f44_convergencia/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.02753836026781039
    }
   },
   "f46.contencion.gray_scott.beto.c": {

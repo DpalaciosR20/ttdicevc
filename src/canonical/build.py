@@ -31,7 +31,8 @@ Orígenes de las entradas:
      F4.2 (f42.*, de results/f42_regimen/resultados.json: train en value.train; el
      F1 por estrato de Lorenz en value.test, recalculado desde las predicciones) y
      F4.3 (f43.*, de results/f43_atribucion/: val; la fracción de constantes lleva
-     también la réplica de prueba con los mapas archivados).
+     también la réplica de prueba con los mapas archivados) y F4.4 (f44.*, de
+     results/f44_convergencia/resultados.json, solo val).
      Los F1 de prueba de F4.1 se recalculan desde predicciones_prueba.csv.
   Tras la fusión, la prueba de cada ref.* «bloqueada hasta la Fase 5» se
   recalcula desde su CSV (unlock_ref_test) y check_f5 contrasta los F1
@@ -1090,7 +1091,7 @@ F41_NULL = {'val': 'F4.1: la cifra de validación está en la clave f41.val.* co
             'test': 'F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente'}
 F47_NULL = {'val': 'F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)',
             'test': 'F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)'}
-F4_SPLIT_PREFIXES = ('f41.', 'f47.', 'f42.', 'f43.')
+F4_SPLIT_PREFIXES = ('f41.', 'f47.', 'f42.', 'f43.', 'f44.')
 
 
 class _SplitCollector(_F5Collector):
@@ -1462,6 +1463,43 @@ def collect_f43(inputs):
     return out
 
 
+# ── Colector 13: F4.4 (f44.*) ─────────────────────────────────────────────
+F44_RESULT = REPO / 'results' / 'f44_convergencia' / 'resultados.json'
+F44_DESC = {'gray_scott': ('shannon_entropy', 'contrast', 'edge_density', 'lbp_energy'),
+            'perlin': ('contrast', 'edge_density'), 'lorenz': ('shannon_entropy', 'lbp_energy')}
+F44_EVAL = ('src/fase4/convergencia.py (val; descriptores significativos de la Tabla 11 por parche con las funciones '
+            'de F2.4 sobre la imagen redimensionada a 224, rejilla 7 × 7 en Gray-Scott y 14 × 14 en ViT; masa del mapa '
+            'de F3.7 por parche, dividir_media_semilla y media de 5 semillas; Spearman por muestra, media sobre val, '
+            'IC percentil 95 % por bootstrap sobre muestras, B = 10,000, default_rng(2026); resoluciones en '
+            'results/f44_convergencia/resoluciones.json)')
+F44_NULL = {'val': 'F4.4: la cifra está en val (docs/plan_fase4.md, F4.4)',
+            'test': 'F4.4 se calcula solo en val (docs/plan_fase4.md, F4.4; G2)'}
+
+
+def collect_f44(inputs):
+    """F4.4: Spearman medio descriptor–masa por técnica y descriptor (mapa principal), su IC y los indefinidos."""
+    doc = _f5_result(F44_RESULT, inputs)
+    if doc['meta']['limit'] is not None or doc['meta']['git_commit'] == 'prueba_acotada':
+        raise CanonicalError('f44: resultados de una prueba acotada')
+    S = doc['resultados']['spearman']
+    if {t: tuple(S[t]['map']) for t in S} != F44_DESC:
+        raise CanonicalError(f'f44: descriptores {[(t, list(S[t]["map"])) for t in S]}')
+    c = _SplitCollector(doc, F44_RESULT, 'val', F44_NULL, F44_EVAL)
+    for t, ds in F44_DESC.items():
+        for d in ds:
+            L = ('resultados', 'spearman', t, 'map', d)
+            b = f'f44.{t}.{d}'
+            c.metric(f'{b}.spearman_media', 'spearman_rho', (*L, 'media'),
+                     note='media sobre val del Spearman por muestra entre descriptor y masa del mapa por parche')
+            c.metric(f'{b}.spearman_media_ic_inf', 'spearman_rho', (*L, 'ic_inf'))
+            c.metric(f'{b}.spearman_media_ic_sup', 'spearman_rho', (*L, 'ic_sup'))
+            c.metric(f'{b}.spearman_media.nivel', 'confidence_level', (*L, 'nivel'))
+            c.count(f'{b}.n', (*L, 'n'), note='muestras de val con Spearman definido')
+            c.count(f'{b}.n_indefinidos', (*L, 'n_indefinidos'), note='excluidas: descriptor o masa constante')
+            c.count(f'{b}.ic_contiene_0', (*L, 'contiene_0'), note='1 = el IC contiene 0')
+    return c.out
+
+
 def check_f41(numbers):
     """El F1 de la LogReg sobre u en prueba (F4.1) es el de F2.1 (ref.techo5d.logreg)."""
     a, b = numbers['f41.prueba.u.logreg.f1_macro']['value']['test'], numbers['ref.techo5d.logreg.f1_macro']['value']['test']
@@ -1670,6 +1708,7 @@ def build(umap_path=None, fragment_paths=None, strict=False):
     sources['build.py:collect_f47'] = collect_f47(inputs)
     sources['build.py:collect_f42'] = collect_f42(inputs, umap_path)
     sources['build.py:collect_f43'] = collect_f43(inputs)
+    sources['build.py:collect_f44'] = collect_f44(inputs)
     sources.update(load_fragments(fragment_paths, inputs))
     numbers, superseded = merge(sources)
     unlock_ref_test(numbers, inputs)
