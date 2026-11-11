@@ -1,0 +1,382 @@
+{
+ "meta": {
+  "tarea": "F4.4",
+  "git_commit": "ff1654c25cb86f06d2a3a0c9d0c0b985e15b0559",
+  "limit": null,
+  "created_at": "2026-11-11T04:42:25+00:00",
+  "resoluciones": {
+   "archivo": "results/f44_convergencia/resoluciones.json",
+   "sha256": "f04c927a08678d06a0cfbade4ea14570c2aca2bf5f68285ea617093cbcc79fa9",
+   "autor": "SV",
+   "fecha": "2026-11-10",
+   "nota": "Explicativo (protocolo §9, §11), fijado antes de calcular. En NATURALEZA, el contraste se clasifica como dispersión global de intensidades sin banda específica; la tabla es una clasificación orientativa. N1–N3 se declaran como limitaciones."
+  },
+  "insumos": {
+   "tabla11": "b2f29f591ce963aaf4d923629af5f81d2e85cf2511e8c36af70586fec7229022",
+   "canonical_numbers": "5baddcaa750fd662785ae7e75c199c0f8df76318e0d5458c02465c97ce8b22c5",
+   "f24_descriptores.py": "83a057d04c5852dd72dc013657b8c9d32eae7a48552f17f0f2e2a34ec246aedf"
+  },
+  "imagenes_val_sha256_lista": {
+   "gray_scott": "f790b8f78ca966c896abea96e59bcc47e0385cbf9ee383afca8b5193b0d0b7b5",
+   "perlin": "ee3161b94708c6758759932115a95c28a68b97f7a6041659bd5cb4422e7f8712",
+   "lorenz": "77b511e624c18ae511950f758781ffcea36b2e0be3ce049be70d64dafaa68711"
+  },
+  "artefactos_verificados": {
+   "MAPS[gray_scott__efficientnet_b0__finetune__px224-flip__seed42]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.npz",
+    "sha256": "021e3e1a32b0427180fe4852d8b6e3da5694ca2b3d40fd260af0669a464b5c5c",
+    "bytes": 16450376
+   },
+   "MAPS[gray_scott__efficientnet_b0__finetune__px224-flip__seed7]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.npz",
+    "sha256": "1fee9d39126e1656de4a342cb771103e59e1b2753f7e5572590ea32d9080e5fc",
+    "bytes": 15664497
+   },
+   "MAPS[gray_scott__efficientnet_b0__finetune__px224-flip__seed123]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.npz",
+    "sha256": "103da6cd5bb0137d73ac3af5647257970d09f641b60652d4f9add944e5276cd3",
+    "bytes": 16987585
+   },
+   "MAPS[gray_scott__efficientnet_b0__finetune__px224-flip__seed2024]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.npz",
+    "sha256": "b1fb4e9489859ce614bd1c9e2ae4130da520448619814d06db21342140cd39ad",
+    "bytes": 14985575
+   },
+   "MAPS[gray_scott__efficientnet_b0__finetune__px224-flip__seed99]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed99.npz",
+    "sha256": "f7b21ee8e363646dc9182beb6e7a75f977de65e9c4ea3260e5b92e8e1a2549e2",
+    "bytes": 16836155
+   },
+   "MAPS[perlin__vit_b16__frozen__px224-noflip__seed42]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed42.npz",
+    "sha256": "a70d33b64572fcbf16be754944f56ab0395c1edbcbac0f3ed6353e05f5571596",
+    "bytes": 60048141
+   },
+   "MAPS[perlin__vit_b16__frozen__px224-noflip__seed7]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed7.npz",
+    "sha256": "75527670a2e1a3e0395738b78290e54c98744b9ca077e26c24c87c772745fcda",
+    "bytes": 60067318
+   },
+   "MAPS[perlin__vit_b16__frozen__px224-noflip__seed123]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed123.npz",
+    "sha256": "891b495810cc09997f8cb353d805c9ba8c381706380c2e18317e111d98b12c52",
+    "bytes": 60047731
+   },
+   "MAPS[perlin__vit_b16__frozen__px224-noflip__seed2024]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed2024.npz",
+    "sha256": "64419276db85abe20b5c9db1df3d482dac72bf4b4998a638fd230238d2c438e7",
+    "bytes": 60204257
+   },
+   "MAPS[perlin__vit_b16__frozen__px224-noflip__seed99]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed99.npz",
+    "sha256": "3a3e283497e2f1d2333754673b98fa54624486995f6ab95809bff2be97de567d",
+    "bytes": 59954268
+   },
+   "MAPS[lorenz__vit_b16__frozen__px224-noflip__seed42]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed42.npz",
+    "sha256": "0e465fd2dd3e826532daad4c52be26737ce685f61e34eb3b3ee73dc439f36af0",
+    "bytes": 61171122
+   },
+   "MAPS[lorenz__vit_b16__frozen__px224-noflip__seed7]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed7.npz",
+    "sha256": "fb67198a44e3077be5c073466e7dbe4fab1bf739609da809bf91a25184b7ecff",
+    "bytes": 61815880
+   },
+   "MAPS[lorenz__vit_b16__frozen__px224-noflip__seed123]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed123.npz",
+    "sha256": "67c9a1e69b768712b1332a8f2743b39c6d805fb521178f64e0e94f0cdcf1c44c",
+    "bytes": 61749719
+   },
+   "MAPS[lorenz__vit_b16__frozen__px224-noflip__seed2024]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed2024.npz",
+    "sha256": "4d01a5a86d1353faf097ad2c124896982958b29f116328e71258150ef11b4ec6",
+    "bytes": 61019485
+   },
+   "MAPS[lorenz__vit_b16__frozen__px224-noflip__seed99]": {
+    "archivo": "tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed99.npz",
+    "sha256": "abf7ce956c76f61b5e9d5baca4f0887f656c4e2b7c2a71b80b3e4241a66e6e10",
+    "bytes": 61396035
+   }
+  },
+  "rejilla": {
+   "gray_scott": 7,
+   "perlin": 14,
+   "lorenz": 14
+  },
+  "b": 10000,
+  "semilla_bootstrap": 2026,
+  "segundos": {
+   "gray_scott_descriptores_s": 31.1,
+   "gray_scott_mapas_s": 3.3,
+   "perlin_descriptores_s": 27.5,
+   "perlin_mapas_s": 8.7,
+   "lorenz_descriptores_s": 26.6,
+   "lorenz_mapas_s": 8.6,
+   "bootstrap_s": 0.1
+  },
+  "segundos_total": 106.4
+ },
+ "resultados": {
+  "spearman": {
+   "gray_scott": {
+    "map": {
+     "shannon_entropy": {
+      "media": 0.02283781176855165,
+      "ic_inf": -0.07403847968198639,
+      "ic_sup": 0.11819630289731933,
+      "n": 114,
+      "b": 10000,
+      "b_validas": 10000,
+      "nivel": 0.95,
+      "contiene_0": true,
+      "sobre_0": false,
+      "bajo_0": false,
+      "n_indefinidos": 0
+     },
+     "contrast": {
+      "media": -0.037632593601705205,
+      "ic_inf": -0.12128384054847653,
+      "ic_sup": 0.04497380910935793,
+      "n": 114,
+      "b": 10000,
+      "b_validas": 10000,
+      "nivel": 0.95,
+      "contiene_0": true,
+      "sobre_0": false,
+      "bajo_0": false,
+      "n_indefinidos": 0
+     },
+     "edge_density": {
+      "media": 0.03893392203118281,
+      "ic_inf": -0.060824682998988924,
+      "ic_sup": 0.13532110690721233,
+      "n": 114,
+      "b": 10000,
+      "b_validas": 10000,
+      "nivel": 0.95,
+      "contiene_0": true,
+      "sobre_0": false,
+      "bajo_0": false,
+      "n_indefinidos": 0
+     },
+     "lbp_energy": {
+      "media": -0.015767185886118737,
+      "ic_inf": -0.0993568622559496,
+      "ic_sup": 0.06943541465502284,
+      "n": 114,
+      "b": 10000,
+      "b_validas": 10000,
+      "nivel": 0.95,
+      "contiene_0": true,
+      "sobre_0": false,
+      "bajo_0": false,
+      "n_indefinidos": 0
+     }
+    }
+   },
+   "perlin": {
+    "map": {
+     "contrast": {
+      "media": 0.4122825891079011,
+      "ic_inf": 0.38581185769690024,
+      "ic_sup": 0.4374033454808997,
+      "n": 114,
+      "b": 10000,
+      "b_validas": 10000,
+      "nivel": 0.95,
+      "contiene_0": false,
+      "sobre_0": true,
+      "bajo_0": false,
+      "n_indefinidos": 0
+     },
+     "edge_density": {
+      "media": 0.012513207918647894,
+      "ic_inf": -0.001741390369559143,
+      "ic_sup": 0.02753836026781039,
+      "n": 114,
+      "b": 10000,
+      "b_validas": 10000,
+      "nivel": 0.95,
+      "contiene_0": true,
+      "sobre_0": false,
+      "bajo_0": false,
+      "n_indefinidos": 0
+     }
+    }
+   },
+   "lorenz": {
+    "map": {
+     "shannon_entropy": {
+      "media": 0.6481626694945075,
+      "ic_inf": 0.6331325929324305,
+      "ic_sup": 0.6625825495168546,
+      "n": 114,
+      "b": 10000,
+      "b_validas": 10000,
+      "nivel": 0.95,
+      "contiene_0": false,
+      "sobre_0": true,
+      "bajo_0": false,
+      "n_indefinidos": 0
+     },
+     "lbp_energy": {
+      "media": -0.647323128569172,
+      "ic_inf": -0.6616180480029751,
+      "ic_sup": -0.6324189345249147,
+      "n": 114,
+      "b": 10000,
+      "b_validas": 10000,
+      "nivel": 0.95,
+      "contiene_0": false,
+      "sobre_0": false,
+      "bajo_0": true,
+      "n_indefinidos": 0
+     }
+    }
+   }
+  },
+  "tabla_cualitativa": {
+   "gray_scott": {
+    "f1_base": 0.7170301316062507,
+    "delta_f1": {
+     "paso_bajo": {
+      "s1": -0.02434447975266372,
+      "s2": -0.05464379786648543,
+      "s4": -0.16079534281130012,
+      "s8": -0.2614729802200907
+     },
+     "paso_alto": {
+      "s1": -0.21016870096217238,
+      "s2": -0.2045052185548028,
+      "s4": -0.20608717758344364,
+      "s8": -0.1656022484534222
+     }
+    },
+    "descriptores": [
+     {
+      "descriptor": "lbp_energy",
+      "cohen_d": 1.319623526245767,
+      "abs_d": 1.319623526245767,
+      "p_holm": 5.430739519982643e-68,
+      "naturaleza": "textura local, vecindad de radio 3 px (frecuencias altas y medias)"
+     },
+     {
+      "descriptor": "shannon_entropy",
+      "cohen_d": -1.0977268914722105,
+      "abs_d": 1.0977268914722105,
+      "p_holm": 3.9065534982281735e-52,
+      "naturaleza": "histograma de niveles de gris (sin estructura espacial)"
+     },
+     {
+      "descriptor": "edge_density",
+      "cohen_d": -0.6566184414327575,
+      "abs_d": 0.6566184414327575,
+      "p_holm": 4.4088971007276436e-21,
+      "naturaleza": "bordes de Sobel (frecuencias altas)"
+     },
+     {
+      "descriptor": "contrast",
+      "cohen_d": -0.3949601394529204,
+      "abs_d": 0.3949601394529204,
+      "p_holm": 2.076148195122287e-08,
+      "naturaleza": "dispersión global de intensidades (sin banda específica)"
+     }
+    ],
+    "fuente": "f43.gray_scott.ablacion.*; results/f24_descriptores/tabla11_recalculada.csv"
+   },
+   "perlin": {
+    "f1_base": 0.7142159006989949,
+    "delta_f1": {
+     "paso_bajo": {
+      "s1": -0.0759783383846913,
+      "s2": -0.0803795318386151,
+      "s4": -0.15952690286066384,
+      "s8": -0.15395246619661046
+     },
+     "paso_alto": {
+      "s1": -0.059149613587651986,
+      "s2": -0.04621199334267945,
+      "s4": -0.033469833208421916,
+      "s8": -0.028782573798362132
+     }
+    },
+    "descriptores": [
+     {
+      "descriptor": "edge_density",
+      "cohen_d": 0.9450556512656,
+      "abs_d": 0.9450556512656,
+      "p_holm": 1.309438576132493e-35,
+      "naturaleza": "bordes de Sobel (frecuencias altas)"
+     },
+     {
+      "descriptor": "contrast",
+      "cohen_d": 0.2580125161084191,
+      "abs_d": 0.2580125161084191,
+      "p_holm": 0.0008256493409902082,
+      "naturaleza": "dispersión global de intensidades (sin banda específica)"
+     }
+    ],
+    "fuente": "f43.perlin.ablacion.*; results/f24_descriptores/tabla11_recalculada.csv"
+   },
+   "lorenz": {
+    "f1_base": 0.7140644318087928,
+    "delta_f1": {
+     "paso_bajo": {
+      "s1": -0.0024247381416451,
+      "s2": -0.018615389219603772,
+      "s4": -0.05697441705418869,
+      "s8": -0.17387258787883636
+     },
+     "paso_alto": {
+      "s1": -0.28149718299829557,
+      "s2": -0.12092994612572694,
+      "s4": -0.11230703056559646,
+      "s8": -0.09765817123048419
+     }
+    },
+    "descriptores": [
+     {
+      "descriptor": "lbp_energy",
+      "cohen_d": 0.4432195763554862,
+      "abs_d": 0.4432195763554862,
+      "p_holm": 6.440498929407217e-10,
+      "naturaleza": "textura local, vecindad de radio 3 px (frecuencias altas y medias)"
+     },
+     {
+      "descriptor": "shannon_entropy",
+      "cohen_d": -0.42267493737335615,
+      "abs_d": 0.42267493737335615,
+      "p_holm": 3.938220075644215e-09,
+      "naturaleza": "histograma de niveles de gris (sin estructura espacial)"
+     }
+    ],
+    "fuente": "f43.lorenz.ablacion.*; results/f24_descriptores/tabla11_recalculada.csv"
+   }
+  },
+  "contexto_a11": {
+   "gray_scott": {
+    "delta": 0.04543406987079435,
+    "ic_inf": -0.016468478070513985,
+    "ic_sup": 0.10910761012410698,
+    "clave": "f5.frente_a_descriptores.gray_scott"
+   },
+   "perlin": {
+    "delta": 0.02979714413792911,
+    "ic_inf": -0.048729275463953906,
+    "ic_sup": 0.10898332462111919,
+    "clave": "f5.frente_a_descriptores.perlin"
+   },
+   "lorenz": {
+    "delta": 0.1454317287022131,
+    "ic_inf": 0.04853381041037734,
+    "ic_sup": 0.24342529140282904,
+    "clave": "f5.frente_a_descriptores.lorenz"
+   }
+  },
+  "lectura_f43": {
+   "perlin": "cordura_por_datos_superada",
+   "lorenz": "dependiente_de_la_cabeza_sin_validacion_por_datos"
+  },
+  "advertencia_lorenz": "F4.3: mapas de Lorenz dependientes de la cabeza, sin validación por datos (f43.lorenz.lectura_vit.*); la convergencia de Lorenz se lee con esa advertencia"
+ }
+}
