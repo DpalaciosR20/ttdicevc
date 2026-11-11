@@ -6,7 +6,7 @@
 
 | Paso | Estado |
 |---|---|
-| 1. Recepción de la parte GPU | Hecho. 16/16 comprobaciones OK. Commit `9867373`. |
+| 1. Recepción de la parte GPU | Hecho. 16/16 comprobaciones OK. Commit `1de5683`. |
 | 2. Parte local | Prueba acotada: ≈ 43 min estimados, más de 20 min. Se prepararon las celdas de Kaggle CPU y se detuvo aquí (P20). |
 | 3. Cierre (canónicas `f43.*`, bitácora, notebook, PR) | Pendiente, hasta recibir `f43_local_resultados.zip`. |
 
