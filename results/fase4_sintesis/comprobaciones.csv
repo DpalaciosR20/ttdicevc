@@ -34,3 +34,6 @@ F4.2 Lorenz: mediana de ρ (nodep) = resultados.json,OK
 F4.2 Lorenz: n con ρ < 24.74 (nodep) = f42.lorenz.rho_menor_24_74.n.nodep,OK
 F4.2 Perlin: conteos de octavas por clase = resultados.json,OK
 recorridos.json de F4.8 = blob versionado en HEAD (F4.8 no tiene claves canónicas),OK
+F4.8 gray_scott: las 14 imágenes = blobs versionados en HEAD,OK
+F4.8 perlin: las 14 imágenes = blobs versionados en HEAD,OK
+F4.8 lorenz: las 14 imágenes = blobs versionados en HEAD,OK

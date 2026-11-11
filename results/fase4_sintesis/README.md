@@ -12,7 +12,10 @@ Generado por `notebooks/Fase4_sintesis.ipynb` (ejecutado con `jupyter nbconvert 
 | `figures/fase4_02_ficha_gray_scott.png` | Ficha de Gray-Scott | Ver la fila de abajo |
 | `figures/fase4_03_ficha_perlin.png` | Ficha de Perlin | Ver la fila de abajo |
 | `figures/fase4_04_ficha_lorenz.png` | Ficha de Lorenz (con la advertencia de F4.3 en el pie) | Ver la fila de abajo |
-| `figures/fase4_05_direccion_discriminativa.png` | Dirección discriminativa (F4.8) con ŵ por componente y separación por clase de u0 (f) y u4 (octavas) en F4.2; sin peso argumentativo | `results/f48_figura/recorridos.json` y `f48_direccion_grises.png` (blob de HEAD); `results/f42_regimen/resultados.json` |
+| `figures/fase4_05_direccion_gray_scott.png` | Rejilla de F4.8 renderizada con Gray-Scott: 7 puntos entre centroides y ±1.5 DE sobre ŵ, con p_dep de la LogReg; ilustrativa, sin peso argumentativo | `results/f48_figura/imagenes/gray_scott_*.png` (blobs de HEAD), `recorridos.json` |
+| `figures/fase4_06_direccion_perlin.png` | Rejilla de F4.8 renderizada con Perlin (ídem) | `results/f48_figura/imagenes/perlin_*.png`, `recorridos.json` |
+| `figures/fase4_07_direccion_lorenz.png` | Rejilla de F4.8 renderizada con Lorenz (ídem) | `results/f48_figura/imagenes/lorenz_*.png`, `recorridos.json` |
+| `figures/fase4_08_direccion_componentes.png` | ŵ por componente (F4.8), media de f por clase (u0, Gray-Scott) y mediana de octavas por clase (u4, Perlin) en F4.2; coherencia descriptiva sin peso argumentativo | `results/f48_figura/recorridos.json`, `results/f42_regimen/resultados.json` |
 
 **Paneles de las fichas y su fuente:**
 - imágenes de val, 3 y 3, verificadas contra `meta/data_manifest.csv`;
@@ -28,5 +31,5 @@ Generado por `notebooks/Fase4_sintesis.ipynb` (ejecutado con `jupyter nbconvert 
 |---|---|
 | `tabla_evidencia.csv` | Tabla técnica × análisis (F5, F4.5, F4.1, F4.7, F4.2, F4.3, F4.4, F4.6), con valor y estado textual |
 | `figuras.csv` | Figuras generadas y sus fuentes |
-| `comprobaciones.csv` | Las 35 comprobaciones del notebook (sha256 de insumos, cifras graficadas frente a claves canónicas) |
+| `comprobaciones.csv` | Las 38 comprobaciones del notebook (sha256 de insumos, cifras graficadas frente a claves canónicas) |
 | `reporte.md` | Reporte del cierre |

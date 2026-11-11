@@ -4,8 +4,8 @@
 
 ## Entregables
 
-- `notebooks/Fase4_sintesis.ipynb`. Ejecutado con `jupyter nbconvert --to notebook --execute --inplace`: sin errores ni salidas a stderr, con 5 figuras embebidas y tablas.
-- `results/fase4_sintesis/`: `figures/` (5 PNG), `tabla_evidencia.csv`, `figuras.csv`, `comprobaciones.csv`, `README.md` y este reporte.
+- `notebooks/Fase4_sintesis.ipynb`. Ejecutado con `jupyter nbconvert --to notebook --execute --inplace`: sin errores ni salidas a stderr, con 8 figuras embebidas y tablas.
+- `results/fase4_sintesis/`: `figures/` (8 PNG), `tabla_evidencia.csv`, `figuras.csv`, `comprobaciones.csv`, `README.md` y este reporte.
 
 ## Figuras
 
@@ -15,11 +15,14 @@
 | `fase4_02_ficha_gray_scott.png` | Ficha de Gray-Scott: imágenes de val (3 depresivas y 3 no depresivas), R² por componente (val y prueba), diferencia de mapas medios, ΔF1 de la ablación, f por clase (train) y Spearman de convergencia |
 | `fase4_03_ficha_perlin.png` | Ficha de Perlin (octavas por clase) |
 | `fase4_04_ficha_lorenz.png` | Ficha de Lorenz (ρ por clase, con la línea de 24.74); advertencia de F4.3 en el pie |
-| `fase4_05_direccion_discriminativa.png` | Figura de F4.8 en grises, ŵ por componente, media de f por clase (u0) y mediana de octavas por clase (u4); «sin peso argumentativo» en el título y el pie |
+| `fase4_05_direccion_gray_scott.png` | Rejilla de F4.8 con Gray-Scott: fila de centroides (t = 0 … 1) y fila de ±1.5 DE sobre ŵ, con p_dep de la LogReg en cada punto y borde rojo si hubo recorte (no hubo); «ilustrativa» y «sin peso argumentativo» en el título y el pie |
+| `fase4_06_direccion_perlin.png` | Ídem, Perlin |
+| `fase4_07_direccion_lorenz.png` | Ídem, Lorenz |
+| `fase4_08_direccion_componentes.png` | ŵ por componente, media de f por clase (u0) y mediana de octavas por clase (u4); «sin peso argumentativo» en el título y el pie |
 
 Las fuentes de cada figura están en `results/fase4_sintesis/README.md` y `figuras.csv`.
 
-## Comprobaciones contra las canónicas (35, todas OK; `comprobaciones.csv`)
+## Comprobaciones contra las canónicas (38, todas OK; `comprobaciones.csv`)
 
 | Grupo | N.º | Qué se comprueba |
 |---|---|---|
@@ -31,14 +34,14 @@ Las fuentes de cada figura están en `results/fase4_sintesis/README.md` y `figur
 | Mapas medios | 1 | sha256 de `medias_clase.npz` = `meta.medias_clase_sha256` de F4.3 |
 | Imágenes de val | 3 | Huella de las 114 imágenes por técnica (sha256 contra `data_manifest.csv`) = la registrada en F4.4 |
 | F4.2, parámetros recalculados desde u | 7 | Media de f por clase y mediana de ρ por clase = `results/f42_regimen/resultados.json`. n con ρ < 24.74 por clase = `f42.lorenz.rho_menor_24_74.n.*`. Conteo de octavas por clase y nivel = `resultados.json` |
-| F4.8 | 1 | `results/f48_figura/recorridos.json` = blob versionado en HEAD |
+| F4.8 | 4 | `results/f48_figura/recorridos.json` = blob versionado en HEAD; las 14 imágenes de cada técnica (`imagenes/<t>_*.png`) = blobs de HEAD, byte a byte |
 
 **Además, dentro de las celdas:**
 - `ident()` exige que cada clave de identidad usada sea única y valga 1: veredictos, niveles y lecturas.
 - La tabla de evidencia lee cada valor directamente de la clave canónica.
 
 **Excepciones a «toda cifra de las canónicas», verificadas por otra vía:**
-1. `results/f48_figura/recorridos.json`: F4.8 no tiene claves canónicas por diseño. Se compara con el blob de HEAD.
+1. `results/f48_figura/recorridos.json` e `imagenes/*.png`: F4.8 no tiene claves canónicas por diseño. Se comparan con los blobs de HEAD.
 2. `medias_clase.npz`: su sha256 está en el `resultados.json` de F4.3, que sí está registrado.
 3. u de `umap_params.pkl`: se verifica contra el manifiesto con `regimen.load_u` y se usa solo para dibujar las distribuciones de F4.2; los resúmenes se comprueban contra `resultados.json`.
 4. Imágenes de val: verificadas contra `data_manifest.csv`.
@@ -61,15 +64,14 @@ Prueba solo aparece a través de cifras archivadas (F5, F4.1 y F4.6). No hay inf
 
 | Medida | Valor |
 |---|---|
-| `nbconvert --execute`, ejecución final (reloj) | 13.0 s |
-| Cuerpo del notebook (`T0` hasta la última celda) | 9.2 s |
+| `nbconvert --execute`, ejecución final (reloj) | 28.8 s |
+| Cuerpo del notebook (`T0` hasta la última celda) | 23.4 s |
 
-La lectura de las 342 imágenes de val desde Drive estaba en caché. En frío, la primera ejecución tardó 12.6 s.
-
-Se hicieron cuatro ejecuciones durante el desarrollo; ninguna escribe insumos.
-- Corregí la incrustación de figuras: `lorenz_lib` fuerza el backend Agg, y se resolvió con `%matplotlib inline` después de importarlo, igual que en F4.2.
-- Corregí el diseño de las fichas y el recorte de la figura de F4.8.
-- Ajusté dos textos: la lectura de «rechaza» en F4.5 y una comprobación duplicada.
+- El aumento frente a la versión anterior (13.0 s) se debe a la lectura y verificación contra HEAD de las 42 imágenes de F4.8. La lectura de las 342 imágenes de val desde Drive estaba en caché.
+- Durante el desarrollo hubo varias ejecuciones; ninguna escribe insumos.
+  - Corregí la incrustación de figuras: `lorenz_lib` fuerza el backend Agg, y se resolvió con `%matplotlib inline` después de importarlo, igual que en F4.2.
+  - Ajusté el diseño de las fichas y dos textos: la lectura de «rechaza» en F4.5 y una comprobación duplicada.
+- **Corrección posterior, a pedido de SV.** La figura de la sección 4 (`fase4_05_direccion_discriminativa.png`) incrustaba la rejilla completa de F4.8 y no se distinguía. Se sustituyó por una figura por técnica (`fase4_05`–`07`) y una figura final con los tres gráficos de barras (`fase4_08`).
 
 ## PENDIENTES
 
