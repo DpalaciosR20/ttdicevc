@@ -194,6 +194,9 @@
   "results/f41_recuperabilidad/prueba/resultados_prueba.json": "4205b49d74361f1f397cdd4a39346979f1f6ce19227271b6e3a5bdb1a5f614df",
   "results/f41_recuperabilidad/val/resultados_val.json": "028a55edc71ec7ad51b1f2dc4e43c963f12c7d29747c62a32fb271704458c597",
   "results/f42_regimen/resultados.json": "7bb4d9147d0908092d82a2b5e3536ade5c22ad1075d4ef7479ad1a04e90e6250",
+  "results/f43_atribucion/gpu/ablacion.json": "f0d9774c172ef556df96a732d5823bcbdddbfdab7cf7fc386d3ef1738a220d58",
+  "results/f43_atribucion/gpu/cascada.json": "cd1e61b198acfc7bab200067f509a65a19d264ca3d3881ea7f51822be56423d4",
+  "results/f43_atribucion/local/resultados.json": "75cb3b02e1755b0e0b3b58656db23a9eec363059c27339e10d7b92dbbdebb3a3",
   "results/f45_longitud/resultado.json": "bfd293b0ac8fbd0c5699a52b194713a160523fc42559b74daccafe92707c0085",
   "results/f47_geometria/resultados.json": "492a408ce441dfca998c10a3335f40bbcf6e7fc132fbe45c5c3ddbab05aaa687",
   "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed123.json": "7213d4af2fea1bee72e418e13349da4543ea91f19e59cc54e36773348b225934",
@@ -12811,6 +12814,3448 @@
     "test": null,
     "train": 1.0505110984416835e-106,
     "val": null
+   }
+  },
+  "f43.gray_scott.ablacion.original.f1_macro_media": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F1-Macro de val sin filtrar, media de las 5 semillas (inferencia de F4.3)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.original.f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7170301316062507
+   }
+  },
+  "f43.gray_scott.ablacion.paso_alto.s1.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 1 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.paso_alto_s1.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.21016870096217238
+   }
+  },
+  "f43.gray_scott.ablacion.paso_alto.s2.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 2 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.paso_alto_s2.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.2045052185548028
+   }
+  },
+  "f43.gray_scott.ablacion.paso_alto.s4.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 4 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.paso_alto_s4.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.20608717758344364
+   }
+  },
+  "f43.gray_scott.ablacion.paso_alto.s8.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 8 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.paso_alto_s8.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.1656022484534222
+   }
+  },
+  "f43.gray_scott.ablacion.paso_bajo.s1.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 1 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.paso_bajo_s1.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.02434447975266372
+   }
+  },
+  "f43.gray_scott.ablacion.paso_bajo.s2.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 2 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.paso_bajo_s2.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.05464379786648543
+   }
+  },
+  "f43.gray_scott.ablacion.paso_bajo.s4.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 4 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.paso_bajo_s4.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.16079534281130012
+   }
+  },
+  "f43.gray_scott.ablacion.paso_bajo.s8.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 8 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.gray_scott.paso_bajo_s8.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.2614729802200907
+   }
+  },
+  "f43.gray_scott.cascada.cabeza.map.veredicto.cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cascada, paso cabeza (map, Spearman 56 × 56, val): cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "tecnicas.gray_scott.pasos.cabeza.map.spearman56.global",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.gray_scott.cascada.map.n_pasos": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "tecnicas.gray_scott.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 10
+  },
+  "f43.gray_scott.cascada.map.n_pasos_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "pasos con veredicto «cambia» (Spearman 56 × 56, mayoría de semillas)",
+   "source": {
+    "locator": "tecnicas.gray_scott.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 10
+  },
+  "f43.gray_scott.cascada.map.n_transiciones_a_constante": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "suma sobre pasos y semillas; P9: cuentan como cambio (Spearman imputado −1)",
+   "source": {
+    "locator": "tecnicas.gray_scott.pasos",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 5
+  },
+  "f43.gray_scott.constantes.clase_predicha.y0.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase predicha 0; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_predicha.agrupada.0.fraccion; test: resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_predicha.agrupada.0.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.20909090909090908,
+    "val": 0.20327868852459016
+   }
+  },
+  "f43.gray_scott.constantes.clase_predicha.y0.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_predicha.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 69
+  },
+  "f43.gray_scott.constantes.clase_predicha.y0.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_predicha.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 330
+  },
+  "f43.gray_scott.constantes.clase_predicha.y0.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_predicha.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 62
+  },
+  "f43.gray_scott.constantes.clase_predicha.y0.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_predicha.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 305
+  },
+  "f43.gray_scott.constantes.clase_predicha.y1.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase predicha 1; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_predicha.agrupada.1.fraccion; test: resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_predicha.agrupada.1.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.gray_scott.constantes.clase_predicha.y1.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_predicha.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.gray_scott.constantes.clase_predicha.y1.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_predicha.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 240
+  },
+  "f43.gray_scott.constantes.clase_predicha.y1.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_predicha.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.gray_scott.constantes.clase_predicha.y1.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_predicha.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 265
+  },
+  "f43.gray_scott.constantes.clase_real.y0.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase real 0; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_real.agrupada.0.fraccion; test: resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_real.agrupada.0.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.17142857142857143,
+    "val": 0.14
+   }
+  },
+  "f43.gray_scott.constantes.clase_real.y0.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_real.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 60
+  },
+  "f43.gray_scott.constantes.clase_real.y0.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_real.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 350
+  },
+  "f43.gray_scott.constantes.clase_real.y0.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_real.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 49
+  },
+  "f43.gray_scott.constantes.clase_real.y0.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_real.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 350
+  },
+  "f43.gray_scott.constantes.clase_real.y1.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase real 1; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_real.agrupada.1.fraccion; test: resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_real.agrupada.1.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.04090909090909091,
+    "val": 0.05909090909090909
+   }
+  },
+  "f43.gray_scott.constantes.clase_real.y1.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_real.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 9
+  },
+  "f43.gray_scott.constantes.clase_real.y1.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.test.constantes_clase_real.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 220
+  },
+  "f43.gray_scott.constantes.clase_real.y1.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_real.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 13
+  },
+  "f43.gray_scott.constantes.clase_real.y1.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.agregacion.val.constantes_clase_real.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 220
+  },
+  "f43.gray_scott.cordura_datos.map.spearman56.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.cordura_datos.map.val.spearman56.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.5911563353826865
+   }
+  },
+  "f43.gray_scott.cordura_datos.map.spearman56.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.cordura_datos.map.val.spearman56.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.3190427837224424
+   }
+  },
+  "f43.gray_scott.cordura_datos.map.spearman56.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.cordura_datos.map.val.spearman56.real_vs_permutado.123.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.11199461417647834
+   }
+  },
+  "f43.gray_scott.cordura_datos.map.spearman56.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.cordura_datos.map.val.spearman56.real_vs_permutado.2024.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.5125218109599334
+   }
+  },
+  "f43.gray_scott.cordura_datos.map.spearman56.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.cordura_datos.map.val.spearman56.real_vs_permutado.42.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.23869339443477772
+   }
+  },
+  "f43.gray_scott.cordura_datos.map.spearman56.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.cordura_datos.map.val.spearman56.real_vs_permutado.7.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.20415181547720906
+   }
+  },
+  "f43.gray_scott.cordura_datos.map.spearman56.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.cordura_datos.map.val.spearman56.real_vs_permutado.99.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.18538857816994989
+   }
+  },
+  "f43.gray_scott.cordura_datos.map.veredicto.cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cordura por datos (map, Spearman 56 × 56, val): cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.cordura_datos.map.val.spearman56.global",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.gray_scott.permutacion.b": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.permutacion_val.B",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 5000
+  },
+  "f43.gray_scott.permutacion.estadistico_l2": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "statistic",
+   "note": "‖media(y=1) − media(y=0)‖₂ de los mapas de val a 56 × 56",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.permutacion_val.t_obs",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 70.06108074430107
+   }
+  },
+  "f43.gray_scott.permutacion.holm.alpha_h": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.gray_scott.alpha_h",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.025
+   }
+  },
+  "f43.gray_scott.permutacion.holm.rango": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.familia.gray_scott.rank",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 2
+  },
+  "f43.gray_scott.permutacion.holm.rechaza": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 3)",
+   "source": {
+    "locator": "resultados.holm.familia.gray_scott.reject",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.gray_scott.permutacion.k": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "réplicas con estadístico ≥ el observado",
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.permutacion_val.k",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.gray_scott.permutacion.p": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "(k + 1)/(B + 1), unilateral",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.gray_scott.permutacion_val.p",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.0003999200159968006
+   }
+  },
+  "f43.gray_scott.permutacion.p_holm": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p ajustado de Holm (m = 3)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.gray_scott.p_holm",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.0007998400319936012
+   }
+  },
+  "f43.holm.alpha": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.holm.alpha",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.05
+   }
+  },
+  "f43.holm.m": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.m",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 3
+  },
+  "f43.lorenz.ablacion.original.f1_macro_media": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F1-Macro de val sin filtrar, media de las 5 semillas (inferencia de F4.3)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.original.f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7140644318087928
+   }
+  },
+  "f43.lorenz.ablacion.paso_alto.s1.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 1 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.paso_alto_s1.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.28149718299829557
+   }
+  },
+  "f43.lorenz.ablacion.paso_alto.s2.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 2 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.paso_alto_s2.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.12092994612572694
+   }
+  },
+  "f43.lorenz.ablacion.paso_alto.s4.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 4 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.paso_alto_s4.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.11230703056559646
+   }
+  },
+  "f43.lorenz.ablacion.paso_alto.s8.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 8 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.paso_alto_s8.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.09765817123048419
+   }
+  },
+  "f43.lorenz.ablacion.paso_bajo.s1.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 1 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.paso_bajo_s1.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.0024247381416451
+   }
+  },
+  "f43.lorenz.ablacion.paso_bajo.s2.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 2 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.paso_bajo_s2.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.018615389219603772
+   }
+  },
+  "f43.lorenz.ablacion.paso_bajo.s4.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 4 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.paso_bajo_s4.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.05697441705418869
+   }
+  },
+  "f43.lorenz.ablacion.paso_bajo.s8.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 8 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.lorenz.paso_bajo_s8.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.17387258787883636
+   }
+  },
+  "f43.lorenz.cascada.backbone_map.n_pasos": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "tecnicas.lorenz.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 15
+  },
+  "f43.lorenz.cascada.backbone_map.n_pasos_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "pasos con veredicto «cambia» (Spearman 56 × 56, mayoría de semillas)",
+   "source": {
+    "locator": "tecnicas.lorenz.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 13
+  },
+  "f43.lorenz.cascada.backbone_map.n_transiciones_a_constante": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "suma sobre pasos y semillas; P9: cuentan como cambio (Spearman imputado −1)",
+   "source": {
+    "locator": "tecnicas.lorenz.pasos",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.cascada.cabeza.backbone_map.veredicto.no_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cascada, paso cabeza (backbone_map, Spearman 56 × 56, val): no_cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "tecnicas.lorenz.pasos.cabeza.backbone_map.spearman56.global",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.cascada.cabeza.map.veredicto.cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cascada, paso cabeza (map, Spearman 56 × 56, val): cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "tecnicas.lorenz.pasos.cabeza.map.spearman56.global",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.cascada.map.n_pasos": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "tecnicas.lorenz.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 15
+  },
+  "f43.lorenz.cascada.map.n_pasos_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "pasos con veredicto «cambia» (Spearman 56 × 56, mayoría de semillas)",
+   "source": {
+    "locator": "tecnicas.lorenz.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 15
+  },
+  "f43.lorenz.cascada.map.n_transiciones_a_constante": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "suma sobre pasos y semillas; P9: cuentan como cambio (Spearman imputado −1)",
+   "source": {
+    "locator": "tecnicas.lorenz.pasos",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_predicha.y0.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase predicha 0; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_predicha.agrupada.0.fraccion; test: resultados.tecnicas.lorenz.agregacion.test.constantes_clase_predicha.agrupada.0.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.lorenz.constantes.clase_predicha.y0.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.test.constantes_clase_predicha.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_predicha.y0.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.test.constantes_clase_predicha.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 330
+  },
+  "f43.lorenz.constantes.clase_predicha.y0.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_predicha.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_predicha.y0.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_predicha.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 305
+  },
+  "f43.lorenz.constantes.clase_predicha.y1.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase predicha 1; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_predicha.agrupada.1.fraccion; test: resultados.tecnicas.lorenz.agregacion.test.constantes_clase_predicha.agrupada.1.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.lorenz.constantes.clase_predicha.y1.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.test.constantes_clase_predicha.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_predicha.y1.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.test.constantes_clase_predicha.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 240
+  },
+  "f43.lorenz.constantes.clase_predicha.y1.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_predicha.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_predicha.y1.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_predicha.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 265
+  },
+  "f43.lorenz.constantes.clase_real.y0.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase real 0; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_real.agrupada.0.fraccion; test: resultados.tecnicas.lorenz.agregacion.test.constantes_clase_real.agrupada.0.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.lorenz.constantes.clase_real.y0.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.test.constantes_clase_real.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_real.y0.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.test.constantes_clase_real.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 350
+  },
+  "f43.lorenz.constantes.clase_real.y0.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_real.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_real.y0.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_real.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 350
+  },
+  "f43.lorenz.constantes.clase_real.y1.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase real 1; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_real.agrupada.1.fraccion; test: resultados.tecnicas.lorenz.agregacion.test.constantes_clase_real.agrupada.1.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.lorenz.constantes.clase_real.y1.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.test.constantes_clase_real.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_real.y1.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.test.constantes_clase_real.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 220
+  },
+  "f43.lorenz.constantes.clase_real.y1.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_real.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.constantes.clase_real.y1.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.agregacion.val.constantes_clase_real.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 220
+  },
+  "f43.lorenz.cordura_datos.backbone_map.spearman56.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.backbone_map.val.spearman56.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.lorenz.cordura_datos.backbone_map.spearman56.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.backbone_map.val.spearman56.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.lorenz.cordura_datos.backbone_map.spearman56.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.123.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.lorenz.cordura_datos.backbone_map.spearman56.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.2024.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.lorenz.cordura_datos.backbone_map.spearman56.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.42.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.lorenz.cordura_datos.backbone_map.spearman56.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.7.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.lorenz.cordura_datos.backbone_map.spearman56.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.99.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.lorenz.cordura_datos.backbone_map.veredicto.no_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cordura por datos (backbone_map, Spearman 56 × 56, val): no_cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.backbone_map.val.spearman56.global",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.cordura_datos.map.spearman56.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.map.val.spearman56.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9877197026754378
+   }
+  },
+  "f43.lorenz.cordura_datos.map.spearman56.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.map.val.spearman56.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.973485021907288
+   }
+  },
+  "f43.lorenz.cordura_datos.map.spearman56.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.map.val.spearman56.real_vs_permutado.123.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9840441247244918
+   }
+  },
+  "f43.lorenz.cordura_datos.map.spearman56.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.map.val.spearman56.real_vs_permutado.2024.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9890074174974999
+   }
+  },
+  "f43.lorenz.cordura_datos.map.spearman56.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.map.val.spearman56.real_vs_permutado.42.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9777992793995025
+   }
+  },
+  "f43.lorenz.cordura_datos.map.spearman56.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.map.val.spearman56.real_vs_permutado.7.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.988548225300762
+   }
+  },
+  "f43.lorenz.cordura_datos.map.spearman56.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.map.val.spearman56.real_vs_permutado.99.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.984670541455967
+   }
+  },
+  "f43.lorenz.cordura_datos.map.veredicto.no_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cordura por datos (map, Spearman 56 × 56, val): no_cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cordura_datos.map.val.spearman56.global",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.coseno.w1.nivel.alto": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "coseno de cabezas (w1): alto; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1.nivel",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.coseno.w1.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "rango de los 10 pares de cabezas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.41727315508995066
+   }
+  },
+  "f43.lorenz.coseno.w1.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "rango de los 10 pares de cabezas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.15925554827453317
+   }
+  },
+  "f43.lorenz.coseno.w1.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1.real_vs_permutada.123",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7733258965182663
+   }
+  },
+  "f43.lorenz.coseno.w1.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1.real_vs_permutada.2024",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8145721493691812
+   }
+  },
+  "f43.lorenz.coseno.w1.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1.real_vs_permutada.42",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7706714467580692
+   }
+  },
+  "f43.lorenz.coseno.w1.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1.real_vs_permutada.7",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8304776645754145
+   }
+  },
+  "f43.lorenz.coseno.w1.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1.real_vs_permutada.99",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7226705288520525
+   }
+  },
+  "f43.lorenz.coseno.w1_menos_w0.nivel.alto": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "coseno de cabezas (w1_menos_w0): alto; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1_menos_w0.nivel",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.coseno.w1_menos_w0.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "rango de los 10 pares de cabezas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1_menos_w0.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.5894223619761865
+   }
+  },
+  "f43.lorenz.coseno.w1_menos_w0.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "rango de los 10 pares de cabezas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1_menos_w0.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.31332492789925803
+   }
+  },
+  "f43.lorenz.coseno.w1_menos_w0.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1_menos_w0.real_vs_permutada.123",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6172161743330826
+   }
+  },
+  "f43.lorenz.coseno.w1_menos_w0.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1_menos_w0.real_vs_permutada.2024",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6865008487554952
+   }
+  },
+  "f43.lorenz.coseno.w1_menos_w0.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1_menos_w0.real_vs_permutada.42",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.6353845447907169
+   }
+  },
+  "f43.lorenz.coseno.w1_menos_w0.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1_menos_w0.real_vs_permutada.7",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7186295515472947
+   }
+  },
+  "f43.lorenz.coseno.w1_menos_w0.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.cosenos_cabezas.w1_menos_w0.real_vs_permutada.99",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.559970831030754
+   }
+  },
+  "f43.lorenz.lectura_vit.dependiente_de_la_cabeza_sin_validacion_por_datos": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "lectura de los ViT (docs/plan_fase4.md, F4.3); identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.lectura_vit.lorenz.lectura",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.permutacion.b": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.permutacion_val.B",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 5000
+  },
+  "f43.lorenz.permutacion.estadistico_l2": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "statistic",
+   "note": "‖media(y=1) − media(y=0)‖₂ de los mapas de val a 56 × 56",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.permutacion_val.t_obs",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 41.049595380555274
+   }
+  },
+  "f43.lorenz.permutacion.holm.alpha_h": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.lorenz.alpha_h",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.016666666666666666
+   }
+  },
+  "f43.lorenz.permutacion.holm.rango": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.familia.lorenz.rank",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.permutacion.holm.rechaza": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 3)",
+   "source": {
+    "locator": "resultados.holm.familia.lorenz.reject",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.lorenz.permutacion.k": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "réplicas con estadístico ≥ el observado",
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.permutacion_val.k",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.lorenz.permutacion.p": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "(k + 1)/(B + 1), unilateral",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.lorenz.permutacion_val.p",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.0001999600079984003
+   }
+  },
+  "f43.lorenz.permutacion.p_holm": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p ajustado de Holm (m = 3)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.lorenz.p_holm",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.0005998800239952009
+   }
+  },
+  "f43.perlin.ablacion.original.f1_macro_media": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "F1-Macro de val sin filtrar, media de las 5 semillas (inferencia de F4.3)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.original.f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7142159006989949
+   }
+  },
+  "f43.perlin.ablacion.paso_alto.s1.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 1 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.paso_alto_s1.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.059149613587651986
+   }
+  },
+  "f43.perlin.ablacion.paso_alto.s2.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 2 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.paso_alto_s2.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.04621199334267945
+   }
+  },
+  "f43.perlin.ablacion.paso_alto.s4.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 4 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.paso_alto_s4.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.033469833208421916
+   }
+  },
+  "f43.perlin.ablacion.paso_alto.s8.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 8 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.paso_alto_s8.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.028782573798362132
+   }
+  },
+  "f43.perlin.ablacion.paso_bajo.s1.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 1 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.paso_bajo_s1.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.0759783383846913
+   }
+  },
+  "f43.perlin.ablacion.paso_bajo.s2.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 2 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.paso_bajo_s2.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.0803795318386151
+   }
+  },
+  "f43.perlin.ablacion.paso_bajo.s4.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 4 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.paso_bajo_s4.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.15952690286066384
+   }
+  },
+  "f43.perlin.ablacion.paso_bajo.s8.delta_f1": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = 8 px",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "tecnicas.perlin.paso_bajo_s8.delta_f1_media",
+    "path": "results/f43_atribucion/gpu/ablacion.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": -0.15395246619661046
+   }
+  },
+  "f43.perlin.cascada.backbone_map.n_pasos": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "tecnicas.perlin.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 15
+  },
+  "f43.perlin.cascada.backbone_map.n_pasos_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "pasos con veredicto «cambia» (Spearman 56 × 56, mayoría de semillas)",
+   "source": {
+    "locator": "tecnicas.perlin.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 13
+  },
+  "f43.perlin.cascada.backbone_map.n_transiciones_a_constante": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "suma sobre pasos y semillas; P9: cuentan como cambio (Spearman imputado −1)",
+   "source": {
+    "locator": "tecnicas.perlin.pasos",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.cascada.cabeza.backbone_map.veredicto.no_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cascada, paso cabeza (backbone_map, Spearman 56 × 56, val): no_cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "tecnicas.perlin.pasos.cabeza.backbone_map.spearman56.global",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.perlin.cascada.cabeza.map.veredicto.cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cascada, paso cabeza (map, Spearman 56 × 56, val): cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "tecnicas.perlin.pasos.cabeza.map.spearman56.global",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.perlin.cascada.map.n_pasos": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "tecnicas.perlin.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 15
+  },
+  "f43.perlin.cascada.map.n_pasos_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "pasos con veredicto «cambia» (Spearman 56 × 56, mayoría de semillas)",
+   "source": {
+    "locator": "tecnicas.perlin.orden",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 15
+  },
+  "f43.perlin.cascada.map.n_transiciones_a_constante": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "suma sobre pasos y semillas; P9: cuentan como cambio (Spearman imputado −1)",
+   "source": {
+    "locator": "tecnicas.perlin.pasos",
+    "path": "results/f43_atribucion/gpu/cascada.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_predicha.y0.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase predicha 0; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_predicha.agrupada.0.fraccion; test: resultados.tecnicas.perlin.agregacion.test.constantes_clase_predicha.agrupada.0.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.perlin.constantes.clase_predicha.y0.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.test.constantes_clase_predicha.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_predicha.y0.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.test.constantes_clase_predicha.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 310
+  },
+  "f43.perlin.constantes.clase_predicha.y0.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_predicha.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_predicha.y0.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_predicha.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 290
+  },
+  "f43.perlin.constantes.clase_predicha.y1.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase predicha 1; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_predicha.agrupada.1.fraccion; test: resultados.tecnicas.perlin.agregacion.test.constantes_clase_predicha.agrupada.1.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.perlin.constantes.clase_predicha.y1.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.test.constantes_clase_predicha.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_predicha.y1.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.test.constantes_clase_predicha.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 260
+  },
+  "f43.perlin.constantes.clase_predicha.y1.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_predicha.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_predicha.y1.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_predicha.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 280
+  },
+  "f43.perlin.constantes.clase_real.y0.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase real 0; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_real.agrupada.0.fraccion; test: resultados.tecnicas.perlin.agregacion.test.constantes_clase_real.agrupada.0.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.perlin.constantes.clase_real.y0.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.test.constantes_clase_real.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_real.y0.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.test.constantes_clase_real.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 350
+  },
+  "f43.perlin.constantes.clase_real.y0.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_real.agrupada.0.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_real.y0.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_real.agrupada.0.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 350
+  },
+  "f43.perlin.constantes.clase_real.y1.fraccion": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "mapas constantes / mapas (5 semillas agrupadas), clase real 1; prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_real.agrupada.1.fraccion; test: resultados.tecnicas.perlin.agregacion.test.constantes_clase_real.agrupada.1.fraccion",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": 0.0,
+    "val": 0.0
+   }
+  },
+  "f43.perlin.constantes.clase_real.y1.prueba.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.test.constantes_clase_real.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_real.y1.prueba.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.test.constantes_clase_real.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 220
+  },
+  "f43.perlin.constantes.clase_real.y1.val.n_constantes": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_real.agrupada.1.constantes",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f43.perlin.constantes.clase_real.y1.val.n_mapas": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.agregacion.val.constantes_clase_real.agrupada.1.n",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 220
+  },
+  "f43.perlin.cordura_datos.backbone_map.spearman56.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.backbone_map.val.spearman56.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.perlin.cordura_datos.backbone_map.spearman56.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.backbone_map.val.spearman56.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.perlin.cordura_datos.backbone_map.spearman56.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.123.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.perlin.cordura_datos.backbone_map.spearman56.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.2024.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.perlin.cordura_datos.backbone_map.spearman56.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.42.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.perlin.cordura_datos.backbone_map.spearman56.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.7.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.perlin.cordura_datos.backbone_map.spearman56.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.backbone_map.val.spearman56.real_vs_permutado.99.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 1.0
+   }
+  },
+  "f43.perlin.cordura_datos.backbone_map.veredicto.no_cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cordura por datos (backbone_map, Spearman 56 × 56, val): no_cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.backbone_map.val.spearman56.global",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.perlin.cordura_datos.map.spearman56.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.map.val.spearman56.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.9588907333678856
+   }
+  },
+  "f43.perlin.cordura_datos.map.spearman56.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "rango de los 10 pares de semillas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.map.val.spearman56.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.873876052368131
+   }
+  },
+  "f43.perlin.cordura_datos.map.spearman56.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.map.val.spearman56.real_vs_permutado.123.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7325276968748893
+   }
+  },
+  "f43.perlin.cordura_datos.map.spearman56.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.map.val.spearman56.real_vs_permutado.2024.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8398930610866817
+   }
+  },
+  "f43.perlin.cordura_datos.map.spearman56.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.map.val.spearman56.real_vs_permutado.42.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8271854646863563
+   }
+  },
+  "f43.perlin.cordura_datos.map.spearman56.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.map.val.spearman56.real_vs_permutado.7.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7725062776493674
+   }
+  },
+  "f43.perlin.cordura_datos.map.spearman56.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "spearman_rho",
+   "note": "mediana por muestra, real frente a permutado",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.map.val.spearman56.real_vs_permutado.99.mediana",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7638612520849057
+   }
+  },
+  "f43.perlin.cordura_datos.map.veredicto.cambia": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "cordura por datos (map, Spearman 56 × 56, val): cambia; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cordura_datos.map.val.spearman56.global",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.perlin.coseno.w1.nivel.bajo": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "coseno de cabezas (w1): bajo; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1.nivel",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.perlin.coseno.w1.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "rango de los 10 pares de cabezas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.7426775636599782
+   }
+  },
+  "f43.perlin.coseno.w1.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "rango de los 10 pares de cabezas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.4539147170712734
+   }
+  },
+  "f43.perlin.coseno.w1.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1.real_vs_permutada.123",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.055385302886535114
+   }
+  },
+  "f43.perlin.coseno.w1.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1.real_vs_permutada.2024",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.46249018188442836
+   }
+  },
+  "f43.perlin.coseno.w1.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1.real_vs_permutada.42",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.3312952337901925
+   }
+  },
+  "f43.perlin.coseno.w1.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1.real_vs_permutada.7",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.11234123164691732
+   }
+  },
+  "f43.perlin.coseno.w1.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1.real_vs_permutada.99",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.14613529142194356
+   }
+  },
+  "f43.perlin.coseno.w1_menos_w0.nivel.bajo": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "coseno de cabezas (w1_menos_w0): bajo; identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1_menos_w0.nivel",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.perlin.coseno.w1_menos_w0.referencia_max": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "rango de los 10 pares de cabezas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1_menos_w0.rango_referencia[1]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.8132630563392684
+   }
+  },
+  "f43.perlin.coseno.w1_menos_w0.referencia_min": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "rango de los 10 pares de cabezas reales",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1_menos_w0.rango_referencia[0]",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.5457001770087142
+   }
+  },
+  "f43.perlin.coseno.w1_menos_w0.seed123": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1_menos_w0.real_vs_permutada.123",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.026205410607277674
+   }
+  },
+  "f43.perlin.coseno.w1_menos_w0.seed2024": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1_menos_w0.real_vs_permutada.2024",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.3115473533442271
+   }
+  },
+  "f43.perlin.coseno.w1_menos_w0.seed42": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1_menos_w0.real_vs_permutada.42",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.19192212458821314
+   }
+  },
+  "f43.perlin.coseno.w1_menos_w0.seed7": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1_menos_w0.real_vs_permutada.7",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.040881274438362994
+   }
+  },
+  "f43.perlin.coseno.w1_menos_w0.seed99": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "cosine",
+   "note": "coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.cosenos_cabezas.w1_menos_w0.real_vs_permutada.99",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.060082919790835486
+   }
+  },
+  "f43.perlin.lectura_vit.cordura_por_datos_superada": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "lectura de los ViT (docs/plan_fase4.md, F4.3); identidad en la clave (valor 1)",
+   "source": {
+    "locator": "resultados.lectura_vit.perlin.lectura",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.perlin.permutacion.b": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.permutacion_val.B",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 5000
+  },
+  "f43.perlin.permutacion.estadistico_l2": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "statistic",
+   "note": "‖media(y=1) − media(y=0)‖₂ de los mapas de val a 56 × 56",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.permutacion_val.t_obs",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 5.237605972141319
+   }
+  },
+  "f43.perlin.permutacion.holm.alpha_h": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.perlin.alpha_h",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.05
+   }
+  },
+  "f43.perlin.permutacion.holm.rango": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.familia.perlin.rank",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 3
+  },
+  "f43.perlin.permutacion.holm.rechaza": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 3)",
+   "source": {
+    "locator": "resultados.holm.familia.perlin.reject",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f43.perlin.permutacion.k": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "count",
+   "note": "réplicas con estadístico ≥ el observado",
+   "source": {
+    "locator": "resultados.tecnicas.perlin.permutacion_val.k",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "value": 177
+  },
+  "f43.perlin.permutacion.p": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "(k + 1)/(B + 1), unilateral",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.tecnicas.perlin.permutacion_val.p",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.03559288142371526
+   }
+  },
+  "f43.perlin.permutacion.p_holm": {
+   "evaluator": "src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; resoluciones en results/f43_atribucion/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p ajustado de Holm (m = 3)",
+   "null_reason": {
+    "test": "F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.perlin.p_holm",
+    "path": "results/f43_atribucion/local/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "val": 0.03559288142371526
    }
   },
   "f46.contencion.gray_scott.beto.c": {

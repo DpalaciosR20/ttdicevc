@@ -29,7 +29,9 @@ Orígenes de las entradas:
      F4.1 (f41.val.* y f41.prueba.*, de results/f41_recuperabilidad/), F4.7
      (f47.*, de results/f47_geometria/resultados.json, solo train: value.train) y
      F4.2 (f42.*, de results/f42_regimen/resultados.json: train en value.train; el
-     F1 por estrato de Lorenz en value.test, recalculado desde las predicciones).
+     F1 por estrato de Lorenz en value.test, recalculado desde las predicciones) y
+     F4.3 (f43.*, de results/f43_atribucion/: val; la fracción de constantes lleva
+     también la réplica de prueba con los mapas archivados).
      Los F1 de prueba de F4.1 se recalculan desde predicciones_prueba.csv.
   Tras la fusión, la prueba de cada ref.* «bloqueada hasta la Fase 5» se
   recalcula desde su CSV (unlock_ref_test) y check_f5 contrasta los F1
@@ -1088,7 +1090,7 @@ F41_NULL = {'val': 'F4.1: la cifra de validación está en la clave f41.val.* co
             'test': 'F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente'}
 F47_NULL = {'val': 'F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)',
             'test': 'F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)'}
-F4_SPLIT_PREFIXES = ('f41.', 'f47.', 'f42.')
+F4_SPLIT_PREFIXES = ('f41.', 'f47.', 'f42.', 'f43.')
 
 
 class _SplitCollector(_F5Collector):
@@ -1331,6 +1333,135 @@ def collect_f42(inputs, umap_path=None):
     return out
 
 
+# ── Colector 12: F4.3 (f43.*) ─────────────────────────────────────────────
+F43_DIR = REPO / 'results' / 'f43_atribucion'
+F43_LOCAL = F43_DIR / 'local' / 'resultados.json'
+F43_CASCADA = F43_DIR / 'gpu' / 'cascada.json'
+F43_ABLACION = F43_DIR / 'gpu' / 'ablacion.json'
+F43_TECHS = ('gray_scott', 'perlin', 'lorenz')
+F43_VIT = ('perlin', 'lorenz')
+F43_SEEDS = ('42', '7', '123', '2024', '99')
+F43_SIGMAS = (1, 2, 4, 8)
+F43_EVAL = ('src/fase4/atribucion_local.py y atribucion_gpu.py (val; agregación sobre map_raw · map_raw_scale; '
+            'permutación de etiquetas 5,000, default_rng(2026), sobre ‖media(y=1) − media(y=0)‖₂ a 56 × 56, Holm m = 3; '
+            'similitud Spearman 56 × 56 frente a los 10 pares de semillas reales, criterio de mayoría; '
+            'resoluciones en results/f43_atribucion/resoluciones.json)')
+F43_NULL = {'val': 'F4.3: la cifra está en val (docs/plan_fase4.md, F4.3)',
+            'test': 'F4.3: val es el split principal; G2 prohíbe inferencia nueva sobre prueba (docs/plan_fase4.md, F4.3)'}
+F43_REPLICA = 'prueba: réplica descriptiva con los mapas archivados de F3.7, después de la Fase 5 (G1)'
+
+
+def collect_f43(inputs):
+    """F4.3: p y Holm de la permutación (m = 3), veredictos de cordura (datos y
+    cascada, Spearman 56 × 56), cosenos de las cabezas ViT, lectura de los ViT,
+    ΔF1 de la ablación por banda y σ (val) y fracción de mapas constantes (val;
+    prueba como réplica)."""
+    doc = _f5_result(F43_LOCAL, inputs)
+    cas = _f5_result(F43_CASCADA, inputs)
+    abl = _f5_result(F43_ABLACION, inputs)
+    if doc['meta']['cascada']['sha256'] != hashlib.sha256(F43_CASCADA.read_bytes()).hexdigest():
+        raise CanonicalError(f'f43: {rel(F43_CASCADA)} no es la cascada que leyó atribucion_local.py')
+    if cas['meta']['smoke'] or abl['meta']['smoke'] or cas['meta']['git_commit'] != abl['meta']['git_commit']:
+        raise CanonicalError('f43: cascada o ablación de una prueba de humo o de commits distintos')
+    R = doc['resultados']
+    c = _SplitCollector(doc, F43_LOCAL, 'val', F43_NULL, F43_EVAL)
+    cc = _SplitCollector(cas, F43_CASCADA, 'val', F43_NULL, F43_EVAL)
+    ca = _SplitCollector(abl, F43_ABLACION, 'val', F43_NULL, F43_EVAL)
+    H = ('resultados', 'holm')
+    if R['holm']['m'] != 3 or set(R['holm']['familia']) != set(F43_TECHS):
+        raise CanonicalError(f"f43: familia de Holm {sorted(R['holm']['familia'])}")
+    c.metric('f43.holm.alpha', 'alpha', (*H, 'alpha'))
+    c.count('f43.holm.m', (*H, 'm'))
+    for t in F43_TECHS:
+        T = ('resultados', 'tecnicas', t)
+        P, Lh = (*T, 'permutacion_val'), (*H, 'familia', t)
+        if c.get(Lh)['p'] != c.get(P)['p']:
+            raise CanonicalError(f'f43.{t}: p de Holm != p de la permutación')
+        c.metric(f'f43.{t}.permutacion.p', 'p_value', (*P, 'p'), note='(k + 1)/(B + 1), unilateral')
+        c.metric(f'f43.{t}.permutacion.estadistico_l2', 'statistic', (*P, 't_obs'),
+                 note='‖media(y=1) − media(y=0)‖₂ de los mapas de val a 56 × 56')
+        c.count(f'f43.{t}.permutacion.b', (*P, 'B'))
+        c.count(f'f43.{t}.permutacion.k', (*P, 'k'), note='réplicas con estadístico ≥ el observado')
+        c.metric(f'f43.{t}.permutacion.p_holm', 'p_value', (*Lh, 'p_holm'), note='p ajustado de Holm (m = 3)')
+        c.metric(f'f43.{t}.permutacion.holm.alpha_h', 'alpha', (*Lh, 'alpha_h'))
+        c.count(f'f43.{t}.permutacion.holm.rango', (*Lh, 'rank'))
+        c.count(f'f43.{t}.permutacion.holm.rechaza', (*Lh, 'reject'), note='1 = se rechaza H0 (Holm, m = 3)')
+        # Cordura por aleatorización de datos (val, Spearman 56 × 56, principal)
+        kinds = ('map', 'backbone_map') if t in F43_VIT else ('map',)
+        for k in kinds:
+            D = (*T, 'cordura_datos', k, 'val', 'spearman56')
+            v = c.get((*D, 'global'))
+            c.identity(f'f43.{t}.cordura_datos.{k}.veredicto.{v}', (*D, 'global'),
+                       f'cordura por datos ({k}, Spearman 56 × 56, val): {v}')
+            for s in F43_SEEDS:
+                c.metric(f'f43.{t}.cordura_datos.{k}.spearman56.seed{s}', 'spearman_rho',
+                         (*D, 'real_vs_permutado', s, 'mediana'), note='mediana por muestra, real frente a permutado')
+            for i, lado in enumerate(('min', 'max')):
+                c.metric(f'f43.{t}.cordura_datos.{k}.spearman56.referencia_{lado}', 'spearman_rho',
+                         (*D, 'rango_referencia', i), note='rango de los 10 pares de semillas reales')
+        # Cascada (val): paso «cabeza», conteo de pasos «cambia» y transiciones a constante (P9)
+        C = ('tecnicas', t)
+        orden = cc.get((*C, 'orden'))
+        for k in kinds:
+            glob = [cc.get((*C, 'pasos', p, k, 'spearman56', 'global')) for p in orden]
+            Lc = (*C, 'pasos', 'cabeza', k, 'spearman56', 'global')
+            cc.identity(f'f43.{t}.cascada.cabeza.{k}.veredicto.{glob[0]}', Lc,
+                        f'cascada, paso cabeza ({k}, Spearman 56 × 56, val): {glob[0]}')
+            cc.count(f'f43.{t}.cascada.{k}.n_pasos', (*C, 'orden'), value=len(orden))
+            cc.count(f'f43.{t}.cascada.{k}.n_pasos_cambia', (*C, 'orden'), value=sum(g == 'cambia' for g in glob),
+                     note='pasos con veredicto «cambia» (Spearman 56 × 56, mayoría de semillas)')
+            det = [cc.get((*C, 'pasos', p, k, 'spearman56', 'por_semilla_detalle', s)) for p in orden for s in F43_SEEDS]
+            cc.count(f'f43.{t}.cascada.{k}.n_transiciones_a_constante', (*C, 'pasos'),
+                     value=sum(d['n_transiciones_a_constante'] for d in det),
+                     note='suma sobre pasos y semillas; P9: cuentan como cambio (Spearman imputado −1)')
+        # Ablación espectral (val): ΔF1 medio de las 5 semillas
+        A = ('tecnicas', t)
+        if ca.get((*A, 'original', 'delta_f1_media')) != 0:
+            raise CanonicalError(f'f43.{t}: ΔF1 de la condición original != 0')
+        ca.metric(f'f43.{t}.ablacion.original.f1_macro_media', 'f1_macro', (*A, 'original', 'f1_media'),
+                  note='F1-Macro de val sin filtrar, media de las 5 semillas (inferencia de F4.3)')
+        for banda in ('paso_bajo', 'paso_alto'):
+            for sg in F43_SIGMAS:
+                ca.metric(f'f43.{t}.ablacion.{banda}.s{sg}.delta_f1', 'f1_macro', (*A, f'{banda}_s{sg}', 'delta_f1_media'),
+                          note=f'ΔF1 = F1 filtrado − F1 sin filtrar, media de 5 semillas; σ = {sg} px')
+        # Fracción de mapas constantes (agrupada sobre las 5 semillas): val principal, prueba réplica
+        for clase in ('real', 'predicha'):
+            for y in ('0', '1'):
+                Gv = (*T, 'agregacion', 'val', f'constantes_clase_{clase}', 'agrupada', y)
+                Gt = (*T, 'agregacion', 'test', f'constantes_clase_{clase}', 'agrupada', y)
+                nid = f'f43.{t}.constantes.clase_{clase}.y{y}.fraccion'
+                c.metric(nid, 'proportion', (*Gv, 'fraccion'),
+                         note=f'mapas constantes / mapas (5 semillas agrupadas), clase {clase} {y}; {F43_REPLICA}')
+                e = c.out[nid]
+                e['value']['test'] = float(c.get((*Gt, 'fraccion')))
+                del e['null_reason']
+                e['source']['locator'] += f'; test: {c._loc((*Gt, "fraccion"))}'
+                for sp, G in (('val', Gv), ('prueba', Gt)):
+                    c.count(f'f43.{t}.constantes.clase_{clase}.y{y}.{sp}.n_constantes', (*G, 'constantes'))
+                    c.count(f'f43.{t}.constantes.clase_{clase}.y{y}.{sp}.n_mapas', (*G, 'n'))
+    for t in F43_VIT:
+        T = ('resultados', 'tecnicas', t)
+        for v in ('w1', 'w1_menos_w0'):
+            K = (*T, 'cosenos_cabezas', v)
+            nivel = c.get((*K, 'nivel'))
+            c.identity(f'f43.{t}.coseno.{v}.nivel.{nivel}', (*K, 'nivel'), f'coseno de cabezas ({v}): {nivel}')
+            for s in F43_SEEDS:
+                c.metric(f'f43.{t}.coseno.{v}.seed{s}', 'cosine', (*K, 'real_vs_permutada', s),
+                         note='coseno entre la cabeza real y la permutada de la misma semilla (pesos; sin split)')
+            for i, lado in enumerate(('min', 'max')):
+                c.metric(f'f43.{t}.coseno.{v}.referencia_{lado}', 'cosine', (*K, 'rango_referencia', i),
+                         note='rango de los 10 pares de cabezas reales')
+        Lv = ('resultados', 'lectura_vit', t, 'lectura')
+        c.identity(f'f43.{t}.lectura_vit.{c.get(Lv)}', Lv, 'lectura de los ViT (docs/plan_fase4.md, F4.3)')
+    out = {}
+    for col in (c, cc, ca):
+        for k, e in col.out.items():
+            if k in out:
+                raise CanonicalError(f'{k}: clave repetida en el colector')
+            out[k] = e
+    return out
+
+
 def check_f41(numbers):
     """El F1 de la LogReg sobre u en prueba (F4.1) es el de F2.1 (ref.techo5d.logreg)."""
     a, b = numbers['f41.prueba.u.logreg.f1_macro']['value']['test'], numbers['ref.techo5d.logreg.f1_macro']['value']['test']
@@ -1538,6 +1669,7 @@ def build(umap_path=None, fragment_paths=None, strict=False):
     sources['build.py:collect_f41'] = collect_f41(inputs)
     sources['build.py:collect_f47'] = collect_f47(inputs)
     sources['build.py:collect_f42'] = collect_f42(inputs, umap_path)
+    sources['build.py:collect_f43'] = collect_f43(inputs)
     sources.update(load_fragments(fragment_paths, inputs))
     numbers, superseded = merge(sources)
     unlock_ref_test(numbers, inputs)
