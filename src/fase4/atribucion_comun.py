@@ -214,6 +214,22 @@ def resumen_similitud(s, constantes):
     return (float(np.median(s)) if len(s) else math.nan), int(len(s)), int(nan.sum())
 
 
+def resumen_cascada_spearman(s, const_base, const_nuevo, constantes, minimo=-1.0):
+    """Spearman de un paso de la cascada (resolución P9, nota de SV): una muestra
+    cuyo mapa pasa de no constante (sin aleatorizar) a constante (aleatorizado)
+    cuenta como cambio. Se le imputa el mínimo posible de Spearman (−1) antes de
+    la mediana, y se reporta el conteo. Los demás NaN (mapa sin aleatorizar
+    constante) siguen la regla general de similitud_constantes.
+    Devuelve (mediana, n usado, n NaN restantes, n transiciones a constante,
+    n desde constante)."""
+    s = np.asarray(s, dtype=np.float64)
+    cb, cn = np.asarray(const_base, bool), np.asarray(const_nuevo, bool)
+    trans = ~cb & cn
+    s = np.where(trans, minimo, s)
+    m, n, n_nan = resumen_similitud(s, constantes)
+    return m, n, n_nan, int(trans.sum()), int(cb.sum())
+
+
 # ── Criterio relativo ─────────────────────────────────────────────────────
 def pares_semillas(seeds=SEEDS):
     p = list(itertools.combinations(seeds, 2))

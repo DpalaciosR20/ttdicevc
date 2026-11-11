@@ -190,10 +190,12 @@ def reiniciar(model, nombres, res):
 
 
 def similitudes(base, nuevo, grid):
-    """Por muestra: Spearman (rejilla grid), SSIM a la rejilla y SSIM a resolución completa."""
+    """Por muestra: Spearman (rejilla grid), SSIM a la rejilla y SSIM a resolución completa,
+    y si cada mapa es constante en la rejilla (const_base, const_nuevo; P9)."""
     a, b = ac.minmax(base), ac.minmax(nuevo)
     return {'spearman56': ac.spearman_filas(a, b, grid), 'ssim56': ac.ssim_filas(a, b, g=grid),
-            'ssim224': ac.ssim_filas(a, b)}
+            'ssim224': ac.ssim_filas(a, b), 'const_base': ac.es_constante(ac.pool(a, grid)),
+            'const_nuevo': ac.es_constante(ac.pool(b, grid))}
 
 
 def cascada_modelo(model_cpu, arch, X, metodo, device, res, batch_size=16, grid=ac.GRID, y=None):
@@ -240,8 +242,19 @@ def resumen_cascada(bases, sims_por_semilla, pasos, res, grid=ac.GRID):
                 per = {}
                 info = {}
                 for s in seeds:
-                    m, n, nn_ = ac.resumen_similitud(sims_por_semilla[s][(p['paso'], k)][med], res['similitud_constantes'])
-                    per[s], info[str(s)] = m, {'mediana': m, 'n_usado': n, 'n_nan': nn_}
+                    d = sims_por_semilla[s][(p['paso'], k)]
+                    if med == 'spearman56':
+                        m, n, nn_, tr, dc = ac.resumen_cascada_spearman(d[med], d['const_base'], d['const_nuevo'],
+                                                                        res['similitud_constantes'])
+                        info[str(s)] = {'mediana': m, 'n_usado': n, 'n_nan': nn_,
+                                        'n_transiciones_a_constante': tr, 'n_base_constante': dc}
+                    else:
+                        m, n, nn_ = ac.resumen_similitud(d[med], res['similitud_constantes'])
+                        info[str(s)] = {'mediana': m, 'n_usado': n, 'n_nan': nn_}
+                    per[s] = m
+                if med == 'spearman56':
+                    info['_regla_P9'] = ('mapa no constante → constante cuenta como cambio: Spearman imputado −1 '
+                                         'antes de la mediana')
                 out[p['paso']][k][med] = {'por_semilla_detalle': info, 'referencia_pares': referencia[k][med],
                                           **ac.criterio_similitud(per, referencia[k][med], res)}
     return out, referencia

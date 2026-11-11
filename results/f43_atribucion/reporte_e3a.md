@@ -231,3 +231,17 @@ Son las claves de `--resoluciones` (`ac.RESOLUCIONES`). Ningún script corre sin
 2. *Push* de `sv/f4-atribucion` y Kaggle: celdas 1–4 de `docs/correr_f43_kaggle.md`, con el commit que contenga las resoluciones.
 3. Recepción del zip con la verificación local de la guía.
 4. Prueba acotada de la parte local (P20). Después, `python -m src.fase4.atribucion_local --root … --resoluciones … --cascada results/f43_atribucion/gpu/cascada.json`, una sola vez y con el árbol limpio.
+
+## Adenda (2026-11-10): resoluciones P1–P20
+
+- SV fijó P1–P19 en `results/f43_atribucion/resoluciones.json` (`_autor` SV, `_fecha` 2026-11-10), antes de cualquier cálculo con datos reales. `l2_resolucion` y `ssim_resolucion` quedan como cadenas (`"56"`), que es lo que espera el contrato. P20: prueba acotada local; si estima más de 20 min, Kaggle CPU con `--root /kaggle/input`.
+- **Nota de P9, implementada en la lectura de la cascada** (`atribucion_comun.resumen_cascada_spearman` y `atribucion_gpu.resumen_cascada`).
+  - Una muestra cuyo mapa pasa de no constante (sin aleatorizar) a constante (aleatorizado), en la rejilla de 56 × 56, cuenta como cambio.
+  - Su Spearman, indefinido, se imputa al mínimo posible (−1) antes de la mediana.
+  - Por semilla y paso se reportan `n_transiciones_a_constante` y `n_base_constante`.
+  - Los demás NaN (mapa sin aleatorizar ya constante) siguen `similitud_constantes` = `excluir`.
+  - La regla solo aplica a la cascada; la cordura por datos de la parte local sigue la regla general.
+  - `similitudes()` guarda además `const_base` y `const_nuevo` por muestra en `cascada_similitudes.npz`.
+- **Pruebas:** 2 nuevas, 40 passed en `tests/test_fase4_atribucion.py`.
+  - Un paso que anula 12 de 20 mapas da mediana −1 y 12 transiciones; con la regla general, la mediana habría sido 1 («no cambia»).
+  - Con 5 semillas y mayoría, un paso que anula 7 de 10 mapas se lee como «cambia».

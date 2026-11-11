@@ -620,3 +620,48 @@ def test_gpu_main_punta_a_punta(tmp_path, monkeypatch):
     assert 'gray_scott|42|cabeza|map|spearman56' in z.files and z['gray_scott|42|cabeza|map|spearman56'].shape == (2,)
     with pytest.raises(ac.Detener, match='nunca sobrescribe'):
         ag.main(args)
+
+
+# ── P9: en la cascada, pasar a mapa constante cuenta como cambio ─────────
+def test_p9_transicion_a_constante_cuenta_como_cambio():
+    rng = np.random.default_rng(11)
+    n = 20
+    base = rng.random((n, 56, 56))
+    # Paso: 12 de 20 mapas quedan constantes (ReLU anulado); los otros 8 idénticos a la base
+    nuevo = base.copy()
+    nuevo[:12] = 0.0
+    sims = ag.similitudes(base, nuevo, 56)
+    assert sims['const_base'].sum() == 0 and sims['const_nuevo'].sum() == 12
+    assert np.isnan(sims['spearman56'][:12]).all()
+    # Regla general (excluir): solo quedarían los 8 idénticos → mediana 1, «no cambia»
+    assert ac.resumen_similitud(sims['spearman56'], 'excluir')[0] == pytest.approx(1.0)
+    # P9: las 12 transiciones se imputan a −1 → la mediana cae, y se cuentan
+    m, usado, n_nan, tr, dc = ac.resumen_cascada_spearman(sims['spearman56'], sims['const_base'],
+                                                          sims['const_nuevo'], 'excluir')
+    assert (m, usado, n_nan, tr, dc) == (-1.0, 20, 0, 12, 0)
+    # Un mapa ya constante sin aleatorizar no es transición: sigue la regla general (se excluye)
+    base2 = base.copy()
+    base2[0] = 0.0
+    s2 = ag.similitudes(base2, nuevo, 56)
+    m2, usado2, nan2, tr2, dc2 = ac.resumen_cascada_spearman(s2['spearman56'], s2['const_base'], s2['const_nuevo'],
+                                                             'excluir')
+    assert (usado2, nan2, tr2, dc2) == (19, 1, 11, 1)
+
+
+def test_p9_en_resumen_cascada():
+    """Con 5 semillas, un paso que anula la mayoría de los mapas se lee como «cambia»
+    y el detalle reporta las transiciones."""
+    rng = np.random.default_rng(12)
+    common = rng.random((10, 56, 56))
+    bases = {s: {'map': common + 0.05 * rng.random((10, 56, 56)), 'backbone_map': None} for s in ac.SEEDS}
+    sims = {}
+    for s in ac.SEEDS:
+        nuevo = bases[s]['map'].copy()
+        nuevo[:7] = 0.0
+        sims[s] = {('cabeza', 'map'): ag.similitudes(bases[s]['map'], nuevo, 56)}
+    res = {**RES, 'criterio_semillas': 'mayoria', 'similitud_constantes': 'excluir'}
+    out, _ = ag.resumen_cascada(bases, sims, [{'paso': 'cabeza', 'modulos': ['classifier.1']}], res)
+    sp = out['cabeza']['map']['spearman56']
+    assert sp['global'] == 'cambia'
+    assert all(sp['por_semilla_detalle'][str(s)]['n_transiciones_a_constante'] == 7 for s in ac.SEEDS)
+    assert '_regla_P9' in sp['por_semilla_detalle']
