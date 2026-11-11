@@ -81,8 +81,8 @@ def supports(entry, split):
 DESIGN_PREFIXES = ('f11.', 'f12.')
 # Cifras extraídas de la Fase 5 y de F4.6 (bootstrap, p, α, κ...): tampoco salen de una matriz de confusión
 F5_PREFIXES = ('f5.', 'f46.')
-# F4.1, F4.7, F4.2 y F4.3: R², alpha, ρ, ΔF1, p... Sus F1 de prueba verificados se prueban aparte (test_f41_*, test_f42_*)
-F4_PREFIXES = ('f41.', 'f47.', 'f42.', 'f43.')
+# F4.1, F4.7, F4.2, F4.3 y F4.4: R², alpha, ρ, ΔF1, p... Sus F1 de prueba verificados se prueban aparte (test_f41_*, test_f42_*)
+F4_PREFIXES = ('f41.', 'f47.', 'f42.', 'f43.', 'f44.')
 
 
 def is_leaf_metric(entry):
@@ -1113,3 +1113,51 @@ def test_f43_valores_en_su_localizador():
             assert e['value'] == int(_at(src, loc)), nid
         n += 1
     assert n > 150
+
+
+# ── F4.4 (f44.*) ──────────────────────────────────────────────────────────
+F44_RES = json.loads((REPO / 'results' / 'f44_convergencia' / 'resultados.json').read_text(encoding='utf-8'))
+F44_DESC = {'gray_scott': ('shannon_entropy', 'contrast', 'edge_density', 'lbp_energy'),
+            'perlin': ('contrast', 'edge_density'), 'lorenz': ('shannon_entropy', 'lbp_energy')}
+
+
+def test_f44_presencia_split_y_localizador():
+    ks = [k for k in NUMBERS if k.startswith('f44.')]
+    assert len(ks) == 8 * 7
+    for nid in ks:
+        e = NUMBERS[nid]
+        assert e['source']['path'] == 'results/f44_convergencia/resultados.json'
+        v = _at(F44_RES, e['source']['locator'])
+        if e['kind'] == 'metric':
+            assert e['value']['val'] == v and e['value']['test'] is None and 'train' not in e['value'], nid
+        else:
+            assert e['value'] == int(v), nid
+
+
+def test_f44_recalculo_desde_por_muestra():
+    """Media, IC (bootstrap con default_rng(2026), cuantiles linear) y n se recalculan desde spearman_por_muestra.csv."""
+    import math
+    from src.fase4 import convergencia as cv
+    with open(REPO / 'results' / 'f44_convergencia' / 'spearman_por_muestra.csv', newline='', encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+    for t, ds in F44_DESC.items():
+        idx = cv.indices_bootstrap(114, np.random.default_rng(2026))
+        for d in ds:
+            v = np.array([float(r['spearman']) if r['spearman'] else np.nan for r in rows
+                          if r['tecnica'] == t and r['mapa'] == 'map' and r['descriptor'] == d])
+            assert len(v) == 114
+            r = cv.ic_bootstrap(v, idx, metodo='linear')
+            b = f'f44.{t}.{d}'
+            assert math.isclose(NUMBERS[f'{b}.spearman_media']['value']['val'], r['media'], rel_tol=0, abs_tol=1e-12)
+            assert math.isclose(NUMBERS[f'{b}.spearman_media_ic_inf']['value']['val'], r['ic_inf'], rel_tol=0, abs_tol=1e-12)
+            assert math.isclose(NUMBERS[f'{b}.spearman_media_ic_sup']['value']['val'], r['ic_sup'], rel_tol=0, abs_tol=1e-12)
+            assert NUMBERS[f'{b}.n']['value'] + NUMBERS[f'{b}.n_indefinidos']['value'] == 114
+            assert NUMBERS[f'{b}.ic_contiene_0']['value'] == int(r['contiene_0'])
+
+
+def test_f44_resoluciones_versionadas():
+    import hashlib
+    raw = (REPO / 'results' / 'f44_convergencia' / 'resoluciones.json').read_bytes()
+    m = F44_RES['meta']['resoluciones']
+    assert m['sha256'] in (hashlib.sha256(raw).hexdigest(), hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest())
+    assert F44_RES['meta']['limit'] is None and len(F44_RES['meta']['git_commit']) == 40

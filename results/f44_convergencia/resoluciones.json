@@ -1,0 +1,11 @@
+{
+ "geometria_parche": "redimensionada_224",
+ "spearman_indefinido": "excluir_y_contar",
+ "mapa": "map",
+ "bootstrap_rng": "por_tecnica_compartido",
+ "ic_cuantiles": "linear",
+ "naturaleza_descriptores": "propuesta",
+ "_autor": "SV",
+ "_fecha": "2026-11-10",
+ "_nota": "Explicativo (protocolo §9, §11), fijado antes de calcular. En NATURALEZA, el contraste se clasifica como dispersión global de intensidades sin banda específica; la tabla es una clasificación orientativa. N1–N3 se declaran como limitaciones."
+}
