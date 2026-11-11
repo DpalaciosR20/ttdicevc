@@ -38,6 +38,12 @@ archivo --resoluciones con todos ellos. Si falta alguno, se detiene.
   reintento_evento      'reintentos_mayor_0' | 'usa_respaldo'
   f1_estrato_sin_clase  'cero' | 'no_definido'
   bit_a_bit             'sha256_archivo' | 'pixeles'   (criterio de «idéntica»)
+  no_identicas          'incluir_y_listar_con_conteo_por_clase'  (P6: entran al Fisher de
+                        reintentos y se listan con su conteo por clase)
+  pearson               'sin_superposicion_sin_fuente_versionada'  (P7: la figura de
+                        Gray-Scott va sin las fronteras de Pearson)
+Las claves que empiezan con «_» (autor, fecha, nota) son metadatos: se copian a
+resultados.json y no cambian el cálculo. Cualquier otra clave no prevista detiene.
 
 Compuerta: la etiqueta enmienda-5 está en la historia de HEAD,
 docs/plan_fase4.md no cambió frente a ella, results/f5_contraste/resultados.json
@@ -80,7 +86,9 @@ RESOLUCIONES = {'fisher_alternativa': ('two-sided', 'greater', 'less'),
                 'mw_continuidad': (True, False),
                 'reintento_evento': ('reintentos_mayor_0', 'usa_respaldo'),
                 'f1_estrato_sin_clase': ('cero', 'no_definido'),
-                'bit_a_bit': ('sha256_archivo', 'pixeles')}
+                'bit_a_bit': ('sha256_archivo', 'pixeles'),
+                'no_identicas': ('incluir_y_listar_con_conteo_por_clase',),
+                'pearson': ('sin_superposicion_sin_fuente_versionada',)}
 
 
 class Detener(RuntimeError):
@@ -94,7 +102,15 @@ def check_resoluciones(res, spec=RESOLUCIONES):
     malos = {k: res[k] for k in spec if res[k] not in spec[k]}
     if malos:
         raise Detener(f'valores no previstos en --resoluciones: {malos}')
+    extra = sorted(k for k in res if k not in spec and not str(k).startswith('_'))
+    if extra:
+        raise Detener(f'claves no previstas en --resoluciones: {extra}')
     return {k: res[k] for k in spec}
+
+
+def meta_resoluciones(res):
+    """Metadatos de --resoluciones (claves «_autor», «_fecha», «_nota»), sin el guion bajo."""
+    return {str(k)[1:]: v for k, v in res.items() if str(k).startswith('_')}
 
 
 # ── Mapeos (de src/generation; no se reescriben) ──────────────────────────
@@ -227,6 +243,8 @@ def analizar(U_train, y_train, filas_reintentos, U_test, y_test, yhat_test, res)
     bajo = estrato_lorenz(mp['rho'])
     u1_bajo = np.asarray(U_train, dtype=np.float64)[:, 1] < LORENZ_U1_UMBRAL
     ev, no_ident = eventos_reintento(filas_reintentos, res['reintento_evento'], res['bit_a_bit'])
+    y_por_id = {r['sample_id']: int(r['y_true']) for r in filas_reintentos}
+    no_ident_por_clase = {'dep': sum(y_por_id[s] == 1 for s in no_ident), 'nodep': sum(y_por_id[s] == 0 for s in no_ident)}
     pruebas = {
         'lorenz_fisher_regimen': fisher(tabla_2x2(bajo, y_train), res['fisher_alternativa']),
         'lorenz_mw_rho': mann_whitney(mp['rho'][dep], mp['rho'][nodep], res['mw_continuidad']),
@@ -258,8 +276,11 @@ def analizar(U_train, y_train, filas_reintentos, U_test, y_test, yhat_test, res)
                            'n_reintentos_mayor_0': int(sum(int(r['reintentos']) > 0 for r in filas_reintentos)),
                            'n_respaldo': int(sum(r['usa_respaldo'] in ('True', 'true', '1', True) for r in filas_reintentos))},
             'bit_a_bit': {'criterio': res['bit_a_bit'], 'n_identicas': int(len(y_train) - len(no_ident)),
-                          'n_total': int(len(y_train)), 'no_identicas': no_ident},
+                          'n_total': int(len(y_train)), 'no_identicas': no_ident,
+                          'no_identicas_por_clase': no_ident_por_clase,
+                          'tratamiento_no_identicas': res['no_identicas']},
             'pearson_superpuesto': False,
+            'pearson_resolucion': res['pearson'],
         },
         'pruebas': pruebas,
         'holm': {'alpha': ALPHA, 'm': len(FAMILIA), 'familia': holm},
@@ -391,8 +412,9 @@ def figuras(r, out_dir):
     ax.set_ylabel('k (decaimiento)')
     ax.set_title('Gray-Scott: (f, k) por clase en train')
     ax.legend(loc='upper left', fontsize=7)
-    fig.text(0.01, -0.02, n_txt + ' Sin superposición del diagrama de Pearson (1993): PENDIENTE, '
-             'no hay en el repositorio una fuente versionada de sus fronteras.', fontsize=6.5, va='top', wrap=True)
+    fig.text(0.01, -0.02, n_txt + ' Sin superposición del diagrama de Pearson (1993): no hay en el '
+             'repositorio una fuente versionada de sus fronteras (resolución «pearson»). Solo dispersión.',
+             fontsize=6.5, va='top', wrap=True)
     paths.append(style.save(fig, fig_dir / 'f42_01_gray_scott_fk'))
     plt.close(fig)
 
@@ -430,13 +452,19 @@ def figuras(r, out_dir):
     return paths
 
 
+def _rel(path):
+    p = Path(path).resolve()
+    return p.relative_to(REPO).as_posix() if p.is_relative_to(REPO) else str(p)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     ap.add_argument('--resoluciones', required=True)
     ap.add_argument('--reintentos', default=str(REINTENTOS_CSV))
     ap.add_argument('--out', default=str(OUT))
     a = ap.parse_args(argv)
-    res = check_resoluciones(json.loads(Path(a.resoluciones).read_text(encoding='utf-8')))
+    res_raw = json.loads(Path(a.resoluciones).read_text(encoding='utf-8'))
+    res = check_resoluciones(res_raw)
     out = Path(a.out)
     refuse_overwrite(out / 'resultados.json')
     refuse_overwrite(out / 'figures')
@@ -449,7 +477,9 @@ def main(argv=None):
     figs = figuras(r, out)
     doc = {'meta': {'tarea': 'F4.2', 'git_commit': commit, 'gate_tag': GATE_TAG,
                     'created_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
-                    'inputs': {Path(a.reintentos).resolve().relative_to(REPO).as_posix(): sha256_file(a.reintentos), **shas},
+                    'resoluciones': {'archivo': _rel(a.resoluciones), 'sha256': sha256_file(a.resoluciones),
+                                     **meta_resoluciones(res_raw)},
+                    'inputs': {_rel(a.reintentos): sha256_file(a.reintentos), **shas},
                     'figuras': [Path(p).resolve().relative_to(REPO).as_posix() for p in figs]},
            'resultados': _clean(r)}
     out.mkdir(parents=True, exist_ok=True)
