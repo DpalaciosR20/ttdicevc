@@ -36,7 +36,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parents[2]
-for _p in (str(REPO), str(REPO / 'src' / 'training'), str(REPO / 'src' / 'generation')):
+for _p in (str(REPO), str(REPO / 'src'), str(REPO / 'src' / 'training'), str(REPO / 'src' / 'generation')):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 

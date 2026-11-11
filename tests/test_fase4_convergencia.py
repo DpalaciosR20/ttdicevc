@@ -297,3 +297,13 @@ def test_render_determinista(tech):
     assert a.shape == (256, 256) and a.dtype == np.uint8
     np.testing.assert_array_equal(a, b)
     assert a.std() > 0
+
+
+def test_figura_se_dibuja_y_marca_recortes(tmp_path):
+    imgs = {t: {'centroides': [_img(i, 256) for i in range(3)], 'direccion': [_img(i + 3, 256) for i in range(3)]}
+            for t in fi.TECNICAS}
+    rec = {r: {'etiqueta': r, 'ticks': ['a', 'b', 'c'], 'recortado': np.array([False, True, False])}
+           for r in ('centroides', 'direccion')}
+    fi.figura(imgs, rec, RES_F48, tmp_path / 'g')
+    fi.figura(imgs, rec, RES_F48, tmp_path / 'p', paleta='viridis')
+    assert (tmp_path / 'g.png').is_file() and (tmp_path / 'p.png').is_file()
