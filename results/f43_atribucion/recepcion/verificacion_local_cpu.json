@@ -1,0 +1,25 @@
+{
+ "tarea": "F4.3",
+ "parte": "recepcion_local_kaggle_cpu",
+ "commit_entregado": "95813042a618ae3097bec3a80aef8683004475d4",
+ "comprobaciones": {
+  "commit_txt": true,
+  "meta_commit": true,
+  "resoluciones_sha256": true,
+  "cascada_sha256": true,
+  "datos_manifiesto_ok": true,
+  "artefactos_50": true,
+  "artefactos_sha_manifiesto": true,
+  "artefactos_rutas": true,
+  "modelos_f35_verificacion.json_15_15": true,
+  "modelos_f36_verificacion.json_15_15": true,
+  "mapas_verificacion.json_30_30": true,
+  "sha256sum": true,
+  "meta_sha_salidas": true,
+  "holm_m3": true,
+  "lectura_vit": true,
+  "permutacion_B": true
+ },
+ "segundos": 112.7,
+ "todo_ok": true
+}
