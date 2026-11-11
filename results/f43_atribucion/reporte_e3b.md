@@ -62,8 +62,7 @@ Después extrapoló al total. La salida está en `estimacion.json`.
 ## 3. Parte local en Kaggle CPU
 
 - **Primer intento de la celda 2.** Sin el input `tt2-mapas`, F3.7 dio 0/30 («falta» en los 30 `.npz`). Se detuvo, se agregó el input y la celda 2 dio 15/15 (F3.5), 15/15 (F3.6) y 30/30 (F3.7). La celda 3 se ejecutó una sola vez.
-- **Origen.** `G:\Mi unidad\tt2-insumos\f43_local_resultados\results\f43_atribucion\local\` se copió a `results/f43_atribucion/local/`, sin los `desktop.ini`. `.gitattributes`: `results/f43_atribucion/local/** -text`.
-esults43_atribucion\local\` se copió a `results/f43_atribucion/local/`, sin los `desktop.ini`. `.gitattributes`: `results/f43_atribucion/local/** -text`.
+- **Origen.** `G:\Mi unidad\tt2-insumos\f43_local_resultados\results\f43_atribucion\local\` se copió a `results/f43_atribucion/local/`, sin los `desktop.ini`. `.gitattributes`: `results/f43_atribucion/local/** -text`.` se copió a `results/f43_atribucion/local/`, sin los `desktop.ini`. `.gitattributes`: `results/f43_atribucion/local/** -text`.
 - **Verificación.** `results/f43_atribucion/recepcion/verificacion_local_cpu.py` → `verificacion_local_cpu.json`, 16/16 OK:
 
 | Comprobación | Resultado |
