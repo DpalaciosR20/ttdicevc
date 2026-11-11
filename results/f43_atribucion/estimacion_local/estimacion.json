@@ -1,0 +1,55 @@
+{
+ "tarea": "F4.3",
+ "parte": "estimacion_local_P20",
+ "tiempos": {
+  "find_all_s": 21.250064849853516
+ },
+ "lecturas": {
+  "npz_gray_scott": {
+   "bytes": 16450376,
+   "s": 4.899052381515503
+  },
+  "npz_perlin": {
+   "bytes": 60048141,
+   "s": 21.334579944610596
+  },
+  "pt_vit": {
+   "bytes": 343267651,
+   "s": 91.71818256378174
+  }
+ },
+ "mib_s": {
+  "npz": 2.780959571252787,
+  "pt": 3.5692545715692843
+ },
+ "total_bytes": {
+  "npz": 1407459470,
+  "pt": 6865365472
+ },
+ "calculo": {
+  "gray_scott": {
+   "spearman_114_s": 7.382228374481201,
+   "ssim_114_s": 0.0719447135925293,
+   "estadistico_val_s": 0.15528082847595215,
+   "permutacion_250_s": 0.029008865356445312,
+   "n_comparaciones": 30,
+   "estimado_s": 224.82649326324463
+  },
+  "perlin": {
+   "spearman_114_s": 0.12113642692565918,
+   "ssim_114_s": 0.08142495155334473,
+   "estadistico_val_s": 0.1700601577758789,
+   "permutacion_250_s": 0.022585153579711914,
+   "n_comparaciones": 60,
+   "estimado_s": 13.285626411437988
+  }
+ },
+ "estimado_s": {
+  "find_all": 21.250064849853516,
+  "lectura": 2317.0269787970105,
+  "calculo": 251.3977460861206,
+  "total": 2589.6747897329847
+ },
+ "nota": "la lectura medida puede venir de la cach\u00e9 de Drive; un archivo fr\u00edo puede ser m\u00e1s lento",
+ "estimado_min_total": 43.16124649554975
+}
