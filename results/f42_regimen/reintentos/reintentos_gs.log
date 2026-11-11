@@ -1,0 +1,53 @@
+[50/908] 242 s
+[100/908] 494 s
+[150/908] 711 s
+[200/908] 931 s
+[250/908] 1151 s
+[300/908] 1361 s
+[350/908] 1624 s
+[400/908] 1854 s
+[450/908] 2092 s
+[500/908] 2325 s
+[550/908] 2523 s
+[600/908] 2741 s
+[650/908] 2946 s
+[700/908] 3164 s
+[750/908] 3392 s
+[800/908] 3613 s
+[850/908] 3808 s
+[900/908] 4011 s
+[908/908] 4036 s
+{
+ "smoke": false,
+ "workers": 4,
+ "resumen": {
+  "n": 908,
+  "n_dep": 353,
+  "n_nodep": 555,
+  "reintentos_mayor_0_por_clase": {
+   "0": 31,
+   "1": 1
+  },
+  "usa_respaldo_por_clase": {
+   "0": 0,
+   "1": 0
+  },
+  "distribucion_reintentos": {
+   "0": 876,
+   "1": 32,
+   "2": 0,
+   "3": 0
+  },
+  "n_sha256_coincide": 908,
+  "n_pixeles_coinciden": 908,
+  "n_almacenada_integra": 908,
+  "no_coinciden_sha256": [],
+  "no_coinciden_pixeles": []
+ },
+ "tiempo": {
+  "segundos_total": 4036.0,
+  "segundos_muestra_media": 17.75,
+  "segundos_muestra_max": 51.293,
+  "estimacion_908_segundos": 4029.0
+ }
+}
