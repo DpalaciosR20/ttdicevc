@@ -1,0 +1,36 @@
+comprobación,resultado
+sha256 (LF) de results/f41_recuperabilidad/val/resultados_val.json = canonical_numbers.json:inputs,OK
+sha256 (LF) de results/f41_recuperabilidad/prueba/resultados_prueba.json = canonical_numbers.json:inputs,OK
+sha256 (LF) de results/f42_regimen/resultados.json = canonical_numbers.json:inputs,OK
+sha256 (LF) de results/f43_atribucion/local/resultados.json = canonical_numbers.json:inputs,OK
+sha256 (LF) de results/f44_convergencia/resultados.json = canonical_numbers.json:inputs,OK
+sha256 (LF) de results/f5_contraste/resultados.json = canonical_numbers.json:inputs,OK
+backbone principal de F4.1 coincide con el de la condición 2 de F4.6 (nota canónica),OK
+techo 5D = SVM-RBF (ref.techo5d = ref.techo5d.svm_rbf),OK
+gray_scott: cabeza (BETO − 768D) = diferencia de los F1 graficados (f5.descomposicion.gray_scott.cabeza),OK
+gray_scott: reducción (768D − 5D) = diferencia de los F1 graficados (f5.descomposicion.gray_scott.reduccion),OK
+gray_scott: renderizado (5D − visual) = diferencia de los F1 graficados (f5.descomposicion.gray_scott.renderizado),OK
+gray_scott: ΔF1 F4.1 (u − û) = diferencia de los F1 graficados (f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.delta_f1),OK
+perlin: cabeza (BETO − 768D) = diferencia de los F1 graficados (f5.descomposicion.perlin.cabeza),OK
+perlin: reducción (768D − 5D) = diferencia de los F1 graficados (f5.descomposicion.perlin.reduccion),OK
+perlin: renderizado (5D − visual) = diferencia de los F1 graficados (f5.descomposicion.perlin.renderizado),OK
+perlin: ΔF1 F4.1 (u − û) = diferencia de los F1 graficados (f41.prueba.perlin.vit_b16_imagenet.delta_f1),OK
+lorenz: cabeza (BETO − 768D) = diferencia de los F1 graficados (f5.descomposicion.lorenz.cabeza),OK
+lorenz: reducción (768D − 5D) = diferencia de los F1 graficados (f5.descomposicion.lorenz.reduccion),OK
+lorenz: renderizado (5D − visual) = diferencia de los F1 graficados (f5.descomposicion.lorenz.renderizado),OK
+lorenz: ΔF1 F4.1 (u − û) = diferencia de los F1 graficados (f41.prueba.lorenz.vit_b16_imagenet.delta_f1),OK
+gray_scott: ic_contiene_0 de F4.1 coincide con el IC,OK
+perlin: ic_contiene_0 de F4.1 coincide con el IC,OK
+lorenz: ic_contiene_0 de F4.1 coincide con el IC,OK
+sha256 de medias_clase.npz = resultados.json de F4.3 (meta.medias_clase_sha256),OK
+gray_scott: huella de las imágenes de val = la registrada en F4.4,OK
+perlin: huella de las imágenes de val = la registrada en F4.4,OK
+lorenz: huella de las imágenes de val = la registrada en F4.4,OK
+F4.2 Gray-Scott: media de f (dep) = resultados.json,OK
+F4.2 Lorenz: mediana de ρ (dep) = resultados.json,OK
+F4.2 Lorenz: n con ρ < 24.74 (dep) = f42.lorenz.rho_menor_24_74.n.dep,OK
+F4.2 Gray-Scott: media de f (nodep) = resultados.json,OK
+F4.2 Lorenz: mediana de ρ (nodep) = resultados.json,OK
+F4.2 Lorenz: n con ρ < 24.74 (nodep) = f42.lorenz.rho_menor_24_74.n.nodep,OK
+F4.2 Perlin: conteos de octavas por clase = resultados.json,OK
+recorridos.json de F4.8 = blob versionado en HEAD (F4.8 no tiene claves canónicas),OK

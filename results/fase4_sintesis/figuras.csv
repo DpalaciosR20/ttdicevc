@@ -1,0 +1,6 @@
+archivo,figura,fuentes
+results/fase4_sintesis/figures/fase4_01_cadena_por_etapa.png,"Cadena por etapa: F1 de prueba de BETO, 768D, techo 5D, LogReg sobre u y û, y visual, con IC por etapa","ref.*, f41.prueba.*, f35.*, f5.descomposicion.*, f12.umbral_f1_visual"
+results/fase4_sintesis/figures/fase4_02_ficha_gray_scott.png,Ficha de Gray-Scott,"data_manifest, f41.*, medias_clase.npz, f43.*, F4.2, f44.*"
+results/fase4_sintesis/figures/fase4_03_ficha_perlin.png,Ficha de Perlin,"data_manifest, f41.*, medias_clase.npz, f43.*, F4.2, f44.*"
+results/fase4_sintesis/figures/fase4_04_ficha_lorenz.png,Ficha de Lorenz,"data_manifest, f41.*, medias_clase.npz, f43.*, F4.2, f44.*"
+results/fase4_sintesis/figures/fase4_05_direccion_discriminativa.png,Dirección discriminativa (F4.8) con ŵ y separación de u0 y u4 en F4.2,"results/f48_figura/recorridos.json, f48_direccion_grises.png, results/f42_regimen/resultados.json"
