@@ -275,8 +275,18 @@ def test_verificar_pdep_val(tmp_path):
 
 def test_check_resoluciones_f48():
     assert fi.check_resoluciones(dict(RES_F48)) == RES_F48
+    assert fi.check_resoluciones({**RES_F48, 'n_pasos_recorrido': 7, 'tol_pdep': 1e-9})['tol_pdep'] == 1e-9
     with pytest.raises(Detener):
         fi.check_resoluciones({**RES_F48, 'paleta': 'jet'})
+    for k, v in (('n_pasos_recorrido', '7'), ('n_pasos_recorrido', 7.0), ('n_pasos_recorrido', True), ('tol_pdep', '1e-9')):
+        with pytest.raises(Detener):
+            fi.check_resoluciones({**RES_F48, k: v})
+
+
+def test_naturaleza_del_contraste_sin_banda():
+    assert cv.NATURALEZA['contrast'] == 'dispersión global de intensidades (sin banda específica)'
+    assert 'frecuencia' not in cv.NATURALEZA['contrast']
+    assert set(cv.NATURALEZA) == {'shannon_entropy', 'contrast', 'edge_density', 'lbp_energy'}
 
 
 # ── F4.8: renderizado determinista ────────────────────────────────────────

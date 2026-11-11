@@ -56,9 +56,9 @@ RESOLUCIONES = {
     # P8: qué DE escala el recorrido de ±1.5 DE
     'de_recorrido': ('proyeccion_train', 'media_de_componentes'),
     # P9: puntos del recorrido de ±1.5 DE
-    'n_pasos_recorrido': ('7', '5', '9'),
+    'n_pasos_recorrido': (7, 5, 9),
     # P10: tolerancia de la verificación de p_dep de val contra el CSV de F2.1
-    'tol_pdep': ('1e-9', '1e-6'),
+    'tol_pdep': (1e-9, 1e-6),
     # P11: paleta de la versión ilustrativa
     'paleta': ('viridis', 'magma', 'ninguna'),
     # P12: cómo se marca un punto recortado en la figura
@@ -73,7 +73,7 @@ def check_resoluciones(res):
     if falta or sobra:
         raise Detener(f'resoluciones: faltan {falta}, sobran {sobra}')
     for k, v in res.items():
-        if v not in RESOLUCIONES[k]:
+        if isinstance(v, bool) or v not in RESOLUCIONES[k] or type(v) is not type(RESOLUCIONES[k][0]):
             raise Detener(f'resoluciones: {k} = {v!r} no es una de {RESOLUCIONES[k]}')
     return res
 

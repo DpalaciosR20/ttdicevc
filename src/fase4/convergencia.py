@@ -80,10 +80,11 @@ RESOLUCIONES = {
     'naturaleza_descriptores': ('propuesta', 'sin_clasificar'),
 }
 
-# P6, opción 'propuesta': lectura de la definición de cada descriptor (configs/protocolo.json → descriptores)
+# P6, opción 'propuesta': lectura de la definición de cada descriptor (configs/protocolo.json → descriptores).
+# Clasificación orientativa; el contraste (DE de niveles de gris) no se asigna a ninguna banda (resolución de SV).
 NATURALEZA = {
     'shannon_entropy': 'histograma de niveles de gris (sin estructura espacial)',
-    'contrast': 'dispersión global de intensidades (dominada por frecuencias bajas)',
+    'contrast': 'dispersión global de intensidades (sin banda específica)',
     'edge_density': 'bordes de Sobel (frecuencias altas)',
     'lbp_energy': 'textura local, vecindad de radio 3 px (frecuencias altas y medias)',
 }

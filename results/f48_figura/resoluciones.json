@@ -1,0 +1,11 @@
+{
+ "direccion_espacio": "u",
+ "de_recorrido": "proyeccion_train",
+ "n_pasos_recorrido": 7,
+ "tol_pdep": 1e-9,
+ "paleta": "viridis",
+ "marca_recorte": "borde_y_lista",
+ "_autor": "SV",
+ "_fecha": "2026-11-10",
+ "_nota": "Figura ilustrativa sin peso argumentativo (plan F4.8)."
+}
