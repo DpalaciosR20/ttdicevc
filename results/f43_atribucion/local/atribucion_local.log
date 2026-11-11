@@ -1,0 +1,46 @@
+gray_scott: 10 .npz verificados
+perlin: 10 .npz verificados y 10 .pt
+lorenz: 10 .npz verificados y 10 .pt
+{
+ "holm": {
+  "alpha": 0.05,
+  "m": 3,
+  "familia": {
+   "gray_scott": {
+    "rank": 2,
+    "alpha_h": 0.025,
+    "reject": true,
+    "p": 0.0003999200159968006,
+    "p_holm": 0.0007998400319936012
+   },
+   "perlin": {
+    "rank": 3,
+    "alpha_h": 0.05,
+    "reject": true,
+    "p": 0.03559288142371526,
+    "p_holm": 0.03559288142371526
+   },
+   "lorenz": {
+    "rank": 1,
+    "alpha_h": 0.016666666666666666,
+    "reject": true,
+    "p": 0.0001999600079984003,
+    "p_holm": 0.0005998800239952009
+   }
+  }
+ },
+ "lectura_vit": {
+  "perlin": {
+   "cordura_datos": "cambia",
+   "coseno": "bajo",
+   "cabeza_cascada": "cambia",
+   "lectura": "cordura_por_datos_superada"
+  },
+  "lorenz": {
+   "cordura_datos": "no_cambia",
+   "coseno": "alto",
+   "cabeza_cascada": "cambia",
+   "lectura": "dependiente_de_la_cabeza_sin_validacion_por_datos"
+  }
+ }
+}

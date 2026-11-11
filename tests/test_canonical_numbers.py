@@ -81,8 +81,8 @@ def supports(entry, split):
 DESIGN_PREFIXES = ('f11.', 'f12.')
 # Cifras extraídas de la Fase 5 y de F4.6 (bootstrap, p, α, κ...): tampoco salen de una matriz de confusión
 F5_PREFIXES = ('f5.', 'f46.')
-# F4.1, F4.7 y F4.2: R², alpha, ρ, ΔF1, p... Sus F1 de prueba verificados se prueban aparte (test_f41_*, test_f42_*)
-F4_PREFIXES = ('f41.', 'f47.', 'f42.')
+# F4.1, F4.7, F4.2 y F4.3: R², alpha, ρ, ΔF1, p... Sus F1 de prueba verificados se prueban aparte (test_f41_*, test_f42_*)
+F4_PREFIXES = ('f41.', 'f47.', 'f42.', 'f43.')
 
 
 def is_leaf_metric(entry):
@@ -803,7 +803,7 @@ def test_f41_f47_presencia():
 
 def test_f41_f47_valores_en_su_localizador():
     """Cada cifra extraída es exactamente el valor del JSON en su localizador, en su split."""
-    keys = [k for k in NUMBERS if k.startswith(F4_PREFIXES) and NUMBERS[k]['status'] == 'extraido']
+    keys = [k for k in NUMBERS if k.startswith(('f41.', 'f47.', 'f42.')) and NUMBERS[k]['status'] == 'extraido']
     assert keys
     for nid in keys:
         e = NUMBERS[nid]
@@ -955,3 +955,161 @@ def test_f42_resoluciones_versionadas():
     assert m['sha256'] in (hashlib.sha256(raw).hexdigest(), hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest())
     res = json.loads(raw.decode('utf-8'))
     assert F42_RES['resultados']['resoluciones'] == {k: v for k, v in res.items() if not k.startswith('_')}
+
+
+# ── F4.3 (f43.*) ──────────────────────────────────────────────────────────
+F43_DIR = REPO / 'results' / 'f43_atribucion'
+F43_RES = json.loads((F43_DIR / 'local' / 'resultados.json').read_text(encoding='utf-8'))
+F43_CAS = json.loads((F43_DIR / 'gpu' / 'cascada.json').read_text(encoding='utf-8'))
+F43_ABL = json.loads((F43_DIR / 'gpu' / 'ablacion.json').read_text(encoding='utf-8'))
+F43_TECHS = ('gray_scott', 'perlin', 'lorenz')
+F43_SEEDS = ('42', '7', '123', '2024', '99')
+
+
+def _f43_ident(prefix):
+    """Sufijo de la única clave de identidad bajo prefix (p. ej. el veredicto)."""
+    ks = [k[len(prefix) + 1:] for k in NUMBERS if k.startswith(prefix + '.')]
+    assert len(ks) == 1, (prefix, ks)
+    assert NUMBERS[f'{prefix}.{ks[0]}']['value'] == 1
+    return ks[0]
+
+
+def test_f43_split_val_y_replica_de_prueba():
+    """Todo f43.* es de val; solo la fracción de constantes lleva además la réplica de prueba."""
+    ks = [k for k in NUMBERS if k.startswith('f43.')]
+    assert len(ks) == 207
+    for k in ks:
+        e = NUMBERS[k]
+        if e['kind'] != 'metric':
+            continue
+        assert e['value']['val'] is not None and 'train' not in e['value'], k
+        if '.constantes.' in k:
+            assert e['value']['test'] is not None and 'null_reason' not in e, k
+        else:
+            assert e['value']['test'] is None and e['null_reason']['test'].strip(), k
+
+
+def test_f43_holm_y_p_de_permutacion():
+    import math
+    from src.protocol import verdict
+    R = F43_RES['resultados']
+    p = {t: R['tecnicas'][t]['permutacion_val']['p'] for t in F43_TECHS}
+    holm = verdict.holm(p, 0.05)
+    order = sorted(p, key=p.get)
+    adj, run = {}, 0.0
+    for i, t in enumerate(order):
+        run = max(run, min(1.0, (len(p) - i) * p[t]))
+        adj[t] = run
+    assert NUMBERS['f43.holm.m']['value'] == 3 and NUMBERS['f43.holm.alpha']['value']['val'] == 0.05
+    for t in F43_TECHS:
+        b = f'f43.{t}.permutacion'
+        k, B = NUMBERS[f'{b}.k']['value'], NUMBERS[f'{b}.b']['value']
+        assert B == 5000 and NUMBERS[f'{b}.p']['value']['val'] == (k + 1) / (B + 1), t
+        assert math.isclose(NUMBERS[f'{b}.p_holm']['value']['val'], adj[t], rel_tol=1e-12, abs_tol=0), t
+        assert NUMBERS[f'{b}.holm.rechaza']['value'] == int(holm[t]['reject']) == int(adj[t] <= 0.05), t
+        assert NUMBERS[f'{b}.holm.rango']['value'] == holm[t]['rank'], t
+
+
+def test_f43_veredictos_de_cordura_y_criterio_relativo():
+    """El veredicto global es la mayoría de las semillas y cada semilla «cambia» si
+    su mediana queda por debajo del mínimo de los 10 pares reales."""
+    for t in F43_TECHS:
+        for k in (('map', 'backbone_map') if t != 'gray_scott' else ('map',)):
+            b = f'f43.{t}.cordura_datos.{k}'
+            lo = NUMBERS[f'{b}.spearman56.referencia_min']['value']['val']
+            ps = ['cambia' if NUMBERS[f'{b}.spearman56.seed{s}']['value']['val'] < lo else 'no_cambia' for s in F43_SEEDS]
+            maj = max(set(ps), key=ps.count)
+            assert ps.count(maj) > 2 and _f43_ident(f'{b}.veredicto') == maj, (t, k, ps)
+            ref = F43_RES['resultados']['tecnicas'][t]['cordura_datos'][k]['val']['spearman56']['referencia_pares']
+            assert len(ref) == 10 and min(ref.values()) == lo
+            g = F43_CAS['tecnicas'][t]['pasos']['cabeza'][k]['spearman56']['global']
+            assert _f43_ident(f'f43.{t}.cascada.cabeza.{k}.veredicto') == g
+            orden = F43_CAS['tecnicas'][t]['orden']
+            assert NUMBERS[f'f43.{t}.cascada.{k}.n_pasos']['value'] == len(orden)
+            assert NUMBERS[f'f43.{t}.cascada.{k}.n_pasos_cambia']['value'] == sum(
+                F43_CAS['tecnicas'][t]['pasos'][p][k]['spearman56']['global'] == 'cambia' for p in orden)
+
+
+def test_f43_cosenos_y_lectura_vit():
+    from src.fase4 import atribucion_comun as ac
+    res = F43_RES['resultados']['resoluciones']
+    for t in ('perlin', 'lorenz'):
+        niveles = {}
+        for v in ('w1', 'w1_menos_w0'):
+            b = f'f43.{t}.coseno.{v}'
+            lo = NUMBERS[f'{b}.referencia_min']['value']['val']
+            ps = ['bajo' if NUMBERS[f'{b}.seed{s}']['value']['val'] < lo else 'alto' for s in F43_SEEDS]
+            niveles[v] = _f43_ident(f'{b}.nivel')
+            assert ps.count(niveles[v]) > 2, (t, v, ps)
+        cd = _f43_ident(f'f43.{t}.cordura_datos.map.veredicto')
+        cab = _f43_ident(f'f43.{t}.cascada.cabeza.map.veredicto')
+        assert _f43_ident(f'f43.{t}.lectura_vit') == ac.lectura_vit(cd, niveles[res['coseno_lectura']], cab)
+
+
+def test_f43_ablacion_delta_f1():
+    import math
+    for t in F43_TECHS:
+        x = F43_ABL['tecnicas'][t]
+        f0 = NUMBERS[f'f43.{t}.ablacion.original.f1_macro_media']['value']['val']
+        assert math.isclose(f0, sum(x['original']['f1_por_semilla'].values()) / 5, rel_tol=0, abs_tol=1e-12)
+        for banda in ('paso_bajo', 'paso_alto'):
+            for sg in (1, 2, 4, 8):
+                d = NUMBERS[f'f43.{t}.ablacion.{banda}.s{sg}.delta_f1']['value']['val']
+                c = x[f'{banda}_s{sg}']
+                assert math.isclose(d, c['f1_media'] - f0, rel_tol=0, abs_tol=1e-12), (t, banda, sg)
+                assert math.isclose(d, sum(c['delta_f1_por_semilla'].values()) / 5, rel_tol=0, abs_tol=1e-12)
+
+
+def test_f43_fraccion_de_constantes_cuadra_con_conteos():
+    for t in F43_TECHS:
+        for clase in ('real', 'predicha'):
+            tot = {'val': 0, 'prueba': 0}
+            for y in ('0', '1'):
+                b = f'f43.{t}.constantes.clase_{clase}.y{y}'
+                for sp, s in (('val', 'val'), ('prueba', 'test')):
+                    n, k = NUMBERS[f'{b}.{sp}.n_mapas']['value'], NUMBERS[f'{b}.{sp}.n_constantes']['value']
+                    assert NUMBERS[f'{b}.fraccion']['value'][s] == k / n, (b, sp)
+                    tot[sp] += n
+            assert tot == {'val': 5 * 114, 'prueba': 5 * 114}, (t, clase)
+
+
+def test_f43_insumos_encadenados():
+    """La parte local leyó la cascada versionada y ambas partes usan las resoluciones versionadas."""
+    import hashlib
+    meta = F43_RES['meta']
+    cas = F43_DIR / 'gpu' / 'cascada.json'
+    assert meta['cascada']['sha256'] == hashlib.sha256(cas.read_bytes()).hexdigest()
+    res = (F43_DIR / 'resoluciones.json').read_bytes()
+    shas = (hashlib.sha256(res).hexdigest(), hashlib.sha256(res.replace(b'\r\n', b'\n')).hexdigest())
+    gpu = json.loads((F43_DIR / 'gpu' / 'atribucion_gpu_meta.json').read_text(encoding='utf-8'))
+    assert meta['resoluciones']['sha256'] in shas and gpu['resoluciones']['sha256'] in shas
+    assert not F43_CAS['meta']['smoke'] and not F43_ABL['meta']['smoke'] and gpu['split'] == 'val'
+
+
+def test_f43_valores_en_su_localizador():
+    """Cada cifra f43 es el valor del JSON en su localizador (val; la réplica de prueba
+    de las constantes en el suyo). Las identidades nombran el valor del localizador; los
+    conteos derivados (pasos, transiciones) se prueban en los tests de arriba."""
+    docs = {'results/f43_atribucion/local/resultados.json': F43_RES,
+            'results/f43_atribucion/gpu/cascada.json': F43_CAS,
+            'results/f43_atribucion/gpu/ablacion.json': F43_ABL}
+    derivados = ('.n_pasos', '.n_pasos_cambia', '.n_transiciones_a_constante')
+    n = 0
+    for nid, e in NUMBERS.items():
+        if not nid.startswith('f43.'):
+            continue
+        assert e['status'] == 'extraido', nid
+        src, loc = docs[e['source']['path']], e['source']['locator']
+        if e['kind'] == 'metric':
+            lv, _, lt = loc.partition('; test: ')
+            assert e['value']['val'] == _at(src, lv), nid
+            if lt:
+                assert e['value']['test'] == _at(src, lt), nid
+        elif 'identidad en la clave' in e.get('note', ''):
+            assert e['value'] == 1 and nid.endswith('.' + str(_at(src, loc))), nid
+        elif nid.endswith(derivados):
+            continue
+        else:
+            assert e['value'] == int(_at(src, loc)), nid
+        n += 1
+    assert n > 150

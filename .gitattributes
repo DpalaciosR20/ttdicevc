@@ -3,3 +3,5 @@
 results/predictions/** text eol=lf
 # Salidas de Kaggle de F4.2: su sha256 está en reintentos_gs_manifest.json y f42_sha256sum.txt; se conservan byte a byte.
 results/f42_regimen/reintentos/** -text
+results/f43_atribucion/gpu/** -text
+results/f43_atribucion/local/** -text

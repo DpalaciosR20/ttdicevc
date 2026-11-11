@@ -1,0 +1,16 @@
+gray_scott semilla 42: {'carga_s42': 0.4, 'cascada_s42': 17.7, 'ablacion_s42': 7.9}
+gray_scott semilla 7: {'carga_s42': 0.4, 'cascada_s42': 17.7, 'ablacion_s42': 7.9, 'carga_s7': 0.3, 'cascada_s7': 17.0, 'ablacion_s7': 7.8}
+gray_scott semilla 123: {'carga_s42': 0.4, 'cascada_s42': 17.7, 'ablacion_s42': 7.9, 'carga_s7': 0.3, 'cascada_s7': 17.0, 'ablacion_s7': 7.8, 'carga_s123': 0.4, 'cascada_s123': 16.9, 'ablacion_s123': 7.6}
+gray_scott semilla 2024: {'carga_s42': 0.4, 'cascada_s42': 17.7, 'ablacion_s42': 7.9, 'carga_s7': 0.3, 'cascada_s7': 17.0, 'ablacion_s7': 7.8, 'carga_s123': 0.4, 'cascada_s123': 16.9, 'ablacion_s123': 7.6, 'carga_s2024': 0.3, 'cascada_s2024': 17.0, 'ablacion_s2024': 7.8}
+gray_scott semilla 99: {'carga_s42': 0.4, 'cascada_s42': 17.7, 'ablacion_s42': 7.9, 'carga_s7': 0.3, 'cascada_s7': 17.0, 'ablacion_s7': 7.8, 'carga_s123': 0.4, 'cascada_s123': 16.9, 'ablacion_s123': 7.6, 'carga_s2024': 0.3, 'cascada_s2024': 17.0, 'ablacion_s2024': 7.8, 'carga_s99': 0.3, 'cascada_s99': 16.9, 'ablacion_s99': 7.8}
+perlin semilla 42: {'carga_s42': 2.2, 'cascada_s42': 123.5, 'ablacion_s42': 20.4}
+perlin semilla 7: {'carga_s42': 2.2, 'cascada_s42': 123.5, 'ablacion_s42': 20.4, 'carga_s7': 2.1, 'cascada_s7': 123.1, 'ablacion_s7': 20.6}
+perlin semilla 123: {'carga_s42': 2.2, 'cascada_s42': 123.5, 'ablacion_s42': 20.4, 'carga_s7': 2.1, 'cascada_s7': 123.1, 'ablacion_s7': 20.6, 'carga_s123': 2.1, 'cascada_s123': 122.4, 'ablacion_s123': 20.6}
+perlin semilla 2024: {'carga_s42': 2.2, 'cascada_s42': 123.5, 'ablacion_s42': 20.4, 'carga_s7': 2.1, 'cascada_s7': 123.1, 'ablacion_s7': 20.6, 'carga_s123': 2.1, 'cascada_s123': 122.4, 'ablacion_s123': 20.6, 'carga_s2024': 2.1, 'cascada_s2024': 122.6, 'ablacion_s2024': 20.4}
+perlin semilla 99: {'carga_s42': 2.2, 'cascada_s42': 123.5, 'ablacion_s42': 20.4, 'carga_s7': 2.1, 'cascada_s7': 123.1, 'ablacion_s7': 20.6, 'carga_s123': 2.1, 'cascada_s123': 122.4, 'ablacion_s123': 20.6, 'carga_s2024': 2.1, 'cascada_s2024': 122.6, 'ablacion_s2024': 20.4, 'carga_s99': 2.1, 'cascada_s99': 122.5, 'ablacion_s99': 20.4}
+lorenz semilla 42: {'carga_s42': 2.0, 'cascada_s42': 121.7, 'ablacion_s42': 20.4}
+lorenz semilla 7: {'carga_s42': 2.0, 'cascada_s42': 121.7, 'ablacion_s42': 20.4, 'carga_s7': 2.1, 'cascada_s7': 124.8, 'ablacion_s7': 21.2}
+lorenz semilla 123: {'carga_s42': 2.0, 'cascada_s42': 121.7, 'ablacion_s42': 20.4, 'carga_s7': 2.1, 'cascada_s7': 124.8, 'ablacion_s7': 21.2, 'carga_s123': 2.3, 'cascada_s123': 124.9, 'ablacion_s123': 21.1}
+lorenz semilla 2024: {'carga_s42': 2.0, 'cascada_s42': 121.7, 'ablacion_s42': 20.4, 'carga_s7': 2.1, 'cascada_s7': 124.8, 'ablacion_s7': 21.2, 'carga_s123': 2.3, 'cascada_s123': 124.9, 'ablacion_s123': 21.1, 'carga_s2024': 2.2, 'cascada_s2024': 125.4, 'ablacion_s2024': 21.6}
+lorenz semilla 99: {'carga_s42': 2.0, 'cascada_s42': 121.7, 'ablacion_s42': 20.4, 'carga_s7': 2.1, 'cascada_s7': 124.8, 'ablacion_s7': 21.2, 'carga_s123': 2.3, 'cascada_s123': 124.9, 'ablacion_s123': 21.1, 'carga_s2024': 2.2, 'cascada_s2024': 125.4, 'ablacion_s2024': 21.6, 'carga_s99': 2.4, 'cascada_s99': 128.7, 'ablacion_s99': 21.4}
+F4.3 GPU: 1673.0 s

@@ -1,0 +1,272 @@
+{
+ "manifest": "meta/artefactos_manifest.csv",
+ "task": "F3.7",
+ "root": "/kaggle/input",
+ "dataset_dirs": [
+  "datasets"
+ ],
+ "n_expected": 30,
+ "n_ok": 30,
+ "missing": [],
+ "mismatch": [],
+ "ambiguous": [],
+ "duplicates": [
+  "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip__seed123.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip__seed42.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip__seed7.npz",
+  "gray_scott__efficientnet_b0__finetune__px224-flip__seed99.npz",
+  "perlin__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+  "perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+  "perlin__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+  "perlin__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+  "perlin__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+  "perlin__vit_b16__frozen__px224-noflip__seed123.npz",
+  "perlin__vit_b16__frozen__px224-noflip__seed2024.npz",
+  "perlin__vit_b16__frozen__px224-noflip__seed42.npz",
+  "perlin__vit_b16__frozen__px224-noflip__seed7.npz",
+  "perlin__vit_b16__frozen__px224-noflip__seed99.npz"
+ ],
+ "discarded_copies": [
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed99.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip__seed123.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip__seed2024.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip__seed42.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip__seed7.npz",
+  "datasets/palaciosroblesdiego/tt2-mapas/f37_humo/maps/perlin__vit_b16__frozen__px224-noflip__seed99.npz"
+ ],
+ "extra": [],
+ "passed": true,
+ "checked_at": "2026-11-11T02:20:01+00:00",
+ "files": [
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed123.npz",
+   "bytes": 23185691,
+   "sha256": "4c3dc883d275ef097066f7dab08fe4f1aeefb9fa98fffb8227ce04739fcbb594"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed2024.npz",
+   "bytes": 22363016,
+   "sha256": "b626a037cbd233c24c3919990d790619b34d1802a3a5ecae012938a40e47a13a"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed42.npz",
+   "bytes": 19769825,
+   "sha256": "f69dffabd7021e50f098d600bf7d72169a04c90fd475e21c6fa9e291bfcef13e"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed7.npz",
+   "bytes": 22251198,
+   "sha256": "39dc3707ea1d5ca6e65fabb91a2fbda3b7b234e986941e0b86d0b8a67d2f483b"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip-perm99__seed99.npz",
+   "bytes": 22715745,
+   "sha256": "d1c35312f1f3170212d737bc70f1ab3bbb842597487b478d4f6a4a5ba680a7de"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed123.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed123.npz",
+   "bytes": 16987585,
+   "sha256": "103da6cd5bb0137d73ac3af5647257970d09f641b60652d4f9add944e5276cd3"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed2024.npz",
+   "bytes": 14985575,
+   "sha256": "b1fb4e9489859ce614bd1c9e2ae4130da520448619814d06db21342140cd39ad"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed42.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed42.npz",
+   "bytes": 16450376,
+   "sha256": "021e3e1a32b0427180fe4852d8b6e3da5694ca2b3d40fd260af0669a464b5c5c"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed7.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed7.npz",
+   "bytes": 15664497,
+   "sha256": "1fee9d39126e1656de4a342cb771103e59e1b2753f7e5572590ea32d9080e5fc"
+  },
+  {
+   "file": "gray_scott__efficientnet_b0__finetune__px224-flip__seed99.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/gray_scott__efficientnet_b0__finetune__px224-flip__seed99.npz",
+   "bytes": 16836155,
+   "sha256": "f7b21ee8e363646dc9182beb6e7a75f977de65e9c4ea3260e5b92e8e1a2549e2"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+   "bytes": 61720613,
+   "sha256": "7073431b57da9b8f5a777d58a11d1a9c126c5e5af5c7ea4efec56c7d55cd6764"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+   "bytes": 60964547,
+   "sha256": "fb884659fa51be744931fa66f8ab40e10a85b1960063e27dd1efe513b10a13fe"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+   "bytes": 61300358,
+   "sha256": "f09159602a309d1780bbba84a87a19133f0580b833b32f4151720e5e6ddb5c98"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+   "bytes": 61578074,
+   "sha256": "8610a7f8902ce8d661c605b71da783b944a713227aa51fd919b1466830880451"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+   "bytes": 61538149,
+   "sha256": "bb5c4569b4d203e4c0a385169ad3d9cd713adf5ae2ce9eb09c18375e93842e1a"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed123.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed123.npz",
+   "bytes": 61749719,
+   "sha256": "67c9a1e69b768712b1332a8f2743b39c6d805fb521178f64e0e94f0cdcf1c44c"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed2024.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed2024.npz",
+   "bytes": 61019485,
+   "sha256": "4d01a5a86d1353faf097ad2c124896982958b29f116328e71258150ef11b4ec6"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed42.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed42.npz",
+   "bytes": 61171122,
+   "sha256": "0e465fd2dd3e826532daad4c52be26737ce685f61e34eb3b3ee73dc439f36af0"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed7.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed7.npz",
+   "bytes": 61815880,
+   "sha256": "fb67198a44e3077be5c073466e7dbe4fab1bf739609da809bf91a25184b7ecff"
+  },
+  {
+   "file": "lorenz__vit_b16__frozen__px224-noflip__seed99.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/lorenz__vit_b16__frozen__px224-noflip__seed99.npz",
+   "bytes": 61396035,
+   "sha256": "abf7ce956c76f61b5e9d5baca4f0887f656c4e2b7c2a71b80b3e4241a66e6e10"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed123.npz",
+   "bytes": 60227338,
+   "sha256": "032fc80862bf4415130a1d4775298698b6eb83d5ee64ff8924ee5e0c1dc1ec47"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed2024.npz",
+   "bytes": 60272197,
+   "sha256": "8a35dcc7263aac13081946f0e40eb157f55fcaecea8ead8a01bd53b511db65c3"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed42.npz",
+   "bytes": 60590436,
+   "sha256": "1aa488ef9370a1e131b233974df29c0fac06fa17a2902d955eb57853b72804e9"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed7.npz",
+   "bytes": 60296079,
+   "sha256": "b1b66941d888f954dd89b6a2df3abf62b002965ccf24159e90d9d9567f6d11cd"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip-perm99__seed99.npz",
+   "bytes": 60288060,
+   "sha256": "a6ba675710275f741e345dcd6495713c5a94db18aa2a94bfa9e14590f1b449e2"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed123.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed123.npz",
+   "bytes": 60047731,
+   "sha256": "891b495810cc09997f8cb353d805c9ba8c381706380c2e18317e111d98b12c52"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed2024.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed2024.npz",
+   "bytes": 60204257,
+   "sha256": "64419276db85abe20b5c9db1df3d482dac72bf4b4998a638fd230238d2c438e7"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed42.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed42.npz",
+   "bytes": 60048141,
+   "sha256": "a70d33b64572fcbf16be754944f56ab0395c1edbcbac0f3ed6353e05f5571596"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed7.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed7.npz",
+   "bytes": 60067318,
+   "sha256": "75527670a2e1a3e0395738b78290e54c98744b9ca077e26c24c87c772745fcda"
+  },
+  {
+   "file": "perlin__vit_b16__frozen__px224-noflip__seed99.npz",
+   "status": "ok",
+   "found_at": "datasets/palaciosroblesdiego/tt2-mapas/ttdicevc/results/f37_mapas/maps/perlin__vit_b16__frozen__px224-noflip__seed99.npz",
+   "bytes": 59954268,
+   "sha256": "3a3e283497e2f1d2333754673b98fa54624486995f6ab95809bff2be97de567d"
+  }
+ ]
+}
