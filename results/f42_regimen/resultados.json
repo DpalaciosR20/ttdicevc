@@ -1,0 +1,256 @@
+{
+ "meta": {
+  "tarea": "F4.2",
+  "git_commit": "43ba00a9549c1ee9c972a544d3385871593854a6",
+  "gate_tag": "enmienda-5",
+  "created_at": "2026-11-11T00:44:19+00:00",
+  "resoluciones": {
+   "archivo": "results/f42_regimen/resoluciones.json",
+   "sha256": "ee4fa94e91c514e0f0161dee060ac6c61cc3c76279bb4e6eae58344b6fddcbf4",
+   "autor": "SV",
+   "fecha": "2026-11-10",
+   "nota": "Decisiones de implementación de un análisis explicativo (protocolo §9, §11), fijadas antes de calcular"
+  },
+  "inputs": {
+   "results/f42_regimen/reintentos/reintentos_gs_train.csv": "45a27867a7a0453a84c44794ff92bcfc7204be8c428d262951eb78d7cbf92a2c",
+   "results/predictions/final/lorenz__vit_b16__frozen__seed42.csv": "fcac7c6b35a380637b0462ee4d541ec69d911278eed02d5f634cd38b67f91b76",
+   "results/predictions/final/lorenz__vit_b16__frozen__seed7.csv": "67b61ae0124831f7f7011be3d30d68a01fd8d89079783f5a320614f8a6387e38",
+   "results/predictions/final/lorenz__vit_b16__frozen__seed123.csv": "0b66f60777549bcf2181f931bc10e85d2dd77ffc02d71d321c74359b9484b065",
+   "results/predictions/final/lorenz__vit_b16__frozen__seed2024.csv": "5e2e09af39e19ec568d24ab765ee340eb8d697314c4a72138f450e89a76c640e",
+   "results/predictions/final/lorenz__vit_b16__frozen__seed99.csv": "2ef17e032c1d861cc3b161a1ec6a47dc41b75f7cf8ecdddac6346bde30ce6d30"
+  },
+  "figuras": [
+   "results/f42_regimen/figures/f42_01_gray_scott_fk.png",
+   "results/f42_regimen/figures/f42_02_lorenz_rho.png",
+   "results/f42_regimen/figures/f42_03_perlin_octavas.png"
+  ]
+ },
+ "resultados": {
+  "resoluciones": {
+   "fisher_alternativa": "two-sided",
+   "mw_continuidad": true,
+   "reintento_evento": "reintentos_mayor_0",
+   "f1_estrato_sin_clase": "no_definido",
+   "bit_a_bit": "pixeles",
+   "no_identicas": "incluir_y_listar_con_conteo_por_clase",
+   "pearson": "sin_superposicion_sin_fuente_versionada"
+  },
+  "n_train": {
+   "total": 908,
+   "dep": 353,
+   "nodep": 555
+  },
+  "lorenz": {
+   "proporcion_rho_menor": {
+    "dep": 0.039660056657223795,
+    "nodep": 0.009009009009009009,
+    "n_dep": 14,
+    "n_nodep": 5
+   },
+   "discordancias_rho_vs_u1": 0,
+   "rho_cuartiles": {
+    "dep": [
+     27.037717819213867,
+     27.80858325958252,
+     28.50504493713379
+    ],
+    "nodep": [
+     27.504472970962524,
+     28.291022300720215,
+     28.969862937927246
+    ]
+   }
+  },
+  "perlin": {
+   "octavas_por_clase": {
+    "1": {
+     "dep": 170,
+     "nodep": 5
+    },
+    "2": {
+     "dep": 110,
+     "nodep": 41
+    },
+    "3": {
+     "dep": 19,
+     "nodep": 26
+    },
+    "4": {
+     "dep": 11,
+     "nodep": 32
+    },
+    "5": {
+     "dep": 28,
+     "nodep": 86
+    },
+    "6": {
+     "dep": 11,
+     "nodep": 243
+    },
+    "7": {
+     "dep": 4,
+     "nodep": 121
+    },
+    "8": {
+     "dep": 0,
+     "nodep": 1
+    }
+   }
+  },
+  "gray_scott": {
+   "fk_por_clase": {
+    "dep": {
+     "f_media": 0.0413128328760268,
+     "k_media": 0.062129836096810886,
+     "f_rango": [
+      0.022160161286592484,
+      0.04600000008940697
+     ],
+     "k_rango": [
+      0.05900000035762787,
+      0.06586970388889313
+     ]
+    },
+    "nodep": {
+     "f_media": 0.02987784742973409,
+     "k_media": 0.06269488479640033,
+     "f_rango": [
+      0.02199999988079071,
+      0.04566142335534096
+     ],
+     "k_rango": [
+      0.0590503066778183,
+      0.06599999964237213
+     ]
+    }
+   },
+   "reintentos": {
+    "evento": "reintentos_mayor_0",
+    "tasa_dep": 0.0028328611898017,
+    "tasa_nodep": 0.055855855855855854,
+    "n_dep": 1,
+    "n_nodep": 31,
+    "n_reintentos_mayor_0": 32,
+    "n_respaldo": 0
+   },
+   "bit_a_bit": {
+    "criterio": "pixeles",
+    "n_identicas": 908,
+    "n_total": 908,
+    "no_identicas": [],
+    "no_identicas_por_clase": {
+     "dep": 0,
+     "nodep": 0
+    },
+    "tratamiento_no_identicas": "incluir_y_listar_con_conteo_por_clase"
+   },
+   "pearson_superpuesto": false,
+   "pearson_resolucion": "sin_superposicion_sin_fuente_versionada"
+  },
+  "pruebas": {
+   "lorenz_fisher_regimen": {
+    "tabla": [
+     [
+      14,
+      339
+     ],
+     [
+      5,
+      550
+     ]
+    ],
+    "odds_ratio": 4.542772861356932,
+    "p": 0.0030614811511880963,
+    "alternativa": "two-sided"
+   },
+   "lorenz_mw_rho": {
+    "U_dep": 68989.0,
+    "n_dep": 353,
+    "n_nodep": 555,
+    "p": 5.495419641406489e-14,
+    "efecto_rbc": -0.2957251869433173,
+    "mediana_dep": 27.80858325958252,
+    "mediana_nodep": 28.291022300720215,
+    "metodo": "asymptotic",
+    "continuidad": true
+   },
+   "perlin_mw_octavas": {
+    "U_dep": 14835.5,
+    "n_dep": 353,
+    "n_nodep": 555,
+    "p": 2.6262777461042087e-107,
+    "efecto_rbc": -0.8485516678151239,
+    "mediana_dep": 2.0,
+    "mediana_nodep": 6.0,
+    "metodo": "asymptotic",
+    "continuidad": true
+   },
+   "gray_scott_fisher_reintentos": {
+    "tabla": [
+     [
+      1,
+      352
+     ],
+     [
+      31,
+      524
+     ]
+    ],
+    "odds_ratio": 0.048020527859237536,
+    "p": 3.0376130850982917e-06,
+    "alternativa": "two-sided"
+   }
+  },
+  "holm": {
+   "alpha": 0.05,
+   "m": 4,
+   "familia": {
+    "lorenz_fisher_regimen": {
+     "p": 0.0030614811511880963,
+     "p_holm": 0.0030614811511880963,
+     "rank": 4,
+     "alpha_h": 0.05,
+     "reject": true
+    },
+    "lorenz_mw_rho": {
+     "p": 5.495419641406489e-14,
+     "p_holm": 1.6486258924219466e-13,
+     "rank": 2,
+     "alpha_h": 0.016666666666666666,
+     "reject": true
+    },
+    "perlin_mw_octavas": {
+     "p": 2.6262777461042087e-107,
+     "p_holm": 1.0505110984416835e-106,
+     "rank": 1,
+     "alpha_h": 0.0125,
+     "reject": true
+    },
+    "gray_scott_fisher_reintentos": {
+     "p": 3.0376130850982917e-06,
+     "p_holm": 6.075226170196583e-06,
+     "rank": 3,
+     "alpha_h": 0.025,
+     "reject": true
+    }
+   }
+  },
+  "lorenz_estratos_prueba": {
+   "discordancias_rho_vs_u1": 0,
+   "rho_menor_24.74": {
+    "n": 3,
+    "n_dep": 1,
+    "n_nodep": 2,
+    "errores": 1,
+    "f1_macro": 0.6666666666666666
+   },
+   "rho_mayor_igual_24.74": {
+    "n": 111,
+    "n_dep": 43,
+    "n_nodep": 68,
+    "errores": 27,
+    "f1_macro": 0.7468108473430768
+   }
+  }
+ }
+}

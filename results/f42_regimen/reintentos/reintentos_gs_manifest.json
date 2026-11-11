@@ -1,0 +1,63 @@
+{
+ "tarea": "F4.2 (reintentos de Gray-Scott)",
+ "git_commit": "c121ab62f2718d7b9c299fbcde9f84bc26507a30",
+ "created_at": "2026-11-10T03:51:40+00:00",
+ "smoke": false,
+ "limit": null,
+ "split": "train",
+ "ruta": "cpu",
+ "workers": 4,
+ "cpu_count": 4,
+ "max_retries": 3,
+ "respaldo": {
+  "f": 0.035,
+  "k": 0.061,
+  "Du": 0.16,
+  "Dv": 0.06,
+  "seed_radius": 10,
+  "n_iter": 5000
+ },
+ "umap_params_sha256": "081f5baba6eacf26de2993304747671365f1807620e55ed2be01cf3b75c7f224",
+ "u_dtype": "float32",
+ "entorno": {
+  "python": "3.13.16",
+  "numpy": "2.1.3",
+  "pillow": "13.0.0",
+  "plataforma": "Linux-6.18.55+-x86_64-with-glibc2.39"
+ },
+ "resumen": {
+  "n": 908,
+  "n_dep": 353,
+  "n_nodep": 555,
+  "reintentos_mayor_0_por_clase": {
+   "0": 31,
+   "1": 1
+  },
+  "usa_respaldo_por_clase": {
+   "0": 0,
+   "1": 0
+  },
+  "distribucion_reintentos": {
+   "0": 876,
+   "1": 32,
+   "2": 0,
+   "3": 0
+  },
+  "n_sha256_coincide": 908,
+  "n_pixeles_coinciden": 908,
+  "n_almacenada_integra": 908,
+  "no_coinciden_sha256": [],
+  "no_coinciden_pixeles": []
+ },
+ "tiempo": {
+  "segundos_total": 4036.0,
+  "segundos_muestra_media": 17.75,
+  "segundos_muestra_max": 51.293,
+  "estimacion_908_segundos": 4029.0
+ },
+ "csv": {
+  "archivo": "reintentos_gs_train.csv",
+  "sha256": "45a27867a7a0453a84c44794ff92bcfc7204be8c428d262951eb78d7cbf92a2c",
+  "filas": 908
+ }
+}

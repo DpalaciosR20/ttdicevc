@@ -1,3 +1,5 @@
 # Los archivos de predicciones llevan su SHA-256 en el manifiesto (especificacion_predicciones §4):
 # se mantienen en LF en todas las plataformas para que csv_sha256 siga coincidiendo.
 results/predictions/** text eol=lf
+# Salidas de Kaggle de F4.2: su sha256 está en reintentos_gs_manifest.json y f42_sha256sum.txt; se conservan byte a byte.
+results/f42_regimen/reintentos/** -text

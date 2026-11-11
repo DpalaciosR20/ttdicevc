@@ -26,8 +26,10 @@ Orígenes de las entradas:
      Fase 5 (f5.*, de results/f5_contraste/resultados.json) y F4.6 (f46.*, de
      f46_resultados.json). Las cifras f5/f46 son extraídas y solo de prueba; los
      veredictos y pisos van como identidad en la clave (conteo 1), como en f33.*.
-     F4.1 (f41.val.* y f41.prueba.*, de results/f41_recuperabilidad/) y F4.7
-     (f47.*, de results/f47_geometria/resultados.json, solo train: value.train).
+     F4.1 (f41.val.* y f41.prueba.*, de results/f41_recuperabilidad/), F4.7
+     (f47.*, de results/f47_geometria/resultados.json, solo train: value.train) y
+     F4.2 (f42.*, de results/f42_regimen/resultados.json: train en value.train; el
+     F1 por estrato de Lorenz en value.test, recalculado desde las predicciones).
      Los F1 de prueba de F4.1 se recalculan desde predicciones_prueba.csv.
   Tras la fusión, la prueba de cada ref.* «bloqueada hasta la Fase 5» se
   recalcula desde su CSV (unlock_ref_test) y check_f5 contrasta los F1
@@ -1086,7 +1088,7 @@ F41_NULL = {'val': 'F4.1: la cifra de validación está en la clave f41.val.* co
             'test': 'F4.1: la cifra de prueba está en la clave f41.prueba.* correspondiente'}
 F47_NULL = {'val': 'F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)',
             'test': 'F4.7 se calcula solo sobre train (docs/plan_fase4.md, F4.7)'}
-F4_SPLIT_PREFIXES = ('f41.', 'f47.')
+F4_SPLIT_PREFIXES = ('f41.', 'f47.', 'f42.')
 
 
 class _SplitCollector(_F5Collector):
@@ -1207,6 +1209,126 @@ def collect_f47(inputs):
         c.count(f'{b}.holm.rango', (*L, 'holm', 'rank'))
         c.count(f'{b}.holm.rechaza', (*L, 'holm', 'reject'), note='1 = se rechaza H0 (Holm, m = 3)')
     return c.out
+
+
+# ── Colector 11: F4.2 (f42.*) ─────────────────────────────────────────────
+F42_RESULT = REPO / 'results' / 'f42_regimen' / 'resultados.json'
+F42_EVAL = ('src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, '
+            'Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en '
+            'results/f42_regimen/resoluciones.json)')
+F42_F1_EVAL = ('F1-Macro por estrato de ρ (ρ = 24 + 8·u1 de prueba, umbral 24.74) del finalista de Lorenz '
+               '(ViT-B/16 congelado), ŷ = 1[media de p_dep de las 5 semillas > 0.5], recalculado desde '
+               'results/predictions/final/lorenz__vit_b16__frozen__seed*.csv y umap_params.pkl; f1_macro_from_confusion')
+F42_NULL = {'val': 'F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)',
+            'test': 'F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*'}
+F42_F1_NULL = 'F4.2: el F1 por estrato de Lorenz se calcula solo en prueba (docs/plan_fase4.md, F4.2)'
+F42_PRUEBAS = {'lorenz_fisher_regimen': 'lorenz.fisher_regimen', 'lorenz_mw_rho': 'lorenz.mw_rho',
+               'perlin_mw_octavas': 'perlin.mw_octavas', 'gray_scott_fisher_reintentos': 'gray_scott.fisher_reintentos'}
+F42_ESTRATOS = {'rho_menor_24.74': 'rho_menor_24_74', 'rho_mayor_igual_24.74': 'rho_mayor_igual_24_74'}
+
+
+def _f42_f1_estratos(umap_path, inputs):
+    """Recalcula el F1 por estrato de Lorenz desde las predicciones de F3.5 y u de prueba."""
+    from src.fase4 import regimen as rg
+    with open(REPO / 'meta' / 'sample_index.csv', newline='', encoding='utf-8') as f:
+        idx = sorted((r for r in csv.DictReader(f) if r['split'] == 'test'), key=lambda r: r['sample_id'])
+    ids, y = [r['sample_id'] for r in idx], np.array([int(r['y_true']) for r in idx])
+    P = []
+    for seed in F3X_SEEDS:
+        path = REPO / rg.LORENZ_FINAL.format(seed=seed)
+        inputs[rel(path)] = text_sha256(path)
+        with open(path, newline='', encoding='utf-8') as f:
+            rows = {r['sample_id']: r for r in csv.DictReader(f) if r['split'] == 'test'}
+        if sorted(rows) != ids or [int(rows[i]['y_true']) for i in ids] != y.tolist():
+            raise CanonicalError(f'f42: {rel(path)} no cuadra con el índice de prueba')
+        P.append([float(rows[i]['p_dep']) for i in ids])
+    yhat = (np.array(P).mean(axis=0) > 0.5).astype(int)
+    arr = load_umap_arrays(umap_path)['test']
+    order = np.array([int(r['idx']) for r in idx])
+    if arr['labels'][order].astype(int).tolist() != y.tolist():
+        raise CanonicalError('f42: etiquetas de prueba de umap_params.pkl no alineadas con sample_index')
+    rho = 24.0 + 8.0 * arr['params'][order].astype(np.float64)[:, 1]
+    bajo = rho < rg.LORENZ_RHO_UMBRAL
+    out = {}
+    for k, m in (('rho_menor_24.74', bajo), ('rho_mayor_igual_24.74', ~bajo)):
+        cm = confusion_counts(y[m].tolist(), yhat[m].tolist())
+        out[k] = {'n': int(m.sum()), 'n_dep': int(y[m].sum()), 'n_nodep': int((y[m] == 0).sum()),
+                  'errores': int((y[m] != yhat[m]).sum()), 'confusion': cm,
+                  'f1_macro': f1_macro_from_confusion(cm) if len(set(y[m].tolist())) == 2 else None}
+    return out
+
+
+def collect_f42(inputs, umap_path=None):
+    """F4.2: proporciones, tasas de reintento, p, p de Holm y rechazo (train, m = 4) y
+    F1 por estrato de Lorenz en prueba (verificado desde las predicciones si hay pkl)."""
+    doc = _f5_result(F42_RESULT, inputs)
+    R = doc['resultados']
+    c = _SplitCollector(doc, F42_RESULT, 'train', F42_NULL, F42_EVAL)
+    c.count('f42.n_train.total', ('resultados', 'n_train', 'total'))
+    c.count('f42.n_train.dep', ('resultados', 'n_train', 'dep'))
+    c.count('f42.n_train.nodep', ('resultados', 'n_train', 'nodep'))
+    L = ('resultados', 'lorenz', 'proporcion_rho_menor')
+    for cl in ('dep', 'nodep'):
+        c.metric(f'f42.lorenz.rho_menor_24_74.proporcion.{cl}', 'proportion', (*L, cl),
+                 note='proporción de la clase en train con ρ < 24.74')
+        c.count(f'f42.lorenz.rho_menor_24_74.n.{cl}', (*L, f'n_{cl}'))
+    c.count('f42.lorenz.discordancias_rho_vs_u1', ('resultados', 'lorenz', 'discordancias_rho_vs_u1'),
+            note='muestras de train con 1[ρ < 24.74] != 1[u1 < 0.0925]')
+    G = ('resultados', 'gray_scott', 'reintentos')
+    if R['gray_scott']['reintentos']['evento'] != 'reintentos_mayor_0':
+        raise CanonicalError(f"f42: evento de reintento {R['gray_scott']['reintentos']['evento']!r}")
+    for cl in ('dep', 'nodep'):
+        c.metric(f'f42.gray_scott.reintentos.tasa.{cl}', 'proportion', (*G, f'tasa_{cl}'),
+                 note='proporción de la clase en train con al menos 1 reintento del wrapper (reintentos > 0)')
+        c.count(f'f42.gray_scott.reintentos.n.{cl}', (*G, f'n_{cl}'))
+    c.count('f42.gray_scott.reintentos.n_respaldo', (*G, 'n_respaldo'))
+    B = ('resultados', 'gray_scott', 'bit_a_bit')
+    c.count('f42.gray_scott.bit_a_bit.n_identicas', (*B, 'n_identicas'), note='criterio: píxeles')
+    for cl in ('dep', 'nodep'):
+        c.count(f'f42.gray_scott.bit_a_bit.no_identicas.{cl}', (*B, 'no_identicas_por_clase', cl))
+    H = ('resultados', 'holm')
+    if R['holm']['m'] != 4 or set(R['holm']['familia']) != set(F42_PRUEBAS):
+        raise CanonicalError(f"f42: familia de Holm {sorted(R['holm']['familia'])}")
+    c.metric('f42.holm.alpha', 'alpha', (*H, 'alpha'))
+    c.count('f42.holm.m', (*H, 'm'))
+    for k, b in F42_PRUEBAS.items():
+        Lh = (*H, 'familia', k)
+        if c.get(Lh)['p'] != R['pruebas'][k]['p']:
+            raise CanonicalError(f'f42.{b}: p de Holm != p de la prueba')
+        c.metric(f'f42.{b}.p', 'p_value', ('resultados', 'pruebas', k, 'p'), note='sin ajustar, bilateral')
+        c.metric(f'f42.{b}.p_holm', 'p_value', (*Lh, 'p_holm'), note='p ajustado de Holm (m = 4)')
+        c.metric(f'f42.{b}.holm.alpha_h', 'alpha', (*Lh, 'alpha_h'))
+        c.count(f'f42.{b}.holm.rango', (*Lh, 'rank'))
+        c.count(f'f42.{b}.holm.rechaza', (*Lh, 'reject'), note='1 = se rechaza H0 (Holm, m = 4)')
+    E = ('resultados', 'lorenz_estratos_prueba')
+    rec = _f42_f1_estratos(umap_path, inputs) if umap_path else None
+    out = {}
+    for k, b in F42_ESTRATOS.items():
+        x, base = R['lorenz_estratos_prueba'][k], f'f42.lorenz.estrato_prueba.{b}'
+        for q, nid in (('n', 'n'), ('n_dep', 'support.label1'), ('n_nodep', 'support.label0'), ('errores', 'errores')):
+            if rec and rec[k][q] != x[q]:
+                raise CanonicalError(f'{base}.{q}: recalculado {rec[k][q]} != resultados.json {x[q]}')
+            c.count(f'{base}.{nid}', (*E, k, q), note='soporte del estrato de prueba' if 'support' in nid else None)
+        f1 = x['f1_macro']
+        if f1 is None:
+            raise CanonicalError(f'{base}.f1_macro no definido (clase ausente); no se registra como cifra')
+        e = {'kind': 'metric', 'metric': 'f1_macro', 'value': {'val': None, 'test': float(f1)},
+             'null_reason': {'val': F42_F1_NULL}, 'supports_ref': {'test': f'{base}.support'},
+             'source': {'path': rel(F42_RESULT), 'locator': c._loc((*E, k, 'f1_macro'))},
+             'note': f"estrato de prueba con n = {x['n']} ({x['n_dep']} depresivas, {x['n_nodep']} no depresivas)"}
+        if rec:
+            if not math.isclose(rec[k]['f1_macro'], f1, rel_tol=0, abs_tol=1e-12):
+                raise CanonicalError(f'{base}.f1_macro: recalculado {rec[k]["f1_macro"]!r} != {f1!r}')
+            e.update(status='verificado', value={'val': None, 'test': rec[k]['f1_macro']},
+                     confusion={'test': rec[k]['confusion']}, evaluator=F42_F1_EVAL)
+        else:
+            e.update(status='extraido', evaluator=F42_EVAL + '; F1 por estrato de prueba extraído de resultados.json')
+        out[f'{base}.f1_macro'] = e
+    for k, e in c.out.items():
+        if k in out:
+            raise CanonicalError(f'{k}: clave repetida en el colector')
+        out[k] = e
+    return out
 
 
 def check_f41(numbers):
@@ -1415,6 +1537,7 @@ def build(umap_path=None, fragment_paths=None, strict=False):
     sources['build.py:collect_f46'] = collect_f46(inputs)
     sources['build.py:collect_f41'] = collect_f41(inputs)
     sources['build.py:collect_f47'] = collect_f47(inputs)
+    sources['build.py:collect_f42'] = collect_f42(inputs, umap_path)
     sources.update(load_fragments(fragment_paths, inputs))
     numbers, superseded = merge(sources)
     unlock_ref_test(numbers, inputs)

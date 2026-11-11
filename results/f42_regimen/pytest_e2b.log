@@ -1,0 +1,49 @@
+........................................................................ [  5%]
+........................................................................ [ 11%]
+........................................................................ [ 17%]
+........................................................................ [ 23%]
+........................................................................ [ 28%]
+........................................................................ [ 34%]
+........................................................................ [ 40%]
+........................................................................ [ 46%]
+........................................................................ [ 52%]
+........................................................................ [ 57%]
+........................................................................ [ 63%]
+........................................................................ [ 69%]
+........................................................................ [ 75%]
+........................................................................ [ 81%]
+.................
+[rendimiento] Fase 5 sintética: 0.1 s; F4.6: 0.1 s (B = 10000)
+....ssssssssssssssssssssssssssssss..................... [ 86%]
+........................................................................ [ 92%]
+........................................................................ [ 98%]
+...................                                                      [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:64
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+.venv\Lib\site-packages\matplotlib\_mathtext.py:45
+  C:\Users\DELL\Desktop\TT\TT2\ttdicevc\.venv\Lib\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1213 passed, 30 skipped, 14 warnings in 184.66s (0:03:04)

@@ -1,0 +1,54 @@
+{
+ "holm": {
+  "alpha": 0.05,
+  "m": 4,
+  "familia": {
+   "lorenz_fisher_regimen": {
+    "p": 0.0030614811511880963,
+    "p_holm": 0.0030614811511880963,
+    "rank": 4,
+    "alpha_h": 0.05,
+    "reject": true
+   },
+   "lorenz_mw_rho": {
+    "p": 5.495419641406489e-14,
+    "p_holm": 1.6486258924219466e-13,
+    "rank": 2,
+    "alpha_h": 0.016666666666666666,
+    "reject": true
+   },
+   "perlin_mw_octavas": {
+    "p": 2.6262777461042087e-107,
+    "p_holm": 1.0505110984416835e-106,
+    "rank": 1,
+    "alpha_h": 0.0125,
+    "reject": true
+   },
+   "gray_scott_fisher_reintentos": {
+    "p": 3.0376130850982917e-06,
+    "p_holm": 6.075226170196583e-06,
+    "rank": 3,
+    "alpha_h": 0.025,
+    "reject": true
+   }
+  }
+ },
+ "lorenz_estratos_prueba": {
+  "discordancias_rho_vs_u1": 0,
+  "rho_menor_24.74": {
+   "n": 3,
+   "n_dep": 1,
+   "n_nodep": 2,
+   "errores": 1,
+   "f1_macro": 0.6666666666666666
+  },
+  "rho_mayor_igual_24.74": {
+   "n": 111,
+   "n_dep": 43,
+   "n_nodep": 68,
+   "errores": 27,
+   "f1_macro": 0.7468108473430768
+  }
+ }
+}
+exit=0

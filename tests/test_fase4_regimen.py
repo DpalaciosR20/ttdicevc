@@ -24,7 +24,8 @@ from src.fase4 import regimen as rg  # noqa: E402
 from src.fase4 import reintentos_gs as rgs  # noqa: E402
 
 RES = {'fisher_alternativa': 'two-sided', 'mw_continuidad': True, 'reintento_evento': 'reintentos_mayor_0',
-       'f1_estrato_sin_clase': 'cero', 'bit_a_bit': 'sha256_archivo'}
+       'f1_estrato_sin_clase': 'cero', 'bit_a_bit': 'sha256_archivo',
+       'no_identicas': 'incluir_y_listar_con_conteo_por_clase', 'pearson': 'sin_superposicion_sin_fuente_versionada'}
 
 
 @pytest.fixture(scope='module')
@@ -184,6 +185,23 @@ def test_resoluciones_pendientes_detienen():
     with pytest.raises(rg.Detener, match='no previstos'):
         rg.check_resoluciones({**RES, 'bit_a_bit': 'aprox'})
     assert rg.check_resoluciones(RES) == RES
+    with pytest.raises(rg.Detener, match='PENDIENTE'):
+        rg.check_resoluciones({k: v for k, v in RES.items() if k != 'no_identicas'})
+    with pytest.raises(rg.Detener, match='no previstos'):
+        rg.check_resoluciones({**RES, 'no_identicas': 'excluir'})
+    with pytest.raises(rg.Detener, match='no previstos'):
+        rg.check_resoluciones({**RES, 'pearson': 'superponer'})
+    with pytest.raises(rg.Detener, match='claves no previstas'):
+        rg.check_resoluciones({**RES, 'otra_cosa': 1})
+
+
+def test_resoluciones_del_repositorio_y_metadatos():
+    import json
+    raw = json.loads((REPO / 'results' / 'f42_regimen' / 'resoluciones.json').read_text(encoding='utf-8'))
+    res = rg.check_resoluciones(raw)                    # claves «_» aceptadas como metadatos
+    assert set(res) == set(rg.RESOLUCIONES) and '_autor' not in res
+    meta = rg.meta_resoluciones(raw)
+    assert meta['autor'] == 'SV' and meta['fecha'] == '2026-11-10' and 'nota' in meta
 
 
 # ── Análisis completo con datos sintéticos ────────────────────────────────
@@ -207,6 +225,10 @@ def test_analizar_familia_y_estructura(U):
     assert r['gray_scott']['reintentos']['n_reintentos_mayor_0'] == int((reint > 0).sum())
     assert r['gray_scott']['reintentos']['n_respaldo'] == int((reint == 3).sum())
     assert r['gray_scott']['bit_a_bit']['no_identicas'] == ['train_0007']
+    assert r['gray_scott']['bit_a_bit']['no_identicas_por_clase'] == {'dep': int(y[7] == 1), 'nodep': int(y[7] == 0)}
+    assert r['gray_scott']['bit_a_bit']['tratamiento_no_identicas'] == 'incluir_y_listar_con_conteo_por_clase'
+    # P6: las no idénticas se incluyen en el Fisher de reintentos (la tabla suma las 400)
+    assert sum(map(sum, r['pruebas']['gray_scott_fisher_reintentos']['tabla'])) == len(y)
     est = r['lorenz_estratos_prueba']
     assert est['rho_menor_24.74']['n'] + est['rho_mayor_igual_24.74']['n'] == 60
     assert est['rho_mayor_igual_24.74']['errores'] == 0
@@ -370,3 +392,4 @@ def test_figuras_sinteticas(U, tmp_path):
     assert [Path(p).name for p in paths] == ['f42_01_gray_scott_fk.png', 'f42_02_lorenz_rho.png', 'f42_03_perlin_octavas.png']
     assert all(Path(p).stat().st_size > 10_000 for p in paths)
     assert r['gray_scott']['pearson_superpuesto'] is False
+    assert r['gray_scott']['pearson_resolucion'] == 'sin_superposicion_sin_fuente_versionada'

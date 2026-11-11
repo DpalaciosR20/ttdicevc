@@ -81,8 +81,8 @@ def supports(entry, split):
 DESIGN_PREFIXES = ('f11.', 'f12.')
 # Cifras extraídas de la Fase 5 y de F4.6 (bootstrap, p, α, κ...): tampoco salen de una matriz de confusión
 F5_PREFIXES = ('f5.', 'f46.')
-# F4.1 y F4.7: R², alpha, ρ, ΔF1... Sus F1 de prueba verificados se prueban aparte (test_f41_*)
-F4_PREFIXES = ('f41.', 'f47.')
+# F4.1, F4.7 y F4.2: R², alpha, ρ, ΔF1, p... Sus F1 de prueba verificados se prueban aparte (test_f41_*, test_f42_*)
+F4_PREFIXES = ('f41.', 'f47.', 'f42.')
 
 
 def is_leaf_metric(entry):
@@ -130,7 +130,8 @@ def test_evaluator_y_null_reason():
     for nid, e in NUMBERS.items():
         assert e['evaluator'].strip(), nid
         if e['kind'] == 'metric':
-            assert set(e['value']) == ({'val', 'test', 'train'} if nid.startswith('f47.') else {'val', 'test'}), nid
+            train = nid.startswith('f47.') or (nid.startswith('f42.') and '.estrato_prueba.' not in nid)
+            assert set(e['value']) == ({'val', 'test', 'train'} if train else {'val', 'test'}), nid
             for s in canon.METRIC_SPLITS:
                 if e['value'][s] is None:
                     assert e['null_reason'][s].strip(), f'{nid}[{s}]'
@@ -778,7 +779,9 @@ F41_TEST_RES = json.loads((REPO / 'results' / 'f41_recuperabilidad' / 'prueba' /
 F47_RES = json.loads((REPO / 'results' / 'f47_geometria' / 'resultados.json').read_text(encoding='utf-8'))
 F41_PATHS = {'results/f41_recuperabilidad/val/resultados_val.json': (F41_VAL_RES, 'val'),
              'results/f41_recuperabilidad/prueba/resultados_prueba.json': (F41_TEST_RES, 'test'),
-             'results/f47_geometria/resultados.json': (F47_RES, 'train')}
+             'results/f47_geometria/resultados.json': (F47_RES, 'train'),
+             'results/f42_regimen/resultados.json': (json.loads((REPO / 'results' / 'f42_regimen' / 'resultados.json')
+                                                                .read_text(encoding='utf-8')), 'train')}
 F41_PRED_PATH = 'results/f41_recuperabilidad/prueba/predicciones_prueba.csv'
 
 
@@ -860,3 +863,95 @@ def test_f47_solo_train_y_holm():
         assert P[t]['p'] == (P[t]['k'] + 1) / (P[t]['n_perm'] + 1) and P[t]['n'] == 908
         e = NUMBERS[f'f47.{t}.rho_spearman']
         assert e['value']['train'] == P[t]['rho_spearman'] and e['value']['val'] is None and e['value']['test'] is None
+
+
+# ── F4.2 (f42.*) ──────────────────────────────────────────────────────────
+F42_RES = json.loads((REPO / 'results' / 'f42_regimen' / 'resultados.json').read_text(encoding='utf-8'))
+F42_PRUEBAS = {'lorenz_fisher_regimen': 'lorenz.fisher_regimen', 'lorenz_mw_rho': 'lorenz.mw_rho',
+               'perlin_mw_octavas': 'perlin.mw_octavas', 'gray_scott_fisher_reintentos': 'gray_scott.fisher_reintentos'}
+
+
+def test_f42_presencia_y_split():
+    for b in F42_PRUEBAS.values():
+        for k in ('p', 'p_holm', 'holm.alpha_h', 'holm.rango', 'holm.rechaza'):
+            assert f'f42.{b}.{k}' in NUMBERS, (b, k)
+        e = NUMBERS[f'f42.{b}.p']
+        assert e['value']['val'] is None and e['value']['test'] is None and e['value']['train'] is not None
+    for c in ('dep', 'nodep'):
+        for k in (f'lorenz.rho_menor_24_74.proporcion.{c}', f'gray_scott.reintentos.tasa.{c}'):
+            assert f'f42.{k}' in NUMBERS, k
+    for est in ('rho_menor_24_74', 'rho_mayor_igual_24_74'):
+        e = NUMBERS[f'f42.lorenz.estrato_prueba.{est}.f1_macro']
+        assert e['status'] == 'verificado' and e['value']['val'] is None and 'train' not in e['value']
+        assert e['supports_ref'] == {'test': f'f42.lorenz.estrato_prueba.{est}.support'}
+
+
+def test_f42_holm_y_p_ajustado():
+    """El rechazo es el de verdict.holm (m = 4) y p_holm es el ajustado de Holm (paso descendente)."""
+    import math
+    from src.protocol import verdict
+    R = F42_RES['resultados']
+    p = {k: R['pruebas'][k]['p'] for k in F42_PRUEBAS}
+    holm = verdict.holm(p, 0.05)
+    order = sorted(p, key=p.get)
+    adj, run = {}, 0.0
+    for i, k in enumerate(order):
+        run = max(run, min(1.0, (len(p) - i) * p[k]))
+        adj[k] = run
+    for k, b in F42_PRUEBAS.items():
+        h = R['holm']['familia'][k]
+        assert h['reject'] == holm[k]['reject'] and h['rank'] == holm[k]['rank'], k
+        assert math.isclose(h['p_holm'], adj[k], rel_tol=1e-12, abs_tol=0), k
+        assert h['reject'] == (h['p_holm'] <= 0.05), k
+        assert NUMBERS[f'f42.{b}.p_holm']['value']['train'] == h['p_holm']
+        assert NUMBERS[f'f42.{b}.holm.rechaza']['value'] == int(h['reject'])
+
+
+def test_f42_proporciones_y_tasas_cuadran_con_conteos():
+    n = {c: NUMBERS[f'f42.n_train.{c}']['value'] for c in ('dep', 'nodep')}
+    assert n['dep'] + n['nodep'] == NUMBERS['f42.n_train.total']['value'] == 908
+    for c in ('dep', 'nodep'):
+        assert NUMBERS[f'f42.lorenz.rho_menor_24_74.proporcion.{c}']['value']['train'] == \
+            NUMBERS[f'f42.lorenz.rho_menor_24_74.n.{c}']['value'] / n[c]
+        assert NUMBERS[f'f42.gray_scott.reintentos.tasa.{c}']['value']['train'] == \
+            NUMBERS[f'f42.gray_scott.reintentos.n.{c}']['value'] / n[c]
+    T = F42_RES['resultados']['pruebas']
+    nd, nn = (NUMBERS[f'f42.lorenz.rho_menor_24_74.n.{c}']['value'] for c in ('dep', 'nodep'))
+    assert T['lorenz_fisher_regimen']['tabla'] == [[nd, n['dep'] - nd], [nn, n['nodep'] - nn]]
+    rd, rn = (NUMBERS[f'f42.gray_scott.reintentos.n.{c}']['value'] for c in ('dep', 'nodep'))
+    assert T['gray_scott_fisher_reintentos']['tabla'] == [[rd, n['dep'] - rd], [rn, n['nodep'] - rn]]
+
+
+def test_f42_reintentos_desde_el_registro():
+    """Los conteos de reintento por clase salen del CSV de Kaggle, cuyo sha256 está en el meta."""
+    import hashlib
+    path = REPO / 'results' / 'f42_regimen' / 'reintentos' / 'reintentos_gs_train.csv'
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == \
+        F42_RES['meta']['inputs']['results/f42_regimen/reintentos/reintentos_gs_train.csv']
+    with open(path, newline='', encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+    for c, lab in (('dep', '1'), ('nodep', '0')):
+        assert NUMBERS[f'f42.gray_scott.reintentos.n.{c}']['value'] == sum(
+            int(r['reintentos']) > 0 for r in rows if r['y_true'] == lab)
+    assert NUMBERS['f42.gray_scott.bit_a_bit.n_identicas']['value'] == sum(r['pixeles_coinciden'] == 'True' for r in rows)
+
+
+def test_f42_estratos_suman_prueba():
+    e = {s: {k: NUMBERS[f'f42.lorenz.estrato_prueba.{s}.{k}']['value'] for k in ('n', 'support.label0', 'support.label1')}
+         for s in ('rho_menor_24_74', 'rho_mayor_igual_24_74')}
+    assert sum(x['n'] for x in e.values()) == 114
+    for lab in ('label0', 'label1'):
+        assert sum(x[f'support.{lab}'] for x in e.values()) == NUMBERS[f'support.test.{lab}']['value']
+    for x in e.values():
+        assert x['n'] == x['support.label0'] + x['support.label1']
+
+
+def test_f42_resoluciones_versionadas():
+    import hashlib
+    path = REPO / 'results' / 'f42_regimen' / 'resoluciones.json'
+    m = F42_RES['meta']['resoluciones']
+    assert m['archivo'] == 'results/f42_regimen/resoluciones.json' and m['autor'] == 'SV'
+    raw = path.read_bytes()
+    assert m['sha256'] in (hashlib.sha256(raw).hexdigest(), hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest())
+    res = json.loads(raw.decode('utf-8'))
+    assert F42_RES['resultados']['resoluciones'] == {k: v for k, v in res.items() if not k.startswith('_')}

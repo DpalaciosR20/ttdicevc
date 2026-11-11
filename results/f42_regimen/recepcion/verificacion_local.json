@@ -1,0 +1,57 @@
+{
+ "commit_txt": "c121ab62f2718d7b9c299fbcde9f84bc26507a30",
+ "manifest_git_commit": "c121ab62f2718d7b9c299fbcde9f84bc26507a30",
+ "commit_coinciden": true,
+ "smoke": false,
+ "limit": null,
+ "split": "train",
+ "ruta": "cpu",
+ "csv_filas": 908,
+ "manifest_csv_filas": 908,
+ "csv_sha256": "45a27867a7a0453a84c44794ff92bcfc7204be8c428d262951eb78d7cbf92a2c",
+ "csv_sha_eq_manifest": true,
+ "csv_sha_eq_sha256sum": true,
+ "manifest_sha256": "eda83c8e43b99c3200d68123abe48285e41fd60673bd90a2f388728bbede2047",
+ "manifest_sha_eq_sha256sum": true,
+ "u_dtype_manifest": "float32",
+ "u_dtype_pkl": "float32",
+ "verify_manifest_UMAP_PARAMS": "OK",
+ "umap_sha_manifest_eq_local": true,
+ "orden_sample_id": true,
+ "idx_coincide": true,
+ "y_true_coincide_index": true,
+ "y_true_coincide_pkl": true,
+ "u_vs_pkl_max_abs": 0.0,
+ "reintentos_en_0_3": true,
+ "respaldo_sii_reintentos_3": true,
+ "n_llamadas_coherente": true,
+ "len_var_eq_n_llamadas": true,
+ "ultima_var_gt_1e-4_sin_respaldo": true,
+ "intentos_previos_var_le_1e-4": true,
+ "n_sha256_coincide": 908,
+ "n_pixeles_coinciden": 908,
+ "n_almacenada_integra": 908,
+ "n_col_regen_eq_col_manifiesto": 908,
+ "n_png_local_sha_eq_col_manifiesto": 908,
+ "nombre_archivo_coherente": true,
+ "reintentos_mayor_0_por_clase": {
+  "0": 31,
+  "1": 1
+ },
+ "resumen_manifest_reintentos": {
+  "0": 31,
+  "1": 1
+ },
+ "distribucion": {
+  "0": 876,
+  "1": 32,
+  "2": 0,
+  "3": 0
+ },
+ "n_por_clase": {
+  "0": 555,
+  "1": 353
+ },
+ "no_coinciden_sha256": [],
+ "no_coinciden_pixeles": []
+}
