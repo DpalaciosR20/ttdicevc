@@ -193,6 +193,7 @@
   "results/f41_recuperabilidad/prueba/predicciones_prueba.csv": "c7c03fc044482df012dff2d486cbb4b95c40f86ab95576bc937903d244fc883f",
   "results/f41_recuperabilidad/prueba/resultados_prueba.json": "4205b49d74361f1f397cdd4a39346979f1f6ce19227271b6e3a5bdb1a5f614df",
   "results/f41_recuperabilidad/val/resultados_val.json": "028a55edc71ec7ad51b1f2dc4e43c963f12c7d29747c62a32fb271704458c597",
+  "results/f42_regimen/resultados.json": "7bb4d9147d0908092d82a2b5e3536ade5c22ad1075d4ef7479ad1a04e90e6250",
   "results/f45_longitud/resultado.json": "bfd293b0ac8fbd0c5699a52b194713a160523fc42559b74daccafe92707c0085",
   "results/f47_geometria/resultados.json": "492a408ce441dfca998c10a3335f40bbcf6e7fc132fbe45c5c3ddbab05aaa687",
   "results/f55_sensibilidad/gray_scott/runs/gray_scott__resnet18__finetune__px224-flip__seed123.json": "7213d4af2fea1bee72e418e13349da4543ea91f19e59cc54e36773348b225934",
@@ -12049,6 +12050,767 @@
    "value": {
     "test": null,
     "val": 0.700358422939068
+   }
+  },
+  "f42.gray_scott.bit_a_bit.n_identicas": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "criterio: píxeles",
+   "source": {
+    "locator": "resultados.gray_scott.bit_a_bit.n_identicas",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 908
+  },
+  "f42.gray_scott.bit_a_bit.no_identicas.dep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.gray_scott.bit_a_bit.no_identicas_por_clase.dep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f42.gray_scott.bit_a_bit.no_identicas.nodep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.gray_scott.bit_a_bit.no_identicas_por_clase.nodep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f42.gray_scott.fisher_reintentos.holm.alpha_h": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.gray_scott_fisher_reintentos.alpha_h",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.025,
+    "val": null
+   }
+  },
+  "f42.gray_scott.fisher_reintentos.holm.rango": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.familia.gray_scott_fisher_reintentos.rank",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 3
+  },
+  "f42.gray_scott.fisher_reintentos.holm.rechaza": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 4)",
+   "source": {
+    "locator": "resultados.holm.familia.gray_scott_fisher_reintentos.reject",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f42.gray_scott.fisher_reintentos.p": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "sin ajustar, bilateral",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.pruebas.gray_scott_fisher_reintentos.p",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 3.0376130850982917e-06,
+    "val": null
+   }
+  },
+  "f42.gray_scott.fisher_reintentos.p_holm": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p ajustado de Holm (m = 4)",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.gray_scott_fisher_reintentos.p_holm",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 6.075226170196583e-06,
+    "val": null
+   }
+  },
+  "f42.gray_scott.reintentos.n.dep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.gray_scott.reintentos.n_dep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f42.gray_scott.reintentos.n.nodep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.gray_scott.reintentos.n_nodep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 31
+  },
+  "f42.gray_scott.reintentos.n_respaldo": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.gray_scott.reintentos.n_respaldo",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f42.gray_scott.reintentos.tasa.dep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "proporción de la clase en train con al menos 1 reintento del wrapper (reintentos > 0)",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.gray_scott.reintentos.tasa_dep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.0028328611898017,
+    "val": null
+   }
+  },
+  "f42.gray_scott.reintentos.tasa.nodep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "proporción de la clase en train con al menos 1 reintento del wrapper (reintentos > 0)",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.gray_scott.reintentos.tasa_nodep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.055855855855855854,
+    "val": null
+   }
+  },
+  "f42.holm.alpha": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.alpha",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.05,
+    "val": null
+   }
+  },
+  "f42.holm.m": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.m",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 4
+  },
+  "f42.lorenz.discordancias_rho_vs_u1": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "muestras de train con 1[ρ < 24.74] != 1[u1 < 0.0925]",
+   "source": {
+    "locator": "resultados.lorenz.discordancias_rho_vs_u1",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 0
+  },
+  "f42.lorenz.estrato_prueba.rho_mayor_igual_24_74.errores": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_mayor_igual_24.74\"].errores",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 27
+  },
+  "f42.lorenz.estrato_prueba.rho_mayor_igual_24_74.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 12,
+     "fp": 15,
+     "tn": 53,
+     "tp": 31
+    }
+   },
+   "evaluator": "F1-Macro por estrato de ρ (ρ = 24 + 8·u1 de prueba, umbral 24.74) del finalista de Lorenz (ViT-B/16 congelado), ŷ = 1[media de p_dep de las 5 semillas > 0.5], recalculado desde results/predictions/final/lorenz__vit_b16__frozen__seed*.csv y umap_params.pkl; f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "estrato de prueba con n = 111 (43 depresivas, 68 no depresivas)",
+   "null_reason": {
+    "val": "F4.2: el F1 por estrato de Lorenz se calcula solo en prueba (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_mayor_igual_24.74\"].f1_macro",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "f42.lorenz.estrato_prueba.rho_mayor_igual_24_74.support"
+   },
+   "value": {
+    "test": 0.7468108473430768,
+    "val": null
+   }
+  },
+  "f42.lorenz.estrato_prueba.rho_mayor_igual_24_74.n": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_mayor_igual_24.74\"].n",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 111
+  },
+  "f42.lorenz.estrato_prueba.rho_mayor_igual_24_74.support.label0": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "soporte del estrato de prueba",
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_mayor_igual_24.74\"].n_nodep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 68
+  },
+  "f42.lorenz.estrato_prueba.rho_mayor_igual_24_74.support.label1": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "soporte del estrato de prueba",
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_mayor_igual_24.74\"].n_dep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 43
+  },
+  "f42.lorenz.estrato_prueba.rho_menor_24_74.errores": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_menor_24.74\"].errores",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f42.lorenz.estrato_prueba.rho_menor_24_74.f1_macro": {
+   "confusion": {
+    "test": {
+     "fn": 0,
+     "fp": 1,
+     "tn": 1,
+     "tp": 1
+    }
+   },
+   "evaluator": "F1-Macro por estrato de ρ (ρ = 24 + 8·u1 de prueba, umbral 24.74) del finalista de Lorenz (ViT-B/16 congelado), ŷ = 1[media de p_dep de las 5 semillas > 0.5], recalculado desde results/predictions/final/lorenz__vit_b16__frozen__seed*.csv y umap_params.pkl; f1_macro_from_confusion",
+   "kind": "metric",
+   "metric": "f1_macro",
+   "note": "estrato de prueba con n = 3 (1 depresivas, 2 no depresivas)",
+   "null_reason": {
+    "val": "F4.2: el F1 por estrato de Lorenz se calcula solo en prueba (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_menor_24.74\"].f1_macro",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "verificado",
+   "supports_ref": {
+    "test": "f42.lorenz.estrato_prueba.rho_menor_24_74.support"
+   },
+   "value": {
+    "test": 0.6666666666666666,
+    "val": null
+   }
+  },
+  "f42.lorenz.estrato_prueba.rho_menor_24_74.n": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_menor_24.74\"].n",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 3
+  },
+  "f42.lorenz.estrato_prueba.rho_menor_24_74.support.label0": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "soporte del estrato de prueba",
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_menor_24.74\"].n_nodep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 2
+  },
+  "f42.lorenz.estrato_prueba.rho_menor_24_74.support.label1": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "soporte del estrato de prueba",
+   "source": {
+    "locator": "resultados.lorenz_estratos_prueba[\"rho_menor_24.74\"].n_dep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f42.lorenz.fisher_regimen.holm.alpha_h": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.lorenz_fisher_regimen.alpha_h",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.05,
+    "val": null
+   }
+  },
+  "f42.lorenz.fisher_regimen.holm.rango": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.familia.lorenz_fisher_regimen.rank",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 4
+  },
+  "f42.lorenz.fisher_regimen.holm.rechaza": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 4)",
+   "source": {
+    "locator": "resultados.holm.familia.lorenz_fisher_regimen.reject",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f42.lorenz.fisher_regimen.p": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "sin ajustar, bilateral",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.pruebas.lorenz_fisher_regimen.p",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.0030614811511880963,
+    "val": null
+   }
+  },
+  "f42.lorenz.fisher_regimen.p_holm": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p ajustado de Holm (m = 4)",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.lorenz_fisher_regimen.p_holm",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.0030614811511880963,
+    "val": null
+   }
+  },
+  "f42.lorenz.mw_rho.holm.alpha_h": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.lorenz_mw_rho.alpha_h",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.016666666666666666,
+    "val": null
+   }
+  },
+  "f42.lorenz.mw_rho.holm.rango": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.familia.lorenz_mw_rho.rank",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 2
+  },
+  "f42.lorenz.mw_rho.holm.rechaza": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 4)",
+   "source": {
+    "locator": "resultados.holm.familia.lorenz_mw_rho.reject",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f42.lorenz.mw_rho.p": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "sin ajustar, bilateral",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.pruebas.lorenz_mw_rho.p",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 5.495419641406489e-14,
+    "val": null
+   }
+  },
+  "f42.lorenz.mw_rho.p_holm": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p ajustado de Holm (m = 4)",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.lorenz_mw_rho.p_holm",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 1.6486258924219466e-13,
+    "val": null
+   }
+  },
+  "f42.lorenz.rho_menor_24_74.n.dep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.lorenz.proporcion_rho_menor.n_dep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 14
+  },
+  "f42.lorenz.rho_menor_24_74.n.nodep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.lorenz.proporcion_rho_menor.n_nodep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 5
+  },
+  "f42.lorenz.rho_menor_24_74.proporcion.dep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "proporción de la clase en train con ρ < 24.74",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.lorenz.proporcion_rho_menor.dep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.039660056657223795,
+    "val": null
+   }
+  },
+  "f42.lorenz.rho_menor_24_74.proporcion.nodep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "proportion",
+   "note": "proporción de la clase en train con ρ < 24.74",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.lorenz.proporcion_rho_menor.nodep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.009009009009009009,
+    "val": null
+   }
+  },
+  "f42.n_train.dep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.n_train.dep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 353
+  },
+  "f42.n_train.nodep": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.n_train.nodep",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 555
+  },
+  "f42.n_train.total": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.n_train.total",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 908
+  },
+  "f42.perlin.mw_octavas.holm.alpha_h": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "alpha",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.perlin_mw_octavas.alpha_h",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 0.0125,
+    "val": null
+   }
+  },
+  "f42.perlin.mw_octavas.holm.rango": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "source": {
+    "locator": "resultados.holm.familia.perlin_mw_octavas.rank",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f42.perlin.mw_octavas.holm.rechaza": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "count",
+   "note": "1 = se rechaza H0 (Holm, m = 4)",
+   "source": {
+    "locator": "resultados.holm.familia.perlin_mw_octavas.reject",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "value": 1
+  },
+  "f42.perlin.mw_octavas.p": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "sin ajustar, bilateral",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.pruebas.perlin_mw_octavas.p",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 2.6262777461042087e-107,
+    "val": null
+   }
+  },
+  "f42.perlin.mw_octavas.p_holm": {
+   "evaluator": "src/fase4/regimen.py (train: Fisher exacto de ρ < 24.74 y de reintentos de Gray-Scott por clase, Mann–Whitney asintótico de ρ y de octavas, Holm m = 4, α = 0.05; resoluciones en results/f42_regimen/resoluciones.json)",
+   "kind": "metric",
+   "metric": "p_value",
+   "note": "p ajustado de Holm (m = 4)",
+   "null_reason": {
+    "test": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2); el F1 por estrato está en f42.lorenz.estrato_prueba.*",
+    "val": "F4.2 se calcula sobre train (docs/plan_fase4.md, F4.2)"
+   },
+   "source": {
+    "locator": "resultados.holm.familia.perlin_mw_octavas.p_holm",
+    "path": "results/f42_regimen/resultados.json"
+   },
+   "status": "extraido",
+   "supports_ref": {
+    "test": "support.test",
+    "val": "support.val"
+   },
+   "value": {
+    "test": null,
+    "train": 1.0505110984416835e-106,
+    "val": null
    }
   },
   "f46.contencion.gray_scott.beto.c": {
