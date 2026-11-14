@@ -108,13 +108,13 @@
   "H-D": 6
  },
  "limite_gpu_horas": 3,
- "sobel_borde": null,
- "c1_orden_azar": null,
- "c1_muestreo_desplazamiento": null,
- "c1_muestreo_azar": null,
- "b2_mapas": null,
- "wilcoxon_metodo": null,
- "d_sensibilidad": null,
+ "sobel_borde": "reflect",
+ "c1_orden_azar": "tras_los_desplazados_de_cada_imagen",
+ "c1_muestreo_desplazamiento": "rechazo_dx_luego_dy",
+ "c1_muestreo_azar": "choice_sin_reemplazo",
+ "b2_mapas": "grad_y_log",
+ "wilcoxon_metodo": "normal_con_correccion",
+ "d_sensibilidad": "dos_variantes_sigma2_y_t329",
  "_autor": "SV",
  "_fecha": "2026-11-10",
  "_nota": "Exploratorio (plan_exploratorio_pixeles.md), fijado antes de calcular",
@@ -169,5 +169,11 @@
    ],
    "detalle": "results/fx_pixeles/reporte_x1.md, PENDIENTES"
   }
+ },
+ "_pendientes_resueltos": {
+  "autor": "CE (Diego Palacios), por reasignación de SV: SV dejó FX.1 a cargo de CE",
+  "fecha": "2026-11-13",
+  "nota": "Resueltos antes de cualquier cálculo con datos reales. b2_mapas y wilcoxon_metodo: la opción menos favorable a la hipótesis; los otros cinco no la favorecen ni la perjudican (reporte_x1.md §4).",
+  "regla_2_1": "Confirmado: los .npz de F3.7 se cargan seleccionando solo las filas de val; ningún valor de prueba llega a un cálculo ni a una salida; el aborto aplica a toda fila que llegue al análisis."
  }
 }

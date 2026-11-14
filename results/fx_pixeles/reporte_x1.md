@@ -73,7 +73,7 @@
 
 ## 4. PENDIENTES (el plan no los fija y cambian resultados)
 
-Están en `results/fx_pixeles/resoluciones.json` con valor `null`. Los scripts se detienen hasta que SV los resuelva. No se eligió ninguno. «Menos favorable» se refiere a la hipótesis de cada prueba; cuando la opción no favorece ni perjudica a la hipótesis, se dice.
+**Resueltos el 2026-11-13 por CE** (Diego Palacios), porque SV dejó FX.1 a cargo de CE. Fue antes de cualquier cálculo con datos reales; el registro está en `_pendientes_resueltos` de `resoluciones.json`. Valores: `sobel_borde = reflect`, `c1_orden_azar = tras_los_desplazados_de_cada_imagen`, `c1_muestreo_desplazamiento = rechazo_dx_luego_dy`, `c1_muestreo_azar = choice_sin_reemplazo`, `b2_mapas = grad_y_log`, `wilcoxon_metodo = normal_con_correccion` y `d_sensibilidad = dos_variantes_sigma2_y_t329`. En los dos con una opción menos favorable (5 y 6) se eligió esa opción. Si una clave vuelve a `null`, los scripts se detienen. «Menos favorable» se refiere a la hipótesis de cada prueba; cuando la opción no favorece ni perjudica a la hipótesis, se dice.
 
 | # | Clave | Qué no fija el plan | Opciones | Menos favorable |
 |---|---|---|---|---|
@@ -95,7 +95,7 @@ Están en `results/fx_pixeles/resoluciones.json` con valor `null`. Los scripts s
 - **Lorenz no entra en B** (regla 2.10).
 - **K:** el script solo admite K = 20 o la reducción autorizada a 10 (`--k-sorteos 10`, solo con confirmación de SV).
 
-**Punto sobre la regla 2.1 que conviene que SV confirme.**
+**Punto sobre la regla 2.1** (confirmado por CE el 2026-11-13).
 - **El problema:** los `.npz` de F3.7 traen val y prueba en los mismos arreglos.
 - **Lo que hace el código:** carga cada arreglo y selecciona de inmediato las filas de val con `exigir_arreglo_split(split, 'val')`. Ningún valor de prueba pasa a ningún cálculo ni salida.
 - **La alternativa** sería abortar ante cualquier insumo que *contenga* filas de prueba, lo que haría imposible usar los mapas de F3.7.
@@ -148,5 +148,5 @@ Esta rama solo agrega archivos: `git diff origin/main` no muestra cambios en mó
 
 ## 7. Siguiente paso
 
-1. SV resuelve los 7 PENDIENTES en `results/fx_pixeles/resoluciones.json` y confirma la interpretación de la regla 2.1 (§4).
-2. Con ese commit, X2 (Kaggle CPU) y X3 (Kaggle GPU) según `docs/correr_fx_kaggle.md`, empezando por las pruebas acotadas.
+1. ~~Resolver los 7 PENDIENTES y la regla 2.1~~: hecho por CE el 2026-11-13 (§4).
+2. Con el commit que los resuelve, X2 (Kaggle CPU) y X3 (Kaggle GPU) según `docs/correr_fx_kaggle.md`, empezando por las pruebas acotadas.

@@ -14,7 +14,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RES_FILE = os.path.join(REPO, 'results', 'fx_pixeles', 'resoluciones.json')
 RESUELTO = {'sobel_borde': 'reflect', 'c1_orden_azar': 'tras_los_desplazados_de_cada_imagen',
             'c1_muestreo_desplazamiento': 'rechazo_dx_luego_dy', 'c1_muestreo_azar': 'choice_sin_reemplazo',
-            'b2_mapas': 'grad_y_log', 'wilcoxon_metodo': 'normal_sin_correccion',
+            'b2_mapas': 'grad_y_log', 'wilcoxon_metodo': 'normal_con_correccion',
             'd_sensibilidad': 'dos_variantes_sigma2_y_t329'}
 
 
@@ -31,10 +31,12 @@ def test_resoluciones_versionadas_coinciden_con_el_plan_y_exigen_pendientes():
     assert (r['_autor'], r['_fecha']) == ('SV', '2026-11-10')
     assert r['_nota'] == 'Exploratorio (plan_exploratorio_pixeles.md), fijado antes de calcular'
     assert {k: r[k] for k in pc.FIJOS} == pc.FIJOS
-    assert all(r[k] is None for k in pc.PENDIENTES)
+    assert {k: r[k] for k in pc.PENDIENTES} == RESUELTO                # resueltos por CE (2026-11-13)
+    assert r['_pendientes_resueltos']['fecha'] == '2026-11-13'
+    assert pc.check_resoluciones(r)['wilcoxon_metodo'] == 'normal_con_correccion'
+    r_null = dict(r, b2_mapas=None)
     with pytest.raises(Detener, match='PENDIENTE sin resolver'):
-        pc.check_resoluciones(r)
-    assert res_resuelto()['q'] == [0.1, 0.2]
+        pc.check_resoluciones(r_null)
 
 
 @pytest.mark.parametrize('cambio, error', [

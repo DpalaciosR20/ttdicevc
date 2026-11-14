@@ -1,6 +1,6 @@
 # Correr FX.1 (análisis exploratorio de píxeles) en Kaggle
 
-> Análisis exploratorio FX.1 · Plan: `docs/plan_exploratorio_pixeles.md` (etiqueta `plan-pixeles`) · Rol: CE (ejecución), SV (revisión) · Convención general: `docs/ejecucion_kaggle.md`
+> Análisis exploratorio FX.1 · Plan: `docs/plan_exploratorio_pixeles.md` (etiqueta `plan-pixeles`) · Rol: CE (a cargo de todo FX.1 desde el 2026-11-13, por reasignación de SV) · Convención general: `docs/ejecucion_kaggle.md`
 
 | Etapa | Partes | Notebook | Código |
 |---|---|---|---|
@@ -8,8 +8,8 @@
 | X3 | C1 (suavizado dirigido) y C2 (oclusión) | Kaggle **GPU T4** | `src/fase_x/pixeles_gpu.py` |
 
 **Antes de cualquier corrida:**
-1. SV resuelve los PENDIENTES en `results/fx_pixeles/resoluciones.json` (claves en `null`; opciones en `_pendientes` y en `results/fx_pixeles/reporte_x1.md`). Con alguno en `null`, los scripts se detienen.
-2. Ese cambio se commitea y se empuja. El `COMMIT` de las celdas es ese commit o uno posterior, y debe descender de `plan-pixeles`.
+1. Los PENDIENTES de `results/fx_pixeles/resoluciones.json` ya están resueltos (CE, 2026-11-13; `_pendientes_resueltos`). Si alguno volviera a `null`, los scripts se detienen.
+2. El `COMMIT` de las celdas debe ser el que los resuelve o uno posterior, y descender de `plan-pixeles`.
 
 **Reglas del plan que hacen cumplir los scripts:**
 - **Prueba:** no se lee. Ante una fila de prueba, el script aborta.
@@ -59,7 +59,7 @@ os.environ["TT_DATA_ROOT"] = "/kaggle/input/datasets/santiagosoria26ss/tt2-insum
 ```
 - La última línea con `estimación` da los segundos escalados a 114 y 908.
 - La estimación de X1 es ≈ 15–25 min en total. Casi todo es la prueba por clústeres: unos 46 s por mapa con 1,000 permutaciones en el equipo local, sobre 12 mapas.
-- Si la estimación pasa de 2 h, detente y avisa a SV.
+- Si la estimación pasa de 2 h, detente y revísalo con Claude Code antes de seguir.
 
 **Celda 4: corrida única** (*Save Version → Save & Run All*)
 ```python
@@ -112,7 +112,7 @@ os.environ["TT_DATA_ROOT"] = "/kaggle/input/datasets/santiagosoria26ss/tt2-insum
 !cat /kaggle/working/fx_gpu_humo.log
 ```
 - La línea `estimación para 114 imágenes` compara la extrapolación con el límite de 3 h del plan.
-- **Si dice `SUPERA`, detente y avisa a SV.** La reducción autorizada (`--k-sorteos 10`) solo se usa si SV la confirma.
+- **Si dice `SUPERA`, detente** y decide con Claude Code. El plan ya autoriza reducir a `--k-sorteos 10`; cualquier otra reducción se registra como desviación.
 - La estimación de X1, sin GPU disponible para medirla, es de ≈ 35–60 min (sección «Costo» de `reporte_x1.md`).
 
 **Celda 4: corrida única** (*Save Version → Save & Run All*)
