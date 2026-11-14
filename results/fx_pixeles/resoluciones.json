@@ -1,0 +1,179 @@
+{
+ "splits": {
+  "B": "val",
+  "C1": "val",
+  "C2": "val",
+  "D": "train"
+ },
+ "tecnicas": {
+  "B": [
+   "gray_scott",
+   "perlin"
+  ],
+  "C1": [
+   "gray_scott",
+   "perlin",
+   "lorenz"
+  ],
+  "C2": [
+   "gray_scott",
+   "perlin",
+   "lorenz"
+  ],
+  "D": [
+   "gray_scott",
+   "perlin",
+   "lorenz"
+  ]
+ },
+ "tol_pdep": 0.0001,
+ "umbral_decision": 0.5,
+ "sigma_pendiente": 1,
+ "sigma_pendiente_sensibilidad": 2,
+ "pendiente_borde_gaussiana": "reflect",
+ "resolucion_pendiente": {
+  "B": 224,
+  "C1": 256,
+  "C2": 256,
+  "D": 256
+ },
+ "rejilla_b": {
+  "gray_scott": 7,
+  "perlin": 14
+ },
+ "parche_b_px": {
+  "gray_scott": 32,
+  "perlin": 16
+ },
+ "q": [
+  0.1,
+  0.2
+ ],
+ "k_b": {
+  "gray_scott": [
+   5,
+   10
+  ],
+  "perlin": [
+   20,
+   40
+  ]
+ },
+ "k_c1": [
+  6554,
+  13108
+ ],
+ "transformaciones_nula_b2": {
+  "gray_scott": 391,
+  "perlin": 1567
+ },
+ "sigma_c1_desenfoque": 4,
+ "sigma_c2_desenfoque": 8,
+ "desenfoque_borde": "reflect",
+ "uint8": "recortar_redondear",
+ "k_sorteos": 20,
+ "k_sorteos_reduccion_autorizada": 10,
+ "desplazamiento_rango": [
+  -128,
+  127
+ ],
+ "desplazamiento_min_l1": 32,
+ "orden_rng_c1": [
+  "tecnica",
+  "mapa",
+  "q",
+  "imagen",
+  "sorteo"
+ ],
+ "rejilla_c2": 8,
+ "parche_c2_px": 32,
+ "c2_criterio_f43": {
+  "criterio_semillas": "mayoria",
+  "sobre_maximo": "como_dentro",
+  "similitud_constantes": "excluir"
+ },
+ "umbral_t": 2.58,
+ "umbral_t_sensibilidad": 3.29,
+ "conectividad": 8,
+ "b_permutaciones_d": 1000,
+ "p_cluster": "k_mas_1_sobre_B_mas_1",
+ "semilla_rng": 2026,
+ "b_bootstrap": 10000,
+ "nivel_ic": 0.95,
+ "cuantiles_ic": "linear",
+ "alpha": 0.05,
+ "familias": {
+  "H-B": 4,
+  "H-C": 12,
+  "H-D": 6
+ },
+ "limite_gpu_horas": 3,
+ "sobel_borde": "reflect",
+ "c1_orden_azar": "tras_los_desplazados_de_cada_imagen",
+ "c1_muestreo_desplazamiento": "rechazo_dx_luego_dy",
+ "c1_muestreo_azar": "choice_sin_reemplazo",
+ "b2_mapas": "grad_y_log",
+ "wilcoxon_metodo": "normal_con_correccion",
+ "d_sensibilidad": "dos_variantes_sigma2_y_t329",
+ "_autor": "SV",
+ "_fecha": "2026-11-10",
+ "_nota": "Exploratorio (plan_exploratorio_pixeles.md), fijado antes de calcular",
+ "_fuente_c2_criterio_f43": "results/f43_atribucion/resoluciones.json (criterio_semillas, sobre_maximo, similitud_constantes): el plan §5.C2.4 fija «el mismo criterio relativo de F4.3»",
+ "_pendientes": {
+  "sobel_borde": {
+   "opciones": [
+    "reflect",
+    "nearest"
+   ],
+   "detalle": "results/fx_pixeles/reporte_x1.md, PENDIENTES"
+  },
+  "c1_orden_azar": {
+   "opciones": [
+    "tras_los_desplazados_de_cada_imagen",
+    "tras_todos_los_desplazados_de_la_tecnica"
+   ],
+   "detalle": "results/fx_pixeles/reporte_x1.md, PENDIENTES"
+  },
+  "c1_muestreo_desplazamiento": {
+   "opciones": [
+    "rechazo_dx_luego_dy",
+    "uniforme_sobre_pares_validos"
+   ],
+   "detalle": "results/fx_pixeles/reporte_x1.md, PENDIENTES"
+  },
+  "c1_muestreo_azar": {
+   "opciones": [
+    "choice_sin_reemplazo",
+    "prefijo_de_permutacion"
+   ],
+   "detalle": "results/fx_pixeles/reporte_x1.md, PENDIENTES"
+  },
+  "b2_mapas": {
+   "opciones": [
+    "grad_y_log",
+    "solo_grad"
+   ],
+   "detalle": "results/fx_pixeles/reporte_x1.md, PENDIENTES"
+  },
+  "wilcoxon_metodo": {
+   "opciones": [
+    "normal_sin_correccion",
+    "normal_con_correccion"
+   ],
+   "detalle": "results/fx_pixeles/reporte_x1.md, PENDIENTES"
+  },
+  "d_sensibilidad": {
+   "opciones": [
+    "dos_variantes_sigma2_y_t329",
+    "una_variante_sigma2_con_t329"
+   ],
+   "detalle": "results/fx_pixeles/reporte_x1.md, PENDIENTES"
+  }
+ },
+ "_pendientes_resueltos": {
+  "autor": "CE (Diego Palacios), por reasignación de SV: SV dejó FX.1 a cargo de CE",
+  "fecha": "2026-11-13",
+  "nota": "Resueltos antes de cualquier cálculo con datos reales. b2_mapas y wilcoxon_metodo: la opción menos favorable a la hipótesis; los otros cinco no la favorecen ni la perjudican (reporte_x1.md §4).",
+  "regla_2_1": "Confirmado: los .npz de F3.7 se cargan seleccionando solo las filas de val; ningún valor de prueba llega a un cálculo ni a una salida; el aborto aplica a toda fila que llegue al análisis."
+ }
+}
