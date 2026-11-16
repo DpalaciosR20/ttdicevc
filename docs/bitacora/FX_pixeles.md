@@ -88,7 +88,8 @@ Lo fija `docs/plan_exploratorio_pixeles.md`, sin cambios frente a la etiqueta (S
 | X1 | Local (Windows, CPU) | Código y 40 pruebas sintéticas, sin datos reales | — | `results/fx_pixeles/reporte_x1.md`, `pytest_x1.log` |
 | X2 | Kaggle CPU, commit `531acb0` | B y D | 262 s | `results/fx_pixeles/local/` (`run.log`, `manifiesto.csv`, `mapas_verificacion.json` 30/30) |
 | X3 | Kaggle GPU Tesla T4, torch 2.11.0+cu130, commit `531acb0` | C1 y C2, K = 20 | 4,641 s (Gray-Scott 5.6 min, Perlin 36 min, Lorenz 36 min) | `results/fx_pixeles/gpu/` (`run.log`, `manifiesto.csv`, `modelos_f35.json` y `modelos_f36.json`, 15/15 cada uno) |
-| X4 | Local | Verificación y recálculo independientes, claves canónicas, figuras | — | este documento; `notebooks/FX_pixeles.ipynb` |
+| X4 | Local | Verificación y recálculo independientes, claves canónicas | — | este documento |
+| X4b | Kaggle CPU, commit `1699462`, input `tt2-insumos` | Ejecución completa de `notebooks/FX_pixeles.ipynb`, con la figura de ejemplos | — | `notebooks/FX_pixeles.ipynb`, `results/fx_pixeles/figures/` |
 
 **Verificación X4:**
 - **Archivos:** los dos `manifiesto.csv` íntegros. El commit desciende de `plan-pixeles`. El SHA-256 de `resoluciones.json` registrado coincide con el blob de ese commit, y el del plan con el de la etiqueta.
@@ -194,7 +195,7 @@ p = 0.001 es el mínimo posible con 1,000 permutaciones. Las dos variantes de se
 **Desviaciones respecto del procedimiento previsto.**
 1. **Los PENDIENTES los resolvió CE y no SV.** SV dejó FX.1 a cargo de CE el 2026-11-13. Se resolvieron antes de cualquier cálculo con datos reales, con la opción menos favorable en los dos casos donde existía (`_pendientes_resueltos` de `resoluciones.json`).
 2. **No se enviaron a revisión las salidas de las pruebas acotadas** (`--limit`) antes de las corridas completas. Las corridas completas ocurrieron una sola vez y su duración (77 min de GPU) quedó por debajo del límite de 3 h del plan.
-3. **Figuras con imágenes del generador:** la de ejemplos de imagen, `grad`, `log` y modificaciones de C1 requiere `TT_DATA_ROOT`. Está en el notebook, pero no se generó en el equipo local, donde no están las imágenes (§7).
+3. **Figuras con imágenes del generador:** la de ejemplos de imagen, `grad`, `log` y modificaciones de C1 requiere `TT_DATA_ROOT`, que el equipo local no tiene. El notebook completo se ejecutó en Kaggle con CPU, con `tt2-insumos` y el commit `1699462`. El código y las tablas son idénticos a los de la ejecución local. Las 4 figuras de datos difieren solo en unos pocos píxeles de borde por el recorte de matplotlib con las fuentes de Kaggle. Se versionaron el notebook y las 5 figuras de esa ejecución.
 
 ## 6. Limitaciones
 
@@ -213,7 +214,6 @@ p = 0.001 es el mínimo posible con 1,000 permutaciones. Las dos variantes de se
 
 | Pendiente | Responsable | Criterio de cierre |
 |---|---|---|
-| Figura de ejemplos (imagen, `grad`, `log`, modificaciones de C1): última celda de `notebooks/FX_pixeles.ipynb` con `TT_DATA_ROOT` | CE | `results/fx_pixeles/figures/ejemplos_pendiente_c1.png` versionada |
 | Subsección exploratoria en el documento (regla 5 de `docs/plantillas_discusion.md`) | RP | Texto basado en §9, con las cifras de `fx.pixeles.*` |
 
 ## 8. Artefactos
@@ -227,7 +227,8 @@ results/fx_pixeles/
 ├── resoluciones.json, reporte_x1.md, pytest_x1.log
 ├── local/   resultados.json, b_por_muestra.csv, arreglos.npz, run.log, mapas_verificacion.json, entorno/, manifiesto.csv
 ├── gpu/     resultados.json, arreglos.npz, run.log, modelos_f35.json, modelos_f36.json, entorno/, manifiesto.csv
-└── figures/ b_spearman_dice_real_vs_permutado, c1_s_y_delta_f1, c2_oclusion_por_clase, d_mapas_t_clusteres
+└── figures/ b_spearman_dice_real_vs_permutado, c1_s_y_delta_f1, c2_oclusion_por_clase, d_mapas_t_clusteres,
+             ejemplos_pendiente_c1 (notebook ejecutado en Kaggle CPU con tt2-insumos)
 results/canonical_numbers.json          + 247 claves fx.pixeles.* (src/canonical/build.py: collect_fx)
 notebooks/FX_pixeles.ipynb
 ```
