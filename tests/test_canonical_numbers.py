@@ -83,6 +83,8 @@ DESIGN_PREFIXES = ('f11.', 'f12.')
 F5_PREFIXES = ('f5.', 'f46.')
 # F4.1, F4.7, F4.2, F4.3 y F4.4: R², alpha, ρ, ΔF1, p... Sus F1 de prueba verificados se prueban aparte (test_f41_*, test_f42_*)
 F4_PREFIXES = ('f41.', 'f47.', 'f42.', 'f43.', 'f44.')
+# FX.1 exploratorio (docs/plan_exploratorio_pixeles.md): ρ, ΔDice, S, p, ΔF1 sobre val/train; se prueba aparte (test_fx_*)
+FX_PREFIXES = ('fx.',)
 
 
 def is_leaf_metric(entry):
@@ -93,7 +95,7 @@ def leaf_cases():
     """(id, split) de cada F1 no derivado y no nulo; xfail si la entrada lo declara."""
     cases = []
     for nid, e in sorted(NUMBERS.items()):
-        if not is_leaf_metric(e) or nid.startswith(DESIGN_PREFIXES + F5_PREFIXES + F4_PREFIXES):
+        if not is_leaf_metric(e) or nid.startswith(DESIGN_PREFIXES + F5_PREFIXES + F4_PREFIXES + FX_PREFIXES):
             continue
         for s in canon.METRIC_SPLITS:
             if e['value'][s] is None:
@@ -130,7 +132,8 @@ def test_evaluator_y_null_reason():
     for nid, e in NUMBERS.items():
         assert e['evaluator'].strip(), nid
         if e['kind'] == 'metric':
-            train = nid.startswith('f47.') or (nid.startswith('f42.') and '.estrato_prueba.' not in nid)
+            train = (nid.startswith(('f47.', 'fx.pixeles.d.')) or
+                     (nid.startswith('f42.') and '.estrato_prueba.' not in nid))
             assert set(e['value']) == ({'val', 'test', 'train'} if train else {'val', 'test'}), nid
             for s in canon.METRIC_SPLITS:
                 if e['value'][s] is None:
@@ -760,7 +763,8 @@ def test_sin_cambios_previos_salvo_desbloqueo():
         pytest.skip(f'git show {PRE_F5_COMMIT[:7]} no disponible')
     old = json.loads(r.stdout.decode('utf-8'))
     assert set(old['numbers']) <= set(NUMBERS)
-    assert {k for k in NUMBERS if k not in old['numbers']} == {k for k in NUMBERS if k.startswith(F5_PREFIXES + F4_PREFIXES)}
+    assert {k for k in NUMBERS if k not in old['numbers']} == {k for k in NUMBERS
+                                                              if k.startswith(F5_PREFIXES + F4_PREFIXES + FX_PREFIXES)}
     changed = {k for k, e in old['numbers'].items() if NUMBERS[k] != e}
     unlocked = {k for k in changed if k.startswith(REF_PREFIXES)}
     assert changed == unlocked and len(unlocked) == 16
@@ -1161,3 +1165,26 @@ def test_f44_resoluciones_versionadas():
     m = F44_RES['meta']['resoluciones']
     assert m['sha256'] in (hashlib.sha256(raw).hexdigest(), hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest())
     assert F44_RES['meta']['limit'] is None and len(F44_RES['meta']['git_commit']) == 40
+
+
+# ── FX.1 exploratorio de píxeles (fx.pixeles.*) ───────────────────────────
+FX_RES = {'results/fx_pixeles/local/resultados.json': json.loads((REPO / 'results' / 'fx_pixeles' / 'local' /
+                                                                  'resultados.json').read_text(encoding='utf-8')),
+          'results/fx_pixeles/gpu/resultados.json': json.loads((REPO / 'results' / 'fx_pixeles' / 'gpu' /
+                                                                'resultados.json').read_text(encoding='utf-8'))}
+
+
+def test_fx_valores_en_su_localizador():
+    """Cada cifra fx.* es el valor de su resultados.json; B y C en val, D en train; nunca prueba."""
+    keys = [k for k in NUMBERS if k.startswith(FX_PREFIXES)]
+    assert len(keys) == 247
+    for nid in keys:
+        e = NUMBERS[nid]
+        assert e['status'] == 'extraido' and e['source']['path'] in FX_RES, nid
+        doc = FX_RES[e['source']['path']]
+        assert doc['meta']['smoke'] is False and doc['meta']['limit'] is None
+        if e['kind'] == 'metric':
+            split = 'train' if nid.startswith('fx.pixeles.d.') else 'val'
+            assert e['value'][split] == _at(doc, e['source']['locator']), nid
+            assert e['value']['test'] is None and 'prueba' in e['null_reason']['test'], nid
+    assert NUMBERS['fx.pixeles.c1.lorenz.grad.q10.p_holm']['value']['val'] < 0.05

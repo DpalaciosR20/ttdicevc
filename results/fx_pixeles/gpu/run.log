@@ -1,0 +1,4 @@
+gray_scott: {'gray_scott_carga': 2.4, 'gray_scott_C1': 194.5, 'gray_scott_C2': 138.3, 'gray_scott_total': 338.8}
+perlin: {'gray_scott_carga': 2.4, 'gray_scott_C1': 194.5, 'gray_scott_C2': 138.3, 'gray_scott_total': 338.8, 'perlin_carga': 22.2, 'perlin_C1': 1183.6, 'perlin_C2': 935.3, 'perlin_total': 2156.5}
+lorenz: {'gray_scott_carga': 2.4, 'gray_scott_C1': 194.5, 'gray_scott_C2': 138.3, 'gray_scott_total': 338.8, 'perlin_carga': 22.2, 'perlin_C1': 1183.6, 'perlin_C2': 935.3, 'perlin_total': 2156.5, 'lorenz_carga': 21.2, 'lorenz_C1': 1175.5, 'lorenz_C2': 934.2, 'lorenz_total': 2145.7}
+FX.1 GPU: 4641.4 s
