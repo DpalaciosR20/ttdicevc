@@ -32,7 +32,8 @@ Orígenes de las entradas:
      F1 por estrato de Lorenz en value.test, recalculado desde las predicciones) y
      F4.3 (f43.*, de results/f43_atribucion/: val; la fracción de constantes lleva
      también la réplica de prueba con los mapas archivados) y F4.4 (f44.*, de
-     results/f44_convergencia/resultados.json, solo val).
+     results/f44_convergencia/resultados.json, solo val) y FX.1 exploratorio (fx.pixeles.*,
+     de results/fx_pixeles/local y gpu: val en B y C, train en D).
      Los F1 de prueba de F4.1 se recalculan desde predicciones_prueba.csv.
   Tras la fusión, la prueba de cada ref.* «bloqueada hasta la Fase 5» se
   recalcula desde su CSV (unlock_ref_test) y check_f5 contrasta los F1
@@ -1500,6 +1501,110 @@ def collect_f44(inputs):
     return c.out
 
 
+
+# ── Colector 14: FX.1 exploratorio de píxeles (fx.pixeles.*) ──────────────
+FX_LOCAL = REPO / 'results' / 'fx_pixeles' / 'local' / 'resultados.json'
+FX_GPU = REPO / 'results' / 'fx_pixeles' / 'gpu' / 'resultados.json'
+FX_PLAN = 'docs/plan_exploratorio_pixeles.md (exploratorio, fuera del protocolo; resoluciones en results/fx_pixeles/resoluciones.json)'
+FX_EVAL_B = (f'src/fase_x/pixeles_local.py, B (val; mapa principal de F3.7 crudo, dividir_media_semilla y media de 5 semillas; '
+             f'pendiente grad/log σ = 1 sobre la imagen a 224 px; rejilla 7 × 7 en Gray-Scott y 14 × 14 en Perlin; IC percentil 95 % '
+             f'por bootstrap sobre muestras, B = 10,000, default_rng(2026); {FX_PLAN})')
+FX_EVAL_C = (f'src/fase_x/pixeles_gpu.py, C1 y C2 (val; 15 finalistas de F3.5 y 15 permutados de F3.6; p_dep = media de 5 semillas; '
+             f'C1: suavizado σ = 4 del q superior de píxeles por grad/log a 256 px frente a la misma máscara desplazada, K = 20; '
+             f'C2: oclusión 8 × 8 por desenfoque σ = 8; {FX_PLAN})')
+FX_EVAL_D = (f'src/fase_x/pixeles_local.py, D (train; grad/log σ = 1 a 256 px; Gray-Scott y Lorenz: prueba por clústeres, t de Welch, '
+             f'|t| > 2.58, conectividad 8, 1,000 permutaciones; Perlin: Mann–Whitney de la media por imagen; {FX_PLAN})')
+FX_NULL_VAL = {'val': 'FX.1: la cifra está en val', 'test': 'FX.1 no lee el split de prueba (plan, regla 2.1)'}
+FX_NULL_TRAIN = {'val': 'FX.1, D: se calcula sobre train (plan, §6)', 'test': 'FX.1 no lee el split de prueba (plan, regla 2.1)'}
+FX_Q = {0.1: 'q10', 0.2: 'q20'}
+
+
+def collect_fx(inputs):
+    """FX.1 (exploratorio): B, C1, C2 y D con sus IC y los p ajustados de las familias H-B, H-C y H-D."""
+    dl, dg = _f5_result(FX_LOCAL, inputs), _f5_result(FX_GPU, inputs)
+    for d, path in ((dl, FX_LOCAL), (dg, FX_GPU)):
+        if d['meta']['smoke'] or d['meta']['limit'] is not None:
+            raise CanonicalError(f'fx: {rel(path)} es una prueba acotada')
+    out = {}
+    cb = _SplitCollector(dl, FX_LOCAL, 'val', FX_NULL_VAL, FX_EVAL_B)
+    B = ('resultados', 'B')
+    for t in ('gray_scott', 'perlin'):
+        b = f'fx.pixeles.b.{t}'
+        for fuente in ('real', 'perm'):
+            for m in ('grad', 'log'):
+                L = (*B, t, 'B1', f'{fuente}|{m}')
+                cb.metric(f'{b}.b1.{fuente}.{m}.spearman_media', 'spearman_rho', (*L, 'media'),
+                          note='media sobre val del Spearman por muestra entre atribución y pendiente por parche')
+                cb.metric(f'{b}.b1.{fuente}.{m}.spearman_media_ic_inf', 'spearman_rho', (*L, 'ic_inf'))
+                cb.metric(f'{b}.b1.{fuente}.{m}.spearman_media_ic_sup', 'spearman_rho', (*L, 'ic_sup'))
+                for q, qk in FX_Q.items():
+                    L2 = (*B, t, 'B2', f'{fuente}|{m}|q{q}', 'delta')
+                    cb.metric(f'{b}.b2.{fuente}.{m}.{qk}.delta_dice', 'proportion', (*L2, 'media'),
+                              note='Dice observado − media del Dice nulo (transformaciones diédricas y desplazamientos)')
+                    cb.metric(f'{b}.b2.{fuente}.{m}.{qk}.delta_dice_ic_inf', 'proportion', (*L2, 'ic_inf'))
+                    cb.metric(f'{b}.b2.{fuente}.{m}.{qk}.delta_dice_ic_sup', 'proportion', (*L2, 'ic_sup'))
+        for m in ('grad', 'log'):
+            L3 = (*B, t, 'B3', f'B1|{m}')
+            cb.metric(f'{b}.b3.b1.{m}.diferencia', 'spearman_rho', (*L3, 'media'), note='real − permutado, por muestra')
+            cb.metric(f'{b}.b3.b1.{m}.diferencia_ic_inf', 'spearman_rho', (*L3, 'ic_inf'))
+            cb.metric(f'{b}.b3.b1.{m}.diferencia_ic_sup', 'spearman_rho', (*L3, 'ic_sup'))
+            for q, qk in FX_Q.items():
+                L4 = (*B, t, 'B3', f'B2|{m}|q{q}')
+                cb.metric(f'{b}.b3.b2.{m}.{qk}.diferencia', 'proportion', (*L4, 'media'),
+                          note='ΔDice real − ΔDice permutado, por muestra')
+                cb.metric(f'{b}.b3.b2.{m}.{qk}.diferencia_ic_inf', 'proportion', (*L4, 'ic_inf'))
+                cb.metric(f'{b}.b3.b2.{m}.{qk}.diferencia_ic_sup', 'proportion', (*L4, 'ic_sup'))
+            cb.metric(f'{b}.b4.{m}.p', 'p_value', (*B, t, 'B4', m, 'p'),
+                      note='Mann–Whitney bilateral del Spearman de B1 entre clases reales')
+            cb.metric(f'{b}.b4.{m}.p_holm', 'p_value', (*B, 'H-B', f'{t}|{m}', 'p_holm'), note='Holm, familia H-B (m = 4)')
+            cb.metric(f'{b}.b4.{m}.biserial', 'statistic', (*B, t, 'B4', m, 'biserial'),
+                      note='biserial de rangos 2U₁/(n₁n₀) − 1; > 0: mayor en depresivos')
+            cb.count(f'{b}.b1.real.{m}.n_excluidas', (*B, t, 'B1', f'real|{m}', 'n_excluidas'),
+                     note='muestras sin Spearman (mapa o pendiente constante)')
+    out.update(cb.out)
+    cc = _SplitCollector(dg, FX_GPU, 'val', FX_NULL_VAL, FX_EVAL_C)
+    C1, C2 = ('resultados', 'C1'), ('resultados', 'C2')
+    for t in ('gray_scott', 'perlin', 'lorenz'):
+        for m in ('grad', 'log'):
+            for q, qk in FX_Q.items():
+                L = (*C1, t, 'por_condicion', f'{m}|q{q}')
+                b = f'fx.pixeles.c1.{t}.{m}.{qk}'
+                cc.metric(f'{b}.s_media', 'statistic', (*L, 'S', 'media'),
+                          note='S = |Δp_dep| con la máscara de pendiente alta − media sobre 20 desplazamientos')
+                cc.metric(f'{b}.s_media_ic_inf', 'statistic', (*L, 'S', 'ic_inf'))
+                cc.metric(f'{b}.s_media_ic_sup', 'statistic', (*L, 'S', 'ic_sup'))
+                cc.metric(f'{b}.p', 'p_value', (*L, 'wilcoxon', 'p'), note='Wilcoxon bilateral con corrección de continuidad')
+                cc.metric(f'{b}.p_holm', 'p_value', (*C1, 'H-C', f'{t}|{m}|q{q}', 'p_holm'), note='Holm, familia H-C (m = 12)')
+                cc.metric(f'{b}.delta_f1_alta', 'f1_macro', (*L, 'delta_f1', 'alta'), note='F1-val modificada − original')
+                cc.metric(f'{b}.delta_f1_desplazada_mediana', 'f1_macro', (*L, 'delta_f1', 'desplazada', 'mediana'),
+                          note='mediana de los 20 sorteos desplazados')
+        b = f'fx.pixeles.c2.{t}'
+        cc.count(f'{b}.cordura_cambia', (*C2, t, 'cordura', 'global'), value=int(dg['resultados']['C2'][t]['cordura']['global'] == 'cambia'),
+                 note='1 = el mapa de oclusión cambia frente al permutado (criterio relativo de F4.3, mayoría de semillas)')
+        for m in ('grad', 'log'):
+            L = (*C2, t, 'corr_pendiente', m)
+            cc.metric(f'{b}.corr_{m}', 'spearman_rho', (*L, 'media'),
+                      note='media del Spearman por muestra entre oclusión (8 × 8) y pendiente por parche')
+            cc.metric(f'{b}.corr_{m}_ic_inf', 'spearman_rho', (*L, 'ic_inf'))
+            cc.metric(f'{b}.corr_{m}_ic_sup', 'spearman_rho', (*L, 'ic_sup'))
+    out.update(cc.out)
+    cd = _SplitCollector(dl, FX_LOCAL, 'train', FX_NULL_TRAIN, FX_EVAL_D)
+    D = ('resultados', 'D')
+    for t in ('gray_scott', 'perlin', 'lorenz'):
+        for m in ('grad', 'log'):
+            b = f'fx.pixeles.d.{t}.{m}'
+            cd.metric(f'{b}.p', 'p_value', (*D, t, m, 'p_familia'),
+                      note=('Mann–Whitney bilateral de la media por imagen' if t == 'perlin'
+                            else 'p del clúster de mayor masa, (k + 1)/(B + 1)'))
+            cd.metric(f'{b}.p_holm', 'p_value', (*D, 'H-D', f'{t}|{m}', 'p_holm'), note='Holm, familia H-D (m = 6)')
+            if t == 'perlin':
+                cd.metric(f'{b}.biserial', 'statistic', (*D, t, m, 'biserial'), note='> 0: mayor pendiente media en depresivos')
+            else:
+                cd.count(f'{b}.n_clusteres_p_menor_005', (*D, t, m, 'clusteres_p_menor_005'),
+                         value=len(dl['resultados']['D'][t][m]['clusteres_p_menor_005']), note='clústeres con p < 0.05')
+    out.update(cd.out)
+    return out
+
 def check_f41(numbers):
     """El F1 de la LogReg sobre u en prueba (F4.1) es el de F2.1 (ref.techo5d.logreg)."""
     a, b = numbers['f41.prueba.u.logreg.f1_macro']['value']['test'], numbers['ref.techo5d.logreg.f1_macro']['value']['test']
@@ -1709,6 +1814,7 @@ def build(umap_path=None, fragment_paths=None, strict=False):
     sources['build.py:collect_f42'] = collect_f42(inputs, umap_path)
     sources['build.py:collect_f43'] = collect_f43(inputs)
     sources['build.py:collect_f44'] = collect_f44(inputs)
+    sources['build.py:collect_fx'] = collect_fx(inputs)
     sources.update(load_fragments(fragment_paths, inputs))
     numbers, superseded = merge(sources)
     unlock_ref_test(numbers, inputs)

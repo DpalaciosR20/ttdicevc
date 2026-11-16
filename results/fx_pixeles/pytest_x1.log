@@ -1,0 +1,1946 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.11, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\Diego\venvs\ttdicevc\Scripts\python.exe
+rootdir: C:\Users\Diego\OneDrive - Instituto Politecnico Nacional\ttdicevc_proyecto\ttdicevc
+plugins: platformdirs-4.14.3
+collecting ... collected 1367 items
+
+tests/test_attribution.py::test_atencion_explicita_no_cambia_la_salida PASSED [  0%]
+tests/test_attribution.py::test_atencion_explicita_coincide_con_need_weights PASSED [  0%]
+tests/test_attribution.py::test_vit_mapas_forma_y_rollout[False] PASSED  [  0%]
+tests/test_attribution.py::test_vit_mapas_forma_y_rollout[True] PASSED   [  0%]
+tests/test_attribution.py::test_rollout_ponderado_formula_explicita PASSED [  0%]
+tests/test_attribution.py::test_cordura_cabeza_aleatoria_vit_congelado PASSED [  0%]
+tests/test_attribution.py::test_backbone_congelado_no_acumula_gradientes PASSED [  0%]
+tests/test_attribution.py::test_grad_cam_formula_explicita PASSED        [  0%]
+tests/test_attribution.py::test_grad_cam_efficientnet_y_resnet[False] PASSED [  0%]
+tests/test_attribution.py::test_grad_cam_efficientnet_y_resnet[True] PASSED [  0%]
+tests/test_attribution.py::test_minmax PASSED                            [  0%]
+tests/test_canonical_numbers.py::test_esquema_archivo PASSED             [  0%]
+tests/test_canonical_numbers.py::test_esquema_fragmento[results/f04_cifras_canonicas/canonical_fragment.json] PASSED [  0%]
+tests/test_canonical_numbers.py::test_esquema_fragmento[results/f11_potencia/canonical_fragment.json] PASSED [  1%]
+tests/test_canonical_numbers.py::test_esquema_fragmento[results/f12_protocolo/canonical_fragment.json] PASSED [  1%]
+tests/test_canonical_numbers.py::test_esquema_fragmento[results/f21_techo5d/canonical_fragment.json] PASSED [  1%]
+tests/test_canonical_numbers.py::test_esquema_fragmento[results/f22_referencias_textuales/canonical_fragment.json] PASSED [  1%]
+tests/test_canonical_numbers.py::test_esquema_fragmento[results/f23_pisos/canonical_fragment.json] PASSED [  1%]
+tests/test_canonical_numbers.py::test_esquema_fragmento[results/f24_descriptores/canonical_fragment.json] PASSED [  1%]
+tests/test_canonical_numbers.py::test_referencias_resuelven PASSED       [  1%]
+tests/test_canonical_numbers.py::test_evaluator_y_null_reason PASSED     [  1%]
+tests/test_canonical_numbers.py::test_determinismo_dos_builds PASSED     [  1%]
+tests/test_canonical_numbers.py::test_coincide_con_archivo_commiteado PASSED [  1%]
+tests/test_canonical_numbers.py::test_conteos_sin_pkl_coinciden PASSED   [  1%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  1%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  1%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  1%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.resnet18.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.resnet18.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.resnet18.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.resnet18.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.resnet18.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.resnet18.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.vit_b16.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.vit_b16.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.vit_b16.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.vit_b16.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.vit_b16.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  2%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.gray_scott.vit_b16.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.resnet18.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.resnet18.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.resnet18.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.resnet18.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.resnet18.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.resnet18.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [  3%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.vit_b16.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.vit_b16.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.vit_b16.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.vit_b16.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.vit_b16.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.lorenz.vit_b16.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.resnet18.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.resnet18.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [  4%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.resnet18.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.resnet18.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.resnet18.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.resnet18.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.vit_b16.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.vit_b16.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.vit_b16.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.vit_b16.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.vit_b16.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32.perlin.vit_b16.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.efficientnet_b0.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.efficientnet_b0.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.efficientnet_b0.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.efficientnet_b0.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  5%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.efficientnet_b0.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.efficientnet_b0.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.resnet18.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.resnet18.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.resnet18.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.resnet18.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.resnet18.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.resnet18.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.vit_b_16.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.vit_b_16.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.vit_b_16.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.vit_b_16.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.vit_b_16.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  6%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.gray_scott.vit_b_16.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.efficientnet_b0.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.efficientnet_b0.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.efficientnet_b0.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.efficientnet_b0.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.efficientnet_b0.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.efficientnet_b0.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.resnet18.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.resnet18.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.resnet18.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.resnet18.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.resnet18.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.resnet18.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.vit_b_16.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  7%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.vit_b_16.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.vit_b_16.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.vit_b_16.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.vit_b_16.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.lorenz.vit_b_16.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.efficientnet_b0.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.efficientnet_b0.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.efficientnet_b0.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.efficientnet_b0.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.efficientnet_b0.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.efficientnet_b0.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.resnet18.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.resnet18.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.resnet18.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  8%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.resnet18.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.resnet18.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.resnet18.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.vit_b_16.finetune.px224_flip.seed123.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.vit_b_16.finetune.px224_flip.seed42.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.vit_b_16.finetune.px224_flip.seed7.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.vit_b_16.frozen.px224_flip.seed123.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.vit_b_16.frozen.px224_flip.seed42.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f32v0.perlin.vit_b_16.frozen.px224_flip.seed7.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.gray_scott.mejor_trial.seed123.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.gray_scott.mejor_trial.seed42.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.gray_scott.mejor_trial.seed7.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.gray_scott.trial0.seed123.f1_macro[val]] PASSED [  9%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.gray_scott.trial0.seed42.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.gray_scott.trial0.seed7.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.lorenz.mejor_trial.seed123.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.lorenz.mejor_trial.seed42.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.lorenz.mejor_trial.seed7.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.lorenz.trial0.seed123.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.lorenz.trial0.seed42.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.lorenz.trial0.seed7.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.perlin.mejor_trial.seed123.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.perlin.mejor_trial.seed42.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.perlin.mejor_trial.seed7.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.perlin.trial0.seed123.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.perlin.trial0.seed42.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f34.perlin.trial0.seed7.f1_macro[val]] PASSED [ 10%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro[val]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro[test]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro[val]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro[test]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro[val]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro[test]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro[val]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro[test]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro[val]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro[test]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro[val]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro[test]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro[val]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro[test]] PASSED [ 11%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro[val]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro[test]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro[val]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro[test]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro[val]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro[test]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro[val]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro[test]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro[val]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro[test]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro[val]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro[test]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro[val]] PASSED [ 12%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro[test]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro[val]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro[test]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro[val]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro[test]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro[val]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro[test]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro[val]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro[test]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro[val]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro[test]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro[val]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro[test]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro[val]] PASSED [ 13%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro[test]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro[val]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro[test]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro[val]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro[test]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro[val]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro[test]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro[val]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro[test]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro[val]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro[test]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro[val]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro[test]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro[val]] PASSED [ 14%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro[test]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro[val]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro[test]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro[val]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro[test]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro[val]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro[test]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro[val]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro[test]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro[val]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro[test]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro[val]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro[test]] PASSED [ 15%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro[val]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro[test]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro[val]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro[test]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro[val]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro[test]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro[val]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro[test]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro[val]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro[test]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro[val]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro[test]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro[val]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro[test]] PASSED [ 16%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro[val]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro[test]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro[val]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro[test]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro[val]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro[test]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro[val]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro[test]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[floor.brightness.gray_scott.f1_macro[test]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[floor.brightness.lorenz.f1_macro[test]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[floor.brightness.perlin.f1_macro[test]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.beto_exp41.f1_macro[val]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.beto_exp41.f1_macro[test]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.descriptores.gray_scott.f1_macro[val]] PASSED [ 17%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.descriptores.gray_scott.f1_macro[test]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.descriptores.lorenz.f1_macro[val]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.descriptores.lorenz.f1_macro[test]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.descriptores.perlin.f1_macro[val]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.descriptores.perlin.f1_macro[test]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.emb768_logreg.f1_macro[val]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.emb768_logreg.f1_macro[test]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.longitud.f1_macro[val]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.longitud.f1_macro[test]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.brightness.gray_scott.f1_macro[val]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.brightness.gray_scott.f1_macro[test]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.brightness.lorenz.f1_macro[val]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.brightness.lorenz.f1_macro[test]] PASSED [ 18%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.brightness.perlin.f1_macro[val]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.brightness.perlin.f1_macro[test]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.majority.f1_macro[val]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.majority.f1_macro[test]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.stratified.f1_macro[val]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.piso.stratified.f1_macro[test]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.f1_macro[val]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.f1_macro[test]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.gbm.f1_macro[val]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.gbm.f1_macro[test]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.logreg.f1_macro[val]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.logreg.f1_macro[test]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.mlp.f1_macro[val]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.mlp.f1_macro[test]] PASSED [ 19%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.rf.f1_macro[val]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.rf.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.svm_rbf.f1_macro[val]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.techo5d.svm_rbf.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.tfidf_lemma.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.umap5d.logreg_svm.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.umap5d.mlp.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[ref.umap5d.rf.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.gs_resnet18.seed123.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.gs_resnet18.seed2024.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.gs_resnet18.seed42.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.gs_resnet18.seed7.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.gs_resnet18.seed99.f1_macro[test]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.frozen_lr1e_3.f1_macro[val]] PASSED [ 20%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.frozen_lr1e_3.f1_macro[test]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.lr1e_3_ft.f1_macro[val]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.lr1e_3_ft.f1_macro[test]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.lr1e_4_ft.f1_macro[val]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.lr1e_4_ft.f1_macro[test]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.lr1e_4_wd1e_4_ft.f1_macro[val]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.lr1e_4_wd1e_4_ft.f1_macro[test]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.lr3e_5_ft.f1_macro[val]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_alcanzabilidad_f1[witcom.hpo.gs_resnet18.lr3e_5_ft.f1_macro[test]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f12.piso_mayoritaria.f1_macro[test]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 21%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.resnet18.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.resnet18.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.resnet18.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.resnet18.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.resnet18.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.resnet18.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.vit_b16.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.vit_b16.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.vit_b16.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.vit_b16.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.vit_b16.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 22%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.gray_scott.vit_b16.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.resnet18.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.resnet18.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.resnet18.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.resnet18.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.resnet18.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.resnet18.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.vit_b16.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [ 23%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.vit_b16.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.vit_b16.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.vit_b16.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.vit_b16.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.lorenz.vit_b16.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.resnet18.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.resnet18.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [ 24%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.resnet18.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.resnet18.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.resnet18.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.resnet18.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.vit_b16.finetune.px224_noflip.seed123.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.vit_b16.finetune.px224_noflip.seed42.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.vit_b16.finetune.px224_noflip.seed7.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.vit_b16.frozen.px224_noflip.seed123.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.vit_b16.frozen.px224_noflip.seed42.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32.perlin.vit_b16.frozen.px224_noflip.seed7.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.efficientnet_b0.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.efficientnet_b0.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.efficientnet_b0.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.efficientnet_b0.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 25%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.efficientnet_b0.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.efficientnet_b0.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.resnet18.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.resnet18.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.resnet18.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.resnet18.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.resnet18.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.resnet18.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.vit_b_16.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.vit_b_16.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.vit_b_16.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.vit_b_16.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.vit_b_16.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.gray_scott.vit_b_16.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 26%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.efficientnet_b0.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.efficientnet_b0.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.efficientnet_b0.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.efficientnet_b0.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.efficientnet_b0.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.efficientnet_b0.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.resnet18.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.resnet18.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.resnet18.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.resnet18.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.resnet18.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.resnet18.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.vit_b_16.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 27%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.vit_b_16.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.vit_b_16.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.vit_b_16.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.vit_b_16.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.lorenz.vit_b_16.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.efficientnet_b0.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.efficientnet_b0.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.efficientnet_b0.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.efficientnet_b0.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.efficientnet_b0.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.efficientnet_b0.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.resnet18.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.resnet18.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.resnet18.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 28%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.resnet18.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.resnet18.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.resnet18.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.vit_b_16.finetune.px224_flip.seed123.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.vit_b_16.finetune.px224_flip.seed42.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.vit_b_16.finetune.px224_flip.seed7.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.vit_b_16.frozen.px224_flip.seed123.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.vit_b_16.frozen.px224_flip.seed42.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f32v0.perlin.vit_b_16.frozen.px224_flip.seed7.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.gray_scott.mejor_trial.seed123.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.gray_scott.mejor_trial.seed42.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.gray_scott.mejor_trial.seed7.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.gray_scott.trial0.seed123.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.gray_scott.trial0.seed42.f1_macro[val]] PASSED [ 29%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.gray_scott.trial0.seed7.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.lorenz.mejor_trial.seed123.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.lorenz.mejor_trial.seed42.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.lorenz.mejor_trial.seed7.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.lorenz.trial0.seed123.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.lorenz.trial0.seed42.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.lorenz.trial0.seed7.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.perlin.mejor_trial.seed123.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.perlin.mejor_trial.seed42.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.perlin.mejor_trial.seed7.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.perlin.trial0.seed123.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.perlin.trial0.seed42.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f34.perlin.trial0.seed7.f1_macro[val]] PASSED [ 30%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro[test]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro[val]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro[test]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro[val]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro[test]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro[val]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro[test]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro[val]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro[test]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro[val]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro[test]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro[val]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro[test]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro[val]] PASSED [ 31%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro[test]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro[val]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro[test]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro[val]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro[test]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro[val]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro[test]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro[val]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro[test]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro[val]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro[test]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro[val]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro[test]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro[val]] PASSED [ 32%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro[test]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro[val]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro[test]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro[val]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro[test]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro[val]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro[test]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro[val]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro[test]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro[val]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro[test]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro[val]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro[test]] PASSED [ 33%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro[val]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro[test]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro[val]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro[test]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro[val]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro[test]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro[val]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro[test]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro[val]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro[test]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro[val]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro[test]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro[val]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro[test]] PASSED [ 34%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro[val]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro[val]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro[val]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.gray_scott.efficientnet_b0_finetune_seed123.logreg_u_hat.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.gray_scott.efficientnet_b0_finetune_seed2024.logreg_u_hat.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.gray_scott.efficientnet_b0_finetune_seed42.logreg_u_hat.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.gray_scott.efficientnet_b0_finetune_seed7.logreg_u_hat.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.gray_scott.efficientnet_b0_finetune_seed99.logreg_u_hat.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.gray_scott.efficientnet_b0_imagenet.logreg_u_hat.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.lorenz.vit_b16_imagenet.logreg_u_hat.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.perlin.vit_b16_imagenet.logreg_u_hat.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f41.prueba.u.logreg.f1_macro[test]] PASSED [ 35%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f42.lorenz.estrato_prueba.rho_mayor_igual_24_74.f1_macro[test]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f42.lorenz.estrato_prueba.rho_menor_24_74.f1_macro[test]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro[test]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro[val]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro[test]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro[val]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro[test]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro[val]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro[test]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro[val]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro[test]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro[val]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro[test]] PASSED [ 36%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro[val]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro[test]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro[val]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro[test]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro[val]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro[test]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro[val]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro[test]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro[val]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro[test]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro[val]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro[test]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro[val]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro[test]] PASSED [ 37%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro[val]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro[test]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro[val]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro[test]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro[val]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.beto_exp41.f1_macro[test]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.beto_exp41.f1_macro[val]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.descriptores.gray_scott.f1_macro[test]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.descriptores.gray_scott.f1_macro[val]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.descriptores.lorenz.f1_macro[test]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.descriptores.lorenz.f1_macro[val]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.descriptores.perlin.f1_macro[test]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.descriptores.perlin.f1_macro[val]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.emb768_logreg.f1_macro[test]] PASSED [ 38%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.emb768_logreg.f1_macro[val]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.longitud.f1_macro[test]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.longitud.f1_macro[val]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.brightness.gray_scott.f1_macro[test]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.brightness.gray_scott.f1_macro[val]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.brightness.lorenz.f1_macro[test]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.brightness.lorenz.f1_macro[val]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.brightness.perlin.f1_macro[test]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.brightness.perlin.f1_macro[val]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.majority.f1_macro[test]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.majority.f1_macro[val]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.stratified.f1_macro[test]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.piso.stratified.f1_macro[val]] PASSED [ 39%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.f1_macro[test]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.f1_macro[val]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.gbm.f1_macro[test]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.gbm.f1_macro[val]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.logreg.f1_macro[test]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.logreg.f1_macro[val]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.mlp.f1_macro[test]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.mlp.f1_macro[val]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.rf.f1_macro[test]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.rf.f1_macro[val]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.svm_rbf.f1_macro[test]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_matriz_confusion[ref.techo5d.svm_rbf.f1_macro[val]] PASSED [ 40%]
+tests/test_canonical_numbers.py::test_verificados_tienen_confusion PASSED [ 40%]
+tests/test_canonical_numbers.py::test_conteos_estructurales PASSED       [ 40%]
+tests/test_canonical_numbers.py::test_f32_estructura PASSED              [ 41%]
+tests/test_canonical_numbers.py::test_f32v0_estructura PASSED            [ 41%]
+tests/test_canonical_numbers.py::test_f33_presencia PASSED               [ 41%]
+tests/test_canonical_numbers.py::test_f33_consistencia[perlin] PASSED    [ 41%]
+tests/test_canonical_numbers.py::test_f33_consistencia[gray_scott] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_f33_consistencia[lorenz] PASSED    [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.efficientnet_b0.finetune.px224_flip.f1_macro_mean] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.efficientnet_b0.finetune.px224_flip.f1_macro_std] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.efficientnet_b0.frozen.px224_flip.f1_macro_mean] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.efficientnet_b0.frozen.px224_flip.f1_macro_std] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.resnet18.finetune.px224_flip.f1_macro_mean] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.resnet18.finetune.px224_flip.f1_macro_std] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.resnet18.frozen.px224_flip.f1_macro_mean] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.resnet18.frozen.px224_flip.f1_macro_std] PASSED [ 41%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.vit_b16.finetune.px224_flip.f1_macro_mean] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.vit_b16.finetune.px224_flip.f1_macro_std] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.vit_b16.frozen.px224_flip.f1_macro_mean] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.gray_scott.vit_b16.frozen.px224_flip.f1_macro_std] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.efficientnet_b0.finetune.px224_noflip.f1_macro_mean] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.efficientnet_b0.finetune.px224_noflip.f1_macro_std] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.efficientnet_b0.frozen.px224_noflip.f1_macro_mean] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.efficientnet_b0.frozen.px224_noflip.f1_macro_std] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.resnet18.finetune.px224_noflip.f1_macro_mean] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.resnet18.finetune.px224_noflip.f1_macro_std] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.resnet18.frozen.px224_noflip.f1_macro_mean] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.resnet18.frozen.px224_noflip.f1_macro_std] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.vit_b16.finetune.px224_noflip.f1_macro_mean] PASSED [ 42%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.vit_b16.finetune.px224_noflip.f1_macro_std] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.vit_b16.frozen.px224_noflip.f1_macro_mean] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.lorenz.vit_b16.frozen.px224_noflip.f1_macro_std] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.efficientnet_b0.finetune.px224_noflip.f1_macro_mean] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.efficientnet_b0.finetune.px224_noflip.f1_macro_std] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.efficientnet_b0.frozen.px224_noflip.f1_macro_mean] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.efficientnet_b0.frozen.px224_noflip.f1_macro_std] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.resnet18.finetune.px224_noflip.f1_macro_mean] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.resnet18.finetune.px224_noflip.f1_macro_std] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.resnet18.frozen.px224_noflip.f1_macro_mean] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.resnet18.frozen.px224_noflip.f1_macro_std] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.vit_b16.finetune.px224_noflip.f1_macro_mean] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.vit_b16.finetune.px224_noflip.f1_macro_std] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.vit_b16.frozen.px224_noflip.f1_macro_mean] PASSED [ 43%]
+tests/test_canonical_numbers.py::test_derivadas[f32.perlin.vit_b16.frozen.px224_noflip.f1_macro_std] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.efficientnet_b0.finetune.px224_flip.f1_macro_mean] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.efficientnet_b0.finetune.px224_flip.f1_macro_std] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.efficientnet_b0.frozen.px224_flip.f1_macro_mean] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.efficientnet_b0.frozen.px224_flip.f1_macro_std] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.resnet18.finetune.px224_flip.f1_macro_mean] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.resnet18.finetune.px224_flip.f1_macro_std] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.resnet18.frozen.px224_flip.f1_macro_mean] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.resnet18.frozen.px224_flip.f1_macro_std] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.vit_b_16.finetune.px224_flip.f1_macro_mean] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.vit_b_16.finetune.px224_flip.f1_macro_std] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.vit_b_16.frozen.px224_flip.f1_macro_mean] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.gray_scott.vit_b_16.frozen.px224_flip.f1_macro_std] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.efficientnet_b0.finetune.px224_flip.f1_macro_mean] PASSED [ 44%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.efficientnet_b0.finetune.px224_flip.f1_macro_std] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.efficientnet_b0.frozen.px224_flip.f1_macro_mean] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.efficientnet_b0.frozen.px224_flip.f1_macro_std] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.resnet18.finetune.px224_flip.f1_macro_mean] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.resnet18.finetune.px224_flip.f1_macro_std] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.resnet18.frozen.px224_flip.f1_macro_mean] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.resnet18.frozen.px224_flip.f1_macro_std] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.vit_b_16.finetune.px224_flip.f1_macro_mean] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.vit_b_16.finetune.px224_flip.f1_macro_std] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.vit_b_16.frozen.px224_flip.f1_macro_mean] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.lorenz.vit_b_16.frozen.px224_flip.f1_macro_std] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.efficientnet_b0.finetune.px224_flip.f1_macro_mean] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.efficientnet_b0.finetune.px224_flip.f1_macro_std] PASSED [ 45%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.efficientnet_b0.frozen.px224_flip.f1_macro_mean] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.efficientnet_b0.frozen.px224_flip.f1_macro_std] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.resnet18.finetune.px224_flip.f1_macro_mean] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.resnet18.finetune.px224_flip.f1_macro_std] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.resnet18.frozen.px224_flip.f1_macro_mean] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.resnet18.frozen.px224_flip.f1_macro_std] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.vit_b_16.finetune.px224_flip.f1_macro_mean] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.vit_b_16.finetune.px224_flip.f1_macro_std] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.vit_b_16.frozen.px224_flip.f1_macro_mean] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f32v0.perlin.vit_b_16.frozen.px224_flip.f1_macro_std] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f33.gray_scott.finalista.efficientnet_b0.finetune.f1_macro_mean] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f33.gray_scott.finalista.efficientnet_b0.finetune.f1_macro_std] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f33.gray_scott.holgura_finalista.f1_macro] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f33.gray_scott.lider.resnet18.finetune.f1_macro_mean] PASSED [ 46%]
+tests/test_canonical_numbers.py::test_derivadas[f33.gray_scott.lider.resnet18.finetune.f1_macro_std] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.gray_scott.limite_empate.f1_macro] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.gray_scott.segundo.resnet18.finetune.f1_macro_mean] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.gray_scott.segundo.resnet18.finetune.f1_macro_std] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.lorenz.finalista.vit_b16.frozen.f1_macro_mean] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.lorenz.finalista.vit_b16.frozen.f1_macro_std] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.lorenz.holgura_finalista.f1_macro] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.lorenz.lider.efficientnet_b0.finetune.f1_macro_mean] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.lorenz.lider.efficientnet_b0.finetune.f1_macro_std] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.lorenz.limite_empate.f1_macro] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.lorenz.segundo.efficientnet_b0.finetune.f1_macro_mean] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.lorenz.segundo.efficientnet_b0.finetune.f1_macro_std] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.perlin.finalista.vit_b16.frozen.f1_macro_mean] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.perlin.finalista.vit_b16.frozen.f1_macro_std] PASSED [ 47%]
+tests/test_canonical_numbers.py::test_derivadas[f33.perlin.holgura_finalista.f1_macro] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f33.perlin.lider.vit_b16.frozen.f1_macro_mean] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f33.perlin.lider.vit_b16.frozen.f1_macro_std] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f33.perlin.limite_empate.f1_macro] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f33.perlin.segundo.efficientnet_b0.frozen.f1_macro_mean] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f33.perlin.segundo.efficientnet_b0.frozen.f1_macro_std] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f34.gray_scott.ganancia.f1_macro] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f34.gray_scott.mejor_trial.f1_macro_mean] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f34.gray_scott.trial0.f1_macro_mean] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f34.gray_scott.trial0.f1_macro_std] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f34.lorenz.ganancia.f1_macro] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f34.lorenz.mejor_trial.f1_macro_mean] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f34.lorenz.trial0.f1_macro_mean] PASSED [ 48%]
+tests/test_canonical_numbers.py::test_derivadas[f34.lorenz.trial0.f1_macro_std] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f34.perlin.ganancia.f1_macro] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f34.perlin.mejor_trial.f1_macro_mean] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f34.perlin.trial0.f1_macro_mean] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f34.perlin.trial0.f1_macro_std] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f35.gray_scott.finalista.f1_macro_mean] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f35.gray_scott.finalista.f1_macro_std] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f35.lorenz.finalista.f1_macro_mean] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f35.lorenz.finalista.f1_macro_std] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f35.perlin.finalista.f1_macro_mean] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f35.perlin.finalista.f1_macro_std] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f36.gray_scott.permutado.f1_macro_mean] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f36.gray_scott.permutado.f1_macro_std] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f36.lorenz.permutado.f1_macro_mean] PASSED [ 49%]
+tests/test_canonical_numbers.py::test_derivadas[f36.lorenz.permutado.f1_macro_std] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[f36.perlin.permutado.f1_macro_mean] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[f36.perlin.permutado.f1_macro_std] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[f55.gray_scott.segundo.f1_macro_mean] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[f55.gray_scott.segundo.f1_macro_std] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[f55.lorenz.segundo.f1_macro_mean] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[f55.lorenz.segundo.f1_macro_std] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[f55.perlin.segundo.f1_macro_mean] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[f55.perlin.segundo.f1_macro_std] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[n.total] PASSED          [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[ref.delta_ni.f1_macro] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[support.total.label0] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[support.total.label1] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_derivadas[witcom.delta_beto_gs_resnet18.f1_macro] PASSED [ 50%]
+tests/test_canonical_numbers.py::test_agregados_transcritos[witcom.gs_resnet18.f1_macro_mean] PASSED [ 51%]
+tests/test_canonical_numbers.py::test_agregados_transcritos[witcom.gs_resnet18.f1_macro_std] PASSED [ 51%]
+tests/test_canonical_numbers.py::test_claves_duplicadas_entre_fragmentos PASSED [ 51%]
+tests/test_canonical_numbers.py::test_clave_duplicada_con_colector PASSED [ 51%]
+tests/test_canonical_numbers.py::test_ciclo_y_dependencia_inexistente PASSED [ 51%]
+tests/test_canonical_numbers.py::test_derivada_declarada_debe_coincidir PASSED [ 51%]
+tests/test_canonical_numbers.py::test_supersedes_misma_clave[vieja_primero] PASSED [ 51%]
+tests/test_canonical_numbers.py::test_supersedes_misma_clave[nueva_primero] PASSED [ 51%]
+tests/test_canonical_numbers.py::test_supersedes_otra_clave PASSED       [ 51%]
+tests/test_canonical_numbers.py::test_supersedes_objetivo_inexistente PASSED [ 51%]
+tests/test_canonical_numbers.py::test_supersedes_doble PASSED            [ 51%]
+tests/test_canonical_numbers.py::test_superseded_se_conserva_intacta PASSED [ 51%]
+tests/test_canonical_numbers.py::test_diff_con_split_nulo PASSED         [ 51%]
+tests/test_canonical_numbers.py::test_diff_exige_dos_dependencias PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed123.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed42.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.efficientnet_b0.finetune.px224_flip.seed7.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed123.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed42.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.efficientnet_b0.frozen.px224_flip.seed7.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.resnet18.finetune.px224_flip.seed123.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.resnet18.finetune.px224_flip.seed42.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.resnet18.finetune.px224_flip.seed7.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.resnet18.frozen.px224_flip.seed123.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.resnet18.frozen.px224_flip.seed42.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.resnet18.frozen.px224_flip.seed7.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.vit_b16.finetune.px224_flip.seed123.f1_macro] PASSED [ 52%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.vit_b16.finetune.px224_flip.seed42.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.vit_b16.finetune.px224_flip.seed7.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.vit_b16.frozen.px224_flip.seed123.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.vit_b16.frozen.px224_flip.seed42.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.gray_scott.vit_b16.frozen.px224_flip.seed7.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed123.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed42.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.efficientnet_b0.finetune.px224_noflip.seed7.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed123.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed42.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.efficientnet_b0.frozen.px224_noflip.seed7.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.resnet18.finetune.px224_noflip.seed123.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.resnet18.finetune.px224_noflip.seed42.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.resnet18.finetune.px224_noflip.seed7.f1_macro] PASSED [ 53%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.resnet18.frozen.px224_noflip.seed123.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.resnet18.frozen.px224_noflip.seed42.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.resnet18.frozen.px224_noflip.seed7.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.vit_b16.finetune.px224_noflip.seed123.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.vit_b16.finetune.px224_noflip.seed42.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.vit_b16.finetune.px224_noflip.seed7.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.vit_b16.frozen.px224_noflip.seed123.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.vit_b16.frozen.px224_noflip.seed42.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.lorenz.vit_b16.frozen.px224_noflip.seed7.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed123.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed42.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.efficientnet_b0.finetune.px224_noflip.seed7.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed123.f1_macro] PASSED [ 54%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed42.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.efficientnet_b0.frozen.px224_noflip.seed7.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.resnet18.finetune.px224_noflip.seed123.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.resnet18.finetune.px224_noflip.seed42.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.resnet18.finetune.px224_noflip.seed7.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.resnet18.frozen.px224_noflip.seed123.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.resnet18.frozen.px224_noflip.seed42.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.resnet18.frozen.px224_noflip.seed7.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.vit_b16.finetune.px224_noflip.seed123.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.vit_b16.finetune.px224_noflip.seed42.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.vit_b16.finetune.px224_noflip.seed7.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.vit_b16.frozen.px224_noflip.seed123.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.vit_b16.frozen.px224_noflip.seed42.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f32.perlin.vit_b16.frozen.px224_noflip.seed7.f1_macro] PASSED [ 55%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.gray_scott.finalista.efficientnet_b0.finetune.seed123.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.gray_scott.finalista.efficientnet_b0.finetune.seed2024.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.gray_scott.finalista.efficientnet_b0.finetune.seed42.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.gray_scott.finalista.efficientnet_b0.finetune.seed7.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.gray_scott.finalista.efficientnet_b0.finetune.seed99.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.lorenz.finalista.vit_b16.frozen.seed123.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.lorenz.finalista.vit_b16.frozen.seed2024.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.lorenz.finalista.vit_b16.frozen.seed42.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.lorenz.finalista.vit_b16.frozen.seed7.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.lorenz.finalista.vit_b16.frozen.seed99.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.perlin.finalista.vit_b16.frozen.seed123.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.perlin.finalista.vit_b16.frozen.seed2024.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.perlin.finalista.vit_b16.frozen.seed42.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.perlin.finalista.vit_b16.frozen.seed7.f1_macro] PASSED [ 56%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f35.perlin.finalista.vit_b16.frozen.seed99.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.gray_scott.permutado.efficientnet_b0.finetune.seed123.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.gray_scott.permutado.efficientnet_b0.finetune.seed2024.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.gray_scott.permutado.efficientnet_b0.finetune.seed42.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.gray_scott.permutado.efficientnet_b0.finetune.seed7.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.gray_scott.permutado.efficientnet_b0.finetune.seed99.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.lorenz.permutado.vit_b16.frozen.seed123.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.lorenz.permutado.vit_b16.frozen.seed2024.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.lorenz.permutado.vit_b16.frozen.seed42.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.lorenz.permutado.vit_b16.frozen.seed7.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.lorenz.permutado.vit_b16.frozen.seed99.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.perlin.permutado.vit_b16.frozen.seed123.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.perlin.permutado.vit_b16.frozen.seed2024.f1_macro] PASSED [ 57%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.perlin.permutado.vit_b16.frozen.seed42.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.perlin.permutado.vit_b16.frozen.seed7.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f36.perlin.permutado.vit_b16.frozen.seed99.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.gray_scott.segundo.resnet18.finetune.seed123.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.gray_scott.segundo.resnet18.finetune.seed2024.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.gray_scott.segundo.resnet18.finetune.seed42.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.gray_scott.segundo.resnet18.finetune.seed7.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.gray_scott.segundo.resnet18.finetune.seed99.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.lorenz.segundo.efficientnet_b0.finetune.seed123.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.lorenz.segundo.efficientnet_b0.finetune.seed2024.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.lorenz.segundo.efficientnet_b0.finetune.seed42.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.lorenz.segundo.efficientnet_b0.finetune.seed7.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.lorenz.segundo.efficientnet_b0.finetune.seed99.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.perlin.segundo.efficientnet_b0.frozen.seed123.f1_macro] PASSED [ 58%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.perlin.segundo.efficientnet_b0.frozen.seed2024.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.perlin.segundo.efficientnet_b0.frozen.seed42.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.perlin.segundo.efficientnet_b0.frozen.seed7.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[f55.perlin.segundo.efficientnet_b0.frozen.seed99.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.beto_exp41.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.descriptores.gray_scott.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.descriptores.lorenz.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.descriptores.perlin.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.emb768_logreg.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.longitud.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.piso.brightness.gray_scott.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.piso.brightness.lorenz.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.piso.brightness.perlin.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.piso.majority.f1_macro] PASSED [ 59%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.piso.stratified.f1_macro] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.techo5d.f1_macro] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.techo5d.gbm.f1_macro] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.techo5d.logreg.f1_macro] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.techo5d.mlp.f1_macro] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.techo5d.rf.f1_macro] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_verificado_desde_predicciones[ref.techo5d.svm_rbf.f1_macro] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_f34_presencia_y_conteos PASSED     [ 60%]
+tests/test_canonical_numbers.py::test_f34_recalculo_y_hpo_result[gray_scott] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_f34_recalculo_y_hpo_result[perlin] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_f34_recalculo_y_hpo_result[lorenz] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_f3x_presencia_y_conteos PASSED     [ 60%]
+tests/test_canonical_numbers.py::test_f3x_configuracion_de_seleccion[f35] PASSED [ 60%]
+tests/test_canonical_numbers.py::test_f3x_configuracion_de_seleccion[f36] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_f3x_configuracion_de_seleccion[f55] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_f3x_recalculo_desde_predicciones[f35] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_f3x_recalculo_desde_predicciones[f36] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_f3x_recalculo_desde_predicciones[f55] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_f36_nota_enmienda_4_a16 PASSED     [ 61%]
+tests/test_canonical_numbers.py::test_ref_longitud PASSED                [ 61%]
+tests/test_canonical_numbers.py::test_referencias_desbloqueadas_tras_fase5 PASSED [ 61%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.beto_exp41.f1_macro-beto] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.descriptores.gray_scott.f1_macro-('descriptors', 'gray_scott')] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.descriptores.lorenz.f1_macro-('descriptors', 'lorenz')] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.descriptores.perlin.f1_macro-('descriptors', 'perlin')] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.emb768_logreg.f1_macro-emb768] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.longitud.f1_macro-longitud] PASSED [ 61%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.piso.brightness.gray_scott.f1_macro-('brightness', 'gray_scott')] PASSED [ 62%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.piso.brightness.lorenz.f1_macro-('brightness', 'lorenz')] PASSED [ 62%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.piso.brightness.perlin.f1_macro-('brightness', 'perlin')] PASSED [ 62%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.piso.majority.f1_macro-majority] PASSED [ 62%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.techo5d.f1_macro-techo5d] PASSED [ 62%]
+tests/test_canonical_numbers.py::test_referencias_coinciden_con_observados[ref.techo5d.svm_rbf.f1_macro-techo5d] PASSED [ 62%]
+tests/test_canonical_numbers.py::test_desbloqueo_se_niega_si_no_coincide_con_observados PASSED [ 62%]
+tests/test_canonical_numbers.py::test_f5_observados_desde_predicciones PASSED [ 62%]
+tests/test_canonical_numbers.py::test_f5_insumos_con_hash PASSED         [ 62%]
+tests/test_canonical_numbers.py::test_f5_f46_valores_en_su_localizador[f5.-f5] PASSED [ 62%]
+tests/test_canonical_numbers.py::test_f5_f46_valores_en_su_localizador[f46.-f46] PASSED [ 62%]
+tests/test_canonical_numbers.py::test_f5_veredictos_y_conteos PASSED     [ 62%]
+tests/test_canonical_numbers.py::test_f46_condicion_1 PASSED             [ 62%]
+tests/test_canonical_numbers.py::test_sin_cambios_previos_salvo_desbloqueo PASSED [ 62%]
+tests/test_canonical_numbers.py::test_f41_f47_presencia PASSED           [ 63%]
+tests/test_canonical_numbers.py::test_f41_f47_valores_en_su_localizador PASSED [ 63%]
+tests/test_canonical_numbers.py::test_f41_f1_prueba_desde_predicciones PASSED [ 63%]
+tests/test_canonical_numbers.py::test_f41_u_coincide_con_f21 PASSED      [ 63%]
+tests/test_canonical_numbers.py::test_f41_condicion_2_y_contiene_0 PASSED [ 63%]
+tests/test_canonical_numbers.py::test_f47_solo_train_y_holm PASSED       [ 63%]
+tests/test_canonical_numbers.py::test_f42_presencia_y_split PASSED       [ 63%]
+tests/test_canonical_numbers.py::test_f42_holm_y_p_ajustado PASSED       [ 63%]
+tests/test_canonical_numbers.py::test_f42_proporciones_y_tasas_cuadran_con_conteos PASSED [ 63%]
+tests/test_canonical_numbers.py::test_f42_reintentos_desde_el_registro PASSED [ 63%]
+tests/test_canonical_numbers.py::test_f42_estratos_suman_prueba PASSED   [ 63%]
+tests/test_canonical_numbers.py::test_f42_resoluciones_versionadas PASSED [ 63%]
+tests/test_canonical_numbers.py::test_f43_split_val_y_replica_de_prueba PASSED [ 63%]
+tests/test_canonical_numbers.py::test_f43_holm_y_p_de_permutacion PASSED [ 64%]
+tests/test_canonical_numbers.py::test_f43_veredictos_de_cordura_y_criterio_relativo PASSED [ 64%]
+tests/test_canonical_numbers.py::test_f43_cosenos_y_lectura_vit PASSED   [ 64%]
+tests/test_canonical_numbers.py::test_f43_ablacion_delta_f1 PASSED       [ 64%]
+tests/test_canonical_numbers.py::test_f43_fraccion_de_constantes_cuadra_con_conteos PASSED [ 64%]
+tests/test_canonical_numbers.py::test_f43_insumos_encadenados PASSED     [ 64%]
+tests/test_canonical_numbers.py::test_f43_valores_en_su_localizador PASSED [ 64%]
+tests/test_canonical_numbers.py::test_f44_presencia_split_y_localizador PASSED [ 64%]
+tests/test_canonical_numbers.py::test_f44_recalculo_desde_por_muestra PASSED [ 64%]
+tests/test_canonical_numbers.py::test_f44_resoluciones_versionadas PASSED [ 64%]
+tests/test_f24_descriptores.py::test_casos_cubren_tecnicas_splits_y_clases ERROR [ 64%]
+tests/test_f24_descriptores.py::test_funciones_copiadas_literalmente ERROR [ 64%]
+tests/test_f24_descriptores.py::test_equivalencia_10_imagenes ERROR      [ 64%]
+tests/test_f24_descriptores.py::test_descriptores_csv_coincide ERROR     [ 64%]
+tests/test_f35_final.py::test_corridas_de_finalistas[gray_scott] PASSED  [ 65%]
+tests/test_f35_final.py::test_corridas_de_finalistas[lorenz] PASSED      [ 65%]
+tests/test_f35_final.py::test_corridas_de_finalistas[perlin] PASSED      [ 65%]
+tests/test_f35_final.py::test_f1_recalculado[gray_scott] PASSED          [ 65%]
+tests/test_f35_final.py::test_f1_recalculado[lorenz] PASSED              [ 65%]
+tests/test_f35_final.py::test_f1_recalculado[perlin] PASSED              [ 65%]
+tests/test_f35_final.py::test_manifiesto_de_artefactos PASSED            [ 65%]
+tests/test_f35_final.py::test_predicciones_final PASSED                  [ 65%]
+tests/test_f35_final.py::test_verificacion_de_tt2_artefactos PASSED      [ 65%]
+tests/test_f36_permutacion.py::test_corridas_permutadas[gray_scott] PASSED [ 65%]
+tests/test_f36_permutacion.py::test_corridas_permutadas[lorenz] PASSED   [ 65%]
+tests/test_f36_permutacion.py::test_corridas_permutadas[perlin] PASSED   [ 65%]
+tests/test_f36_permutacion.py::test_permutacion_conserva_conteo_y_no_alinea PASSED [ 65%]
+tests/test_f36_permutacion.py::test_manifiesto_f36 PASSED                [ 65%]
+tests/test_f36_permutacion.py::test_verificacion_de_artefactos_f35_y_f36 PASSED [ 66%]
+tests/test_f37_mapas.py::test_treinta_registros_completos PASSED         [ 66%]
+tests/test_f37_mapas.py::test_manifiestos_de_mapas PASSED                [ 66%]
+tests/test_f37_mapas.py::test_verificacion_de_modelos_en_kaggle PASSED   [ 66%]
+tests/test_f37_mapas.py::test_verificacion_de_tt2_mapas_y_resumen PASSED [ 66%]
+tests/test_f37_mapas.py::test_copia_en_drive PASSED                      [ 66%]
+tests/test_f45_longitud.py::test_utilidad_detecta_claves_de_test PASSED  [ 66%]
+tests/test_f45_longitud.py::test_script_no_evalua_test PASSED            [ 66%]
+tests/test_f45_longitud.py::test_resultado_sin_metricas_de_test PASSED   [ 66%]
+tests/test_f45_longitud.py::test_log_y_manifiesto_sin_metricas_de_test PASSED [ 66%]
+tests/test_f45_longitud.py::test_csv_valido_y_f1_val_reproducible PASSED [ 66%]
+tests/test_f45_longitud.py::test_configuracion_desde_protocolo PASSED    [ 66%]
+tests/test_f45_longitud.py::test_caracteristicas PASSED                  [ 66%]
+tests/test_f55_sensibilidad.py::test_corridas_de_sensibilidad[gray_scott] PASSED [ 67%]
+tests/test_f55_sensibilidad.py::test_corridas_de_sensibilidad[lorenz] PASSED [ 67%]
+tests/test_f55_sensibilidad.py::test_corridas_de_sensibilidad[perlin] PASSED [ 67%]
+tests/test_f55_sensibilidad.py::test_predicciones_sensibilidad PASSED    [ 67%]
+tests/test_fase4_atribucion.py::test_resoluciones PASSED                 [ 67%]
+tests/test_fase4_atribucion.py::test_pool_y_constantes PASSED            [ 67%]
+tests/test_fase4_atribucion.py::test_spearman_contra_scipy_y_constante PASSED [ 67%]
+tests/test_fase4_atribucion.py::test_ssim_contra_skimage PASSED          [ 67%]
+tests/test_fase4_atribucion.py::test_resumen_similitud PASSED            [ 67%]
+tests/test_fase4_atribucion.py::test_pares_y_clasificar PASSED           [ 67%]
+tests/test_fase4_atribucion.py::test_combinar_semillas PASSED            [ 67%]
+tests/test_fase4_atribucion.py::test_criterio_cambia_y_no_cambia PASSED  [ 67%]
+tests/test_fase4_atribucion.py::test_medias_clase_predicha_y_escala PASSED [ 67%]
+tests/test_fase4_atribucion.py::test_constantes_y_sensibilidad PASSED    [ 67%]
+tests/test_fase4_atribucion.py::test_anillos_y_perfil_radial PASSED      [ 68%]
+tests/test_fase4_atribucion.py::test_terciles PASSED                     [ 68%]
+tests/test_fase4_atribucion.py::test_estadistico_y_permutacion PASSED    [ 68%]
+tests/test_fase4_atribucion.py::test_rngs_permutacion PASSED             [ 68%]
+tests/test_fase4_atribucion.py::test_holm_y_p_ajustado PASSED            [ 68%]
+tests/test_fase4_atribucion.py::test_cosenos_cabezas PASSED              [ 68%]
+tests/test_fase4_atribucion.py::test_lectura_vit[cambia-alto-None-cordura_por_datos_superada] PASSED [ 68%]
+tests/test_fase4_atribucion.py::test_lectura_vit[no_cambia-bajo-None-atencion_del_backbone] PASSED [ 68%]
+tests/test_fase4_atribucion.py::test_lectura_vit[no_cambia-alto-cambia-dependiente_de_la_cabeza_sin_validacion_por_datos] PASSED [ 68%]
+tests/test_fase4_atribucion.py::test_lectura_vit[no_cambia-alto-no_cambia-atencion_del_backbone] PASSED [ 68%]
+tests/test_fase4_atribucion.py::test_lectura_vit[no_cambia-alto-None-pendiente_de_la_cascada] PASSED [ 68%]
+tests/test_fase4_atribucion.py::test_lectura_vit[no_cambia-indeterminado-cambia-indeterminado] PASSED [ 68%]
+tests/test_fase4_atribucion.py::test_lectura_vit[indeterminado-alto-cambia-indeterminado] PASSED [ 68%]
+tests/test_fase4_atribucion.py::test_seguimiento_gs PASSED               [ 68%]
+tests/test_fase4_atribucion.py::test_ubicador_rechaza_humo_y_sha PASSED  [ 69%]
+tests/test_fase4_atribucion.py::test_cargar_npz PASSED                   [ 69%]
+tests/test_fase4_atribucion.py::test_analizar_sintetico PASSED           [ 69%]
+tests/test_fase4_atribucion.py::test_local_no_sobrescribe PASSED         [ 69%]
+tests/test_fase4_atribucion.py::test_g2_se_niega_a_prueba PASSED         [ 69%]
+tests/test_fase4_atribucion.py::test_g2_solo_abre_imagenes_de_val PASSED [ 69%]
+tests/test_fase4_atribucion.py::test_pasos_cascada PASSED                [ 69%]
+tests/test_fase4_atribucion.py::test_reiniciar_determinista_y_acotado PASSED [ 69%]
+tests/test_fase4_atribucion.py::test_cascada_vit_cabeza_cambia_mapa_y_no_atencion PASSED [ 69%]
+tests/test_fase4_atribucion.py::test_cascada_efficientnet_y_resumen PASSED [ 69%]
+tests/test_fase4_atribucion.py::test_filtros PASSED                      [ 69%]
+tests/test_fase4_atribucion.py::test_ablacion_modelo_y_resumen PASSED    [ 69%]
+tests/test_fase4_atribucion.py::test_gpu_compuerta_y_no_sobrescribe PASSED [ 69%]
+tests/test_fase4_atribucion.py::test_gpu_main_punta_a_punta PASSED       [ 70%]
+tests/test_fase4_atribucion.py::test_p9_transicion_a_constante_cuenta_como_cambio PASSED [ 70%]
+tests/test_fase4_atribucion.py::test_p9_en_resumen_cascada PASSED        [ 70%]
+tests/test_fase4_convergencia.py::test_limites_exactos_y_proporcionales PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_por_parche_es_la_funcion_de_f24_en_el_recorte[shannon_entropy-7] PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_por_parche_es_la_funcion_de_f24_en_el_recorte[shannon_entropy-14] PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_por_parche_es_la_funcion_de_f24_en_el_recorte[contrast-7] PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_por_parche_es_la_funcion_de_f24_en_el_recorte[contrast-14] PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_por_parche_es_la_funcion_de_f24_en_el_recorte[edge_density-7] PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_por_parche_es_la_funcion_de_f24_en_el_recorte[edge_density-14] PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_por_parche_es_la_funcion_de_f24_en_el_recorte[lbp_energy-7] PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_por_parche_es_la_funcion_de_f24_en_el_recorte[lbp_energy-14] PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_funcion_descriptor_es_la_de_f24 PASSED [ 70%]
+tests/test_fase4_convergencia.py::test_descriptor_exige_uint8 PASSED     [ 70%]
+tests/test_fase4_convergencia.py::test_redimensionar_224_igual_que_f14 PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_masa_por_parche_conserva_la_suma PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_descriptores_significativos_de_la_tabla11 PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_descriptores_significativos_detiene_si_cambia PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_spearman_por_muestra_igual_a_scipy_y_nan_si_constante PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_tratar_indefinidos PASSED         [ 71%]
+tests/test_fase4_convergencia.py::test_ic_bootstrap_constante_y_determinista PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_ic_bootstrap_excluye_nan_en_cada_replica PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_analizar_signos_indefinidos_y_replicas_compartidas PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_analizar_modo_cero PASSED         [ 71%]
+tests/test_fase4_convergencia.py::test_check_resoluciones_f44 PASSED     [ 71%]
+tests/test_fase4_convergencia.py::test_tabla_cualitativa_y_contexto_desde_canonical PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_centroides_y_recorrido_lineal PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_recorrido_direccion_y_recorte PASSED [ 71%]
+tests/test_fase4_convergencia.py::test_direccion_logreg_en_u_y_monotonia PASSED [ 72%]
+tests/test_fase4_convergencia.py::test_verificar_pdep_val PASSED         [ 72%]
+tests/test_fase4_convergencia.py::test_check_resoluciones_f48 PASSED     [ 72%]
+tests/test_fase4_convergencia.py::test_naturaleza_del_contraste_sin_banda PASSED [ 72%]
+tests/test_fase4_convergencia.py::test_render_determinista[gray_scott] PASSED [ 72%]
+tests/test_fase4_convergencia.py::test_render_determinista[perlin] FAILED [ 72%]
+tests/test_fase4_convergencia.py::test_render_determinista[lorenz] PASSED [ 72%]
+tests/test_fase4_convergencia.py::test_figura_se_dibuja_y_marca_recortes PASSED [ 72%]
+tests/test_fase4_recuperabilidad.py::test_ridge_recupera_u_conocida[ninguno] PASSED [ 72%]
+tests/test_fase4_recuperabilidad.py::test_ridge_recupera_u_conocida[standard_train] PASSED [ 72%]
+tests/test_fase4_recuperabilidad.py::test_ridge_ruido_r2_cercano_a_cero PASSED [ 72%]
+tests/test_fase4_recuperabilidad.py::test_alphas_del_plan PASSED         [ 72%]
+tests/test_fase4_recuperabilidad.py::test_recorte_a_0_1 PASSED           [ 72%]
+tests/test_fase4_recuperabilidad.py::test_empate_de_alpha_no_se_resuelve_solo PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_crossfit_sin_fuga PASSED       [ 73%]
+tests/test_fase4_recuperabilidad.py::test_etapa_val_y_logreg_de_4_3 PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_resoluciones_pendientes_detienen PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_delta_f1_e_ic_con_indices_de_A1 PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_idx_sha256_igual_al_de_la_fase_5 PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_write_json_nunca_sobrescribe PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_prueba_se_niega_a_sobrescribir PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_val_se_niega_a_sobrescribir PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_compuerta_de_prueba_exige_val_versionado PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_mantel_igual_a_implementacion_de_referencia[0] PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_mantel_igual_a_implementacion_de_referencia[1] PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_mantel_igual_a_implementacion_de_referencia[2] PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_mantel_con_empates_en_distancias PASSED [ 73%]
+tests/test_fase4_recuperabilidad.py::test_mantel_estructura_perfecta PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_mantel_p_uniforme_bajo_H0 PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_mantel_constantes_del_plan PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_penultima_capa_efficientnet PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_penultima_capa_vit PASSED      [ 74%]
+tests/test_fase4_recuperabilidad.py::test_compare_backbone_identico_salvo_cabeza PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_dir_digest_igual_a_build_manifest PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_dir_digest_real_de_data_manifest PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_imagenes_con_hash_distinto_se_detienen PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_npz_nunca_sobrescribe PASSED   [ 74%]
+tests/test_fase4_recuperabilidad.py::test_modelos_y_backbones_del_plan PASSED [ 74%]
+tests/test_fase4_recuperabilidad.py::test_load_index_orden_y_tamanos PASSED [ 74%]
+tests/test_fase4_regimen.py::test_mapeos_coinciden_con_el_plan FAILED    [ 74%]
+tests/test_fase4_regimen.py::test_mapeos_son_los_de_src_generation SKIPPED [ 74%]
+tests/test_fase4_regimen.py::test_rangos_de_octavas_y_rho SKIPPED (c...) [ 75%]
+tests/test_fase4_regimen.py::test_estrato_lorenz_equivale_a_u1 FAILED    [ 75%]
+tests/test_fase4_regimen.py::test_f1_por_estrato_y_clase_ausente PASSED  [ 75%]
+tests/test_fase4_regimen.py::test_fisher_contra_scipy_y_manual[t0] PASSED [ 75%]
+tests/test_fase4_regimen.py::test_fisher_contra_scipy_y_manual[t1] PASSED [ 75%]
+tests/test_fase4_regimen.py::test_fisher_contra_scipy_y_manual[t2] PASSED [ 75%]
+tests/test_fase4_regimen.py::test_fisher_contra_scipy_y_manual[t3] PASSED [ 75%]
+tests/test_fase4_regimen.py::test_tabla_2x2_orientacion PASSED           [ 75%]
+tests/test_fase4_regimen.py::test_mann_whitney_contra_scipy_y_manual[True] PASSED [ 75%]
+tests/test_fase4_regimen.py::test_mann_whitney_contra_scipy_y_manual[False] PASSED [ 75%]
+tests/test_fase4_regimen.py::test_mann_whitney_sin_diferencia_y_separacion_total PASSED [ 75%]
+tests/test_fase4_regimen.py::test_holm_familia_y_ajustados PASSED        [ 75%]
+tests/test_fase4_regimen.py::test_holm_contra_statsmodels_si_esta PASSED [ 75%]
+tests/test_fase4_regimen.py::test_resoluciones_pendientes_detienen PASSED [ 76%]
+tests/test_fase4_regimen.py::test_resoluciones_del_repositorio_y_metadatos PASSED [ 76%]
+tests/test_fase4_regimen.py::test_analizar_familia_y_estructura SKIPPED  [ 76%]
+tests/test_fase4_regimen.py::test_analizar_detiene_si_el_registro_no_cuadra PASSED [ 76%]
+tests/test_fase4_regimen.py::test_registro_no_altera_la_salida PASSED    [ 76%]
+tests/test_fase4_regimen.py::test_registro_misma_imagen_por_la_ruta_de_produccion PASSED [ 76%]
+tests/test_fase4_regimen.py::test_registro_detecta_reintentos_y_respaldo PASSED [ 76%]
+tests/test_fase4_regimen.py::test_coherencia_detiene_si_no_cuadra PASSED [ 76%]
+tests/test_fase4_regimen.py::test_respaldo_coincide_con_el_generador PASSED [ 76%]
+tests/test_fase4_regimen.py::test_reintentos_no_sobrescribe PASSED       [ 76%]
+tests/test_fase4_regimen.py::test_regimen_no_sobrescribe PASSED          [ 76%]
+tests/test_fase4_regimen.py::test_csv_de_reintentos_columnas PASSED      [ 76%]
+tests/test_fase4_regimen.py::test_resumen_por_clase PASSED               [ 76%]
+tests/test_fase4_regimen.py::test_tareas_muestreo_de_humo PASSED         [ 76%]
+tests/test_fase4_regimen.py::test_permutaciones_son_independientes_del_orden PASSED [ 77%]
+tests/test_fase4_regimen.py::test_trabajo_verifica_contra_la_almacenada PASSED [ 77%]
+tests/test_fase4_regimen.py::test_figuras_sinteticas SKIPPED (could ...) [ 77%]
+tests/test_fase5_bootstrap.py::test_f1_vectorizado_igual_a_sklearn_replica_a_replica PASSED [ 77%]
+tests/test_fase5_bootstrap.py::test_f1_replica_sin_una_clase_verdadera PASSED [ 77%]
+tests/test_fase5_bootstrap.py::test_f1_semillas_media_de_f1_por_semilla PASSED [ 77%]
+tests/test_fase5_bootstrap.py::test_indices_forma_y_llamada_del_config PASSED [ 77%]
+tests/test_fase5_bootstrap.py::test_indices_rechaza_config_distinto PASSED [ 77%]
+tests/test_fase5_bootstrap.py::test_pesos PASSED                         [ 77%]
+tests/test_fase5_bootstrap.py::test_umbral_estricto PASSED               [ 77%]
+tests/test_fase5_bootstrap.py::test_percentil_con_menos_infinito PASSED  [ 77%]
+tests/test_fase5_contraste.py::test_clasificador_perfecto_V1 PASSED      [ 77%]
+tests/test_fase5_contraste.py::test_identico_a_beto_V1_si_beto_supera_el_umbral PASSED [ 77%]
+tests/test_fase5_contraste.py::test_azar_V3 PASSED                       [ 77%]
+tests/test_fase5_contraste.py::test_V2_V3_V4[30-V4] PASSED               [ 78%]
+tests/test_fase5_contraste.py::test_V2_V3_V4[40-V2] PASSED               [ 78%]
+tests/test_fase5_contraste.py::test_V2_V3_V4[48-V3] PASSED               [ 78%]
+tests/test_fase5_contraste.py::test_theta_y_D_por_replica PASSED         [ 78%]
+tests/test_fase5_contraste.py::test_piso_identidad_fija_frente_a_maximo_por_replica PASSED [ 78%]
+tests/test_fase5_contraste.py::test_empate_A3_menor_D_y_alternativa_P2 PASSED [ 78%]
+tests/test_fase5_contraste.py::test_tolerancia_A3_dentro_y_fuera_de_1e12 PASSED [ 78%]
+tests/test_fase5_contraste.py::test_estratificado_constante_y_permutado_promediado PASSED [ 78%]
+tests/test_fase5_contraste.py::test_piso_estratificado_como_identidad PASSED [ 78%]
+tests/test_fase5_contraste.py::test_ic_de_theta_sale_de_verdict_percentile_interval PASSED [ 78%]
+tests/test_fase5_contraste.py::test_ic_de_D_con_alpha_h_de_superioridad PASSED [ 78%]
+tests/test_fase5_contraste.py::test_retencion_menos_infinito_y_conteo PASSED [ 78%]
+tests/test_fase5_contraste.py::test_descomposicion_suma_y_descriptores PASSED [ 78%]
+tests/test_fase5_contraste.py::test_longitud_solo_V1_V2_V4_y_m PASSED    [ 79%]
+tests/test_fase5_contraste.py::test_mcnemar_y_cochran_contra_statsmodels_y_scipy PASSED [ 79%]
+tests/test_fase5_contraste.py::test_P5_cochran_todos_concordantes PASSED [ 79%]
+tests/test_fase5_contraste.py::test_comparaciones_mcnemar_lados_y_holm PASSED [ 79%]
+tests/test_fase5_contraste.py::test_yhat_media_de_p_dep PASSED           [ 79%]
+tests/test_fase5_contraste.py::test_kappa_contra_sklearn PASSED          [ 79%]
+tests/test_fase5_contraste.py::test_P3_kappa_indefinida PASSED           [ 79%]
+tests/test_fase5_contraste.py::test_kappa_y_contencion_f46 PASSED        [ 79%]
+tests/test_fase5_contraste.py::test_P4_contencion_indefinida PASSED      [ 79%]
+tests/test_fase5_contraste.py::test_terciles_cortes_y_asignacion PASSED  [ 79%]
+tests/test_fase5_contraste.py::test_spearman_u_longitud PASSED           [ 79%]
+tests/test_fase5_contraste.py::test_formulacion_A_p_y_V2 PASSED          [ 79%]
+tests/test_fase5_contraste.py::test_formulacion_A_solo_usa_delta_y_registra_r[0] PASSED [ 79%]
+tests/test_fase5_contraste.py::test_formulacion_A_solo_usa_delta_y_registra_r[20] PASSED [ 79%]
+tests/test_fase5_contraste.py::test_formulacion_A_solo_usa_delta_y_registra_r[40] PASSED [ 80%]
+tests/test_fase5_contraste.py::test_beto_desplazado_traslada_theta PASSED [ 80%]
+tests/test_fase5_contraste.py::test_por_semilla_y_segundo_mejor_y_piso_sin_permutado PASSED [ 80%]
+tests/test_fase5_contraste.py::test_P1_A14_emparejada_por_replica PASSED [ 80%]
+tests/test_fase5_contraste.py::test_tabla_de_robustez PASSED             [ 80%]
+tests/test_fase5_contraste.py::test_P2_robustez_con_empate PASSED        [ 80%]
+tests/test_fase5_run.py::test_sin_bandera_solo_verifica PASSED           [ 80%]
+tests/test_fase5_run.py::test_se_niega_sin_compuerta_o_con_arbol_sucio[git0-no es ancestro] PASSED [ 80%]
+tests/test_fase5_run.py::test_se_niega_sin_compuerta_o_con_arbol_sucio[git1-cambiaron frente a] PASSED [ 80%]
+tests/test_fase5_run.py::test_se_niega_sin_compuerta_o_con_arbol_sucio[git2-no est\xe1 limpio] PASSED [ 80%]
+tests/test_fase5_run.py::test_se_niega_con_pendientes PASSED             [ 80%]
+tests/test_fase5_run.py::test_config_real_sin_pendientes_que_bloqueen PASSED [ 80%]
+tests/test_fase5_run.py::test_compuerta_en_una_sola_constante_y_se_niega_sin_la_etiqueta PASSED [ 80%]
+tests/test_fase5_run.py::test_aviso_P6_en_el_log PASSED                  [ 80%]
+tests/test_fase5_run.py::test_ejecucion_sintetica_y_no_sobrescribe PASSED [ 81%]
+tests/test_fase5_run.py::test_f46_exige_veredicto_commiteado PASSED      [ 81%]
+tests/test_fase5_run.py::test_rendimiento_B10000_tamano_real 
+[rendimiento] Fase 5 sintética: 0.4 s; F4.6: 0.2 s (B = 10000)
+PASSED      [ 81%]
+tests/test_fx_pixeles.py::test_resoluciones_versionadas_coinciden_con_el_plan_y_exigen_pendientes PASSED [ 81%]
+tests/test_fx_pixeles.py::test_resoluciones_rechaza_claves_y_valores[cambio0-no previstas] PASSED [ 81%]
+tests/test_fx_pixeles.py::test_resoluciones_rechaza_claves_y_valores[cambio1-distintos de los del plan] PASSED [ 81%]
+tests/test_fx_pixeles.py::test_resoluciones_rechaza_claves_y_valores[cambio2-distintos de los del plan] PASSED [ 81%]
+tests/test_fx_pixeles.py::test_resoluciones_rechaza_claves_y_valores[cambio3-no previstos] PASSED [ 81%]
+tests/test_fx_pixeles.py::test_resoluciones_rechaza_clave_faltante PASSED [ 81%]
+tests/test_fx_pixeles.py::test_aborta_ante_split_test PASSED             [ 81%]
+tests/test_fx_pixeles.py::test_grad_y_log_sobre_un_borde_conocido PASSED [ 81%]
+tests/test_fx_pixeles.py::test_grad_crece_con_el_contraste_y_sigma2_lo_ensancha PASSED [ 81%]
+tests/test_fx_pixeles.py::test_canny_solo_figuras PASSED                 [ 81%]
+tests/test_fx_pixeles.py::test_a_unidad_exige_uint8 PASSED               [ 82%]
+tests/test_fx_pixeles.py::test_nula_b2_numero_de_transformaciones_sin_identidad[7-391] PASSED [ 82%]
+tests/test_fx_pixeles.py::test_nula_b2_numero_de_transformaciones_sin_identidad[14-1567] PASSED [ 82%]
+tests/test_fx_pixeles.py::test_k_del_plan PASSED                         [ 82%]
+tests/test_fx_pixeles.py::test_dice_y_empates_con_orden_estable PASSED   [ 82%]
+tests/test_fx_pixeles.py::test_dice_nulo_es_la_media_sobre_las_transformaciones PASSED [ 82%]
+tests/test_fx_pixeles.py::test_parches_suma_y_media PASSED               [ 82%]
+tests/test_fx_pixeles.py::test_analizar_b_sintetico PASSED               [ 82%]
+tests/test_fx_pixeles.py::test_mascaras_c1_area_exacta_y_desplazamiento PASSED [ 82%]
+tests/test_fx_pixeles.py::test_generador_c1_reproducible_y_en_el_orden_del_plan[tras_los_desplazados_de_cada_imagen] PASSED [ 82%]
+tests/test_fx_pixeles.py::test_generador_c1_reproducible_y_en_el_orden_del_plan[tras_todos_los_desplazados_de_la_tecnica] PASSED [ 82%]
+tests/test_fx_pixeles.py::test_sorteos_cambian_con_la_tecnica_solo_por_el_generador_nuevo PASSED [ 82%]
+tests/test_fx_pixeles.py::test_recorte_y_redondeo_uint8 PASSED           [ 82%]
+tests/test_fx_pixeles.py::test_imagenes_c1_orden_y_regiones PASSED       [ 82%]
+tests/test_fx_pixeles.py::test_estadistico_s PASSED                      [ 83%]
+tests/test_fx_pixeles.py::test_oclusion_8x8 PASSED                       [ 83%]
+tests/test_fx_pixeles.py::test_cordura_c2_criterio_relativo PASSED       [ 83%]
+tests/test_fx_pixeles.py::test_welch_permutaciones_igual_al_directo PASSED [ 83%]
+tests/test_fx_pixeles.py::test_clusteres_conectividad_8_y_signos PASSED  [ 83%]
+tests/test_fx_pixeles.py::test_prueba_por_clusteres_con_senal_plantada PASSED [ 83%]
+tests/test_fx_pixeles.py::test_analizar_d_sintetico PASSED               [ 83%]
+tests/test_fx_pixeles.py::test_mann_whitney_y_biserial PASSED            [ 83%]
+tests/test_fx_pixeles.py::test_wilcoxon_metodos PASSED                   [ 83%]
+tests/test_fx_pixeles.py::test_holm_por_familia_con_m_del_plan[H-B-4] PASSED [ 83%]
+tests/test_fx_pixeles.py::test_holm_por_familia_con_m_del_plan[H-C-12] PASSED [ 83%]
+tests/test_fx_pixeles.py::test_holm_por_familia_con_m_del_plan[H-D-6] PASSED [ 83%]
+tests/test_fx_pixeles.py::test_ic_bootstrap_compartido_por_tecnica PASSED [ 83%]
+tests/test_fx_pixeles.py::test_pixeles_gpu_de_punta_a_punta PASSED       [ 83%]
+tests/test_fx_pixeles.py::test_pixeles_gpu_se_detiene_si_no_reproduce_pdep PASSED [ 84%]
+tests/test_fx_pixeles.py::test_pixeles_local_de_punta_a_punta PASSED     [ 84%]
+tests/test_label_independence.py::test_A_estatica_renderers[perlin_lib] SKIPPED [ 84%]
+tests/test_label_independence.py::test_A_estatica_renderers[lorenz_lib] PASSED [ 84%]
+tests/test_label_independence.py::test_A_estatica_renderers[gray_scott_lib] PASSED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[perlin-label] SKIPPED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[perlin-split] SKIPPED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[perlin-route] SKIPPED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[perlin-index] SKIPPED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[lorenz-label] SKIPPED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[lorenz-split] SKIPPED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[lorenz-route] SKIPPED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[lorenz-index] SKIPPED [ 84%]
+tests/test_label_independence.py::test_B_invarianza[gs_cpu-label] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_invarianza[gs_cpu-split] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_invarianza[gs_cpu-route] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_invarianza[gs_cpu-index] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_invarianza[gs_gpu-label] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_invarianza[gs_gpu-split] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_invarianza[gs_gpu-route] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_invarianza[gs_gpu-index] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_contrato_salida[perlin] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_contrato_salida[lorenz] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_contrato_salida[gs_cpu] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_contrato_salida[gs_gpu] SKIPPED [ 85%]
+tests/test_label_independence.py::test_B_perlin_funcion_pura SKIPPED     [ 85%]
+tests/test_label_independence.py::test_B_gray_scott_gpu_composicion_lote SKIPPED [ 85%]
+tests/test_label_independence.py::test_diagnostico_gray_scott_cpu_vs_gpu SKIPPED [ 86%]
+tests/test_label_independence.py::test_C_inventario_y_alineacion[perlin] SKIPPED [ 86%]
+tests/test_label_independence.py::test_C_inventario_y_alineacion[lorenz] SKIPPED [ 86%]
+tests/test_label_independence.py::test_C_inventario_y_alineacion[gray_scott] SKIPPED [ 86%]
+tests/test_label_independence.py::test_C_reproduccion_desde_u[perlin] SKIPPED [ 86%]
+tests/test_label_independence.py::test_C_reproduccion_desde_u[lorenz] SKIPPED [ 86%]
+tests/test_label_independence.py::test_C_reproduccion_desde_u[gray_scott] SKIPPED [ 86%]
+tests/test_label_independence.py::test_C_alineacion_con_pkl_41 SKIPPED   [ 86%]
+tests/test_matriz_experimentos.py::test_vocabulary_is_f15 PASSED         [ 86%]
+tests/test_matriz_experimentos.py::test_fases_are_f15 PASSED             [ 86%]
+tests/test_matriz_experimentos.py::test_factors_match_doc PASSED         [ 86%]
+tests/test_matriz_experimentos.py::test_preprocessing_matches_f14 PASSED [ 86%]
+tests/test_matriz_experimentos.py::test_params_match_recon PASSED        [ 86%]
+tests/test_matriz_experimentos.py::test_params_internally_consistent PASSED [ 86%]
+tests/test_matriz_experimentos.py::test_complexity_order_in_doc PASSED   [ 87%]
+tests/test_matriz_experimentos.py::test_common_config_matches_doc PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_input_normalization_matches_code PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[primera_pasada-primera_pasada] PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[hpo-F3.4] PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[final-final] PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[control_permutacion-control_permutacion] PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_phase_seeds_and_splits[sensibilidad-sensibilidad] PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_selection_and_attribution_rows PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_total_trainings PASSED           [ 87%]
+tests/test_matriz_experimentos.py::test_sensitivity_phase PASSED         [ 87%]
+tests/test_matriz_experimentos.py::test_selection_rule_matches_doc PASSED [ 87%]
+tests/test_matriz_experimentos.py::test_hpo_matches_doc PASSED           [ 87%]
+tests/test_matriz_experimentos.py::test_permutation_matches_doc PASSED   [ 88%]
+tests/test_matriz_experimentos.py::test_interpretability_matches_doc PASSED [ 88%]
+tests/test_matriz_experimentos.py::test_json_has_section10_blocks PASSED [ 88%]
+tests/test_predictions_format.py::test_valid_file_passes PASSED          [ 88%]
+tests/test_predictions_format.py::test_p_dep_ida_y_vuelta_exacta PASSED  [ 88%]
+tests/test_predictions_format.py::test_valid_baseline_vocab PASSED       [ 88%]
+tests/test_predictions_format.py::test_rule1_extra_column PASSED         [ 88%]
+tests/test_predictions_format.py::test_rule1_column_order PASSED         [ 88%]
+tests/test_predictions_format.py::test_rule1_missing_value PASSED        [ 88%]
+tests/test_predictions_format.py::test_rule1_wrong_type PASSED           [ 88%]
+tests/test_predictions_format.py::test_rule1_row_order PASSED            [ 88%]
+tests/test_predictions_format.py::test_rule2_vocab PASSED                [ 88%]
+tests/test_predictions_format.py::test_rule2_p_dep_range PASSED          [ 88%]
+tests/test_predictions_format.py::test_rule3_missing_sample PASSED       [ 88%]
+tests/test_predictions_format.py::test_rule3_foreign_sample PASSED       [ 89%]
+tests/test_predictions_format.py::test_rule3_y_true_mismatch PASSED      [ 89%]
+tests/test_predictions_format.py::test_rule4_duplicate_key PASSED        [ 89%]
+tests/test_predictions_format.py::test_rule4_duplicate_across_files PASSED [ 89%]
+tests/test_predictions_format.py::test_rule5_seed_mismatch PASSED        [ 89%]
+tests/test_predictions_format.py::test_rule5_bad_name PASSED             [ 89%]
+tests/test_predictions_format.py::test_rule6_missing_manifest PASSED     [ 89%]
+tests/test_predictions_format.py::test_rule6_missing_field PASSED        [ 89%]
+tests/test_predictions_format.py::test_rule6_sha_mismatch PASSED         [ 89%]
+tests/test_predictions_format.py::test_rule6_phase_mismatch PASSED       [ 89%]
+tests/test_predictions_format.py::test_rule6_unknown_phase_folder PASSED [ 89%]
+tests/test_predictions_format.py::test_rule7_test_forbidden_in_first_pass PASSED [ 89%]
+tests/test_predictions_format.py::test_rule7_test_in_final_requires_tag PASSED [ 89%]
+tests/test_predictions_format.py::test_rule7_test_in_tagged_phases_requires_tag[control_permutacion] PASSED [ 89%]
+tests/test_predictions_format.py::test_rule7_test_in_tagged_phases_requires_tag[sensibilidad] PASSED [ 90%]
+tests/test_predictions_format.py::test_rule7_sensitivity_val_only_without_tag PASSED [ 90%]
+tests/test_predictions_format.py::test_rule7_first_pass_val_only_passes PASSED [ 90%]
+tests/test_predictions_format.py::test_load_predictions_adds_fase_and_concats PASSED [ 90%]
+tests/test_predictions_format.py::test_load_predictions_rejects_invalid_file PASSED [ 90%]
+tests/test_predictions_format.py::test_real_index_structure PASSED       [ 90%]
+tests/test_predictions_format.py::test_text_length_vocab_and_filename PASSED [ 90%]
+tests/test_preprocesamiento_config.py::test_config_has_all_techniques PASSED [ 90%]
+tests/test_preprocesamiento_config.py::test_config_matches_table[perlin] PASSED [ 90%]
+tests/test_preprocesamiento_config.py::test_config_matches_table[gray_scott] PASSED [ 90%]
+tests/test_preprocesamiento_config.py::test_config_matches_table[lorenz] PASSED [ 90%]
+tests/test_preprocesamiento_config.py::test_variant_label_format[perlin] PASSED [ 90%]
+tests/test_preprocesamiento_config.py::test_variant_label_format[gray_scott] PASSED [ 90%]
+tests/test_preprocesamiento_config.py::test_variant_label_format[lorenz] PASSED [ 91%]
+tests/test_protocolo.py::test_header_hashes_match_configs PASSED         [ 91%]
+tests/test_protocolo.py::test_header_version_tag_and_amendment PASSED    [ 91%]
+tests/test_protocolo.py::test_data_table_matches_canonical_and_index PASSED [ 91%]
+tests/test_protocolo.py::test_known_information_matches_canonical PASSED [ 91%]
+tests/test_protocolo.py::test_models_seeds_and_rule PASSED               [ 91%]
+tests/test_protocolo.py::test_references PASSED                          [ 91%]
+tests/test_protocolo.py::test_ceiling_5d_matches_doc PASSED              [ 91%]
+tests/test_protocolo.py::test_floors_match_doc_and_canonical PASSED      [ 91%]
+tests/test_protocolo.py::test_statistic_and_threshold PASSED             [ 91%]
+tests/test_protocolo.py::test_bootstrap PASSED                           [ 91%]
+tests/test_protocolo.py::test_floor_superiority PASSED                   [ 91%]
+tests/test_protocolo.py::test_multiplicity PASSED                        [ 91%]
+tests/test_protocolo.py::test_verdicts PASSED                            [ 91%]
+tests/test_protocolo.py::test_retention PASSED                           [ 92%]
+tests/test_protocolo.py::test_length_control PASSED                      [ 92%]
+tests/test_protocolo.py::test_secondary PASSED                           [ 92%]
+tests/test_protocolo.py::test_sensitivity PASSED                         [ 92%]
+tests/test_protocolo.py::test_test_access_gate PASSED                    [ 92%]
+tests/test_protocolo.py::test_design_figures PASSED                      [ 92%]
+tests/test_protocolo.py::test_canonical_ids_exist PASSED                 [ 92%]
+tests/test_protocolo.py::test_enmienda_2_es_la_ultima_y_sigue_a_la_1 PASSED [ 92%]
+tests/test_protocolo.py::test_enmienda_2_pisos_triviales PASSED          [ 92%]
+tests/test_protocolo.py::test_enmienda_2_piso_brillo PASSED              [ 92%]
+tests/test_protocolo.py::test_enmienda_2_descriptores PASSED             [ 92%]
+tests/test_protocolo.py::test_f24_descriptores_fijados PASSED            [ 92%]
+tests/test_protocolo.py::test_enmienda_2_longitud PASSED                 [ 92%]
+tests/test_protocolo.py::test_enmienda_2_vocabulario PASSED              [ 92%]
+tests/test_protocolo.py::test_enmienda_3_previa_a_prueba PASSED          [ 93%]
+tests/test_protocolo.py::test_enmienda_3_coincide_con_la_matriz PASSED   [ 93%]
+tests/test_protocolo.py::test_enmienda_4_texto PASSED                    [ 93%]
+tests/test_protocolo.py::test_enmienda_4_relacion_s11 PASSED             [ 93%]
+tests/test_protocolo.py::test_enmienda_4_bloque_presente_y_tipos PASSED  [ 93%]
+tests/test_protocolo.py::test_enmienda_4_cifras_canonicas PASSED         [ 93%]
+tests/test_protocolo.py::test_bloques_previos_intactos_frente_a_enmienda_3 PASSED [ 93%]
+tests/test_protocolo.py::test_bloques_previos_intactos_frente_a_protocolo_v1 PASSED [ 93%]
+tests/test_protocolo.py::test_enmienda_5_texto PASSED                    [ 93%]
+tests/test_protocolo.py::test_enmienda_5_bloque PASSED                   [ 93%]
+tests/test_protocolo.py::test_bloques_previos_intactos_frente_a_enmienda_4 PASSED [ 93%]
+tests/test_run_grid.py::test_preprocesamiento_por_tecnica PASSED         [ 93%]
+tests/test_run_grid.py::test_tecnica_ausente_falla PASSED                [ 93%]
+tests/test_run_grid.py::test_cli_no_contradice_json PASSED               [ 94%]
+tests/test_run_grid.py::test_fase_segun_modo[False-None-False-primera_pasada] PASSED [ 94%]
+tests/test_run_grid.py::test_fase_segun_modo[True-None-False-final] PASSED [ 94%]
+tests/test_run_grid.py::test_fase_segun_modo[True-99-False-control_permutacion] PASSED [ 94%]
+tests/test_run_grid.py::test_fase_segun_modo[True-None-True-sensibilidad] PASSED [ 94%]
+tests/test_run_grid.py::test_permutacion_y_sensibilidad_exigen_test PASSED [ 94%]
+tests/test_run_grid.py::test_hiperparametros_de_la_matriz PASSED         [ 94%]
+tests/test_run_grid.py::test_permutacion_guarda_indices PASSED           [ 94%]
+tests/test_run_grid.py::test_extremo_a_extremo PASSED                    [ 94%]
+tests/test_run_grid.py::test_carpeta_alterada_aborta PASSED              [ 94%]
+tests/test_run_grid.py::test_test_bloqueado_sin_etiqueta PASSED          [ 94%]
+tests/test_run_grid.py::test_fases_finales_exigen_finalistas[final] PASSED [ 94%]
+tests/test_run_grid.py::test_fases_finales_exigen_finalistas[control_permutacion] PASSED [ 94%]
+tests/test_run_grid.py::test_sensibilidad_exige_segundos PASSED          [ 94%]
+tests/test_run_grid.py::test_seleccion_no_aplica_en_primera_pasada_ni_smoke PASSED [ 95%]
+tests/test_run_hpo.py::test_presupuesto_de_la_matriz PASSED              [ 95%]
+tests/test_run_hpo.py::test_espacio_por_estrategia[efficientnet_b0-finetune-batch0] PASSED [ 95%]
+tests/test_run_hpo.py::test_espacio_por_estrategia[vit_b16-finetune-batch1] PASSED [ 95%]
+tests/test_run_hpo.py::test_espacio_por_estrategia[vit_b16-frozen-batch2] PASSED [ 95%]
+tests/test_run_hpo.py::test_regla_final PASSED                           [ 95%]
+tests/test_run_hpo.py::test_solo_el_finalista_sugerido PASSED            [ 95%]
+tests/test_run_hpo.py::test_extremo_a_extremo_y_reanudacion PASSED       [ 95%]
+tests/test_run_hpo.py::test_presupuesto_fijo_fuera_de_smoke PASSED       [ 95%]
+tests/test_run_maps.py::test_run_maps_punta_a_punta PASSED               [ 95%]
+tests/test_run_maps.py::test_run_maps_rechaza_modelo_alterado PASSED     [ 95%]
+tests/test_run_maps.py::test_run_maps_rechaza_p_dep_distinto PASSED      [ 95%]
+tests/test_select_finalist.py::test_single_leader PASSED                 [ 95%]
+tests/test_select_finalist.py::test_tie_resolved_by_trainable PASSED     [ 95%]
+tests/test_select_finalist.py::test_tie_resolved_by_total PASSED         [ 96%]
+tests/test_select_finalist.py::test_residual_tie_resolved_by_mean PASSED [ 96%]
+tests/test_select_finalist.py::test_multiple_leaders_use_max_std PASSED  [ 96%]
+tests/test_select_finalist.py::test_tolerance_boundary_is_inclusive PASSED [ 96%]
+tests/test_select_finalist.py::test_unresolved_tie_raises PASSED         [ 96%]
+tests/test_select_finalist.py::test_selection_is_per_technique PASSED    [ 96%]
+tests/test_select_finalist.py::test_real_parameter_counts_are_used PASSED [ 96%]
+tests/test_select_finalist.py::test_second_normal_case PASSED            [ 96%]
+tests/test_select_finalist.py::test_second_when_finalist_is_not_leader PASSED [ 96%]
+tests/test_select_finalist.py::test_second_reapplies_complexity_rule PASSED [ 96%]
+tests/test_select_finalist.py::test_second_unresolved_tie_raises PASSED  [ 96%]
+tests/test_select_finalist.py::test_second_is_per_technique_and_distinct PASSED [ 96%]
+tests/test_select_finalist.py::test_missing_seed_raises PASSED           [ 96%]
+tests/test_select_finalist.py::test_extra_seed_raises PASSED             [ 97%]
+tests/test_select_finalist.py::test_missing_configuration_raises PASSED  [ 97%]
+tests/test_select_finalist.py::test_technique_outside_matrix_raises PASSED [ 97%]
+tests/test_select_finalist.py::test_rule_mismatch_raises PASSED          [ 97%]
+tests/test_select_finalist.py::test_end_to_end_with_load_predictions PASSED [ 97%]
+tests/test_select_finalist.py::test_end_to_end_rejects_other_phase PASSED [ 97%]
+tests/test_select_finalist.py::test_default_pattern_is_primera_pasada PASSED [ 97%]
+tests/test_summarize_maps.py::test_resumen PASSED                        [ 97%]
+tests/test_summarize_maps.py::test_concentracion_uniforme_y_puntual PASSED [ 97%]
+tests/test_verdict.py::test_contrast_config_is_implemented_rule PASSED   [ 97%]
+tests/test_verdict.py::test_config_mismatch_raises PASSED                [ 97%]
+tests/test_verdict.py::test_p_value_counts_le_zero PASSED                [ 97%]
+tests/test_verdict.py::test_percentile_interval_level PASSED             [ 97%]
+tests/test_verdict.py::test_holm_levels_by_rank PASSED                   [ 97%]
+tests/test_verdict.py::test_holm_order_independent_of_input_order PASSED [ 98%]
+tests/test_verdict.py::test_holm_step_down_stops PASSED                  [ 98%]
+tests/test_verdict.py::test_holm_first_rank_fails PASSED                 [ 98%]
+tests/test_verdict.py::test_holm_three_zero_p_ties PASSED                [ 98%]
+tests/test_verdict.py::test_holm_partial_tie_gets_strictest_level PASSED [ 98%]
+tests/test_verdict.py::test_holm_tie_rejection_unaffected PASSED         [ 98%]
+tests/test_verdict.py::test_v1_v2_v3_v4 PASSED                           [ 98%]
+tests/test_verdict.py::test_v3_takes_precedence_over_v1 PASSED           [ 98%]
+tests/test_verdict.py::test_floor_family_uses_holm PASSED                [ 98%]
+tests/test_verdict.py::test_v2_depends_on_holm_level PASSED              [ 98%]
+tests/test_verdict.py::test_step_down_failure_gives_v4 PASSED            [ 98%]
+tests/test_verdict.py::test_three_zero_p_in_both_families PASSED         [ 98%]
+tests/test_verdict.py::test_global_verdicts[theta0-d0-expected0-G1] PASSED [ 98%]
+tests/test_verdict.py::test_global_verdicts[theta1-d1-expected1-G2] PASSED [ 98%]
+tests/test_verdict.py::test_global_verdicts[theta2-d2-expected2-G3] PASSED [ 99%]
+tests/test_verdict.py::test_global_verdicts[theta3-d3-expected3-G4] PASSED [ 99%]
+tests/test_verdict.py::test_global_verdict_function PASSED               [ 99%]
+tests/test_verdict.py::test_different_techniques_raise PASSED            [ 99%]
+tests/test_verdict.py::test_expected_techniques_enforced PASSED          [ 99%]
+tests/test_verdict.py::test_different_B_raises PASSED                    [ 99%]
+tests/test_verdict.py::test_non_finite_raises PASSED                     [ 99%]
+tests/test_verdict.py::test_alpha_from_config_by_default PASSED          [ 99%]
+tests/test_verify_artefacts.py::test_todo_coincide PASSED                [ 99%]
+tests/test_verify_artefacts.py::test_falta_distinto_y_extra PASSED       [ 99%]
+tests/test_verify_artefacts.py::test_copia_de_humo_se_descarta_por_ruta PASSED [ 99%]
+tests/test_verify_artefacts.py::test_duplicado_ambiguo_falla PASSED      [ 99%]
+tests/test_verify_artefacts.py::test_hash_models_y_verificacion PASSED   [ 99%]
+tests/test_verify_artefacts.py::test_verifica_npz_si_el_manifiesto_los_lista PASSED [100%]
+
+=================================== ERRORS ====================================
+________ ERROR at setup of test_casos_cubren_tecnicas_splits_y_clases _________
+
+    @pytest.fixture(scope='module')
+    def f24():
+>       return load_f24()
+               ^^^^^^^^^^
+
+tests\test_f24_descriptores.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_f24_descriptores.py:37: in load_f24
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:1023: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+results\f24_descriptores\f24_descriptores.py:89: in <module>
+    F21 = _load('f21_techo5d', 'results/f21_techo5d/f21_techo5d.py')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+results\f24_descriptores\f24_descriptores.py:85: in _load
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:1023: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+results\f21_techo5d\f21_techo5d.py:52: in <module>
+    from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\ensemble\__init__.py:6: in <module>
+    from sklearn.ensemble._bagging import BaggingClassifier, BaggingRegressor
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\ensemble\_bagging.py:19: in <module>
+    from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\tree\__init__.py:6: in <module>
+    from sklearn.tree._classes import (
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\tree\_classes.py:28: in <module>
+    from sklearn.tree import _criterion, _splitter
+sklearn/tree/_criterion.pyx:1: in init sklearn.tree._criterion
+    ???
+sklearn/tree/_splitter.pyx:1: in init sklearn.tree._splitter
+    ???
+sklearn/tree/_tree.pyx:1: in init sklearn.tree._tree
+    ???
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\neighbors\__init__.py:25: in <module>
+    from sklearn.neighbors._nca import NeighborhoodComponentsAnalysis
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\neighbors\_nca.py:22: in <module>
+    from sklearn.decomposition import PCA
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\decomposition\__init__.py:10: in <module>
+    from sklearn.decomposition._dict_learning import (
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\decomposition\_dict_learning.py:21: in <module>
+    from sklearn.linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\__init__.py:10: in <module>
+    from sklearn.linear_model._base import LinearRegression
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Generalized Linear Models.
+    """
+    
+    # Authors: The scikit-learn developers
+    # SPDX-License-Identifier: BSD-3-Clause
+    
+    import warnings
+    from abc import ABCMeta, abstractmethod
+    from numbers import Integral, Real
+    
+    import numpy as np
+    import scipy.sparse as sp
+    from scipy import linalg, optimize, sparse
+    from scipy.sparse.linalg import lsqr
+    
+    from sklearn.base import (
+        BaseEstimator,
+        ClassifierMixin,
+        MultiOutputMixin,
+        RegressorMixin,
+        _fit_context,
+    )
+    from sklearn.utils import _align_api_if_sparse, check_array, check_random_state
+    from sklearn.utils._array_api import (
+        _asarray_with_order,
+        _average,
+        _expit,
+        check_same_namespace,
+        get_namespace,
+        get_namespace_and_device,
+        indexing_dtype,
+        move_to,
+        supported_float_dtypes,
+    )
+    from sklearn.utils._param_validation import Interval
+>   from sklearn.utils._seq_dataset import (
+        ArrayDataset32,
+        ArrayDataset64,
+        CSRDataset32,
+        CSRDataset64,
+    )
+E   ImportError: DLL load failed while importing _seq_dataset: An Application Control policy has blocked this file.
+
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\_base.py:37: ImportError
+___________ ERROR at setup of test_funciones_copiadas_literalmente ____________
+
+    @pytest.fixture(scope='module')
+    def f24():
+>       return load_f24()
+               ^^^^^^^^^^
+
+tests\test_f24_descriptores.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_f24_descriptores.py:37: in load_f24
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:1023: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+results\f24_descriptores\f24_descriptores.py:89: in <module>
+    F21 = _load('f21_techo5d', 'results/f21_techo5d/f21_techo5d.py')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+results\f24_descriptores\f24_descriptores.py:85: in _load
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:1023: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+results\f21_techo5d\f21_techo5d.py:52: in <module>
+    from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\ensemble\__init__.py:6: in <module>
+    from sklearn.ensemble._bagging import BaggingClassifier, BaggingRegressor
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\ensemble\_bagging.py:19: in <module>
+    from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\tree\__init__.py:6: in <module>
+    from sklearn.tree._classes import (
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\tree\_classes.py:28: in <module>
+    from sklearn.tree import _criterion, _splitter
+sklearn/tree/_criterion.pyx:1: in init sklearn.tree._criterion
+    ???
+sklearn/tree/_splitter.pyx:1: in init sklearn.tree._splitter
+    ???
+sklearn/tree/_tree.pyx:1: in init sklearn.tree._tree
+    ???
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\neighbors\__init__.py:25: in <module>
+    from sklearn.neighbors._nca import NeighborhoodComponentsAnalysis
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\neighbors\_nca.py:22: in <module>
+    from sklearn.decomposition import PCA
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\decomposition\__init__.py:10: in <module>
+    from sklearn.decomposition._dict_learning import (
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\decomposition\_dict_learning.py:21: in <module>
+    from sklearn.linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\__init__.py:10: in <module>
+    from sklearn.linear_model._base import LinearRegression
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Generalized Linear Models.
+    """
+    
+    # Authors: The scikit-learn developers
+    # SPDX-License-Identifier: BSD-3-Clause
+    
+    import warnings
+    from abc import ABCMeta, abstractmethod
+    from numbers import Integral, Real
+    
+    import numpy as np
+    import scipy.sparse as sp
+    from scipy import linalg, optimize, sparse
+    from scipy.sparse.linalg import lsqr
+    
+    from sklearn.base import (
+        BaseEstimator,
+        ClassifierMixin,
+        MultiOutputMixin,
+        RegressorMixin,
+        _fit_context,
+    )
+    from sklearn.utils import _align_api_if_sparse, check_array, check_random_state
+    from sklearn.utils._array_api import (
+        _asarray_with_order,
+        _average,
+        _expit,
+        check_same_namespace,
+        get_namespace,
+        get_namespace_and_device,
+        indexing_dtype,
+        move_to,
+        supported_float_dtypes,
+    )
+    from sklearn.utils._param_validation import Interval
+>   from sklearn.utils._seq_dataset import (
+        ArrayDataset32,
+        ArrayDataset64,
+        CSRDataset32,
+        CSRDataset64,
+    )
+E   ImportError: DLL load failed while importing _seq_dataset: An Application Control policy has blocked this file.
+
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\_base.py:37: ImportError
+_______________ ERROR at setup of test_equivalencia_10_imagenes _______________
+
+    @pytest.fixture(scope='module')
+    def f24():
+>       return load_f24()
+               ^^^^^^^^^^
+
+tests\test_f24_descriptores.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_f24_descriptores.py:37: in load_f24
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:1023: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+results\f24_descriptores\f24_descriptores.py:89: in <module>
+    F21 = _load('f21_techo5d', 'results/f21_techo5d/f21_techo5d.py')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+results\f24_descriptores\f24_descriptores.py:85: in _load
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:1023: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+results\f21_techo5d\f21_techo5d.py:52: in <module>
+    from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\ensemble\__init__.py:6: in <module>
+    from sklearn.ensemble._bagging import BaggingClassifier, BaggingRegressor
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\ensemble\_bagging.py:19: in <module>
+    from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\tree\__init__.py:6: in <module>
+    from sklearn.tree._classes import (
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\tree\_classes.py:28: in <module>
+    from sklearn.tree import _criterion, _splitter
+sklearn/tree/_criterion.pyx:1: in init sklearn.tree._criterion
+    ???
+sklearn/tree/_splitter.pyx:1: in init sklearn.tree._splitter
+    ???
+sklearn/tree/_tree.pyx:1: in init sklearn.tree._tree
+    ???
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\neighbors\__init__.py:25: in <module>
+    from sklearn.neighbors._nca import NeighborhoodComponentsAnalysis
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\neighbors\_nca.py:22: in <module>
+    from sklearn.decomposition import PCA
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\decomposition\__init__.py:10: in <module>
+    from sklearn.decomposition._dict_learning import (
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\decomposition\_dict_learning.py:21: in <module>
+    from sklearn.linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\__init__.py:10: in <module>
+    from sklearn.linear_model._base import LinearRegression
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Generalized Linear Models.
+    """
+    
+    # Authors: The scikit-learn developers
+    # SPDX-License-Identifier: BSD-3-Clause
+    
+    import warnings
+    from abc import ABCMeta, abstractmethod
+    from numbers import Integral, Real
+    
+    import numpy as np
+    import scipy.sparse as sp
+    from scipy import linalg, optimize, sparse
+    from scipy.sparse.linalg import lsqr
+    
+    from sklearn.base import (
+        BaseEstimator,
+        ClassifierMixin,
+        MultiOutputMixin,
+        RegressorMixin,
+        _fit_context,
+    )
+    from sklearn.utils import _align_api_if_sparse, check_array, check_random_state
+    from sklearn.utils._array_api import (
+        _asarray_with_order,
+        _average,
+        _expit,
+        check_same_namespace,
+        get_namespace,
+        get_namespace_and_device,
+        indexing_dtype,
+        move_to,
+        supported_float_dtypes,
+    )
+    from sklearn.utils._param_validation import Interval
+>   from sklearn.utils._seq_dataset import (
+        ArrayDataset32,
+        ArrayDataset64,
+        CSRDataset32,
+        CSRDataset64,
+    )
+E   ImportError: DLL load failed while importing _seq_dataset: An Application Control policy has blocked this file.
+
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\_base.py:37: ImportError
+______________ ERROR at setup of test_descriptores_csv_coincide _______________
+
+    @pytest.fixture(scope='module')
+    def f24():
+>       return load_f24()
+               ^^^^^^^^^^
+
+tests\test_f24_descriptores.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_f24_descriptores.py:37: in load_f24
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:1023: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+results\f24_descriptores\f24_descriptores.py:89: in <module>
+    F21 = _load('f21_techo5d', 'results/f21_techo5d/f21_techo5d.py')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+results\f24_descriptores\f24_descriptores.py:85: in _load
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:1023: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+results\f21_techo5d\f21_techo5d.py:52: in <module>
+    from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\ensemble\__init__.py:6: in <module>
+    from sklearn.ensemble._bagging import BaggingClassifier, BaggingRegressor
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\ensemble\_bagging.py:19: in <module>
+    from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\tree\__init__.py:6: in <module>
+    from sklearn.tree._classes import (
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\tree\_classes.py:28: in <module>
+    from sklearn.tree import _criterion, _splitter
+sklearn/tree/_criterion.pyx:1: in init sklearn.tree._criterion
+    ???
+sklearn/tree/_splitter.pyx:1: in init sklearn.tree._splitter
+    ???
+sklearn/tree/_tree.pyx:1: in init sklearn.tree._tree
+    ???
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\neighbors\__init__.py:25: in <module>
+    from sklearn.neighbors._nca import NeighborhoodComponentsAnalysis
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\neighbors\_nca.py:22: in <module>
+    from sklearn.decomposition import PCA
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\decomposition\__init__.py:10: in <module>
+    from sklearn.decomposition._dict_learning import (
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\decomposition\_dict_learning.py:21: in <module>
+    from sklearn.linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\__init__.py:10: in <module>
+    from sklearn.linear_model._base import LinearRegression
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Generalized Linear Models.
+    """
+    
+    # Authors: The scikit-learn developers
+    # SPDX-License-Identifier: BSD-3-Clause
+    
+    import warnings
+    from abc import ABCMeta, abstractmethod
+    from numbers import Integral, Real
+    
+    import numpy as np
+    import scipy.sparse as sp
+    from scipy import linalg, optimize, sparse
+    from scipy.sparse.linalg import lsqr
+    
+    from sklearn.base import (
+        BaseEstimator,
+        ClassifierMixin,
+        MultiOutputMixin,
+        RegressorMixin,
+        _fit_context,
+    )
+    from sklearn.utils import _align_api_if_sparse, check_array, check_random_state
+    from sklearn.utils._array_api import (
+        _asarray_with_order,
+        _average,
+        _expit,
+        check_same_namespace,
+        get_namespace,
+        get_namespace_and_device,
+        indexing_dtype,
+        move_to,
+        supported_float_dtypes,
+    )
+    from sklearn.utils._param_validation import Interval
+>   from sklearn.utils._seq_dataset import (
+        ArrayDataset32,
+        ArrayDataset64,
+        CSRDataset32,
+        CSRDataset64,
+    )
+E   ImportError: DLL load failed while importing _seq_dataset: An Application Control policy has blocked this file.
+
+..\..\..\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\_base.py:37: ImportError
+================================== FAILURES ===================================
+______________________ test_render_determinista[perlin] _______________________
+
+tech = 'perlin'
+
+    @pytest.mark.parametrize('tech', ['gray_scott', 'perlin', 'lorenz'])
+    def test_render_determinista(tech):
+        u = np.array([0.4, 0.5, 0.3, 0.0, 0.0])                      # u3 = u4 = 0: el render más barato
+>       a, b = fi.render(tech, u), fi.render(tech, u)
+               ^^^^^^^^^^^^^^^^^^
+
+tests\test_fase4_convergencia.py:296: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\fase4\figura_ilustrativa.py:176: in render
+    import perlin_lib as pl
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    perlin_lib.py
+    ─────────────
+    Generación class-blind de imágenes Perlin Flow Fields a partir de los 5
+    componentes UMAP normalizados.
+    
+    IMPORTANTE (historial): la version original de este generador usaba
+    `seed = label*10000 + i`, lo que hacia que la geometria (no solo el color)
+    dependiera de la etiqueta -- una fuga real, ya corregida aqui. La semilla
+    ahora es un hash determinista de los propios valores UMAP, y ninguna
+    funcion de este archivo recibe el label para el proceso de generacion.
+    
+    Requiere el paquete `noise` (pip install noise). En Windows puede fallar
+    la instalacion por requerir Microsoft C++ Build Tools -- si eso pasa,
+    generar las imagenes de Perlin en Colab/Kaggle (Linux) en vez de local.
+    
+    Contrato técnico:
+      - frecuencia in [2.0, 10.0]
+      - turbulencia in [0.5, 3.0]
+      - velocidad in [0.5, 3.0] px/paso
+      - longitud de trayectoria in [30, 200] pasos
+      - numero de octavas in [1, 8]
+      - 800 particulas
+      - Imagen 256x256, escala de grises (1 canal)
+    """
+    
+    import os
+    import hashlib
+    import numpy as np
+    from PIL import Image
+>   from noise import pnoise2
+E   ModuleNotFoundError: No module named 'noise'
+
+src\generation\perlin_lib.py:31: ModuleNotFoundError
+______________________ test_mapeos_coinciden_con_el_plan ______________________
+
+U = array([[0.6369617 , 0.26978672, 0.04097353, 0.01652764, 0.8132702 ],
+       [0.91275555, 0.60663575, 0.72949654, 0.543...0.33641136],
+       [0.03353817, 0.9690858 , 0.5620956 , 0.08158143, 0.32155564]],
+      shape=(400, 5), dtype=float32)
+
+    def test_mapeos_coinciden_con_el_plan(U):
+>       mp = rg.mapear(U)
+             ^^^^^^^^^^^^
+
+tests\test_fase4_regimen.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\fase4\regimen.py:138: in mapear
+    'octavas': np.array([perlin_octavas(u) for u in U], dtype=np.int64)}
+                         ^^^^^^^^^^^^^^^^^
+src\fase4\regimen.py:129: in perlin_octavas
+    import perlin_lib
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    perlin_lib.py
+    ─────────────
+    Generación class-blind de imágenes Perlin Flow Fields a partir de los 5
+    componentes UMAP normalizados.
+    
+    IMPORTANTE (historial): la version original de este generador usaba
+    `seed = label*10000 + i`, lo que hacia que la geometria (no solo el color)
+    dependiera de la etiqueta -- una fuga real, ya corregida aqui. La semilla
+    ahora es un hash determinista de los propios valores UMAP, y ninguna
+    funcion de este archivo recibe el label para el proceso de generacion.
+    
+    Requiere el paquete `noise` (pip install noise). En Windows puede fallar
+    la instalacion por requerir Microsoft C++ Build Tools -- si eso pasa,
+    generar las imagenes de Perlin en Colab/Kaggle (Linux) en vez de local.
+    
+    Contrato técnico:
+      - frecuencia in [2.0, 10.0]
+      - turbulencia in [0.5, 3.0]
+      - velocidad in [0.5, 3.0] px/paso
+      - longitud de trayectoria in [30, 200] pasos
+      - numero de octavas in [1, 8]
+      - 800 particulas
+      - Imagen 256x256, escala de grises (1 canal)
+    """
+    
+    import os
+    import hashlib
+    import numpy as np
+    from PIL import Image
+>   from noise import pnoise2
+E   ModuleNotFoundError: No module named 'noise'
+
+src\generation\perlin_lib.py:31: ModuleNotFoundError
+______________________ test_estrato_lorenz_equivale_a_u1 ______________________
+
+U = array([[0.6369617 , 0.26978672, 0.04097353, 0.01652764, 0.8132702 ],
+       [0.91275555, 0.60663575, 0.72949654, 0.543...0.33641136],
+       [0.03353817, 0.9690858 , 0.5620956 , 0.08158143, 0.32155564]],
+      shape=(400, 5), dtype=float32)
+
+    def test_estrato_lorenz_equivale_a_u1(U):
+        u1 = U[:, 1].astype(np.float64)
+        lejos = np.abs(u1 - rg.LORENZ_U1_UMBRAL) > 1e-6
+>       bajo = rg.estrato_lorenz(rg.mapear(U)['rho'])
+                                 ^^^^^^^^^^^^
+
+tests\test_fase4_regimen.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\fase4\regimen.py:138: in mapear
+    'octavas': np.array([perlin_octavas(u) for u in U], dtype=np.int64)}
+                         ^^^^^^^^^^^^^^^^^
+src\fase4\regimen.py:129: in perlin_octavas
+    import perlin_lib
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    perlin_lib.py
+    ─────────────
+    Generación class-blind de imágenes Perlin Flow Fields a partir de los 5
+    componentes UMAP normalizados.
+    
+    IMPORTANTE (historial): la version original de este generador usaba
+    `seed = label*10000 + i`, lo que hacia que la geometria (no solo el color)
+    dependiera de la etiqueta -- una fuga real, ya corregida aqui. La semilla
+    ahora es un hash determinista de los propios valores UMAP, y ninguna
+    funcion de este archivo recibe el label para el proceso de generacion.
+    
+    Requiere el paquete `noise` (pip install noise). En Windows puede fallar
+    la instalacion por requerir Microsoft C++ Build Tools -- si eso pasa,
+    generar las imagenes de Perlin en Colab/Kaggle (Linux) en vez de local.
+    
+    Contrato técnico:
+      - frecuencia in [2.0, 10.0]
+      - turbulencia in [0.5, 3.0]
+      - velocidad in [0.5, 3.0] px/paso
+      - longitud de trayectoria in [30, 200] pasos
+      - numero de octavas in [1, 8]
+      - 800 particulas
+      - Imagen 256x256, escala de grises (1 canal)
+    """
+    
+    import os
+    import hashlib
+    import numpy as np
+    from PIL import Image
+>   from noise import pnoise2
+E   ModuleNotFoundError: No module named 'noise'
+
+src\generation\perlin_lib.py:31: ModuleNotFoundError
+============================== warnings summary ===============================
+tests/test_fase4_convergencia.py::test_direccion_logreg_en_u_y_monotonia
+tests/test_fase4_convergencia.py::test_verificar_pdep_val
+  C:\Users\Diego\venvs\ttdicevc\Lib\site-packages\sklearn\linear_model\_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_fase4_convergencia.py::test_render_determinista[perlin] - M...
+FAILED tests/test_fase4_regimen.py::test_mapeos_coinciden_con_el_plan - Modul...
+FAILED tests/test_fase4_regimen.py::test_estrato_lorenz_equivale_a_u1 - Modul...
+ERROR tests/test_f24_descriptores.py::test_casos_cubren_tecnicas_splits_y_clases
+ERROR tests/test_f24_descriptores.py::test_funciones_copiadas_literalmente - ...
+ERROR tests/test_f24_descriptores.py::test_equivalencia_10_imagenes - ImportE...
+ERROR tests/test_f24_descriptores.py::test_descriptores_csv_coincide - Import...
+= 3 failed, 1325 passed, 35 skipped, 2 warnings, 4 errors in 613.16s (0:10:13) =
