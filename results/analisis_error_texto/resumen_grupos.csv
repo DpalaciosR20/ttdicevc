@@ -1,0 +1,16 @@
+technique,grupo,n,mediana_n_tokens_beto,pct_truncados,pct_depresivo,errores_fuente,n_errores,fn,fp,n_pandemia,pct_pandemia
+gray_scott,Conservado,81,208.0000,59.2593,34.5679,visual,0,0,0,17,20.9877
+gray_scott,Perdido en la imagen,1,164.0000,100.0000,0.0000,visual,1,0,1,0,0.0000
+gray_scott,Recuperado,3,223.0000,66.6667,100.0000,BETO,3,3,0,1,33.3333
+gray_scott,Error heredado,29,297.0000,65.5172,44.8276,visual,29,13,16,5,17.2414
+gray_scott,Global (prueba),114,231.5000,61.4035,38.5965,visual,30,13,17,23,20.1754
+perlin,Conservado,75,192.0000,58.6667,36.0000,visual,0,0,0,15,20.0000
+perlin,Perdido en la imagen,7,370.0000,71.4286,14.2857,visual,7,1,6,2,28.5714
+perlin,Recuperado,5,75.0000,40.0000,80.0000,BETO,5,4,1,1,20.0000
+perlin,Error heredado,27,301.0000,70.3704,44.4444,visual,27,12,15,5,18.5185
+perlin,Global (prueba),114,231.5000,61.4035,38.5965,visual,34,13,21,23,20.1754
+lorenz,Conservado,79,208.0000,59.4937,35.4430,visual,0,0,0,16,20.2532
+lorenz,Perdido en la imagen,3,164.0000,66.6667,0.0000,visual,3,0,3,1,33.3333
+lorenz,Recuperado,7,370.0000,57.1429,57.1429,BETO,7,4,3,3,42.8571
+lorenz,Error heredado,25,273.0000,68.0000,48.0000,visual,25,12,13,3,12.0000
+lorenz,Global (prueba),114,231.5000,61.4035,38.5965,visual,28,12,16,23,20.1754

@@ -1,0 +1,27 @@
+{
+ "results/predictions/referencia/text__beto__finetune__seed42.csv": "3d3587469545e592e39fa62d3b00b0acd52889bfe21dceb0a5c2816a28f7916e",
+ "meta/sample_index.csv": "74dc778292447c66be60b35b5ec224c53b01433423923fa6d6ddef91749de0f5",
+ "TT_DATA_ROOT/processed/test.csv": "e251582ae76e419e344228c3bcd3d6c8f468b481968e3cb6f06f221f0c9f6b5b",
+ "results/canonical_numbers.json": "98ce1377b37b84a510c8940eeaed7069fd9953aa504f80daae5bb1b5990de8cb",
+ "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed123.csv": "b51a2d0227a2bb9110b076fa9cb6ede73497fde3a67a26754707ca795f80bf41",
+ "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed2024.csv": "8c5c9b633612e41facc8cd8e46d1af804da9b46faaec191dc966ae15edcc374a",
+ "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed42.csv": "60e78e5c2f3d4cbde2584a7622ad5ff148d9e83257858e50142889a8556fc6bb",
+ "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed7.csv": "3ead6bb773fbf2e586282a76f761c529ca24198f3d88005de0740835016acaf1",
+ "results/predictions/final/gray_scott__efficientnet_b0__finetune__seed99.csv": "e72dc2ae668f54ed1581ad172abc802cb73b99a405656a0f430b11e3490799d7",
+ "results/predictions/final/perlin__vit_b16__frozen__seed123.csv": "de5d1a7c55bb629174cccacaa6da27e7acece57930262147b19f0248ca93108d",
+ "results/predictions/final/perlin__vit_b16__frozen__seed2024.csv": "52588352631a8a3e7e8108e071a50a07e4e5c5f0a423b9781f880934d2788920",
+ "results/predictions/final/perlin__vit_b16__frozen__seed42.csv": "2807eec87fca0391d8ce06538921571854c8b77ec6744a3145685981f5688f0d",
+ "results/predictions/final/perlin__vit_b16__frozen__seed7.csv": "f2ec421680245dadfaad2eea27b0f26a5416eba09ac291aae207abe70ececec2",
+ "results/predictions/final/perlin__vit_b16__frozen__seed99.csv": "27f74169fca562b1711d10ccb26411c74c5d295b2743f5ebaa284a2d3f39f199",
+ "results/predictions/final/lorenz__vit_b16__frozen__seed123.csv": "0b66f60777549bcf2181f931bc10e85d2dd77ffc02d71d321c74359b9484b065",
+ "results/predictions/final/lorenz__vit_b16__frozen__seed2024.csv": "5e2e09af39e19ec568d24ab765ee340eb8d697314c4a72138f450e89a76c640e",
+ "results/predictions/final/lorenz__vit_b16__frozen__seed42.csv": "fcac7c6b35a380637b0462ee4d541ec69d911278eed02d5f634cd38b67f91b76",
+ "results/predictions/final/lorenz__vit_b16__frozen__seed7.csv": "67b61ae0124831f7f7011be3d30d68a01fd8d89079783f5a320614f8a6387e38",
+ "results/predictions/final/lorenz__vit_b16__frozen__seed99.csv": "2ef17e032c1d861cc3b161a1ec6a47dc41b75f7cf8ecdddac6346bde30ce6d30",
+ "pandemic_stopwords.py (Módulo 1)": {
+  "repo": "proyecto-transformacion-texto-imagen",
+  "path": "src/features/pandemic_stopwords.py",
+  "commit": "8076797048e20d22b5f9a67051c642f04ca3e4f8",
+  "sha256": "af23f8094329f37b5e64ae59204d287cd883a772315a79145256fd4af41ff460"
+ }
+}
